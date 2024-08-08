@@ -1,0 +1,35 @@
+.meteor {
+  transform: rotate(-180deg);
+  animation: meteor 3s linear;
+  animation-delay: var(--meteor-delay, 0s);
+  animation-duration: var(--meteor-duration, 2s);
+}
+
+.meteor::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--meteor-width, 50px);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--cyan-500),
+    var(--blue-500),
+    transparent
+  );
+}
+
+@keyframes meteor {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}

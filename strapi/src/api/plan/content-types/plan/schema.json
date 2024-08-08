@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "plans",
+  "info": {
+    "singularName": "plan",
+    "pluralName": "plans",
+    "displayName": "Plans",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "CTA": {
+      "displayName": "CTA",
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button"
+    },
+    "perks": {
+      "displayName": "Perks",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.perks"
+    },
+    "additionnal_perks": {
+      "displayName": "Additionnal Perks",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.perks"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "plans"
+    }
+  }
+}

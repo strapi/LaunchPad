@@ -1,0 +1,76 @@
+---
+title: Top 5 LLM of all time
+date: 2021-07-14
+author: Manu Arora
+authorAvatar: /avatar.jpeg
+description: Explore the latest AI tools and applications that are revolutionizing various industries. From image generation to natural language processing, AI is changing the way we think and interact with the world.
+categories:
+  - research
+image: https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+---
+
+## Lorem ipsum heading
+
+Nostrud sit reprehenderit labore enim minim veniam elit reprehenderit laborum ea consequat excepteur elit anim. Labore consequat Lorem dolor magna consequat sunt eu occaecat laboris mollit incididunt quis consectetur dolore. Cillum eiusmod ipsum ex do qui. Proident ex ullamco excepteur proident Lorem aliquip quis ex sunt nostrud qui excepteur velit proident laborum.
+
+Nostrud sit reprehenderit labore enim minim veniam elit reprehenderit laborum ea consequat excepteur elit anim. Labore consequat Lorem dolor magna consequat sunt eu occaecat laboris mollit incididunt quis consectetur dolore. Cillum eiusmod ipsum ex do qui. Proident ex ullamco excepteur proident Lorem aliquip quis ex sunt nostrud qui excepteur velit proident laborum.
+
+```jsx
+"use client";
+
+import { useRouter } from "next/navigation";
+import { BlogWithSlug } from "@/lib/blog";
+
+export function BlogLayout({
+  blog,
+  children,
+}: {
+  blog: BlogWithSlug,
+  children: React.ReactNode,
+}) {
+  let router = useRouter();
+  return (
+    <div className="mt-16 lg:mt-32">
+      <div className="xl:relative">
+        <div className="mx-auto max-w-2xl">
+          <article>
+            <header className="flex flex-col">
+              <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+                {blog.title}
+              </h1>
+              <time
+                dateTime={blog.date}
+                className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
+              >
+                <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
+                <span className="ml-3">{blog.date.toString()}</span>
+              </time>
+            </header>
+            <div className="mt-8 prose prose-sm" data-mdx-content>
+              {children}
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+## Lorem ipsum heading
+
+Nostrud sit reprehenderit labore enim minim veniam elit reprehenderit laborum ea consequat excepteur elit anim. Labore consequat Lorem dolor magna consequat sunt eu occaecat laboris mollit incididunt quis consectetur dolore. Cillum eiusmod ipsum ex do qui. Proident ex ullamco excepteur proident Lorem aliquip quis ex sunt nostrud qui excepteur velit proident laborum.
+
+Nostrud sit reprehenderit labore enim minim veniam elit reprehenderit laborum ea consequat excepteur elit anim. Labore consequat Lorem dolor magna consequat sunt eu occaecat laboris mollit incididunt quis consectetur dolore. Cillum eiusmod ipsum ex do qui. Proident ex ullamco excepteur proident Lorem aliquip quis ex sunt nostrud qui excepteur velit proident laborum.
+
+## Lorem ipsum heading
+
+Nostrud sit reprehenderit labore enim minim veniam elit reprehenderit laborum ea consequat excepteur elit anim. Labore consequat Lorem dolor magna consequat sunt eu occaecat laboris mollit incididunt quis consectetur dolore. Cillum eiusmod ipsum ex do qui. Proident ex ullamco excepteur proident Lorem aliquip quis ex sunt nostrud qui excepteur velit proident laborum.
+
+Nostrud sit reprehenderit labore enim minim veniam elit reprehenderit laborum ea consequat excepteur elit anim. Labore consequat Lorem dolor magna consequat sunt eu occaecat laboris mollit incididunt quis consectetur dolore. Cillum eiusmod ipsum ex do qui. Proident ex ullamco excepteur proident Lorem aliquip quis ex sunt nostrud qui excepteur velit proident laborum.
+
+## Lorem ipsum heading
+
+Nostrud sit reprehenderit labore enim minim veniam elit reprehenderit laborum ea consequat excepteur elit anim. Labore consequat Lorem dolor magna consequat sunt eu occaecat laboris mollit incididunt quis consectetur dolore. Cillum eiusmod ipsum ex do qui. Proident ex ullamco excepteur proident Lorem aliquip quis ex sunt nostrud qui excepteur velit proident laborum.
+
+Nostrud sit reprehenderit labore enim minim veniam elit reprehenderit laborum ea consequat excepteur elit anim. Labore consequat Lorem dolor magna consequat sunt eu occaecat laboris mollit incididunt quis consectetur dolore. Cillum eiusmod ipsum ex do qui. Proident ex ullamco excepteur proident Lorem aliquip quis ex sunt nostrud qui excepteur velit proident laborum.

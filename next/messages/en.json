@@ -1,0 +1,96 @@
+{
+    "HomePage": {
+      "title": "Launch your content into",
+      "cover": "orbit",
+      "subtitle": "Deliver your web content at warp speed with LaunchPad.",
+
+      "get-started": "Get started",
+      "know-more": "Know more"
+    },
+    "Features": {
+        "title": "Features to Propel Your Content",
+        "subtitle": "LaunchPad offers a variety of features to help you deliver content to your users in a fast and efficient way.",
+        "speedy-delivery": "Speedy Delivery",
+        "speedy-delivery-description": "Rocket-fast content delivery with LaunchPad.",
+        "scalable-payloads": "Scalable Payloads",
+        "scalable-payloads-description": "Flexible payload sizes to fit any content volume.",
+        "mission-control-dashboard": "Mission Control Dashboard",
+        "mission-control-dashboard-description": "Monitor and manage your content launches.",
+        "interstellar-integration": "Interstellar Integration",
+        "interstellar-integration-description": "Seamless integration with popular tools and services."
+    },
+    "Navbar": {
+        "pricing": "Pricing",
+        "products": "Products",
+        "blog": "Blog",
+        "contact": "Contact",
+        "faq": "FAQ",
+
+        "signup": "Sign up",
+        "book-demo": "Book a demo"
+    },
+    "Testimonials": {
+        "title": "What Our Users Say",
+        "subtitle": "Hear from our satisfied users who have experienced the benefits of our service firsthand."
+    },
+    "HowItWorks": {
+        "title": "How LaunchPad works",
+        "subtitle": "Discover LaunchPad's innovative system: revolutionizing content delivery for global, high-speed user access.",
+
+        "step1-title": "Plan your Mission",
+        "step1-description": "Choose your payload plan and schedule your launch.",
+
+        "step2-title": "Prepare your Payload",
+        "step2-description": "Organize and prepare your content.",
+
+        "step3-title": "Launch your Content",
+        "step3-description": "Send your content into orbit with a click.",
+
+        "step4-title": "Monitor",
+        "step4-description": "Track your content's journey and ensure successful delivery."
+    },
+    "Brands": {
+        "title": "Trusted by Leading Brands",
+        "subtitle": "LaunchPad is trusted by fortune 500 space organizations."
+    },
+    "FAQ": {
+        "title": "Frequently Asked Questions"
+    },
+    "CTA": {
+        "title": "Ready to Launch Your Content?",
+        "subtitle": "Join LaunchPad and start delivering your content with the speed and reliability of a space shuttle.",
+        "button": "Book a demo",
+        "signup-now": "Sign up now"
+    },
+    "ContactPage": {
+        "title": "LaunchPad is trusted by thousands of Astropreneurs",
+        "subtitle": "Join the ranks of successful entrepreneurs who have used LaunchPad to turn their ideas into reality.",
+        "form-title": "Contact Us",
+        "form-subtitle": "Please reach out to us and we will get back to you at the speed of light.",
+        "form-name": "Full Name",
+        "form-email": "Email address",
+        "form-company": "Company",
+        "form-message": "Message",
+        "form-submit": "Submit",
+        "form-message-placeholder": "Enter your message here"
+    },
+    "Launches": {
+        "title": "Recent Launches",
+        "subtitle": "Our latest launches that made it to the universe."
+    },
+    "footer": {
+        "pricing": "Pricing",
+        "products": "Products",
+        "blog": "Blog",
+        "contact": "Contact",
+        "faq": "FAQ",
+
+        "signup": "Sign up",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "refund": "Refund Policy",
+
+         "description": "LaunchPad is a rapid content delivery platform that helps you deliver content to your users in a fast and efficient way."
+    }
+}
+  
