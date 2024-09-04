@@ -168,67 +168,6 @@ export interface GlobalFooter extends Struct.ComponentSchema {
   };
 }
 
-export interface CardsSocialMediaCard extends Struct.ComponentSchema {
-  collectionName: 'components_cards_social_media_cards';
-  info: {
-    displayName: 'Social_Media_Card';
-    icon: 'dashboard';
-    description: '';
-  };
-  attributes: {
-    Title: Schema.Attribute.String;
-    Description: Schema.Attribute.String;
-    logos: Schema.Attribute.Relation<'oneToMany', 'api::logo.logo'>;
-    span: Schema.Attribute.Enumeration<['one', 'two', 'three']>;
-  };
-}
-
-export interface CardsRayCard extends Struct.ComponentSchema {
-  collectionName: 'components_cards_ray_cards';
-  info: {
-    displayName: 'Ray_Card';
-    icon: 'dashboard';
-    description: '';
-  };
-  attributes: {
-    title: Schema.Attribute.String;
-    description: Schema.Attribute.String;
-    before_ray_items: Schema.Attribute.Component<'items.ray-items', false>;
-    after_ray_items: Schema.Attribute.Component<'items.ray-items', false>;
-    span: Schema.Attribute.Enumeration<['one', 'two', 'three']>;
-  };
-}
-
-export interface CardsGraphCard extends Struct.ComponentSchema {
-  collectionName: 'components_cards_graph_cards';
-  info: {
-    displayName: 'Graph_Card';
-    icon: 'dashboard';
-    description: '';
-  };
-  attributes: {
-    title: Schema.Attribute.String;
-    description: Schema.Attribute.String;
-    top_items: Schema.Attribute.Component<'items.graph-card-top-items', true>;
-    highlighted_text: Schema.Attribute.String;
-    span: Schema.Attribute.Enumeration<['one', 'two', 'three']>;
-  };
-}
-
-export interface CardsGlobeCard extends Struct.ComponentSchema {
-  collectionName: 'components_cards_globe_cards';
-  info: {
-    displayName: 'Globe_Card';
-    icon: 'dashboard';
-    description: '';
-  };
-  attributes: {
-    title: Schema.Attribute.String;
-    description: Schema.Attribute.String;
-    span: Schema.Attribute.Enumeration<['one', 'two', 'three']>;
-  };
-}
-
 export interface DynamicZoneTestimonials extends Struct.ComponentSchema {
   collectionName: 'components_dynamic_zone_testimonials';
   info: {
@@ -402,6 +341,67 @@ export interface DynamicZoneBrands extends Struct.ComponentSchema {
   };
 }
 
+export interface CardsSocialMediaCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_social_media_cards';
+  info: {
+    displayName: 'Social_Media_Card';
+    icon: 'dashboard';
+    description: '';
+  };
+  attributes: {
+    Title: Schema.Attribute.String;
+    Description: Schema.Attribute.String;
+    logos: Schema.Attribute.Relation<'oneToMany', 'api::logo.logo'>;
+    span: Schema.Attribute.Enumeration<['one', 'two', 'three']>;
+  };
+}
+
+export interface CardsRayCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_ray_cards';
+  info: {
+    displayName: 'Ray_Card';
+    icon: 'dashboard';
+    description: '';
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    description: Schema.Attribute.String;
+    before_ray_items: Schema.Attribute.Component<'items.ray-items', false>;
+    after_ray_items: Schema.Attribute.Component<'items.ray-items', false>;
+    span: Schema.Attribute.Enumeration<['one', 'two', 'three']>;
+  };
+}
+
+export interface CardsGraphCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_graph_cards';
+  info: {
+    displayName: 'Graph_Card';
+    icon: 'dashboard';
+    description: '';
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    description: Schema.Attribute.String;
+    top_items: Schema.Attribute.Component<'items.graph-card-top-items', true>;
+    highlighted_text: Schema.Attribute.String;
+    span: Schema.Attribute.Enumeration<['one', 'two', 'three']>;
+  };
+}
+
+export interface CardsGlobeCard extends Struct.ComponentSchema {
+  collectionName: 'components_cards_globe_cards';
+  info: {
+    displayName: 'Globe_Card';
+    icon: 'dashboard';
+    description: '';
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    description: Schema.Attribute.String;
+    span: Schema.Attribute.Enumeration<['one', 'two', 'three']>;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -417,10 +417,6 @@ declare module '@strapi/strapi' {
       'items.graph-card-top-items': ItemsGraphCardTopItems;
       'global.navbar': GlobalNavbar;
       'global.footer': GlobalFooter;
-      'cards.social-media-card': CardsSocialMediaCard;
-      'cards.ray-card': CardsRayCard;
-      'cards.graph-card': CardsGraphCard;
-      'cards.globe-card': CardsGlobeCard;
       'dynamic-zone.testimonials': DynamicZoneTestimonials;
       'dynamic-zone.related-products': DynamicZoneRelatedProducts;
       'dynamic-zone.related-articles': DynamicZoneRelatedArticles;
@@ -433,6 +429,10 @@ declare module '@strapi/strapi' {
       'dynamic-zone.faq': DynamicZoneFaq;
       'dynamic-zone.cta': DynamicZoneCta;
       'dynamic-zone.brands': DynamicZoneBrands;
+      'cards.social-media-card': CardsSocialMediaCard;
+      'cards.ray-card': CardsRayCard;
+      'cards.graph-card': CardsGraphCard;
+      'cards.globe-card': CardsGlobeCard;
     }
   }
 }

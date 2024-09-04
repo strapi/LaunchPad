@@ -3,12 +3,8 @@
 import { useState, useRef, useEffect, memo } from "react";
 import Image, { StaticImageData } from "next/image";
 import { Transition } from "@headlessui/react";
-import { SparklesCore } from "../ui/sparkles";
-import getTestimonials from "@/constants/page-testimonials";
+import { SparklesCore } from "../../ui/sparkles";
 import { cn } from "@/lib/utils";
-import { useLocale } from "next-intl";
-import { Locale } from "@/config";
-// import Particles from './particles'
 
 interface Item {
   src: StaticImageData;
@@ -17,23 +13,22 @@ interface Item {
   designation?: string;
 }
 
-export const TestimonialsSlider = () => {
-  const locale = useLocale();
+export const TestimonialsSlider = ({ testimonials }: { testimonials: any }) => {
   const [active, setActive] = useState<number>(0);
   const [autorotate, setAutorotate] = useState<boolean>(true);
   const testimonialsRef = useRef<HTMLDivElement>(null);
 
-  const testimonials = getTestimonials(locale as Locale).slice(0, 3);
+  const slicedTestimonials = testimonials.slice(0, 3);
 
   useEffect(() => {
     if (!autorotate) return;
     const interval = setInterval(() => {
       setActive(
-        active + 1 === testimonials.length ? 0 : (active) => active + 1
+        active + 1 === slicedTestimonials.length ? 0 : (active) => active + 1
       );
     }, 7000);
     return () => clearInterval(interval);
-  }, [active, autorotate, testimonials.length]);
+  }, [active, autorotate, slicedTestimonials.length]);
 
   const heightFix = () => {
     if (testimonialsRef.current && testimonialsRef.current.parentElement)
@@ -78,7 +73,7 @@ export const TestimonialsSlider = () => {
             {/* Testimonial image */}
             <div className="relative h-40 [mask-image:_linear-gradient(0deg,transparent,#FFFFFF_30%,#FFFFFF)] md:[mask-image:_linear-gradient(0deg,transparent,#FFFFFF_40%,#FFFFFF)]">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[480px] h-[480px] -z-10 pointer-events-none before:rounded-full rounded-full before:absolute before:inset-0 before:bg-gradient-to-b before:from-neutral-400/20 before:to-transparent before:to-20% after:rounded-full after:absolute after:inset-0 after:bg-neutral-900 after:m-px before:-z-20 after:-z-20">
-                {testimonials.map((item, index) => (
+                {slicedTestimonials.map((item: any, index: number) => (
                   <Transition
                     key={index}
                     show={active === index}
@@ -93,10 +88,10 @@ export const TestimonialsSlider = () => {
                     <div className="absolute inset-0 h-full -z-10">
                       <Image
                         className="relative top-11 left-1/2 -translate-x-1/2 rounded-full"
-                        src={item.src}
+                        src={`http://localhost:1337${item.user.image.url}`}
                         width={56}
                         height={56}
-                        alt={item.name}
+                        alt={`${item.user.firstname} ${item.user.lastname}`}
                       />
                     </div>
                   </Transition>
@@ -106,7 +101,7 @@ export const TestimonialsSlider = () => {
             {/* Text */}
             <div className="mb-10 transition-all duration-150 delay-300 ease-in-out px-8 sm:px-6">
               <div className="relative flex flex-col" ref={testimonialsRef}>
-                {testimonials.map((item, index) => (
+                {slicedTestimonials.map((item: any, index: number) => (
                   <Transition
                     key={index}
                     show={active === index}
@@ -119,7 +114,7 @@ export const TestimonialsSlider = () => {
                     beforeEnter={() => heightFix()}
                   >
                     <div className="text-base md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-200/60 via-neutral-200 to-neutral-200/60">
-                      {item.quote}
+                      {item.text}
                     </div>
                   </Transition>
                 ))}
@@ -127,13 +122,12 @@ export const TestimonialsSlider = () => {
             </div>
             {/* Buttons */}
             <div className="flex flex-wrap justify-center -m-1.5 px-8 sm:px-6">
-              {testimonials.map((item, index) => (
+              {slicedTestimonials.map((item: any, index: number) => (
                 <button
                   className={cn(
-                    `px-2 py-1 rounded-full m-1.5 text-xs border border-transparent text-neutral-300 transition duration-150 ease-in-out [background:linear-gradient(theme(colors.neutral.900),_theme(colors.neutral.900))_padding-box,_conic-gradient(theme(colors.neutral.400),_theme(colors.neutral.700)_25%,_theme(colors.neutral.700)_75%,_theme(colors.neutral.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-neutral-800/30 before:rounded-full before:pointer-events-none ${
-                      active === index
-                        ? "border-secondary/50"
-                        : "border-transparent opacity-70"
+                    `px-2 py-1 rounded-full m-1.5 text-xs border border-transparent text-neutral-300 transition duration-150 ease-in-out [background:linear-gradient(theme(colors.neutral.900),_theme(colors.neutral.900))_padding-box,_conic-gradient(theme(colors.neutral.400),_theme(colors.neutral.700)_25%,_theme(colors.neutral.700)_75%,_theme(colors.neutral.400)_100%)_border-box] relative before:absolute before:inset-0 before:bg-neutral-800/30 before:rounded-full before:pointer-events-none ${active === index
+                      ? "border-secondary/50"
+                      : "border-transparent opacity-70"
                     }`
                   )}
                   key={index}
@@ -144,14 +138,14 @@ export const TestimonialsSlider = () => {
                 >
                   <span className="relative">
                     <span className="text-neutral-50 font-bold">
-                      {item.name}
+                      {item.user.firstname + item.user.lastname}
                     </span>{" "}
                     <br className="block sm:hidden" />
                     <span className="text-neutral-600 hidden sm:inline-block">
                       -
                     </span>{" "}
                     <span className="hidden sm:inline-block">
-                      {item.designation}
+                      {item.user.job}
                     </span>
                   </span>
                 </button>

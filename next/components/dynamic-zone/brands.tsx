@@ -1,56 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Heading } from "./elements/heading";
-import { Subheading } from "./elements/subheading";
+import { Heading } from "../elements/heading";
+import { Subheading } from "../elements/subheading";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { FeatureIconContainer } from "./features/feature-icon-container";
-import { IconTrademark } from "@tabler/icons-react";
-import { cn } from "@/lib/utils";
-import { useTranslations } from "next-intl";
 
-export const Brands = () => {
-  const t = useTranslations('Brands');
-  let [logos, setLogos] = useState([
-    [
-      {
-        title: "netflix",
-        src: "/logos/netflix.png",
-      },
-      {
-        title: "google",
-        src: "/logos/google.webp",
-      },
-      {
-        title: "meta",
-        src: "/logos/meta.png",
-      },
-      {
-        title: "tesla",
-        src: "/logos/tesla.png",
-      },
-    ],
-    [
-      {
-        title: "spacex second",
-        src: "/logos/spacex.png",
-        className: "filter invert",
-      },
-      {
-        title: "tesla second",
-        src: "/logos/tesla.png",
-      },
-      {
-        title: "netflix second",
-        src: "/logos/netflix.png",
-      },
-      {
-        title: "google second",
-        src: "/logos/google.webp",
-      },
-    ],
-  ]);
-  const [activeLogoSet, setActiveLogoSet] = useState(logos[0]);
+export const Brands = ({ heading, sub_heading, logos }: { heading: string, sub_heading: string, logos: any[] }) => {
+  const middleIndex = Math.floor(logos.length / 2);
+  const firstHalf = logos.slice(0, middleIndex);
+  const secondHalf = logos.slice(middleIndex);
+  const logosArraySplitInHalf = [firstHalf, secondHalf];
+
+  let [stateLogos, setLogos] = useState(logosArraySplitInHalf);
+  const [activeLogoSet, setActiveLogoSet] = useState(stateLogos[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 
   const flipLogos = () => {
@@ -73,9 +35,9 @@ export const Brands = () => {
 
   return (
     <div className="relative z-20 py-10 md:py-40">
-      <Heading className="pt-4">{t('title')}</Heading>
+      <Heading className="pt-4">{heading}</Heading>
       <Subheading className="max-w-3xl mx-auto">
-        {t('subtitle')}
+        {sub_heading}
       </Subheading>
 
       <div className="flex gap-10 flex-wrap justify-center md:gap-40 relative h-full w-full mt-20">
@@ -111,14 +73,11 @@ export const Brands = () => {
               className="relative"
             >
               <Image
-                src={logo.src}
-                alt={logo.title}
+                src={`http://localhost:1337${logo.image.url}`}
+                alt={logo.image.alternativeText}
                 width="100"
                 height="100"
-                className={cn(
-                  "md:h-20 md:w-40 h-10 w-20 object-contain filter",
-                  logo.className
-                )}
+                className="md:h-20 md:w-40 h-10 w-20 object-contain filter"
                 draggable={false}
               />
             </motion.div>

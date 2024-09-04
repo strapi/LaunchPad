@@ -8,13 +8,27 @@ import { Subheading } from "../elements/subheading";
 import { IconCheck, IconPlus, IconReceipt2 } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { Button } from "../elements/button";
-import getPlans, { Plan } from "./plans";
-import { useLocale } from "next-intl";
-import { Locale } from "@/config";
 
-export const Pricing = () => {
-  const locale = useLocale();
-  const plans = getPlans(locale as Locale);
+type Perks = {
+  [key: string]: string;
+}
+
+type CTA = {
+  [key: string]: string;
+}
+
+type Plan = {
+  name: string;
+  price: number;
+  perks: Perks[];
+  additional_perks: Perks[];
+  description: string;
+  number: string;
+  featured?: boolean;
+  CTA?: CTA | undefined;
+};
+
+export const Pricing = ({ heading, sub_heading, plans }: { heading: string, sub_heading: string, plans: any[] }) => {
   const onClick = (plan: Plan) => {
     console.log("click", plan);
   };
@@ -24,13 +38,13 @@ export const Pricing = () => {
         <FeatureIconContainer className="flex justify-center items-center overflow-hidden">
           <IconReceipt2 className="h-6 w-6 text-white" />
         </FeatureIconContainer>
-        <Heading className="pt-4">Pricing</Heading>
+        <Heading className="pt-4">{heading}</Heading>
         <Subheading className="max-w-3xl mx-auto">
-          Choose your payload.
+          {sub_heading}
         </Subheading>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto gap-4 py-20 lg:items-start">
-          {plans.map((plan, idx) => (
-            <Card onClick={() => onClick(plan)} key={plan.title} plan={plan} />
+          {plans.map((plan) => (
+            <Card onClick={() => onClick(plan)} key={plan.name} plan={plan} />
           ))}
         </div>
       </Container>
@@ -54,7 +68,7 @@ const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
       >
         <div className="flex justify-between items-center">
           <p className={cn("font-medium", plan.featured && "text-black")}>
-            {plan.title}
+            {plan.name}
           </p>
           {plan.featured && (
             <div
@@ -68,7 +82,7 @@ const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
           )}
         </div>
         <div className="mt-8">
-          {!plan.exception && (
+          {plan.price && (
             <span
               className={cn(
                 "text-lg font-bold text-neutral-500",
@@ -83,14 +97,14 @@ const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
           >
             {plan.price}
           </span>
-          {!plan.exception && (
+          {plan.price && (
             <span
               className={cn(
                 "text-lg font-normal text-neutral-500 ml-2",
                 plan.featured && "text-neutral-700"
               )}
             >
-              / {plan.subtitle}
+              / launch
             </span>
           )}
         </div>
@@ -99,27 +113,27 @@ const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
           className={cn(
             "w-full mt-10 mb-4",
             plan.featured &&
-              "bg-black text-white hover:bg-black/80 hover:text-white"
+            "bg-black text-white hover:bg-black/80 hover:text-white"
           )}
           onClick={onClick}
         >
-          {plan.ctaText}
+          {plan?.CTA?.text}
         </Button>
       </div>
       <div className="mt-1 p-4">
-        {plan.features.map((feature, idx) => (
+        {plan.perks.map((feature, idx) => (
           <Step featured={plan.featured} key={idx}>
-            {feature.content}
+            {feature.text}
           </Step>
         ))}
       </div>
-      {plan.additionalFeatures && plan.additionalFeatures.length > 0 && (
+      {plan.additional_perks && plan.additional_perks.length > 0 && (
         <Divider featured={plan.featured} />
       )}
       <div className="p-4">
-        {plan.additionalFeatures?.map((feature, idx) => (
+        {plan.additional_perks?.map((feature, idx) => (
           <Step featured={plan.featured} additional key={idx}>
-            {feature.content}
+            {feature.text}
           </Step>
         ))}
       </div>

@@ -15,6 +15,7 @@ const nextConfig = {
       { hostname: "unsplash.com" },
       { hostname: "images.unsplash.com" },
       { hostname: "i.pravatar.cc" },
+      { hostname: "localhost", port: "1337" },
     ],
   },
   pageExtensions: ["ts", "tsx", "mdx"],

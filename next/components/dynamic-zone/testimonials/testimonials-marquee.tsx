@@ -1,15 +1,10 @@
 "use client";
-import { Locale } from "@/config";
-import getTestimonials from "@/constants/page-testimonials";
 import { cn } from "@/lib/utils";
-import { useLocale } from "next-intl";
 import Image from "next/image";
 import React from "react";
 import Marquee from "react-fast-marquee";
 
-export const TestimonialsMarquee = () => {
-  const locale = useLocale();
-  const testimonials = getTestimonials(locale as Locale);
+export const TestimonialsMarquee = ({ testimonials }: { testimonials: any }) => {
   const levelOne = testimonials.slice(0, 8);
   const levelTwo = testimonials.slice(8, 16);
   return (
@@ -18,26 +13,26 @@ export const TestimonialsMarquee = () => {
         <div className="h-full absolute w-20 left-0 inset-y-0 z-30 bg-gradient-to-r from-charcoal to-transparent" />
         <div className="h-full absolute w-20 right-0 inset-y-0 z-30 bg-gradient-to-l from-charcoal to-transparent" />
         <Marquee>
-          {levelOne.map((testimonial, index) => (
+          {levelOne.map((testimonial: any, index: any) => (
             <Card
-              key={`testimonial-${testimonial.src}-${index}`}
+              key={`testimonial-${testimonial.id}-${index}`}
               className="max-w-xl h-60 mx-4"
             >
-              <Quote>{testimonial.quote}</Quote>
+              <Quote>{testimonial?.text}</Quote>
               <div className="flex gap-2 items-center mt-8">
                 <Image
-                  src={testimonial.src}
-                  alt="Manu Arora"
+                  src={`http://localhost:1337${testimonial?.user?.image?.url}`}
+                  alt={`${testimonial.user.firstname} ${testimonial.user.lastname}`}
                   width={40}
                   height={40}
                   className="rounded-full"
                 />
                 <div className="flex flex-col">
                   <QuoteDescription className="text-neutral-300">
-                    {testimonial.name}
+                    {`${testimonial.user.firstname} ${testimonial.user.lastname}`}
                   </QuoteDescription>
                   <QuoteDescription className="text-neutral-400">
-                    {testimonial.designation}
+                    {testimonial.user.job}
                   </QuoteDescription>
                 </div>
               </div>
@@ -49,26 +44,26 @@ export const TestimonialsMarquee = () => {
         <div className="h-full absolute w-20 left-0 inset-y-0 z-30 bg-gradient-to-r from-charcoal to-transparent" />
         <div className="h-full absolute w-20 right-0 inset-y-0 z-30 bg-gradient-to-l from-charcoal to-transparent" />
         <Marquee direction="right" speed={20}>
-          {levelTwo.map((testimonial, index) => (
+          {levelTwo.map((testimonial: any, index: any) => (
             <Card
-              key={`testimonial-${testimonial.src}-${index}`}
+              key={`testimonial-${testimonial.id}-${index}`}
               className="max-w-xl h-60 mx-4"
             >
-              <Quote>{testimonial.quote}</Quote>
+              <Quote>{testimonial.text}</Quote>
               <div className="flex gap-2 items-center mt-8">
                 <Image
-                  src={testimonial.src}
-                  alt="Manu Arora"
+                  src={`http://localhost:1337${testimonial?.user?.image?.url}`}
+                  alt={`${testimonial.user.firstname} ${testimonial.user.lastname}`}
                   width={40}
                   height={40}
                   className="rounded-full"
                 />
                 <div className="flex flex-col">
                   <QuoteDescription className="text-neutral-300">
-                    {testimonial.name}
+                    {`${testimonial.user.firstname} ${testimonial.user.lastname}`}
                   </QuoteDescription>
                   <QuoteDescription className="text-neutral-400">
-                    {testimonial.designation}
+                    {testimonial.user.job}
                   </QuoteDescription>
                 </div>
               </div>
@@ -76,32 +71,6 @@ export const TestimonialsMarquee = () => {
           ))}
         </Marquee>
       </div>
-      {/* {grid.map((testimonialsCol, index) => (
-        <div key={`testimonials-col-${index}`} className="grid gap-4">
-          {testimonialsCol.map((testimonial) => (
-            <Card key={`testimonial-${testimonial.src}-${index}`}>
-              <Quote>{testimonial.quote}</Quote>
-              <div className="flex gap-2 items-center mt-8">
-                <Image
-                  src={testimonial.src}
-                  alt="Manu Arora"
-                  width={40}
-                  height={40}
-                  className="rounded-full"
-                />
-                <div className="flex flex-col">
-                  <QuoteDescription className="text-neutral-300">
-                    {testimonial.name}
-                  </QuoteDescription>
-                  <QuoteDescription className="text-neutral-400">
-                    {testimonial.designation}
-                  </QuoteDescription>
-                </div>
-              </div>
-            </Card>
-          ))}
-        </div>
-      ))} */}
     </div>
   );
 };

@@ -1,19 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 
-const COMPONENTS_DIR = path.resolve(__dirname, '../components');
-const API_DIR = path.resolve(__dirname, '../api');
-
-const getComponentFilePath = (componentPath: string): string => {
-  const [category, name] = componentPath.split('.');
-  return path.join(COMPONENTS_DIR, category, `${name}.json`);
-};
-
-const getRelationFilePath = (relationPath: string): string => {
-  const [, target] = relationPath.split('::');
-  const targetName = target.split('.')[1];
-  return path.join(API_DIR, targetName, 'content-types', targetName, 'schema.json');
-};
+/**
+ * This custom middleware is scanning exevery fields, components, and relations to populate in a dynamic zone component.
+ * In fact, the API will only populate the first level fields of a DZ components which might not be convenient.
+ * 
+ * You can use this code on your aplication by just modifying the name of your dynamic-zone. Here it is "dynamic-zone".
+ * Note that it is only working for a single dynamic-zone component.
+ **/ 
 
 interface ComponentAttribute {
   type: string;
@@ -34,6 +28,22 @@ interface ComponentJson {
   options: Record<string, any>;
   attributes: Record<string, ComponentAttribute>;
 }
+
+const DYNAMIC_ZONE_NAME = "dynamic-zone";
+
+const API_DIR = path.resolve(__dirname, '../api');
+const COMPONENTS_DIR = path.resolve(__dirname, '../components');
+
+const getComponentFilePath = (componentPath: string): string => {
+  const [category, name] = componentPath.split('.');
+  return path.join(COMPONENTS_DIR, category, `${name}.json`);
+};
+
+const getRelationFilePath = (relationPath: string): string => {
+  const [, target] = relationPath.split('::');
+  const targetName = target.split('.')[1];
+  return path.join(API_DIR, targetName, 'content-types', targetName, 'schema.json');
+};
 
 const buildPopulateObject = (componentPath: string, isRelation = false): Record<string, any> => {
   const filePath = componentPath.includes("/") ? componentPath : getComponentFilePath(componentPath);
@@ -65,14 +75,14 @@ const buildPopulateObject = (componentPath: string, isRelation = false): Record<
 };
 
 const getDynamicZoneComponents = (): Record<string, any> => {
-  const dynamicZoneDir = path.join(COMPONENTS_DIR, 'dynamic-zone');
+  const dynamicZoneDir = path.join(COMPONENTS_DIR, DYNAMIC_ZONE_NAME);
   const dynamicZoneFiles = fs.readdirSync(dynamicZoneDir);
 
   const dynamicZonePopulate: Record<string, any> = {};
   dynamicZoneFiles.forEach((file) => {
     const componentName = path.basename(file, '.json');
-    dynamicZonePopulate[`dynamic-zone.${componentName}`] = {
-      populate: buildPopulateObject(`dynamic-zone.${componentName}`),
+    dynamicZonePopulate[`${DYNAMIC_ZONE_NAME}.${componentName}`] = {
+      populate: buildPopulateObject(`${DYNAMIC_ZONE_NAME}.${componentName}`),
     };
   });
 

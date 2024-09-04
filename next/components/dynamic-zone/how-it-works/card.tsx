@@ -10,8 +10,8 @@ import {
   useMotionValueEvent,
   useSpring,
 } from "framer-motion";
-import { CanvasRevealEffect } from "../ui/canvas-reveal-effect";
-import Beam from "../beam";
+import { CanvasRevealEffect } from "../../ui/canvas-reveal-effect";
+import Beam from "../../beam";
 
 export const Card = ({
   title,

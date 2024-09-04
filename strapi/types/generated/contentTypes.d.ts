@@ -689,9 +689,11 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
   attributes: {
     name: Schema.Attribute.String;
     price: Schema.Attribute.Integer;
+    sub_text: Schema.Attribute.String;
+    featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     CTA: Schema.Attribute.Component<'shared.button', false>;
     perks: Schema.Attribute.Component<'shared.perks', true>;
-    additionnal_perks: Schema.Attribute.Component<'shared.perks', true>;
+    additional_perks: Schema.Attribute.Component<'shared.perks', true>;
     product: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;

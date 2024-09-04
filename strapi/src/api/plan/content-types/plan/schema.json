@@ -18,6 +18,13 @@
     "price": {
       "type": "integer"
     },
+    "sub_text": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
     "CTA": {
       "displayName": "CTA",
       "type": "component",
@@ -30,8 +37,8 @@
       "repeatable": true,
       "component": "shared.perks"
     },
-    "additionnal_perks": {
-      "displayName": "Additionnal Perks",
+    "additional_perks": {
+      "displayName": "Additional Perks",
       "type": "component",
       "repeatable": true,
       "component": "shared.perks"

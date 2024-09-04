@@ -4,8 +4,8 @@ import fetchContentType from '@/lib/strapi/fetchContentType';
 export default async function Page({ params }: { params: { locale: string, slug: string } }) {
   const pageData = await fetchContentType(
     'pages',
-    `filters[slug][$eq]=${params.slug}&filters[locale][$eq]=${params.locale}`
+    `filters[slug][$eq]=${params.slug}&filters[locale][$eq]=${params.locale}`,
+    true
   );
-
   return <PageContent pageData={pageData} />;
 }

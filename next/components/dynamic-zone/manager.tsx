@@ -12,14 +12,14 @@ interface Props {
 }
 
 const componentMapping: { [key: string]: any } = {
-  'dynamic-zone.hero': dynamic(() => import('../dynamic-zone/hero').then(mod => mod.Hero), { ssr: false }),
-  'dynamic-zone.features': dynamic(() => import('../dynamic-zone/features').then(mod => mod.Features), { ssr: false }),
-  // 'dynamic-zone.testimonials': dynamic(() => import('../components/dynamic-zone/testimonials')),
-  // 'dynamic-zone.how-it-works': dynamic(() => import('../components/dynamic-zone/how-it-works')),
-  // 'dynamic-zone.brands': dynamic(() => import('../components/dynamic-zone/brands')),
-  // 'dynamic-zone.pricing': dynamic(() => import('../components/dynamic-zone/pricing')),
-  // 'dynamic-zone.launches': dynamic(() => import('../components/dynamic-zone/launches')),
-  // 'dynamic-zone.cta': dynamic(() => import('../components/dynamic-zone/cta'))
+  'dynamic-zone.hero': dynamic(() => import('./hero').then(mod => mod.Hero), { ssr: false }),
+  'dynamic-zone.features': dynamic(() => import('./features').then(mod => mod.Features), { ssr: false }),
+  'dynamic-zone.testimonials': dynamic(() => import('./testimonials').then(mod => mod.Testimonials), { ssr: false }),
+  'dynamic-zone.how-it-works': dynamic(() => import('./how-it-works').then(mod => mod.HowItWorks), { ssr: false }),
+  'dynamic-zone.brands': dynamic(() => import('./brands').then(mod => mod.Brands), { ssr: false }),
+  'dynamic-zone.pricing': dynamic(() => import('./pricing').then(mod => mod.Pricing), { ssr: false }),
+  'dynamic-zone.launches': dynamic(() => import('./launches').then(mod => mod.Launches), { ssr: false }),
+  'dynamic-zone.cta': dynamic(() => import('./cta').then(mod => mod.CTA), { ssr: false })
 };
 
 const DynamicZoneManager: React.FC<Props> = ({ dynamicZone }) => {
