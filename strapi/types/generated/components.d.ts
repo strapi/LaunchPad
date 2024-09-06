@@ -28,6 +28,32 @@ export interface SharedSteps extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSocialMediaIconLinks extends Struct.ComponentSchema {
+  collectionName: 'components_shared_social_media_icon_links';
+  info: {
+    displayName: 'Social_Media_Icon_Links';
+    icon: 'expand';
+    description: '';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    link: Schema.Attribute.Component<'shared.link', true>;
+  };
+}
+
+export interface SharedSection extends Struct.ComponentSchema {
+  collectionName: 'components_shared_sections';
+  info: {
+    displayName: 'Section';
+    icon: 'cursor';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    sub_heading: Schema.Attribute.String;
+    users: Schema.Attribute.Component<'shared.user', true>;
+  };
+}
+
 export interface SharedPerks extends Struct.ComponentSchema {
   collectionName: 'components_shared_perks';
   info: {
@@ -74,8 +100,11 @@ export interface SharedForm extends Struct.ComponentSchema {
   info: {
     displayName: 'Form';
     icon: 'paperPlane';
+    description: '';
   };
-  attributes: {};
+  attributes: {
+    inputs: Schema.Attribute.Component<'items.input', true>;
+  };
 }
 
 export interface SharedButton extends Struct.ComponentSchema {
@@ -121,6 +150,47 @@ export interface ItemsLeftNavbarItems extends Struct.ComponentSchema {
   attributes: {
     name: Schema.Attribute.String;
     URL: Schema.Attribute.String;
+  };
+}
+
+export interface ItemsInput extends Struct.ComponentSchema {
+  collectionName: 'components_items_inputs';
+  info: {
+    displayName: 'Input';
+    icon: 'apps';
+    description: '';
+  };
+  attributes: {
+    type: Schema.Attribute.Enumeration<
+      [
+        'text',
+        'email',
+        'password',
+        'submit',
+        'textarea',
+        'button',
+        'checkbox',
+        'color',
+        'date',
+        'datetime-local',
+        'file',
+        'hidden',
+        'image',
+        'month',
+        'number',
+        'radio',
+        'range',
+        'reset',
+        'search',
+        'tel',
+        'time',
+        'url',
+        'week',
+      ]
+    > &
+      Schema.Attribute.DefaultTo<'text'>;
+    name: Schema.Attribute.String;
+    placeholder: Schema.Attribute.String;
   };
 }
 
@@ -277,6 +347,11 @@ export interface DynamicZoneFormNextToSection extends Struct.ComponentSchema {
     heading: Schema.Attribute.String;
     sub_heading: Schema.Attribute.String;
     form: Schema.Attribute.Component<'shared.form', false>;
+    section: Schema.Attribute.Component<'shared.section', false>;
+    social_media_icon_links: Schema.Attribute.Component<
+      'shared.social-media-icon-links',
+      true
+    >;
   };
 }
 
@@ -407,6 +482,8 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'shared.user': SharedUser;
       'shared.steps': SharedSteps;
+      'shared.social-media-icon-links': SharedSocialMediaIconLinks;
+      'shared.section': SharedSection;
       'shared.perks': SharedPerks;
       'shared.link': SharedLink;
       'shared.launches': SharedLaunches;
@@ -414,6 +491,7 @@ declare module '@strapi/strapi' {
       'shared.button': SharedButton;
       'items.ray-items': ItemsRayItems;
       'items.left-navbar-items': ItemsLeftNavbarItems;
+      'items.input': ItemsInput;
       'items.graph-card-top-items': ItemsGraphCardTopItems;
       'global.navbar': GlobalNavbar;
       'global.footer': GlobalFooter;

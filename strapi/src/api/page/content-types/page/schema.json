@@ -41,7 +41,9 @@
         "dynamic-zone.brands",
         "dynamic-zone.pricing",
         "dynamic-zone.launches",
-        "dynamic-zone.cta"
+        "dynamic-zone.cta",
+        "dynamic-zone.form-next-to-section",
+        "dynamic-zone.faq"
       ]
     }
   }

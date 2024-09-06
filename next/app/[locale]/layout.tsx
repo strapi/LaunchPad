@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react'
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 import { CartProvider } from '@/context/cart-context';
@@ -6,6 +7,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { ViewTransitions } from 'next-view-transitions';
 import { Inter } from 'next/font/google';
+import fetchContentType from '@/lib/strapi/fetchContentType';
 
 const inter = Inter({
     subsets: ["latin"],
@@ -20,6 +22,8 @@ export default async function LocaleLayout({
     children: React.ReactNode;
     params: { locale: string };
 }) {
+
+    const pageData = await fetchContentType('global', `filters[locale][$eq]=${locale}&populate[0]=navbar&populate[1]=navbar.left_navbar_items&populate[0]=navbar&populate[1]=navbar.logo`, true);
     // Providing all messages to the client
     // side is the easiest way to get started
     const messages = await getMessages();

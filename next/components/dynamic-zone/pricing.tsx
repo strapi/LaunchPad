@@ -33,7 +33,7 @@ export const Pricing = ({ heading, sub_heading, plans }: { heading: string, sub_
     console.log("click", plan);
   };
   return (
-    <div>
+    <div className="pt-40">
       <Container>
         <FeatureIconContainer className="flex justify-center items-center overflow-hidden">
           <IconReceipt2 className="h-6 w-6 text-white" />

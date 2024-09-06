@@ -18,6 +18,17 @@
       "type": "component",
       "repeatable": false,
       "component": "shared.form"
+    },
+    "section": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.section"
+    },
+    "social_media_icon_links": {
+      "displayName": "Social_Media_Icon_Links",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.social-media-icon-links"
     }
   }
 }
