@@ -23,8 +23,6 @@ async function checkDynamicZone(contentTypePlural) {
     // Récupération de tous les dossiers dans le répertoire api
     const contentTypeFolders = fs.readdirSync(apiDir);
 
-    let found = false;
-
     // Parcours de tous les dossiers pour trouver le schema.json correspondant
     for (const folder of contentTypeFolders) {
       const schemaPath = path.join(apiDir, folder, 'content-types', folder, 'schema.json');
@@ -35,7 +33,6 @@ async function checkDynamicZone(contentTypePlural) {
 
         // Vérification si le pluralName correspond à contentTypePlural
         if (schemaData.info && schemaData.info.pluralName === contentTypePlural) {
-          found = true;
 
           // Vérifie si un attribut de type dynamiczone existe
           const attributes: Record<string, Attribute> = schemaData.attributes;

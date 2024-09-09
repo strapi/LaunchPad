@@ -16,15 +16,21 @@ import { Locale } from "@/config";
 import { useTranslations } from "next-intl";
 
 type Props = {
-  navItems: {
-    link: string;
-    title: string;
-    target?: "_blank";
+  leftNavbarItems: {
+    URL: string;
+    text: string;
+    target?: string;
   }[];
+  rightNavbarItems: {
+    URL: string;
+    text: string;
+    target?: string;
+  }[];
+  logo: any;
   onChangeLocale: (locale: Locale) => void;
 };
 
-export const DesktopNavbar = ({ navItems, onChangeLocale }: Props) => {
+export const DesktopNavbar = ({ leftNavbarItems, rightNavbarItems, logo, onChangeLocale }: Props) => {
   const t = useTranslations("Navbar");
   const { scrollY } = useScroll();
 
@@ -64,24 +70,23 @@ export const DesktopNavbar = ({ navItems, onChangeLocale }: Props) => {
         )}
       </AnimatePresence>
       <div className="flex flex-row gap-2 items-center">
-        <Logo />
+        <Logo image={logo?.image} />
         <div className="flex items-center gap-1.5">
-          {navItems.map((item) => (
-            <NavbarItem href={item.link} key={item.title} target={item.target}>
-              {item.title}
+          {leftNavbarItems.map((item) => (
+            <NavbarItem href={item.URL} key={item.text} target={item.target}>
+              {item.text}
             </NavbarItem>
           ))}
         </div>
       </div>
       <div className="flex space-x-2 items-center">
         <LocaleSwitcher onChange={onChangeLocale} />
-        <Button variant="simple" as={Link} href="/contact">
-          {t("book-demo")}
-        </Button>
 
-        <Button variant="primary" as={Link} href="/sign-up">
-          {t("signup")}
-        </Button>
+        {rightNavbarItems.map((item, index) => (
+          <Button key={item.text} variant={index === rightNavbarItems.length - 1 ? 'primary' : 'simple'} as={Link} href={item.URL}>
+            {item.text}
+          </Button>
+        ))}
       </div>
     </motion.div>
   );

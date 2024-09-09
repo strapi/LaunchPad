@@ -23,7 +23,7 @@ export default async function LocaleLayout({
     params: { locale: string };
 }) {
 
-    const pageData = await fetchContentType('global', `filters[locale][$eq]=${locale}&populate[0]=navbar&populate[1]=navbar.left_navbar_items&populate[0]=navbar&populate[1]=navbar.logo`, true);
+    const pageData = await fetchContentType('global', `filters[locale][$eq]=${locale}&populate[0]=navbar&populate[1]=navbar.left_navbar_items&populate[2]=navbar&populate[3]=navbar.logo&populate[4]=navbar.right_navbar_items&populate[5]=footer.logo&populate[6]=footer.internal_links&populate[7]=footer.policy_links&populate[8]=footer.social_media_links&populate[9]=footer.logo.image&populate[10]=navbar.logo.image`, true);
     // Providing all messages to the client
     // side is the easiest way to get started
     const messages = await getMessages();
@@ -39,9 +39,9 @@ export default async function LocaleLayout({
                                 "bg-charcoal antialiased h-full w-full"
                             )}
                         >
-                            <Navbar />
+                            <Navbar data={pageData.navbar} />
                             {children}
-                            <Footer locale={locale} />
+                            <Footer data={pageData.footer} />
                         </body>
                     </CartProvider>
                 </ViewTransitions>

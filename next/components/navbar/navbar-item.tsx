@@ -10,7 +10,7 @@ type Props = {
   children: ReactNode;
   active?: boolean;
   className?: string;
-  target?: "_blank";
+  target?: string;
 };
 
 export function NavbarItem({

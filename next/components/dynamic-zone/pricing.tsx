@@ -95,7 +95,7 @@ const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
           <span
             className={cn("text-4xl font-bold", plan.featured && "text-black")}
           >
-            {plan.price}
+            {plan.price || plan?.CTA?.text}
           </span>
           {plan.price && (
             <span

@@ -8,7 +8,8 @@ import { usePathname, useRouter } from "@/navigation";
 import { useParams } from "next/navigation";
 import { Locale } from "@/config";
 
-export function Navbar() {
+export function Navbar({ data }: { data: any }) {
+
   const router = useRouter();
   const locale = useLocale();
   const [isPending, startTransition] = useTransition();
@@ -25,59 +26,21 @@ export function Navbar() {
     });
   }
 
-  const navItems = [
-    {
-      title: t("pricing"),
-      link: "/pricing",
-    },
-    {
-      title: t("products"),
-      link: "/products",
-    },
-
-    {
-      title: t("blog"),
-      link: "/blog",
-    },
-    {
-      title: t("contact"),
-      link: "/contact",
-    },
-    {
-      title: t("faq"),
-      link: "/faq",
-    },
-  ];
-
   return (
     <motion.nav
-      // initial={{
-      //   y: -80,
-      // }}
-      // animate={{
-      //   y: 0,
-      // }}
-      // transition={{
-      //   ease: [0.6, 0.05, 0.1, 0.9],
-      //   duration: 0.8,
-      // }}
       className="max-w-7xl  fixed top-4  mx-auto inset-x-0 z-50 w-[95%] lg:w-full"
     >
       <div className="hidden lg:block w-full">
-        <DesktopNavbar onChangeLocale={onChange} navItems={navItems} />
+        {data?.left_navbar_items && (
+          <DesktopNavbar onChangeLocale={onChange} leftNavbarItems={data?.left_navbar_items} rightNavbarItems={data?.right_navbar_items} logo={data?.logo} />
+        )}
+
       </div>
       <div className="flex h-full w-full items-center lg:hidden ">
-        <MobileNavbar onChangeLocale={onChange} navItems={navItems} />
+        {data?.left_navbar_items && (
+          <MobileNavbar onChangeLocale={onChange} leftNavbarItems={data?.left_navbar_items} rightNavbarItems={data?.right_navbar_items} logo={data?.logo} />
+        )}
       </div>
     </motion.nav>
   );
-}
-
-{
-  /* <div className="hidden md:block ">
-        <DesktopNavbar />
-      </div>
-      <div className="flex h-full w-full items-center md:hidden ">
-        <MobileNavbar navItems={navItems} />
-      </div> */
 }
