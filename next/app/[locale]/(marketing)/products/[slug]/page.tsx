@@ -7,54 +7,55 @@ import { Subheading } from "@/components/elements/subheading";
 import { AmbientColor } from "@/components/decorations/ambient-color";
 import { FeatureIconContainer } from "@/components/features/feature-icon-container";
 import { IconCheck, IconShoppingCart } from "@tabler/icons-react";
-import { getAllProducts, getProduct, getRelatedProducts } from "@/lib/product";
 import { formatNumber } from "@/lib/utils";
 import { Button } from "@/components/elements/button";
 import { ProductItems } from "@/components/products/product-items";
 import AddToCartModal from "@/components/products/modal";
 import { SingleProduct } from "@/components/products/single-product";
+import DynamicZoneManager from '@/components/dynamic-zone/manager'
 
-export async function generateStaticParams() {
-  const products = await getAllProducts();
-  return products.map((product) => ({
-    slug: product.slug,
-  }));
-}
+// export async function generateStaticParams() {
+//   const products = await getAllProducts();
+//   return products.map((product) => ({
+//     slug: product.slug,
+//   }));
+// }
 
 import seoData from "@/lib/next-metadata";
+import fetchContentType from "@/lib/strapi/fetchContentType";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const product = await getProduct(params.slug);
+// export async function generateMetadata({
+//   params,
+// }: {
+//   params: { slug: string };
+// }): Promise<Metadata> {
+//   const product = await getProduct(params.slug);
 
-  if (!product) {
-    return {
-      title: "Product Not Found | " + seoData.title,
-      description: "The requested product could not be found.",
-    };
-  }
+//   if (!product) {
+//     return {
+//       title: "Product Not Found | " + seoData.title,
+//       description: "The requested product could not be found.",
+//     };
+//   }
 
-  return {
-    title: `${product.title} | ${seoData.title}`,
-    description: product.description || seoData.description,
-    openGraph: {
-      title: `${product.title} | ${seoData.openGraph.title}`,
-      description: product.description || seoData.openGraph.description,
-      images: product.images ? product.images : seoData.openGraph.images,
-    },
-  };
-}
+//   return {
+//     title: `${product.title} | ${seoData.title}`,
+//     description: product.description || seoData.description,
+//     openGraph: {
+//       title: `${product.title} | ${seoData.openGraph.title}`,
+//       description: product.description || seoData.openGraph.description,
+//       images: product.images ? product.images : seoData.openGraph.images,
+//     },
+//   };
+// }
 
 export default async function SingleProductPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const product = await getProduct(params.slug);
-  const relatedProducts = await getRelatedProducts(params.slug);
+  const product = await fetchContentType("products", `filters[slug]=${params?.slug}`, true)
+
   if (!product) {
     redirect("/products");
   }
@@ -64,11 +65,7 @@ export default async function SingleProductPage({
       <AmbientColor />
       <Container className="py-20 md:py-40">
         <SingleProduct product={product} />
-        {relatedProducts && relatedProducts.length > 0 && (
-          <div className="mt-10">
-            <ProductItems title="Related Products" products={relatedProducts} />
-          </div>
-        )}
+        {product?.dynamic_zone && (<DynamicZoneManager dynamicZone={product?.dynamic_zone} />)}
       </Container>
     </div>
   );

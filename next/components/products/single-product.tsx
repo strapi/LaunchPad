@@ -1,5 +1,5 @@
 "use client";
-import { Product } from "@/data/products";
+import { Product } from  "@/app/[locale]/(marketing)/products/page";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -9,8 +9,9 @@ import AddToCartModal from "@/components/products/modal";
 import { useCart } from "@/context/cart-context";
 
 export const SingleProduct = ({ product }: { product: Product }) => {
-  const [activeThumbnail, setActiveThumbnail] = useState(product.images[0]);
+  const [activeThumbnail, setActiveThumbnail] = useState(`http://localhost:1337${product.images[0].url}`);
   const { addToCart } = useCart();
+  
   return (
     <div className="bg-gradient-to-b from-neutral-900 to-neutral-950  p-4 md:p-10 rounded-md">
       <div className=" grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -30,7 +31,7 @@ export const SingleProduct = ({ product }: { product: Product }) => {
           >
             <Image
               src={activeThumbnail}
-              alt={product.title}
+              alt={product.name}
               width={600}
               height={600}
               // fill
@@ -39,9 +40,9 @@ export const SingleProduct = ({ product }: { product: Product }) => {
           </motion.div>
           {/* </AnimatePresence> */}
           <div className="flex gap-4 justify-center items-center mt-4">
-            {product.images.map((image, index) => (
+            {product.images && product.images.map((image, index) => (
               <button
-                onClick={() => setActiveThumbnail(image)}
+                onClick={() => setActiveThumbnail(`http://localhost:1337${image.url}`)}
                 key={"product-image" + index}
                 className={cn(
                   "h-20 w-20 rounded-xl",
@@ -50,7 +51,7 @@ export const SingleProduct = ({ product }: { product: Product }) => {
                     : "border-2 border-transparent"
                 )}
                 style={{
-                  backgroundImage: `url(${image})`,
+                  backgroundImage: `url(http://localhost:1337${image.url})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
@@ -60,7 +61,7 @@ export const SingleProduct = ({ product }: { product: Product }) => {
           </div>
         </div>
         <div>
-          <h2 className="text-2xl font-semibold mb-4">{product.title}</h2>
+          <h2 className="text-2xl font-semibold mb-4">{product.name}</h2>
           <p className=" mb-6 bg-white text-xs px-4 py-1 rounded-full text-black w-fit">
             ${formatNumber(product.price)}
           </p>
@@ -70,20 +71,20 @@ export const SingleProduct = ({ product }: { product: Product }) => {
 
           <Divider />
           <ul className="list-disc list-inside mb-6">
-            {product.features.map((feature, index) => (
-              <Step key={index}>{feature}</Step>
+            {product.perks && product.perks.map((perk, index) => (
+              <Step key={index}>{perk.text}</Step>
             ))}
           </ul>
           <h3 className="text-sm font-medium text-neutral-400 mb-2">
             Available for
           </h3>
           <ul className="list-none flex gap-4 flex-wrap">
-            {product.availableFor.map((plan, index) => (
+            {product.plans && product.plans.map((plan, index) => (
               <li
                 key={index}
                 className=" bg-neutral-800 text-sm text-white px-3 py-1 rounded-full font-medium"
               >
-                {plan}
+                {plan.name}
               </li>
             ))}
           </ul>
@@ -92,12 +93,12 @@ export const SingleProduct = ({ product }: { product: Product }) => {
             Categories
           </h3>
           <ul className="flex gap-4 flex-wrap">
-            {product.categories?.map((category, idx) => (
+            {product.categories && product.categories?.map((category, idx) => (
               <li
                 key={`category-${idx}`}
                 className=" bg-neutral-800 text-sm text-white px-3 py-1 rounded-full font-medium"
               >
-                {category}
+                {category.name}
               </li>
             ))}
           </ul>

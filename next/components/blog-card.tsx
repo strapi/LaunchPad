@@ -12,12 +12,12 @@ export const BlogCard = ({ blog }: { blog: BlogPost }) => {
   return (
     <Link
       className="shadow-derek grid grid-cols-1 md:grid-cols-2  rounded-3xl group border border-transparent hover:border-neutral-800 w-full hover:bg-neutral-900  overflow-hidden  hover:scale-[1.02] transition duration-200"
-      href={`${blog.url}`}
+      href={`blog/${blog.slug}`}
     >
       <div className="">
         {blog.image ? (
           <BlurImage
-            src={blog.image || ""}
+            src={blog.image.url || ""}
             alt={blog.title}
             height="800"
             width="800"
@@ -25,7 +25,7 @@ export const BlogCard = ({ blog }: { blog: BlogPost }) => {
           />
         ) : (
           <div className="h-full flex items-center justify-center group-hover:bg-neutral-900">
-            <Logo />
+            {/* <Logo /> */}
           </div>
         )}
       </div>
@@ -49,17 +49,17 @@ export const BlogCard = ({ blog }: { blog: BlogPost }) => {
           </p>
         </div>
         <div className="flex space-x-2 items-center  mt-6">
-          <Image
+          {/* <Image
             src={blog.authorAvatar}
             alt={blog.author}
             width={20}
             height={20}
             className="rounded-full h-5 w-5"
-          />
-          <p className="text-sm font-normal text-muted">{blog.author}</p>
+          /> */}
+          {/* <p className="text-sm font-normal text-muted">{blog.author}</p> */}
           <div className="h-1 w-1 bg-neutral-300 rounded-full"></div>
           <p className="text-neutral-300 text-sm  max-w-xl group-hover:text-white transition duration-200">
-            {format(new Date(blog.date), "MMMM dd, yyyy")}
+            {format(new Date(blog.publishedAt), "MMMM dd, yyyy")}
           </p>
         </div>
       </div>
@@ -71,12 +71,12 @@ export const BlogCardVertical = ({ blog }: { blog: BlogPost }) => {
   return (
     <Link
       className="shadow-derek   rounded-3xl group border border-transparent hover:border-neutral-800 w-full hover:bg-neutral-900  overflow-hidden  hover:scale-[1.02] transition duration-200"
-      href={`${blog.url}`}
+      href={`${blog.slug}`}
     >
       <div className="">
         {blog.image ? (
           <BlurImage
-            src={blog.image || ""}
+            src={blog.image.url || ""}
             alt={blog.title}
             height="800"
             width="800"
@@ -84,7 +84,7 @@ export const BlogCardVertical = ({ blog }: { blog: BlogPost }) => {
           />
         ) : (
           <div className=" h-64 md:h-96 flex items-center justify-center group-hover:bg-neutral-900">
-            <Logo />
+            {/* <Logo /> */}
           </div>
         )}
       </div>

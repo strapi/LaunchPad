@@ -36,13 +36,18 @@ export default async function fetchContentType(
 
     // Perform the fetch request with the provided query parameters
     const response = await fetch(`${url.href}?${params}`, {
-      method: 'GET'
+      method: 'GET',
+      cache: 'no-store',
     });
 
     if (!response.ok) {
       throw new Error(`Failed to fetch data from Strapi (url=${url.toString()}, status=${response.status})`);
     }
     const jsonData: StrapiResponse = await response.json();
+
+    if (jsonData.data.length === 0) {
+      
+    }
 
     return spreadData ? spreadStrapiData(jsonData) : jsonData;
   } catch (error) {

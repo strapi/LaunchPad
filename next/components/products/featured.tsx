@@ -1,10 +1,9 @@
-import { Product } from "@/data/products";
 import React from "react";
-import { Heading } from "../elements/heading";
-import { Subheading } from "../elements/subheading";
 import Image from "next/image";
-import { cn, formatNumber } from "@/lib/utils";
+import { formatNumber } from "@/lib/utils";
 import { Link } from "@/navigation";
+import { Product } from "@/app/[locale]/(marketing)/products/page";
+
 
 export const Featured = ({ products }: { products: Product[] }) => {
   return (
@@ -37,14 +36,14 @@ const FeaturedItem = ({ product }: { product: Product }) => {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black transition-all duration-200 z-30" />
       <div className="absolute text-sm top-4 right-2 md:top-10 md:right-10 z-40 bg-white rounded-full pr-1 pl-4 py-1 text-black font-medium flex gap-4 items-center">
-        <span>{product.title}</span>
+        <span>{product.name}</span>
         <span className="bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 text-white px-2 py-1 rounded-full">
           ${formatNumber(product.price)}
         </span>
       </div>
       <Image
-        src={product.images[0]}
-        alt={product.title}
+        src={`http://localhost:1337${product.images[0].url}`}
+        alt={product.name}
         width={1000}
         height={1000}
         className="h-full w-full object-cover group-hover:scale-105 transition duration-200"

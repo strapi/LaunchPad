@@ -1,17 +1,17 @@
-import { allBlogPosts } from "@/.contentlayer/generated";
 import { BlogLayout } from "@/components/blog-layout";
-import { getMDXComponent } from "next-contentlayer2/hooks";
+import fetchContentType from "@/lib/strapi/fetchContentType";
+import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-renderer';
 
-export default function BlogPage({ params }: { params: { slug: string } }) {
-  const blog = allBlogPosts.find((blog) => blog.url.includes(`/${params.slug}`));
+export default async function singleArticlePage({ params }: { params: { slug: string, locale: string } }) {
+  const article = await fetchContentType("articles", `filters[slug]=${params?.slug}&filters[locale][$eq]=${params.locale}`, true)
 
-  if (!blog) {
+  if (!article) {
     return <div>Blog not found</div>;
-  } 
-  const Component = getMDXComponent(blog.body.code);
+  }
+
   return (
-    <BlogLayout blog={blog}>
-      <Component />
+    <BlogLayout article={article}>
+      <BlocksRenderer content={article.content} />;
     </BlogLayout>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 import React, { createContext, useContext, useState, useCallback } from "react";
-import { Product } from "@/data/products";
+import { Product } from "@/app/[locale]/(marketing)/products/page";
 
 type CartItem = {
   product: Product;

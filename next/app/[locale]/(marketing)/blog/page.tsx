@@ -1,13 +1,15 @@
 import { type Metadata } from "next";
 import { Container } from "@/components/container";
 import { Heading } from "@/components/elements/heading";
+import { Subheading } from "@/components/elements/subheading";
 import { BlogCard } from "@/components/blog-card";
 import { FeatureIconContainer } from "@/components/features/feature-icon-container";
 import { IconClipboardText } from "@tabler/icons-react";
 import seoData from "@/lib/next-metadata";
 import { BlogPostRows } from "@/components/blog-post-rows";
 import { AmbientColor } from "@/components/decorations/ambient-color";
-import { allBlogPosts } from "contentlayer/generated";
+import { BlogPost } from "contentlayer/generated";
+import fetchContentType from "@/lib/strapi/fetchContentType";
 
 export const metadata: Metadata = {
   title: "Blog | " + seoData.title,
@@ -17,7 +19,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function ArticlesIndex() {
+export default async function Blog({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const blogPage = await fetchContentType('blog-page', `filters[locale]=${params.locale}`, true)
+  const articles = await fetchContentType('articles', '')
 
   return (
     <div className="relative overflow-hidden py-20 md:py-0">
@@ -28,15 +36,18 @@ export default async function ArticlesIndex() {
             <IconClipboardText className="h-6 w-6 text-white" />
           </FeatureIconContainer>
           <Heading as="h1" className="mt-4">
-            Blog
+            {blogPage.heading}
           </Heading>
+          <Subheading className="max-w-3xl mx-auto">
+            {blogPage.sub_heading}
+          </Subheading>
         </div>
 
-        {allBlogPosts.slice(0, 1).map((blog, index) => (
-          <BlogCard blog={blog} key={blog.title + index} />
+        {articles.data.slice(0, 1).map((article: BlogPost) => (
+          <BlogCard blog={article} key={article.title} />
         ))}
 
-        <BlogPostRows blogs={allBlogPosts} />
+        <BlogPostRows articles={articles.data} />
       </Container>
     </div>
   );

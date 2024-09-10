@@ -59,6 +59,10 @@
         "dynamic-zone.related-products",
         "dynamic-zone.cta"
       ]
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Product } from "@/data/products";
+import { Product } from "@/app/[locale]/(marketing)/products/page";
 import React from "react";
 import { Heading } from "../elements/heading";
 import { Subheading } from "../elements/subheading";
@@ -7,19 +7,21 @@ import { cn, formatNumber, truncate } from "@/lib/utils";
 import { Link } from "@/navigation";
 
 export const ProductItems = ({
-  title = "Popular",
+  heading = "Popular",
+  sub_heading = "Recently rose to popularity",
   products,
 }: {
-  title?: string;
+  heading?: string;
+  sub_heading?: string;
   products: Product[];
 }) => {
   return (
     <div className="py-20">
       <h2 className="text-2xl md:text-4xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-white to-white mb-2">
-        {title}
+        {heading}
       </h2>
       <p className="text-neutral-500 text-lg mt-4 mb-10">
-        Recently rose to popularity
+        {sub_heading}
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3  gap-20">
         {products.map((product) => (
@@ -40,8 +42,8 @@ const ProductItem = ({ product }: { product: Product }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black transition-all duration-200 z-30" />
 
         <Image
-          src={product.images[0]}
-          alt={product.title}
+          src={`http://localhost:1337${product.images[0].url}`}
+          alt={product.name}
           width={600}
           height={600}
           className="h-full w-full object-cover group-hover:scale-105 transition duration-200"
@@ -51,7 +53,7 @@ const ProductItem = ({ product }: { product: Product }) => {
       <div className="mt-8">
         <div className="flex justify-between">
           <span className="text-white text-base font-medium">
-            {product.title}
+            {product.name}
           </span>
           <span className="bg-white text-black shadow-derek text-xs px-2 py-1 rounded-full">
             ${formatNumber(product.price)}
