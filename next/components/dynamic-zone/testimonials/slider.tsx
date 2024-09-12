@@ -5,13 +5,7 @@ import Image, { StaticImageData } from "next/image";
 import { Transition } from "@headlessui/react";
 import { SparklesCore } from "../../ui/sparkles";
 import { cn } from "@/lib/utils";
-
-interface Item {
-  src: StaticImageData;
-  quote: string;
-  name: string;
-  designation?: string;
-}
+import { strapiImage } from "@/lib/strapi/strapiImage";
 
 export const TestimonialsSlider = ({ testimonials }: { testimonials: any }) => {
   const [active, setActive] = useState<number>(0);
@@ -77,10 +71,10 @@ export const TestimonialsSlider = ({ testimonials }: { testimonials: any }) => {
                   <Transition
                     key={index}
                     show={active === index}
-                    enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 order-first"
+                    enter="transition ease-&lsqb;cubic-bezier(0.68,-0.3,0.32,1)&rsqb; duration-700 order-first"
                     enterFrom="opacity-0 -translate-x-20"
                     enterTo="opacity-100 translate-x-0"
-                    leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700"
+                    leave="transition ease-&lsqb;cubic-bezier(0.68,-0.3,0.32,1)&rsqb; duration-700"
                     leaveFrom="opacity-100 translate-x-0"
                     leaveTo="opacity-0 translate-x-20"
                     beforeEnter={() => heightFix()}
@@ -88,7 +82,7 @@ export const TestimonialsSlider = ({ testimonials }: { testimonials: any }) => {
                     <div className="absolute inset-0 h-full -z-10">
                       <Image
                         className="relative top-11 left-1/2 -translate-x-1/2 rounded-full"
-                        src={`http://localhost:1337${item.user.image.url}`}
+                        src={strapiImage(item.user.image.url)}
                         width={56}
                         height={56}
                         alt={`${item.user.firstname} ${item.user.lastname}`}

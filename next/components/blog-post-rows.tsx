@@ -2,12 +2,11 @@
 import { truncate } from "@/lib/utils";
 import { format } from "date-fns";
 import { Link } from "next-view-transitions";
-import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import FuzzySearch from "fuzzy-search";
-import { BlogPost } from "@/.contentlayer/generated";
+import { Article } from "@/types/types";
 
-export const BlogPostRows = ({ articles }: { articles: BlogPost[] }) => {
+export const BlogPostRows = ({ articles }: { articles: Article[] }) => {
   const [search, setSearch] = useState("");
 
   const searcher = new FuzzySearch(articles, ["title"], {
@@ -20,9 +19,6 @@ export const BlogPostRows = ({ articles }: { articles: BlogPost[] }) => {
     setResults(results);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
-
-  console.log(results);
-  
 
   return (
     <div className="w-full py-20">
@@ -50,7 +46,7 @@ export const BlogPostRows = ({ articles }: { articles: BlogPost[] }) => {
   );
 };
 
-export const BlogPostRow = ({ article }: { article: BlogPost }) => {
+export const BlogPostRow = ({ article }: { article: Article }) => {
   return (
     <Link
       href={`blog/${article.slug}`}

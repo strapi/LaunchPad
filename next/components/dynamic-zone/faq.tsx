@@ -1,6 +1,6 @@
 import { Container } from "@/components/container";
 import { Heading } from "@/components/elements/heading";
-import { FeatureIconContainer } from "@/components/features/feature-icon-container";
+import { FeatureIconContainer } from "./features/feature-icon-container";
 import { IconHelpHexagonFilled } from "@tabler/icons-react";
 
 export const FAQ = ({ heading, sub_heading, faqs }: { heading: string, sub_heading: string, faqs: any[] }) => {

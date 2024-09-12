@@ -3,7 +3,7 @@ import React from "react";
 import { Heading } from "../../elements/heading";
 import { Subheading } from "../../elements/subheading";
 import { Container } from "../../container";
-import { FeatureIconContainer } from "../../features/feature-icon-container";
+import { FeatureIconContainer } from "../features/feature-icon-container";
 import { IconSettings } from "@tabler/icons-react";
 import { Card } from "./card";
 

@@ -1,18 +1,17 @@
 import { IconArrowLeft } from "@tabler/icons-react";
 import { Container } from "./container";
 import Image from "next/image";
-import { Logo } from "./logo";
 import { Link } from "next-view-transitions";
 import { format } from "date-fns";
-import { headers } from "next/headers";
-import { BlogCardVertical } from "./blog-card";
-import { allBlogPosts, BlogPost } from "@/.contentlayer/generated";
+import { strapiImage } from "@/lib/strapi/strapiImage";
+import DynamicZoneManager from "./dynamic-zone/manager";
+import { Article } from "@/types/types";
 
 export async function BlogLayout({
   article,
   children,
 }: {
-  article: BlogPost;
+  article: Article;
   children: React.ReactNode;
 }) {
 
@@ -27,7 +26,7 @@ export async function BlogLayout({
       <div className="w-full mx-auto">
         {article.image ? (
           <Image
-            src={`http://localhost:1337${article.image.url}`}
+            src={strapiImage(article.image.url)}
             height="800"
             width="800"
             className="h-40 md:h-96 w-full aspect-square object-cover rounded-3xl [mask-image:radial-gradient(circle,white,transparent)]"
@@ -86,18 +85,7 @@ export async function BlogLayout({
           </article>
         </div>
       </div>
-      {/* {relatedArticles && relatedArticles.length > 0 && (
-        <div className="mt-12 pb-20">
-          <h2 className="text-2xl font-bold text-neutral-200 mb-10">
-            Related Blogs
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {relatedArticles.map((blog) => (
-              <BlogCardVertical key={blog.url} blog={blog} />
-            ))}
-          </div>
-        </div>
-      )} */}
+      {article?.dynamic_zone && (<DynamicZoneManager dynamicZone={article?.dynamic_zone} />)}
     </Container>
   );
 }

@@ -1,10 +1,9 @@
-import { Product } from "@/app/[locale]/(marketing)/products/page";
 import React from "react";
-import { Heading } from "../elements/heading";
-import { Subheading } from "../elements/subheading";
+import { Product } from "@/types/types";
 import Image from "next/image";
-import { cn, formatNumber, truncate } from "@/lib/utils";
+import { formatNumber, truncate } from "@/lib/utils";
 import { Link } from "@/navigation";
+import { strapiImage } from "@/lib/strapi/strapiImage";
 
 export const ProductItems = ({
   heading = "Popular",
@@ -37,12 +36,12 @@ export const ProductItems = ({
 
 const ProductItem = ({ product }: { product: Product }) => {
   return (
-    <Link href={`/products/${product.slug}`} className="group  relative block">
+    <Link href={`/products/${product.slug}` as never} className="group  relative block">
       <div className="relative border border-neutral-800  rounded-md overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black transition-all duration-200 z-30" />
 
         <Image
-          src={`http://localhost:1337${product.images[0].url}`}
+          src={strapiImage(product.images[0].url)}
           alt={product.name}
           width={600}
           height={600}

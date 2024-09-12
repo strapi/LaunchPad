@@ -208,6 +208,7 @@ const ShaderMaterial = ({
     timeLocation.value = timestamp;
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getUniforms = () => {
     const preparedUniforms: any = {};
 
@@ -279,7 +280,7 @@ const ShaderMaterial = ({
     });
 
     return materialObject;
-  }, [size.width, size.height, source]);
+  }, [source, getUniforms]);
 
   return (
     <mesh ref={ref as any}>

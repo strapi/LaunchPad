@@ -3,7 +3,6 @@ import { useTransition } from "react";
 import { DesktopNavbar } from "./desktop-navbar";
 import { MobileNavbar } from "./mobile-navbar";
 import { motion } from "framer-motion";
-import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/navigation";
 import { useParams } from "next/navigation";
 import { Locale } from "@/config";
@@ -11,11 +10,9 @@ import { Locale } from "@/config";
 export function Navbar({ data }: { data: any }) {
 
   const router = useRouter();
-  const locale = useLocale();
-  const [isPending, startTransition] = useTransition();
+  const [_, startTransition] = useTransition();
   const pathname = usePathname();
   const params = useParams();
-  const t = useTranslations("Navbar");
   function onChange(value: Locale) {
     startTransition(() => {
       router.replace(

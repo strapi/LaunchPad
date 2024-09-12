@@ -1,9 +1,12 @@
-import { Link } from "next-view-transitions";
-import Image from "next/image";
 import React from "react";
+
+import { Link } from "next-view-transitions";
 import { BlurImage } from "./blur-image";
 
-export const Logo = ({ image }: { image: any }) => {
+import { strapiImage } from "@/lib/strapi/strapiImage";
+import { Image } from "@/types/types";
+
+export const Logo = ({ image }: { image?: Image }) => {
   if (image) {
     return (
       <Link
@@ -11,8 +14,8 @@ export const Logo = ({ image }: { image: any }) => {
         className="font-normal flex space-x-2 items-center text-sm mr-4  text-black   relative z-20"
       >
         <BlurImage
-          src={`http://localhost:1337${image?.url}`}
-          alt="LaunchPad"
+          src={strapiImage(image?.url)}
+          alt={image.alternativeText}
           width={200}
           height={200}
           className="h-10 w-10 rounded-xl mr-2"
@@ -24,5 +27,4 @@ export const Logo = ({ image }: { image: any }) => {
   }
 
   return;
-
 };

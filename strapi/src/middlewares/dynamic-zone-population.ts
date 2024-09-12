@@ -81,7 +81,7 @@ const getDeepPopulate = (uid: UID.Schema, opts: Options = {}) => {
 
 export default (config, { strapi }: { strapi: Core.Strapi }) => {
   return async (ctx, next) => {
-    if (ctx.request.url.startsWith('/api/') && ctx.request.method === 'GET') {
+    if (ctx.request.url.startsWith('/api/') && ctx.request.method === 'GET' && !ctx.query.populate) {
       strapi.log.info('Using custom Dynamic-Zone population Middleware...');
 
       const contentType = extractPathSegment(ctx.request.url);

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Container } from "../container";
-import { FeatureIconContainer } from "../features/feature-icon-container";
+import { FeatureIconContainer } from "./features/feature-icon-container";
 import { Heading } from "../elements/heading";
 import { Subheading } from "../elements/subheading";
 import { IconCheck, IconPlus, IconReceipt2 } from "@tabler/icons-react";

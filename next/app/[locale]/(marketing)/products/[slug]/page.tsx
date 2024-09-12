@@ -1,58 +1,29 @@
 import { Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
-import Image from "next/image";
+import { redirect } from "next/navigation";
 import { Container } from "@/components/container";
-import { Heading } from "@/components/elements/heading";
-import { Subheading } from "@/components/elements/subheading";
 import { AmbientColor } from "@/components/decorations/ambient-color";
-import { FeatureIconContainer } from "@/components/features/feature-icon-container";
-import { IconCheck, IconShoppingCart } from "@tabler/icons-react";
-import { formatNumber } from "@/lib/utils";
-import { Button } from "@/components/elements/button";
-import { ProductItems } from "@/components/products/product-items";
-import AddToCartModal from "@/components/products/modal";
 import { SingleProduct } from "@/components/products/single-product";
 import DynamicZoneManager from '@/components/dynamic-zone/manager'
+import { generateMetadataObject } from '@/lib/shared/metadata';
 
-// export async function generateStaticParams() {
-//   const products = await getAllProducts();
-//   return products.map((product) => ({
-//     slug: product.slug,
-//   }));
-// }
-
-import seoData from "@/lib/next-metadata";
 import fetchContentType from "@/lib/strapi/fetchContentType";
 
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: { slug: string };
-// }): Promise<Metadata> {
-//   const product = await getProduct(params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string, slug: string };
+}): Promise<Metadata> {
+  const pageData = await fetchContentType("products", `filters[slug]=${params?.slug}&populate=seo.metaImage`, true)
 
-//   if (!product) {
-//     return {
-//       title: "Product Not Found | " + seoData.title,
-//       description: "The requested product could not be found.",
-//     };
-//   }
-
-//   return {
-//     title: `${product.title} | ${seoData.title}`,
-//     description: product.description || seoData.description,
-//     openGraph: {
-//       title: `${product.title} | ${seoData.openGraph.title}`,
-//       description: product.description || seoData.openGraph.description,
-//       images: product.images ? product.images : seoData.openGraph.images,
-//     },
-//   };
-// }
+  const seo = pageData?.seo;
+  const metadata = generateMetadataObject(seo);
+  return metadata;
+}
 
 export default async function SingleProductPage({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string, locale: string };
 }) {
   const product = await fetchContentType("products", `filters[slug]=${params?.slug}`, true)
 

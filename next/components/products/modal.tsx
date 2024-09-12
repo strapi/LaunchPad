@@ -8,14 +8,12 @@ import {
   ModalTrigger,
 } from "../ui/animated-modal";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useCart } from "@/context/cart-context";
 import { formatNumber } from "@/lib/utils";
 import { IconTrash } from "@tabler/icons-react";
+import { strapiImage } from "@/lib/strapi/strapiImage";
 
 export default function AddToCartModal({ onClick }: { onClick: () => void }) {
-
-
   const { items, updateQuantity, getCartTotal, removeFromCart } = useCart();
   return (
     <Modal>
@@ -41,7 +39,7 @@ export default function AddToCartModal({ onClick }: { onClick: () => void }) {
               >
                 <div className="flex items-center gap-4">
                   <Image
-                    src={`http://localhost:1337${item.product.images[0].url}`}
+                    src={strapiImage(item.product.images[0].url)}
                     alt={item.product.name}
                     width={60}
                     height={60}

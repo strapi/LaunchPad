@@ -13,7 +13,6 @@ import { useState } from "react";
 import { Link } from "@/navigation";
 import { LocaleSwitcher } from "../locale-switcher";
 import { Locale } from "@/config";
-import { useTranslations } from "next-intl";
 
 type Props = {
   leftNavbarItems: {
@@ -31,7 +30,6 @@ type Props = {
 };
 
 export const DesktopNavbar = ({ leftNavbarItems, rightNavbarItems, logo, onChangeLocale }: Props) => {
-  const t = useTranslations("Navbar");
   const { scrollY } = useScroll();
 
   const [showBackground, setShowBackground] = useState(false);
@@ -73,7 +71,7 @@ export const DesktopNavbar = ({ leftNavbarItems, rightNavbarItems, logo, onChang
         <Logo image={logo?.image} />
         <div className="flex items-center gap-1.5">
           {leftNavbarItems.map((item) => (
-            <NavbarItem href={item.URL} key={item.text} target={item.target}>
+            <NavbarItem href={item.URL as never} key={item.text} target={item.target}>
               {item.text}
             </NavbarItem>
           ))}

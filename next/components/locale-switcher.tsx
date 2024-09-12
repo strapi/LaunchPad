@@ -1,7 +1,8 @@
+import React from "react";
+
 import { useLocale } from "next-intl";
 import { Locale, locales } from "@/config";
 import { cn } from "@/lib/utils";
-import React from "react";
 
 export function LocaleSwitcher({
   onChange,

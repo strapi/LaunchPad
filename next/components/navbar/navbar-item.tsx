@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 
 type Props = {
-  href: string;
+  href: never;
   children: ReactNode;
   active?: boolean;
   className?: string;
@@ -34,5 +34,6 @@ export function NavbarItem({
     >
       {children}
     </Link>
+
   );
 }

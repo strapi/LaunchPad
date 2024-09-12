@@ -1,47 +1,41 @@
+import { Metadata } from 'next';
+
 import { AmbientColor } from "@/components/decorations/ambient-color";
 import { Container } from "@/components/container";
-import { FeatureIconContainer } from "@/components/features/feature-icon-container";
+import { FeatureIconContainer } from "@/components/dynamic-zone/features/feature-icon-container";
 import { Heading } from "@/components/elements/heading";
 import { Featured } from "@/components/products/featured";
 import { ProductItems } from "@/components/products/product-items";
 import { Subheading } from "@/components/elements/subheading";
-import seoData from "@/lib/next-metadata";
 import { IconShoppingCartUp } from "@tabler/icons-react";
-import { Metadata } from "next";
 import fetchContentType from "@/lib/strapi/fetchContentType";
+import { generateMetadataObject } from '@/lib/shared/metadata';
 
-export const metadata: Metadata = {
-  title: "Products | " + seoData.title,
-  description: seoData.description,
-  openGraph: {
-    images: seoData.openGraph.images,
-  },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const pageData = await fetchContentType("product-page", `filters[locale][$eq]=${params.locale}&populate=seo.metaImage`, true)
 
-export type Product = {
-  id: number;
-  name: string;
-  slug: string;
-  description: string;
-  price: number;
-  plans: any[];
-  perks: any[];
-  featured?: boolean;
-  images: any[];
-  categories?: any[];
-};
+  const seo = pageData?.seo;
+  const metadata = generateMetadataObject(seo);
+  return metadata;
+}
 
 export default async function Products({
   params,
 }: {
   params: { locale: string };
 }) {
-  const productPage = await fetchContentType('product-page', `filters[locale]=${params.locale}`, true)
-  const products = await fetchContentType('products', '')
+  // Fetch the product-page and products data
+  const productPage = await fetchContentType('product-page', `filters[locale]=${params.locale}`, true);
+  const products = await fetchContentType('products', ``);
 
-  const featured = products?.data.filter((product: { featured: boolean; }) => product.featured);
+  const featured = products?.data.filter((product: { featured: boolean }) => product.featured);
+
   return (
-    <div className="relative overflow-hidden  w-full">
+    <div className="relative overflow-hidden w-full">
       <AmbientColor />
       <Container className="pt-40 pb-40">
         <FeatureIconContainer className="flex justify-center items-center overflow-hidden">

@@ -13,12 +13,10 @@ const Beam = ({
   const meteorRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (showBeam) {
-      const meteor = meteorRef.current;
+    const meteor = meteorRef.current;
 
-      if (!meteor) return;
-
-      meteor.addEventListener("animationend", () => {
+    if (showBeam && meteor) {
+      const handleAnimationEnd = () => {
         meteor.style.visibility = "hidden";
         const animationDelay = Math.floor(Math.random() * (2 - 0) + 0);
         const animationDuration = Math.floor(Math.random() * (4 - 0) + 0);
@@ -28,27 +26,31 @@ const Beam = ({
         meteor.style.setProperty("--meteor-width", `${meteorWidth}px`);
 
         restartAnimation();
-      });
+      };
 
-      meteor.addEventListener("animationstart", () => {
+      const handleAnimationStart = () => {
         meteor.style.visibility = "visible";
-      });
-    }
+      };
 
-    return () => {
-      const meteor = meteorRef.current;
-      if (!meteor) return;
-      meteor.removeEventListener("animationend", () => {});
-      meteor.removeEventListener("animationstart", () => {});
-    };
-  }, []);
+      meteor.addEventListener("animationend", handleAnimationEnd);
+      meteor.addEventListener("animationstart", handleAnimationStart);
+
+      return () => {
+        // Using the same meteor variable captured in the effect
+        meteor.removeEventListener("animationend", handleAnimationEnd);
+        meteor.removeEventListener("animationstart", handleAnimationStart);
+      };
+    }
+  }, [showBeam]);
+
   const restartAnimation = () => {
     const meteor = meteorRef.current;
     if (!meteor) return;
     meteor.style.animation = "none";
-    void meteor.offsetWidth;
+    void meteor.offsetWidth; // This forces a reflow, restarting the animation
     meteor.style.animation = "";
   };
+
   return (
     showBeam && (
       <span

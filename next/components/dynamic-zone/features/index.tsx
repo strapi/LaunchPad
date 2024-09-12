@@ -40,7 +40,7 @@ export const Features = ({ heading, sub_heading, globe_card, ray_card, graph_car
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 py-10">
           {globe_card && (
-            <Card className={`lg:col-span-${convertWordToNumber(globe_card.span)}`} >
+            <Card className={`lg:col-span-${convertWordToNumber(globe_card.span)?.toString()}`} >
               <CardTitle>{globe_card.title}</CardTitle>
               <CardDescription>
                 {globe_card.description}
@@ -52,7 +52,7 @@ export const Features = ({ heading, sub_heading, globe_card, ray_card, graph_car
           )}
 
           {ray_card && (
-            <Card className={`lg:col-span-${convertWordToNumber(ray_card.span)}`} >
+            <Card className={`lg:col-span-${convertWordToNumber(ray_card.span)?.toString()}`} >
               <CardSkeletonContainer className="max-w-[16rem] mx-auto">
                 <SkeletonTwo />
               </CardSkeletonContainer>
@@ -64,7 +64,7 @@ export const Features = ({ heading, sub_heading, globe_card, ray_card, graph_car
           )}
 
           {graph_card && (
-            <Card className={`lg:col-span-${convertWordToNumber(graph_card.span)}`} >
+            <Card className={`lg:col-span-${convertWordToNumber(graph_card.span)?.toString()}`} >
               <CardSkeletonContainer
                 showGradient={false}
                 className="max-w-[16rem] mx-auto"
@@ -79,7 +79,7 @@ export const Features = ({ heading, sub_heading, globe_card, ray_card, graph_car
           )}
 
           {social_media_card && (
-            <Card className={`lg:col-span-${convertWordToNumber(social_media_card.span)}`} >
+            <Card className={`lg:col-span-${convertWordToNumber(social_media_card.span)?.toString()}`} >
               <CardSkeletonContainer showGradient={false}>
                 <SkeletonFour />
               </CardSkeletonContainer>

@@ -495,7 +495,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
   options: {
     draftAndPublish: true;
-    populateCreatorFields: true;
   };
   pluginOptions: {
     i18n: {
@@ -503,6 +502,12 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    seo: Schema.Attribute.Component<'shared.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -548,8 +553,10 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -575,6 +582,12 @@ export interface ApiBlogPageBlogPage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
+    seo: Schema.Attribute.Component<'shared.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     heading: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -711,6 +724,12 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
+    seo: Schema.Attribute.Component<'shared.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     navbar: Schema.Attribute.Component<'global.navbar', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -778,6 +797,12 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     };
   };
   attributes: {
+    seo: Schema.Attribute.Component<'shared.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     slug: Schema.Attribute.UID &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -907,6 +932,12 @@ export interface ApiProductPageProductPage extends Struct.SingleTypeSchema {
     };
   };
   attributes: {
+    seo: Schema.Attribute.Component<'shared.seo', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     heading: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -951,6 +982,34 @@ export interface ApiProductPageProductPage extends Struct.SingleTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::product-page.product-page'
+    >;
+  };
+}
+
+export interface ApiRedirectionRedirection extends Struct.CollectionTypeSchema {
+  collectionName: 'redirections';
+  info: {
+    singularName: 'redirection';
+    pluralName: 'redirections';
+    displayName: 'Redirection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    source: Schema.Attribute.String;
+    destination: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::redirection.redirection'
     >;
   };
 }
@@ -1384,6 +1443,7 @@ declare module '@strapi/strapi' {
       'api::plan.plan': ApiPlanPlan;
       'api::product.product': ApiProductProduct;
       'api::product-page.product-page': ApiProductPageProductPage;
+      'api::redirection.redirection': ApiRedirectionRedirection;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;

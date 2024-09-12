@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { Container } from "./container";
 import { Logo } from "./logo";
 import {
@@ -8,16 +8,7 @@ import {
 } from "@tabler/icons-react";
 import { Button } from "./elements/button";
 
-import { motion } from "framer-motion";
-
 export const Register = () => {
-  const [isClicked, setIsClicked] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const target = e.target as HTMLInputElement; // Typecasting to HTMLInputElement
-  };
-
   return (
     <Container className="h-screen max-w-lg mx-auto flex flex-col items-center justify-center">
       <Logo />
@@ -25,7 +16,7 @@ export const Register = () => {
         Sign up for LaunchPad
       </h1>
 
-      <form onSubmit={handleSubmit} className="w-full my-4">
+      <form className="w-full my-4">
         <input
           type="email"
           placeholder="Email Address"

@@ -3,21 +3,26 @@ import { Container } from "@/components/container";
 import { Heading } from "@/components/elements/heading";
 import { Subheading } from "@/components/elements/subheading";
 import { BlogCard } from "@/components/blog-card";
-import { FeatureIconContainer } from "@/components/features/feature-icon-container";
+import { FeatureIconContainer } from "@/components/dynamic-zone/features/feature-icon-container";
 import { IconClipboardText } from "@tabler/icons-react";
-import seoData from "@/lib/next-metadata";
 import { BlogPostRows } from "@/components/blog-post-rows";
 import { AmbientColor } from "@/components/decorations/ambient-color";
-import { BlogPost } from "contentlayer/generated";
 import fetchContentType from "@/lib/strapi/fetchContentType";
+import { Article } from "@/types/types";
+import { generateMetadataObject } from '@/lib/shared/metadata';
 
-export const metadata: Metadata = {
-  title: "Blog | " + seoData.title,
-  description: seoData.description,
-  openGraph: {
-    images: seoData.openGraph.images,
-  },
-};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const pageData = await fetchContentType('blog-page', `filters[locale]=${params.locale}&populate=seo.metaImage`, true)
+
+  const seo = pageData?.seo;
+  const metadata = generateMetadataObject(seo);
+  return metadata;
+}
 
 export default async function Blog({
   params,
@@ -25,7 +30,7 @@ export default async function Blog({
   params: { locale: string };
 }) {
   const blogPage = await fetchContentType('blog-page', `filters[locale]=${params.locale}`, true)
-  const articles = await fetchContentType('articles', '')
+  const articles = await fetchContentType('articles', `filters[locale]=${params.locale}`)
 
   return (
     <div className="relative overflow-hidden py-20 md:py-0">
@@ -43,8 +48,8 @@ export default async function Blog({
           </Subheading>
         </div>
 
-        {articles.data.slice(0, 1).map((article: BlogPost) => (
-          <BlogCard blog={article} key={article.title} />
+        {articles.data.slice(0, 1).map((article: Article) => (
+          <BlogCard article={article} key={article.title} />
         ))}
 
         <BlogPostRows articles={articles.data} />

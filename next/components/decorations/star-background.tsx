@@ -51,7 +51,7 @@ const StarBackground: React.FC<StarBackgroundProps> = ({
           opacity: Math.random() * 0.5 + 0.5,
           twinkleSpeed: shouldTwinkle
             ? minTwinkleSpeed +
-              Math.random() * (maxTwinkleSpeed - minTwinkleSpeed)
+            Math.random() * (maxTwinkleSpeed - minTwinkleSpeed)
             : null,
         };
       });
@@ -67,8 +67,8 @@ const StarBackground: React.FC<StarBackgroundProps> = ({
 
   useEffect(() => {
     const updateStars = () => {
-      if (canvasRef.current) {
-        const canvas = canvasRef.current;
+      const canvas = canvasRef.current;
+      if (canvas) {
         const ctx = canvas.getContext("2d");
         if (!ctx) return;
 
@@ -82,13 +82,14 @@ const StarBackground: React.FC<StarBackgroundProps> = ({
     updateStars();
 
     const resizeObserver = new ResizeObserver(updateStars);
-    if (canvasRef.current) {
-      resizeObserver.observe(canvasRef.current);
+    const canvas = canvasRef.current;
+    if (canvas) {
+      resizeObserver.observe(canvas);
     }
 
     return () => {
-      if (canvasRef.current) {
-        resizeObserver.unobserve(canvasRef.current);
+      if (canvas) {
+        resizeObserver.unobserve(canvas);
       }
     };
   }, [

@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+
+import { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { generateMetadataObject } from '@/lib/shared/metadata';
+
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 import { CartProvider } from '@/context/cart-context';
 import { cn } from '@/lib/utils';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
 import { ViewTransitions } from 'next-view-transitions';
-import { Inter } from 'next/font/google';
 import fetchContentType from '@/lib/strapi/fetchContentType';
 
 const inter = Inter({
@@ -14,6 +16,23 @@ const inter = Inter({
     display: "swap",
     weight: ["400", "500", "600", "700", "800", "900"],
 });
+
+// Default Global SEO for pages without them
+export async function generateMetadata({
+    params,
+}: {
+    params: { locale: string; slug: string };
+}): Promise<Metadata> {
+    const pageData = await fetchContentType(
+        'global',
+        `&filters[locale][$eq]=${params.locale}&populate=seo.metaImage`,
+        true
+    );
+
+    const seo = pageData?.seo;
+    const metadata = generateMetadataObject(seo);
+    return metadata;
+}
 
 export default async function LocaleLayout({
     children,
@@ -24,28 +43,22 @@ export default async function LocaleLayout({
 }) {
 
     const pageData = await fetchContentType('global', `filters[locale][$eq]=${locale}`, true);
-    // Providing all messages to the client
-    // side is the easiest way to get started
-    const messages = await getMessages();
-
     return (
         <html lang={locale}>
-            <NextIntlClientProvider messages={messages}>
-                <ViewTransitions>
-                    <CartProvider>
-                        <body
-                            className={cn(
-                                inter.className,
-                                "bg-charcoal antialiased h-full w-full"
-                            )}
-                        >
-                            <Navbar data={pageData.navbar} />
-                            {children}
-                            <Footer data={pageData.footer} />
-                        </body>
-                    </CartProvider>
-                </ViewTransitions>
-            </NextIntlClientProvider>
+            <ViewTransitions>
+                <CartProvider>
+                    <body
+                        className={cn(
+                            inter.className,
+                            "bg-charcoal antialiased h-full w-full"
+                        )}
+                    >
+                        <Navbar data={pageData.navbar} />
+                        {children}
+                        <Footer data={pageData.footer} />
+                    </body>
+                </CartProvider>
+            </ViewTransitions>
         </html>
     );
 }

@@ -59,7 +59,7 @@ export const Footer = async ({ data }: { data: any }) => {
           </div>
           <div className="grid grid-cols-3 gap-10 items-start mt-10 md:mt-0">
             <div className="flex justify-center space-y-4 flex-col mt-4">
-              {data?.internal_links.map((link: { text: string, URL: any; }) => (
+              {data?.internal_links.map((link: { text: string, URL: never; }) => (
                 <Link
                   key={link.text}
                   className="transition-colors hover:text-neutral-400 text-muted   text-xs sm:text-sm"
@@ -70,7 +70,7 @@ export const Footer = async ({ data }: { data: any }) => {
               ))}
             </div>
             <div className="flex justify-center space-y-4 flex-col mt-4">
-              {data?.policy_links.map((link: { text: string, URL: any; }) => (
+              {data?.policy_links.map((link: { text: string, URL: never; }) => (
                 <Link
                   key={link.text}
                   className="transition-colors hover:text-neutral-400 text-muted   text-xs sm:text-sm"
@@ -81,7 +81,7 @@ export const Footer = async ({ data }: { data: any }) => {
               ))}
             </div>
             <div className="flex justify-center space-y-4 flex-col mt-4">
-              {data?.social_media_links.map((link: { text: string, URL: any; }) => (
+              {data?.social_media_links.map((link: { text: string, URL: never; }) => (
                 <Link
                   key={link.text}
                   className="transition-colors hover:text-neutral-400 text-muted   text-xs sm:text-sm"

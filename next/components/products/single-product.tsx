@@ -1,15 +1,16 @@
 "use client";
-import { Product } from  "@/app/[locale]/(marketing)/products/page";
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Product } from "@/types/types";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { IconCheck } from "@tabler/icons-react";
 import { cn, formatNumber } from "@/lib/utils";
 import AddToCartModal from "@/components/products/modal";
 import { useCart } from "@/context/cart-context";
+import { strapiImage } from "@/lib/strapi/strapiImage";
 
 export const SingleProduct = ({ product }: { product: Product }) => {
-  const [activeThumbnail, setActiveThumbnail] = useState(`http://localhost:1337${product.images[0].url}`);
+  const [activeThumbnail, setActiveThumbnail] = useState(strapiImage(product.images[0].url));
   const { addToCart } = useCart();
   
   return (
@@ -42,7 +43,7 @@ export const SingleProduct = ({ product }: { product: Product }) => {
           <div className="flex gap-4 justify-center items-center mt-4">
             {product.images && product.images.map((image, index) => (
               <button
-                onClick={() => setActiveThumbnail(`http://localhost:1337${image.url}`)}
+                onClick={() => setActiveThumbnail(strapiImage(image.url))}
                 key={"product-image" + index}
                 className={cn(
                   "h-20 w-20 rounded-xl",
@@ -51,7 +52,7 @@ export const SingleProduct = ({ product }: { product: Product }) => {
                     : "border-2 border-transparent"
                 )}
                 style={{
-                  backgroundImage: `url(http://localhost:1337${image.url})`,
+                  backgroundImage: `url(${strapiImage(image.url)})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",

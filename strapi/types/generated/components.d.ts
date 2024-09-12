@@ -41,6 +41,33 @@ export interface SharedSocialMediaIconLinks extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedSeo extends Struct.ComponentSchema {
+  collectionName: 'components_shared_seos';
+  info: {
+    displayName: 'seo';
+    icon: 'search';
+  };
+  attributes: {
+    metaTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 60;
+      }>;
+    metaDescription: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 50;
+        maxLength: 160;
+      }>;
+    metaImage: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    keywords: Schema.Attribute.Text;
+    metaRobots: Schema.Attribute.String;
+    structuredData: Schema.Attribute.JSON;
+    metaViewport: Schema.Attribute.String;
+    canonicalURL: Schema.Attribute.String;
+  };
+}
+
 export interface SharedSection extends Struct.ComponentSchema {
   collectionName: 'components_shared_sections';
   info: {
@@ -127,6 +154,38 @@ export interface SharedButton extends Struct.ComponentSchema {
   };
 }
 
+export interface GlobalNavbar extends Struct.ComponentSchema {
+  collectionName: 'components_global_navbars';
+  info: {
+    displayName: 'Navbar';
+    icon: 'bold';
+  };
+  attributes: {
+    logo: Schema.Attribute.Relation<'oneToOne', 'api::logo.logo'>;
+    left_navbar_items: Schema.Attribute.Component<'shared.link', true>;
+    right_navbar_items: Schema.Attribute.Component<'shared.link', true>;
+  };
+}
+
+export interface GlobalFooter extends Struct.ComponentSchema {
+  collectionName: 'components_global_footers';
+  info: {
+    displayName: 'Footer';
+    icon: 'apps';
+    description: '';
+  };
+  attributes: {
+    logo: Schema.Attribute.Relation<'oneToOne', 'api::logo.logo'>;
+    description: Schema.Attribute.String;
+    copyright: Schema.Attribute.String;
+    designed_developed_by: Schema.Attribute.String;
+    built_with: Schema.Attribute.String;
+    internal_links: Schema.Attribute.Component<'shared.link', true>;
+    policy_links: Schema.Attribute.Component<'shared.link', true>;
+    social_media_links: Schema.Attribute.Component<'shared.link', true>;
+  };
+}
+
 export interface ItemsRayItems extends Struct.ComponentSchema {
   collectionName: 'components_items_ray_items';
   info: {
@@ -206,38 +265,6 @@ export interface ItemsGraphCardTopItems extends Struct.ComponentSchema {
   };
 }
 
-export interface GlobalNavbar extends Struct.ComponentSchema {
-  collectionName: 'components_global_navbars';
-  info: {
-    displayName: 'Navbar';
-    icon: 'bold';
-  };
-  attributes: {
-    logo: Schema.Attribute.Relation<'oneToOne', 'api::logo.logo'>;
-    left_navbar_items: Schema.Attribute.Component<'shared.link', true>;
-    right_navbar_items: Schema.Attribute.Component<'shared.link', true>;
-  };
-}
-
-export interface GlobalFooter extends Struct.ComponentSchema {
-  collectionName: 'components_global_footers';
-  info: {
-    displayName: 'Footer';
-    icon: 'apps';
-    description: '';
-  };
-  attributes: {
-    logo: Schema.Attribute.Relation<'oneToOne', 'api::logo.logo'>;
-    description: Schema.Attribute.String;
-    copyright: Schema.Attribute.String;
-    designed_developed_by: Schema.Attribute.String;
-    built_with: Schema.Attribute.String;
-    internal_links: Schema.Attribute.Component<'shared.link', true>;
-    policy_links: Schema.Attribute.Component<'shared.link', true>;
-    social_media_links: Schema.Attribute.Component<'shared.link', true>;
-  };
-}
-
 export interface DynamicZoneTestimonials extends Struct.ComponentSchema {
   collectionName: 'components_dynamic_zone_testimonials';
   info: {
@@ -271,11 +298,13 @@ export interface DynamicZoneRelatedProducts extends Struct.ComponentSchema {
 export interface DynamicZoneRelatedArticles extends Struct.ComponentSchema {
   collectionName: 'components_dynamic_zone_related_articles';
   info: {
-    displayName: 'related_Articles';
+    displayName: 'related_articles';
     icon: 'bulletList';
     description: '';
   };
   attributes: {
+    heading: Schema.Attribute.String;
+    sub_heading: Schema.Attribute.String;
     articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
   };
 }
@@ -483,18 +512,19 @@ declare module '@strapi/strapi' {
       'shared.user': SharedUser;
       'shared.steps': SharedSteps;
       'shared.social-media-icon-links': SharedSocialMediaIconLinks;
+      'shared.seo': SharedSeo;
       'shared.section': SharedSection;
       'shared.perks': SharedPerks;
       'shared.link': SharedLink;
       'shared.launches': SharedLaunches;
       'shared.form': SharedForm;
       'shared.button': SharedButton;
+      'global.navbar': GlobalNavbar;
+      'global.footer': GlobalFooter;
       'items.ray-items': ItemsRayItems;
       'items.left-navbar-items': ItemsLeftNavbarItems;
       'items.input': ItemsInput;
       'items.graph-card-top-items': ItemsGraphCardTopItems;
-      'global.navbar': GlobalNavbar;
-      'global.footer': GlobalFooter;
       'dynamic-zone.testimonials': DynamicZoneTestimonials;
       'dynamic-zone.related-products': DynamicZoneRelatedProducts;
       'dynamic-zone.related-articles': DynamicZoneRelatedArticles;

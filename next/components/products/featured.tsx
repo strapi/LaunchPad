@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { formatNumber } from "@/lib/utils";
 import { Link } from "@/navigation";
-import { Product } from "@/app/[locale]/(marketing)/products/page";
-
+import { Product } from "@/types/types";
+import { strapiImage } from "@/lib/strapi/strapiImage";
 
 export const Featured = ({ products }: { products: Product[] }) => {
   return (
@@ -31,7 +31,7 @@ export const Featured = ({ products }: { products: Product[] }) => {
 const FeaturedItem = ({ product }: { product: Product }) => {
   return (
     <Link
-      href={`/products/${product.slug}`}
+      href={`/products/${product.slug}` as never}
       className="group border border-neutral-800 rounded-md overflow-hidden relative block"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black transition-all duration-200 z-30" />
@@ -42,7 +42,7 @@ const FeaturedItem = ({ product }: { product: Product }) => {
         </span>
       </div>
       <Image
-        src={`http://localhost:1337${product.images[0].url}`}
+        src={strapiImage(product.images[0].url)}
         alt={product.name}
         width={1000}
         height={1000}
