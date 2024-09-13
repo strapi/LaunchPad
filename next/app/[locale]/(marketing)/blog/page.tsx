@@ -49,7 +49,7 @@ export default async function Blog({
         </div>
 
         {articles.data.slice(0, 1).map((article: Article) => (
-          <BlogCard article={article} key={article.title} />
+          <BlogCard article={article} locale={params.locale} key={article.title} />
         ))}
 
         <BlogPostRows articles={articles.data} />

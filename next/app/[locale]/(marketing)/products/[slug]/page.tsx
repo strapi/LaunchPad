@@ -36,7 +36,7 @@ export default async function SingleProductPage({
       <AmbientColor />
       <Container className="py-20 md:py-40">
         <SingleProduct product={product} />
-        {product?.dynamic_zone && (<DynamicZoneManager dynamicZone={product?.dynamic_zone} />)}
+        {product?.dynamic_zone && (<DynamicZoneManager dynamicZone={product?.dynamic_zone} locale={params.locale} />)}
       </Container>
     </div>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, memo } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { Transition } from "@headlessui/react";
 import { SparklesCore } from "../../ui/sparkles";
 import { cn } from "@/lib/utils";

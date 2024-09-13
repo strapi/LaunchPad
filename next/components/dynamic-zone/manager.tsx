@@ -9,6 +9,7 @@ interface DynamicZoneComponent {
 
 interface Props {
   dynamicZone: DynamicZoneComponent[];
+  locale: string;
 }
 
 const componentMapping: { [key: string]: any } = {
@@ -26,7 +27,7 @@ const componentMapping: { [key: string]: any } = {
   'dynamic-zone.related-articles': dynamic(() => import('./related-articles').then(mod => mod.RelatedArticles), { ssr: false })
 }
 
-const DynamicZoneManager: React.FC<Props> = ({ dynamicZone }) => {
+const DynamicZoneManager: React.FC<Props> = ({ dynamicZone, locale }) => {
   return (
     <div>
       {
@@ -36,7 +37,7 @@ const DynamicZoneManager: React.FC<Props> = ({ dynamicZone }) => {
             console.warn(`No component found for: ${componentData.__component}`);
             return null;
           }
-          return <Component key={componentData.id} {...componentData} />;
+          return <Component key={componentData.id} {...componentData} locale={locale} />;
         })}
     </div>
   );

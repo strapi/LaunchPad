@@ -10,7 +10,7 @@ import { Button } from "../elements/button";
 import { Cover } from "../decorations/cover";
 import { motion } from "framer-motion";
 
-export const Hero = ({ heading, sub_heading, CTAs }: { heading: string; sub_heading: string; CTAs: any[] }) => {
+export const Hero = ({ heading, sub_heading, CTAs, locale }: { heading: string; sub_heading: string; CTAs: any[], locale: string }) => {
   return (
     <div className="h-screen overflow-hidden relative flex flex-col items-center justify-center">
       <motion.div
@@ -35,7 +35,7 @@ export const Hero = ({ heading, sub_heading, CTAs }: { heading: string; sub_head
           <Button
             key={cta?.id}
             as={Link}
-            href={cta.URL}
+            href={`/${locale}${cta.URL}`}
             {...(cta.variant && { variant: cta.variant })}
           >
             {cta.text}

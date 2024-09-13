@@ -9,9 +9,11 @@ import { Article } from "@/types/types";
 
 export async function BlogLayout({
   article,
+  locale,
   children,
 }: {
   article: Article;
+  locale: string;
   children: React.ReactNode;
 }) {
 
@@ -56,7 +58,7 @@ export async function BlogLayout({
                 {article.title}
               </h1>
             </header>
-            <div className="mt-8 prose prose-sm prose-invert" data-mdx-content>
+            <div className="mt-8 prose prose-sm prose-invert">
               {children}
             </div>
             <div className="flex space-x-2 items-center pt-12 border-t border-neutral-800 mt-12">
@@ -85,7 +87,7 @@ export async function BlogLayout({
           </article>
         </div>
       </div>
-      {article?.dynamic_zone && (<DynamicZoneManager dynamicZone={article?.dynamic_zone} />)}
+      {article?.dynamic_zone && (<DynamicZoneManager dynamicZone={article?.dynamic_zone} locale={locale} />)}
     </Container>
   );
 }

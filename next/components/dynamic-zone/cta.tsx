@@ -6,7 +6,7 @@ import { AmbientColor } from "../decorations/ambient-color";
 import { Container } from "../container";
 import Link from "next/link";
 
-export const CTA = ({ heading, sub_heading, CTAs }: { heading: string; sub_heading: string; CTAs: any[] }) => {
+export const CTA = ({ heading, sub_heading, CTAs, locale }: { heading: string; sub_heading: string; CTAs: any[], locale: string }) => {
   return (
     <div className="relative py-40">
       <AmbientColor />
@@ -21,7 +21,7 @@ export const CTA = ({ heading, sub_heading, CTAs }: { heading: string; sub_headi
         </div>
         <div className="flex items-center gap-4">
           {CTAs && CTAs.map((cta, index) => (
-            <Button as={Link} key={index} href={cta.URL} variant={cta.variant} className="py-3">
+            <Button as={Link} key={index} href={`/${locale}${cta.URL}`} variant={cta.variant} className="py-3">
               {cta.text}
             </Button>
           ))}

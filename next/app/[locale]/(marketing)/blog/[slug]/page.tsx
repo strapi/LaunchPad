@@ -26,7 +26,7 @@ export default async function singleArticlePage({ params }: { params: { slug: st
   }
 
   return (
-    <BlogLayout article={article}>
+    <BlogLayout article={article} locale={params.locale}>
       <BlocksRenderer content={article.content} />
     </BlogLayout>
   );

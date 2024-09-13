@@ -10,9 +10,8 @@ import {
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import { Link } from "@/navigation";
+import { Link } from "next-view-transitions";
 import { LocaleSwitcher } from "../locale-switcher";
-import { Locale } from "@/config";
 
 type Props = {
   leftNavbarItems: {
@@ -26,10 +25,10 @@ type Props = {
     target?: string;
   }[];
   logo: any;
-  onChangeLocale: (locale: Locale) => void;
+  locale: string;
 };
 
-export const DesktopNavbar = ({ leftNavbarItems, rightNavbarItems, logo, onChangeLocale }: Props) => {
+export const DesktopNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale }: Props) => {
   const { scrollY } = useScroll();
 
   const [showBackground, setShowBackground] = useState(false);
@@ -68,20 +67,20 @@ export const DesktopNavbar = ({ leftNavbarItems, rightNavbarItems, logo, onChang
         )}
       </AnimatePresence>
       <div className="flex flex-row gap-2 items-center">
-        <Logo image={logo?.image} />
+        <Logo locale={locale} image={logo?.image} />
         <div className="flex items-center gap-1.5">
           {leftNavbarItems.map((item) => (
-            <NavbarItem href={item.URL as never} key={item.text} target={item.target}>
+            <NavbarItem href={`/${locale}${item.URL}` as never} key={item.text} target={item.target}>
               {item.text}
             </NavbarItem>
           ))}
         </div>
       </div>
       <div className="flex space-x-2 items-center">
-        <LocaleSwitcher onChange={onChangeLocale} />
+        <LocaleSwitcher />
 
         {rightNavbarItems.map((item, index) => (
-          <Button key={item.text} variant={index === rightNavbarItems.length - 1 ? 'primary' : 'simple'} as={Link} href={item.URL}>
+          <Button key={item.text} variant={index === rightNavbarItems.length - 1 ? 'primary' : 'simple'} as={Link} href={`/${locale}${item.URL}`}>
             {item.text}
           </Button>
         ))}

@@ -2,17 +2,19 @@ import React from "react";
 import { Product } from "@/types/types";
 import Image from "next/image";
 import { formatNumber, truncate } from "@/lib/utils";
-import { Link } from "@/navigation";
+import { Link } from "next-view-transitions";
 import { strapiImage } from "@/lib/strapi/strapiImage";
 
 export const ProductItems = ({
   heading = "Popular",
   sub_heading = "Recently rose to popularity",
   products,
+  locale,
 }: {
   heading?: string;
   sub_heading?: string;
   products: Product[];
+  locale: string
 }) => {
   return (
     <div className="py-20">
@@ -27,6 +29,7 @@ export const ProductItems = ({
           <ProductItem
             key={"regular-product-item" + product.id}
             product={product}
+            locale={locale}
           />
         ))}
       </div>
@@ -34,9 +37,9 @@ export const ProductItems = ({
   );
 };
 
-const ProductItem = ({ product }: { product: Product }) => {
+const ProductItem = ({ product, locale }: { product: Product, locale: string }) => {
   return (
-    <Link href={`/products/${product.slug}` as never} className="group  relative block">
+    <Link href={`/${locale}/products/${product.slug}` as never} className="group relative block">
       <div className="relative border border-neutral-800  rounded-md overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black transition-all duration-200 z-30" />
 

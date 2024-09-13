@@ -9,11 +9,11 @@ import { format } from "date-fns";
 import { strapiImage } from "@/lib/strapi/strapiImage";
 import { Article } from "@/types/types";
 
-export const BlogCard = ({ article }: { article: Article }) => {
+export const BlogCard = ({ article, locale }: { article: Article, locale: string }) => {
   return (
     <Link
       className="shadow-derek grid grid-cols-1 md:grid-cols-2  rounded-3xl group border border-transparent hover:border-neutral-800 w-full hover:bg-neutral-900  overflow-hidden  hover:scale-[1.02] transition duration-200"
-      href={`blog/${article.slug}`}
+      href={`/${locale}/blog/${article.slug}`}
     >
       <div className="">
         {article.image ? (
@@ -68,11 +68,11 @@ export const BlogCard = ({ article }: { article: Article }) => {
   );
 };
 
-export const BlogCardVertical = ({ article }: { article: Article }) => {
+export const BlogCardVertical = ({ article, locale }: { article: Article, locale: string }) => {
   return (
     <Link
       className="shadow-derek   rounded-3xl group border border-transparent hover:border-neutral-800 w-full hover:bg-neutral-900  overflow-hidden  hover:scale-[1.02] transition duration-200"
-      href={`${article.slug}`}
+      href={`/${locale}/blog/${article.slug}`}
     >
       <div className="">
         {article.image ? (

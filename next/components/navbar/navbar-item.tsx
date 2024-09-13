@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Link } from "@/navigation";
+import { Link } from "next-view-transitions";
 import { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 

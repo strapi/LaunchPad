@@ -1,8 +1,8 @@
 import React from "react";
 import { Logo } from "@/components/logo";
-import { Link } from "@/navigation";
+import { Link } from "next-view-transitions";
 
-export const Footer = async ({ data }: { data: any }) => {
+export const Footer = async ({ data, locale }: { data: any, locale: string }) => {
   return (
     <div className="relative">
       <div className="border-t border-neutral-900 px-8 pt-20 pb-32 relative bg-primary">
@@ -63,7 +63,7 @@ export const Footer = async ({ data }: { data: any }) => {
                 <Link
                   key={link.text}
                   className="transition-colors hover:text-neutral-400 text-muted   text-xs sm:text-sm"
-                  href={link.URL}
+                  href={`/${locale}${link.URL}`}
                 >
                   {link.text}
                 </Link>
@@ -74,7 +74,7 @@ export const Footer = async ({ data }: { data: any }) => {
                 <Link
                   key={link.text}
                   className="transition-colors hover:text-neutral-400 text-muted   text-xs sm:text-sm"
-                  href={link.URL}
+                  href={`/${locale}${link.URL}`}
                 >
                   {link.text}
                 </Link>
@@ -85,7 +85,7 @@ export const Footer = async ({ data }: { data: any }) => {
                 <Link
                   key={link.text}
                   className="transition-colors hover:text-neutral-400 text-muted   text-xs sm:text-sm"
-                  href={link.URL}
+                  href={`/${locale}${link.URL}`}
                 >
                   {link.text}
                 </Link>

@@ -47,8 +47,8 @@ export default async function Products({
         <Subheading className="max-w-3xl mx-auto">
           {productPage.sub_heading}
         </Subheading>
-        <Featured products={featured} />
-        <ProductItems products={products?.data} />
+        <Featured products={featured} locale={params.locale} />
+        <ProductItems products={products?.data} locale={params.locale} />
       </Container>
     </div>
   );

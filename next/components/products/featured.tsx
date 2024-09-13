@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import { formatNumber } from "@/lib/utils";
-import { Link } from "@/navigation";
+import { Link } from "next-view-transitions";
 import { Product } from "@/types/types";
 import { strapiImage } from "@/lib/strapi/strapiImage";
 
-export const Featured = ({ products }: { products: Product[] }) => {
+export const Featured = ({ products, locale }: { products: Product[], locale: string }) => {
   return (
     <div className="py-20">
       <h2 className="text-2xl md:text-4xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-white to-white mb-2">
@@ -16,11 +16,11 @@ export const Featured = ({ products }: { products: Product[] }) => {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3  gap-10">
         <div className="md:col-span-2">
-          <FeaturedItem product={products[0]} />
+          <FeaturedItem product={products[0]} locale={locale} />
         </div>
         <div className="grid gap-10">
-          <FeaturedItem product={products[1]} />
-          <FeaturedItem product={products[2]} />
+          <FeaturedItem product={products[1]} locale={locale} />
+          <FeaturedItem product={products[2]} locale={locale} />
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10"></div>
@@ -28,10 +28,10 @@ export const Featured = ({ products }: { products: Product[] }) => {
   );
 };
 
-const FeaturedItem = ({ product }: { product: Product }) => {
+const FeaturedItem = ({ product, locale }: { product: Product, locale:string }) => {
   return (
     <Link
-      href={`/products/${product.slug}` as never}
+      href={`/${locale}/products/${product.slug}` as never}
       className="group border border-neutral-800 rounded-md overflow-hidden relative block"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black transition-all duration-200 z-30" />
