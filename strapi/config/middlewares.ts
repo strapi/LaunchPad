@@ -9,5 +9,5 @@ export default [
   'strapi::session',
   'strapi::favicon',
   'strapi::public',
-  'global::dynamic-zone-population'
+  'global::deepPopulate'
 ];

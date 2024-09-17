@@ -1,5 +1,5 @@
 /**
- * `dynamic-zone-population` middleware
+ * `deepPopulate` middleware
  */
 
 import type { Core } from '@strapi/strapi';

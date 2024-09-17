@@ -57,7 +57,6 @@ export interface SharedSeo extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMaxLength<{
         minLength: 50;
-        maxLength: 160;
       }>;
     metaImage: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
     keywords: Schema.Attribute.Text;
