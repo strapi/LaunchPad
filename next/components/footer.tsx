@@ -58,42 +58,26 @@ export const Footer = async ({ data, locale }: { data: any, locale: string }) =>
             </div>
           </div>
           <div className="grid grid-cols-3 gap-10 items-start mt-10 md:mt-0">
-            <div className="flex justify-center space-y-4 flex-col mt-4">
-              {data?.internal_links.map((link: { text: string, URL: never; }) => (
-                <Link
-                  key={link.text}
-                  className="transition-colors hover:text-neutral-400 text-muted   text-xs sm:text-sm"
-                  href={`/${locale}${link.URL}`}
-                >
-                  {link.text}
-                </Link>
-              ))}
-            </div>
-            <div className="flex justify-center space-y-4 flex-col mt-4">
-              {data?.policy_links.map((link: { text: string, URL: never; }) => (
-                <Link
-                  key={link.text}
-                  className="transition-colors hover:text-neutral-400 text-muted   text-xs sm:text-sm"
-                  href={`/${locale}${link.URL}`}
-                >
-                  {link.text}
-                </Link>
-              ))}
-            </div>
-            <div className="flex justify-center space-y-4 flex-col mt-4">
-              {data?.social_media_links.map((link: { text: string, URL: never; }) => (
-                <Link
-                  key={link.text}
-                  className="transition-colors hover:text-neutral-400 text-muted   text-xs sm:text-sm"
-                  href={`/${locale}${link.URL}`}
-                >
-                  {link.text}
-                </Link>
-              ))}
-            </div>
+            <LinkSection links={data?.internal_links} locale={locale} />
+            <LinkSection links={data?.policy_links} locale={locale} />
+            <LinkSection links={data?.social_media_links} locale={locale} />
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+const LinkSection = ({ links, locale }: { links: { text: string; URL: never | string }[], locale: string }) => (
+  <div className="flex justify-center space-y-4 flex-col mt-4">
+    {links.map((link) => (
+      <Link
+        key={link.text}
+        className="transition-colors hover:text-neutral-400 text-muted text-xs sm:text-sm"
+        href={`${link.URL.startsWith('http') ? '' : `/${locale}`}${link.URL}`}
+      >
+        {link.text}
+      </Link>
+    ))}
+  </div>
+);

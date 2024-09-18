@@ -19,9 +19,9 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.0.0-rc.19",
-    "@strapi/plugin-users-permissions": "5.0.0-rc.19",
-    "@strapi/strapi": "5.0.0-rc.19",
+    "@strapi/plugin-cloud": "5.0.0-rc.28",
+    "@strapi/plugin-users-permissions": "5.0.0-rc.28",
+    "@strapi/strapi": "5.0.0-rc.28",
     "better-sqlite3": "9.4.3",
     "pluralize": "^8.0.0",
     "react": "^18.0.0",

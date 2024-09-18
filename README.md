@@ -1,6 +1,6 @@
 # LaunchPad - Official Strapi Demo
 
-![LaunchPad](./Launchpad.jpg)
+![LaunchPad](./LaunchPad.jpg)
 
 Welcome aboard **LaunchPad**, the official Strapi demo application, where we launch your content into the stratosphere at the speed of  *"we-can't-even-measure-it!"*.
 This repository contains the following:
