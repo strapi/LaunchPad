@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [{ hostname: "localhost", port: "1337" }],
+    remotePatterns: [{ hostname: process.env.IMAGE_HOSTNAME || "localhost" }],
   },
   pageExtensions: ["ts", "tsx"],
   async redirects() {
