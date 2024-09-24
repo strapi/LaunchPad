@@ -8,6 +8,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import { strapiImage } from "@/lib/strapi/strapiImage";
 
 export const AnimatedTooltip = ({
   items,
@@ -82,7 +83,7 @@ export const AnimatedTooltip = ({
             onMouseMove={handleMouseMove}
             height={100}
             width={100}
-            src={`http:localhost:1337${item.image.url}`}
+            src={strapiImage(item.image.url)}
             alt={item.image.alternativeText}
             className="object-cover !m-0 !p-0 object-top rounded-full h-14 w-14 border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
           />
