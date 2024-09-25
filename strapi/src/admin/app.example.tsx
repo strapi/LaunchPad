@@ -1,6 +1,6 @@
 import type { StrapiApp } from '@strapi/strapi/admin';
 
-import PreviewButton from "./extensions/components/PreviewButton";
+// import PreviewButton from "./extensions/components/PreviewButton";
 
 export default {
   config: {
