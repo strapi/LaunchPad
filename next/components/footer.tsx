@@ -46,7 +46,7 @@ export const Footer = async ({ data, locale }: { data: any, locale: string }) =>
                 className="text-white underline"
                 href="https://framer.com/motion"
               >
-                Framer Motion
+                Motion Animation Lib
               </a>
               , and{" "}
               <a

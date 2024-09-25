@@ -153,38 +153,6 @@ export interface SharedButton extends Struct.ComponentSchema {
   };
 }
 
-export interface GlobalNavbar extends Struct.ComponentSchema {
-  collectionName: 'components_global_navbars';
-  info: {
-    displayName: 'Navbar';
-    icon: 'bold';
-  };
-  attributes: {
-    logo: Schema.Attribute.Relation<'oneToOne', 'api::logo.logo'>;
-    left_navbar_items: Schema.Attribute.Component<'shared.link', true>;
-    right_navbar_items: Schema.Attribute.Component<'shared.link', true>;
-  };
-}
-
-export interface GlobalFooter extends Struct.ComponentSchema {
-  collectionName: 'components_global_footers';
-  info: {
-    displayName: 'Footer';
-    icon: 'apps';
-    description: '';
-  };
-  attributes: {
-    logo: Schema.Attribute.Relation<'oneToOne', 'api::logo.logo'>;
-    description: Schema.Attribute.String;
-    copyright: Schema.Attribute.String;
-    designed_developed_by: Schema.Attribute.String;
-    built_with: Schema.Attribute.String;
-    internal_links: Schema.Attribute.Component<'shared.link', true>;
-    policy_links: Schema.Attribute.Component<'shared.link', true>;
-    social_media_links: Schema.Attribute.Component<'shared.link', true>;
-  };
-}
-
 export interface ItemsRayItems extends Struct.ComponentSchema {
   collectionName: 'components_items_ray_items';
   info: {
@@ -261,6 +229,38 @@ export interface ItemsGraphCardTopItems extends Struct.ComponentSchema {
   attributes: {
     number: Schema.Attribute.String;
     text: Schema.Attribute.String;
+  };
+}
+
+export interface GlobalNavbar extends Struct.ComponentSchema {
+  collectionName: 'components_global_navbars';
+  info: {
+    displayName: 'Navbar';
+    icon: 'bold';
+  };
+  attributes: {
+    logo: Schema.Attribute.Relation<'oneToOne', 'api::logo.logo'>;
+    left_navbar_items: Schema.Attribute.Component<'shared.link', true>;
+    right_navbar_items: Schema.Attribute.Component<'shared.link', true>;
+  };
+}
+
+export interface GlobalFooter extends Struct.ComponentSchema {
+  collectionName: 'components_global_footers';
+  info: {
+    displayName: 'Footer';
+    icon: 'apps';
+    description: '';
+  };
+  attributes: {
+    logo: Schema.Attribute.Relation<'oneToOne', 'api::logo.logo'>;
+    description: Schema.Attribute.String;
+    copyright: Schema.Attribute.String;
+    designed_developed_by: Schema.Attribute.String;
+    built_with: Schema.Attribute.String;
+    internal_links: Schema.Attribute.Component<'shared.link', true>;
+    policy_links: Schema.Attribute.Component<'shared.link', true>;
+    social_media_links: Schema.Attribute.Component<'shared.link', true>;
   };
 }
 
@@ -518,12 +518,12 @@ declare module '@strapi/strapi' {
       'shared.launches': SharedLaunches;
       'shared.form': SharedForm;
       'shared.button': SharedButton;
-      'global.navbar': GlobalNavbar;
-      'global.footer': GlobalFooter;
       'items.ray-items': ItemsRayItems;
       'items.left-navbar-items': ItemsLeftNavbarItems;
       'items.input': ItemsInput;
       'items.graph-card-top-items': ItemsGraphCardTopItems;
+      'global.navbar': GlobalNavbar;
+      'global.footer': GlobalFooter;
       'dynamic-zone.testimonials': DynamicZoneTestimonials;
       'dynamic-zone.related-products': DynamicZoneRelatedProducts;
       'dynamic-zone.related-articles': DynamicZoneRelatedArticles;

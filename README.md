@@ -48,22 +48,6 @@ yarn && yarn seed && yarn develop
 
 This will install dependencies, sprinkle in some data magic, and run the server. (You can run these commands separately, but why not be efficient?)
 
-#### 🧑‍🚀 Credentials for your Crew:
-
-- Super Admin:
-  - email: admin@strapidemo.com
-  - password: welcomeToStrapi123
-
-- Editor
-  - email: editor@strapidemo.com
-  - password: welcomeToStrapi123
-
-- Author
-  - email: author@strapidemo.com
-  - password: welcomeToStrapi123
-
-Feel free to change these credentials if you’re worried aliens might hack your content! (jk)
-
 ## 3. Start Next.js
 
 We're almost ready for lift-off! Next.js is your sleek, futuristic interface for getting all that glorious content out into the world. 🚀

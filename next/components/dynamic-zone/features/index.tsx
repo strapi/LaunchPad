@@ -52,7 +52,7 @@ export const Features = ({ heading, sub_heading, globe_card, ray_card, graph_car
           )}
 
           {ray_card && (
-            <Card className={`lg:col-span-${convertWordToNumber(ray_card.span) || '1'}`} >
+            <Card className={`lg:col-span-${convertWordToNumber(ray_card?.span) || '1'}`} >
               <CardSkeletonContainer className="max-w-[16rem] mx-auto">
                 <SkeletonTwo />
               </CardSkeletonContainer>
@@ -64,7 +64,7 @@ export const Features = ({ heading, sub_heading, globe_card, ray_card, graph_car
           )}
 
           {graph_card && (
-            <Card className={`lg:col-span-${convertWordToNumber(graph_card.span) || '2'}`} >
+            <Card className={`lg:col-span-${convertWordToNumber(graph_card?.span) || '2'}`} >
               <CardSkeletonContainer
                 showGradient={false}
                 className="max-w-[16rem] mx-auto"
@@ -79,7 +79,7 @@ export const Features = ({ heading, sub_heading, globe_card, ray_card, graph_car
           )}
 
           {social_media_card && (
-            <Card className={`lg:col-span-${convertWordToNumber(social_media_card.span) || '1'}`} >
+            <Card className={`lg:col-span-${convertWordToNumber(social_media_card?.span) || '1'}`} >
               <CardSkeletonContainer showGradient={false}>
                 <SkeletonFour />
               </CardSkeletonContainer>

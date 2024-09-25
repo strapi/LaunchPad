@@ -15,7 +15,7 @@ interface StrapiResponse {
   data: StrapiData | StrapiData[];
 }
 
-function spreadStrapiData(data: StrapiResponse): StrapiData | null {
+export function spreadStrapiData(data: StrapiResponse): StrapiData | null {
   if (Array.isArray(data.data) && data.data.length > 0) {
     return data.data[0];
   }
