@@ -1,0 +1,21 @@
+name: Deploy LaunchPad images for the Strapi demos
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger-build-on-gitlab:
+    name: Trigger GitLab Pipeline
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitLab Pipeline Trigger
+        uses: digital-blueprint/gitlab-pipeline-trigger-action@v1.2.0
+        with:
+            trigger_token: ${{ secrets.GITLAB_TRIGGER_TOKEN }}
+            access_token: ${{ secrets.GITLAB_API_TOKEN }}
+            id: '21258300'
+            ref: 'master'
+            variables: '{ "BUILD_LAUNCHPAD_IMAGES":"true" }'
