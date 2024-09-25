@@ -1,0 +1,15 @@
+diff --git a/node_modules/@strapi/admin/dist/admin/index-hoTsgrwy.mjs b/node_modules/@strapi/admin/dist/admin/index-hoTsgrwy.mjs
+index 75eb9cc..cb58cb4 100644
+--- a/node_modules/@strapi/admin/dist/admin/index-hoTsgrwy.mjs
++++ b/node_modules/@strapi/admin/dist/admin/index-hoTsgrwy.mjs
+@@ -1966,8 +1966,8 @@ const Login = ({ children }) => {
+         {
+           method: "PUT",
+           initialValues: {
+-            email: "",
+-            password: "",
++            email: "admin@strapidemo.com",
++            password: "welcomeToStrapi123",
+             rememberMe: false
+           },
+           onSubmit: (values) => {
