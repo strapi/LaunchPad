@@ -4,7 +4,7 @@ export function strapiImage(url: string): string {
   noStore();
   if (url.startsWith("/")) {
 
-    if (!process.env.NEXT_PUBLIC_API_URL && document.location) {
+    if (!process.env.NEXT_PUBLIC_API_URL && document?.location.host.endsWith(".strapidemo.com")) {
       return `https://${document.location.host.replace("client-", "api-")}${url}`
     }
 
