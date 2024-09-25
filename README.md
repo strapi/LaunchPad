@@ -95,7 +95,7 @@ This installs dependencies, builds your project, and starts your server. You’r
 ## Todo
 
 - [ ] Implement the official Strapi SEO plugin
-- [ ] Implement the official Strapi preview plugin
+- [ ] Implement the community Strapi preview plugin
 - [ ] Create localized content for the pricing plans and products
 - [ ] Populate creator fields when it'll work on Strapi 5 (article authors information are missing)
 
