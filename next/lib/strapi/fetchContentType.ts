@@ -44,11 +44,6 @@ export default async function fetchContentType(
       throw new Error(`Failed to fetch data from Strapi (url=${url.toString()}, status=${response.status})`);
     }
     const jsonData: StrapiResponse = await response.json();
-
-    if (jsonData.data.length === 0) {
-      
-    }
-
     return spreadData ? spreadStrapiData(jsonData) : jsonData;
   } catch (error) {
     // Log any errors that occur during the fetch process
