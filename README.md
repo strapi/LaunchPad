@@ -48,22 +48,6 @@ yarn && yarn seed && yarn develop
 
 This will install dependencies, sprinkle in some data magic, and run the server. (You can run these commands separately, but why not be efficient?)
 
-#### 🧑‍🚀 Credentials for your Crew:
-
-- Super Admin:
-  - email: admin@strapidemo.com
-  - password: welcomeToStrapi123
-
-- Editor
-  - email: editor@strapidemo.com
-  - password: welcomeToStrapi123
-
-- Author
-  - email: author@strapidemo.com
-  - password: welcomeToStrapi123
-
-Feel free to change these credentials if you’re worried aliens might hack your content! (jk)
-
 ## 3. Start Next.js
 
 We're almost ready for lift-off! Next.js is your sleek, futuristic interface for getting all that glorious content out into the world. 🚀
@@ -111,7 +95,7 @@ This installs dependencies, builds your project, and starts your server. You’r
 ## Todo
 
 - [ ] Implement the official Strapi SEO plugin
-- [ ] Implement the official Strapi preview plugin
+- [ ] Implement the community Strapi preview plugin
 - [ ] Create localized content for the pricing plans and products
 - [ ] Populate creator fields when it'll work on Strapi 5 (article authors information are missing)
 
@@ -119,4 +103,6 @@ This installs dependencies, builds your project, and starts your server. You’r
 
 - The Strapi application contains a custom population middleware in order to populate more data than what it is set by default. You can find it in the `./strapi/src/middlewares/deepPopulate.ts` file.
 
-- The Strapi application contains a postinstall script that will regenerate an uuid for the project in order to get some anonuymous usage information concerning this demo. You can disable it by removing the uuid inside the `./strapi/packages.json` file.
+- The Strapi application contains a postinstall script that will regenerate an uuid for the project in order to get some anonymous usage information concerning this demo. You can disable it by removing the uuid inside the `./strapi/packages.json` file.
+
+- The Strapi application contains a patch for the @strapi/admin package. It is only necessary for the hosted demos since we automatically create the Super Admin users for them when they request this demo on our website.

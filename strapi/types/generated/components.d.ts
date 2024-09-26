@@ -1,5 +1,84 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
+export interface ItemsRayItems extends Struct.ComponentSchema {
+  collectionName: 'components_items_ray_items';
+  info: {
+    displayName: 'Ray_Card_Items';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    item_1: Schema.Attribute.String;
+    item_2: Schema.Attribute.String;
+    item_3: Schema.Attribute.String;
+  };
+}
+
+export interface ItemsLeftNavbarItems extends Struct.ComponentSchema {
+  collectionName: 'components_items_left_navbar_items';
+  info: {
+    displayName: 'Left_Navbar_Items';
+    icon: 'bulletList';
+  };
+  attributes: {
+    name: Schema.Attribute.String;
+    URL: Schema.Attribute.String;
+  };
+}
+
+export interface ItemsInput extends Struct.ComponentSchema {
+  collectionName: 'components_items_inputs';
+  info: {
+    displayName: 'Input';
+    icon: 'apps';
+    description: '';
+  };
+  attributes: {
+    type: Schema.Attribute.Enumeration<
+      [
+        'text',
+        'email',
+        'password',
+        'submit',
+        'textarea',
+        'button',
+        'checkbox',
+        'color',
+        'date',
+        'datetime-local',
+        'file',
+        'hidden',
+        'image',
+        'month',
+        'number',
+        'radio',
+        'range',
+        'reset',
+        'search',
+        'tel',
+        'time',
+        'url',
+        'week',
+      ]
+    > &
+      Schema.Attribute.DefaultTo<'text'>;
+    name: Schema.Attribute.String;
+    placeholder: Schema.Attribute.String;
+  };
+}
+
+export interface ItemsGraphCardTopItems extends Struct.ComponentSchema {
+  collectionName: 'components_items_graph_card_top_items';
+  info: {
+    displayName: 'Graph_Card_Top_Items';
+    icon: 'bulletList';
+  };
+  attributes: {
+    number: Schema.Attribute.String;
+    text: Schema.Attribute.String;
+  };
+}
+
 export interface SharedUser extends Struct.ComponentSchema {
   collectionName: 'components_shared_users';
   info: {
@@ -182,85 +261,6 @@ export interface GlobalFooter extends Struct.ComponentSchema {
     internal_links: Schema.Attribute.Component<'shared.link', true>;
     policy_links: Schema.Attribute.Component<'shared.link', true>;
     social_media_links: Schema.Attribute.Component<'shared.link', true>;
-  };
-}
-
-export interface ItemsRayItems extends Struct.ComponentSchema {
-  collectionName: 'components_items_ray_items';
-  info: {
-    displayName: 'Ray_Card_Items';
-    icon: 'bulletList';
-    description: '';
-  };
-  attributes: {
-    item_1: Schema.Attribute.String;
-    item_2: Schema.Attribute.String;
-    item_3: Schema.Attribute.String;
-  };
-}
-
-export interface ItemsLeftNavbarItems extends Struct.ComponentSchema {
-  collectionName: 'components_items_left_navbar_items';
-  info: {
-    displayName: 'Left_Navbar_Items';
-    icon: 'bulletList';
-  };
-  attributes: {
-    name: Schema.Attribute.String;
-    URL: Schema.Attribute.String;
-  };
-}
-
-export interface ItemsInput extends Struct.ComponentSchema {
-  collectionName: 'components_items_inputs';
-  info: {
-    displayName: 'Input';
-    icon: 'apps';
-    description: '';
-  };
-  attributes: {
-    type: Schema.Attribute.Enumeration<
-      [
-        'text',
-        'email',
-        'password',
-        'submit',
-        'textarea',
-        'button',
-        'checkbox',
-        'color',
-        'date',
-        'datetime-local',
-        'file',
-        'hidden',
-        'image',
-        'month',
-        'number',
-        'radio',
-        'range',
-        'reset',
-        'search',
-        'tel',
-        'time',
-        'url',
-        'week',
-      ]
-    > &
-      Schema.Attribute.DefaultTo<'text'>;
-    name: Schema.Attribute.String;
-    placeholder: Schema.Attribute.String;
-  };
-}
-
-export interface ItemsGraphCardTopItems extends Struct.ComponentSchema {
-  collectionName: 'components_items_graph_card_top_items';
-  info: {
-    displayName: 'Graph_Card_Top_Items';
-    icon: 'bulletList';
-  };
-  attributes: {
-    number: Schema.Attribute.String;
-    text: Schema.Attribute.String;
   };
 }
 
@@ -508,6 +508,10 @@ export interface CardsGlobeCard extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'items.ray-items': ItemsRayItems;
+      'items.left-navbar-items': ItemsLeftNavbarItems;
+      'items.input': ItemsInput;
+      'items.graph-card-top-items': ItemsGraphCardTopItems;
       'shared.user': SharedUser;
       'shared.steps': SharedSteps;
       'shared.social-media-icon-links': SharedSocialMediaIconLinks;
@@ -520,10 +524,6 @@ declare module '@strapi/strapi' {
       'shared.button': SharedButton;
       'global.navbar': GlobalNavbar;
       'global.footer': GlobalFooter;
-      'items.ray-items': ItemsRayItems;
-      'items.left-navbar-items': ItemsLeftNavbarItems;
-      'items.input': ItemsInput;
-      'items.graph-card-top-items': ItemsGraphCardTopItems;
       'dynamic-zone.testimonials': DynamicZoneTestimonials;
       'dynamic-zone.related-products': DynamicZoneRelatedProducts;
       'dynamic-zone.related-articles': DynamicZoneRelatedArticles;
