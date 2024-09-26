@@ -16,13 +16,17 @@ Strap yourself in! You can get started with this project on your local machine b
 
 Before you take off, make sure you have the right env variables loaded for each part (rocket science at its best):
 
-- Strapi (example in `./strapi/.env.example`):
+Strapi (example in `./strapi/.env.example`):
   - `STRAPI_ADMIN_CLIENT_URL=<url-of-nextjs>`
   - `STRAPI_ADMIN_CLIENT_PREVIEW_SECRET=<a-random-token>`
 
-- Next.js (already in `./next/.env`):
-  - `NEXT_PUBLIC_API_URL=<url-of-strapi>`
+- Create a `./strapi/.env` file with these variables
+
+Next.js (example in `./next/.env.sample`):
+  - `NEXT_PUBLIC_API_URL=<url-of-strapi>` (mandatory)
   - `PREVIEW_SECRET=<the-same-random-token-as-for-strapi>`
+
+- Create a `./next/.env` file with these variables
 
 ## 1. Clone Launchpad
 
