@@ -22,7 +22,7 @@ Strapi (example in `./strapi/.env.example`):
 
 - Create a `./strapi/.env` file with these variables
 
-Next.js (already in `./next/.env`):
+Next.js (example in `./next/.env.sample`):
   - `NEXT_PUBLIC_API_URL=<url-of-strapi>` (mandatory)
   - `PREVIEW_SECRET=<the-same-random-token-as-for-strapi>`
 
