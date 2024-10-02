@@ -9,7 +9,7 @@
     "build": "strapi build",
     "strapi": "strapi",
     "deploy": "strapi deploy",
-    "seed": "strapi import -f ./data/export_20240925113338.tar.gz",
+    "seed": "strapi import -f ./data/export_20241002155953.tar.gz",
     "postinstall": "node ./scripts/updateUuid.ts"
   },
   "devDependencies": {
@@ -19,9 +19,9 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.0.0",
-    "@strapi/plugin-users-permissions": "5.0.0",
-    "@strapi/strapi": "5.0.0",
+    "@strapi/plugin-cloud": "5.0.1",
+    "@strapi/plugin-users-permissions": "5.0.1",
+    "@strapi/strapi": "5.0.1",
     "better-sqlite3": "9.4.3",
     "patch-package": "^8.0.0",
     "pluralize": "^8.0.0",
