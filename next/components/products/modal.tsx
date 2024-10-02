@@ -18,7 +18,7 @@ export default function AddToCartModal({ onClick }: { onClick: () => void }) {
   return (
     <Modal>
       <ModalTrigger onClick={onClick} className="mt-10 w-full">
-        Add to card
+        Add to cart
       </ModalTrigger>
       <ModalBody>
         <ModalContent>
