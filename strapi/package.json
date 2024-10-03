@@ -19,9 +19,9 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.0.0",
-    "@strapi/plugin-users-permissions": "5.0.0",
-    "@strapi/strapi": "5.0.0",
+    "@strapi/plugin-cloud": "0.0.0-experimental.df298029ec6478763dcca7d59fafe8d2ae4ed60a",
+    "@strapi/plugin-users-permissions": "0.0.0-experimental.df298029ec6478763dcca7d59fafe8d2ae4ed60a",
+    "@strapi/strapi": "0.0.0-experimental.df298029ec6478763dcca7d59fafe8d2ae4ed60a",
     "better-sqlite3": "9.4.3",
     "patch-package": "^8.0.0",
     "pluralize": "^8.0.0",
@@ -35,7 +35,7 @@
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "LAUNCHPAD"
+    "uuid": "LAUNCHPAD-LOCAL-51c936b8-0eae-4ce2-a4a7-672378860c1d"
   },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
