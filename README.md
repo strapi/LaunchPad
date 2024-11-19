@@ -12,17 +12,7 @@ This repository contains the following:
 
 Strap yourself in! You can get started with this project on your local machine by following the instructions below, or you can [request a private instance on our website](https://strapi.io/demo)
 
-## 🛠 Prerequisites
-
-Before you get started, make sure you have create the `.env` files for both Strapi and Next.js. You can do this by running the following command:
-
-```sh
-cp ./strapi/.env.example ./strapi/.env && cp ./next/.env.example ./next/.env
-```
-
-Make sure you replace the `tobemodified` values with random tokens before shipping your project to production. Make sure the `PREVIEW_SECRET` is the same in both `.env` files.
-
-## 1. Clone Launchpad
+### 1. Clone Launchpad
 
 To infinity and beyond! 🚀 Clone the repo with this command:
 
@@ -36,7 +26,17 @@ Then navigate to your folder and check out the preview branch:
 cd launchpad && git checkout feat/preview
 ```
 
-## 2. Start Strapi
+### 2. Set environment variables
+
+Before you get started, make sure you have create the `.env` files for both Strapi and Next.js. You can do this by running the following command:
+
+```sh
+cp ./strapi/.env.example ./strapi/.env && cp ./next/.env.example ./next/.env
+```
+
+Make sure you replace the `tobemodified` values with random tokens before shipping your project to production. Make sure the `PREVIEW_SECRET` is the same in both `.env` files.
+
+### 3. Start Strapi
 
 Take a deep breath. It's time to power up the Strapi engines. Navigate to your ./my-projects/launchpad/strapi folder by running:
 
@@ -50,7 +50,7 @@ yarn && yarn seed && yarn develop
 
 This will install dependencies, sprinkle in some data magic, and run the server. (You can run these commands separately, but why not be efficient?)
 
-## 3. Start Next.js
+### 4. Start Next.js
 
 We're almost ready for lift-off! Next.js is your sleek, futuristic interface for getting all that glorious content out into the world. 🚀
 
