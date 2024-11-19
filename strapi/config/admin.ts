@@ -34,7 +34,7 @@ const getPreviewPathname = (uid, { locale, document }): string => {
 
 export default ({ env }) => {
   const clientUrl = env("CLIENT_URL");
-  const previewSecret = env("CLIENT_PREVIEW_SECRET");
+  const previewSecret = env("PREVIEW_SECRET");
 
   return {
     auth: {
