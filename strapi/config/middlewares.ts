@@ -1,17 +1,7 @@
 export default [
   "strapi::logger",
   "strapi::errors",
-  {
-    name: "strapi::security",
-    config: {
-      contentSecurityPolicy: {
-        useDefaults: true,
-        directives: {
-          "frame-src": ["'self'", process.env.CLIENT_URL], // URLs that will be loaded in an iframe (e.g. Content Preview)
-        },
-      },
-    },
-  },
+  "strapi::security",
   "strapi::cors",
   "strapi::poweredBy",
   "strapi::query",
