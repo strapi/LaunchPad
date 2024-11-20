@@ -54,7 +54,7 @@ This will install dependencies, sprinkle in some data magic, and run the server.
 
 We're almost ready for lift-off! Next.js is your sleek, futuristic interface for getting all that glorious content out into the world. 🚀
 
-Navigate to your `./my-projects/launchpad/next` folder by running `cd next` from your command line.
+Leave your Strapi server running and open a new terminal tab or window. Navigate to your `./my-projects/launchpad/next` folder by running `cd next` (or `cd ../next` coming from the `strapi` folder) from your command line.
 
 - Run the following command in your `./launchpad/next` folder
 
@@ -68,8 +68,6 @@ This installs dependencies, builds your project, and starts your server. You’r
 
 ### User
 
-<br />
-
 **An intuitive, minimal editor** The editor allows you to pull in dynamic blocks of content. It’s 100% open-source, and it’s fully extensible.<br />
 **Media Library** Upload images, video or any files and crop and optimize their sizes, without quality loss.<br />
 **Flexible content management** Build any type of category, section, format or flow to adapt to your needs. <br />
@@ -78,8 +76,6 @@ This installs dependencies, builds your project, and starts your server. You’r
 **SEO optimized** Easily manage your SEO metadata with a repeatable field and use our Media Library to add captions, notes, and custom filenames to optimize the SEO of media assets.<br /><br />
 
 ### Global
-
-<br />
 
 [Customizable API](https://strapi.io/features/customizable-api): Automatically build out the schema, models, controllers for your API from the editor. Get REST or GraphQL API out of the box without writing a single line of code.<br />
 [Media Library](https://strapi.io/features/media-library): The media library allows you to store your images, videos and files in your Strapi admin panel with many ways to visualize and manage them.<br />
