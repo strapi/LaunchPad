@@ -59,16 +59,11 @@ export default ({ env }) => {
         async handler(uid, { documentId, locale, status }) {
           const document = await strapi.documents(uid).findOne({ documentId });
 
-          const previewPathname = getPreviewPathname(uid, { locale, document });
-
-          if (status === "published") {
-            return `${clientUrl}${previewPathname}`;
-          }
-
           // Use Next.js draft mode
           const urlSearchParams = new URLSearchParams({
-            url: previewPathname,
+            url: getPreviewPathname(uid, { locale, document }),
             secret: previewSecret,
+            status,
           });
 
           return `${clientUrl}/api/preview?${urlSearchParams}`;
