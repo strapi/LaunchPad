@@ -14,10 +14,11 @@ export async function GET(request: Request) {
     return new Response("Invalid token", { status: 401 });
   }
 
-  // Enable Draft Mode by setting the cookie
   if (status === "published") {
+    // Make sure draft mode is disabled so we only query published content
     draftMode().disable();
   } else {
+    // Enable draft mode so we can query draft content
     draftMode().enable();
   }
 
