@@ -55,7 +55,7 @@ export default ({ env }) => {
     preview: {
       enabled: true,
       config: {
-        allowedOrigins: clientUrl,
+        allowedOrigins: [clientUrl],
         async handler(uid, { documentId, locale, status }) {
           const document = await strapi.documents(uid).findOne({ documentId });
 
