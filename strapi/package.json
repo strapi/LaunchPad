@@ -17,9 +17,9 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "0.0.0-experimental.780730225a7b82dc9f04ceb9ef60710e52d832ab",
-    "@strapi/plugin-users-permissions": "0.0.0-experimental.780730225a7b82dc9f04ceb9ef60710e52d832ab",
-    "@strapi/strapi": "0.0.0-experimental.780730225a7b82dc9f04ceb9ef60710e52d832ab",
+    "@strapi/plugin-cloud": "0.0.0-experimental.f0a0bc26f5ef0693aaea2a616bc6b816cfee54b6",
+    "@strapi/plugin-users-permissions": "0.0.0-experimental.f0a0bc26f5ef0693aaea2a616bc6b816cfee54b6",
+    "@strapi/strapi": "0.0.0-experimental.f0a0bc26f5ef0693aaea2a616bc6b816cfee54b6",
     "better-sqlite3": "9.4.3",
     "patch-package": "^8.0.0",
     "pluralize": "^8.0.0",
