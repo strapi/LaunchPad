@@ -1,8 +1,8 @@
-import { Metadata } from 'next';
+import { Metadata } from "next";
 
-import PageContent from '@/lib/shared/PageContent';
-import fetchContentType from '@/lib/strapi/fetchContentType';
-import { generateMetadataObject } from '@/lib/shared/metadata';
+import PageContent from "@/lib/shared/PageContent";
+import fetchContentType from "@/lib/strapi/fetchContentType";
+import { generateMetadataObject } from "@/lib/shared/metadata";
 
 export async function generateMetadata({
   params,
@@ -10,8 +10,14 @@ export async function generateMetadata({
   params: { locale: string; slug: string };
 }): Promise<Metadata> {
   const pageData = await fetchContentType(
-    'pages',
-    `filters[slug][$eq]=${params.slug}&filters[locale][$eq]=${params.locale}&populate=seo.metaImage`,
+    "pages",
+    {
+      filters: {
+        slug: params.slug,
+        locale: params.locale,
+      },
+      populate: "seo.metaImage",
+    },
     true
   );
 
@@ -20,14 +26,21 @@ export async function generateMetadata({
   return metadata;
 }
 
-export default async function Page({ params }: { params: { locale: string, slug: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: { locale: string; slug: string };
+}) {
   const pageData = await fetchContentType(
-    'pages',
-    `filters[slug][$eq]=${params.slug}&filters[locale][$eq]=${params.locale}`,
+    "pages",
+    {
+      filters: {
+        slug: params.slug,
+        locale: params.locale,
+      },
+    },
     true
   );
 
-  return (
-    <PageContent pageData={pageData} />
-  );
+  return <PageContent pageData={pageData} />;
 }
