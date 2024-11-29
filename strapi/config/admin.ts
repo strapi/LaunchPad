@@ -13,23 +13,16 @@ const getPreviewPathname = (uid, { locale, document }): string | null => {
         case "faq":
           return "/faq";
       }
-    case "api::product.product": {
-      if (!slug) {
-        return "/products";
-      }
-
+    case "api::product.product":
       return `/products/${slug}`;
-    }
-    case "api::article.article": {
-      if (!slug) {
-        return "/blog";
-      }
-
+    case "api::product-page.product-page":
+      return "/products";
+    case "api::article.article":
       return `/blog/${slug}`;
-    }
-    default: {
+    case "api::blog-page.blog-page":
+      return "/blog";
+    default:
       return null;
-    }
   }
 };
 
