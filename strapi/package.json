@@ -1,23 +1,26 @@
 {
   "name": "strapi",
-  "version": "0.1.0",
   "private": true,
+  "version": "0.1.0",
   "description": "A Strapi application",
-  "license": "MIT",
-  "author": {
-    "name": "A Strapi developer"
-  },
   "scripts": {
-    "build": "strapi build",
-    "deploy": "strapi deploy",
     "develop": "strapi develop",
-    "postinstall": "node ./scripts/updateUuid.ts",
-    "seed": "strapi import -f ./data/export_20240925113338.tar.gz",
     "start": "strapi start",
-    "strapi": "strapi"
+    "build": "strapi build",
+    "strapi": "strapi",
+    "deploy": "strapi deploy",
+    "seed": "strapi import -f ./data/export_20241002155953.tar.gz",
+    "postinstall": "node ./scripts/updateUuid.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "typescript": "^5"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "0.0.0-experimental.f0a0bc26f5ef0693aaea2a616bc6b816cfee54b6",
+    "@strapi/plugin-seo": "^2.0.4",
     "@strapi/plugin-users-permissions": "0.0.0-experimental.f0a0bc26f5ef0693aaea2a616bc6b816cfee54b6",
     "@strapi/strapi": "0.0.0-experimental.f0a0bc26f5ef0693aaea2a616bc6b816cfee54b6",
     "better-sqlite3": "9.4.3",
@@ -29,17 +32,15 @@
     "styled-components": "^6.0.0",
     "uuid": "^10.0.0"
   },
-  "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "typescript": "^5"
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "LAUNCHPAD"
   },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "strapi": {
-    "uuid": "LAUNCHPAD-LOCAL-51c936b8-0eae-4ce2-a4a7-672378860c1d"
-  }
+  "license": "MIT"
 }

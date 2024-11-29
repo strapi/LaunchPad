@@ -55,10 +55,6 @@ export default async function fetchContentType(
       );
     }
     const jsonData: StrapiResponse = await response.json();
-
-    if (jsonData.data.length === 0) {
-    }
-
     return spreadData ? spreadStrapiData(jsonData) : jsonData;
   } catch (error) {
     // Log any errors that occur during the fetch process
