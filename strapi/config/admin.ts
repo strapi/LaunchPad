@@ -1,4 +1,4 @@
-const getPreviewPathname = (uid, { locale, document }): string => {
+const getPreviewPathname = (uid, { locale, document }): string | null => {
   const { slug } = document;
 
   switch (uid) {
@@ -27,9 +27,10 @@ const getPreviewPathname = (uid, { locale, document }): string => {
 
       return `/blog/${slug}`;
     }
+    default: {
+      return null;
+    }
   }
-
-  return "/";
 };
 
 export default ({ env }) => {
@@ -58,10 +59,16 @@ export default ({ env }) => {
         allowedOrigins: [clientUrl],
         async handler(uid, { documentId, locale, status }) {
           const document = await strapi.documents(uid).findOne({ documentId });
+          const pathname = getPreviewPathname(uid, { locale, document });
+
+          // Disable preview if the pathname is not found
+          if (!pathname) {
+            return null;
+          }
 
           // Use Next.js draft mode
           const urlSearchParams = new URLSearchParams({
-            url: getPreviewPathname(uid, { locale, document }),
+            url: pathname,
             secret: previewSecret,
             status,
           });
