@@ -19,10 +19,10 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.4.2",
+    "@strapi/plugin-cloud": "5.5.0",
     "@strapi/plugin-seo": "^2.0.4",
-    "@strapi/plugin-users-permissions": "5.4.2",
-    "@strapi/strapi": "5.4.2",
+    "@strapi/plugin-users-permissions": "5.5.0",
+    "@strapi/strapi": "5.5.0",
     "better-sqlite3": "9.4.3",
     "patch-package": "^8.0.0",
     "pluralize": "^8.0.0",
@@ -36,7 +36,7 @@
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "LAUNCHPAD"
+    "uuid": "LAUNCHPAD-LOCAL-b58a1b13-5a77-4471-ac0a-7575c39c5ecb"
   },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",
