@@ -12,7 +12,25 @@ This repository contains the following:
 
 Strap yourself in! You can get started with this project on your local machine by following the instructions below, or you can [request a private instance on our website](https://strapi.io/demo)
 
-### 1. Clone Launchpad
+## 🛠 Prerequisites
+
+Before you take off, make sure you have the right env variables loaded for each part (rocket science at its best):
+
+Strapi (example in `./strapi/.env.example`):
+
+- `STRAPI_ADMIN_CLIENT_URL=<url-of-nextjs>`
+- `STRAPI_ADMIN_CLIENT_PREVIEW_SECRET=<a-random-token>`
+
+- Create a `./strapi/.env` file with these variables
+
+Next.js (example in `./next/.env.sample`):
+
+- `NEXT_PUBLIC_API_URL=<url-of-strapi>` (mandatory)
+- `PREVIEW_SECRET=<the-same-random-token-as-for-strapi>`
+
+- Create a `./next/.env` file with these variables
+
+## 1. Clone Launchpad
 
 To infinity and beyond! 🚀 Clone the repo with this command:
 
@@ -20,23 +38,9 @@ To infinity and beyond! 🚀 Clone the repo with this command:
 git clone https://github.com/strapi/launchpad.git
 ```
 
-Then navigate to your folder and check out the preview branch:
+- Navigate to your project folder by running `cd launchpad`.
 
-```sh
-cd launchpad && git checkout feat/preview
-```
-
-### 2. Set environment variables
-
-Before you get started, make sure you have create the `.env` files for both Strapi and Next.js. You can do this by running the following command:
-
-```sh
-cp ./strapi/.env.example ./strapi/.env && cp ./next/.env.example ./next/.env
-```
-
-Make sure you replace the `tobemodified` values with random tokens before shipping your project to production. Make sure the `PREVIEW_SECRET` is the same in both `.env` files.
-
-### 3. Start Strapi
+## 2. Start Strapi
 
 Take a deep breath. It's time to power up the Strapi engines. Navigate to your ./my-projects/launchpad/strapi folder by running:
 
@@ -50,11 +54,11 @@ yarn && yarn seed && yarn develop
 
 This will install dependencies, sprinkle in some data magic, and run the server. (You can run these commands separately, but why not be efficient?)
 
-### 4. Start Next.js
+## 3. Start Next.js
 
 We're almost ready for lift-off! Next.js is your sleek, futuristic interface for getting all that glorious content out into the world. 🚀
 
-Leave your Strapi server running and open a new terminal tab or window. Navigate to your `./my-projects/launchpad/next` folder by running `cd next` (or `cd ../next` coming from the `strapi` folder) from your command line.
+Navigate to your `./my-projects/launchpad/next` folder by running `cd next` from your command line.
 
 - Run the following command in your `./launchpad/next` folder
 
@@ -68,6 +72,8 @@ This installs dependencies, builds your project, and starts your server. You’r
 
 ### User
 
+<br />
+
 **An intuitive, minimal editor** The editor allows you to pull in dynamic blocks of content. It’s 100% open-source, and it’s fully extensible.<br />
 **Media Library** Upload images, video or any files and crop and optimize their sizes, without quality loss.<br />
 **Flexible content management** Build any type of category, section, format or flow to adapt to your needs. <br />
@@ -76,6 +82,8 @@ This installs dependencies, builds your project, and starts your server. You’r
 **SEO optimized** Easily manage your SEO metadata with a repeatable field and use our Media Library to add captions, notes, and custom filenames to optimize the SEO of media assets.<br /><br />
 
 ### Global
+
+<br />
 
 [Customizable API](https://strapi.io/features/customizable-api): Automatically build out the schema, models, controllers for your API from the editor. Get REST or GraphQL API out of the box without writing a single line of code.<br />
 [Media Library](https://strapi.io/features/media-library): The media library allows you to store your images, videos and files in your Strapi admin panel with many ways to visualize and manage them.<br />
