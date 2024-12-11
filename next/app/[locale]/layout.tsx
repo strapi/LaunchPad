@@ -10,9 +10,6 @@ import { CartProvider } from "@/context/cart-context";
 import { cn } from "@/lib/utils";
 import { ViewTransitions } from "next-view-transitions";
 import fetchContentType from "@/lib/strapi/fetchContentType";
-import { EventHandler } from "@/components/event";
-import { draftMode } from "next/headers";
-import { DraftBanner } from "@/components/draft-banner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -47,8 +44,6 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const { isEnabled } = draftMode();
-
   const pageData = await fetchContentType(
     "global",
     { filters: { locale } },
@@ -64,9 +59,7 @@ export default async function LocaleLayout({
               "bg-charcoal antialiased h-full w-full"
             )}
           >
-            {isEnabled && <DraftBanner />}
             <div className="relative">
-              {isEnabled && <EventHandler />}
               <Navbar data={pageData.navbar} locale={locale} />
               {children}
               <Footer data={pageData.footer} locale={locale} />
