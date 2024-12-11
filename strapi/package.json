@@ -17,10 +17,10 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "0.0.0-experimental.820adfc37c687bbcc4a213ae6929c541358b71e8",
+    "@strapi/plugin-cloud": "5.5.1",
     "@strapi/plugin-seo": "^2.0.4",
-    "@strapi/plugin-users-permissions": "0.0.0-experimental.820adfc37c687bbcc4a213ae6929c541358b71e8",
-    "@strapi/strapi": "0.0.0-experimental.820adfc37c687bbcc4a213ae6929c541358b71e8",
+    "@strapi/plugin-users-permissions": "5.5.1",
+    "@strapi/strapi": "5.5.1",
     "better-sqlite3": "9.4.3",
     "patch-package": "^8.0.0",
     "pluralize": "^8.0.0",
@@ -41,6 +41,6 @@
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "LAUNCHPAD"
+    "uuid": "LAUNCHPAD-LOCAL-4e77628b-ceb5-43b7-99a6-327b0df65112"
   }
 }
