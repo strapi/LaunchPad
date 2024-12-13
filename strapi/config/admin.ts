@@ -51,7 +51,9 @@ export default ({ env }) => {
       config: {
         allowedOrigins: [clientUrl],
         async handler(uid, { documentId, locale, status }) {
-          const document = await strapi.documents(uid).findOne({ documentId });
+          const document = await strapi
+            .documents(uid)
+            .findOne({ documentId, locale, status });
           const pathname = getPreviewPathname(uid, { locale, document });
 
           // Disable preview if the pathname is not found
@@ -61,7 +63,7 @@ export default ({ env }) => {
 
           // Use Next.js draft mode
           const urlSearchParams = new URLSearchParams({
-            url: pathname,
+            url: `/${locale ?? "en"}${pathname}`,
             secret: previewSecret,
             status,
           });

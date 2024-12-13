@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache";
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -5,7 +6,7 @@ export async function GET(request: Request) {
   // Parse query string parameters
   const { searchParams } = new URL(request.url);
   const secret = searchParams.get("secret");
-  const url = searchParams.get("url");
+  const url = searchParams.get("url") ?? "/";
   const status = searchParams.get("status");
 
   // Check the secret and next parameters
@@ -22,7 +23,10 @@ export async function GET(request: Request) {
     draftMode().enable();
   }
 
+  // Clear the cache for the path we're about to preview
+  revalidatePath(url, "page");
+
   // Redirect to the path from the fetched post
   // We don't redirect to searchParams.slug as that might lead to open redirect vulnerabilities
-  redirect(url || "/");
+  redirect(url);
 }
