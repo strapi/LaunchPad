@@ -1,6 +1,6 @@
-import type { StrapiApp } from '@strapi/strapi/admin';
+import type { StrapiApp } from "@strapi/strapi/admin";
 
-// import PreviewButton from "./extensions/components/PreviewButton";
+import { unstable_useContentManagerContext as useContentManagerContext } from "@strapi/strapi/admin";
 
 export default {
   config: {
@@ -33,7 +33,6 @@ export default {
       // 'zh',
     ],
   },
-  bootstrap(app: StrapiApp) {
-    
-  },
+
+  bootstrap(app: StrapiApp) {},
 };
