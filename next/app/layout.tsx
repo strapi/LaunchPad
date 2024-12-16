@@ -3,6 +3,8 @@ import { Locale, i18n } from '@/i18n.config'
 
 import "./globals.css";
 
+import { SlugProvider } from "./context/SlugContext";
+
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#06b6d4" },
@@ -24,7 +26,9 @@ export default function RootLayout({
   return (
     <html lang={params.lang}>
       <body>
-        {children}
+        <SlugProvider>
+          {children}
+        </SlugProvider>
       </body>
     </html>
   );
