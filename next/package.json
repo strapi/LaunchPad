@@ -30,7 +30,7 @@
     "fuzzy-search": "^3.2.1",
     "mini-svg-data-uri": "^1.4.4",
     "negotiator": "^0.6.3",
-    "next": "14.2.5",
+    "next": "14.2.20",
     "next-view-transitions": "^0.2.0",
     "qs": "^6.13.0",
     "react": "^18",
