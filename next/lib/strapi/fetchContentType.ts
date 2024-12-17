@@ -35,19 +35,17 @@ export default async function fetchContentType(
   params: Record<string, unknown> = {},
   spreadData: boolean = false
 ): Promise<any> {
-  const { isEnabled: isDraftMode } = draftMode();
-
   try {
     const queryParams = { ...params };
 
-    if (isDraftMode) {
+    if (draftMode().isEnabled) {
       queryParams.status = "draft";
     }
 
     const url = `${baseURL}/${contentType}?${qs.stringify(queryParams)}`;
 
     // Perform the fetch request with the provided query parameters
-    const response = await fetch(url, { method: "GET" });
+    const response = await fetch(url, { method: "GET", cache: "no-store" });
 
     if (!response.ok) {
       throw new Error(

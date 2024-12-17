@@ -1,4 +1,3 @@
-import { revalidatePath } from "next/cache";
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 
@@ -23,10 +22,5 @@ export async function GET(request: Request) {
     draftMode().enable();
   }
 
-  // Clear the cache for the path we're about to preview
-  revalidatePath(url, "page");
-
-  // Redirect to the path from the fetched post
-  // We don't redirect to searchParams.slug as that might lead to open redirect vulnerabilities
   redirect(url);
 }
