@@ -11,6 +11,7 @@ import fetchContentType from "@/lib/strapi/fetchContentType";
 import { Article } from "@/types/types";
 import { generateMetadataObject } from '@/lib/shared/metadata';
 
+import ClientSlugHandler from "../ClientSlugHandler";
 
 export async function generateMetadata({
   params,
@@ -27,13 +28,22 @@ export async function generateMetadata({
 export default async function Blog({
   params,
 }: {
-  params: { locale: string };
+  params: { locale: string, slug: string };
 }) {
   const blogPage = await fetchContentType('blog-page', `filters[locale]=${params.locale}`, true)
   const articles = await fetchContentType('articles', `filters[locale]=${params.locale}`)
 
+  const localizedSlugs = blogPage.localizations?.reduce(
+    (acc: Record<string, string>, localization: any) => {
+      acc[localization.locale] = "blog";
+      return acc;
+    },
+    { [params.locale]: "blog" }
+  );
+
   return (
     <div className="relative overflow-hidden py-20 md:py-0">
+       <ClientSlugHandler localizedSlugs={localizedSlugs} />
       <AmbientColor />
       <Container className="flex flex-col items-center justify-between pb-20">
         <div className="relative z-20 py-10 md:pt-40">

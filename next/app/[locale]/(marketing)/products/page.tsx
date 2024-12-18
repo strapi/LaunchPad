@@ -11,6 +11,8 @@ import { IconShoppingCartUp } from "@tabler/icons-react";
 import fetchContentType from "@/lib/strapi/fetchContentType";
 import { generateMetadataObject } from '@/lib/shared/metadata';
 
+import ClientSlugHandler from '../ClientSlugHandler';
+
 export async function generateMetadata({
   params,
 }: {
@@ -32,10 +34,18 @@ export default async function Products({
   const productPage = await fetchContentType('product-page', `filters[locale]=${params.locale}`, true);
   const products = await fetchContentType('products', ``);
 
+  const localizedSlugs = productPage.localizations?.reduce(
+    (acc: Record<string, string>, localization: any) => {
+      acc[localization.locale] = "products";
+      return acc;
+    },
+    { [params.locale]: "products" }
+  );
   const featured = products?.data.filter((product: { featured: boolean }) => product.featured);
 
   return (
     <div className="relative overflow-hidden w-full">
+      <ClientSlugHandler localizedSlugs={localizedSlugs} />
       <AmbientColor />
       <Container className="pt-40 pb-40">
         <FeatureIconContainer className="flex justify-center items-center overflow-hidden">
