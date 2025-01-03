@@ -59,7 +59,7 @@ export const MobileNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale }
           <div className="flex items-center justify-between w-full px-5">
             <Logo locale={locale} image={logo?.image} />
             <div className="flex items-center space-x-2">
-              <LocaleSwitcher />
+              <LocaleSwitcher currentLocale={locale} />
               <IoIosClose
                 className="h-8 w-8 text-white"
                 onClick={() => setOpen(!open)}
