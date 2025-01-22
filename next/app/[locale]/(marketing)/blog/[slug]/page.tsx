@@ -17,8 +17,7 @@ export default async function SingleArticlePage({
       filters: {
         slug: params.slug,
         locale: params.locale,
-      },
-      populate: "seo.metaImage",
+      }
     },
     true,
   );
