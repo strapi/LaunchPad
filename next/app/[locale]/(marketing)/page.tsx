@@ -10,9 +10,16 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
+
   const pageData = await fetchContentType(
     'pages',
-    `filters[slug][$eq]=homepage&filters[locale][$eq]=${params.locale}&populate=seo.metaImage`,
+    {
+      filters: {
+        slug: "homepage",
+        locale: params.locale,
+      },
+      populate: "seo.metaImage",
+    },
     true
   );
 
@@ -22,9 +29,15 @@ export async function generateMetadata({
 }
 
 export default async function HomePage({ params }: { params: { locale: string } }) {
+
   const pageData = await fetchContentType(
     'pages',
-    `filters[slug][$eq]=homepage&filters[locale][$eq]=${params.locale}`,
+    {
+      filters: {
+        slug: "homepage",
+        locale: params.locale,
+      },
+    },
     true
   );
 

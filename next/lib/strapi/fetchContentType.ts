@@ -1,3 +1,5 @@
+import { draftMode } from "next/headers";
+import qs from "qs";
 /**
  * Fetches data for a specified Strapi content type.
  *
@@ -27,15 +29,24 @@ export function spreadStrapiData(data: StrapiResponse): StrapiData | null {
 
 export default async function fetchContentType(
   contentType: string,
-  params: string,
-  spreadData?: boolean
+  params: Record<string, unknown> = {},
+  spreadData?: boolean,
 ): Promise<any> {
+  const { isEnabled } = await draftMode()
+
   try {
+
+    const queryParams = { ...params };
+
+    if (isEnabled) {
+      queryParams.status = "draft";
+    }
+
     // Construct the full URL for the API request
     const url = new URL(`api/${contentType}`, process.env.NEXT_PUBLIC_API_URL);
 
     // Perform the fetch request with the provided query parameters
-    const response = await fetch(`${url.href}?${params}`, {
+    const response = await fetch(`${url.href}?${qs.stringify(queryParams)}`, {
       method: 'GET',
       cache: 'no-store',
     });
