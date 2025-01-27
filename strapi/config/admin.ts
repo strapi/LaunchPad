@@ -26,7 +26,7 @@ export default ({ env }) => ({
         const { slug } = document;
 
         const urlSearchParams = new URLSearchParams({
-          secret: env('PREVIEW_SECRET'),
+          secret: env('STRAPI_ADMIN_CLIENT_PREVIEW_SECRET'),
           ...(slug && { slug }),
           locale,
           uid,
