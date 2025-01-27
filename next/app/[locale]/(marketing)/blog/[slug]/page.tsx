@@ -13,8 +13,13 @@ export default async function SingleArticlePage({
 }) {
   const article = await fetchContentType(
     "articles",
-    `filters[slug]=${params?.slug}&filters[locale][$eq]=${params.locale}`,
-    true
+    {
+      filters: {
+        slug: params.slug,
+        locale: params.locale,
+      }
+    },
+    true,
   );
 
   if (!article) {

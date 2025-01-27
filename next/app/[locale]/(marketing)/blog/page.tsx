@@ -1,4 +1,5 @@
 import { type Metadata } from "next";
+
 import { Container } from "@/components/container";
 import { Heading } from "@/components/elements/heading";
 import { Subheading } from "@/components/elements/subheading";
@@ -18,7 +19,10 @@ export async function generateMetadata({
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-  const pageData = await fetchContentType('blog-page', `filters[locale]=${params.locale}&populate=seo.metaImage`, true)
+  const pageData = await fetchContentType('blog-page', {
+    filters: { locale: params.locale },
+    populate: "seo.metaImage",
+  }, true)
 
   const seo = pageData?.seo;
   const metadata = generateMetadataObject(seo);
@@ -30,8 +34,12 @@ export default async function Blog({
 }: {
   params: { locale: string, slug: string };
 }) {
-  const blogPage = await fetchContentType('blog-page', `filters[locale]=${params.locale}`, true)
-  const articles = await fetchContentType('articles', `filters[locale]=${params.locale}`)
+  const blogPage = await fetchContentType('blog-page', {
+    filters: { locale: params.locale },
+  }, true)
+  const articles = await fetchContentType('articles', {
+    filters: { locale: params.locale },
+  }, false)
 
   const localizedSlugs = blogPage.localizations?.reduce(
     (acc: Record<string, string>, localization: any) => {
@@ -43,7 +51,7 @@ export default async function Blog({
 
   return (
     <div className="relative overflow-hidden py-20 md:py-0">
-       <ClientSlugHandler localizedSlugs={localizedSlugs} />
+      <ClientSlugHandler localizedSlugs={localizedSlugs} />
       <AmbientColor />
       <Container className="flex flex-col items-center justify-between pb-20">
         <div className="relative z-20 py-10 md:pt-40">
