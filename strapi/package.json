@@ -23,6 +23,8 @@
     "@strapi/plugin-seo": "^2.0.4",
     "@strapi/plugin-users-permissions": "5.7.0",
     "@strapi/strapi": "5.7.0",
+    "@strapi/types": "^5.10.3",
+    "@strapi/utils": "^5.10.3",
     "better-sqlite3": "11.7.0",
     "patch-package": "^8.0.0",
     "pluralize": "^8.0.0",
@@ -36,7 +38,7 @@
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "LAUNCHPAD"
+    "uuid": "LAUNCHPAD-LOCAL-3c2ccc4d-8bb0-4583-8726-73515b45dda8"
   },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",

@@ -3,7 +3,7 @@
  */
 
 import type { Core } from '@strapi/strapi';
-import { UID } from '@strapi/types';
+import { UID } from '@strapi/strapi';
 import { contentTypes } from '@strapi/utils';
 import pluralize from 'pluralize';
 
