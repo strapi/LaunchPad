@@ -2,7 +2,7 @@
 
 ![LaunchPad](./LaunchPad.jpg)
 
-Welcome aboard **LaunchPad**, the official Strapi demo application, where we launch your content into the stratosphere at the speed of  *"we-can't-even-measure-it!"*.
+Welcome aboard **LaunchPad**, the official Strapi demo application, where we launch your content into the stratosphere at the speed of _"we-can't-even-measure-it!"_.
 This repository contains the following:
 
 - A Strapi project with content-types and data already onboard
@@ -17,14 +17,16 @@ Strap yourself in! You can get started with this project on your local machine b
 Before you take off, make sure you have the right env variables loaded for each part (rocket science at its best):
 
 Strapi (example in `./strapi/.env.example`):
-  - `STRAPI_ADMIN_CLIENT_URL=<url-of-nextjs>`
-  - `STRAPI_ADMIN_CLIENT_PREVIEW_SECRET=<a-random-token>`
+
+- `CLIENT_URL=<url-of-nextjs>`
+- `PREVIEW_SECRET=<a-random-token>`
 
 - Create a `./strapi/.env` file with these variables
 
 Next.js (example in `./next/.env.sample`):
-  - `NEXT_PUBLIC_API_URL=<url-of-strapi>` (mandatory)
-  - `PREVIEW_SECRET=<the-same-random-token-as-for-strapi>`
+
+- `NEXT_PUBLIC_API_URL=<url-of-strapi>` (mandatory)
+- `PREVIEW_SECRET=<the-same-random-token-as-for-strapi>`
 
 - Create a `./next/.env` file with these variables
 
@@ -91,10 +93,9 @@ This installs dependencies, builds your project, and starts your server. You’r
 [Data transfer](https://strapi.io/blog/importing-exporting-and-transferring-data-with-the-strapi-cli) Streams your data from one Strapi instance to another Strapi instance.<br />
 [Review Worfklows](https://docs.strapi.io/user-docs/settings/review-workflows) Create and manage any desired review stages for your content, enabling your team to collaborate in the content creation flow from draft to publication. <br />
 
-
 ## Resources
 
-[Docs](https://docs.strapi.io) • [Demo](https://strapi.io/demo) • [Forum](https://forum.strapi.io/) • [Discord](https://discord.strapi.io) • [Youtube](https://www.youtube.com/c/Strapi/featured) • [Strapi Design System](https://design-system.strapi.io/) • [Marketplace](https://market.strapi.io/) • [Cloud Free Trial](https://cloud.strapi.io) 
+[Docs](https://docs.strapi.io) • [Demo](https://strapi.io/demo) • [Forum](https://forum.strapi.io/) • [Discord](https://discord.strapi.io) • [Youtube](https://www.youtube.com/c/Strapi/featured) • [Strapi Design System](https://design-system.strapi.io/) • [Marketplace](https://market.strapi.io/) • [Cloud Free Trial](https://cloud.strapi.io)
 
 ## Todo
 
