@@ -19,10 +19,10 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "0.0.0-experimental.e576af447d9f97e89e24c6daa32d8f714376cd5f",
+    "@strapi/plugin-cloud": "0.0.0-experimental.e12978dcee698470990e9c5c63384faf2c307443",
     "@strapi/plugin-seo": "^2.0.4",
-    "@strapi/plugin-users-permissions": "0.0.0-experimental.e576af447d9f97e89e24c6daa32d8f714376cd5f",
-    "@strapi/strapi": "0.0.0-experimental.e576af447d9f97e89e24c6daa32d8f714376cd5f",
+    "@strapi/plugin-users-permissions": "0.0.0-experimental.e12978dcee698470990e9c5c63384faf2c307443",
+    "@strapi/strapi": "0.0.0-experimental.e12978dcee698470990e9c5c63384faf2c307443",
     "better-sqlite3": "11.7.0",
     "patch-package": "^8.0.0",
     "pluralize": "^8.0.0",
