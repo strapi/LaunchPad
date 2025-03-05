@@ -12,24 +12,6 @@ This repository contains the following:
 
 Strap yourself in! You can get started with this project on your local machine by following the instructions below, or you can [request a private instance on our website](https://strapi.io/demo)
 
-## 🛠 Prerequisites
-
-Before you take off, make sure you have the right env variables loaded for each part (rocket science at its best):
-
-Strapi (example in `./strapi/.env.example`):
-
-- `CLIENT_URL=<url-of-nextjs>`
-- `PREVIEW_SECRET=<a-random-token>`
-
-- Create a `./strapi/.env` file with these variables
-
-Next.js (example in `./next/.env.sample`):
-
-- `NEXT_PUBLIC_API_URL=<url-of-strapi>` (mandatory)
-- `PREVIEW_SECRET=<the-same-random-token-as-for-strapi>`
-
-- Create a `./next/.env` file with these variables
-
 ## 1. Clone Launchpad
 
 To infinity and beyond! 🚀 Clone the repo with this command:
@@ -40,7 +22,23 @@ git clone https://github.com/strapi/launchpad.git
 
 - Navigate to your project folder by running `cd launchpad`.
 
-## 2. Start Strapi
+## 2. Set up environment variables
+
+Before you take off, set up the required environment variables for both Strapi and Next.js.
+
+To create the Strapi .env file, copy the content of the `./strapi/.env.sample` file into a new file named `./strapi/.env`, then modify the values to match your setup:
+
+```sh
+cp ./strapi/.env.sample ./strapi/.env
+```
+
+Then do the same for the Next.js .env file, and modify it too:
+
+```sh
+cp ./next/.env.sample ./next/.env
+```
+
+## 3. Start Strapi
 
 Take a deep breath. It's time to power up the Strapi engines. Navigate to your ./my-projects/launchpad/strapi folder by running:
 
@@ -54,11 +52,11 @@ yarn && yarn seed && yarn develop
 
 This will install dependencies, sprinkle in some data magic, and run the server. (You can run these commands separately, but why not be efficient?)
 
-## 3. Start Next.js
+## 4. Start Next.js
 
 We're almost ready for lift-off! Next.js is your sleek, futuristic interface for getting all that glorious content out into the world. 🚀
 
-Navigate to your `./my-projects/launchpad/next` folder by running `cd next` from your command line.
+Open a new terminal tab or window to leave Strapi running, and navigate to your `./my-projects/launchpad/next` folder by running `cd next`.
 
 - Run the following command in your `./launchpad/next` folder
 
