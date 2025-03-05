@@ -26,16 +26,16 @@ git clone https://github.com/strapi/launchpad.git
 
 Before you take off, set up the required environment variables for both Strapi and Next.js.
 
-To create the Strapi .env file, copy the content of the `./strapi/.env.sample` file into a new file named `./strapi/.env`, then modify the values to match your setup:
+To create the Strapi .env file, copy the content of the `./strapi/.env.example` file into a new file named `./strapi/.env`, then modify the values to match your setup:
 
 ```sh
-cp ./strapi/.env.sample ./strapi/.env
+cp ./strapi/.env.example ./strapi/.env
 ```
 
 Then do the same for the Next.js .env file, and modify it too:
 
 ```sh
-cp ./next/.env.sample ./next/.env
+cp ./next/.env.example ./next/.env
 ```
 
 ## 3. Start Strapi
