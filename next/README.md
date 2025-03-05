@@ -15,7 +15,7 @@ Welcome to our cutting-edge Next.js Multilingual Blog Template! This powerful an
 
 1. Clone this repository
 2. Install dependencies: `npm install`
-3. Copy `.env.sample` to `.env.local` and update the variables
+3. Copy `.env.example` to `.env.local` and update the variables
 4. Run the development server: `npm run dev`
 5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
