@@ -2,7 +2,7 @@
 
 ![LaunchPad](./LaunchPad.jpg)
 
-Welcome aboard **LaunchPad**, the official Strapi demo application, where we launch your content into the stratosphere at the speed of  *"we-can't-even-measure-it!"*.
+Welcome aboard **LaunchPad**, the official Strapi demo application, where we launch your content into the stratosphere at the speed of _"we-can't-even-measure-it!"_.
 This repository contains the following:
 
 - A Strapi project with content-types and data already onboard
@@ -11,22 +11,6 @@ This repository contains the following:
 ## 🌌 Get started
 
 Strap yourself in! You can get started with this project on your local machine by following the instructions below, or you can [request a private instance on our website](https://strapi.io/demo)
-
-## 🛠 Prerequisites
-
-Before you take off, make sure you have the right env variables loaded for each part (rocket science at its best):
-
-Strapi (example in `./strapi/.env.example`):
-  - `STRAPI_ADMIN_CLIENT_URL=<url-of-nextjs>`
-  - `STRAPI_ADMIN_CLIENT_PREVIEW_SECRET=<a-random-token>`
-
-- Create a `./strapi/.env` file with these variables
-
-Next.js (example in `./next/.env.sample`):
-  - `NEXT_PUBLIC_API_URL=<url-of-strapi>` (mandatory)
-  - `PREVIEW_SECRET=<the-same-random-token-as-for-strapi>`
-
-- Create a `./next/.env` file with these variables
 
 ## 1. Clone Launchpad
 
@@ -38,7 +22,23 @@ git clone https://github.com/strapi/launchpad.git
 
 - Navigate to your project folder by running `cd launchpad`.
 
-## 2. Start Strapi
+## 2. Set up environment variables
+
+Before you take off, set up the required environment variables for both Strapi and Next.js.
+
+To create the Strapi .env file, copy the content of the `./strapi/.env.example` file into a new file named `./strapi/.env`, then modify the values to match your setup:
+
+```sh
+cp ./strapi/.env.example ./strapi/.env
+```
+
+Then do the same for the Next.js .env file, and modify it too:
+
+```sh
+cp ./next/.env.example ./next/.env
+```
+
+## 3. Start Strapi
 
 Take a deep breath. It's time to power up the Strapi engines. Navigate to your ./my-projects/launchpad/strapi folder by running:
 
@@ -52,11 +52,11 @@ yarn && yarn seed && yarn develop
 
 This will install dependencies, sprinkle in some data magic, and run the server. (You can run these commands separately, but why not be efficient?)
 
-## 3. Start Next.js
+## 4. Start Next.js
 
 We're almost ready for lift-off! Next.js is your sleek, futuristic interface for getting all that glorious content out into the world. 🚀
 
-Navigate to your `./my-projects/launchpad/next` folder by running `cd next` from your command line.
+Open a new terminal tab or window to leave Strapi running, and navigate to your `./my-projects/launchpad/next` folder by running `cd next`.
 
 - Run the following command in your `./launchpad/next` folder
 
@@ -91,10 +91,9 @@ This installs dependencies, builds your project, and starts your server. You’r
 [Data transfer](https://strapi.io/blog/importing-exporting-and-transferring-data-with-the-strapi-cli) Streams your data from one Strapi instance to another Strapi instance.<br />
 [Review Worfklows](https://docs.strapi.io/user-docs/settings/review-workflows) Create and manage any desired review stages for your content, enabling your team to collaborate in the content creation flow from draft to publication. <br />
 
-
 ## Resources
 
-[Docs](https://docs.strapi.io) • [Demo](https://strapi.io/demo) • [Forum](https://forum.strapi.io/) • [Discord](https://discord.strapi.io) • [Youtube](https://www.youtube.com/c/Strapi/featured) • [Strapi Design System](https://design-system.strapi.io/) • [Marketplace](https://market.strapi.io/) • [Cloud Free Trial](https://cloud.strapi.io) 
+[Docs](https://docs.strapi.io) • [Demo](https://strapi.io/demo) • [Forum](https://forum.strapi.io/) • [Discord](https://discord.strapi.io) • [Youtube](https://www.youtube.com/c/Strapi/featured) • [Strapi Design System](https://design-system.strapi.io/) • [Marketplace](https://market.strapi.io/) • [Cloud Free Trial](https://cloud.strapi.io)
 
 ## Todo
 
