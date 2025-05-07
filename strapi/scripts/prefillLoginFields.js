@@ -8,23 +8,31 @@ const directoryPath =
 const targetFiles = ["Login.js", "Login.mjs"]; // You can add more file patterns here
 
 // Content to replace
-const originalContent = `initialVf halues: {
+const originalContent = `initialValues: {
                                 email: '',
                                 password: '',
                                 rememberMe: false
                             },`;
 
 const newContent = `initialValues: {
-                            email: "admin@strapidemo.com",
-                            password: "welcomeToStrapi123",
-                            rememberMe: false
-                        },`;
+                                email: "admin@strapidemo.com",
+                                password: "welcomeToStrapi123",
+                                rememberMe: false
+                            },`;
 
 // Function to update a given file
 const updateFile = (filePath) => {
   fs.readFile(filePath, "utf8", (err, data) => {
     if (err) {
       console.error(`❌ Error reading file ${filePath}:`, err);
+      return;
+    }
+
+    if (data.includes(newContent)) {
+      console.log(`✅ File already modified with demo credentials: ${filePath}`);
+      console.log('Current credentials:');
+      console.log('  Email:', newContent.match(/email:\s*"([^"]+)"/)[1]);
+      console.log('  Password:', newContent.match(/password:\s*"([^"]+)"/)[1]);
       return;
     }
 
@@ -37,6 +45,9 @@ const updateFile = (filePath) => {
           return;
         }
         console.log(`✅ Successfully updated: ${filePath}`);
+        console.log('Updated credentials:');
+        console.log('  Email:', newContent.match(/email:\s*"([^"]+)"/)[1]);
+        console.log('  Password:', newContent.match(/password:\s*"([^"]+)"/)[1]);
       });
     } else {
       console.log(`⚠️ Original content not found in: ${filePath}`);
