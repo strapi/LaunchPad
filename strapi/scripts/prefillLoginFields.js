@@ -8,7 +8,7 @@ const directoryPath =
 const targetFiles = ["Login.js", "Login.mjs"]; // You can add more file patterns here
 
 // Content to replace
-const originalContent = `initialValues: {
+const originalContent = `initialVf halues: {
                                 email: '',
                                 password: '',
                                 rememberMe: false
@@ -56,6 +56,7 @@ targetFiles.forEach((pattern) => {
       files.forEach(updateFile);
     } else {
       console.log(`⚠️ No matching files found for: ${pattern}`);
+      process.exit(1);
     }
   });
 });
