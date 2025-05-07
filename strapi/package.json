@@ -1,8 +1,8 @@
 {
-  "name": "strapi",
+  "name": "earnest-backend",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "Earnest backend powered by Strapi",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -36,7 +36,7 @@
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "LAUNCHPAD"
+    "uuid": "LAUNCHPAD-LOCAL-01eba6eb-c21a-4d1a-afd0-df3c1eec9979"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

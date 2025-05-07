@@ -1,7 +1,7 @@
 {
-  "name": "strapi-next-launchpad-example",
+  "name": "earnest-website",
   "version": "1.0.0",
-  "description": "Next.js Launchpad Example powered by Strapi",
+  "description": "Earnest website powered by Strapi and Next.js",
   "type": "module",
   "scripts": {
     "next": "yarn dev --prefix ../next/",
