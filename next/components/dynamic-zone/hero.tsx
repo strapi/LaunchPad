@@ -9,7 +9,23 @@ import { Image } from "@/types/types";
 import { strapiImage } from "@/lib/strapi/strapiImage";
 import { Subheading } from "../elements/subheading";
 
-export const Hero = ({ heading, sub_heading, CTAs, image, locale }: { heading: string; sub_heading: string; CTAs: any[], image: Image; locale: string }) => {
+export const Hero = ({ 
+  heading, 
+  sub_heading, 
+  CTAs, 
+  image, 
+  locale,
+  company_start_date,
+}: { 
+  heading: string; 
+  sub_heading: string; 
+  CTAs: any[]; 
+  image: Image; 
+  locale: string;
+  company_start_date: string;
+}) => {
+  const company_age = new Date().getFullYear() - new Date(company_start_date).getFullYear();
+  heading = heading.replace(/{company_age}/g, company_age.toString());
   return (
     <div className="h-screen overflow-hidden relative flex flex-col items-center justify-center">
       <Heading
@@ -18,7 +34,7 @@ export const Hero = ({ heading, sub_heading, CTAs, image, locale }: { heading: s
       >
         {heading}
       </Heading>
-      <Subheading className="text-center mt-1 md:mt-3 text-xl md:text-2xl text-charcoal max-w-3xl mx-auto relative z-10">
+      <Subheading className="text-center mt-1 md:mt-3 text-xl md:text-2xl lg:text-3xl text-charcoal max-w-3xl mx-auto relative z-10">
         {sub_heading}
       </Subheading>
       <BlurImage

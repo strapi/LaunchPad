@@ -18,18 +18,7 @@
     "copyright": {
       "type": "string"
     },
-    "designed_developed_by": {
-      "type": "string"
-    },
-    "built_with": {
-      "type": "string"
-    },
     "internal_links": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.link"
-    },
-    "policy_links": {
       "type": "component",
       "repeatable": true,
       "component": "shared.link"

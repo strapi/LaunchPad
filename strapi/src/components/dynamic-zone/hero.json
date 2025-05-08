@@ -29,6 +29,9 @@
     },
     "sub_heading": {
       "type": "string"
+    },
+    "company_start_date": {
+      "type": "date"
     }
   }
 }
