@@ -10,14 +10,25 @@
     "heading": {
       "type": "string"
     },
-    "sub_heading": {
-      "type": "string"
-    },
     "CTAs": {
       "displayName": "Button",
       "type": "component",
       "repeatable": true,
       "component": "shared.button"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "sub_heading": {
+      "type": "string"
     }
   }
 }

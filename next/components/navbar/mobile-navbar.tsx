@@ -9,7 +9,12 @@ import { Logo } from "@/components/logo";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { LocaleSwitcher } from "../locale-switcher";
 
-type Props = {
+export const MobileNavbar = ({ 
+  leftNavbarItems, 
+  rightNavbarItems, 
+  logo, 
+  locale,
+}: {
   leftNavbarItems: {
     URL: string;
     text: string;
@@ -22,9 +27,7 @@ type Props = {
   }[];
   logo: any;
   locale: string
-};
-
-export const MobileNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale }: Props) => {
+}) => {
   const [open, setOpen] = useState(false);
 
   const { scrollY } = useScroll();
@@ -42,26 +45,25 @@ export const MobileNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale }
   return (
     <div
       className={cn(
-        "flex justify-between bg-transparent items-center w-full rounded-md px-2.5 py-1.5 transition duration-200",
-        showBackground &&
-        " bg-neutral-900  shadow-[0px_-2px_0px_0px_var(--neutral-800),0px_2px_0px_0px_var(--neutral-800)]"
+        "flex justify-between bg-transparent items-center w-full rounded-md px-2.5 transition duration-200",
+        showBackground && " bg-slate-200"
       )}
     >
-      <Logo image={logo?.image} />
+      <Logo image={logo?.image}/>
 
       <IoIosMenu
-        className="text-white h-6 w-6"
+        className="text-charcoal h-6 w-6"
         onClick={() => setOpen(!open)}
       />
 
       {open && (
-        <div className="fixed inset-0 bg-black z-50 flex flex-col items-start justify-start space-y-10  pt-5  text-xl text-zinc-600  transition duration-200 hover:text-zinc-800">
+        <div className="fixed inset-0 bg-slate-200 z-50 flex flex-col items-start justify-start space-y-10  pt-5  text-xl text-zinc-600  transition duration-200 hover:text-zinc-800">
           <div className="flex items-center justify-between w-full px-5">
             <Logo locale={locale} image={logo?.image} />
             <div className="flex items-center space-x-2">
               <LocaleSwitcher currentLocale={locale} />
               <IoIosClose
-                className="h-8 w-8 text-white"
+                className="h-8 w-8 text-charcoal"
                 onClick={() => setOpen(!open)}
               />
             </div>
@@ -78,7 +80,7 @@ export const MobileNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale }
                         onClick={() => setOpen(false)}
                         className="relative max-w-[15rem] text-left text-2xl"
                       >
-                        <span className="block text-white">
+                        <span className="block text-charcoal">
                           {childNavItem.text}
                         </span>
                       </Link>
@@ -91,7 +93,7 @@ export const MobileNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale }
                     onClick={() => setOpen(false)}
                     className="relative"
                   >
-                    <span className="block text-[26px] text-white">
+                    <span className="block text-[26px] text-charcoal">
                       {navItem.text}
                     </span>
                   </Link>

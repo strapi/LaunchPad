@@ -28,7 +28,7 @@ export const Heading = ({
       className={cn(
         "text-3xl md:text-5xl md:leading-tight max-w-5xl mx-auto text-center tracking-tight",
         "font-medium",
-        "bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-white to-white",
+        "bg-clip-text text-charcoal",
         sizeVariants[size],
         className
       )}
