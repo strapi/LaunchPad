@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_paragraphs",
+  "info": {
+    "displayName": "Paragraph",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "richtext"
+    }
+  }
+}

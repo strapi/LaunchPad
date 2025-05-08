@@ -9,7 +9,7 @@ import Autoscroll from "embla-carousel-auto-scroll";
 
 export const Brands = ({ heading, sub_heading, logos }: { heading: string, sub_heading: string, logos: any[] }) => {
   return (
-    <div className="relative z-20 pb-40">
+    <div className="relative z-20 pb-10">
       <Heading className="pt-4">{heading}</Heading>
       <Subheading className="max-w-3xl mx-auto">
         {sub_heading}

@@ -53,7 +53,8 @@
         "dynamic-zone.launches",
         "dynamic-zone.cta",
         "dynamic-zone.form-next-to-section",
-        "dynamic-zone.faq"
+        "dynamic-zone.faq",
+        "dynamic-zone.featured-projects"
       ]
     }
   }

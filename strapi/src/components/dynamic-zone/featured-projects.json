@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_dynamic_zone_featured_projects",
+  "info": {
+    "displayName": "Featured_Projects",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "header": {
+      "type": "string"
+    },
+    "sub_header": {
+      "type": "string"
+    },
+    "featured_projects": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.featured-project"
+    }
+  }
+}

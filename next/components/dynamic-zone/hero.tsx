@@ -30,11 +30,11 @@ export const Hero = ({
     <div className="h-screen overflow-hidden relative flex flex-col items-center justify-center">
       <Heading
         as="h1"
-        className="text-2xl md:text-4xl lg:text-6xl font-semibold max-w-8xl mx-auto text-center mt-12 relative z-10 py-122"
+        className="text-2xl md:text-4xl lg:text-6xl font-semibold max-w-8xl mx-auto text-center mt-12 relative z-10 pt-12"
       >
         {heading}
       </Heading>
-      <Subheading className="text-center mt-1 md:mt-3 text-xl md:text-2xl lg:text-3xl text-charcoal max-w-3xl mx-auto relative z-10">
+      <Subheading className="text-center text-xl md:text-2xl lg:text-4xl text-charcoal max-w-8xl relative z-10">
         {sub_heading}
       </Subheading>
       <BlurImage
@@ -42,7 +42,7 @@ export const Hero = ({
         alt={image?.alternativeText}
         width={200}
         height={200}
-        className="rounded-3xl w-1/2 h-1/2 max-h-lvh object-cover my-6"
+        className="w-full h-full max-h-lvh object-cover mt-6 md:rounded-3xl md:w-2/3 md:h-2/3 lg:w-1/2 lg:h-1/2"
       />
       <div className="flex space-x-2 items-center mt-8">
         {CTAs && CTAs.map((cta) => (
