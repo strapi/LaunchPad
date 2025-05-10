@@ -30,9 +30,6 @@ const updateFile = (filePath) => {
 
     if (data.includes(newContent)) {
       console.log(`✅ File already modified with demo credentials: ${filePath}`);
-      console.log('Current credentials:');
-      console.log('  Email:', newContent.match(/email:\s*"([^"]+)"/)[1]);
-      console.log('  Password:', newContent.match(/password:\s*"([^"]+)"/)[1]);
       return;
     }
 
@@ -45,9 +42,6 @@ const updateFile = (filePath) => {
           return;
         }
         console.log(`✅ Successfully updated: ${filePath}`);
-        console.log('Updated credentials:');
-        console.log('  Email:', newContent.match(/email:\s*"([^"]+)"/)[1]);
-        console.log('  Password:', newContent.match(/password:\s*"([^"]+)"/)[1]);
       });
     } else {
       console.log(`⚠️ Original content not found in: ${filePath}`);
