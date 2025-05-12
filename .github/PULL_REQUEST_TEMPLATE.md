@@ -13,8 +13,9 @@ Simply make sure the whole Strapi application doesn't crash and the connected Ne
 Some additional things to check:
 
 - [ ] Strapi project uuid is "LAUNCHPAD". `strapi/packages.json`.
-- [ ] If you updated content, make sure to create a new export in the `strapi/data` folder and update the `strapi/packages.json` seed command if necessary.
 - [ ] Strapi version is the latest possible.
+- [ ] If the Strapi version has been changed, make sure that the `strapi/scripts/prefillLoginFields.js` works.
+- [ ] If you updated content, make sure to create a new export in the `strapi/data` folder and update the `strapi/packages.json` seed command if necessary.
 
 ### Related issue(s)/PR(s)
 
