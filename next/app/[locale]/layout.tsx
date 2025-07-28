@@ -10,6 +10,11 @@ import { CartProvider } from '@/context/cart-context';
 import { cn } from '@/lib/utils';
 import { ViewTransitions } from 'next-view-transitions';
 import fetchContentType from '@/lib/strapi/fetchContentType';
+import { isRTLLocale } from '@/lib/rtl';
+
+// You can import additional fonts here
+// import { persianFont } from '@/lib/fonts';
+// import { notoSansArabic } from '@/lib/google-fonts';
 
 const inter = Inter({
     subsets: ["latin"],
@@ -46,17 +51,48 @@ export default async function LocaleLayout({
 }) {
 
     const pageData = await fetchContentType('global', { filters: { locale } }, true);
+        
+    // Fallback: If Persian locale doesn't have complete navbar data, use English as fallback
+    let navbarData = pageData?.navbar;
+    if (!navbarData || !navbarData.logo) {
+        console.log('Missing navbar data for locale:', locale, 'falling back to English');
+        const fallbackData = await fetchContentType('global', { filters: { locale: 'en' } }, true);
+        navbarData = fallbackData?.navbar;
+    }
+    
+    // Check if locale is RTL
+    const isRTL = isRTLLocale(locale);
+    
+    // Choose appropriate font based on locale
+    const getFontClass = () => {
+        switch (locale) {
+            case 'fa':
+                // Use Persian font for Farsi
+                // return persianFont.className; // if using local fonts
+                // return notoSansArabic.className; // if using Google fonts
+                return `${inter.className} font-persian`; // Apply Persian font utility
+            case 'ar':
+                // Use Arabic font
+                // return arabicFont.className;
+                return `${inter.className} font-arabic`; // Apply Arabic font utility
+            case 'he':
+                return `${inter.className} font-hebrew`; // Apply Hebrew font utility
+            default:
+                return `${inter.className} font-latin`; // Apply Latin font utility
+        }
+    };
+    
     return (
-        <html lang={locale}>
+        <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'}>
             <ViewTransitions>
                 <CartProvider>
                     <body
                         className={cn(
-                            inter.className,
+                            getFontClass(),
                             "bg-charcoal antialiased h-full w-full"
                         )}
                     >
-                        <Navbar data={pageData.navbar} locale={locale} />
+                        <Navbar data={navbarData} locale={locale} />
                         {children}
                         <Footer data={pageData.footer} locale={locale} />
                     </body>

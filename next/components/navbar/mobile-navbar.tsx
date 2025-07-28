@@ -42,7 +42,7 @@ export const MobileNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale }
   return (
     <div
       className={cn(
-        "flex justify-between bg-transparent items-center w-full rounded-md px-2.5 py-1.5 transition duration-200",
+        "flex justify-between bg-transparent items-center w-full rounded-md px-2.5 py-1.5 transition duration-200 navbar-flex",
         showBackground &&
         " bg-neutral-900  shadow-[0px_-2px_0px_0px_var(--neutral-800),0px_2px_0px_0px_var(--neutral-800)]"
       )}
