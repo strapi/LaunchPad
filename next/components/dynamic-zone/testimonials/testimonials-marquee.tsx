@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
 import Marquee from "react-fast-marquee";
-import { strapiImage } from "@/lib/strapi/strapiImage";
+import { StrapiImage } from "@/components/ui/strapi-image"
 
 export const TestimonialsMarquee = ({ testimonials }: { testimonials: any }) => {
   const levelOne = testimonials.slice(0, 8);
@@ -21,8 +21,8 @@ export const TestimonialsMarquee = ({ testimonials }: { testimonials: any }) => 
             >
               <Quote>{testimonial?.text}</Quote>
               <div className="flex gap-2 items-center mt-8">
-                <Image
-                  src={strapiImage(testimonial?.user?.image?.url)}
+                <StrapiImage 
+                  src={testimonial?.user?.image?.url}
                   alt={`${testimonial.user.firstname} ${testimonial.user.lastname}`}
                   width={40}
                   height={40}
@@ -52,8 +52,8 @@ export const TestimonialsMarquee = ({ testimonials }: { testimonials: any }) => 
             >
               <Quote>{testimonial.text}</Quote>
               <div className="flex gap-2 items-center mt-8">
-                <Image
-                  src={strapiImage(testimonial?.user?.image?.url)}
+                <StrapiImage 
+                  src={testimonial?.user?.image?.url}
                   alt={`${testimonial.user.firstname} ${testimonial.user.lastname}`}
                   width={40}
                   height={40}
