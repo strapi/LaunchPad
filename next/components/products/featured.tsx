@@ -1,9 +1,8 @@
 import React from "react";
-import Image from "next/image";
 import { formatNumber } from "@/lib/utils";
 import { Link } from "next-view-transitions";
 import { Product } from "@/types/types";
-import { strapiImage } from "@/lib/strapi/strapiImage";
+import { StrapiImage } from "@/components/ui/strapi-image"
 
 export const Featured = ({ products, locale }: { products: Product[], locale: string }) => {
   return (
@@ -41,8 +40,8 @@ const FeaturedItem = ({ product, locale }: { product: Product, locale:string }) 
           ${formatNumber(product.price)}
         </span>
       </div>
-      <Image
-        src={strapiImage(product.images[0].url)}
+      <StrapiImage 
+        src={product.images?.[0].url}
         alt={product.name}
         width={1000}
         height={1000}

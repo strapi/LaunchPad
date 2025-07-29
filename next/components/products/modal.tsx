@@ -11,7 +11,7 @@ import Image from "next/image";
 import { useCart } from "@/context/cart-context";
 import { formatNumber } from "@/lib/utils";
 import { IconTrash } from "@tabler/icons-react";
-import { strapiImage } from "@/lib/strapi/strapiImage";
+import { StrapiImage } from "@/components/ui/strapi-image";
 
 export default function AddToCartModal({ onClick }: { onClick: () => void }) {
   const { items, updateQuantity, getCartTotal, removeFromCart } = useCart();
@@ -38,8 +38,8 @@ export default function AddToCartModal({ onClick }: { onClick: () => void }) {
                 className="flex gap-2 justify-between items-center py-4"
               >
                 <div className="flex items-center gap-4">
-                  <Image
-                    src={strapiImage(item.product.images[0].url)}
+                  <StrapiImage 
+                    src={item.product?.images?.[0].url}
                     alt={item.product.name}
                     width={60}
                     height={60}

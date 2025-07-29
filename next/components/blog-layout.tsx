@@ -1,9 +1,8 @@
 import { IconArrowLeft } from "@tabler/icons-react";
 import { Container } from "./container";
-import Image from "next/image";
 import { Link } from "next-view-transitions";
 import { format } from "date-fns";
-import { strapiImage } from "@/lib/strapi/strapiImage";
+import { StrapiImage } from "@/components/ui/strapi-image";
 import DynamicZoneManager from "./dynamic-zone/manager";
 import { Article } from "@/types/types";
 
@@ -26,11 +25,11 @@ export async function BlogLayout({
         </Link>
       </div>
       <div className="w-full mx-auto">
-        {article.image ? (
-          <Image
-            src={strapiImage(article.image.url)}
-            height="800"
-            width="800"
+        {article?.image ? (
+          <StrapiImage 
+            src={article.image.url}
+            height={800}
+            width={800}
             className="h-40 md:h-96 w-full aspect-square object-cover rounded-3xl [mask-image:radial-gradient(circle,white,transparent)]"
             alt={article.title}
           />
@@ -63,7 +62,7 @@ export async function BlogLayout({
             </div>
             <div className="flex space-x-2 items-center pt-12 border-t border-neutral-800 mt-12">
               <div className="flex space-x-2 items-center ">
-                {/* <Image
+                {/* <StrapiImage 
                   src={article.authorAvatar}
                   alt={article.author}
                   width={20}
