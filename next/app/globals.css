@@ -3,8 +3,29 @@
 @tailwind utilities;
 @import "./prism.css";
 
+/* Override Tailwind's default font families */
+@layer base {
+  html[lang="fa"], html[lang="fa"] * {
+    font-family: var(--font-persian) !important;
+  }
+  
+  html[lang="ar"], html[lang="ar"] * {
+    font-family: var(--font-arabic) !important;
+  }
+  
+  html[lang="he"], html[lang="he"] * {
+    font-family: var(--font-hebrew) !important;
+  }
+}
+
 :root {
   --foreground-rgb: 255, 255, 255;
+  
+  /* Font variables - you can define these when you add your fonts */
+  --font-persian: 'Vazir', 'Noto Sans Arabic', sans-serif;
+  --font-arabic: 'Noto Sans Arabic', sans-serif;
+  --font-hebrew: 'Hebrew Font', sans-serif;
+  --font-latin: 'Inter', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,8 +38,130 @@ body {
   color: rgb(var(--foreground-rgb));
 }
 
+/* RTL Support */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="ltr"] {
+  text-align: left;
+}
+
+/* Font families for different locales - with higher specificity */
+html[lang="fa"], html[lang="fa"] body, [lang="fa"] {
+  font-family: var(--font-persian) !important;
+}
+
+html[lang="ar"], html[lang="ar"] body, [lang="ar"] {
+  font-family: var(--font-arabic) !important;
+}
+
+html[lang="he"], html[lang="he"] body, [lang="he"] {
+  font-family: var(--font-hebrew) !important;
+}
+
+html[lang="en"], html[lang="en"] body, [lang="en"], 
+html[lang="fr"], html[lang="fr"] body, [lang="fr"] {
+  font-family: var(--font-latin) !important;
+}
+
+/* Navbar should maintain its layout in RTL */
+[dir="rtl"] .navbar-flex {
+  flex-direction: row !important;
+}
+
+
+[dir="rtl"] .flex-row-reverse:not(.navbar-flex) {
+  flex-direction: row;
+}
+
+/* Space and gap utilities for RTL */
+[dir="rtl"] .space-x-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+[dir="rtl"] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+  margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+/* Margin and padding utilities for RTL */
+[dir="rtl"] .ml-auto {
+  margin-left: unset;
+  margin-right: auto;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-right: unset;
+  margin-left: auto;
+}
+
+[dir="rtl"] .pl-4 {
+  padding-left: unset;
+  padding-right: 1rem;
+}
+
+[dir="rtl"] .pr-4 {
+  padding-right: unset;
+  padding-left: 1rem;
+}
+
+/* Text alignment utilities for RTL */
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  
+  /* Force font families with utility classes */
+  .font-persian {
+    font-family: var(--font-persian) !important;
+  }
+  
+  .font-arabic {
+    font-family: var(--font-arabic) !important;
+  }
+  
+  .font-hebrew {
+    font-family: var(--font-hebrew) !important;
+  }
+  
+  .font-latin {
+    font-family: var(--font-latin) !important;
+  }
+  
+  /* Override Tailwind Typography prose max-width */
+  .prose {
+    max-width: none !important; /* Remove 65ch limit */
+  }
+  
+  /* Or set custom max-width for prose */
+  .prose-wide {
+    max-width: 80ch !important; /* Wider reading area */
+  }
+  
+  .prose-narrow {
+    max-width: 50ch !important; /* Narrower reading area */
+  }
+  
+  /* RTL-specific prose adjustments */
+  [dir="rtl"] .prose {
+    text-align: right !important;
   }
 }
