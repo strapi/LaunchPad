@@ -1,11 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect, memo } from "react";
-import Image from "next/image";
-import { Transition } from "@headlessui/react";
+import { useState, useRef, useEffect, memo } from "react";import { Transition } from "@headlessui/react";
 import { SparklesCore } from "../../ui/sparkles";
 import { cn } from "@/lib/utils";
-import { strapiImage } from "@/lib/strapi/strapiImage";
+import { StrapiImage } from "@/components/ui/strapi-image"
 
 export const TestimonialsSlider = ({ testimonials }: { testimonials: any }) => {
   const [active, setActive] = useState<number>(0);
@@ -80,9 +78,9 @@ export const TestimonialsSlider = ({ testimonials }: { testimonials: any }) => {
                     beforeEnter={() => heightFix()}
                   >
                     <div className="absolute inset-0 h-full -z-10">
-                      <Image
+                      <StrapiImage 
                         className="relative top-11 left-1/2 -translate-x-1/2 rounded-full"
-                        src={strapiImage(item.user.image.url)}
+                        src={item.user.image.url}
                         width={56}
                         height={56}
                         alt={`${item.user.firstname} ${item.user.lastname}`}

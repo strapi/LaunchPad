@@ -1,10 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { Heading } from "../elements/heading";
 import { Subheading } from "../elements/subheading";
 import { AnimatePresence, motion } from "framer-motion";
-import { strapiImage } from "@/lib/strapi/strapiImage";
+import { StrapiImage } from "@/components/ui/strapi-image"
 
 export const Brands = ({ heading, sub_heading, logos }: { heading: string, sub_heading: string, logos: any[] }) => {
   
@@ -71,11 +70,11 @@ export const Brands = ({ heading, sub_heading, logos }: { heading: string, sub_h
               key={logo.title}
               className="relative"
             >
-              <Image
-                src={strapiImage(logo.image.url)}
+              <StrapiImage 
+                src={logo.image?.url}
                 alt={logo.image.alternativeText}
-                width="400"
-                height="400"
+                width={400}
+                height={400}
                 className="md:h-20 md:w-60 h-10 w-40 object-contain filter"
                 draggable={false}
               />

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Product } from "@/types/types";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { StrapiImage } from "@/components/ui/strapi-image";
 import { IconCheck } from "@tabler/icons-react";
 import { cn, formatNumber } from "@/lib/utils";
 import AddToCartModal from "@/components/products/modal";
@@ -30,7 +30,7 @@ export const SingleProduct = ({ product }: { product: Product }) => {
               damping: 35,
             }}
           >
-            <Image
+            <StrapiImage 
               src={activeThumbnail}
               alt={product.name}
               width={600}
