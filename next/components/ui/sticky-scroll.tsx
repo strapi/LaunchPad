@@ -1,7 +1,8 @@
-"use client";
-import React, { useRef } from "react";
-import { useScroll, useTransform } from "framer-motion";
-import { motion } from "framer-motion";
+'use client';
+
+import { useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
 
 export const StickyScroll = ({
   content,
@@ -47,7 +48,7 @@ export const ScrollContent = ({
   const ref = useRef<any>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"],
+    offset: ['start end', 'end start'],
   });
   const translate = useTransform(scrollYProgress, [0, 1], [0, 250]);
   const translateContent = useTransform(scrollYProgress, [0, 1], [0, -200]);

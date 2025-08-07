@@ -1,14 +1,24 @@
-"use client";
-import React from "react";
-import { TestimonialsSlider } from "./slider";
-import { FeatureIconContainer } from "../features/feature-icon-container";
-import { Heading } from "../../elements/heading";
-import { Subheading } from "../../elements/subheading";
-import { TbLocationBolt } from "react-icons/tb";
-import { TestimonialsMarquee } from "./testimonials-marquee";
-import { AmbientColor } from "../../decorations/ambient-color";
+'use client';
 
-export const Testimonials = ({ heading, sub_heading, testimonials }: { heading: string, sub_heading: string, testimonials: object }) => {
+import React from 'react';
+import { TbLocationBolt } from 'react-icons/tb';
+
+import { AmbientColor } from '../../decorations/ambient-color';
+import { Heading } from '../../elements/heading';
+import { Subheading } from '../../elements/subheading';
+import { FeatureIconContainer } from '../features/feature-icon-container';
+import { TestimonialsSlider } from './slider';
+import { TestimonialsMarquee } from './testimonials-marquee';
+
+export const Testimonials = ({
+  heading,
+  sub_heading,
+  testimonials,
+}: {
+  heading: string;
+  sub_heading: string;
+  testimonials: object;
+}) => {
   return (
     <div className="relative">
       <AmbientColor />
@@ -17,9 +27,7 @@ export const Testimonials = ({ heading, sub_heading, testimonials }: { heading: 
           <TbLocationBolt className="h-6 w-6 text-white" />
         </FeatureIconContainer>
         <Heading className="pt-4">{heading}</Heading>
-        <Subheading>
-          {sub_heading}
-        </Subheading>
+        <Subheading>{sub_heading}</Subheading>
       </div>
 
       {testimonials && (
@@ -30,7 +38,7 @@ export const Testimonials = ({ heading, sub_heading, testimonials }: { heading: 
           </div>
         </div>
       )}
-     
+
       <div className="absolute bottom-0 inset-x-0 h-40 w-full bg-gradient-to-t from-charcoal to-transparent"></div>
     </div>
   );

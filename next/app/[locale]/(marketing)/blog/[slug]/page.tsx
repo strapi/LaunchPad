@@ -1,10 +1,9 @@
-import React from "react";
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import React from 'react';
 
-import { BlogLayout } from "@/components/blog-layout";
-import fetchContentType from "@/lib/strapi/fetchContentType";
-import { BlocksRenderer } from "@strapi/blocks-react-renderer";
-
-import ClientSlugHandler from "../../ClientSlugHandler";
+import ClientSlugHandler from '../../ClientSlugHandler';
+import { BlogLayout } from '@/components/blog-layout';
+import fetchContentType from '@/lib/strapi/fetchContentType';
 
 export default async function SingleArticlePage({
   params,
@@ -12,14 +11,14 @@ export default async function SingleArticlePage({
   params: { slug: string; locale: string };
 }) {
   const article = await fetchContentType(
-    "articles",
+    'articles',
     {
       filters: {
         slug: params.slug,
         locale: params.locale,
-      }
+      },
     },
-    true,
+    true
   );
 
   if (!article) {

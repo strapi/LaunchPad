@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export const MetaIcon = ({ className }: { className?: string }) => {
   return (

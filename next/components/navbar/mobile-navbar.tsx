@@ -1,13 +1,15 @@
-"use client";
-import { cn } from "@/lib/utils";
-import { Link } from "next-view-transitions";
-import { useState } from "react";
-import { IoIosMenu } from "react-icons/io";
-import { IoIosClose } from "react-icons/io";
-import { Button } from "@/components/elements/button";
-import { Logo } from "@/components/logo";
-import { useMotionValueEvent, useScroll } from "framer-motion";
-import { LocaleSwitcher } from "../locale-switcher";
+'use client';
+
+import { useMotionValueEvent, useScroll } from 'framer-motion';
+import { Link } from 'next-view-transitions';
+import { useState } from 'react';
+import { IoIosMenu } from 'react-icons/io';
+import { IoIosClose } from 'react-icons/io';
+
+import { LocaleSwitcher } from '../locale-switcher';
+import { Button } from '@/components/elements/button';
+import { Logo } from '@/components/logo';
+import { cn } from '@/lib/utils';
 
 type Props = {
   leftNavbarItems: {
@@ -21,17 +23,22 @@ type Props = {
     target?: string;
   }[];
   logo: any;
-  locale: string
+  locale: string;
 };
 
-export const MobileNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale }: Props) => {
+export const MobileNavbar = ({
+  leftNavbarItems,
+  rightNavbarItems,
+  logo,
+  locale,
+}: Props) => {
   const [open, setOpen] = useState(false);
 
   const { scrollY } = useScroll();
 
   const [showBackground, setShowBackground] = useState(false);
 
-  useMotionValueEvent(scrollY, "change", (value) => {
+  useMotionValueEvent(scrollY, 'change', (value) => {
     if (value > 100) {
       setShowBackground(true);
     } else {
@@ -42,9 +49,9 @@ export const MobileNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale }
   return (
     <div
       className={cn(
-        "flex justify-between bg-transparent items-center w-full rounded-md px-2.5 py-1.5 transition duration-200",
+        'flex justify-between bg-transparent items-center w-full rounded-md px-2.5 py-1.5 transition duration-200',
         showBackground &&
-        " bg-neutral-900  shadow-[0px_-2px_0px_0px_var(--neutral-800),0px_2px_0px_0px_var(--neutral-800)]"
+          ' bg-neutral-900  shadow-[0px_-2px_0px_0px_var(--neutral-800),0px_2px_0px_0px_var(--neutral-800)]'
       )}
     >
       <Logo image={logo?.image} />
@@ -101,7 +108,14 @@ export const MobileNavbar = ({ leftNavbarItems, rightNavbarItems, logo, locale }
           </div>
           <div className="flex flex-row w-full items-start gap-2.5  px-8 py-4 ">
             {rightNavbarItems.map((item, index) => (
-              <Button key={item.text} variant={index === rightNavbarItems.length - 1 ? 'primary' : 'simple'} as={Link} href={`/${locale}${item.URL}`}>
+              <Button
+                key={item.text}
+                variant={
+                  index === rightNavbarItems.length - 1 ? 'primary' : 'simple'
+                }
+                as={Link}
+                href={`/${locale}${item.URL}`}
+              >
                 {item.text}
               </Button>
             ))}

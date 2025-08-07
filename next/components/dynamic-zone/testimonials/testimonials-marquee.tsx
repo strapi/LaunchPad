@@ -1,11 +1,17 @@
-"use client";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import React from "react";
-import Marquee from "react-fast-marquee";
-import { StrapiImage } from "@/components/ui/strapi-image"
+'use client';
 
-export const TestimonialsMarquee = ({ testimonials }: { testimonials: any }) => {
+import Image from 'next/image';
+import React from 'react';
+import Marquee from 'react-fast-marquee';
+
+import { StrapiImage } from '@/components/ui/strapi-image';
+import { cn } from '@/lib/utils';
+
+export const TestimonialsMarquee = ({
+  testimonials,
+}: {
+  testimonials: any;
+}) => {
   const levelOne = testimonials.slice(0, 8);
   const levelTwo = testimonials.slice(8, 16);
   return (
@@ -21,7 +27,7 @@ export const TestimonialsMarquee = ({ testimonials }: { testimonials: any }) => 
             >
               <Quote>{testimonial?.text}</Quote>
               <div className="flex gap-2 items-center mt-8">
-                <StrapiImage 
+                <StrapiImage
                   src={testimonial?.user?.image?.url}
                   alt={`${testimonial.user.firstname} ${testimonial.user.lastname}`}
                   width={40}
@@ -52,7 +58,7 @@ export const TestimonialsMarquee = ({ testimonials }: { testimonials: any }) => 
             >
               <Quote>{testimonial.text}</Quote>
               <div className="flex gap-2 items-center mt-8">
-                <StrapiImage 
+                <StrapiImage
                   src={testimonial?.user?.image?.url}
                   alt={`${testimonial.user.firstname} ${testimonial.user.lastname}`}
                   width={40}
@@ -85,7 +91,7 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "p-8 rounded-xl border border-[rgba(255,255,255,0.10)] bg-[rgba(40,40,40,0.30)] shadow-[2px_4px_16px_0px_rgba(248,248,248,0.06)_inset] group",
+        'p-8 rounded-xl border border-[rgba(255,255,255,0.10)] bg-[rgba(40,40,40,0.30)] shadow-[2px_4px_16px_0px_rgba(248,248,248,0.06)_inset] group',
         className
       )}
     >
@@ -102,7 +108,7 @@ export const Quote = ({
   className?: string;
 }) => {
   return (
-    <h3 className={cn("text-base font-semibold text-white py-2", className)}>
+    <h3 className={cn('text-base font-semibold text-white py-2', className)}>
       {children}
     </h3>
   );
@@ -117,7 +123,7 @@ export const QuoteDescription = ({
 }) => {
   return (
     <p
-      className={cn("text-sm font-normal text-neutral-400 max-w-sm", className)}
+      className={cn('text-sm font-normal text-neutral-400 max-w-sm', className)}
     >
       {children}
     </p>

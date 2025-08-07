@@ -1,5 +1,6 @@
-import { draftMode } from "next/headers";
-import qs from "qs";
+import { draftMode } from 'next/headers';
+import qs from 'qs';
+
 /**
  * Fetches data for a specified Strapi content type.
  *
@@ -24,22 +25,21 @@ export function spreadStrapiData(data: StrapiResponse): StrapiData | null {
   if (!Array.isArray(data.data)) {
     return data.data;
   }
-  return null
+  return null;
 }
 
 export default async function fetchContentType(
   contentType: string,
   params: Record<string, unknown> = {},
-  spreadData?: boolean,
+  spreadData?: boolean
 ): Promise<any> {
-  const { isEnabled } = await draftMode()
+  const { isEnabled } = await draftMode();
 
   try {
-
     const queryParams = { ...params };
 
     if (isEnabled) {
-      queryParams.status = "draft";
+      queryParams.status = 'draft';
     }
 
     // Construct the full URL for the API request
@@ -52,7 +52,9 @@ export default async function fetchContentType(
     });
 
     if (!response.ok) {
-      throw new Error(`Failed to fetch data from Strapi (url=${url.toString()}, status=${response.status})`);
+      throw new Error(
+        `Failed to fetch data from Strapi (url=${url.toString()}, status=${response.status})`
+      );
     }
     const jsonData: StrapiResponse = await response.json();
     return spreadData ? spreadStrapiData(jsonData) : jsonData;

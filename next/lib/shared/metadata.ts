@@ -6,14 +6,18 @@ export function generateMetadataObject(seo: any) {
     description: seo?.metaDescription || 'Default Description', // Fallback to 'Default Description'
     openGraph: {
       title: seo?.ogTitle || seo?.metaTitle || 'Default OG Title',
-      description: seo?.ogDescription || seo?.metaDescription || 'Default OG Description',
+      description:
+        seo?.ogDescription || seo?.metaDescription || 'Default OG Description',
       images: seo?.metaImage ? [{ url: strapiImage(seo?.metaImage.url) }] : [],
     },
     twitter: {
       card: seo?.twitterCard || 'summary_large_image',
       title: seo?.twitterTitle || seo?.metaTitle || 'Default Twitter Title',
-      description: seo?.twitterDescription || seo?.metaDescription || 'Default Twitter Description',
+      description:
+        seo?.twitterDescription ||
+        seo?.metaDescription ||
+        'Default Twitter Description',
       images: seo?.twitterImage ? [{ url: seo.twitterImage }] : [],
     },
-  }
+  };
 }
