@@ -1,10 +1,11 @@
-import { IconArrowLeft } from "@tabler/icons-react";
-import { Container } from "./container";
-import { Link } from "next-view-transitions";
-import { format } from "date-fns";
-import { StrapiImage } from "@/components/ui/strapi-image";
-import DynamicZoneManager from "./dynamic-zone/manager";
-import { Article } from "@/types/types";
+import { IconArrowLeft } from '@tabler/icons-react';
+import { format } from 'date-fns';
+import { Link } from 'next-view-transitions';
+
+import { Container } from './container';
+import DynamicZoneManager from './dynamic-zone/manager';
+import { StrapiImage } from '@/components/ui/strapi-image';
+import { Article } from '@/types/types';
 
 export async function BlogLayout({
   article,
@@ -15,7 +16,6 @@ export async function BlogLayout({
   locale: string;
   children: React.ReactNode;
 }) {
-
   return (
     <Container className="mt-16 lg:mt-32">
       <div className="flex justify-between items-center px-2 py-8">
@@ -26,7 +26,7 @@ export async function BlogLayout({
       </div>
       <div className="w-full mx-auto">
         {article?.image ? (
-          <StrapiImage 
+          <StrapiImage
             src={article.image.url}
             height={800}
             width={800}
@@ -57,9 +57,7 @@ export async function BlogLayout({
                 {article.title}
               </h1>
             </header>
-            <div className="mt-8 prose prose-sm prose-invert">
-              {children}
-            </div>
+            <div className="mt-8 prose prose-sm prose-invert">{children}</div>
             <div className="flex space-x-2 items-center pt-12 border-t border-neutral-800 mt-12">
               <div className="flex space-x-2 items-center ">
                 {/* <StrapiImage 
@@ -79,14 +77,19 @@ export async function BlogLayout({
                 className="flex items-center text-base "
               >
                 <span className="text-muted text-sm">
-                  {format(new Date(article.publishedAt), "MMMM dd, yyyy")}
+                  {format(new Date(article.publishedAt), 'MMMM dd, yyyy')}
                 </span>
               </time>
             </div>
           </article>
         </div>
       </div>
-      {article?.dynamic_zone && (<DynamicZoneManager dynamicZone={article?.dynamic_zone} locale={locale} />)}
+      {article?.dynamic_zone && (
+        <DynamicZoneManager
+          dynamicZone={article?.dynamic_zone}
+          locale={locale}
+        />
+      )}
     </Container>
   );
 }

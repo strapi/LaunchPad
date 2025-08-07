@@ -1,7 +1,9 @@
-"use client";
-import React from "react";
-import dynamic from "next/dynamic";
-import { IconContainer } from "../icon-container";
+'use client';
+
+import dynamic from 'next/dynamic';
+import React from 'react';
+
+import { IconContainer } from '../icon-container';
 import {
   FacebookIcon,
   InstagramIcon,
@@ -10,10 +12,10 @@ import {
   SlackIcon,
   TiktokIcon,
   TwitterIcon,
-} from "@/components/icons/illustrations";
+} from '@/components/icons/illustrations';
 
 const World = dynamic(
-  () => import("@/components/ui/globe").then((m) => m.World),
+  () => import('@/components/ui/globe').then((m) => m.World),
   {
     ssr: false,
   }
@@ -22,18 +24,18 @@ const World = dynamic(
 export function SkeletonOne() {
   const globeConfig = {
     pointSize: 4,
-    globeColor: "#09090b",
+    globeColor: '#09090b',
     showAtmosphere: true,
-    atmosphereColor: "#e2e8f0",
+    atmosphereColor: '#e2e8f0',
     atmosphereAltitude: 0.1,
-    emissive: "#062056",
+    emissive: '#062056',
     emissiveIntensity: 0.1,
     shininess: 0.9,
-    polygonColor: "rgba(255,255,255,1)",
-    ambientLight: "#38bdf8",
-    directionalLeftLight: "#ffffff",
-    directionalTopLight: "#ffffff",
-    pointLight: "#ffffff",
+    polygonColor: 'rgba(255,255,255,1)',
+    ambientLight: '#38bdf8',
+    directionalLeftLight: '#ffffff',
+    directionalTopLight: '#ffffff',
+    pointLight: '#ffffff',
     arcTime: 1000,
     arcLength: 0.9,
     rings: 1,
@@ -42,7 +44,7 @@ export function SkeletonOne() {
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
-  const colors = ["#d4d4d4", "#d4d4d4", "#d4d4d4"];
+  const colors = ['#d4d4d4', '#d4d4d4', '#d4d4d4'];
   const sampleArcs = [
     {
       order: 1,

@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [{ hostname: process.env.IMAGE_HOSTNAME || "localhost" }],
+    remotePatterns: [{ hostname: process.env.IMAGE_HOSTNAME || 'localhost' }],
   },
-  pageExtensions: ["ts", "tsx"],
+  pageExtensions: ['ts', 'tsx'],
   async redirects() {
     let redirections = [];
     try {

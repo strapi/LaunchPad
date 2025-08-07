@@ -1,12 +1,14 @@
-"use client";
-import { cn } from "@/lib/utils";
+'use client';
+
 import {
   motion,
   useMotionValueEvent,
   useScroll,
   useTransform,
-} from "framer-motion";
-import React, { CSSProperties, useRef, useState } from "react";
+} from 'framer-motion';
+import React, { CSSProperties, useRef, useState } from 'react';
+
+import { cn } from '@/lib/utils';
 
 export const GradientContainer = ({
   children,
@@ -18,7 +20,7 @@ export const GradientContainer = ({
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress, scrollY } = useScroll({
     target: ref,
-    offset: ["start end", "end end"],
+    offset: ['start end', 'end end'],
   });
 
   const limitedScrollYProgress = useTransform(
@@ -28,7 +30,7 @@ export const GradientContainer = ({
   );
 
   const [percentage, setPercentage] = useState(0);
-  useMotionValueEvent(limitedScrollYProgress, "change", (latest) => {
+  useMotionValueEvent(limitedScrollYProgress, 'change', (latest) => {
     const newPercentage = Math.min(
       100,
       Math.max(0, (latest - 0.1) * (100 / 0.9))
@@ -40,12 +42,12 @@ export const GradientContainer = ({
       ref={ref}
       style={
         {
-          "--top": "rgba(97, 106, 115, .12)",
-          "--bottom": "transparent",
-          "--conic-size": "600px",
+          '--top': 'rgba(97, 106, 115, .12)',
+          '--bottom': 'transparent',
+          '--conic-size': '600px',
         } as CSSProperties
       }
-      className={cn("relative z-20", className)}
+      className={cn('relative z-20', className)}
     >
       <motion.div
         className={`w-full h-[var(--conic-size)] mb-[calc(-1*var(--conic-size))] 

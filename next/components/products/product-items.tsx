@@ -1,32 +1,31 @@
-import React from "react";
-import { Product } from "@/types/types";
-import { formatNumber, truncate } from "@/lib/utils";
-import { Link } from "next-view-transitions";
-import { StrapiImage } from "@/components/ui/strapi-image";
+import { Link } from 'next-view-transitions';
+import React from 'react';
+
+import { StrapiImage } from '@/components/ui/strapi-image';
+import { formatNumber, truncate } from '@/lib/utils';
+import { Product } from '@/types/types';
 
 export const ProductItems = ({
-  heading = "Popular",
-  sub_heading = "Recently rose to popularity",
+  heading = 'Popular',
+  sub_heading = 'Recently rose to popularity',
   products,
   locale,
 }: {
   heading?: string;
   sub_heading?: string;
   products: Product[];
-  locale: string
+  locale: string;
 }) => {
   return (
     <div className="py-20">
       <h2 className="text-2xl md:text-4xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-white to-white mb-2">
         {heading}
       </h2>
-      <p className="text-neutral-500 text-lg mt-4 mb-10">
-        {sub_heading}
-      </p>
+      <p className="text-neutral-500 text-lg mt-4 mb-10">{sub_heading}</p>
       <div className="grid grid-cols-1 md:grid-cols-3  gap-20">
         {products.map((product) => (
           <ProductItem
-            key={"regular-product-item" + product.id}
+            key={'regular-product-item' + product.id}
             product={product}
             locale={locale}
           />
@@ -36,13 +35,22 @@ export const ProductItems = ({
   );
 };
 
-const ProductItem = ({ product, locale }: { product: Product, locale: string }) => {
+const ProductItem = ({
+  product,
+  locale,
+}: {
+  product: Product;
+  locale: string;
+}) => {
   return (
-    <Link href={`/${locale}/products/${product.slug}` as never} className="group relative block">
+    <Link
+      href={`/${locale}/products/${product.slug}` as never}
+      className="group relative block"
+    >
       <div className="relative border border-neutral-800  rounded-md overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black transition-all duration-200 z-30" />
 
-        <StrapiImage 
+        <StrapiImage
           src={product?.images?.[0].url}
           alt={product.name}
           width={600}

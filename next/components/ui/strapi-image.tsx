@@ -1,8 +1,9 @@
-import Image from "next/image";
 import { unstable_noStore as noStore } from 'next/cache';
+import Image from 'next/image';
 import { ComponentProps } from 'react';
 
-interface StrapiImageProps extends Omit<ComponentProps<typeof Image>, 'src' | 'alt'> {
+interface StrapiImageProps
+  extends Omit<ComponentProps<typeof Image>, 'src' | 'alt'> {
   src: string;
   alt: string | null;
 }
@@ -10,13 +11,13 @@ interface StrapiImageProps extends Omit<ComponentProps<typeof Image>, 'src' | 'a
 export function getStrapiMedia(url: string | null) {
   const strapiURL = process.env.NEXT_PUBLIC_API_URL;
   if (url == null) return null;
-  if (url.startsWith("data:")) return url;
-  if (url.startsWith("http") || url.startsWith("//")) return url;
-  if (url.startsWith("/")) {
-    if (!strapiURL && document?.location.host.endsWith(".strapidemo.com")) {
-      return `https://${document.location.host.replace("client-", "api-")}${url}`
+  if (url.startsWith('data:')) return url;
+  if (url.startsWith('http') || url.startsWith('//')) return url;
+  if (url.startsWith('/')) {
+    if (!strapiURL && document?.location.host.endsWith('.strapidemo.com')) {
+      return `https://${document.location.host.replace('client-', 'api-')}${url}`;
     }
-    return strapiURL + url
+    return strapiURL + url;
   }
   return `${strapiURL}${url}`;
 }
@@ -31,15 +32,11 @@ export function StrapiImage({
   const imageUrl = getStrapiMedia(src);
   if (!imageUrl) return null;
   return (
-    <Image 
+    <Image
       src={imageUrl}
-      alt={alt ?? "No alternative text provided"}
+      alt={alt ?? 'No alternative text provided'}
       className={className}
       {...rest}
     />
   );
 }
-
-
-
-

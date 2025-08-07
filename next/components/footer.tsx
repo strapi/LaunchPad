@@ -1,54 +1,59 @@
-import React from "react";
-import { Logo } from "@/components/logo";
-import { Link } from "next-view-transitions";
+import { Link } from 'next-view-transitions';
+import React from 'react';
 
-export const Footer = async ({ data, locale }: { data: any, locale: string }) => {
+import { Logo } from '@/components/logo';
+
+export const Footer = async ({
+  data,
+  locale,
+}: {
+  data: any;
+  locale: string;
+}) => {
   return (
     <div className="relative">
       <div className="border-t border-neutral-900 px-8 pt-20 pb-32 relative bg-primary">
         <div className="max-w-7xl mx-auto text-sm text-neutral-500 flex sm:flex-row flex-col justify-between items-start ">
           <div>
             <div className="mr-4  md:flex mb-4">
-              {data?.logo?.image && (
-                <Logo image={data?.logo?.image} />
-              )}
+              {data?.logo?.image && <Logo image={data?.logo?.image} />}
             </div>
             <div className="max-w-xs">{data?.description}</div>
             <div className="mt-4">{data?.copyright}</div>
             <div className="mt-10">
-              Designed and Developed by{" "}
+              Designed and Developed by{' '}
               <a className="text-white underline" href="https://aceternity.com">
                 Aceternity
-              </a>
-              {" "}&{" "}
+              </a>{' '}
+              &{' '}
               <a className="text-white underline" href="https://strapi.io">
                 Strapi
               </a>
             </div>
             <div className="mt-2">
-              built with{" "}
+              built with{' '}
               <a className="text-white underline" href="https://strapi.io">
                 Strapi
               </a>
-              ,{" "}
+              ,{' '}
               <a className="text-white underline" href="https://nextjs.org">
                 Next.js
               </a>
-              ,{" "}
+              ,{' '}
               <a
                 className="text-white underline"
                 href="https://tailwindcss.com"
               >
                 Tailwind CSS
               </a>
-              ,{" "}
+              ,{' '}
               <a
                 className="text-white underline"
                 href="https://framer.com/motion"
               >
                 Motion Animation Lib
               </a>
-              , and{" "}
+              , and{' '}
               <a
                 className="text-white underline"
                 href="https://ui.aceternity.com"
@@ -68,7 +73,13 @@ export const Footer = async ({ data, locale }: { data: any, locale: string }) =>
   );
 };
 
-const LinkSection = ({ links, locale }: { links: { text: string; URL: never | string }[], locale: string }) => (
+const LinkSection = ({
+  links,
+  locale,
+}: {
+  links: { text: string; URL: never | string }[];
+  locale: string;
+}) => (
   <div className="flex justify-center space-y-4 flex-col mt-4">
     {links.map((link) => (
       <Link

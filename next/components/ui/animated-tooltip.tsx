@@ -1,13 +1,15 @@
-"use client";
-import React, { useState } from "react";
+'use client';
+
 import {
-  motion,
-  useTransform,
   AnimatePresence,
+  motion,
   useMotionValue,
   useSpring,
-} from "framer-motion";
-import { StrapiImage } from "@/components/ui/strapi-image";
+  useTransform,
+} from 'framer-motion';
+import React, { useState } from 'react';
+
+import { StrapiImage } from '@/components/ui/strapi-image';
 
 export const AnimatedTooltip = ({
   items,
@@ -56,7 +58,7 @@ export const AnimatedTooltip = ({
                   y: 0,
                   scale: 1,
                   transition: {
-                    type: "spring",
+                    type: 'spring',
                     stiffness: 260,
                     damping: 10,
                   },
@@ -65,7 +67,7 @@ export const AnimatedTooltip = ({
                 style={{
                   translateX: translateX,
                   rotate: rotate,
-                  whiteSpace: "nowrap",
+                  whiteSpace: 'nowrap',
                 }}
                 className="absolute -top-16 -left-1/2 translate-x-1/2 flex text-xs  flex-col items-center justify-center rounded-md bg-black z-50 shadow-xl px-4 py-2"
               >
@@ -78,7 +80,7 @@ export const AnimatedTooltip = ({
               </motion.div>
             )}
           </AnimatePresence>
-          <StrapiImage 
+          <StrapiImage
             onMouseMove={handleMouseMove}
             height={100}
             width={100}

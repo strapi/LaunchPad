@@ -1,22 +1,19 @@
-import { draftMode } from 'next/headers'
-import { redirect } from 'next/navigation'
+import { draftMode } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 export const GET = async (request: Request) => {
-
-  const { searchParams } = new URL(request.url)
-  const secret = searchParams.get('secret')
-  const slug = searchParams.get('slug')
-  const locale = searchParams.get('locale')
-  const uid = searchParams.get('uid')
+  const { searchParams } = new URL(request.url);
+  const secret = searchParams.get('secret');
+  const slug = searchParams.get('slug');
+  const locale = searchParams.get('locale');
+  const uid = searchParams.get('uid');
   const status = searchParams.get('status');
 
-  if (
-    secret !== process.env.PREVIEW_SECRET
-  ) {
-    return new Response('Invalid token', { status: 401 })
+  if (secret !== process.env.PREVIEW_SECRET) {
+    return new Response('Invalid token', { status: 401 });
   }
 
-  const contentType = uid?.split(".").pop();
+  const contentType = uid?.split('.').pop();
 
   // Specific for the application
   let slugToReturn = `/${locale}/${contentType}`;
@@ -33,11 +30,11 @@ export const GET = async (request: Request) => {
     slugToReturn = `/en/products${slug ? `/${slug}` : ''}`;
   }
 
-  const draft = await draftMode()
+  const draft = await draftMode();
   if (status === 'draft') {
-    draft.enable()
+    draft.enable();
   } else {
-    draft.disable()
+    draft.disable();
   }
-  redirect(slugToReturn)
+  redirect(slugToReturn);
 };
