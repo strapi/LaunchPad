@@ -1,0 +1,2 @@
+yarn fix:format
+git add .

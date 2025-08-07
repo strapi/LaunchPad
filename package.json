@@ -4,6 +4,7 @@
   "description": "Next.js Launchpad Example powered by Strapi",
   "type": "module",
   "scripts": {
+    "prepare": "husky",
     "next": "yarn dev --prefix ../next/",
     "strapi": "yarn dev --prefix ../strapi/",
     "setup:next": "cd next && yarn && node --loader ts-node/esm ../scripts/copy-env.mts ./",
@@ -12,7 +13,10 @@
     "dev": "yarn concurrently \"cd strapi && yarn develop\" \"npx wait-on http://localhost:1337 && cd next && yarn dev\"",
     "seed": "cd strapi && yarn strapi import -f ./data/export_20250116105447.tar.gz --force",
     "export": "cd strapi && yarn strapi export --no-encrypt -f ./data/export_20250116105447",
-    "repo:upstream": "git fetch upstream && git merge upstream/main"
+    "repo:upstream": "git fetch upstream && git merge upstream/main",
+    "check:format": "prettier . --check --cache",
+    "fix:format": "prettier . --write --cache",
+    "fix": "yarn fix:format"
   },
   "dependencies": {
     "@types/node": "^22.5.2",
@@ -21,6 +25,10 @@
     "wait-on": "^8.0.1"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
     "ts-node": "^10.9.2"
-  }
+  },
+  "packageManager": "yarn@4.5.0"
 }
