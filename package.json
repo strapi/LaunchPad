@@ -16,7 +16,8 @@
     "repo:upstream": "git fetch upstream && git merge upstream/main",
     "check:format": "prettier . --check --cache",
     "fix:format": "prettier . --write --cache",
-    "fix": "yarn fix:format"
+    "fix": "yarn fix:format",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@types/node": "^22.5.2",
@@ -27,8 +28,14 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2"
+  },
+  "lint-staged": {
+    "next/**/*.{js,jsx,ts,tsx}": [
+      "cd next && yarn lint --fix"
+    ]
   },
   "packageManager": "yarn@4.5.0"
 }
