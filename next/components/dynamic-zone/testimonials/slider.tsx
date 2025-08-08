@@ -7,8 +7,6 @@ import { SparklesCore } from '../../ui/sparkles';
 import { StrapiImage } from '@/components/ui/strapi-image';
 import { cn } from '@/lib/utils';
 
-import { Transition } from '@headlessui/react';
-
 export const TestimonialsSlider = ({ testimonials }: { testimonials: any }) => {
   const [active, setActive] = useState<number>(0);
   const [autorotate, setAutorotate] = useState<boolean>(true);
