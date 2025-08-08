@@ -1,15 +1,17 @@
-"use client";
-import { truncate } from "@/lib/utils";
-import { format } from "date-fns";
-import { Link } from "next-view-transitions";
-import React, { useEffect, useState } from "react";
-import FuzzySearch from "fuzzy-search";
-import { Article } from "@/types/types";
+'use client';
+
+import { format } from 'date-fns';
+import FuzzySearch from 'fuzzy-search';
+import { Link } from 'next-view-transitions';
+import React, { useEffect, useState } from 'react';
+
+import { truncate } from '@/lib/utils';
+import { Article } from '@/types/types';
 
 export const BlogPostRows = ({ articles }: { articles: Article[] }) => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
-  const searcher = new FuzzySearch(articles, ["title"], {
+  const searcher = new FuzzySearch(articles, ['title'], {
     caseSensitive: false,
   });
 
@@ -63,7 +65,7 @@ export const BlogPostRow = ({ article }: { article: Article }) => {
 
         <div className="flex gap-2 items-center my-4">
           <p className="text-neutral-300 text-sm  max-w-xl group-hover:text-white transition duration-200">
-            {format(new Date(article.publishedAt), "MMMM dd, yyyy")}
+            {format(new Date(article.publishedAt), 'MMMM dd, yyyy')}
           </p>
           <div className="h-1 w-1 rounded-full bg-neutral-800"></div>
           <div className="flex gap-4 flex-wrap ">

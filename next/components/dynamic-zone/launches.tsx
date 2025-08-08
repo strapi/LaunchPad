@@ -1,18 +1,25 @@
-"use client";
-import { motion, useMotionValueEvent } from "framer-motion";
-import React, { useRef, useState } from "react";
-import { FeatureIconContainer } from "./features/feature-icon-container";
-import { Heading } from "../elements/heading";
-import { Subheading } from "../elements/subheading";
-import { StickyScroll } from "@/components/ui/sticky-scroll";
-import {
-  IconRocket,
-} from "@tabler/icons-react";
-import { useScroll } from "framer-motion";
+'use client';
 
+import { IconRocket } from '@tabler/icons-react';
+import { motion, useMotionValueEvent } from 'framer-motion';
+import { useScroll } from 'framer-motion';
+import React, { useRef, useState } from 'react';
 
-export const Launches = ({ heading, sub_heading, launches }: { heading: string; sub_heading: string; launches: any[] }) => {
-  const launchesWithDecoration = launches.map(entry => ({
+import { Heading } from '../elements/heading';
+import { Subheading } from '../elements/subheading';
+import { FeatureIconContainer } from './features/feature-icon-container';
+import { StickyScroll } from '@/components/ui/sticky-scroll';
+
+export const Launches = ({
+  heading,
+  sub_heading,
+  launches,
+}: {
+  heading: string;
+  sub_heading: string;
+  launches: any[];
+}) => {
+  const launchesWithDecoration = launches.map((entry) => ({
     ...entry,
     icon: <IconRocket className="h-8 w-8 text-secondary" />,
     content: (
@@ -25,14 +32,16 @@ export const Launches = ({ heading, sub_heading, launches }: { heading: string; 
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end start"],
+    offset: ['start end', 'end start'],
   });
-  const backgrounds = ["var(--charcoal)", "var(--zinc-900)", "var(--charcoal)"];
+  const backgrounds = ['var(--charcoal)', 'var(--zinc-900)', 'var(--charcoal)'];
 
   const [gradient, setGradient] = useState(backgrounds[0]);
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = launches.map((_, index) => index / launches.length);
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    const cardsBreakpoints = launches.map(
+      (_, index) => index / launches.length
+    );
     const closestBreakpointIndex = cardsBreakpoints.reduce(
       (acc, breakpoint, index) => {
         const distance = Math.abs(latest - breakpoint);
@@ -61,9 +70,7 @@ export const Launches = ({ heading, sub_heading, launches }: { heading: string; 
           <IconRocket className="h-6 w-6 text-white" />
         </FeatureIconContainer>
         <Heading className="mt-4">{heading}</Heading>
-        <Subheading>
-          {sub_heading}
-        </Subheading>
+        <Subheading>{sub_heading}</Subheading>
       </div>
       <StickyScroll content={launchesWithDecoration} />
     </motion.div>

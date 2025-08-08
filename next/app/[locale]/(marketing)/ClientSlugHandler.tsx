@@ -1,8 +1,9 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { useSlugContext } from "@/app/context/SlugContext";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+
+import { useSlugContext } from '@/app/context/SlugContext';
 
 export default function ClientSlugHandler({
   localizedSlugs,
@@ -13,7 +14,7 @@ export default function ClientSlugHandler({
 
   useEffect(() => {
     if (localizedSlugs) {
-      dispatch({ type: "SET_SLUGS", payload: localizedSlugs });
+      dispatch({ type: 'SET_SLUGS', payload: localizedSlugs });
     }
   }, [localizedSlugs, dispatch]);
 
@@ -23,18 +24,18 @@ export default function ClientSlugHandler({
     const handleMessage = async (message: MessageEvent<any>) => {
       if (
         message.origin === process.env.NEXT_PUBLIC_API_URL &&
-        message.data.type === "strapiUpdate"
+        message.data.type === 'strapiUpdate'
       ) {
         router.refresh();
       }
     };
 
     // Add the event listener
-    window.addEventListener("message", handleMessage);
+    window.addEventListener('message', handleMessage);
 
     // Cleanup the event listener on unmount
     return () => {
-      window.removeEventListener("message", handleMessage);
+      window.removeEventListener('message', handleMessage);
     };
   }, [router]);
 

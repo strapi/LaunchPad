@@ -1,12 +1,24 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { Button } from "../elements/button";
-import { AmbientColor } from "../decorations/ambient-color";
-import { Container } from "../container";
-import Link from "next/link";
+'use client';
 
-export const CTA = ({ heading, sub_heading, CTAs, locale }: { heading: string; sub_heading: string; CTAs: any[], locale: string }) => {
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import React from 'react';
+
+import { Container } from '../container';
+import { AmbientColor } from '../decorations/ambient-color';
+import { Button } from '../elements/button';
+
+export const CTA = ({
+  heading,
+  sub_heading,
+  CTAs,
+  locale,
+}: {
+  heading: string;
+  sub_heading: string;
+  CTAs: any[];
+  locale: string;
+}) => {
   return (
     <div className="relative py-40">
       <AmbientColor />
@@ -20,11 +32,18 @@ export const CTA = ({ heading, sub_heading, CTAs, locale }: { heading: string; s
           </p>
         </div>
         <div className="flex items-center gap-4">
-          {CTAs && CTAs.map((cta, index) => (
-            <Button as={Link} key={index} href={`/${locale}${cta.URL}`} variant={cta.variant} className="py-3">
-              {cta.text}
-            </Button>
-          ))}
+          {CTAs &&
+            CTAs.map((cta, index) => (
+              <Button
+                as={Link}
+                key={index}
+                href={`/${locale}${cta.URL}`}
+                variant={cta.variant}
+                className="py-3"
+              >
+                {cta.text}
+              </Button>
+            ))}
         </div>
       </Container>
     </div>

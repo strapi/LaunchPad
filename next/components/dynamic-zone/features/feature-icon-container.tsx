@@ -1,5 +1,6 @@
-import { cn } from "@/lib/utils";
-import React from "react";
+import React from 'react';
+
+import { cn } from '@/lib/utils';
 
 export const FeatureIconContainer = ({
   children,
@@ -12,16 +13,16 @@ export const FeatureIconContainer = ({
     <div className=" [perspective:400px] [transform-style:preserve-3d]">
       <div
         className={cn(
-          "h-14 w-14 p-[4px] rounded-md bg-gradient-to-b from-neutral-800  to-neutral-950 mx-auto relative"
+          'h-14 w-14 p-[4px] rounded-md bg-gradient-to-b from-neutral-800  to-neutral-950 mx-auto relative'
         )}
         style={{
-          transform: "rotateX(25deg)",
-          transformOrigin: "center",
+          transform: 'rotateX(25deg)',
+          transformOrigin: 'center',
         }}
       >
         <div
           className={cn(
-            "bg-charcoal rounded-[5px] h-full w-full relative z-20",
+            'bg-charcoal rounded-[5px] h-full w-full relative z-20',
             className
           )}
         >

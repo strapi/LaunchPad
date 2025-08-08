@@ -1,7 +1,9 @@
-"use client";
-import { cn } from "@/lib/utils";
-import { motion, useAnimate } from "framer-motion";
-import React, { useState } from "react";
+'use client';
+
+import { motion, useAnimate } from 'framer-motion';
+import React, { useState } from 'react';
+
+import { cn } from '@/lib/utils';
 
 export const SkeletonThree = () => {
   const [scope, animate] = useAnimate();
@@ -11,7 +13,7 @@ export const SkeletonThree = () => {
 
     setAnimating(true);
     await animate(
-      ".message",
+      '.message',
       {
         scale: [0, 1],
       },
@@ -134,21 +136,21 @@ export const SkeletonThree = () => {
               </filter>
               <motion.linearGradient
                 initial={{
-                  x1: "0%",
-                  y1: "0%",
-                  x2: "0%",
-                  y2: "0%",
+                  x1: '0%',
+                  y1: '0%',
+                  x2: '0%',
+                  y2: '0%',
                 }}
                 animate={{
-                  x1: "100%",
-                  y1: "0%",
-                  x2: "120%",
-                  y2: "0%",
+                  x1: '100%',
+                  y1: '0%',
+                  x2: '120%',
+                  y2: '0%',
                 }}
                 id="gradient-3"
                 transition={{
                   duration: Math.random() * (7 - 2) + 2,
-                  ease: "linear",
+                  ease: 'linear',
                   repeat: Infinity,
                 }}
               >
@@ -347,7 +349,7 @@ const Cover = ({
   return (
     <span
       className={cn(
-        "border rounded-md px-1 py-0.5 mr-1 border-indigo-500 bg-indigo-500/10 text-white",
+        'border rounded-md px-1 py-0.5 mr-1 border-indigo-500 bg-indigo-500/10 text-white',
         className
       )}
     >

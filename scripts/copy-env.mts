@@ -5,11 +5,11 @@ function copyEnvFile(targetDir: string): void {
   // Ensure targetDir is trimmed
   targetDir = targetDir.trim();
 
-  const examplePath: string = path.join(targetDir, ".env.example");
-  const envPath: string = path.join(targetDir, ".env");
+  const examplePath: string = path.join(targetDir, '.env.example');
+  const envPath: string = path.join(targetDir, '.env');
 
-  console.log("Attempting to copy from:", examplePath);
-  console.log("To:", envPath);
+  console.log('Attempting to copy from:', examplePath);
+  console.log('To:', envPath);
   // Check if .env.example exists
   fs.access(examplePath, fs.constants.F_OK, (err: Error | null) => {
     if (err) {
@@ -23,7 +23,7 @@ function copyEnvFile(targetDir: string): void {
         // .env file does not exist, copy .env.example to .env
         fs.copyFile(examplePath, envPath, (err: Error | null) => {
           if (err) {
-            console.error("Error occurred:", err);
+            console.error('Error occurred:', err);
             return;
           }
           console.log(`.env.example has been copied to ${envPath}`);
@@ -44,5 +44,5 @@ const directoryPath: string | undefined = process.argv[2]?.trim();
 if (directoryPath) {
   copyEnvFile(directoryPath);
 } else {
-  console.error("Please provide a directory path as an argument.");
+  console.error('Please provide a directory path as an argument.');
 }

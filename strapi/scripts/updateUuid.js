@@ -19,6 +19,10 @@ if (packageJson.strapi && packageJson.strapi.uuid === 'LAUNCHPAD') {
   } else {
   }
 
-  fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2), 'utf-8');
+  fs.writeFileSync(
+    packageJsonPath,
+    JSON.stringify(packageJson, null, 2),
+    'utf-8'
+  );
 } else {
 }

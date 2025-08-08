@@ -1,10 +1,17 @@
-import React from "react";
-import { formatNumber } from "@/lib/utils";
-import { Link } from "next-view-transitions";
-import { Product } from "@/types/types";
-import { StrapiImage } from "@/components/ui/strapi-image"
+import { Link } from 'next-view-transitions';
+import React from 'react';
 
-export const Featured = ({ products, locale }: { products: Product[], locale: string }) => {
+import { StrapiImage } from '@/components/ui/strapi-image';
+import { formatNumber } from '@/lib/utils';
+import { Product } from '@/types/types';
+
+export const Featured = ({
+  products,
+  locale,
+}: {
+  products: Product[];
+  locale: string;
+}) => {
   return (
     <div className="py-20">
       <h2 className="text-2xl md:text-4xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-white to-white mb-2">
@@ -27,7 +34,13 @@ export const Featured = ({ products, locale }: { products: Product[], locale: st
   );
 };
 
-const FeaturedItem = ({ product, locale }: { product: Product, locale:string }) => {
+const FeaturedItem = ({
+  product,
+  locale,
+}: {
+  product: Product;
+  locale: string;
+}) => {
   return (
     <Link
       href={`/${locale}/products/${product.slug}` as never}
@@ -40,7 +53,7 @@ const FeaturedItem = ({ product, locale }: { product: Product, locale:string }) 
           ${formatNumber(product.price)}
         </span>
       </div>
-      <StrapiImage 
+      <StrapiImage
         src={product.images?.[0].url}
         alt={product.name}
         width={1000}

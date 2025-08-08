@@ -1,6 +1,8 @@
-"use client";
-import React, { createContext, useContext, useState, useCallback } from "react";
-import { Product } from "@/types/types";
+'use client';
+
+import React, { createContext, useCallback, useContext, useState } from 'react';
+
+import { Product } from '@/types/types';
 
 type CartItem = {
   product: Product;
@@ -83,7 +85,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
 export const useCart = (): CartContextType => {
   const context = useContext(CartContext);
   if (context === undefined) {
-    throw new Error("useCart must be used within a CartProvider");
+    throw new Error('useCart must be used within a CartProvider');
   }
   return context;
 };

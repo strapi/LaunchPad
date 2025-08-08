@@ -33,7 +33,5 @@ export default {
       // 'zh',
     ],
   },
-  bootstrap(app: StrapiApp) {
-    
-  },
+  bootstrap(app: StrapiApp) {},
 };

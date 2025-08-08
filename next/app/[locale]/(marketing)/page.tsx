@@ -1,24 +1,23 @@
 import { Metadata } from 'next';
 
-import PageContent from '@/lib/shared/PageContent';
-import fetchContentType from '@/lib/strapi/fetchContentType';
-import { generateMetadataObject } from '@/lib/shared/metadata';
 import ClientSlugHandler from './ClientSlugHandler';
+import PageContent from '@/lib/shared/PageContent';
+import { generateMetadataObject } from '@/lib/shared/metadata';
+import fetchContentType from '@/lib/strapi/fetchContentType';
 
 export async function generateMetadata({
   params,
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-
   const pageData = await fetchContentType(
     'pages',
     {
       filters: {
-        slug: "homepage",
+        slug: 'homepage',
         locale: params.locale,
       },
-      populate: "seo.metaImage",
+      populate: 'seo.metaImage',
     },
     true
   );
@@ -28,13 +27,16 @@ export async function generateMetadata({
   return metadata;
 }
 
-export default async function HomePage({ params }: { params: { locale: string } }) {
-
+export default async function HomePage({
+  params,
+}: {
+  params: { locale: string };
+}) {
   const pageData = await fetchContentType(
     'pages',
     {
       filters: {
-        slug: "homepage",
+        slug: 'homepage',
         locale: params.locale,
       },
     },
@@ -43,14 +45,16 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
   const localizedSlugs = pageData.localizations?.reduce(
     (acc: Record<string, string>, localization: any) => {
-      acc[localization.locale] = "";
+      acc[localization.locale] = '';
       return acc;
     },
-    { [params.locale]: "" }
+    { [params.locale]: '' }
   );
 
-  return <>
-    <ClientSlugHandler localizedSlugs={localizedSlugs} />
-    <PageContent pageData={pageData} />
-  </>;
+  return (
+    <>
+      <ClientSlugHandler localizedSlugs={localizedSlugs} />
+      <PageContent pageData={pageData} />
+    </>
+  );
 }

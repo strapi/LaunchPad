@@ -1,7 +1,9 @@
-"use client";
-import React, { useCallback, useId, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
-import { SparklesCore } from "@/components/ui/sparkles";
+'use client';
+
+import React, { useCallback, useId, useRef, useState } from 'react';
+
+import { SparklesCore } from '@/components/ui/sparkles';
+import { cn } from '@/lib/utils';
 
 export const SkeletonTwo = () => {
   const [sliderXPercent, setSliderXPercent] = useState(50);
@@ -34,7 +36,7 @@ export const SkeletonTwo = () => {
         className="h-full w-px absolute top-0 m-auto z-30 bg-gradient-to-b from-transparent from-[10%] to-[90%] via-cyan-500 to-transparent"
         style={{
           left: `${sliderXPercent}%`,
-          top: "0",
+          top: '0',
         }}
       >
         <div className="w-36 h-full [mask-image:radial-gradient(100px_at_left,white,transparent)] absolute top-1/2 -translate-y-1/2 left-0 bg-gradient-to-r from-indigo-400 via-transparent to-transparent z-20 opacity-50" />
@@ -123,7 +125,7 @@ const Cover = ({
   return (
     <span
       className={cn(
-        "border rounded-md px-1 py-0.5 mr-1 border-indigo-500 bg-indigo-500/10 text-white",
+        'border rounded-md px-1 py-0.5 mr-1 border-indigo-500 bg-indigo-500/10 text-white',
         className
       )}
     >
@@ -160,7 +162,7 @@ const Cursor = ({
 }) => {
   return (
     <div
-      className={cn("absolute h-4 w-4  transition-all duration-200", className)}
+      className={cn('absolute h-4 w-4  transition-all duration-200', className)}
       {...props}
     >
       <svg
@@ -169,7 +171,7 @@ const Cursor = ({
         viewBox="0 0 19 19"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={cn("h-4 w-4  transition duration-200", className)}
+        className={cn('h-4 w-4  transition duration-200', className)}
       >
         <path
           d="M3.08365 1.18326C2.89589 1.11581 2.70538 1.04739 2.54453 1.00558C2.39192 0.965918 2.09732 0.900171 1.78145 1.00956C1.41932 1.13497 1.13472 1.41956 1.00932 1.78169C0.899927 2.09756 0.965674 2.39216 1.00533 2.54477C1.04714 2.70562 1.11557 2.89613 1.18301 3.0839L5.9571 16.3833C6.04091 16.6168 6.12128 16.8408 6.2006 17.0133C6.26761 17.1591 6.42 17.4781 6.75133 17.6584C7.11364 17.8555 7.54987 17.8612 7.91722 17.6737C8.25317 17.5021 8.41388 17.1873 8.48469 17.0433C8.56852 16.8729 8.65474 16.6511 8.74464 16.4198L10.8936 10.8939L16.4196 8.74489C16.6509 8.655 16.8726 8.56879 17.043 8.48498C17.187 8.41416 17.5018 8.25346 17.6734 7.91751C17.8609 7.55016 17.8552 7.11392 17.6581 6.75162C17.4778 6.42029 17.1589 6.2679 17.0131 6.20089C16.8405 6.12157 16.6165 6.0412 16.383 5.9574L3.08365 1.18326Z"
@@ -182,11 +184,11 @@ const Cursor = ({
       </svg>
       <div
         className={cn(
-          "absolute top-3 left-3 p-1 rounded-md  text-[10px] whitespace-pre text-neutral-500  transition duration-200",
+          'absolute top-3 left-3 p-1 rounded-md  text-[10px] whitespace-pre text-neutral-500  transition duration-200',
           textClassName
         )}
       >
-        {text ?? "Manu Arora"}
+        {text ?? 'Manu Arora'}
       </div>
     </div>
   );
@@ -203,14 +205,14 @@ const Container = ({
   return (
     <div
       className={cn(
-        "p-0.5 rounded-lg border border-neutral-600 w-fit",
+        'p-0.5 rounded-lg border border-neutral-600 w-fit',
         className
       )}
       {...props}
     >
       <div
         className={cn(
-          "h-10  text-xs px-2 text-neutral-400  rounded-[5px] flex items-center justify-center bg-neutral-900 shadow-[0px_0px_8px_0px_rgba(248,248,248,0.25)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]"
+          'h-10  text-xs px-2 text-neutral-400  rounded-[5px] flex items-center justify-center bg-neutral-900 shadow-[0px_0px_8px_0px_rgba(248,248,248,0.25)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]'
         )}
       >
         {children}
@@ -222,7 +224,7 @@ const Container = ({
 const CircleWithLine = ({ className }: { className?: string }) => {
   const id = useId();
   return (
-    <div className={cn("flex flex-col items-center justify-center", className)}>
+    <div className={cn('flex flex-col items-center justify-center', className)}>
       <div
         className={cn(`rounded-full h-3 w-3 border border-[rgba(255,255,255,0.2)] bg-[rgba(248,248,248,0.02)]
       shadow-[2px_4px_16px_0px_rgba(248,248,248,0.06)_inset]`)}

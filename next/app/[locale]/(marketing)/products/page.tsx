@@ -1,30 +1,32 @@
+import { IconShoppingCartUp } from '@tabler/icons-react';
 import { Metadata } from 'next';
 
-import { AmbientColor } from "@/components/decorations/ambient-color";
-import { Container } from "@/components/container";
-import { FeatureIconContainer } from "@/components/dynamic-zone/features/feature-icon-container";
-import { Heading } from "@/components/elements/heading";
-import { Featured } from "@/components/products/featured";
-import { ProductItems } from "@/components/products/product-items";
-import { Subheading } from "@/components/elements/subheading";
-import { IconShoppingCartUp } from "@tabler/icons-react";
-import fetchContentType from "@/lib/strapi/fetchContentType";
-import { generateMetadataObject } from '@/lib/shared/metadata';
-
 import ClientSlugHandler from '../ClientSlugHandler';
+import { Container } from '@/components/container';
+import { AmbientColor } from '@/components/decorations/ambient-color';
+import { FeatureIconContainer } from '@/components/dynamic-zone/features/feature-icon-container';
+import { Heading } from '@/components/elements/heading';
+import { Subheading } from '@/components/elements/subheading';
+import { Featured } from '@/components/products/featured';
+import { ProductItems } from '@/components/products/product-items';
+import { generateMetadataObject } from '@/lib/shared/metadata';
+import fetchContentType from '@/lib/strapi/fetchContentType';
 
 export async function generateMetadata({
   params,
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-
-  const pageData = await fetchContentType("product-page", {
-    filters: {
-      locale: params.locale,
+  const pageData = await fetchContentType(
+    'product-page',
+    {
+      filters: {
+        locale: params.locale,
+      },
+      populate: 'seo.metaImage',
     },
-    populate: "seo.metaImage",
-  }, true)
+    true
+  );
 
   const seo = pageData?.seo;
   const metadata = generateMetadataObject(seo);
@@ -36,23 +38,28 @@ export default async function Products({
 }: {
   params: { locale: string };
 }) {
-
   // Fetch the product-page and products data
-  const productPage = await fetchContentType('product-page', {
-    filters: {
-      locale: params.locale,
+  const productPage = await fetchContentType(
+    'product-page',
+    {
+      filters: {
+        locale: params.locale,
+      },
     },
-  }, true);
+    true
+  );
   const products = await fetchContentType('products');
 
   const localizedSlugs = productPage.localizations?.reduce(
     (acc: Record<string, string>, localization: any) => {
-      acc[localization.locale] = "products";
+      acc[localization.locale] = 'products';
       return acc;
     },
-    { [params.locale]: "products" }
+    { [params.locale]: 'products' }
   );
-  const featured = products?.data.filter((product: { featured: boolean }) => product.featured);
+  const featured = products?.data.filter(
+    (product: { featured: boolean }) => product.featured
+  );
 
   return (
     <div className="relative overflow-hidden w-full">

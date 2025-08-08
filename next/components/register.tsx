@@ -1,12 +1,14 @@
-"use client";
-import React from "react";
-import { Container } from "./container";
-import { Logo } from "./logo";
+'use client';
+
 import {
   IconBrandGithubFilled,
   IconBrandGoogleFilled,
-} from "@tabler/icons-react";
-import { Button } from "./elements/button";
+} from '@tabler/icons-react';
+import React from 'react';
+
+import { Container } from './container';
+import { Button } from './elements/button';
+import { Logo } from './logo';
 
 export const Register = () => {
   return (
