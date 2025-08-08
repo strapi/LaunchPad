@@ -1,3 +1,1 @@
-yarn fix:format
-git add .
 yarn lint-staged
