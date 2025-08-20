@@ -52,14 +52,16 @@ export default async function fetchContentType(
     });
 
     if (!response.ok) {
-      throw new Error(
-        `Failed to fetch data from Strapi (url=${url.toString()}, status=${response.status})`
-      );
+      console.error(`Failed to fetch data from Strapi (url=${url.toString()}, status=${response.status})`);
+      // Return appropriate fallback based on expected data structure
+      return spreadData ? null : { data: [] };
     }
     const jsonData: StrapiResponse = await response.json();
     return spreadData ? spreadStrapiData(jsonData) : jsonData;
   } catch (error) {
     // Log any errors that occur during the fetch process
     console.error('FetchContentTypeError', error);
+    // Return appropriate fallback based on expected data structure
+    return spreadData ? null : { data: [] };
   }
 }

@@ -137,15 +137,15 @@ const Cover = ({
 const BackgroundLines = () => {
   return (
     <div className="absolute inset-0 h-full w-full flex flex-row gap-4 justify-center flex-shrink-0 ">
-      <CircleWithLine />
-      <CircleWithLine />
-      <CircleWithLine />
-      <CircleWithLine />
-      <CircleWithLine />
-      <CircleWithLine />
-      <CircleWithLine />
-      <CircleWithLine />
-      <CircleWithLine />
+      <CircleWithLine index={0} />
+      <CircleWithLine index={1} />
+      <CircleWithLine index={2} />
+      <CircleWithLine index={3} />
+      <CircleWithLine index={4} />
+      <CircleWithLine index={5} />
+      <CircleWithLine index={6} />
+      <CircleWithLine index={7} />
+      <CircleWithLine index={8} />
     </div>
   );
 };
@@ -221,8 +221,8 @@ const Container = ({
   );
 };
 
-const CircleWithLine = ({ className }: { className?: string }) => {
-  const id = useId();
+const CircleWithLine = ({ className, index = 0 }: { className?: string; index?: number }) => {
+  const id = `circle-line-${index}`;
   return (
     <div className={cn('flex flex-col items-center justify-center', className)}>
       <div

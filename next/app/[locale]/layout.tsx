@@ -17,53 +17,57 @@ const inter = Inter({
 });
 
 // Default Global SEO for pages without them
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string; slug: string };
-}): Promise<Metadata> {
-  const pageData = await fetchContentType(
-    'global',
-    {
-      filters: { locale: params.locale },
-      populate: 'seo.metaImage',
-    },
-    true
-  );
+export async function generateMetadata(
+    props: {
+        params: Promise<{ locale: string; slug: string }>;
+    }
+): Promise<Metadata> {
+    const params = await props.params;
+    const pageData = await fetchContentType(
+        'global',
+        {
+            filters: { locale: params.locale },
+            populate: "seo.metaImage",
+        },
+        true
+    );
 
   const seo = pageData?.seo;
   const metadata = generateMetadataObject(seo);
   return metadata;
 }
 
-export default async function LocaleLayout({
-  children,
-  params: { locale },
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
-  const pageData = await fetchContentType(
-    'global',
-    { filters: { locale } },
-    true
-  );
-  return (
-    <html lang={locale}>
-      <ViewTransitions>
-        <CartProvider>
-          <body
-            className={cn(
-              inter.className,
-              'bg-charcoal antialiased h-full w-full'
-            )}
-          >
-            <Navbar data={pageData.navbar} locale={locale} />
-            {children}
-            <Footer data={pageData.footer} locale={locale} />
-          </body>
-        </CartProvider>
-      </ViewTransitions>
-    </html>
-  );
+export default async function LocaleLayout(
+    props: {
+        children: React.ReactNode;
+        params: Promise<{ locale: string }>;
+    }
+) {
+    const params = await props.params;
+
+    const {
+        locale
+    } = params;
+
+    const {
+        children
+    } = props;
+
+    const pageData = await fetchContentType('global', { filters: { locale } }, true);
+    return (
+        <ViewTransitions>
+            <CartProvider>
+                <div
+                    className={cn(
+                        inter.className,
+                        "bg-charcoal antialiased h-full w-full"
+                    )}
+                >
+                    <Navbar data={pageData.navbar} locale={locale} />
+                    {children}
+                    <Footer data={pageData.footer} locale={locale} />
+                </div>
+            </CartProvider>
+        </ViewTransitions>
+    );
 }

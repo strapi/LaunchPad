@@ -12,32 +12,31 @@ import { ProductItems } from '@/components/products/product-items';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import fetchContentType from '@/lib/strapi/fetchContentType';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string };
-}): Promise<Metadata> {
-  const pageData = await fetchContentType(
-    'product-page',
-    {
-      filters: {
-        locale: params.locale,
-      },
-      populate: 'seo.metaImage',
+export async function generateMetadata(
+  props: {
+    params: Promise<{ locale: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
+
+  const pageData = await fetchContentType("product-page", {
+    filters: {
+      locale: params.locale,
     },
-    true
-  );
+  }, true);
 
   const seo = pageData?.seo;
   const metadata = generateMetadataObject(seo);
   return metadata;
 }
 
-export default async function Products({
-  params,
-}: {
-  params: { locale: string };
-}) {
+export default async function Products(
+  props: {
+    params: Promise<{ locale: string }>;
+  }
+) {
+  const params = await props.params;
+
   // Fetch the product-page and products data
   const productPage = await fetchContentType(
     'product-page',
