@@ -1,6 +1,8 @@
-"use client";
-import React from "react";
-import { motion, HTMLMotionProps } from "framer-motion";
+'use client';
+
+import { HTMLMotionProps, motion } from 'framer-motion';
+import React from 'react';
+
 export const Cover = ({ children }: { children?: React.ReactNode }) => {
   return (
     <div className="relative inline-block bg-neutral-900 px-2 py-1">
@@ -32,8 +34,8 @@ export const CircleIcon = ({
         duration: 1,
         delay: delay ?? 0,
         repeat: Infinity,
-        repeatType: "reverse" as const,
-        ease: "linear",
+        repeatType: 'reverse' as const,
+        ease: 'linear',
         repeatDelay: delay,
       }}
       className={`pointer-events-none h-2 w-2 rounded-full bg-white opacity-20 ${className ?? ''}`}

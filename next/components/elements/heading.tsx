@@ -1,7 +1,8 @@
-import { cn } from "@/lib/utils";
-import { MotionProps } from "framer-motion";
-import React from "react";
-import Balancer from "react-wrap-balancer";
+import { MotionProps } from 'framer-motion';
+import React from 'react';
+import Balancer from 'react-wrap-balancer';
+
+import { cn } from '@/lib/utils';
 
 export const Heading = ({
   className,
@@ -13,7 +14,7 @@ export const Heading = ({
   className?: string;
   as?: any;
   children: any;
-  size?: "sm" | "md" | "xl" | "2xl";
+  size?: 'sm' | 'md' | 'xl' | '2xl';
   props?: React.HTMLAttributes<HTMLHeadingElement>;
 } & MotionProps &
   React.HTMLAttributes<HTMLHeadingElement>) => {

@@ -52,7 +52,9 @@ export default async function fetchContentType(
     });
 
     if (!response.ok) {
-      console.error(`Failed to fetch data from Strapi (url=${url.toString()}, status=${response.status})`);
+      console.error(
+        `Failed to fetch data from Strapi (url=${url.toString()}, status=${response.status})`
+      );
       // Return appropriate fallback based on expected data structure
       return spreadData ? null : { data: [] };
     }

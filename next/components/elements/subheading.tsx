@@ -1,7 +1,8 @@
-import { cn } from "@/lib/utils";
-import { MotionProps } from "framer-motion";
-import React from "react";
-import Balancer from "react-wrap-balancer";
+import { MotionProps } from 'framer-motion';
+import React from 'react';
+import Balancer from 'react-wrap-balancer';
+
+import { cn } from '@/lib/utils';
 
 export const Subheading = ({
   className,

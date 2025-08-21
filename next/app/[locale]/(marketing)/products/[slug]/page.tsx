@@ -8,33 +8,37 @@ import { SingleProduct } from '@/components/products/single-product';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import fetchContentType from '@/lib/strapi/fetchContentType';
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ locale: string, slug: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
 
-  const pageData = await fetchContentType("products", {
-    filters: { slug: params.slug },
-    populate: "seo.metaImage",
-  }, true)
+  const pageData = await fetchContentType(
+    'products',
+    {
+      filters: { slug: params.slug },
+      populate: 'seo.metaImage',
+    },
+    true
+  );
 
   const seo = pageData?.seo;
   const metadata = generateMetadataObject(seo);
   return metadata;
 }
 
-export default async function SingleProductPage(
-  props: {
-    params: Promise<{ slug: string, locale: string }>;
-  }
-) {
+export default async function SingleProductPage(props: {
+  params: Promise<{ slug: string; locale: string }>;
+}) {
   const params = await props.params;
 
-  const product = await fetchContentType("products", {
-    filters: { slug: params.slug },
-  }, true)
+  const product = await fetchContentType(
+    'products',
+    {
+      filters: { slug: params.slug },
+    },
+    true
+  );
 
   if (!product) {
     redirect('/products');

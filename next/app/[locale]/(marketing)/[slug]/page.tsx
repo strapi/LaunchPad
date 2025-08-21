@@ -5,11 +5,9 @@ import PageContent from '@/lib/shared/PageContent';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import fetchContentType from '@/lib/strapi/fetchContentType';
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ locale: string; slug: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const pageData = await fetchContentType(
     'pages',
@@ -28,7 +26,9 @@ export async function generateMetadata(
   return metadata;
 }
 
-export default async function Page(props: { params: Promise<{ locale: string, slug: string }> }) {
+export default async function Page(props: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
   const params = await props.params;
   const pageData = await fetchContentType(
     'pages',

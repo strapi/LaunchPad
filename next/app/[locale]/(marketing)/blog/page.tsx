@@ -13,34 +13,42 @@ import { generateMetadataObject } from '@/lib/shared/metadata';
 import fetchContentType from '@/lib/strapi/fetchContentType';
 import { Article } from '@/types/types';
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ locale: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
-  const pageData = await fetchContentType('blog-page', {
-    filters: { locale: params.locale },
-    populate: "seo.metaImage",
-  }, true)
+  const pageData = await fetchContentType(
+    'blog-page',
+    {
+      filters: { locale: params.locale },
+      populate: 'seo.metaImage',
+    },
+    true
+  );
 
   const seo = pageData?.seo;
   const metadata = generateMetadataObject(seo);
   return metadata;
 }
 
-export default async function Blog(
-  props: {
-    params: Promise<{ locale: string, slug: string }>;
-  }
-) {
+export default async function Blog(props: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
   const params = await props.params;
-  const blogPage = await fetchContentType('blog-page', {
-    filters: { locale: params.locale },
-  }, true)
-  const articles = await fetchContentType('articles', {
-    filters: { locale: params.locale },
-  }, false)
+  const blogPage = await fetchContentType(
+    'blog-page',
+    {
+      filters: { locale: params.locale },
+    },
+    true
+  );
+  const articles = await fetchContentType(
+    'articles',
+    {
+      filters: { locale: params.locale },
+    },
+    false
+  );
 
   const localizedSlugs = blogPage.localizations?.reduce(
     (acc: Record<string, string>, localization: any) => {

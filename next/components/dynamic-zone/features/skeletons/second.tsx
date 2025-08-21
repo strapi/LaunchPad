@@ -221,7 +221,13 @@ const Container = ({
   );
 };
 
-const CircleWithLine = ({ className, index = 0 }: { className?: string; index?: number }) => {
+const CircleWithLine = ({
+  className,
+  index = 0,
+}: {
+  className?: string;
+  index?: number;
+}) => {
   const id = `circle-line-${index}`;
   return (
     <div className={cn('flex flex-col items-center justify-center', className)}>
