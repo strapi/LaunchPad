@@ -41,7 +41,7 @@
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
-    "three": "^0.167.0",
+    "three": "^0.168.0",
     "three-globe": "^2.31.1"
   },
   "devDependencies": {

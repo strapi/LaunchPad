@@ -4582,7 +4582,7 @@ __metadata:
     tailwind-merge: "npm:^2.4.0"
     tailwindcss: "npm:^3.4.1"
     tailwindcss-animate: "npm:^1.0.7"
-    three: "npm:^0.167.0"
+    three: "npm:^0.168.0"
     three-globe: "npm:^2.31.1"
     typescript: "npm:5.6.2"
   languageName: unknown
@@ -6108,10 +6108,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"three@npm:^0.167.0":
-  version: 0.167.0
-  resolution: "three@npm:0.167.0"
-  checksum: 10c0/2e6f3afb1b3430444a1212e1de27f0c43f9ae095506617f1852f2159026b74ffb174ff79ad9a5a3b66d01800aee0e31b7c2d029f7e83d0e2722404a33323ec5b
+"three@npm:^0.168.0":
+  version: 0.168.0
+  resolution: "three@npm:0.168.0"
+  checksum: 10c0/04aa53e64a61f31edd9631e57fe697752c9d358bd96e1344206d05e981507a6dae5c9da4e3b8d9ec7c6c8fc49732fd3f23d3675d126fe9bc1936894bbee6cc98
   languageName: node
   linkType: hard
 
