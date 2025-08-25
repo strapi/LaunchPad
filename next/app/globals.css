@@ -1,7 +1,7 @@
+@import './prism.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import './prism.css';
 
 :root {
   --foreground-rgb: 255, 255, 255;

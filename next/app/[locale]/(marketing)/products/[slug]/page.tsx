@@ -8,11 +8,11 @@ import { SingleProduct } from '@/components/products/single-product';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import fetchContentType from '@/lib/strapi/fetchContentType';
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string; slug: string };
+export async function generateMetadata(props: {
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
+  const params = await props.params;
+
   const pageData = await fetchContentType(
     'products',
     {
@@ -27,11 +27,11 @@ export async function generateMetadata({
   return metadata;
 }
 
-export default async function SingleProductPage({
-  params,
-}: {
-  params: { slug: string; locale: string };
+export default async function SingleProductPage(props: {
+  params: Promise<{ slug: string; locale: string }>;
 }) {
+  const params = await props.params;
+
   const product = await fetchContentType(
     'products',
     {

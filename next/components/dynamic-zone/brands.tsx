@@ -72,7 +72,7 @@ export const Brands = ({
                 delay: 0.1 * idx,
                 ease: [0.4, 0, 0.2, 1],
               }}
-              key={logo.title}
+              key={logo.title || `logo-${idx}`}
               className="relative"
             >
               <StrapiImage

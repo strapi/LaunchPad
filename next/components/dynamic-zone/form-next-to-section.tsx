@@ -64,8 +64,8 @@ export function FormNextToSection({
             <div>
               <form className="space-y-4">
                 {form &&
-                  form?.inputs?.map((input: any) => (
-                    <>
+                  form?.inputs?.map((input: any, index: number) => (
+                    <div key={`form-input-${index}`}>
                       {input.type !== 'submit' && (
                         <label
                           htmlFor="name"
@@ -98,7 +98,7 @@ export function FormNextToSection({
                           />
                         )}
                       </div>
-                    </>
+                    </div>
                   ))}
               </form>
             </div>

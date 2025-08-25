@@ -17,11 +17,10 @@ const inter = Inter({
 });
 
 // Default Global SEO for pages without them
-export async function generateMetadata({
-  params,
-}: {
-  params: { locale: string; slug: string };
+export async function generateMetadata(props: {
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
+  const params = await props.params;
   const pageData = await fetchContentType(
     'global',
     {
@@ -36,34 +35,35 @@ export async function generateMetadata({
   return metadata;
 }
 
-export default async function LocaleLayout({
-  children,
-  params: { locale },
-}: {
+export default async function LocaleLayout(props: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const params = await props.params;
+
+  const { locale } = params;
+
+  const { children } = props;
+
   const pageData = await fetchContentType(
     'global',
     { filters: { locale } },
     true
   );
   return (
-    <html lang={locale}>
-      <ViewTransitions>
-        <CartProvider>
-          <body
-            className={cn(
-              inter.className,
-              'bg-charcoal antialiased h-full w-full'
-            )}
-          >
-            <Navbar data={pageData.navbar} locale={locale} />
-            {children}
-            <Footer data={pageData.footer} locale={locale} />
-          </body>
-        </CartProvider>
-      </ViewTransitions>
-    </html>
+    <ViewTransitions>
+      <CartProvider>
+        <div
+          className={cn(
+            inter.className,
+            'bg-charcoal antialiased h-full w-full'
+          )}
+        >
+          <Navbar data={pageData.navbar} locale={locale} />
+          {children}
+          <Footer data={pageData.footer} locale={locale} />
+        </div>
+      </CartProvider>
+    </ViewTransitions>
   );
 }
