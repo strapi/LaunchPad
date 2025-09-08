@@ -33,12 +33,12 @@ export default async function fetchContentType(
   params: Record<string, unknown> = {},
   spreadData?: boolean
 ): Promise<any> {
-  const { isEnabled } = await draftMode();
+  const { isEnabled: isDraftMode } = await draftMode();
 
   try {
     const queryParams = { ...params };
 
-    if (isEnabled) {
+    if (isDraftMode) {
       queryParams.status = 'draft';
     }
 
@@ -50,7 +50,7 @@ export default async function fetchContentType(
       method: 'GET',
       cache: 'no-store',
       headers: {
-        'strapi-encode-source-maps': 'true',
+        'strapi-encode-source-maps': isDraftMode ? 'true' : 'false',
       },
     });
 
