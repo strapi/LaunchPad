@@ -49,6 +49,9 @@ export default async function fetchContentType(
     const response = await fetch(`${url.href}?${qs.stringify(queryParams)}`, {
       method: 'GET',
       cache: 'no-store',
+      headers: {
+        'strapi-encode-source-maps': 'true',
+      },
     });
 
     if (!response.ok) {
