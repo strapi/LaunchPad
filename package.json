@@ -39,5 +39,6 @@
     "next/**/*.{js,jsx,ts,tsx}": [
       "cd next && yarn lint --fix"
     ]
-  }
+  },
+  "packageManager": "yarn@4.5.0"
 }
