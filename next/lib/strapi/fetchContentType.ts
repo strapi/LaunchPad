@@ -33,12 +33,12 @@ export default async function fetchContentType(
   params: Record<string, unknown> = {},
   spreadData?: boolean
 ): Promise<any> {
-  const { isEnabled } = await draftMode();
+  const { isEnabled: isDraftMode } = await draftMode();
 
   try {
     const queryParams = { ...params };
 
-    if (isEnabled) {
+    if (isDraftMode) {
       queryParams.status = 'draft';
     }
 
@@ -49,6 +49,9 @@ export default async function fetchContentType(
     const response = await fetch(`${url.href}?${qs.stringify(queryParams)}`, {
       method: 'GET',
       cache: 'no-store',
+      headers: {
+        'strapi-encode-source-maps': isDraftMode ? 'true' : 'false',
+      },
     });
 
     if (!response.ok) {
