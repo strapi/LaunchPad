@@ -5,6 +5,7 @@ import { Locale, i18n } from '@/i18n.config';
 import './globals.css';
 
 import { SlugProvider } from './context/SlugContext';
+import { Preview } from '@/components/preview';
 
 export const viewport: Viewport = {
   themeColor: [
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
+        <Preview />
         <SlugProvider>{children}</SlugProvider>
       </body>
     </html>
