@@ -29,8 +29,13 @@ export async function generateMetadata(props: {
 
 export default async function HomePage(props: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const params = await props.params;
+  const searchParams = await props.searchParams;
+
+  // Check if draft mode is enabled
+  const isDraftMode = searchParams.draft === 'true';
 
   const pageData = await fetchContentType(
     'pages',
@@ -40,7 +45,8 @@ export default async function HomePage(props: {
         locale: params.locale,
       },
     },
-    true
+    true,
+    isDraftMode
   );
 
   const localizedSlugs = pageData.localizations?.reduce(

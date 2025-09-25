@@ -1,4 +1,3 @@
-import { draftMode } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 export const GET = async (request: Request) => {
@@ -13,15 +12,16 @@ export const GET = async (request: Request) => {
     return new Response('Invalid token', { status: 401 });
   }
 
-  const draft = await draftMode();
+  // Instead of using cookies, pass the status as a query parameter
+  const redirectUrl = new URL(url, request.url);
 
-  if (status === 'published') {
-    // Make sure draft mode is disabled so we only query published content
-    draft.disable();
+  if (status === 'draft') {
+    redirectUrl.searchParams.set('draft', 'true');
   } else {
-    // Enable draft mode so we can query draft content
-    draft.enable();
+    // For published content, don't add any parameter (clean URL)
+    redirectUrl.searchParams.delete('draft');
   }
 
-  redirect(url);
+  redirect(redirectUrl.toString());
 };
+

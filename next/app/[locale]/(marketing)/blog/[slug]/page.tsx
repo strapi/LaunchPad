@@ -7,8 +7,14 @@ import fetchContentType from '@/lib/strapi/fetchContentType';
 
 export default async function SingleArticlePage(props: {
   params: Promise<{ slug: string; locale: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const params = await props.params;
+  const searchParams = await props.searchParams;
+
+  // Check if draft mode is enabled
+  const isDraftMode = searchParams.draft === 'true';
+
   const article = await fetchContentType(
     'articles',
     {
@@ -17,7 +23,8 @@ export default async function SingleArticlePage(props: {
         locale: params.locale,
       },
     },
-    true
+    true,
+    isDraftMode
   );
 
   if (!article) {

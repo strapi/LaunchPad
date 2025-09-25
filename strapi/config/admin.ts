@@ -56,11 +56,14 @@ export default ({ env }) => {
             return null;
           }
 
+          // Normalize status for consistent handling
+          const normalizedStatus = status === 'draft' ? 'draft' : 'published';
+
           // Use Next.js draft mode
           const urlSearchParams = new URLSearchParams({
             url: `/${locale ?? 'en'}${pathname}`,
             secret: previewSecret,
-            status,
+            status: normalizedStatus,
           });
 
           return `${clientUrl}/api/preview?${urlSearchParams}`;

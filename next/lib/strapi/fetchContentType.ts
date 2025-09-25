@@ -1,4 +1,3 @@
-import { draftMode } from 'next/headers';
 import qs from 'qs';
 
 /**
@@ -6,6 +5,8 @@ import qs from 'qs';
  *
  * @param {string} contentType - The type of content to fetch from Strapi.
  * @param {string} params - Query parameters to append to the API request.
+ * @param {boolean} spreadData - Whether to spread the data
+ * @param {boolean} isDraftMode - Whether to fetch draft or published content
  * @return {Promise<object>} The fetched data.
  */
 
@@ -31,16 +32,14 @@ export function spreadStrapiData(data: StrapiResponse): StrapiData | null {
 export default async function fetchContentType(
   contentType: string,
   params: Record<string, unknown> = {},
-  spreadData?: boolean
+  spreadData?: boolean,
+  isDraftMode: boolean = false
 ): Promise<any> {
-  const { isEnabled: isDraftMode } = await draftMode();
-
   try {
     const queryParams = { ...params };
 
-    if (isDraftMode) {
-      queryParams.status = 'draft';
-    }
+    // Set status based on draft mode parameter
+    queryParams.status = isDraftMode ? 'draft' : 'published';
 
     // Construct the full URL for the API request
     const url = new URL(`api/${contentType}`, process.env.NEXT_PUBLIC_API_URL);
