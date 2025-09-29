@@ -1,8 +1,10 @@
+import { draftMode } from 'next/headers';
 import { Metadata } from 'next';
 import { ViewTransitions } from 'next-view-transitions';
 import { Inter } from 'next/font/google';
 import React from 'react';
 
+import { DraftModeBanner } from '@/components/draft-mode-banner';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
 import { CartProvider } from '@/context/cart-context';
@@ -45,6 +47,8 @@ export default async function LocaleLayout(props: {
 
   const { children } = props;
 
+  const { isEnabled: isDraftMode } = await draftMode();
+
   const pageData = await fetchContentType(
     'global',
     { filters: { locale } },
@@ -62,6 +66,7 @@ export default async function LocaleLayout(props: {
           <Navbar data={pageData.navbar} locale={locale} />
           {children}
           <Footer data={pageData.footer} locale={locale} />
+          {isDraftMode && <DraftModeBanner />}
         </div>
       </CartProvider>
     </ViewTransitions>
