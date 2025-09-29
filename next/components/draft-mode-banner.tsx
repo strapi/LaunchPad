@@ -1,10 +1,11 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export function DraftModeBanner() {
   const router = useRouter();
+  const pathname = usePathname();
   const [isExiting, setIsExiting] = useState(false);
 
   const handleExitDraft = async () => {
