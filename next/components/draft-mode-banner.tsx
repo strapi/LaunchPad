@@ -10,8 +10,7 @@ export function DraftModeBanner() {
   const handleExitDraft = async () => {
     setIsExiting(true);
     try {
-      const currentPath = window.location.pathname;
-      await fetch(`/api/exit-preview?redirect=${encodeURIComponent(currentPath)}`);
+      await fetch('/api/exit-preview');
       router.refresh();
     } catch (error) {
       console.error('Failed to exit draft mode:', error);
