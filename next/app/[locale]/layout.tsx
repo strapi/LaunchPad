@@ -1,12 +1,13 @@
-import { draftMode } from 'next/headers';
 import { Metadata } from 'next';
 import { ViewTransitions } from 'next-view-transitions';
 import { Inter } from 'next/font/google';
+import { draftMode } from 'next/headers';
 import React from 'react';
 
 import { DraftModeBanner } from '@/components/draft-mode-banner';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
+import { AIToast } from '@/components/toast';
 import { CartProvider } from '@/context/cart-context';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import fetchContentType from '@/lib/strapi/fetchContentType';
@@ -66,6 +67,7 @@ export default async function LocaleLayout(props: {
           <Navbar data={pageData.navbar} locale={locale} />
           {children}
           <Footer data={pageData.footer} locale={locale} />
+          <AIToast />
           {isDraftMode && <DraftModeBanner />}
         </div>
       </CartProvider>
