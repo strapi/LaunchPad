@@ -1,0 +1,90 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_profiles",
+  "info": {
+    "singularName": "user-profile",
+    "pluralName": "user-profiles",
+    "displayName": "User Profile",
+    "description": "Extended user profile information"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "displayName": {
+      "type": "string",
+      "required": false
+    },
+    "bio": {
+      "type": "text",
+      "required": false
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "company": {
+      "type": "string",
+      "required": false
+    },
+    "website": {
+      "type": "string",
+      "required": false
+    },
+    "timezone": {
+      "type": "string",
+      "default": "UTC"
+    },
+    "language": {
+      "type": "string",
+      "default": "en"
+    },
+    "preferences": {
+      "type": "json",
+      "required": true,
+      "default": {
+        "emailNotifications": true,
+        "pushNotifications": true,
+        "autoPublish": false,
+        "defaultPlatforms": [],
+        "theme": "light"
+      }
+    },
+    "connectedAccounts": {
+      "type": "json",
+      "required": false,
+      "default": []
+    },
+    "apiKeys": {
+      "type": "json",
+      "required": false,
+      "default": [],
+      "private": true
+    },
+    "twoFactorEnabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "lastLoginAt": {
+      "type": "datetime",
+      "required": false
+    },
+    "lastLoginIp": {
+      "type": "string",
+      "required": false
+    },
+    "metadata": {
+      "type": "json",
+      "required": false,
+      "default": {}
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
