@@ -1,0 +1,81 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_posts",
+  "info": {
+    "singularName": "social-post",
+    "pluralName": "social-posts",
+    "displayName": "Social Post",
+    "description": "Social media posts for multi-platform publishing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "videos"]
+    },
+    "scheduledTime": {
+      "type": "datetime",
+      "required": false
+    },
+    "platforms": {
+      "type": "json",
+      "required": true,
+      "default": []
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["draft", "scheduled", "published", "failed"],
+      "default": "draft",
+      "required": true
+    },
+    "platformPostIds": {
+      "type": "json",
+      "required": false,
+      "default": {}
+    },
+    "analytics": {
+      "type": "json",
+      "required": false,
+      "default": {
+        "likes": 0,
+        "shares": 0,
+        "comments": 0,
+        "views": 0,
+        "engagement": 0
+      }
+    },
+    "hashtags": {
+      "type": "json",
+      "required": false,
+      "default": []
+    },
+    "mentions": {
+      "type": "json",
+      "required": false,
+      "default": []
+    },
+    "errorMessage": {
+      "type": "text",
+      "required": false
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

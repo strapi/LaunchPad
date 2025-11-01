@@ -1,0 +1,86 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_messages",
+  "info": {
+    "singularName": "social-message",
+    "pluralName": "social-messages",
+    "displayName": "Social Message",
+    "description": "Messages from social media platforms"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "platform": {
+      "type": "enumeration",
+      "enum": ["facebook", "instagram", "twitter", "x", "linkedin"],
+      "required": true
+    },
+    "messageId": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "conversationId": {
+      "type": "string",
+      "required": false
+    },
+    "sender": {
+      "type": "json",
+      "required": true,
+      "default": {}
+    },
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "messageType": {
+      "type": "enumeration",
+      "enum": ["text", "image", "video", "audio", "file"],
+      "default": "text"
+    },
+    "attachments": {
+      "type": "json",
+      "required": false,
+      "default": []
+    },
+    "timestamp": {
+      "type": "datetime",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["unread", "read", "replied", "archived"],
+      "default": "unread"
+    },
+    "isIncoming": {
+      "type": "boolean",
+      "default": true
+    },
+    "replyTo": {
+      "type": "string",
+      "required": false
+    },
+    "sentiment": {
+      "type": "enumeration",
+      "enum": ["positive", "neutral", "negative"],
+      "required": false
+    },
+    "tags": {
+      "type": "json",
+      "required": false,
+      "default": []
+    },
+    "assignedTo": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
