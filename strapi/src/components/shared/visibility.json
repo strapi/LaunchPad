@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_shared_visibilities",
+  "info": {
+    "displayName": "Visibility",
+    "icon": "eye",
+    "description": "Control visibility of dynamic zone components"
+  },
+  "options": {},
+  "attributes": {
+    "isVisible": {
+      "type": "boolean",
+      "default": true,
+      "required": false
+    }
+  }
+}
