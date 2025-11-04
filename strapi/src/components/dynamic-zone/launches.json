@@ -18,6 +18,12 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.launches"
+    },
+    "visibility": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.visibility",
+      "required": false
     }
   }
 }
