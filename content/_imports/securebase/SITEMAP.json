@@ -1,0 +1,10 @@
+{
+  "generatedAt": "2025-11-03T17:15:10Z",
+  "source": "securebase.cc",
+  "status": "blocked",
+  "notes": [
+    "Crawl aborted due to HTTP 403 responses for seed URLs from container environment.",
+    "Awaiting stakeholder-provided archive (peter-sung_content_design_patch.zip) or network whitelisting."
+  ],
+  "pages": []
+}

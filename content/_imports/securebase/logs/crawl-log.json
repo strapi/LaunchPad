@@ -1,0 +1,8 @@
+[
+  {
+    "timestamp": "2025-11-03T17:15:10Z",
+    "url": "https://securebase.cc/",
+    "status": 403,
+    "note": "Envoy proxy returned 'Domain forbidden' when attempting initial crawl from container environment."
+  }
+]
