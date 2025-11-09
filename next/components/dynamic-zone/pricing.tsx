@@ -44,11 +44,15 @@ export const Pricing = ({
   return (
     <div className="pt-40">
       <Container>
-        <FeatureIconContainer className="flex justify-center items-center overflow-hidden">
-          <IconReceipt2 className="h-6 w-6 text-white" />
+        <FeatureIconContainer>
+          <IconReceipt2 className="h-6 w-6 text-brand-200" />
         </FeatureIconContainer>
-        <Heading className="pt-4">{heading}</Heading>
-        <Subheading className="max-w-3xl mx-auto">{sub_heading}</Subheading>
+        <Heading className="pt-4 text-center" size="xl">
+          {heading}
+        </Heading>
+        <Subheading className="mx-auto max-w-3xl text-center text-base text-text-subtle">
+          {sub_heading}
+        </Subheading>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto gap-4 py-20 lg:items-start">
           {plans.map((plan) => (
             <Card onClick={() => onClick(plan)} key={plan.name} plan={plan} />

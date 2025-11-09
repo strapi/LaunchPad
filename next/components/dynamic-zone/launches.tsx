@@ -21,9 +21,9 @@ export const Launches = ({
 }) => {
   const launchesWithDecoration = launches.map((entry) => ({
     ...entry,
-    icon: <IconRocket className="h-8 w-8 text-secondary" />,
+    icon: <IconRocket className="h-8 w-8 text-brand-200" />,
     content: (
-      <p className="text-4xl md:text-7xl font-bold text-neutral-800">
+      <p className="text-4xl md:text-6xl font-semibold text-text-primary">
         {entry.mission_number}
       </p>
     ),
@@ -34,7 +34,7 @@ export const Launches = ({
     target: ref,
     offset: ['start end', 'end start'],
   });
-  const backgrounds = ['var(--charcoal)', 'var(--zinc-900)', 'var(--charcoal)'];
+  const backgrounds = ['#050d1b', '#0b172b', '#050d1b'];
 
   const [gradient, setGradient] = useState(backgrounds[0]);
 
@@ -66,11 +66,15 @@ export const Launches = ({
       className="w-full relative h-full pt-20 md:pt-40"
     >
       <div className="px-6">
-        <FeatureIconContainer className="flex justify-center items-center overflow-hidden">
-          <IconRocket className="h-6 w-6 text-white" />
+        <FeatureIconContainer>
+          <IconRocket className="h-6 w-6 text-brand-200" />
         </FeatureIconContainer>
-        <Heading className="mt-4">{heading}</Heading>
-        <Subheading>{sub_heading}</Subheading>
+        <Heading className="mt-4 text-center" size="xl">
+          {heading}
+        </Heading>
+        <Subheading className="mx-auto max-w-3xl text-center text-base text-text-subtle">
+          {sub_heading}
+        </Subheading>
       </div>
       <StickyScroll content={launchesWithDecoration} />
     </motion.div>

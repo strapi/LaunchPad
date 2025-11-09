@@ -1,11 +1,26 @@
 import type { Viewport } from 'next';
 
+import { Inter, Newsreader } from 'next/font/google';
+
 import { Locale, i18n } from '@/i18n.config';
 
 import './globals.css';
 
 import { SlugProvider } from './context/SlugContext';
 import { Preview } from '@/components/preview';
+import { cn } from '@/lib/utils';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
+});
+
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-serif',
+});
 
 export const viewport: Viewport = {
   themeColor: [
@@ -25,7 +40,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className={cn(
+          inter.variable,
+          newsreader.variable,
+          'relative min-h-screen bg-charcoal text-text-primary'
+        )}
+      >
         <Preview />
         <SlugProvider>{children}</SlugProvider>
       </body>

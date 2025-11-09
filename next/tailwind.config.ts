@@ -14,24 +14,57 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        charcoal: '#08090A',
-        lightblack: '#1C1C1C',
-        secondary: '#E6E6E6',
-        muted: 'var(--neutral-200)',
+        charcoal: '#050d1b',
+        lightblack: '#0d1529',
+        secondary: '#2563eb',
+        muted: '#94a3b8',
+        surface: '#0f172a',
+        surfaceMuted: '#111c34',
+        brand: {
+          50: '#e3f2ff',
+          100: '#bedcff',
+          200: '#95c5ff',
+          300: '#6dadff',
+          400: '#478ffe',
+          500: '#2563eb',
+          600: '#1d4ed8',
+          700: '#1e3a8a',
+          800: '#172c66',
+          900: '#122247',
+        },
+        accent: '#f59e0b',
+        border: '#1e2a45',
+        text: {
+          primary: '#f8fafc',
+          muted: '#cbd5f5',
+          subtle: '#94a3b8',
+        },
       },
       boxShadow: {
         derek: `0px 0px 0px 1px rgb(0 0 0 / 0.06),
         0px 1px 1px -0.5px rgb(0 0 0 / 0.06),
-        0px 3px 3px -1.5px rgb(0 0 0 / 0.06), 
+        0px 3px 3px -1.5px rgb(0 0 0 / 0.06),
         0px 6px 6px -3px rgb(0 0 0 / 0.06),
         0px 12px 12px -6px rgb(0 0 0 / 0.06),
         0px 24px 24px -12px rgb(0 0 0 / 0.06)`,
-        aceternity: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,
+        aceternity: `0px 2px 3px -1px rgba(15,18,40,0.35), 0px 18px 40px -20px rgba(15,76,129,0.45), 0px 0px 0px 1px rgba(15,23,42,0.4)`,
+        brand: '0 32px 80px -40px rgba(37, 99, 235, 0.65)',
+        card: '0 24px 72px -40px rgba(14, 23, 42, 0.75)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'aurora-surface':
+          'radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.4), transparent 50%), radial-gradient(circle at 80% 10%, rgba(94, 234, 212, 0.25), transparent 45%), radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.25), transparent 55%)',
+      },
+      borderRadius: {
+        '3xl': '1.75rem',
+        '4xl': '2.5rem',
+      },
+      fontFamily: {
+        sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Newsreader', 'serif'],
       },
       animation: {
         move: 'move 5s linear infinite',
