@@ -20,25 +20,25 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   ...props
 }) => {
-  const variantClass =
-    variant === 'simple'
-      ? 'bg-secondary relative z-10 bg-transparent hover:border-secondary/50 hover:bg-secondary/10  border border-transparent text-white text-sm md:text-sm transition font-medium duration-200  rounded-md px-4 py-2  flex items-center justify-center'
-      : variant === 'outline'
-        ? 'bg-white relative z-10 hover:bg-secondary/90 hover:shadow-xl  text-black border border-black hover:text-black text-sm md:text-sm transition font-medium duration-200  rounded-md px-4 py-2  flex items-center justify-center'
-        : variant === 'primary'
-          ? 'bg-secondary relative z-10 hover:bg-secondary/90  border border-secondary text-black text-sm md:text-sm transition font-medium duration-200  rounded-md px-4 py-2  flex items-center justify-center shadow-[0px_-1px_0px_0px_#FFFFFF60_inset,_0px_1px_0px_0px_#FFFFFF60_inset  hover:-translate-y-1 active:-translate-y-0'
-          : variant === 'muted'
-            ? 'bg-neutral-800 relative z-10 hover:bg-neutral-900  border border-transparent text-white text-sm md:text-sm transition font-medium duration-200  rounded-md px-4 py-2  flex items-center justify-center shadow-[0px_1px_0px_0px_#FFFFFF20_inset]'
-            : '';
+  const baseClass =
+    'inline-flex items-center justify-center gap-2 rounded-full border text-sm md:text-sm font-semibold tracking-tight px-5 py-3 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal disabled:cursor-not-allowed disabled:opacity-60';
+
+  const variants: Record<NonNullable<ButtonProps['variant']>, string> = {
+    primary:
+      'bg-brand-500 text-white border-brand-500 shadow-brand hover:bg-brand-400 focus-visible:ring-brand-300',
+    outline:
+      'border-brand-300 text-brand-100 hover:bg-brand-500/10 focus-visible:ring-brand-300',
+    muted:
+      'bg-surfaceMuted/70 border-surface text-text-primary hover:bg-surface hover:border-brand-500/30 focus-visible:ring-brand-200',
+    simple:
+      'border-transparent bg-transparent text-text-primary hover:text-brand-100 focus-visible:ring-brand-200',
+  };
+
   const Element = Tag as any;
 
   return (
     <Element
-      className={cn(
-        'bg-secondary relative z-10 bg-transparent hover:border-secondary hover:bg-secondary/50  border border-transparent text-white text-sm md:text-sm transition font-medium duration-200  rounded-md px-4 py-2  flex items-center justify-center ',
-        variantClass,
-        className
-      )}
+      className={cn(baseClass, variants[variant], className)}
       {...props}
     >
       {children ?? `Get Started`}

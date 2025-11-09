@@ -4,17 +4,43 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 255, 255, 255;
+  --foreground-rgb: 248, 250, 252;
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  @apply bg-charcoal text-text-primary antialiased;
+  min-height: 100vh;
+  background-image: radial-gradient(
+      circle at top left,
+      rgba(37, 99, 235, 0.22),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(15, 118, 110, 0.18),
+      transparent 60%
+    );
+  background-color: #050d1b;
+  font-feature-settings: 'liga' 1, 'kern' 1;
+}
+
+a {
+  @apply text-brand-300 underline-offset-4 transition-colors duration-200;
+}
+
+a:hover,
+a:focus-visible {
+  @apply text-brand-200;
+}
+
+::selection {
+  background: rgba(37, 99, 235, 0.35);
+  color: #f8fafc;
 }
 
 @layer utilities {
