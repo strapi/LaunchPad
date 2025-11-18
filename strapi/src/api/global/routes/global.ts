@@ -8,8 +8,5 @@ export default factories.createCoreRouter('api::global.global', {
     find: {
       middlewares: ['api::global.global-populate'],
     },
-    findOne: {
-      middlewares: ['api::global.global-populate'],
-    },
   },
 });

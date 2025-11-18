@@ -9,7 +9,6 @@ const populate = {
       left_navbar_items: true,
       right_navbar_items: true,
       logo: {
-        fields: ['company'],
         populate: {
           image: true,
         },
@@ -17,24 +16,26 @@ const populate = {
     },
   },
   footer: {
-    fields: ['description', 'copyright', 'designed_developed_by', 'built_with'],
     populate: {
       internal_links: true,
       policy_links: true,
       social_media_links: true,
       logo: {
-        fields: ['company'],
         populate: {
           image: true,
         },
       },
     },
   },
+  seo: {
+    populate: {
+      metaImage: true,
+    },
+  },
 };
 
 export default (config, { strapi }: { strapi: Core.Strapi }) => {
   return async (ctx, next) => {
-    console.log('Hi! something is happening, also inside the return', populate);
     ctx.query.populate = populate;
     await next();
   };
