@@ -1,7 +1,3 @@
-import type { Core } from '@strapi/strapi';
-
-import { registerPopulatePageMiddleware } from './documentMiddlewares/page';
-
 export default {
   /**
    * An asynchronous register function that runs before
@@ -18,7 +14,5 @@ export default {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  bootstrap({ strapi }: { strapi: Core.Strapi }) {
-    registerPopulatePageMiddleware({ strapi });
-  },
+  bootstrap(/* { strapi }: { strapi: Core.Strapi } */) {},
 };
