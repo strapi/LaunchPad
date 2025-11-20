@@ -97,6 +97,35 @@ const populate = {
           CTAs: true,
         },
       },
+      'dynamic-zone.faq': {
+        populate: {
+          faqs: true,
+        },
+      },
+      'dynamic-zone.form-next-to-section': {
+        populate: {
+          form: {
+            populate: {
+              inputs: true,
+            },
+          },
+          section: {
+            populate: {
+              users: {
+                populate: {
+                  image: true,
+                },
+              },
+            },
+          },
+          social_media_icon_links: {
+            populate: {
+              image: true,
+              link: true,
+            },
+          },
+        },
+      },
     },
   },
   seo: {
