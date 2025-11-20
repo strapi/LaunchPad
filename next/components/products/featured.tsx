@@ -12,6 +12,8 @@ export const Featured = ({
   products: Product[];
   locale: string;
 }) => {
+  const [firstProduct, secondProduct, thirdProduct] = products;
+
   return (
     <div className="py-20">
       <h2 className="text-2xl md:text-4xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-white to-white mb-2">
@@ -22,11 +24,17 @@ export const Featured = ({
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3  gap-10">
         <div className="md:col-span-2">
-          <FeaturedItem product={products[0]} locale={locale} />
+          {firstProduct ? (
+            <FeaturedItem product={firstProduct} locale={locale} />
+          ) : null}
         </div>
         <div className="grid gap-10">
-          <FeaturedItem product={products[1]} locale={locale} />
-          <FeaturedItem product={products[2]} locale={locale} />
+          {secondProduct ? (
+            <FeaturedItem product={secondProduct} locale={locale} />
+          ) : null}
+          {thirdProduct ? (
+            <FeaturedItem product={thirdProduct} locale={locale} />
+          ) : null}
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10"></div>
