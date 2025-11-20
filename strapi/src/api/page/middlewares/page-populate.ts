@@ -68,21 +68,9 @@ const populate = {
           plans: {
             populate: {
               perks: true,
+              additional_perks: true,
               CTA: true,
-              product: {
-                populate: {
-                  plans: true,
-                  dynamic_zone: {
-                    on: {
-                      'dynamic-zone.related-products': {
-                        populate: {
-                          products: true,
-                        },
-                      },
-                    },
-                  },
-                },
-              },
+              product: true,
             },
           },
         },
