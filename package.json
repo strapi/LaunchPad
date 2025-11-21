@@ -28,9 +28,13 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "husky": "^9.1.7",
+    "jsdom": "^27.2.0",
     "lint-staged": "^15.2.10",
+    "node-fetch": "^3.3.2",
+    "p-limit": "^7.2.0",
     "prettier": "^3.5.3",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "turndown": "^7.2.2"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,md,yml,yaml}": [
