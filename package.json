@@ -20,6 +20,7 @@
     "lint-staged": "lint-staged"
   },
   "dependencies": {
+    "@strapi/client": "^1.5.0",
     "@types/node": "^22.5.2",
     "concurrently": "^8.2.2",
     "typescript": "^5.0.0",
