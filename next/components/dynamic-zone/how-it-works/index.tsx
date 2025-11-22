@@ -19,26 +19,33 @@ export const HowItWorks = ({
   steps: any;
 }) => {
   return (
-    <div>
-      <Container className="py-20 max-w-7xl mx-auto  relative z-40">
-        <FeatureIconContainer className="flex justify-center items-center overflow-hidden">
-          <IconSettings className="h-6 w-6 text-white" />
-        </FeatureIconContainer>
-        <Heading className="pt-4">{heading}</Heading>
-        <Subheading className="max-w-3xl mx-auto">{sub_heading}</Subheading>
+    <section className="py-24">
+      <Container>
+        <div className="flex flex-col items-start gap-6 text-left">
+          <FeatureIconContainer>
+            <IconSettings className="h-6 w-6 text-brand-200" />
+          </FeatureIconContainer>
+          <Heading className="max-w-3xl text-left" size="xl">
+            {heading}
+          </Heading>
+          <Subheading className="max-w-2xl text-left text-base text-text-subtle">
+            {sub_heading}
+          </Subheading>
+        </div>
 
-        {steps &&
-          steps.map(
+        <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {steps?.map(
             (item: { title: string; description: string }, index: number) => (
               <Card
                 title={item.title}
                 description={item.description}
                 index={index + 1}
-                key={'card' + index}
+                key={`how-it-works-${item.title}-${index}`}
               />
             )
           )}
+        </div>
       </Container>
-    </div>
+    </section>
   );
 };

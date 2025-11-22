@@ -42,6 +42,19 @@ export default async function fetchContentType(
       queryParams.status = 'draft';
     }
 
+    // Check if API URL is defined
+    if (!process.env.NEXT_PUBLIC_API_URL) {
+      console.warn('NEXT_PUBLIC_API_URL is not defined. Returning mock data.');
+      const mockData = {
+        navbar: { left_navbar_items: [], right_navbar_items: [] },
+        footer: { internal_links: [], policy_links: [], social_media_links: [] },
+        seo: {},
+        localizations: [],
+        dynamic_zone: []
+      };
+      return spreadData ? mockData : { data: [] };
+    }
+
     // Construct the full URL for the API request
     const url = new URL(`api/${contentType}`, process.env.NEXT_PUBLIC_API_URL);
 
@@ -59,7 +72,14 @@ export default async function fetchContentType(
         `Failed to fetch data from Strapi (url=${url.toString()}, status=${response.status})`
       );
       // Return appropriate fallback based on expected data structure
-      return spreadData ? null : { data: [] };
+      const mockData = {
+        navbar: { left_navbar_items: [], right_navbar_items: [] },
+        footer: { internal_links: [], policy_links: [], social_media_links: [] },
+        seo: {},
+        localizations: [],
+        dynamic_zone: []
+      };
+      return spreadData ? mockData : { data: [] };
     }
     const jsonData: StrapiResponse = await response.json();
     return spreadData ? spreadStrapiData(jsonData) : jsonData;
@@ -67,6 +87,13 @@ export default async function fetchContentType(
     // Log any errors that occur during the fetch process
     console.error('FetchContentTypeError', error);
     // Return appropriate fallback based on expected data structure
-    return spreadData ? null : { data: [] };
+    const mockData = {
+      navbar: { left_navbar_items: [], right_navbar_items: [] },
+      footer: { internal_links: [], policy_links: [], social_media_links: [] },
+      seo: {},
+      localizations: [],
+      dynamic_zone: []
+    };
+    return spreadData ? mockData : { data: [] };
   }
 }

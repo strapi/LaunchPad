@@ -1,10 +1,31 @@
 {
-  "generatedAt": "2025-11-03T17:15:10Z",
-  "source": "securebase.cc",
-  "status": "blocked",
-  "notes": [
-    "Crawl aborted due to HTTP 403 responses for seed URLs from container environment.",
-    "Awaiting stakeholder-provided archive (peter-sung_content_design_patch.zip) or network whitelisting."
-  ],
-  "pages": []
+  "generatedAt": "2025-11-21T07:36:25.710Z",
+  "source": "https://securebase.cc",
+  "pages": [
+    {
+      "url": "https://securebase.cc/",
+      "status": 200,
+      "slug": "index"
+    },
+    {
+      "url": "https://securebase.cc/about",
+      "status": 200,
+      "slug": "about"
+    },
+    {
+      "url": "https://securebase.cc/speaking",
+      "status": 200,
+      "slug": "speaking"
+    },
+    {
+      "url": "https://securebase.cc/coaching",
+      "status": 200,
+      "slug": "coaching"
+    },
+    {
+      "url": "https://securebase.cc/contact",
+      "status": 200,
+      "slug": "contact"
+    }
+  ]
 }

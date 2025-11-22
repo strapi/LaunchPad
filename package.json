@@ -17,21 +17,32 @@
     "check:format": "prettier . --check --cache",
     "fix:format": "prettier . --write --cache",
     "fix": "yarn fix:format",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "deploy:agent": "tsx tools/vercel-agent/agent.ts",
+    "deploy:check": "tsx tools/vercel-agent/check-deployment.ts",
+    "build": "cd next && npm run build"
   },
   "dependencies": {
+    "@playwright/test": "^1.48.0",
     "@types/node": "^22.5.2",
     "concurrently": "^8.2.2",
     "gray-matter": "^4.0.3",
+    "dotenv": "^16.6.1",
+    "lighthouse": "^12.2.1",
+    "tsx": "^4.16.2",
     "typescript": "^5.0.0",
     "wait-on": "^8.0.1"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "husky": "^9.1.7",
+    "jsdom": "^27.2.0",
     "lint-staged": "^15.2.10",
+    "node-fetch": "^3.3.2",
+    "p-limit": "^7.2.0",
     "prettier": "^3.5.3",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "turndown": "^7.2.2"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,md,yml,yaml}": [
