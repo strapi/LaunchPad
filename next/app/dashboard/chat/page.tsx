@@ -16,11 +16,11 @@ export default function ChatPage() {
       {/* Chat Area */}
       <div className="flex-1 bg-white/5 border border-white/10 rounded-xl p-4 mb-4 overflow-y-auto flex flex-col gap-4">
         <div className="self-start bg-white/10 text-gray-200 p-3 rounded-2xl rounded-tl-none max-w-[80%]">
-          Hello! I am your AI assistant trained on Dr. Sung's SecureBase content. How can I help you with your leadership journey today?
+          Hello! I am your AI assistant trained on Dr. Sung&apos;s SecureBase content. How can I help you with your leadership journey today?
         </div>
         {/* Placeholder for user message */}
         <div className="self-end bg-cyan-600/20 text-cyan-100 border border-cyan-500/30 p-3 rounded-2xl rounded-tr-none max-w-[80%]">
-          I'm feeling a bit stuck with my team's communication.
+          I&apos;m feeling a bit stuck with my team&apos;s communication.
         </div>
       </div>
 
