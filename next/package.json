@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "clean": "rm -rf .next && rm -rf node_modules && npm i"
   },
   "dependencies": {
@@ -26,6 +29,7 @@
     "@tsparticles/slim": "^3.5.0",
     "@types/fuzzy-search": "^2.1.5",
     "ai": "^5.0.99",
+    "bcryptjs": "^2.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",
@@ -34,6 +38,7 @@
     "mini-svg-data-uri": "^1.4.4",
     "negotiator": "^0.6.3",
     "next": "15.5.0",
+    "next-auth": "^5.0.0-beta.20",
     "next-view-transitions": "^0.2.0",
     "qs": "^6.14.0",
     "react": "19.1.1",
@@ -41,6 +46,7 @@
     "react-fast-marquee": "^1.6.5",
     "react-icons": "^5.2.1",
     "react-wrap-balancer": "^1.1.1",
+    "resend": "^3.0.0",
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
@@ -49,6 +55,10 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/bcryptjs": "^2.4.6",
     "@types/negotiator": "^0.6.3",
     "@types/node": "^20",
     "@types/qs": "^6.9.16",
@@ -57,6 +67,8 @@
     "@types/three": "^0.179.0",
     "eslint": "^8",
     "eslint-config-next": "15.5.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "5.6.2"
