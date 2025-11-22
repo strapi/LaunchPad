@@ -6,15 +6,20 @@ import type { NextRequest } from 'next/server';
 import { i18n } from '@/i18n.config';
 
 function getLocale(request: NextRequest): string | undefined {
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
+  try {
+    const negotiatorHeaders: Record<string, string> = {};
+    request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-  // @ts-ignore locales are readonly
-  const locales: string[] = i18n.locales;
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+    // @ts-ignore locales are readonly
+    const locales: string[] = i18n.locales;
+    const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
 
-  const locale = matchLocale(languages, locales, i18n.defaultLocale);
-  return locale;
+    const locale = matchLocale(languages, locales, i18n.defaultLocale);
+    return locale;
+  } catch (error) {
+    console.error('Locale negotiation failed:', error);
+    return i18n.defaultLocale;
+  }
 }
 
 export function middleware(request: NextRequest) {

@@ -17,11 +17,18 @@
     "check:format": "prettier . --check --cache",
     "fix:format": "prettier . --write --cache",
     "fix": "yarn fix:format",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "deploy:agent": "tsx tools/vercel-agent/agent.ts",
+    "deploy:check": "tsx tools/vercel-agent/check-deployment.ts",
+    "build": "cd next && npm run build"
   },
   "dependencies": {
+    "@playwright/test": "^1.48.0",
     "@types/node": "^22.5.2",
     "concurrently": "^8.2.2",
+    "dotenv": "^16.6.1",
+    "lighthouse": "^12.2.1",
+    "tsx": "^4.16.2",
     "typescript": "^5.0.0",
     "wait-on": "^8.0.1"
   },

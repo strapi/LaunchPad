@@ -39,6 +39,11 @@ const config: Config = {
           muted: '#cbd5f5',
           subtle: '#94a3b8',
         },
+        cyan: {
+          400: '#22d3ee',
+          500: '#06b6d4',
+          900: '#164e63',
+        },
       },
       boxShadow: {
         derek: `0px 0px 0px 1px rgb(0 0 0 / 0.06),

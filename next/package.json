@@ -17,7 +17,7 @@
     "@react-three/drei": "^9.109.2",
     "@react-three/fiber": "^9.3.0",
     "@strapi/blocks-react-renderer": "^1.0.1",
-    "@tabler/icons-react": "^3.11.0",
+    "@tabler/icons-react": "^3.35.0",
     "@tailwindcss/typography": "^0.5.13",
     "@tsparticles/engine": "^3.5.0",
     "@tsparticles/react": "^3.0.0",
