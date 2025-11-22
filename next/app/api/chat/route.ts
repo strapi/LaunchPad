@@ -23,5 +23,5 @@ export async function POST(req: Request) {
     If you don't know the answer, admit it and suggest they schedule a session with Dr. Sung.`,
   });
 
-  return result.toDataStreamResponse();
+  return result.toTextStreamResponse();
 }
