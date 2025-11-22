@@ -2,6 +2,7 @@ import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { getToken } from 'next-auth/jwt';
 
 import { i18n } from '@/i18n.config';
 
@@ -22,11 +23,24 @@ function getLocale(request: NextRequest): string | undefined {
   }
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Skip locale redirect for dashboard routes - they don't use i18n
+  // Protect dashboard routes - require authentication
   if (pathname.startsWith('/dashboard')) {
+    const token = await getToken({
+      req: request,
+      secret: process.env.NEXTAUTH_SECRET
+    });
+
+    if (!token) {
+      // Redirect to login with callback URL
+      const loginUrl = new URL('/login', request.url);
+      loginUrl.searchParams.set('callbackUrl', pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+
+    // User is authenticated, allow access
     return NextResponse.next();
   }
 
@@ -47,6 +61,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Matcher ignoring `/_next/` and `/api/`
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  // Matcher ignoring `/_next/` and `/api/` and `/login` and `/sign-up`
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|login|sign-up|.*\\.png|.*\\.jpg).*)'],
 };

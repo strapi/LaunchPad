@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import { signOut } from 'next-auth/react';
 import { IconUser, IconBell, IconLock, IconPalette, IconLogout, IconCheck } from '@tabler/icons-react';
+import { getSettings, updateSettings, type UserSettings } from '@/lib/local-store';
 
 // Settings sections
 const settingsSections = [
@@ -13,23 +14,68 @@ const settingsSections = [
 ];
 
 export default function SettingsPage() {
-  const router = useRouter();
   const [activeSection, setActiveSection] = useState('profile');
   const [isSaving, setIsSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [settings, setSettings] = useState<UserSettings | null>(null);
+
+  // Load settings on mount
+  useEffect(() => {
+    setSettings(getSettings());
+  }, []);
+
+  const handleProfileChange = (field: keyof UserSettings['profile'], value: string) => {
+    if (!settings) return;
+    setSettings({
+      ...settings,
+      profile: { ...settings.profile, [field]: value }
+    });
+  };
+
+  const handleNotificationChange = (field: keyof UserSettings['notifications']) => {
+    if (!settings) return;
+    setSettings({
+      ...settings,
+      notifications: { ...settings.notifications, [field]: !settings.notifications[field] }
+    });
+  };
+
+  const handleThemeChange = (theme: 'dark' | 'light' | 'system') => {
+    if (!settings) return;
+    setSettings({
+      ...settings,
+      appearance: { theme }
+    });
+  };
 
   const handleSave = async () => {
+    if (!settings) return;
     setIsSaving(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 500));
+    updateSettings(settings);
     setIsSaving(false);
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   };
 
-  const handleSignOut = () => {
-    // In a real app, this would clear auth state
-    router.push('/');
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: '/' });
   };
+
+  if (!settings) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="animate-spin h-8 w-8 border-2 border-cyan-500 border-t-transparent rounded-full"></div>
+      </div>
+    );
+  }
+
+  const notificationItems = [
+    { key: 'emailNotifications' as const, label: 'Email notifications', description: 'Receive email updates about your sessions' },
+    { key: 'sessionReminders' as const, label: 'Session reminders', description: 'Get reminded before upcoming sessions' },
+    { key: 'clientMessages' as const, label: 'Client messages', description: 'Notifications when clients send messages' },
+    { key: 'weeklyDigest' as const, label: 'Weekly digest', description: 'Summary of your coaching activity' },
+  ];
 
   return (
     <div className="space-y-8">
@@ -84,7 +130,9 @@ export default function SettingsPage() {
                 {/* Profile picture */}
                 <div className="flex items-center gap-6">
                   <div className="w-20 h-20 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-white">PS</span>
+                    <span className="text-2xl font-bold text-white">
+                      {settings.profile.fullName.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                    </span>
                   </div>
                   <div>
                     <button className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-medium rounded-lg transition-colors">
@@ -100,7 +148,8 @@ export default function SettingsPage() {
                     <label className="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
                     <input
                       type="text"
-                      defaultValue="Dr. Peter Sung"
+                      value={settings.profile.fullName}
+                      onChange={(e) => handleProfileChange('fullName', e.target.value)}
                       className="w-full px-4 py-2.5 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-cyan-500/50"
                     />
                   </div>
@@ -108,7 +157,8 @@ export default function SettingsPage() {
                     <label className="block text-sm font-medium text-gray-300 mb-2">Email</label>
                     <input
                       type="email"
-                      defaultValue="peter@securebase.cc"
+                      value={settings.profile.email}
+                      onChange={(e) => handleProfileChange('email', e.target.value)}
                       className="w-full px-4 py-2.5 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-cyan-500/50"
                     />
                   </div>
@@ -116,7 +166,8 @@ export default function SettingsPage() {
                     <label className="block text-sm font-medium text-gray-300 mb-2">Bio</label>
                     <textarea
                       rows={4}
-                      defaultValue="Leadership coach and organizational psychologist with 30+ years of experience."
+                      value={settings.profile.bio}
+                      onChange={(e) => handleProfileChange('bio', e.target.value)}
                       className="w-full px-4 py-2.5 bg-black/40 border border-white/10 rounded-lg text-white focus:outline-none focus:border-cyan-500/50 resize-none"
                     />
                   </div>
@@ -133,19 +184,19 @@ export default function SettingsPage() {
                 </div>
 
                 <div className="space-y-4">
-                  {[
-                    { label: 'Email notifications', description: 'Receive email updates about your sessions' },
-                    { label: 'Session reminders', description: 'Get reminded before upcoming sessions' },
-                    { label: 'Client messages', description: 'Notifications when clients send messages' },
-                    { label: 'Weekly digest', description: 'Summary of your coaching activity' },
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-center justify-between py-3 border-b border-white/5 last:border-0">
+                  {notificationItems.map((item) => (
+                    <div key={item.key} className="flex items-center justify-between py-3 border-b border-white/5 last:border-0">
                       <div>
                         <p className="font-medium text-white">{item.label}</p>
                         <p className="text-sm text-gray-400">{item.description}</p>
                       </div>
                       <label className="relative inline-flex items-center cursor-pointer">
-                        <input type="checkbox" defaultChecked={index < 2} className="sr-only peer" />
+                        <input
+                          type="checkbox"
+                          checked={settings.notifications[item.key]}
+                          onChange={() => handleNotificationChange(item.key)}
+                          className="sr-only peer"
+                        />
                         <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:bg-cyan-500 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
                       </label>
                     </div>
@@ -209,19 +260,22 @@ export default function SettingsPage() {
                 <div>
                   <h3 className="font-medium text-white mb-4">Theme</h3>
                   <div className="grid grid-cols-3 gap-4">
-                    {['Dark', 'Light', 'System'].map((theme, index) => (
+                    {(['dark', 'light', 'system'] as const).map((theme) => (
                       <button
                         key={theme}
+                        onClick={() => handleThemeChange(theme)}
                         className={`p-4 rounded-xl border text-center transition-colors ${
-                          index === 0
+                          settings.appearance.theme === theme
                             ? 'border-cyan-500 bg-cyan-500/10'
                             : 'border-white/10 hover:border-white/20'
                         }`}
                       >
                         <div className={`w-8 h-8 rounded-lg mx-auto mb-2 ${
-                          theme === 'Dark' ? 'bg-gray-800' : theme === 'Light' ? 'bg-gray-200' : 'bg-gradient-to-r from-gray-800 to-gray-200'
+                          theme === 'dark' ? 'bg-gray-800' : theme === 'light' ? 'bg-gray-200' : 'bg-gradient-to-r from-gray-800 to-gray-200'
                         }`} />
-                        <span className={index === 0 ? 'text-cyan-400' : 'text-gray-300'}>{theme}</span>
+                        <span className={settings.appearance.theme === theme ? 'text-cyan-400' : 'text-gray-300'}>
+                          {theme.charAt(0).toUpperCase() + theme.slice(1)}
+                        </span>
                       </button>
                     ))}
                   </div>

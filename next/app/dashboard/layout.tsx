@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { signOut } from 'next-auth/react';
 import { IconDashboard, IconMessage, IconUsers, IconFiles, IconSettings, IconLogout, IconHome } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 
@@ -15,11 +16,9 @@ const navItems = [
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const router = useRouter();
 
-  const handleSignOut = () => {
-    // In a real app, this would clear auth state/cookies
-    router.push('/');
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: '/' });
   };
 
   return (
