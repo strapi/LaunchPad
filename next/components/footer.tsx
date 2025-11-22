@@ -20,45 +20,14 @@ export const Footer = async ({
             </div>
             <div className="max-w-xs">{data?.description}</div>
             <div className="mt-4">{data?.copyright}</div>
-            <div className="mt-10">
-              Designed and Developed by{' '}
-              <a className="text-white underline" href="https://aceternity.com">
-                Aceternity
-              </a>{' '}
-              &{' '}
-              <a className="text-white underline" href="https://strapi.io">
-                Strapi
-              </a>
-            </div>
-            <div className="mt-2">
-              built with{' '}
-              <a className="text-white underline" href="https://strapi.io">
-                Strapi
-              </a>
-              ,{' '}
-              <a className="text-white underline" href="https://nextjs.org">
+            <div className="mt-10 text-neutral-400">
+              Built with{' '}
+              <a className="text-cyan-400 hover:text-cyan-300 transition-colors" href="https://nextjs.org" target="_blank" rel="noopener noreferrer">
                 Next.js
               </a>
-              ,{' '}
-              <a
-                className="text-white underline"
-                href="https://tailwindcss.com"
-              >
-                Tailwind CSS
-              </a>
-              ,{' '}
-              <a
-                className="text-white underline"
-                href="https://framer.com/motion"
-              >
-                Motion Animation Lib
-              </a>
-              , and{' '}
-              <a
-                className="text-white underline"
-                href="https://ui.aceternity.com"
-              >
-                Aceternity UI
+              {' & '}
+              <a className="text-cyan-400 hover:text-cyan-300 transition-colors" href="https://strapi.io" target="_blank" rel="noopener noreferrer">
+                Strapi
               </a>
             </div>
           </div>

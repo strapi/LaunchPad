@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useEffect } from 'react';
-import { useChat } from 'ai/react';
+import { useChat } from '@ai-sdk/react';
 import { IconSend, IconMicrophone, IconPhoto, IconPaperclip, IconUser, IconRobot } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 
