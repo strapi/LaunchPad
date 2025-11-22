@@ -24,6 +24,12 @@ function getLocale(request: NextRequest): string | undefined {
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+
+  // Skip locale redirect for dashboard routes - they don't use i18n
+  if (pathname.startsWith('/dashboard')) {
+    return NextResponse.next();
+  }
+
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
