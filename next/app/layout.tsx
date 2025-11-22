@@ -8,7 +8,6 @@ import './globals.css';
 
 import { SlugProvider } from './context/SlugContext';
 import { Preview } from '@/components/preview';
-import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/lib/utils';
 
 const inter = Inter({
@@ -49,10 +48,8 @@ export default function RootLayout({
           'relative min-h-screen bg-white dark:bg-charcoal text-neutral-900 dark:text-text-primary transition-colors duration-300'
         )}
       >
-        <ThemeProvider>
-          <Preview />
-          <SlugProvider>{children}</SlugProvider>
-        </ThemeProvider>
+        <Preview />
+        <SlugProvider>{children}</SlugProvider>
       </body>
     </html>
   );
