@@ -7,7 +7,6 @@ import React from 'react';
 import { DraftModeBanner } from '@/components/draft-mode-banner';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
-import { AIToast } from '@/components/toast';
 import { CartProvider } from '@/context/cart-context';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import fetchContentType from '@/lib/strapi/fetchContentType';
@@ -61,13 +60,12 @@ export default async function LocaleLayout(props: {
         <div
           className={cn(
             inter.className,
-            'bg-charcoal antialiased h-full w-full'
+            'bg-white dark:bg-charcoal antialiased h-full w-full transition-colors duration-300'
           )}
         >
           <Navbar data={pageData.navbar} locale={locale} />
           {children}
           <Footer data={pageData.footer} locale={locale} />
-          <AIToast />
           {isDraftMode && <DraftModeBanner />}
         </div>
       </CartProvider>

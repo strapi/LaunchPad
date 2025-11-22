@@ -10,6 +10,7 @@ import { Link } from 'next-view-transitions';
 import { useState } from 'react';
 
 import { LocaleSwitcher } from '../locale-switcher';
+import { ThemeToggle } from '../theme-toggle';
 import { NavbarItem } from './navbar-item';
 import { Button } from '@/components/elements/button';
 import { Logo } from '@/components/logo';
@@ -88,6 +89,7 @@ export const DesktopNavbar = ({
         </div>
       </div>
       <div className="flex space-x-2 items-center">
+        <ThemeToggle />
         <LocaleSwitcher currentLocale={locale} />
 
         {rightNavbarItems.map((item, index) => (

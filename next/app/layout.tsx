@@ -8,6 +8,7 @@ import './globals.css';
 
 import { SlugProvider } from './context/SlugContext';
 import { Preview } from '@/components/preview';
+import { ThemeProvider } from '@/components/theme-provider';
 import { cn } from '@/lib/utils';
 
 const inter = Inter({
@@ -45,11 +46,13 @@ export default function RootLayout({
         className={cn(
           inter.variable,
           newsreader.variable,
-          'relative min-h-screen bg-charcoal text-text-primary'
+          'relative min-h-screen bg-white dark:bg-charcoal text-neutral-900 dark:text-text-primary transition-colors duration-300'
         )}
       >
-        <Preview />
-        <SlugProvider>{children}</SlugProvider>
+        <ThemeProvider>
+          <Preview />
+          <SlugProvider>{children}</SlugProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

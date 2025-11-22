@@ -7,6 +7,7 @@ import { IoIosMenu } from 'react-icons/io';
 import { IoIosClose } from 'react-icons/io';
 
 import { LocaleSwitcher } from '../locale-switcher';
+import { ThemeToggle } from '../theme-toggle';
 import { Button } from '@/components/elements/button';
 import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
@@ -66,6 +67,7 @@ export const MobileNavbar = ({
           <div className="flex items-center justify-between w-full px-5">
             <Logo locale={locale} image={logo?.image} />
             <div className="flex items-center space-x-2">
+              <ThemeToggle />
               <LocaleSwitcher currentLocale={locale} />
               <IoIosClose
                 className="h-8 w-8 text-white"
