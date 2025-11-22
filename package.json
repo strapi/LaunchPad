@@ -26,6 +26,7 @@
     "@playwright/test": "^1.48.0",
     "@types/node": "^22.5.2",
     "concurrently": "^8.2.2",
+    "gray-matter": "^4.0.3",
     "dotenv": "^16.6.1",
     "lighthouse": "^12.2.1",
     "tsx": "^4.16.2",
