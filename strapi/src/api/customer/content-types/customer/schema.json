@@ -1,0 +1,134 @@
+{
+  "kind": "collectionType",
+  "collectionName": "customers",
+  "info": {
+    "singularName": "customer",
+    "pluralName": "customers",
+    "displayName": "Customer",
+    "description": "SaaS customer billing records"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "email": {
+      "type": "email",
+      "required": true,
+      "unique": true
+    },
+    "company_name": {
+      "type": "string",
+      "required": true
+    },
+    "full_name": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "billing_email": {
+      "type": "email"
+    },
+    "billing_address": {
+      "type": "text"
+    },
+    "billing_city": {
+      "type": "string"
+    },
+    "billing_state": {
+      "type": "string"
+    },
+    "billing_zip": {
+      "type": "string"
+    },
+    "billing_country": {
+      "type": "string"
+    },
+    "stripe_customer_id": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "stripe_subscription_id": {
+      "type": "string",
+      "unique": true
+    },
+    "subscription_tier": {
+      "type": "enumeration",
+      "enum": [
+        "starter",
+        "professional",
+        "enterprise"
+      ],
+      "default": "starter",
+      "required": true
+    },
+    "subscription_status": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "trialing",
+        "past_due",
+        "cancelled",
+        "unpaid"
+      ],
+      "default": "active",
+      "required": true
+    },
+    "clients_limit": {
+      "type": "integer",
+      "default": 50
+    },
+    "storage_limit_gb": {
+      "type": "integer",
+      "default": 10
+    },
+    "api_calls_limit": {
+      "type": "integer",
+      "default": 100000
+    },
+    "trial_ends_at": {
+      "type": "datetime"
+    },
+    "current_period_start": {
+      "type": "datetime"
+    },
+    "current_period_end": {
+      "type": "datetime"
+    },
+    "next_billing_date": {
+      "type": "datetime"
+    },
+    "auto_renew": {
+      "type": "boolean",
+      "default": true
+    },
+    "cancelled_at": {
+      "type": "datetime"
+    },
+    "metadata": {
+      "type": "json",
+      "default": {}
+    },
+    "invoices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::invoice.invoice",
+      "mappedBy": "customer"
+    },
+    "payments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment.payment",
+      "mappedBy": "customer"
+    }
+  }
+}

@@ -69,8 +69,9 @@ const config: Config = {
         '4xl': '2.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Satoshi', 'var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
         serif: ['var(--font-serif)', 'Newsreader', 'serif'],
+        display: ['var(--font-display)', 'Cinzel', 'serif'],
       },
       animation: {
         move: 'move 5s linear infinite',

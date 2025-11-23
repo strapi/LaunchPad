@@ -1,0 +1,20 @@
+
+services:
+  lemon:
+    image: hexdolemonai/lemon:latest
+    container_name: lemon-app
+    environment:
+      - DOCKER_HOST_ADDR=host.docker.internal
+      - ACTUAL_HOST_WORKSPACE_PATH=${WORKSPACE_BASE:-$PWD/workspace}
+    ports:
+      - "5005:5005"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.cache:/.cache
+      - ${WORKSPACE_BASE:-$PWD/workspace}:/app/workspace
+      - ${WORKSPACE_BASE:-$PWD/data}:/app/data
+    stdin_open: true
+    tty: true
+    command: make run

@@ -1,0 +1,13 @@
+[project]
+name = "browser-server"
+version = "0.1.0"
+description = "a web server for browser-use"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "browser-use[memory]>=0.2.5",
+    "fastapi>=0.115.12",
+    "pyobjtojson>=0.3",
+    "uvicorn>=0.34.3",
+    "patchright>=1.52.0"
+]

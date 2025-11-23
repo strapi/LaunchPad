@@ -1,5 +1,6 @@
 import React from 'react';
 import { IconMicrophone, IconNote, IconClock, IconArrowRight } from '@tabler/icons-react';
+import LemonAgentWidget from '@/components/dashboard/LemonAgentWidget';
 
 export default function DashboardPage() {
   return (
@@ -54,6 +55,7 @@ export default function DashboardPage() {
           />
         </div>
       </div>
+      <LemonAgentWidget />
     </div>
   );
 }

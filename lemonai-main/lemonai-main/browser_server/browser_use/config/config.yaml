@@ -1,0 +1,12 @@
+server:
+  host: 0.0.0.0
+  port: 9000
+
+browser:
+  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36
+  # user_data_dir: '~/.config/browseruse/profiles/default'
+
+agent:
+  max_steps: 30
+  max_extracted_content_length: 20000 # If it is too long, it will be considered as junk information and the return will be set to null
+  

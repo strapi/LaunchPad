@@ -1,0 +1,177 @@
+<template>
+  <div class="container">
+    <div ref="terminalRef" class="terminal-container">
+
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import { Terminal } from '@xterm/xterm'
+import '@xterm/xterm/css/xterm.css'
+import { useChatStore } from '@/store/modules/chat'
+const chatStore = useChatStore()
+
+import emitter from '@/utils/emitter';
+
+const terminalRef = ref(null)
+let terminal = null
+let currentLine = ''
+let commandHistory = []
+let historyIndex = -1
+
+const saveHistory = () => {
+  console.log('commandHistory', commandHistory)
+  localStorage.setItem('terminalHistory', JSON.stringify(commandHistory))
+}
+
+// 处理命令的函数
+const handleCommand = async (command) => {
+  switch (command.trim()) {
+    case 'help':
+      terminal.writeln('Available commands:')
+      terminal.writeln('  help     - Show this help message')
+      terminal.writeln('  clear    - Clear the terminal')
+      terminal.writeln('  echo     - Echo the input')
+      terminal.writeln('  history  - Show command history')
+      terminal.writeln('  server   - Send command to server')
+      break
+    case 'clear':
+      terminal.clear()
+      break
+    case 'history':
+      commandHistory.forEach((cmd, index) => {
+        terminal.writeln(`${index + 1}  ${cmd}`)
+      })
+      break
+    case '':
+      break
+    default:
+      if (command.startsWith('echo ')) {
+        terminal.writeln(command.slice(5))
+      } else {
+        await sendToServer(command)
+      }
+  }
+  saveHistory()
+}
+
+// 修改：发送命令到服务器
+const sendToServer = async (command) => {
+  const actionOptions = {
+    action: "run",
+    args: {
+      command: command,
+      is_input: false,
+      thought: "",
+      blocking: false,
+      hidden: false,
+      confirmation_state: "confirmed"
+    }
+  }
+  chatStore.socket.emit('oh_user_action', actionOptions)
+}
+
+onMounted(() => {
+  terminal = new Terminal({
+    cursorBlink: true, // 光标闪烁
+    fontSize: 14, // 字体大小
+    fontFamily: 'Menlo, Monaco, "Courier New", monospace',
+    // 光标为绿色
+    cursorStyle: 'bar', // 光标样式
+    cursorWidth: 7, // 光标宽度
+    scrollback: 1000, // 滚动回退
+    
+    theme: {
+      background: '#f8f8f7',
+      foreground: '#000000',
+      cursor: '#888888',
+      selection: '#000000',
+      selectionBackground: '#555555',
+      
+    }
+  })
+
+  terminal.open(terminalRef.value)
+  // terminal.write('Welcome to the terminal!\r\n$ ')
+
+
+  emitter.on('terminal', (value) => {
+    if (value.type == 'command') {
+      terminal.writeln(`${value.content}`)
+    }
+    if (value.type == 'observation') {
+      terminal.writeln(value.content + '\n')
+      terminal.write('$ ')
+    }
+  })
+
+  // 处理键盘输入
+  terminal.onKey(({ key, domEvent }) => {
+    const printable = !domEvent.altKey && !domEvent.ctrlKey && !domEvent.metaKey
+    if (domEvent.keyCode === 13) { // Enter
+      terminal.write('\r\n')
+      handleCommand(currentLine)
+      commandHistory.push(currentLine)
+      historyIndex = commandHistory.length
+      currentLine = ''
+      terminal.write('$ ')
+    } else if (domEvent.keyCode === 8) { // Backspace
+      if (currentLine.length > 0) {
+        currentLine = currentLine.slice(0, -1)
+        terminal.write('\b \b')
+      }
+    } else if (domEvent.keyCode === 38) { // Up arrow
+      if (historyIndex > 0) {
+        historyIndex--
+        currentLine = commandHistory[historyIndex]
+        terminal.write('\r\x1b[K$ ' + currentLine)
+      }
+    } else if (domEvent.keyCode === 40) { // Down arrow
+      if (historyIndex < commandHistory.length - 1) {
+        historyIndex++
+        currentLine = commandHistory[historyIndex]
+        terminal.write('\r\x1b[K$ ' + currentLine)
+      } else {
+        historyIndex = commandHistory.length
+        currentLine = ''
+        terminal.write('\r\x1b[K$ ')
+      }
+    } else if (printable) {
+      currentLine += key
+      terminal.write(key)
+    }
+  })
+})
+</script>
+
+<style lang="scss" scoped>
+.container {
+  // height: 100%;
+  // flex: 1;
+  display: flex;
+  margin: 10px;
+  // box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+
+}
+
+.terminal-icon {
+  font-size: 12px;
+}
+
+.terminal-container {
+  display: flex;
+  // flex: 1;
+  width: 100%;
+  height: 100%;
+  transition: height 0.3s ease;
+  overflow: hidden;
+}
+
+.terminal-collapsed {
+  height: 0;
+  overflow: hidden;
+}
+</style>

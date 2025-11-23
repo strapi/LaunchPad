@@ -1,0 +1,28 @@
+{
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "title": {
+            "type": "string"
+        },
+        "goal": {
+            "type": "string"
+        },
+        "content": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string"
+        },
+        "is_enabled": {
+            "type": "boolean"
+        },
+        "create_at": {
+            "type": "string"
+        },
+        "update_at": {
+            "type": "string"
+        }
+    }
+}

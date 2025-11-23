@@ -1,0 +1,31 @@
+{
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "platform_name": {
+            "type": "string"
+        },
+        "logo_url": {
+            "type": "string"
+        },
+        "model_id": {
+            "type": "string"
+        },
+        "model_name": {
+            "type": "string"
+        },
+        "group_name": {
+            "type": "string"
+        },
+        "model_types": {
+            "type": "string"
+        },
+        "create_at": {
+            "type": "string"
+        },
+        "update_at": {
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "provider_id": {
+            "type": "integer"
+        },
+        "provider_name": {
+            "type": "string"
+        },
+        "base_config": {
+            "type": "object"
+        },
+        "logo_url": {
+            "type": "string"
+        },
+        "api_key": {
+            "type": "string"
+        },
+        "include_date": {
+            "type": "boolean"
+        },
+        "cover_provider_search": {
+            "type": "boolean"
+        },
+        "enable_enhanced_mode": {
+            "type": "boolean"
+        },
+        "result_count": {
+            "type": "integer"
+        },
+        "blacklist": {
+            "type": "string"
+        },
+        "create_at": {
+            "type": "string"
+        },
+        "update_at": {
+            "type": "string"
+        }
+    }
+}

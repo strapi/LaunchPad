@@ -13,6 +13,7 @@ import { LocaleSwitcher } from '../locale-switcher';
 import { ThemeToggle } from '../theme-toggle';
 import { NavbarItem } from './navbar-item';
 import { Button } from '@/components/elements/button';
+import MagneticButton from '@/components/ui/MagneticButton';
 import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
 
@@ -51,29 +52,19 @@ export const DesktopNavbar = ({
   return (
     <motion.div
       className={cn(
-        'w-full flex relative justify-between px-4 py-3 rounded-md  transition duration-200 bg-transparent mx-auto'
+        'w-full flex relative justify-between px-6 py-3 rounded-full transition duration-200 mx-auto items-center'
       )}
       animate={{
-        width: showBackground ? '80%' : '100%',
-        background: showBackground ? 'var(--neutral-900)' : 'transparent',
+        width: showBackground ? '90%' : '100%',
+        backgroundColor: showBackground ? 'rgba(23, 23, 23, 0.8)' : 'transparent',
+        backdropFilter: showBackground ? 'blur(12px)' : 'blur(0px)',
+        border: showBackground ? '1px solid rgba(255, 255, 255, 0.1)' : '1px solid transparent',
+        boxShadow: showBackground ? '0 4px 30px rgba(0, 0, 0, 0.1)' : 'none',
       }}
       transition={{
         duration: 0.4,
       }}
     >
-      <AnimatePresence>
-        {showBackground && (
-          <motion.div
-            key={String(showBackground)}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              duration: 1,
-            }}
-            className="absolute inset-0 h-full w-full bg-neutral-900 pointer-events-none [mask-image:linear-gradient(to_bottom,white,transparent,white)] rounded-full"
-          />
-        )}
-      </AnimatePresence>
       <div className="flex flex-row gap-2 items-center">
         <Logo locale={locale} image={logo?.image} />
         <div className="flex items-center gap-1.5">
@@ -93,16 +84,17 @@ export const DesktopNavbar = ({
         <LocaleSwitcher currentLocale={locale} />
 
         {rightNavbarItems.map((item, index) => (
-          <Button
-            key={item.text}
-            variant={
-              index === rightNavbarItems.length - 1 ? 'primary' : 'simple'
-            }
-            as={Link}
-            href={`/${locale}${item.URL}`}
-          >
-            {item.text}
-          </Button>
+          <MagneticButton key={item.text}>
+            <Button
+              variant={
+                index === rightNavbarItems.length - 1 ? 'primary' : 'simple'
+              }
+              as={Link}
+              href={`/${locale}${item.URL}`}
+            >
+              {item.text}
+            </Button>
+          </MagneticButton>
         ))}
       </div>
     </motion.div>

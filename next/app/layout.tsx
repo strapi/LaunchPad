@@ -1,6 +1,6 @@
 import type { Viewport } from 'next';
 
-import { Inter, Newsreader } from 'next/font/google';
+import { Inter, Newsreader, Cinzel } from 'next/font/google';
 
 import { Locale, i18n } from '@/i18n.config';
 
@@ -8,6 +8,8 @@ import './globals.css';
 
 import { SlugProvider } from './context/SlugContext';
 import { Preview } from '@/components/preview';
+import SmoothScroll from '@/components/ui/SmoothScroll';
+import CustomCursor from '@/components/ui/CustomCursor';
 import { cn } from '@/lib/utils';
 
 const inter = Inter({
@@ -20,6 +22,12 @@ const newsreader = Newsreader({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-serif',
+});
+
+const cinzel = Cinzel({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
 });
 
 export const viewport: Viewport = {
@@ -45,9 +53,12 @@ export default function RootLayout({
         className={cn(
           inter.variable,
           newsreader.variable,
+          cinzel.variable,
           'relative min-h-screen bg-white dark:bg-charcoal text-neutral-900 dark:text-text-primary transition-colors duration-300'
         )}
       >
+        <SmoothScroll />
+        <CustomCursor />
         <Preview />
         <SlugProvider>{children}</SlugProvider>
       </body>

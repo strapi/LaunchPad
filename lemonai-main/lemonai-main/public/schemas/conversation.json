@@ -1,0 +1,25 @@
+{
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "conversation_id": {
+            "type": "string"
+        },
+        "selected_repository": {
+            "type": "string"
+        },
+        "title": {
+            "type": "string"
+        },
+        "create_at": {
+            "type": "string"
+        },
+        "update_at": {
+            "type": "string"
+        },
+        "is_favorite": {
+            "type": "boolean"
+        }
+    }
+}

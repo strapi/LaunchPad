@@ -1,0 +1,22 @@
+{
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "setting_type": {
+            "type": "string"
+        },
+        "model_id": {
+            "type": "string"
+        },
+        "config": {
+            "type": "object"
+        },
+        "create_at": {
+            "type": "string"
+        },
+        "update_at": {
+            "type": "string"
+        }
+    }
+}

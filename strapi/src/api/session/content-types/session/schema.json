@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sessions",
+  "info": {
+    "singularName": "session",
+    "pluralName": "sessions",
+    "displayName": "Session",
+    "description": "Coaching sessions with clients"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": ["createdAt", "updatedAt"],
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "client": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::client.client",
+      "inversedBy": "sessions"
+    },
+    "startTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "endTime": {
+      "type": "datetime"
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Duration in minutes"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["scheduled", "completed", "cancelled", "rescheduled"],
+      "default": "scheduled"
+    },
+    "notes": {
+      "type": "richtext"
+    },
+    "recording": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["videos"]
+    },
+    "transcript": {
+      "type": "richtext"
+    },
+    "outcomes": {
+      "type": "richtext"
+    },
+    "followUp": {
+      "type": "string"
+    },
+    "nextSession": {
+      "type": "datetime"
+    },
+    "assessments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::assessment.assessment",
+      "mappedBy": "session"
+    }
+  }
+}

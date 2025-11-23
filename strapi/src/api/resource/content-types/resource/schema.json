@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resources",
+  "info": {
+    "singularName": "resource",
+    "pluralName": "resources",
+    "displayName": "Resource",
+    "description": "Coaching resources including guides, templates, and materials"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": ["createdAt", "updatedAt"],
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 1,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": ["guide", "template", "worksheet", "video", "assessment", "book"],
+      "default": "guide"
+    },
+    "tags": {
+      "type": "string"
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["files", "images", "videos"]
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "accessLevel": {
+      "type": "enumeration",
+      "enum": ["public", "private", "clients_only"],
+      "default": "clients_only"
+    },
+    "clients": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::client.client",
+      "inversedBy": "resources"
+    },
+    "downloadCount": {
+      "type": "integer",
+      "default": 0
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}
