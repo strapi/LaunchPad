@@ -11,6 +11,7 @@ export default function LemonAgentWidget() {
   ]);
   const [input, setInput] = useState("");
   const [isListening, setIsListening] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
 
   const toggleOpen = () => setIsOpen(!isOpen);
 
@@ -18,10 +19,13 @@ export default function LemonAgentWidget() {
     if (!input.trim()) return;
     setMessages([...messages, { role: 'user', content: input }]);
     setInput("");
+    setIsTyping(true);
+    
     // Simulate response
     setTimeout(() => {
+      setIsTyping(false);
       setMessages(prev => [...prev, { role: 'agent', content: "I'm processing that request. Accessing SecureBase knowledge graph..." }]);
-    }, 1000);
+    }, 1500);
   };
 
   const toggleListening = () => {
@@ -77,6 +81,27 @@ export default function LemonAgentWidget() {
                   </div>
                 </div>
               ))}
+              {isTyping && (
+                <div className="flex justify-start">
+                  <div className="bg-white/10 p-3 rounded-xl rounded-tl-none flex gap-1">
+                    <motion.div 
+                      animate={{ scale: [1, 1.2, 1] }} 
+                      transition={{ repeat: Infinity, duration: 0.6 }} 
+                      className="w-2 h-2 bg-gray-400 rounded-full" 
+                    />
+                    <motion.div 
+                      animate={{ scale: [1, 1.2, 1] }} 
+                      transition={{ repeat: Infinity, duration: 0.6, delay: 0.2 }} 
+                      className="w-2 h-2 bg-gray-400 rounded-full" 
+                    />
+                    <motion.div 
+                      animate={{ scale: [1, 1.2, 1] }} 
+                      transition={{ repeat: Infinity, duration: 0.6, delay: 0.4 }} 
+                      className="w-2 h-2 bg-gray-400 rounded-full" 
+                    />
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Input */}
