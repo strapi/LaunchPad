@@ -40,7 +40,7 @@ export default function LemonAgentWidget() {
       {/* Floating Trigger */}
       <motion.button
         onClick={toggleOpen}
-        className="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform"
+        className="fixed bottom-8 right-4 sm:right-8 w-14 h-14 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform"
         whileHover={{ rotate: 15 }}
       >
         <IconSparkles className="text-white w-8 h-8" />
@@ -53,7 +53,7 @@ export default function LemonAgentWidget() {
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-24 right-8 w-96 h-[500px] bg-charcoal border border-white/10 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden backdrop-blur-xl bg-opacity-90"
+            className="fixed bottom-24 right-4 sm:right-8 w-[calc(100vw-2rem)] sm:w-96 h-[500px] max-h-[70vh] bg-charcoal border border-white/10 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden backdrop-blur-xl bg-opacity-90"
           >
             {/* Header */}
             <div className="p-4 border-b border-white/10 bg-white/5 flex justify-between items-center">

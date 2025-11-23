@@ -31,6 +31,9 @@ const Crowd = ({ onComplete }: { onComplete?: () => void }) => {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const { viewport } = useThree();
   
+  // Responsive Scale: If viewport is small (mobile), scale down the crowd
+  const responsiveScale = viewport.width < 10 ? 0.6 : 1;
+  
   // Dummy object for matrix calculations
   const dummy = useMemo(() => new THREE.Object3D(), []);
   
@@ -155,9 +158,9 @@ const Crowd = ({ onComplete }: { onComplete?: () => void }) => {
       const shieldHeight = 8;
       
       // Simple Shield approximation
-      const tx = Math.sin(u) * Math.cos(v) * shieldWidth;
-      const ty = -Math.cos(u) * shieldHeight * 0.5; // Invert to stand up
-      const tz = Math.sin(u) * Math.sin(v) * 2; // Thickness
+      const tx = Math.sin(u) * Math.cos(v) * shieldWidth * responsiveScale;
+      const ty = -Math.cos(u) * shieldHeight * 0.5 * responsiveScale; // Invert to stand up
+      const tz = Math.sin(u) * Math.sin(v) * 2 * responsiveScale; // Thickness
       
       const target = new THREE.Vector3(tx, ty, tz);
 
@@ -208,6 +211,8 @@ export default function ParticleHero({ onIntroComplete }: { onIntroComplete?: ()
            <Text
             position={[0, 0, -2]}
             fontSize={3}
+            maxWidth={10}
+            textAlign="center"
             color="white"
             anchorX="center"
             anchorY="middle"
