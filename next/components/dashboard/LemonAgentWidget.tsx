@@ -15,17 +15,40 @@ export default function LemonAgentWidget() {
 
   const toggleOpen = () => setIsOpen(!isOpen);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
-    setMessages([...messages, { role: 'user', content: input }]);
+    
+    const userMessage = input;
+    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
     setInput("");
     setIsTyping(true);
     
-    // Simulate response
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/agent/process', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: userMessage,
+          history: messages,
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
       setIsTyping(false);
-      setMessages(prev => [...prev, { role: 'agent', content: "I'm processing that request. Accessing SecureBase knowledge graph..." }]);
-    }, 1500);
+      setMessages(prev => [...prev, { role: 'agent', content: data.response }]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setIsTyping(false);
+      setMessages(prev => [...prev, { 
+        role: 'agent', 
+        content: "I'm having trouble connecting right now. Please try again in a moment." 
+      }]);
+    }
   };
 
   const toggleListening = () => {

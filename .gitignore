@@ -2,6 +2,8 @@ node_modules
 .DS_Store
 .vscode
 .env
+.env.local
+.env.*.local
 .claude/settings.local.json
 .pnp.*
 .yarn/*
@@ -19,4 +21,12 @@ node_modules
 .qoder/rules/byterover-rules.md
 .augment/rules/byterover-rules.md
 .vercel
-.env*.local
+playwright-report/
+test-results/
+lighthouse-results.json
+.next/
+dist/
+build/
+out/
+*.log
+npm-debug.log*

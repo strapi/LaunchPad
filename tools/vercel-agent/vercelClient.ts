@@ -1,17 +1,15 @@
-import dotenv from 'dotenv';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Load .env from project root (2 levels up from tools/vercel-agent)
-dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+import 'dotenv/config';
 
 const VERCEL_TOKEN = process.env.VERCEL_TOKEN;
 const VERCEL_PROJECT_ID = process.env.VERCEL_PROJECT_ID;
 const VERCEL_PROJECT_NAME = process.env.VERCEL_PROJECT_NAME;
+const VERCEL_ORG_ID = process.env.VERCEL_ORG_ID;
 const VERCEL_API = 'https://api.vercel.com';
+
+// Validate configuration
+if (!VERCEL_TOKEN) console.warn('Warning: VERCEL_TOKEN is missing');
+if (!VERCEL_PROJECT_ID) console.warn('Warning: VERCEL_PROJECT_ID is missing');
+if (!VERCEL_ORG_ID) console.warn('Warning: VERCEL_ORG_ID is missing (required for team projects)');
 
 interface DeploymentResponse {
   id: string;
@@ -25,7 +23,14 @@ async function vercelFetch(endpoint: string, options: RequestInit = {}) {
     throw new Error('VERCEL_TOKEN not found in .env');
   }
 
-  const response = await fetch(`${VERCEL_API}${endpoint}`, {
+  const separator = endpoint.includes('?') ? '&' : '?';
+  const url = VERCEL_ORG_ID 
+    ? `${VERCEL_API}${endpoint}${separator}teamId=${VERCEL_ORG_ID}`
+    : `${VERCEL_API}${endpoint}`;
+
+  console.log(`DEBUG: Fetching ${url}`); // Add debug log
+
+  const response = await fetch(url, {
     ...options,
     headers: {
       Authorization: `Bearer ${VERCEL_TOKEN}`,

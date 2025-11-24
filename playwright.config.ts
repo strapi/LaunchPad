@@ -7,10 +7,9 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
-
+  
   use: {
-    // Use the main production alias
-    baseURL: 'https://peter-sung.vercel.app',
+    baseURL: process.env.BASE_URL || 'http://localhost:3000',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },
@@ -22,6 +21,9 @@ export default defineConfig({
     },
   ],
 
-  // Disable webServer so tests run against production, not local dev server
-  webServer: undefined,
+  webServer: process.env.CI ? undefined : {
+    command: 'npm run dev || pnpm dev || yarn dev',
+    port: 3000,
+    reuseExistingServer: !process.env.CI,
+  },
 });

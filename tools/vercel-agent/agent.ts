@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import { triggerDeploy, getDeploymentStatus, listDeployments } from './vercelClient';
+import { triggerDeploy, getDeploymentStatus, listDeployments } from './vercelClient.js';
 
 type Grade = 'SUCCESS' | 'PROGRESS' | 'FAILURE';
 
@@ -150,53 +150,56 @@ async function agenticBuildTestDeployLoop(): Promise<void> {
     // Step 4: Deploy
     console.log('\n🚀 Triggering Vercel deployment...');
     try {
-      // Use Vercel CLI for deployment
-      const deployOutput = execSync('vercel --prod --yes', { encoding: 'utf-8' });
-      const urlMatch = deployOutput.match(/https:\/\/[^\s]+/);
-      const url = urlMatch ? urlMatch[0] : '';
+      const deployment = await triggerDeploy();
+      console.log(`   Deployment initiated: ${deployment.id}`);
+      console.log(`   URL: ${deployment.url}`);
       
-      console.log(`   Deployment initiated via CLI`);
-      console.log(`   URL: ${url}`);
+      // Step 5: Monitor
+      const deployGrade = await waitForDeployment(deployment.id);
       
-      if (!url) {
-        throw new Error('Could not parse deployment URL from CLI output');
-      }
-
-      // Step 5: Monitor (CLI waits for deployment, so we can skip polling or just verify)
-      // But let's keep the structure and verify health
-      
-      // Step 6: Verify health
-      const isHealthy = await verifyHealth(url.replace('https://', ''));
-      
-      if (isHealthy) {
-        results.push({
-          cycle,
-          action: 'deploy',
-          grade: 'SUCCESS',
-          errors: [],
-          nextAction: 'complete'
-        });
+      if (deployGrade === 'SUCCESS') {
+        // Step 6: Verify health
+        const isHealthy = await verifyHealth(deployment.url);
         
-        console.log('\n📊 Self-Grade: ✅ SUCCESS');
-        console.log('');
-        console.log('='.repeat(50));
-        console.log('🎉 SUCCESS! Application is live and healthy!');
-        console.log(`🌐 Live URL: ${url}`);
-        console.log('✅ All checks passed. Deployment complete.');
-        console.log('='.repeat(50));
-        return;
+        if (isHealthy) {
+          results.push({
+            cycle,
+            action: 'deploy',
+            grade: 'SUCCESS',
+            errors: [],
+            nextAction: 'complete'
+          });
+          
+          console.log('\n📊 Self-Grade: ✅ SUCCESS');
+          console.log('');
+          console.log('='.repeat(50));
+          console.log('🎉 SUCCESS! Application is live and healthy!');
+          console.log(`🌐 Live URL: https://${deployment.url}`);
+          console.log('✅ All checks passed. Deployment complete.');
+          console.log('='.repeat(50));
+          return;
+        } else {
+          results.push({
+            cycle,
+            action: 'health_check',
+            grade: 'FAILURE',
+            errors: ['Health check failed'],
+            nextAction: 'retry'
+          });
+          console.log('\n📊 Self-Grade: 🟡 PROGRESS');
+          console.log('Decision: App deployed but health check failed. Retrying...');
+        }
       } else {
         results.push({
           cycle,
-          action: 'health_check',
-          grade: 'FAILURE',
-          errors: ['Health check failed'],
+          action: 'deploy',
+          grade: deployGrade,
+          errors: ['Deployment incomplete'],
           nextAction: 'retry'
         });
-        console.log('\n📊 Self-Grade: 🟡 PROGRESS');
-        console.log('Decision: App deployed but health check failed. Retrying...');
+        console.log(`\n📊 Self-Grade: 🟡 ${deployGrade}`);
+        console.log('Decision: Continuing to next cycle...');
       }
-
     } catch (error: any) {
       results.push({
         cycle,

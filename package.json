@@ -20,6 +20,8 @@
     "lint-staged": "lint-staged",
     "deploy:agent": "tsx tools/vercel-agent/agent.ts",
     "deploy:check": "tsx tools/vercel-agent/check-deployment.ts",
+    "test:e2e": "playwright test",
+    "test:lighthouse": "lighthouse http://localhost:3000 --output=json --output-path=./lighthouse-results.json",
     "build": "cd next && npm run build"
   },
   "dependencies": {
