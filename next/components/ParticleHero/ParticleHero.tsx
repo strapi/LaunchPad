@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useRef, useState, useEffect } from "react";
+import React, { useMemo, useRef, useState, useEffect, useCallback } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Text, Environment, PerspectiveCamera, Float } from "@react-three/drei";
 import * as THREE from "three";
@@ -11,7 +11,8 @@ const PARTICLE_COUNT = 2500; // Number of "people"
 const TEXT_CONTENT = "SECUREBASE";
 const FONT_SIZE = 4;
 const DISPERSION_RANGE = 30; // How far they start
-const GATHER_SPEED = 0.015; // How fast they form the text
+const GATHER_SPEED = 0.02; // How fast they form the text (increased for faster animation)
+const MAX_ANIMATION_TIME = 8000; // Maximum 8 seconds before auto-completing
 
 // --- Helper: Generate a "Person" Geometry ---
 // Merging simple geometries to create a low-poly human shape
@@ -112,6 +113,7 @@ const Crowd = ({ onComplete }: { onComplete?: () => void }) => {
   // Current Animation State
   const progress = useRef(0);
   const mode = useRef<"gathering" | "holding" | "dispersing">("gathering");
+  const completionTriggered = useRef(false); // Guard to prevent multiple calls
 
   useFrame((state) => {
     if (!meshRef.current) return;
@@ -121,13 +123,14 @@ const Crowd = ({ onComplete }: { onComplete?: () => void }) => {
     // Update animation progress
     if (mode.current === "gathering") {
       progress.current += GATHER_SPEED;
-      if (progress.current >= 1) {
+      if (progress.current >= 1 && !completionTriggered.current) {
         progress.current = 1;
         mode.current = "holding";
+        completionTriggered.current = true; // Prevent multiple setTimeout calls
         setTimeout(() => {
           mode.current = "dispersing";
           if (onComplete) onComplete();
-        }, 2000); // Hold for 2 seconds
+        }, 1500); // Hold for 1.5 seconds (reduced for faster transition)
       }
     } else if (mode.current === "dispersing") {
       progress.current -= GATHER_SPEED * 0.5; // Disperse slower
@@ -195,18 +198,78 @@ const Crowd = ({ onComplete }: { onComplete?: () => void }) => {
 
 // --- Main Component ---
 export default function ParticleHero({ onIntroComplete }: { onIntroComplete?: () => void }) {
+  const [hasError, setHasError] = useState(false);
+  const completionCalled = useRef(false);
+
+  // Memoized callback to ensure it's stable
+  const handleComplete = useCallback(() => {
+    if (!completionCalled.current) {
+      completionCalled.current = true;
+      onIntroComplete?.();
+    }
+  }, [onIntroComplete]);
+
+  // Fallback timeout - if animation doesn't complete in time, force completion
+  useEffect(() => {
+    const fallbackTimer = setTimeout(() => {
+      console.warn("ParticleHero: Fallback timeout triggered - forcing completion");
+      handleComplete();
+    }, MAX_ANIMATION_TIME);
+
+    return () => clearTimeout(fallbackTimer);
+  }, [handleComplete]);
+
+  // If there's an error with WebGL/Three.js, skip the intro
+  useEffect(() => {
+    if (hasError) {
+      console.warn("ParticleHero: Error detected - skipping intro");
+      handleComplete();
+    }
+  }, [hasError, handleComplete]);
+
+  // Check WebGL support
+  useEffect(() => {
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+      if (!gl) {
+        console.warn("WebGL not supported");
+        setHasError(true);
+      }
+    } catch (e) {
+      console.warn("WebGL check failed:", e);
+      setHasError(true);
+    }
+  }, []);
+
+  // If error, show minimal loading then complete
+  if (hasError) {
+    return (
+      <div className="w-full h-screen bg-black flex items-center justify-center">
+        <div className="text-white/50 text-sm">Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full h-screen bg-black relative overflow-hidden">
-      <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
+      <Canvas
+        camera={{ position: [0, 0, 15], fov: 45 }}
+        onCreated={() => console.log("Canvas created successfully")}
+        onError={(error) => {
+          console.error("Canvas error:", error);
+          setHasError(true);
+        }}
+      >
         <color attach="background" args={["#050505"]} />
         <Environment preset="city" />
-        
+
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} />
-        
-        <Crowd onComplete={onIntroComplete} />
-        
-        {/* Overlay Text that fades in as particles gather */}
+
+        <Crowd onComplete={handleComplete} />
+
+        {/* Overlay Text that fades in as particles gather - removed external font to prevent loading issues */}
         <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
            <Text
             position={[0, 0, -2]}
@@ -216,8 +279,7 @@ export default function ParticleHero({ onIntroComplete }: { onIntroComplete?: ()
             color="white"
             anchorX="center"
             anchorY="middle"
-            font="https://fonts.gstatic.com/s/cinzel/v11/8vIJ7ww63mVu7gt78Uk.woff" // Cinzel font URL
-            fillOpacity={0} // Start invisible, we can animate this prop if we want, but for now let's keep it simple
+            fillOpacity={0}
           >
             SECUREBASE
             <meshStandardMaterial attach="material" color="white" emissive="white" emissiveIntensity={0.5} toneMapped={false} transparent opacity={0.1} />
@@ -226,11 +288,14 @@ export default function ParticleHero({ onIntroComplete }: { onIntroComplete?: ()
 
         <PerspectiveCamera makeDefault position={[0, 0, 20]} />
       </Canvas>
-      
-      {/* HTML Overlay for "Skip" or Status */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white/30 text-sm tracking-widest uppercase">
-        Initializing Secure Environment...
-      </div>
+
+      {/* HTML Overlay for "Skip" or Status - now clickable to skip */}
+      <button
+        onClick={handleComplete}
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white/30 text-sm tracking-widest uppercase hover:text-white/60 transition-colors cursor-pointer"
+      >
+        Initializing Secure Environment... (Click to skip)
+      </button>
     </div>
   );
 }
