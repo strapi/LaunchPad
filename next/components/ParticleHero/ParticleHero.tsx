@@ -11,7 +11,7 @@ const PARTICLE_COUNT = 2500; // Number of "people"
 const TEXT_CONTENT = "SECUREBASE";
 const FONT_SIZE = 4;
 const DISPERSION_RANGE = 30; // How far they start
-const GATHER_SPEED = 0.02; // How fast they form the text (increased for faster animation)
+const GATHER_SPEED = 0.008; // Speed of gathering (lower = slower)
 const MAX_ANIMATION_TIME = 8000; // Maximum 8 seconds before auto-completing
 
 // --- Helper: Generate a "Person" Geometry ---
@@ -130,7 +130,7 @@ const Crowd = ({ onComplete }: { onComplete?: () => void }) => {
         setTimeout(() => {
           mode.current = "dispersing";
           if (onComplete) onComplete();
-        }, 1500); // Hold for 1.5 seconds (reduced for faster transition)
+        }, 4000); // Hold for 4 seconds
       }
     } else if (mode.current === "dispersing") {
       progress.current -= GATHER_SPEED * 0.5; // Disperse slower
