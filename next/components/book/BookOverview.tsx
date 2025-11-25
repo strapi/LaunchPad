@@ -7,7 +7,7 @@ const frameworks = [
   {
     icon: IconEye,
     title: 'Awareness',
-    subtitle: 'See clearly what's really happening',
+    subtitle: 'See clearly what\'s really happening',
     description: 'Coaching helps leaders increase self-awareness and emotional intelligence, identify intention-impact gaps, and gain clarity on blind spots that hold them back.',
     benefits: [
       'Understand your leadership blind spots',

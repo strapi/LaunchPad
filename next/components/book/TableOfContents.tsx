@@ -19,14 +19,14 @@ const chapters = [
   },
   {
     number: 3,
-    title: 'Seeing What's Really There: The Practice of Awareness',
+    title: 'Seeing What\'s Really There: The Practice of Awareness',
     description: 'Tools and frameworks for developing deep self-awareness and emotional intelligence.',
     pages: '49-78',
   },
   {
     number: 4,
     title: 'The Intention-Impact Gap',
-    description: 'Bridging the divide between what you intend and how you're actually perceived.',
+    description: 'Bridging the divide between what you intend and how you\'re actually perceived.',
     pages: '79-104',
   },
   {
