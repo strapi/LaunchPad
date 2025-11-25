@@ -1,0 +1,92 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_comments",
+  "info": {
+    "singularName": "social-comment",
+    "pluralName": "social-comments",
+    "displayName": "Social Comment",
+    "description": "Comments on social media posts"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "platform": {
+      "type": "enumeration",
+      "enum": ["facebook", "instagram", "twitter", "x", "linkedin"],
+      "required": true
+    },
+    "commentId": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "postId": {
+      "type": "string",
+      "required": true
+    },
+    "parentCommentId": {
+      "type": "string",
+      "required": false
+    },
+    "author": {
+      "type": "json",
+      "required": true,
+      "default": {}
+    },
+    "content": {
+      "type": "text",
+      "required": true
+    },
+    "timestamp": {
+      "type": "datetime",
+      "required": true
+    },
+    "likes": {
+      "type": "integer",
+      "default": 0
+    },
+    "replies": {
+      "type": "integer",
+      "default": 0
+    },
+    "sentiment": {
+      "type": "enumeration",
+      "enum": ["positive", "neutral", "negative"],
+      "required": false
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "approved", "hidden", "replied"],
+      "default": "pending"
+    },
+    "isSpam": {
+      "type": "boolean",
+      "default": false
+    },
+    "reply": {
+      "type": "text",
+      "required": false
+    },
+    "repliedAt": {
+      "type": "datetime",
+      "required": false
+    },
+    "tags": {
+      "type": "json",
+      "required": false,
+      "default": []
+    },
+    "socialPost": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::social-post.social-post"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
