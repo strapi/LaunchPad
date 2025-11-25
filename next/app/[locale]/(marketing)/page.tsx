@@ -8,6 +8,7 @@ import fetchContentType from '@/lib/strapi/fetchContentType';
 import { HeroSection } from '@/components/HeroSection';
 import { FeatureCard } from '@/components/FeatureCard';
 import LandingIntro from '@/components/LandingIntro';
+import ProjectsGrid from '@/components/ProjectsGrid';
 import { IconUsers, IconBuilding, IconMicrophone, IconArrowRight, IconQuote } from '@tabler/icons-react';
 
 export async function generateMetadata(props: {
@@ -167,6 +168,9 @@ export default async function HomePage(props: {
             </div>
           </div>
         </section>
+
+        {/* Projects Grid Section */}
+        <ProjectsGrid />
 
         {/* Quote Section */}
         <section className="py-24">
