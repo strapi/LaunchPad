@@ -12,8 +12,9 @@ import { useState } from 'react';
 import { LocaleSwitcher } from '../locale-switcher';
 import { NavbarItem } from './navbar-item';
 import { Button } from '@/components/elements/button';
-import { Logo } from '@/components/logo';
+// import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
+import { LogoLarge } from '@/components/large-logo';
 
 type Props = {
   leftNavbarItems: {
@@ -28,6 +29,11 @@ type Props = {
   }[];
   logo: any;
   locale: string;
+  upNavbarItems: {
+    heading: string;
+    sub_heading: string;
+    CTAs: any[];
+  };
 };
 
 export const DesktopNavbar = ({
@@ -35,6 +41,7 @@ export const DesktopNavbar = ({
   rightNavbarItems,
   logo,
   locale,
+  upNavbarItems,
 }: Props) => {
   const { scrollY } = useScroll();
 
@@ -50,7 +57,8 @@ export const DesktopNavbar = ({
   return (
     <motion.div
       className={cn(
-        'w-full flex relative justify-between px-4 py-3 rounded-md  transition duration-200 bg-transparent mx-auto'
+        // 'mx-auto w-full flex relative justify-between rounded-md  transition duration-200'
+        'mx-auto w-full flex flex-col relative rounded-md  transition duration-200'
       )}
       animate={{
         width: showBackground ? '80%' : '100%',
@@ -60,7 +68,7 @@ export const DesktopNavbar = ({
         duration: 0.4,
       }}
     >
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {showBackground && (
           <motion.div
             key={String(showBackground)}
@@ -72,22 +80,45 @@ export const DesktopNavbar = ({
             className="absolute inset-0 h-full w-full bg-neutral-900 pointer-events-none [mask-image:linear-gradient(to_bottom,white,transparent,white)] rounded-full"
           />
         )}
-      </AnimatePresence>
-      <div className="flex flex-row gap-2 items-center">
-        <Logo locale={locale} image={logo?.image} />
-        <div className="flex items-center gap-1.5">
-          {leftNavbarItems.map((item) => (
-            <NavbarItem
-              href={`/${locale}${item.URL}` as never}
+      </AnimatePresence> */}
+      <div className={cn("flex w-full px-24 bg-[#D9D9D9] justify-between", {"hidden transition-all duration-150" : showBackground})}>
+        <div className="flex gap-6 text-base items-center text-center">
+          <span>{upNavbarItems.heading}</span>
+          <span>
+            {/* image */}
+            {upNavbarItems.sub_heading}
+          </span>
+        </div>
+
+        <div className="flex gap-1">
+          {upNavbarItems.CTAs.map((item) => (
+            <Button
               key={item.text}
-              target={item.target}
+              variant={item.variant}
+              as={Link}
+              href={`/${locale}${item.URL}`}
             >
               {item.text}
-            </NavbarItem>
+            </Button>
           ))}
         </div>
       </div>
-      <div className="flex space-x-2 items-center">
+      <div className="flex justify-beetween bg-white w-full">
+        <div className="flex flex-row justify-around gap-2 items-center p-4 w-full ">
+          <LogoLarge locale={locale} image={logo?.image} />
+          <div className="flex items-center justify-center gap-2 space-x-3">
+            {leftNavbarItems.map((item) => (
+              <NavbarItem
+                href={`/${locale}${item.URL}` as never}
+                key={item.text}
+                target={item.target}
+              >
+                {item.text}
+              </NavbarItem>
+            ))}
+          </div>
+        </div>
+        {/* <div className="flex space-x-2 items-center">
         <LocaleSwitcher currentLocale={locale} />
 
         {rightNavbarItems.map((item, index) => (
@@ -102,6 +133,7 @@ export const DesktopNavbar = ({
             {item.text}
           </Button>
         ))}
+      </div> */}
       </div>
     </motion.div>
   );

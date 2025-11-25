@@ -22,6 +22,12 @@
       "type": "component",
       "repeatable": true,
       "component": "shared.link"
+    },
+    "up_navbar_items": {
+      "displayName": "Up_Navbar_Items",
+      "type": "component",
+      "repeatable": false,
+      "component": "dynamic-zone.hero"
     }
   }
 }

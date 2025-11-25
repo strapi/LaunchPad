@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_dynamic_zone_headers",
+  "info": {
+    "displayName": "Header",
+    "icon": "layout",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    },
+    "CTAs": {
+      "displayName": "Button",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.button"
+    }
+  }
+}
