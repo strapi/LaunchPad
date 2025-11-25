@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coaching_packages",
+  "info": {
+    "singularName": "coaching-package",
+    "pluralName": "coaching-packages",
+    "displayName": "Coaching Package",
+    "description": "Coaching package inquiries and reservations"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "packageType": {
+      "type": "enumeration",
+      "enum": ["discovery", "executive", "team-workshop"],
+      "required": true
+    },
+    "fullName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "organizationName": {
+      "type": "string"
+    },
+    "preferredStartDate": {
+      "type": "date"
+    },
+    "message": {
+      "type": "text",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["inquiry", "scheduled", "in-progress", "completed", "not-interested"],
+      "default": "inquiry"
+    },
+    "assignedAgent": {
+      "type": "string"
+    },
+    "bookPreorder": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::book-preorder.book-preorder"
+    }
+  }
+}

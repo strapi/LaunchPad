@@ -112,16 +112,9 @@ export default async function HomePage(props: {
     <LandingIntro>
       <div className="flex flex-col">
         {/* Hero Section */}
-        <HeroSection
-          title="SecureBase: Leadership for the Future"
-          subtitle="Empowering leaders with the psychological safety and strategic clarity needed to navigate complexity and drive meaningful change."
-          ctaText="Start Your Journey"
-          ctaLink="/contact"
-          secondaryCtaText="Explore Coaching"
-          secondaryCtaLink="/coaching"
-        />
+        <HeroSection />
 
-        {/* Stats Section */}
+      {/* Stats Section */}
         <section className="py-16 border-b border-white/5">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">

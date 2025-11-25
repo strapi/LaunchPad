@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "email_templates",
+  "info": {
+    "singularName": "email-template",
+    "pluralName": "email-templates",
+    "displayName": "Email Template",
+    "description": "Email templates for automation"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "subject": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "richtext",
+      "required": true
+    },
+    "trigger": {
+      "type": "enumeration",
+      "enum": ["manual", "new-order", "pre-launch", "coaching-inquiry", "order-shipped", "order-delivered"],
+      "default": "manual"
+    },
+    "enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "lastSent": {
+      "type": "datetime"
+    },
+    "variables": {
+      "type": "json"
+    }
+  }
+}

@@ -9,7 +9,6 @@ import './globals.css';
 import { SlugProvider } from './context/SlugContext';
 import { Preview } from '@/components/preview';
 import SmoothScroll from '@/components/ui/SmoothScroll';
-import CustomCursor from '@/components/ui/CustomCursor';
 import { cn } from '@/lib/utils';
 
 const inter = Inter({
@@ -58,7 +57,6 @@ export default function RootLayout({
         )}
       >
         <SmoothScroll />
-        <CustomCursor />
         <Preview />
         <SlugProvider>{children}</SlugProvider>
       </body>

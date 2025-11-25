@@ -4,11 +4,12 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
-import { IconDashboard, IconMessage, IconUsers, IconFiles, IconSettings, IconLogout, IconHome } from '@tabler/icons-react';
+import { IconDashboard, IconMessage, IconUsers, IconFiles, IconSettings, IconLogout, IconHome, IconBook } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
   { href: '/dashboard', icon: IconDashboard, label: 'Overview' },
+  { href: '/dashboard/book-orders', icon: IconBook, label: 'Book Orders' },
   { href: '/dashboard/chat', icon: IconMessage, label: 'Chat & AI Coach' },
   { href: '/dashboard/clients', icon: IconUsers, label: 'Clients' },
   { href: '/dashboard/resources', icon: IconFiles, label: 'Resources' },

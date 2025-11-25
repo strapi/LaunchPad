@@ -1,0 +1,41 @@
+# Builds
+.next/
+dist/
+build/
+out/
+
+# Dependencies
+node_modules/
+
+# Coverage and tests
+coverage/
+.nyc_output/
+
+# Misc
+.git/
+.github/
+.vscode/
+.cursor/
+.husky/
+
+# Package files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Generated files
+public/
+stubs/
+drizzle/
+
+# Config files that should maintain their format
+*.config.js
+*.config.mjs
+*.config.cjs
+*.config.ts
+
+# Environment files
+.env*
+
+# Markdown files
+*.md 

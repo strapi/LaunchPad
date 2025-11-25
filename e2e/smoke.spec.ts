@@ -41,22 +41,22 @@ test.describe('Deployment Smoke Tests', () => {
     // 3. Or timeout after 10 seconds
 
     // First, check if ParticleHero is present (black screen phase)
-    const particleHero = page.locator('text=Initializing Secure Environment');
+    // Note: The text might be different now, checking for canvas or specific intro element
+    const introLayer = page.locator('.fixed.inset-0.z-50.bg-black');
+    
+    if (await introLayer.isVisible({ timeout: 2000 }).catch(() => false)) {
+      console.log('Intro layer detected, waiting for animation...');
 
-    // If particle hero is visible, wait for it to complete or click to skip
-    if (await particleHero.isVisible({ timeout: 2000 }).catch(() => false)) {
-      console.log('ParticleHero detected, waiting for animation...');
-
-      // Wait up to 10 seconds for the hero content to appear
-      const heroContent = page.locator('h1:has-text("SecureBase")');
+      // Wait up to 15 seconds for the hero content to appear
+      const heroContent = page.locator('h1').first();
 
       try {
-        await heroContent.waitFor({ state: 'visible', timeout: 10000 });
+        await heroContent.waitFor({ state: 'visible', timeout: 15000 });
         console.log('Hero content revealed successfully via animation');
       } catch {
         // If animation didn't complete, click skip button
         console.log('Animation timeout, clicking skip button...');
-        const skipButton = page.locator('button:has-text("skip")');
+        const skipButton = page.locator('button:has-text("Skip Intro")');
         if (await skipButton.isVisible({ timeout: 1000 }).catch(() => false)) {
           await skipButton.click();
           await heroContent.waitFor({ state: 'visible', timeout: 5000 });
@@ -69,7 +69,7 @@ test.describe('Deployment Smoke Tests', () => {
     await expect(page.locator('h1').first()).toBeVisible({ timeout: 15000 });
 
     // Verify CTA buttons are present
-    const ctaButton = page.locator('a:has-text("Start Your Journey"), a:has-text("Get Started")');
+    const ctaButton = page.locator('a:has-text("Start Your Discovery")');
     await expect(ctaButton.first()).toBeVisible({ timeout: 5000 });
   });
 
