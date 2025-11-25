@@ -5,6 +5,7 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Text, Environment, PerspectiveCamera, Float } from "@react-three/drei";
 import * as THREE from "three";
 import { Color } from "three";
+import HolographicLogo from "../ui/HolographicLogo";
 
 // --- Configuration ---
 const PARTICLE_COUNT = 2500; // Number of "people"
@@ -28,7 +29,7 @@ const createPersonGeometry = () => {
 };
 
 // --- The Crowd Component ---
-const Crowd = ({ onComplete }: { onComplete?: () => void }) => {
+const Crowd = ({ onComplete, onHoldStart }: { onComplete?: () => void, onHoldStart?: () => void }) => {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const { viewport } = useThree();
   
@@ -127,6 +128,7 @@ const Crowd = ({ onComplete }: { onComplete?: () => void }) => {
         progress.current = 1;
         mode.current = "holding";
         completionTriggered.current = true; // Prevent multiple setTimeout calls
+        onHoldStart?.();
         setTimeout(() => {
           mode.current = "dispersing";
           if (onComplete) onComplete();
@@ -199,6 +201,7 @@ const Crowd = ({ onComplete }: { onComplete?: () => void }) => {
 // --- Main Component ---
 export default function ParticleHero({ onIntroComplete }: { onIntroComplete?: () => void }) {
   const [hasError, setHasError] = useState(false);
+  const [showLogo, setShowLogo] = useState(false);
   const completionCalled = useRef(false);
 
   // Memoized callback to ensure it's stable
@@ -267,7 +270,7 @@ export default function ParticleHero({ onIntroComplete }: { onIntroComplete?: ()
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} />
 
-        <Crowd onComplete={handleComplete} />
+        <Crowd onComplete={handleComplete} onHoldStart={() => setShowLogo(true)} />
 
         {/* Overlay Text that fades in as particles gather - removed external font to prevent loading issues */}
         <Float speed={2} rotationIntensity={0.2} floatIntensity={0.5}>
@@ -289,12 +292,20 @@ export default function ParticleHero({ onIntroComplete }: { onIntroComplete?: ()
         <PerspectiveCamera makeDefault position={[0, 0, 20]} />
       </Canvas>
 
-      {/* HTML Overlay for "Skip" or Status - now clickable to skip */}
+      {/* Logo Overlay */}
+      <div className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-1000 ${showLogo ? 'opacity-100' : 'opacity-0'}`} style={{ zIndex: 10 }}>
+         <div className="pointer-events-auto transform scale-150">
+            <HolographicLogo src="https://cdn.prod.website-files.com/66a4218441155593be85878f/67135b512f98d2b03a39dba2_logo-color-p-500.png" />
+         </div>
+      </div>
+
+      {/* Skip Button */}
       <button
         onClick={handleComplete}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white/30 text-sm tracking-widest uppercase hover:text-white/60 transition-colors cursor-pointer"
+        className="absolute bottom-8 right-8 z-50 px-6 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/10 rounded-full text-white/70 text-xs tracking-widest uppercase transition-all duration-300 hover:scale-105 hover:text-white group"
       >
-        Initializing Secure Environment... (Click to skip)
+        <span className="mr-2">Skip Intro</span>
+        <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
       </button>
     </div>
   );

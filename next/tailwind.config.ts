@@ -76,6 +76,9 @@ const config: Config = {
       animation: {
         move: 'move 5s linear infinite',
         'spin-circle': 'spin-circle 3s linear infinite',
+        float: 'float 6s ease-in-out infinite',
+        shimmer: 'shimmer 1.5s infinite',
+        'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
       },
       keyframes: {
         move: {
@@ -86,6 +89,18 @@ const config: Config = {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
         },
+        float: {
+          '0%, 100%': { transform: 'translateY(0) rotateX(0)' },
+          '50%': { transform: 'translateY(-15px) rotateX(2deg)' },
+        },
+        shimmer: {
+          '0%': { transform: 'translateX(-200%) skewX(-15deg)' },
+          '100%': { transform: 'translateX(200%) skewX(-15deg)' },
+        },
+        'pulse-slow': {
+          '0%, 100%': { opacity: '0.3', transform: 'scale(1) translate(-50%, -50%)' },
+          '50%': { opacity: '0.6', transform: 'scale(1.1) translate(-50%, -50%)' },
+        },
       },
     },
   },
@@ -93,6 +108,13 @@ const config: Config = {
     require('tailwindcss-animate'),
     require('@tailwindcss/typography'),
     addVariablesForColors,
+    function ({ addUtilities }: any) {
+      addUtilities({
+        '.transform-style-3d': {
+          'transform-style': 'preserve-3d',
+        },
+      });
+    },
     function ({ matchUtilities, theme }: any) {
       matchUtilities(
         {
