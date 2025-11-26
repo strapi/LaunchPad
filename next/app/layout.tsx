@@ -1,6 +1,7 @@
 import type { Viewport } from 'next';
 
 import { Locale, i18n } from '@/i18n.config';
+import { ThemeProvider } from "next-themes"
 
 import './globals.css';
 
@@ -25,10 +26,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>
-        <Preview />
-        <SlugProvider>{children}</SlugProvider>
-      </body>
+      <ThemeProvider attribute="class" defaultTheme='light' storageKey="theme">
+        <body suppressHydrationWarning>
+          <Preview />
+          <SlugProvider>{children}</SlugProvider>
+        </body>
+      </ThemeProvider>
     </html>
   );
 }

@@ -83,7 +83,7 @@ const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
                 'font-medium text-xs px-3 py-1 rounded-full relative bg-neutral-900'
               )}
             >
-              <div className="absolute inset-x-0 bottom-0 w-3/4 mx-auto h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
+              <div className="absolute inset-x-0 bottom-0 w-3/4 mx-auto h-px bg-linear-to-r from-transparent via-indigo-500 to-transparent"></div>
               Featured
             </div>
           )}
@@ -161,11 +161,11 @@ const Step = ({
     <div className="flex items-start justify-start gap-2 my-4">
       <div
         className={cn(
-          'h-4 w-4 rounded-full bg-neutral-700 flex items-center justify-center flex-shrink-0 mt-0.5',
+          'h-4 w-4 rounded-full bg-neutral-700 flex items-center justify-center shrink-0 mt-0.5',
           additional ? 'bg-indigo-600' : 'bg-neutral-700'
         )}
       >
-        <IconCheck className="h-3 w-3 [stroke-width:4px] text-neutral-300" />
+        <IconCheck className="h-3 w-3 stroke-[4px] text-neutral-300" />
       </div>
       <div
         className={cn(
@@ -199,7 +199,7 @@ const Divider = ({ featured }: { featured?: boolean }) => {
       >
         <IconPlus
           className={cn(
-            'h-3 w-3 [stroke-width:4px] text-neutral-300',
+            'h-3 w-3 stroke-[4px] text-neutral-300',
             featured && 'text-black'
           )}
         />

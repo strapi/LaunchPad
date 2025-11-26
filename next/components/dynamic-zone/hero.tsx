@@ -7,7 +7,7 @@ import React from 'react';
 import { Cover } from '../decorations/cover';
 import ShootingStars from '../decorations/shooting-star';
 import StarBackground from '../decorations/star-background';
-import { Button } from '../elements/button';
+import { Button as ElementButton } from '../elements/button';
 import { Heading } from '../elements/heading';
 import { Subheading } from '../elements/subheading';
 
@@ -45,17 +45,17 @@ export const Hero = ({
       <div className="flex space-x-2 items-center mt-8">
         {CTAs &&
           CTAs.map((cta) => (
-            <Button
+            <ElementButton
               key={cta?.id}
               as={Link}
               href={`/${locale}${cta.URL}`}
               {...(cta.variant && { variant: cta.variant })}
             >
               {cta.text}
-            </Button>
+            </ElementButton>
           ))}
       </div>
-      <div className="absolute inset-x-0 bottom-0 h-80 w-full bg-gradient-to-t from-charcoal to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-80 w-full bg-linear-to-t from-charcoal to-transparent" />
     </div>
   );
 };
