@@ -3,20 +3,20 @@ import { Metadata } from 'next';
 import ClientSlugHandler from './ClientSlugHandler';
 import PageContent from '@/lib/shared/PageContent';
 import { generateMetadataObject } from '@/lib/shared/metadata';
-import { getCollection } from '@/lib/strapi';
+import { getCollectionType } from '@/lib/strapi';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
 
-  const [pageData] = await getCollection('pages', {
+  const [pageData] = await getCollectionType('pages', {
     filters: {
       slug: {
         $eq: 'homepage',
       },
+      locale: params.locale,
     },
-    locale: params.locale,
   });
 
   const seo = pageData.seo;
@@ -29,13 +29,13 @@ export default async function HomePage(props: {
 }) {
   const params = await props.params;
 
-  const [pageData] = await getCollection('pages', {
+  const [pageData] = await getCollectionType('pages', {
     filters: {
       slug: {
         $eq: 'homepage',
       },
+      locale: params.locale,
     },
-    locale: params.locale,
   });
 
   const localizedSlugs = pageData.localizations?.reduce(

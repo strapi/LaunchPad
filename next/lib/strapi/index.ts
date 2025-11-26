@@ -2,10 +2,9 @@ import { strapi } from '@strapi/client';
 import type { API, Config } from '@strapi/client';
 import { draftMode } from 'next/headers';
 
-export const getCollection = async (
+export const getCollectionType = async <T = API.Document[]>(
   collectionName: string,
   collectionOptions: API.BaseQueryParams,
-  locale?: string,
   config?: Omit<Config, 'baseURL'>
 ) => {
   const { isEnabled: isDraftMode } = await draftMode();
@@ -18,17 +17,15 @@ export const getCollection = async (
     .find({
       ...collectionOptions,
       status: isDraftMode ? 'draft' : 'published',
-      locale,
     });
 
-  return data;
+  return data as T;
 };
 
-export const getSingleType = async (
+export const getSingleType = async <T = API.Document>(
   singleTypeName: string,
-  singleTypeOptions: API.BaseQueryParams,
-  config?: Omit<Config, 'baseURL'>,
-  locale?: string
+  singleTypeOptions?: API.BaseQueryParams,
+  config?: Omit<Config, 'baseURL'>
 ) => {
   const { isEnabled: isDraftMode } = await draftMode();
 
@@ -40,8 +37,7 @@ export const getSingleType = async (
     .find({
       ...singleTypeOptions,
       status: isDraftMode ? 'draft' : 'published',
-      locale,
     });
 
-  return data;
+  return data as T;
 };
