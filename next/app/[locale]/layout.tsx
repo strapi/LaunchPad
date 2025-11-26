@@ -28,7 +28,6 @@ export async function generateMetadata(props: {
     'global',
     {
       filters: { locale: params.locale },
-      populate: 'seo.metaImage',
     },
     true
   );
