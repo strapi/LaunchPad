@@ -12,10 +12,10 @@ import { useState } from 'react';
 import { BlurImage } from '../blur-image';
 import { LocaleSwitcher } from '../locale-switcher';
 import { NavbarItem } from './navbar-item';
-import { Button } from '@/components/elements/button';
 import { LogoLarge } from '@/components/large-logo';
 import { strapiImage } from '@/lib/strapi/strapiImage';
 // import { Logo } from '@/components/logo';
+import { Button as ElementButton } from '@/components/elements/button';
 import { cn } from '@/lib/utils';
 import { Image } from '@/types/types';
 
@@ -83,7 +83,7 @@ export const DesktopNavbar = ({
             transition={{
               duration: 1,
             }}
-            className="absolute inset-0 h-full w-full bg-neutral-900 pointer-events-none [mask-image:linear-gradient(to_bottom,white,transparent,white)] rounded-full"
+            className="absolute inset-0 h-full w-full bg-neutral-900 pointer-events-none mask-[linear-gradient(to_bottom,white,transparent,white)] rounded-full"
           />
         )}
       </AnimatePresence> */}
@@ -134,7 +134,7 @@ export const DesktopNavbar = ({
         <LocaleSwitcher currentLocale={locale} />
 
         {rightNavbarItems.map((item, index) => (
-          <Button
+          <ElementButton
             key={item.text}
             variant={
               index === rightNavbarItems.length - 1 ? 'primary' : 'simple'
@@ -143,7 +143,7 @@ export const DesktopNavbar = ({
             href={`/${locale}${item.URL}`}
           >
             {item.text}
-          </Button>
+          </ElementButton>
         ))}
       </div> */}
       </div>

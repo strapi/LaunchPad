@@ -50,14 +50,14 @@ export const GradientContainer = ({
       className={cn('relative z-20', className)}
     >
       <motion.div
-        className={`w-full h-[var(--conic-size)] mb-[calc(-1*var(--conic-size))] 
+        className={`w-full h-(--conic-size) mb-[calc(-1*var(--conic-size))] 
         pointer-events-none select-none relative z-0
         after:content-['']
         after:absolute
         after:inset-0
-        after:bg-gradient-to-b
+        after:bg-linear-to-b
         after:from-transparent
-        after:to-[var(--charcoal)]
+        after:to-(--charcoal)
         after:opacity-100
         `}
         style={{

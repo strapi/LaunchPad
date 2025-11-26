@@ -57,7 +57,7 @@ export const Card = ({
     >
       <p className="text-9xl font-bold text-neutral-900 mt-8">{'0' + index}</p>
       <motion.div
-        className="h-px w-full hidden md:block bg-gradient-to-r from-neutral-800 to-neutral-600 rounded-full mt-16 relative overflow-hidden"
+        className="h-px w-full hidden md:block bg-linear-to-r from-neutral-800 to-neutral-600 rounded-full mt-16 relative overflow-hidden"
         style={{ width }}
       >
         <Beam className="top-0" />

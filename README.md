@@ -104,7 +104,7 @@ This installs dependencies, builds your project, and starts your server. You’r
 
 ## Customization
 
-- The Strapi application contains a custom population middleware in order to populate more data than what it is set by default. You can find it in the `./strapi/src/middlewares/deepPopulate.ts` file.
+- The Strapi application contains a custom population middlewares in every api route.
 
 - The Strapi application contains a postinstall script that will regenerate an uuid for the project in order to get some anonymous usage information concerning this demo. You can disable it by removing the uuid inside the `./strapi/packages.json` file.
 
