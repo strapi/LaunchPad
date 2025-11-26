@@ -87,34 +87,36 @@ export const DesktopNavbar = ({
           />
         )}
       </AnimatePresence> */}
-      <div
-        className={cn('flex w-full px-24 bg-[#D9D9D9] justify-between', {
-          'hidden transition-all duration-150': showBackground,
-        })}
-      >
-        <div className="flex gap-6 text-sm items-center text-center text-black">
-          <span>{upNavbarItems.heading}</span>
-          <span className="flex gap-2">
-            {/* image */}
-            {upNavbarItems.icon && (
-              <BlurImage
-                src={strapiImage(upNavbarItems.icon?.image?.url)}
-                alt={upNavbarItems.icon.image?.alternativeText}
-                width={20}
-                height={20}
-                className=""
-              />
-            )}
-            {upNavbarItems.sub_heading}
-          </span>
-        </div>
+      {upNavbarItems && (
+        <div
+          className={cn('flex w-full px-24 bg-[#D9D9D9] justify-between', {
+            'hidden transition-all duration-150': showBackground,
+          })}
+        >
+          <div className="flex gap-6 text-sm items-center text-center text-black">
+            <span>{upNavbarItems.heading}</span>
+            <span className="flex gap-2">
+              {/* image */}
+              {upNavbarItems.icon && (
+                <BlurImage
+                  src={strapiImage(upNavbarItems.icon?.image?.url)}
+                  alt={upNavbarItems.icon.image?.alternativeText}
+                  width={20}
+                  height={20}
+                  className=""
+                />
+              )}
+              {upNavbarItems.sub_heading}
+            </span>
+          </div>
 
-        <div className="flex gap-1">
-          {upNavbarItems.links.map((item) => (
-           <div key={item.text}>{item.text}</div>
-          ))}
+          <div className="flex gap-1">
+            {upNavbarItems.links.map((item) => (
+              <div key={item.text}>{item.text}</div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
       <div className="flex justify-beetween bg-white w-full">
         <div className="flex flex-row justify-around gap-2 items-center p-4 w-full ">
           <LogoLarge locale={locale} image={logo?.image} />
