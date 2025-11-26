@@ -11,7 +11,7 @@ import { useState } from 'react';
 
 import { LocaleSwitcher } from '../locale-switcher';
 import { NavbarItem } from './navbar-item';
-import { Button } from '@/components/elements/button';
+import { Button as ElementButton } from '@/components/elements/button';
 import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
 
@@ -69,7 +69,7 @@ export const DesktopNavbar = ({
             transition={{
               duration: 1,
             }}
-            className="absolute inset-0 h-full w-full bg-neutral-900 pointer-events-none [mask-image:linear-gradient(to_bottom,white,transparent,white)] rounded-full"
+            className="absolute inset-0 h-full w-full bg-neutral-900 pointer-events-none mask-[linear-gradient(to_bottom,white,transparent,white)] rounded-full"
           />
         )}
       </AnimatePresence>
@@ -91,7 +91,7 @@ export const DesktopNavbar = ({
         <LocaleSwitcher currentLocale={locale} />
 
         {rightNavbarItems.map((item, index) => (
-          <Button
+          <ElementButton
             key={item.text}
             variant={
               index === rightNavbarItems.length - 1 ? 'primary' : 'simple'
@@ -100,7 +100,7 @@ export const DesktopNavbar = ({
             href={`/${locale}${item.URL}`}
           >
             {item.text}
-          </Button>
+          </ElementButton>
         ))}
       </div>
     </motion.div>

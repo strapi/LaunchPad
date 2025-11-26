@@ -30,7 +30,7 @@ export async function BlogLayout({
             src={article.image.url}
             height={800}
             width={800}
-            className="h-40 md:h-96 w-full aspect-square object-cover rounded-3xl [mask-image:radial-gradient(circle,white,transparent)]"
+            className="h-40 md:h-96 w-full aspect-square object-cover rounded-3xl mask-[radial-gradient(circle,white,transparent)]"
             alt={article.title}
           />
         ) : (

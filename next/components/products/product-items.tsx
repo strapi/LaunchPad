@@ -18,7 +18,7 @@ export const ProductItems = ({
 }) => {
   return (
     <div className="py-20">
-      <h2 className="text-2xl md:text-4xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-white to-white mb-2">
+      <h2 className="text-2xl md:text-4xl font-medium bg-clip-text text-transparent bg-linear-to-b from-neutral-800 via-white to-white mb-2">
         {heading}
       </h2>
       <p className="text-neutral-500 text-lg mt-4 mb-10">{sub_heading}</p>
@@ -48,7 +48,7 @@ const ProductItem = ({
       className="group relative block"
     >
       <div className="relative border border-neutral-800  rounded-md overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black transition-all duration-200 z-30" />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-black transition-all duration-200 z-30" />
 
         <StrapiImage
           src={product?.images?.[0].url}

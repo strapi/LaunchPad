@@ -105,7 +105,7 @@ export const SkeletonFour = () => {
   }, [icons]);
 
   return (
-    <div className="p-8 overflow-hidden h-full relative flex flex-col group [perspective:8000px] [transform-style:preserve-3d]">
+    <div className="p-8 overflow-hidden h-full relative flex flex-col group perspective-[8000px] transform-3d">
       <StarBackground />
       <ShootingStars />
 

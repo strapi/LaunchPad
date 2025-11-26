@@ -61,7 +61,7 @@ export default async function LocaleLayout(props: {
         <div
           className={cn(
             inter.className,
-            'bg-charcoal antialiased h-full w-full'
+            'antialiased h-full w-full'
           )}
         >
           <Navbar data={pageData.navbar} locale={locale} />

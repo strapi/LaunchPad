@@ -47,8 +47,8 @@ export const SkeletonThree = () => {
           </p>
         </div>
         <div className="p-8 relative">
-          <div className="absolute inset-y-0 h-full w-20 right-16 z-30 bg-gradient-to-r from-transparent via-[#121213] via-[70%] to-[#121213]"></div>
-          <div className="absolute inset-y-0 h-full w-20 left-16 z-30 bg-gradient-to-l from-transparent via-[#121213] via-[70%] to-[#121213]"></div>
+          <div className="absolute inset-y-0 h-full w-20 right-16 z-30 bg-linear-to-r from-transparent via-[#121213] via-70% to-[#121213]"></div>
+          <div className="absolute inset-y-0 h-full w-20 left-16 z-30 bg-linear-to-l from-transparent via-[#121213] via-70% to-[#121213]"></div>
           <svg
             width="335"
             height="163"
