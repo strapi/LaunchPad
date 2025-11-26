@@ -700,6 +700,32 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiIconIcon extends Struct.CollectionTypeSchema {
+  collectionName: 'icons';
+  info: {
+    displayName: 'Icon';
+    pluralName: 'icons';
+    singularName: 'icon';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::icon.icon'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiLogoLogo extends Struct.CollectionTypeSchema {
   collectionName: 'logos';
   info: {
@@ -1523,6 +1549,7 @@ declare module '@strapi/strapi' {
       'api::category.category': ApiCategoryCategory;
       'api::faq.faq': ApiFaqFaq;
       'api::global.global': ApiGlobalGlobal;
+      'api::icon.icon': ApiIconIcon;
       'api::logo.logo': ApiLogoLogo;
       'api::page.page': ApiPagePage;
       'api::plan.plan': ApiPlanPlan;

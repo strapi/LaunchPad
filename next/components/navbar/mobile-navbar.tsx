@@ -73,7 +73,7 @@ export const MobileNavbar = ({
               />
             </div>
           </div>
-          <div className="flex flex-col items-start justify-start gap-[14px] px-8">
+          <div className="flex flex-col items-start justify-start gap-[14px] px-8 text-sm">
             {leftNavbarItems.map((navItem: any, idx: number) => (
               <>
                 {navItem.children && navItem.children.length > 0 ? (

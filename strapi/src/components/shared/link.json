@@ -20,6 +20,11 @@
         "_parent",
         "_top"
       ]
+    },
+    "icon": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::icon.icon"
     }
   }
 }
