@@ -141,6 +141,21 @@ export interface DynamicZoneFormNextToSection extends Struct.ComponentSchema {
   };
 }
 
+export interface DynamicZoneHeader extends Struct.ComponentSchema {
+  collectionName: 'components_dynamic_zone_headers';
+  info: {
+    description: '';
+    displayName: 'Header';
+    icon: 'layout';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    icon: Schema.Attribute.Relation<'oneToOne', 'api::icon.icon'>;
+    links: Schema.Attribute.Component<'shared.link', true>;
+    sub_heading: Schema.Attribute.String;
+  };
+}
+
 export interface DynamicZoneHero extends Struct.ComponentSchema {
   collectionName: 'components_dynamic_zone_heroes';
   info: {
@@ -270,6 +285,7 @@ export interface GlobalNavbar extends Struct.ComponentSchema {
     left_navbar_items: Schema.Attribute.Component<'shared.link', true>;
     logo: Schema.Attribute.Relation<'oneToOne', 'api::logo.logo'>;
     right_navbar_items: Schema.Attribute.Component<'shared.link', true>;
+    up_navbar_items: Schema.Attribute.Component<'dynamic-zone.header', false>;
   };
 }
 
@@ -405,6 +421,7 @@ export interface SharedLink extends Struct.ComponentSchema {
     icon: 'link';
   };
   attributes: {
+    icon: Schema.Attribute.Relation<'oneToOne', 'api::icon.icon'>;
     target: Schema.Attribute.Enumeration<
       ['_blank', '_self', '_parent', '_top']
     >;
@@ -517,6 +534,7 @@ declare module '@strapi/strapi' {
       'dynamic-zone.faq': DynamicZoneFaq;
       'dynamic-zone.features': DynamicZoneFeatures;
       'dynamic-zone.form-next-to-section': DynamicZoneFormNextToSection;
+      'dynamic-zone.header': DynamicZoneHeader;
       'dynamic-zone.hero': DynamicZoneHero;
       'dynamic-zone.how-it-works': DynamicZoneHowItWorks;
       'dynamic-zone.launches': DynamicZoneLaunches;

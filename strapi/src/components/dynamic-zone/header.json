@@ -18,9 +18,9 @@
     "sub_heading": {
       "type": "string"
     },
-    "CTAs": {
+    "links": {
       "type": "component",
-      "component": "shared.button",
+      "component": "shared.link",
       "repeatable": true
     }
   }

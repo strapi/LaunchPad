@@ -33,10 +33,10 @@ type Props = {
   logo: any;
   locale: string;
   upNavbarItems: {
-    icon?: Image;
+    icon?: { image: Image; title: string };
     heading: string;
     sub_heading: string;
-    CTAs: any[];
+    links: any[];
   };
 };
 
@@ -49,8 +49,7 @@ export const DesktopNavbar = ({
 }: Props) => {
   const { scrollY } = useScroll();
 
-  console.log({upNavbarItems});
-  
+  console.log({ upNavbarItems });
 
   const [showBackground, setShowBackground] = useState(false);
 
@@ -95,14 +94,14 @@ export const DesktopNavbar = ({
       >
         <div className="flex gap-6 text-sm items-center text-center text-black">
           <span>{upNavbarItems.heading}</span>
-          <span>
+          <span className="flex gap-2">
             {/* image */}
             {upNavbarItems.icon && (
               <BlurImage
-                src={strapiImage(upNavbarItems.icon?.url)}
-                alt={upNavbarItems.icon.alternativeText}
-                width={150}
-                height={200}
+                src={strapiImage(upNavbarItems.icon?.image?.url)}
+                alt={upNavbarItems.icon.image?.alternativeText}
+                width={20}
+                height={20}
                 className=""
               />
             )}
@@ -111,15 +110,8 @@ export const DesktopNavbar = ({
         </div>
 
         <div className="flex gap-1">
-          {upNavbarItems.CTAs.map((item) => (
-            <Button
-              key={item.text}
-              variant={item.variant}
-              as={Link}
-              href={`/${locale}${item.URL}`}
-            >
-              {item.text}
-            </Button>
+          {upNavbarItems.links.map((item) => (
+           <div key={item.text}>{item.text}</div>
           ))}
         </div>
       </div>
