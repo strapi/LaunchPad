@@ -1,12 +1,11 @@
+import './globals.css';
 import type { Viewport } from 'next';
 
 import { Locale, i18n } from '@/i18n.config';
 import { ThemeProvider } from "next-themes"
-
-import './globals.css';
-
 import { SlugProvider } from './context/SlugContext';
 import { Preview } from '@/components/preview';
+import { cn } from '@/lib/utils';
 
 export const viewport: Viewport = {
   themeColor: [
@@ -25,13 +24,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <ThemeProvider attribute="class" defaultTheme='light' storageKey="theme">
-        <body suppressHydrationWarning>
+    <html lang="fr" suppressHydrationWarning>
+        <body className={cn(
+          "min-h-screen bg-background font-sans antialiased print:bg-white",
+        )} >
+      <ThemeProvider attribute="class" defaultTheme='light'>
           <Preview />
           <SlugProvider>{children}</SlugProvider>
-        </body>
       </ThemeProvider>
+        </body>
     </html>
   );
 }

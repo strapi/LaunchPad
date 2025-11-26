@@ -5,7 +5,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-Icon
+# Icon (commented out because it was blocking src/api/icon folder)
 .Spotlight-V100
 .Trashes
 ._*
