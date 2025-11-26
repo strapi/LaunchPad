@@ -17,6 +17,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::article.article"
+    },
+    "visibility": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.visibility",
+      "required": false
     }
   }
 }
