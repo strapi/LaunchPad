@@ -4,22 +4,27 @@ import { draftMode } from 'next/headers';
 
 export const getCollectionType = async <T = API.Document[]>(
   collectionName: string,
-  collectionOptions: API.BaseQueryParams,
+  collectionOptions?: API.BaseQueryParams,
   config?: Omit<Config, 'baseURL'>
 ) => {
   const { isEnabled: isDraftMode } = await draftMode();
 
-  const { data } = await strapi({
-    baseURL: `${process.env.NEXT_PUBLIC_API_URL ?? ''}/api`,
-    ...config,
-  })
-    .collection(collectionName)
-    .find({
-      ...collectionOptions,
-      status: isDraftMode ? 'draft' : 'published',
-    });
+  try {
+    const { data } = await strapi({
+      baseURL: `${process.env.NEXT_PUBLIC_API_URL ?? ''}/api`,
+      ...config,
+    })
+      .collection(collectionName)
+      .find({
+        ...collectionOptions,
+        status: isDraftMode ? 'draft' : 'published',
+      });
 
-  return data as T;
+    return data as T;
+  } catch (error) {
+    console.error('Error in /lib/strapi/index.ts - getCollectionType: ', error);
+    return [] as T;
+  }
 };
 
 export const getSingleType = async <T = API.Document>(
@@ -29,15 +34,19 @@ export const getSingleType = async <T = API.Document>(
 ) => {
   const { isEnabled: isDraftMode } = await draftMode();
 
-  const { data } = await strapi({
-    baseURL: `${process.env.NEXT_PUBLIC_API_URL ?? ''}/api`,
-    ...config,
-  })
-    .single(singleTypeName)
-    .find({
-      ...singleTypeOptions,
-      status: isDraftMode ? 'draft' : 'published',
-    });
-
-  return data as T;
+  try {
+    const { data } = await strapi({
+      baseURL: `${process.env.NEXT_PUBLIC_API_URL ?? ''}/api`,
+      ...config,
+    })
+      .single(singleTypeName)
+      .find({
+        ...singleTypeOptions,
+        status: isDraftMode ? 'draft' : 'published',
+      });
+    return data as T;
+  } catch (error) {
+    console.error('Error in /lib/strapi/index.ts - getSingleType: ', error);
+    return {} as T;
+  }
 };

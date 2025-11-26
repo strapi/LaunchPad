@@ -3,22 +3,20 @@ import React from 'react';
 
 import ClientSlugHandler from '../../ClientSlugHandler';
 import { BlogLayout } from '@/components/blog-layout';
-import fetchContentType from '@/lib/strapi/fetchContentType';
+import { getCollectionType } from '@/lib/strapi';
+import type { Article } from '@/types/types';
 
 export default async function SingleArticlePage(props: {
   params: Promise<{ slug: string; locale: string }>;
 }) {
   const params = await props.params;
-  const article = await fetchContentType(
-    'articles',
-    {
-      filters: {
-        slug: params.slug,
-        locale: params.locale,
+  const [article] = await getCollectionType<any[]>('articles', {
+    filters: {
+      slug: {
+        $eq: params.slug,
       },
     },
-    true
-  );
+  });
 
   if (!article) {
     return <div>Blog not found</div>;

@@ -6,23 +6,19 @@ import { AmbientColor } from '@/components/decorations/ambient-color';
 import DynamicZoneManager from '@/components/dynamic-zone/manager';
 import { SingleProduct } from '@/components/products/single-product';
 import { generateMetadataObject } from '@/lib/shared/metadata';
-import fetchContentType from '@/lib/strapi/fetchContentType';
+import { getCollectionType } from '@/lib/strapi';
+import type { Product } from '@/types/types';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
 
-  const pageData = await fetchContentType(
-    'products',
-    {
-      filters: { slug: params.slug },
-      populate: 'seo.metaImage',
-    },
-    true
-  );
+  const [pageData] = await getCollectionType<Product[]>('products', {
+    filters: { slug: { $eq: params.slug } },
+  });
 
-  const seo = pageData?.seo;
+  const seo = pageData;
   const metadata = generateMetadataObject(seo);
   return metadata;
 }
@@ -32,15 +28,11 @@ export default async function SingleProductPage(props: {
 }) {
   const params = await props.params;
 
-  const product = await fetchContentType(
-    'products',
-    {
-      filters: { slug: params.slug },
-    },
-    true
-  );
+  const [pageData] = await getCollectionType<Product[]>('products', {
+    filters: { slug: { $eq: params.slug } },
+  });
 
-  if (!product) {
+  if (!pageData) {
     redirect('/products');
   }
 
@@ -48,10 +40,10 @@ export default async function SingleProductPage(props: {
     <div className="relative overflow-hidden w-full">
       <AmbientColor />
       <Container className="py-20 md:py-40">
-        <SingleProduct product={product} />
-        {product?.dynamic_zone && (
+        <SingleProduct product={pageData} />
+        {pageData?.dynamic_zone && (
           <DynamicZoneManager
-            dynamicZone={product?.dynamic_zone}
+            dynamicZone={pageData?.dynamic_zone}
             locale={params.locale}
           />
         )}

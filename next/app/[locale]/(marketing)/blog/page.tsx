@@ -11,7 +11,6 @@ import { Heading } from '@/components/elements/heading';
 import { Subheading } from '@/components/elements/subheading';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import { getCollectionType, getSingleType } from '@/lib/strapi';
-import fetchContentType from '@/lib/strapi/fetchContentType';
 import type { Article } from '@/types/types';
 
 export async function generateMetadata(props: {

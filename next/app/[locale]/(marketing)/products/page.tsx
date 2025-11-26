@@ -11,7 +11,8 @@ import { Featured } from '@/components/products/featured';
 import { ProductItems } from '@/components/products/product-items';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import { getSingleType } from '@/lib/strapi';
-import fetchContentType from '@/lib/strapi/fetchContentType';
+import { getCollectionType } from '@/lib/strapi';
+import { Product } from '@/types/types';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
@@ -35,7 +36,7 @@ export default async function Products(props: {
   const pageData = await getSingleType('product-page', {
     locale: params.locale,
   });
-  const products = await fetchContentType('products');
+  const products = await getCollectionType<Product[]>('products');
 
   const localizedSlugs = pageData.localizations?.reduce(
     (acc: Record<string, string>, localization: any) => {
@@ -44,8 +45,8 @@ export default async function Products(props: {
     },
     { [params.locale]: 'products' }
   );
-  const featured = products?.data.filter(
-    (product: { featured: boolean }) => product.featured
+  const featured = products.filter(
+    (product: { featured?: boolean }) => product.featured
   );
 
   return (
@@ -63,7 +64,7 @@ export default async function Products(props: {
           {pageData.sub_heading}
         </Subheading>
         <Featured products={featured} locale={params.locale} />
-        <ProductItems products={products?.data} locale={params.locale} />
+        <ProductItems products={products} locale={params.locale} />
       </Container>
     </div>
   );

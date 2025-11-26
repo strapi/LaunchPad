@@ -29,6 +29,7 @@ export interface Product {
   price: number;
   plans: any[];
   perks: any[];
+  dynamic_zone: any[];
   featured?: boolean;
   images: any[];
   categories?: any[];
