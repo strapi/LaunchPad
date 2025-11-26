@@ -9,12 +9,15 @@ import {
 import { Link } from 'next-view-transitions';
 import { useState } from 'react';
 
+import { BlurImage } from '../blur-image';
 import { LocaleSwitcher } from '../locale-switcher';
 import { NavbarItem } from './navbar-item';
 import { Button } from '@/components/elements/button';
+import { LogoLarge } from '@/components/large-logo';
+import { strapiImage } from '@/lib/strapi/strapiImage';
 // import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
-import { LogoLarge } from '@/components/large-logo';
+import { Image } from '@/types/types';
 
 type Props = {
   leftNavbarItems: {
@@ -30,6 +33,7 @@ type Props = {
   logo: any;
   locale: string;
   upNavbarItems: {
+    icon?: Image;
     heading: string;
     sub_heading: string;
     CTAs: any[];
@@ -44,6 +48,9 @@ export const DesktopNavbar = ({
   upNavbarItems,
 }: Props) => {
   const { scrollY } = useScroll();
+
+  console.log({upNavbarItems});
+  
 
   const [showBackground, setShowBackground] = useState(false);
 
@@ -81,11 +88,24 @@ export const DesktopNavbar = ({
           />
         )}
       </AnimatePresence> */}
-      <div className={cn("flex w-full px-24 bg-[#D9D9D9] justify-between", {"hidden transition-all duration-150" : showBackground})}>
-        <div className="flex gap-6 text-base items-center text-center">
+      <div
+        className={cn('flex w-full px-24 bg-[#D9D9D9] justify-between', {
+          'hidden transition-all duration-150': showBackground,
+        })}
+      >
+        <div className="flex gap-6 text-sm items-center text-center text-black">
           <span>{upNavbarItems.heading}</span>
           <span>
             {/* image */}
+            {upNavbarItems.icon && (
+              <BlurImage
+                src={strapiImage(upNavbarItems.icon?.url)}
+                alt={upNavbarItems.icon.alternativeText}
+                width={150}
+                height={200}
+                className=""
+              />
+            )}
             {upNavbarItems.sub_heading}
           </span>
         </div>

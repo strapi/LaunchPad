@@ -12,22 +12,19 @@
       "target": "api::logo.logo"
     },
     "left_navbar_items": {
-      "displayName": "Left_Navbar_Items",
       "type": "component",
-      "repeatable": true,
-      "component": "shared.link"
+      "component": "shared.link",
+      "repeatable": true
     },
     "right_navbar_items": {
-      "displayName": "Right_Navbar_Items",
       "type": "component",
-      "repeatable": true,
-      "component": "shared.link"
+      "component": "shared.link",
+      "repeatable": true
     },
     "up_navbar_items": {
-      "displayName": "Up_Navbar_Items",
       "type": "component",
-      "repeatable": false,
-      "component": "dynamic-zone.hero"
+      "component": "dynamic-zone.header",
+      "repeatable": false
     }
   }
 }

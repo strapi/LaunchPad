@@ -10,14 +10,18 @@
     "heading": {
       "type": "string"
     },
+    "icon": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::icon.icon"
+    },
     "sub_heading": {
       "type": "string"
     },
     "CTAs": {
-      "displayName": "Button",
       "type": "component",
-      "repeatable": true,
-      "component": "shared.button"
+      "component": "shared.button",
+      "repeatable": true
     }
   }
 }
