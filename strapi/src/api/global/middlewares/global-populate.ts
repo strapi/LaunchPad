@@ -6,6 +6,14 @@ import type { Core } from '@strapi/strapi';
 const populate = {
   navbar: {
     populate: {
+      up_navbar_items: {
+        populate: {
+          icon: {
+            populate: ['image'],
+          },
+          links: true,
+        },
+      },
       left_navbar_items: true,
       right_navbar_items: true,
       logo: {
