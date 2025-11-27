@@ -371,6 +371,18 @@ export interface ItemsRayItems extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsSectionService extends Struct.ComponentSchema {
+  collectionName: 'components_sections_section_services';
+  info: {
+    displayName: 'section_service';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+    sub_heading: Schema.Attribute.String;
+  };
+}
+
 export interface SharedButton extends Struct.ComponentSchema {
   collectionName: 'components_shared_buttons';
   info: {
@@ -551,6 +563,7 @@ declare module '@strapi/strapi' {
       'items.input': ItemsInput;
       'items.left-navbar-items': ItemsLeftNavbarItems;
       'items.ray-items': ItemsRayItems;
+      'sections.section-service': SectionsSectionService;
       'shared.button': SharedButton;
       'shared.form': SharedForm;
       'shared.launches': SharedLaunches;
