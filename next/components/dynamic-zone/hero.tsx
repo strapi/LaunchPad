@@ -44,7 +44,7 @@ export const Hero = ({
         >
           {heading.substring(0, heading.lastIndexOf(' '))}{' '}
           {/* <Cover>{heading.split(' ').pop()}</Cover> */}
-          <span className='text-'>{heading.split(' ').pop()}</span>
+          <span className='text-primary'>{heading.split(' ').pop()}</span>
         </Heading>
         <Subheading className="text-start mt-2 md:mt-6 text-base md:text-xl text-muted  max-w-3xl relative z-10">
           {sub_heading}

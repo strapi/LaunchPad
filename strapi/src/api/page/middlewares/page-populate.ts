@@ -7,6 +7,7 @@ const populate = {
   dynamic_zone: {
     on: {
       'dynamic-zone.hero': {
+        // background: true,
         populate: {
           CTAs: true,
         },

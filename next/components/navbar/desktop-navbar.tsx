@@ -112,7 +112,7 @@ export const DesktopNavbar = ({
 
           <div className="flex gap-1">
             {upNavbarItems.links.map((item) => (
-              <div key={item.text}>{item.text}</div>
+              <div key={item.id}>{item.text  || ''}</div>
             ))}
           </div>
         </div>
