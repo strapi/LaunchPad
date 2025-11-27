@@ -50,7 +50,7 @@ const componentMapping: { [key: string]: any } = {
 
 const DynamicZoneManager: React.FC<Props> = ({ dynamicZone, locale }) => {
   return (
-    <div>
+    <div>    
       {dynamicZone.map((componentData, index) => {
         const Component = componentMapping[componentData.__component];
         if (!Component) {

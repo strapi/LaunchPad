@@ -11,7 +11,15 @@ const populate = {
           icon: {
             populate: ['image'],
           },
-          links: true,
+          links: {
+            populate: {
+              icon: {
+                populate: {
+                  image: true,
+                },
+              },
+            },
+          },
         },
       },
       left_navbar_items: true,
