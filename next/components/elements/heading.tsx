@@ -27,7 +27,7 @@ export const Heading = ({
   return (
     <Tag
       className={cn(
-        'text-3xl md:text-5xl md:leading-tight max-w-5xl mx-auto text-start tracking-tight text-primary',
+        'text-3xl md:text-5xl md:leading-tight max-w-5xl text-start tracking-tight text-primary',
         'font-medium',
         sizeVariants[size],
         className
