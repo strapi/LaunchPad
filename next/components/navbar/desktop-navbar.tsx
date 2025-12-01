@@ -94,10 +94,10 @@ export const DesktopNavbar = ({
             'hidden transition-all duration-150': showBackground,
           })}
         >
-          <div className="flex gap-17 text-sm items-center text-center px-17">
-            <Typography>{upNavbarItems.heading}</Typography>
-            <span className="flex gap-1">
-              {/* image */}
+          <div className="flex gap-17 items-center text-center px-20 text-black">
+            <Typography className="text-sm">{upNavbarItems.heading}</Typography>
+            <span className="flex gap-1 text-sm">
+             
               {upNavbarItems.icon?.image?.url && (
                 <BlurImage
                   src={strapiImage(upNavbarItems.icon?.image?.url)}
@@ -168,4 +168,5 @@ export const DesktopNavbar = ({
       </div>
     </motion.div>
   );
+
 };
