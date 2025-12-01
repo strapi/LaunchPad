@@ -50,6 +50,9 @@ export default async function HomePage(props: {
     },
     { [params.locale]: '' }
   );
+  
+  console.log({pageData});
+
 
   return (
     <>

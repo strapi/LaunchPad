@@ -49,7 +49,6 @@ export const DesktopNavbar = ({
 }: Props) => {
   const { scrollY } = useScroll();
 
-  console.log({ upNavbarItems });
 
   const [showBackground, setShowBackground] = useState(false);
 
