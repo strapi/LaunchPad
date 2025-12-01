@@ -16,6 +16,11 @@
     },
     "description": {
       "type": "string"
+    },
+    "CTA": {
+      "type": "component",
+      "component": "shared.button",
+      "repeatable": true
     }
   }
 }

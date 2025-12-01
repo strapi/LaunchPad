@@ -7,7 +7,13 @@ export function Services({
   heading: string;
   sub_heading: string;
 }) {
-  console.log(heading);
+  console.log(sub_heading);
 
-  return <div>services</div>;
+  return (
+    <div className="h-screen w-full flex flex-col bg-[#eff6ff]">
+      <div></div> 
+      <h2 className="text-primary text-5xl text-center font-bold">{heading}</h2>
+      <p className="text-black text-center text-lg">{sub_heading}</p>
+    </div>
+  );
 }

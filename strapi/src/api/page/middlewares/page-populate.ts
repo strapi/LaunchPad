@@ -14,7 +14,9 @@ const populate = {
       },
       'sections.section-service': {
         populate: {
-          service: true,
+          service: {
+            populate: "*",
+          },
         },
       },
       'dynamic-zone.features': {

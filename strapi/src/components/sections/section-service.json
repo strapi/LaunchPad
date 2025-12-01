@@ -9,7 +9,7 @@
       "type": "string"
     },
     "sub_heading": {
-      "type": "string"
+      "type": "text"
     },
     "service": {
       "type": "relation",
