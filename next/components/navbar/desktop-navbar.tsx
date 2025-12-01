@@ -17,8 +17,8 @@ import { Button as ElementButton } from '@/components/elements/button';
 import { LogoLarge } from '@/components/large-logo';
 import { strapiImage } from '@/lib/strapi/strapiImage';
 import { cn } from '@/lib/utils';
-import { Image } from '@/types/types';
 import { Icon, LinkItem } from '@/types/utils';
+import { Typography } from '../ui/typography';
 
 type Props = {
   leftNavbarItems: {
@@ -50,7 +50,7 @@ export const DesktopNavbar = ({
 }: Props) => {
   const { scrollY } = useScroll();
 
-  console.log({ upNavbarItems });
+  // console.log({ upNavbarItems });
 
   const [showBackground, setShowBackground] = useState(false);
 
@@ -90,20 +90,20 @@ export const DesktopNavbar = ({
       </AnimatePresence> */}
       {upNavbarItems && (
         <div
-          className={cn('flex w-full bg-[#D9D9D9] justify-between p-4   ', {
+          className={cn('flex w-full bg-[#D9D9D9] justify-between p-2   ', {
             'hidden transition-all duration-150': showBackground,
           })}
         >
-          <div className="flex gap-17 text-sm items-center text-center px-17">
-            <span>{upNavbarItems.heading}</span>
-            <span className="flex gap-1">
-              {/* image */}
-              {upNavbarItems.icon && (
+          <div className="flex gap-17 items-center text-center px-20 text-black">
+            <Typography className="text-sm">{upNavbarItems.heading}</Typography>
+            <span className="flex gap-1 text-sm">
+             
+              {upNavbarItems.icon?.image?.url && (
                 <BlurImage
                   src={strapiImage(upNavbarItems.icon?.image?.url)}
                   alt={upNavbarItems.icon.image?.alternativeText || ''}
-                  width={20}
-                  height={20}
+                  width={18}
+                  height={18}
                   className=""
                 />
               )}
@@ -111,23 +111,24 @@ export const DesktopNavbar = ({
             </span>
           </div>
 
-          <div className="flex gap-3 text-black px-27">
+          <div className="flex items-center gap-3 text-black px-27">
             {upNavbarItems.links.map((item) => (
               <Link
                 target={item.target}
                 href={`${item.URL.startsWith('http') ? '' : `/${locale}`}${item.URL}`}
                 key={item.id}
               >
-                {item.icon && (
+                {item.icon?.image?.url ? (
                   <BlurImage
-                    src={strapiImage(item.icon?.image?.url)}
-                    alt={item.icon.image?.alternativeText || ''}
-                    width={20}
-                    height={20}
+                    src={strapiImage(item.icon.image.url)}
+                    alt={item.icon.image.alternativeText || ''}
+                    width={18}
+                    height={18}
                     className=""
                   />
-                )}
-                {item.text}
+                ) : 
+                <>{item.text}</>
+                }
               </Link>
             ))}
           </div>
@@ -167,4 +168,5 @@ export const DesktopNavbar = ({
       </div>
     </motion.div>
   );
+
 };
