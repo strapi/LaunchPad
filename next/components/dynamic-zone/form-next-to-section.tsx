@@ -85,7 +85,7 @@ export function FormNextToSection({
                           />
                         ) : input.type === 'submit' ? (
                           <div>
-                            <Button className="w-full mt-6">
+                            <Button type="submit" className="w-full mt-6">
                               {input.name}
                             </Button>
                           </div>
