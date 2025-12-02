@@ -20,6 +20,9 @@ const componentMapping: { [key: string]: any } = {
   'dynamic-zone.features': dynamic(() =>
     import('./features').then((mod) => mod.Features)
   ),
+  'sections.section-service': dynamic(() =>
+    import('./services').then((mod) => mod.Services)
+  ),
   'dynamic-zone.testimonials': dynamic(() =>
     import('./testimonials').then((mod) => mod.Testimonials)
   ),
@@ -49,7 +52,6 @@ const componentMapping: { [key: string]: any } = {
 };
 
 const DynamicZoneManager: React.FC<Props> = ({ dynamicZone, locale }) => {
-  
   return (
     <div>    
       {dynamicZone.map((componentData, index) => {

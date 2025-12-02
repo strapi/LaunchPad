@@ -44,7 +44,7 @@ export const Hero = ({
           className="text-3xl md:text-4xl lg:text-6xl font-semibold max-w-7xl text-start mt-6 relative z-10 py-6 text-white"
         >
           {heading.split(' ').slice(0, -2).join(' ')}{' '}
-          <span className='text-orange-600'>
+          <span className='text-secondary'>
             {heading.split(' ').slice(-2).join(' ')}
           </span>
         </Heading>
@@ -59,7 +59,7 @@ export const Hero = ({
                 as={Link}
                 href={`/${locale}${cta.URL}`}
                 {...(cta.variant && { variant: cta.variant })}
-                className="py-3 px-6 text-primary w-full sm:w-auto flex justify-center"
+                className="py-3 px-6 text-primary w-full sm:w-auto flex justify-center bg-white hover:bg-white border-none"
               >
                 {cta.text}
               </ElementButton>

@@ -9,9 +9,9 @@
       "type": "string"
     },
     "sub_heading": {
-      "type": "string"
+      "type": "text"
     },
-    "services": {
+    "service": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::service.service"

@@ -12,6 +12,13 @@ const populate = {
           CTAs: true,
         },
       },
+      'sections.section-service': {
+        populate: {
+          service: {
+            populate: '*'
+          }
+        },
+      },
       'dynamic-zone.features': {
         populate: {
           globe_card: true,
