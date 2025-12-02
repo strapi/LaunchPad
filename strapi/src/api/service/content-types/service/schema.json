@@ -17,10 +17,19 @@
     "description": {
       "type": "string"
     },
-    "CTA": {
-      "type": "component",
-      "component": "shared.button",
-      "repeatable": true
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }
