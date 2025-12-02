@@ -264,6 +264,10 @@ export interface GlobalFooter extends Struct.ComponentSchema {
     icon: 'apps';
   };
   attributes: {
+    background: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     built_with: Schema.Attribute.String;
     copyright: Schema.Attribute.String;
     description: Schema.Attribute.String;
