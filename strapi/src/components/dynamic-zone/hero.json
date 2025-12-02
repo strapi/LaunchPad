@@ -14,10 +14,19 @@
       "type": "string"
     },
     "CTAs": {
-      "displayName": "Button",
       "type": "component",
-      "repeatable": true,
-      "component": "shared.button"
+      "component": "shared.button",
+      "repeatable": true
+    },
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     }
   }
 }
