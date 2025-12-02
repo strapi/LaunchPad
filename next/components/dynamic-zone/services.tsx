@@ -66,9 +66,6 @@ function CardComponent({
     window.location.href = slug;
   }
 
-  console.log(BackgroundImage);
-
-
   return (
     <div className="h-[380px] sm:h-[400px] md:h-[420px] w-full rounded-xl p-6 flex flex-col justify-center items-center bg-cover bg-center relative"
       style={BackgroundImage ? { backgroundImage: `url('${strapiImage(BackgroundImage?.url)}')` } : undefined}
