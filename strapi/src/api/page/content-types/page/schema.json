@@ -55,7 +55,7 @@
         "dynamic-zone.form-next-to-section",
         "dynamic-zone.faq",
         "sections.section-service",
-        "sections.offres"
+        "sections.service-card"
       ]
     }
   }

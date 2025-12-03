@@ -19,6 +19,13 @@ const populate = {
           }
         },
       },
+      'sections.service-card': {
+        populate: {
+          offres: {
+            populate: '*'
+          }
+        },
+      },
       'dynamic-zone.features': {
         populate: {
           globe_card: true,

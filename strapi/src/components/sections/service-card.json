@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_sections_offres",
+  "collectionName": "components_sections_service_cards",
   "info": {
-    "displayName": "offre_card"
+    "displayName": "service_card"
   },
   "options": {},
   "attributes": {
@@ -14,7 +14,7 @@
     "offres": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::offre-card.offre-card"
+      "target": "api::offre.offre"
     }
   },
   "config": {}

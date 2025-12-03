@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "offre_cards",
+  "collectionName": "offres",
   "info": {
-    "singularName": "offre-card",
-    "pluralName": "offre-cards",
+    "singularName": "offre",
+    "pluralName": "offres",
     "displayName": "offre"
   },
   "options": {
@@ -11,6 +11,12 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -20,12 +26,6 @@
         "videos",
         "audios"
       ]
-    },
-    "title": {
-      "type": "string"
-    },
-    "description": {
-      "type": "text"
     }
   }
 }
