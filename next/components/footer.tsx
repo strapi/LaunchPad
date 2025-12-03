@@ -48,11 +48,11 @@ export const Footer = async ({
             <div className="flex flex-col justify-around mt-4">
               <div className="flex flex-col gap-2">
                 <span>Téléphone</span>
-                <Input className="rounded-none opacity-80"></Input>
+                <Input className="rounded-none opacity-80 text-black"></Input>
               </div>
               <div className="flex flex-col gap-2 mt-4">
                 <span>Email</span>
-                <Input className="rounded-none opacity-80"></Input>
+                <Input className="rounded-none opacity-80 text-black"></Input>
               </div>
               <Button className="bg-[#0038A1] mt-4 w-4/5 p-6">
                 Contactez-nous
