@@ -3,14 +3,14 @@ import React from 'react';
 
 import ClientSlugHandler from '../../ClientSlugHandler';
 import { BlogLayout } from '@/components/blog-layout';
-import { getCollectionType } from '@/lib/strapi';
+import { fetchCollectionType } from '@/lib/strapi';
 import type { Article } from '@/types/types';
 
 export default async function SingleArticlePage(props: {
   params: Promise<{ slug: string; locale: string }>;
 }) {
   const params = await props.params;
-  const [article] = await getCollectionType<any[]>('articles', {
+  const [article] = await fetchCollectionType<any[]>('articles', {
     filters: {
       slug: {
         $eq: params.slug,

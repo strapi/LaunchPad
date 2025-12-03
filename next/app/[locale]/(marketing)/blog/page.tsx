@@ -10,14 +10,14 @@ import { FeatureIconContainer } from '@/components/dynamic-zone/features/feature
 import { Heading } from '@/components/elements/heading';
 import { Subheading } from '@/components/elements/subheading';
 import { generateMetadataObject } from '@/lib/shared/metadata';
-import { getCollectionType, getSingleType } from '@/lib/strapi';
+import { fetchCollectionType, fetchSingleType } from '@/lib/strapi';
 import type { Article } from '@/types/types';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const pageData = await getSingleType('blog-page', {
+  const pageData = await fetchSingleType('blog-page', {
     locale: params.locale,
   });
 
@@ -30,10 +30,10 @@ export default async function Blog(props: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const params = await props.params;
-  const pageData = await getSingleType('blog-page', {
+  const pageData = await fetchSingleType('blog-page', {
     locale: params.locale,
   });
-  const [firstArticle, ...articles] = await getCollectionType<Article[]>(
+  const [firstArticle, ...articles] = await fetchCollectionType<Article[]>(
     'articles',
     {
       filters: { locale: { $eq: params.locale } },

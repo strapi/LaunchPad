@@ -10,15 +10,14 @@ import { Subheading } from '@/components/elements/subheading';
 import { Featured } from '@/components/products/featured';
 import { ProductItems } from '@/components/products/product-items';
 import { generateMetadataObject } from '@/lib/shared/metadata';
-import { getSingleType } from '@/lib/strapi';
-import { getCollectionType } from '@/lib/strapi';
+import { fetchCollectionType, fetchSingleType } from '@/lib/strapi';
 import { Product } from '@/types/types';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const pageData = await getSingleType('product-page', {
+  const pageData = await fetchSingleType('product-page', {
     locale: params.locale,
   });
 
@@ -33,10 +32,10 @@ export default async function Products(props: {
   const params = await props.params;
 
   // Fetch the product-page and products data
-  const pageData = await getSingleType('product-page', {
+  const pageData = await fetchSingleType('product-page', {
     locale: params.locale,
   });
-  const products = await getCollectionType<Product[]>('products');
+  const products = await fetchCollectionType<Product[]>('products');
 
   const localizedSlugs = pageData.localizations?.reduce(
     (acc: Record<string, string>, localization: any) => {
