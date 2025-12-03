@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "offre_cards",
+  "info": {
+    "singularName": "offre-card",
+    "pluralName": "offre-cards",
+    "displayName": "offre"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}
