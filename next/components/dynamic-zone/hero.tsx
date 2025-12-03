@@ -48,7 +48,7 @@ export const Hero = ({
             {heading.split(' ').slice(-2).join(' ')}
           </span>
         </Heading>
-        <Subheading className="text-start mt-2 md:mt-6 text-base md:text-xl text-muted  max-w-3xl relative z-10">
+        <Subheading className="text-start mt-2 md:mt-6 text-base md:text-xl text-white  max-w-3xl relative z-10">
           {sub_heading}
         </Subheading>
         <div className="flex flex-wrap gap-4 items-center mt-8 w-full">

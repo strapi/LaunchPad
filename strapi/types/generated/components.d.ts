@@ -378,8 +378,8 @@ export interface SectionsSectionService extends Struct.ComponentSchema {
   };
   attributes: {
     heading: Schema.Attribute.String;
-    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
-    sub_heading: Schema.Attribute.String;
+    service: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+    sub_heading: Schema.Attribute.Text;
   };
 }
 
