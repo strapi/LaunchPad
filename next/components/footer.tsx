@@ -8,8 +8,11 @@ import { Typography } from './ui/typography';
 import { Logo } from '@/components/logo';
 import { strapiImage } from '@/lib/strapi/strapiImage';
 import { cn } from '@/lib/utils';
+import ImgFooter from '@/public/rectangle.svg';
 import { Image } from '@/types/types';
 import { LinkItem } from '@/types/utils';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
+import { StrapiImage } from './ui/strapi-image';
 
 export const Footer = async ({
   data,
@@ -19,12 +22,14 @@ export const Footer = async ({
   locale: string;
   background: Image;
 }) => {
-  const BackendUrl = process.env.NEXT_PUBLIC_API_URL ?? '';
-  const bg_image = data.background?.[0]?.url
-    ? `${BackendUrl}${data.background[0].url}`
-    : '';
+  
 
-  console.log(data.social_media_links);
+  // const bg_image = StrapiImage(data.background.url)
+
+   const bg_image = data.background?.url?strapiImage(data.background.url):null;
+  
+
+  console.log("img",bg_image);
   return (
     <div
       className="relative bg-cover bg-center"
@@ -32,7 +37,7 @@ export const Footer = async ({
         backgroundImage: bg_image ? `url(${bg_image})` : 'none',
       }}
     >
-      <div className="border-t border-neutral-900 px-8 pt-20 pb-32 relative">
+      <div className="border-t border-neutral-900 px-8 pt-20 pb-4 relative">
         <div className="max-w-6xl grid mx-auto text-sm sm:grid-cols-3  items-start justify-items-center">
           <div>
             <div className="mr-4  md:flex mb-4">
@@ -58,14 +63,17 @@ export const Footer = async ({
           </div>
           {/* <div className=" gap-10 items-start mt-10 md:mt-0">
           </div> */}
+          {/* BLOC 2 */}
           <div>
             <Typography variant="h3">Navigation</Typography>
             <LinkSection links={data?.internal_links} locale={locale} />
           </div>
 
-          <div>
+            {/* BLOC 3 */}
+          <div className=''>
             <Typography variant="h3">Contact</Typography>
             <LinkSection links={data?.policy_links} locale={locale} />
+            <div className="flex flex-col gap-4 mt-4"><BlocksRenderer content={data.contact} /></div>
           </div>
         </div>
         <div className="flex flex-col">
@@ -73,7 +81,7 @@ export const Footer = async ({
           <div className="flex gap-4 items-center justify-center mt-28 mb-3">
             <Typography className="text-sm">Suivez nous</Typography>
             <div className="flex gap-4">
-              {data?.social_media_links?.map((item :LinkItem) => (
+              {data?.social_media_links?.map((item: LinkItem) => (
                 <Link
                   target={item.target}
                   href={`${item.URL.startsWith('http') ? '' : `/${locale}`}${item.URL}`}
@@ -100,11 +108,15 @@ export const Footer = async ({
           </div>
         </div>
       </div>
-      <div
-        className="text-center bg-white text-primary font-bold -mt-28"
-        
-      >
-        <Typography className="text-7xl">Webtinix</Typography>
+      {/* BLOC 1 */}
+      <div className="w-full text-center bg-white text-primary  relative">
+         <Typography className="text-6xl z-10 relative font-black text-[#0038A1]">{data.designed_developed_by}</Typography>
+        <BlurImage
+          src={ImgFooter}
+          alt="rectangle"
+          className="absolute inset-0 size-full z-0 object-cover"
+        />
+       
       </div>
     </div>
   );

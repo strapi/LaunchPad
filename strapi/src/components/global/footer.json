@@ -41,13 +41,16 @@
     },
     "background": {
       "type": "media",
-      "multiple": true,
+      "multiple": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ]
+    },
+    "contact": {
+      "type": "blocks"
     }
   }
 }

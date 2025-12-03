@@ -43,6 +43,7 @@ const populate = {
         },
       },
       background: true,
+      // contact: true,
       logo: {
         populate: {
           image: true,
