@@ -26,6 +26,13 @@ const populate = {
           }
         },
       },
+      'sections.booste-activity': {
+        populate: {
+          expertise: {
+            populate: "*"
+          }
+        }
+      },
       'dynamic-zone.features': {
         populate: {
           globe_card: true,

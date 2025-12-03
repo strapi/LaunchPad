@@ -4,6 +4,7 @@ import React from 'react';
 import { Button } from '../ui/button';
 import { strapiImage } from '@/lib/strapi/strapiImage';
 import { Image as TypeImages } from '@/types/types';
+import { Typography } from '../ui/typography';
 
 type OffreCardProps = {
   documentId: string;
@@ -26,12 +27,12 @@ export function ServiceCard({
   return (
     <div className="bg-[var(--tertiare)] w-screen h-screen px-14 py-10 flex flex-col gap-8 justify-items-center">
       <div className="pt-8">
-        <h2 className="text-4xl text-primary font-bold text-start">
+        <Typography variant="h2" className="text-primary font-bold text-start">
           {heading}
-        </h2>
-        <p className="text-lg font-normal text-black text-start max-w-3xl">
+        </Typography>
+        <Typography variant="p" className="text-lg font-normal text-black text-start max-w-3xl">
           {sub_heading}
-        </p>
+        </Typography>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center">
@@ -68,8 +69,8 @@ function CardService({
       />
 
       <div className="self-start">
-        <h3 className="font-semibold text-black text-start">{title}</h3>
-        <p className="text-black text-sm text-start">{description}</p>
+        <Typography variant="h3" className="text-black text-start">{title}</Typography>
+        <Typography variant="p" className="text-black text-sm text-start">{description}</Typography>
       </div>
 
       <Button className="bg-primary text-white self-start">
