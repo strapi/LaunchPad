@@ -56,7 +56,8 @@
         "dynamic-zone.faq",
         "sections.section-service",
         "sections.service-card",
-        "sections.booste-activity"
+        "sections.booste-activity",
+        "sections.client-satified"
       ]
     }
   }

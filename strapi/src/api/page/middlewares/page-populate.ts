@@ -26,11 +26,22 @@ const populate = {
           }
         },
       },
+      'sections.client-satified': {
+        populate: {
+          client_satisfied_detaileds: {
+            populate: '*'
+          },
+          logos: {
+            populate: '*'
+          }
+        }
+      },
       'sections.booste-activity': {
         populate: {
           expertise: {
             populate: "*"
-          }
+          },
+          background: true
         }
       },
       'dynamic-zone.features': {

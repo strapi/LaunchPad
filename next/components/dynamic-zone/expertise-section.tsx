@@ -33,7 +33,7 @@ export function ExpertiseSection({
   return (
     <section className="w-full py-20 text-foreground">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start px-6">
-        <div className="relative w-full h-[400px] md:h-[550px] rounded-xl overflow-hidden">
+        <div className="relative w-full h-[500px] md:h-[650px] rounded-xl overflow-hidden">
           {background?.url && (
             <Image
               src={strapiImage(background.url)}
