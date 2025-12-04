@@ -4,37 +4,23 @@ import React from 'react';
 import { Button } from '../ui/button';
 import { Typography } from '../ui/typography';
 import { strapiImage } from '@/lib/strapi/strapiImage';
-import { Image } from '@/types/types';
 import { cn } from '@/lib/utils';
+import { Image, Projet } from '@/types/types';
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
-type ServiceProps = {
-  title: string;
-  description: string;
-  documentId: string;
-  background?: Image;
-  slug: string;
-};
-
-type ServicesProps = {
+type SectionProjetHomeProps = {
   heading: string;
-  sub_heading: string;
-  service: ServiceProps[];
+  sub_heading: any;
+  projets: Projet[];
   locale: string;
 };
 
-export function Services({
+export function SectionProjetHome({
   heading,
   sub_heading,
-  service,
+  projets,
   locale,
-}: ServicesProps) {
-  const cardStyles = [
-  { bg: "bg-red-100", text: "text-black" },
-  { bg: "bg-blue-600", text: "text-white" },
-  { bg: "bg-blue-200", text: "text-black" },
-];
-
-
+}: SectionProjetHomeProps) {
   return (
     <section className=" w-full flex flex-col items-center bg-[var(--tertiare)] py-18 px-4 md:px-10 gap-10">
       <Typography
@@ -44,36 +30,14 @@ export function Services({
         {heading}
       </Typography>
 
-      <Typography
-        variant={'p'}
-        className="text-black text-center text-base md:text-lg max-w-2xl not-first:mt-2"
-      >
-        {sub_heading}
-      </Typography>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
-        {service.map((el, index) => {
-  const style = cardStyles[index % cardStyles.length];
- 
-  return (
-    <CardComponent
-      key={el.documentId}
-      heading={el.title}
-      sub_heading={el.description}
-      slug={el.slug}
-      locale={locale}
-      bgColor={style.bg}     // ✔ string
-      textColor={style.text} // ✔ string
-    />
-  );
-})}
-
+      <div className="text-black text-center text-base md:text-lg max-w-2xl not-first:mt-2">
+        <BlocksRenderer content={sub_heading}/>
       </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl"></div>
     </section>
   );
 }
-
-
 
 function CardComponent({
   heading,
@@ -97,7 +61,7 @@ function CardComponent({
   return (
     <div
       className={cn(
-        " h-[380px] sm:h-[400px] md:h-[480px] w-full rounded-xl p-6 flex flex-col justify-center items-center bg-cover bg-center relative",
+        ' h-[380px] sm:h-[400px] md:h-[480px] w-full rounded-xl p-6 flex flex-col justify-center items-center bg-cover bg-center relative',
         bgColor // ✔ background OK
       )}
     >
@@ -105,14 +69,14 @@ function CardComponent({
 
       <Typography
         variant="h3"
-        className={cn("text-lg md:text-xl font-bold text-center", textColor)}
+        className={cn('text-lg md:text-xl font-bold text-center', textColor)}
       >
         {heading}
       </Typography>
 
       <Typography
         variant="p"
-        className={cn("text-sm md:text-base text-center mb-12", textColor)}
+        className={cn('text-sm md:text-base text-center mb-12', textColor)}
       >
         {sub_heading}
       </Typography>
@@ -122,12 +86,9 @@ function CardComponent({
           onClick={OnNavigatePage}
           className="bg-primary text-white font-semibold mt-4 w-fit px-4 py-2 hover:bg-primary"
         >
-          Découvrir le service
+          Découvrir le SectionProjetHome
         </Button>
       </a>
     </div>
   );
 }
-
-
-

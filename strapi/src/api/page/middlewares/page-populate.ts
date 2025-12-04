@@ -19,6 +19,13 @@ const populate = {
           }
         },
       },
+      'sections.section-projet-home': {
+        populate: {
+          projets: {
+            populate: '*'
+          }
+        },
+      },
       'dynamic-zone.features': {
         populate: {
           globe_card: true,

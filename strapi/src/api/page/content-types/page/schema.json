@@ -54,7 +54,8 @@
         "dynamic-zone.cta",
         "dynamic-zone.form-next-to-section",
         "dynamic-zone.faq",
-        "sections.section-service"
+        "sections.section-service",
+        "sections.section-projet-home"
       ]
     }
   }
