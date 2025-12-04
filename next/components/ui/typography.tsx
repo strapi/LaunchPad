@@ -74,8 +74,10 @@ export function Typography<E extends ElementType = typeof defaultElement>({
     as ?? defaultElementMapping[variant ?? "base"] ?? defaultElement
 
   return (
+    // @ts-ignore
     <Component
       {...(restProps as ComponentPropsWithoutRef<E>)}
+      // @ts-ignore
       className={cn(typographyVariants({ variant }), className)}
       data-typography
       data-typography-variant={variant}
