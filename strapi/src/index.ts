@@ -51,7 +51,7 @@ export default {
 
         // Utilise spawnSync avec input
         const result = spawnSync(
-          "yarn",
+          "npm",
           ["strapi", "import", "--force", "-f", "./data/export_20250116105447.tar.gz"],
           {
             input: "y\n", // Confirme automatiquement
