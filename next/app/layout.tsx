@@ -25,14 +25,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" suppressHydrationWarning>
-        <body className={cn(
-          "min-h-screen bg-background font-sans antialiased print:bg-white",
-        )} >
-      <ThemeProvider attribute="class" defaultTheme='light'>
+      <body className={cn(
+        "min-h-screen bg-background font-sans antialiased",
+      )} >
+        <ThemeProvider attribute="class" defaultTheme='light'>
           <Preview />
           <SlugProvider>{children}</SlugProvider>
-      </ThemeProvider>
-        </body>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

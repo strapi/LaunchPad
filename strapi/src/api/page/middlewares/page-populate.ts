@@ -8,7 +8,15 @@ const populate = {
     on: {
       'dynamic-zone.hero': {
         populate: {
+          background: true,
           CTAs: true,
+        },
+      },
+      'sections.section-service': {
+        populate: {
+          service: {
+            populate: '*'
+          }
         },
       },
       'dynamic-zone.features': {
