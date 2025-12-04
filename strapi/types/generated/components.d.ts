@@ -267,7 +267,11 @@ export interface GlobalFooter extends Struct.ComponentSchema {
     icon: 'apps';
   };
   attributes: {
+    background: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     built_with: Schema.Attribute.String;
+    contact: Schema.Attribute.Blocks;
     copyright: Schema.Attribute.String;
     description: Schema.Attribute.String;
     designed_developed_by: Schema.Attribute.String;

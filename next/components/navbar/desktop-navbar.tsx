@@ -68,7 +68,8 @@ export const DesktopNavbar = ({
         'mx-auto w-full flex flex-col relative rounded-md  transition duration-200'
       )}
       animate={{
-        width: showBackground ? '80%' : '100%',
+        // width: showBackground ? '80%' : '100%',
+        width: showBackground ? '100%' : '100%',
         background: showBackground ? 'var(--neutral-900)' : 'transparent',
       }}
       transition={{

@@ -35,7 +35,15 @@ const populate = {
     populate: {
       internal_links: true,
       policy_links: true,
-      social_media_links: true,
+      social_media_links: {
+        populate: {
+          icon: {
+            populate: ['image'],
+          },
+        },
+      },
+      background: true,
+      // contact: true,
       logo: {
         populate: {
           image: true,
