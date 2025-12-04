@@ -5,18 +5,18 @@
   "type": "module",
   "scripts": {
     "prepare": "husky",
-    "next": "yarn dev --prefix ../next/",
-    "strapi": "yarn dev --prefix ../strapi/",
-    "setup:next": "cd next && yarn && node --loader ts-node/esm ../scripts/copy-env.mts ./",
-    "setup:strapi": "cd strapi && yarn && node --loader ts-node/esm ../scripts/copy-env.mts ./",
-    "setup": "yarn install && yarn setup:next && yarn setup:strapi",
-    "dev": "yarn concurrently \"cd strapi && yarn develop\" \"npx wait-on http://localhost:1337 && cd next && yarn dev\"",
-    "seed": "cd strapi && yarn strapi import -f ./data/export_20250116105447.tar.gz --force",
-    "export": "cd strapi && yarn strapi export --no-encrypt -f ./data/export_20250116105447",
+    "next": "npm run dev --prefix ../next/",
+    "strapi": "npm run dev --prefix ../strapi/",
+    "setup:next": "cd next && npm install --legacy-peer-deps && node --loader ts-node/esm ../scripts/copy-env.mts ./",
+    "setup:strapi": "cd strapi && npm install --legacy-peer-deps && node --loader ts-node/esm ../scripts/copy-env.mts ./",
+    "setup": "npm install && npm run setup:next && npm run setup:strapi",
+    "dev": "concurrently \"cd strapi && npm run develop\" \"npx wait-on http://localhost:1337 && cd next && npm run dev\"",
+    "seed": "cd strapi && npm run strapi -- import -f ./data/export_20250116105447.tar.gz --force",
+    "export": "cd strapi && npm run strapi -- export --no-encrypt -f ./data/export_20250116105447",
     "repo:upstream": "git fetch upstream && git merge upstream/main",
     "check:format": "prettier . --check --cache",
     "fix:format": "prettier . --write --cache",
-    "fix": "yarn fix:format",
+    "fix": "npm run fix:format",
     "lint-staged": "lint-staged",
     "deploy:agent": "tsx tools/vercel-agent/agent.ts",
     "deploy:check": "tsx tools/vercel-agent/check-deployment.ts",
@@ -48,11 +48,10 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,md,yml,yaml}": [
-      "yarn fix:format"
+      "npm run fix:format"
     ],
     "next/**/*.{js,jsx,ts,tsx}": [
-      "cd next && yarn lint --fix"
+      "cd next && npm run lint --fix"
     ]
-  },
-  "packageManager": "yarn@4.5.0"
+  }
 }

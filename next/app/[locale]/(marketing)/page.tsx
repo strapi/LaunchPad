@@ -110,20 +110,20 @@ export default async function HomePage(props: {
   // FALLBACK: Awwwards-level Design
   return (
     <LandingIntro>
-      <div className="flex flex-col">
+      <div className="flex flex-col bg-background text-foreground transition-colors duration-300">
         {/* Hero Section */}
         <HeroSection />
 
       {/* Stats Section */}
-        <section className="py-16 border-b border-white/5">
+        <section className="py-16 border-b border-border">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               {stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-cyan-400 mb-2">
+                <div key={index} className="text-center group hover:scale-105 transition-transform duration-300">
+                  <div className="text-4xl md:text-5xl font-display font-bold text-primary mb-2 drop-shadow-sm">
                     {stat.value}
                   </div>
-                  <div className="text-gray-400 text-sm uppercase tracking-wider">
+                  <div className="text-muted-foreground text-sm uppercase tracking-wider font-medium">
                     {stat.label}
                   </div>
                 </div>
@@ -133,16 +133,16 @@ export default async function HomePage(props: {
         </section>
 
         {/* Core Offerings Section */}
-        <section className="py-24 bg-zinc-900/30 border-y border-white/5">
+        <section className="py-24 bg-background-secondary border-y border-border">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16 max-w-3xl mx-auto">
-              <p className="text-cyan-400 font-medium mb-4 tracking-wide uppercase text-sm">
+              <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm">
                 Services
               </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">
                 Core Offerings
               </h2>
-              <p className="text-gray-400 text-lg">
+              <p className="text-muted-foreground text-lg leading-relaxed">
                 Comprehensive solutions designed to transform your leadership capability and organizational culture.
               </p>
             </div>
@@ -166,20 +166,20 @@ export default async function HomePage(props: {
         <ProjectsGrid />
 
         {/* Quote Section */}
-        <section className="py-24">
+        <section className="py-24 bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <IconQuote className="w-12 h-12 text-cyan-500/30 mx-auto mb-8" />
-              <blockquote className="text-2xl md:text-3xl lg:text-4xl text-white font-light leading-relaxed mb-8">
-                I speak <span className="text-cyan-400">to</span> leaders and <span className="text-cyan-400">into</span> their lives. It all starts with self-awareness.
+              <IconQuote className="w-12 h-12 text-primary/30 mx-auto mb-8" />
+              <blockquote className="text-2xl md:text-3xl lg:text-4xl text-foreground font-display font-light leading-relaxed mb-8">
+                I speak <span className="text-primary font-normal">to</span> leaders and <span className="text-primary font-normal">into</span> their lives. It all starts with self-awareness.
               </blockquote>
               <div className="flex items-center justify-center gap-4">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center">
-                  <span className="text-xl font-bold text-white">PS</span>
+                <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                  <span className="text-xl font-bold text-primary">PS</span>
                 </div>
                 <div className="text-left">
-                  <p className="text-white font-semibold">Dr. Peter Sung</p>
-                  <p className="text-gray-400 text-sm">Founder, SecureBase</p>
+                  <p className="text-foreground font-semibold">Dr. Peter Sung</p>
+                  <p className="text-muted-foreground text-sm">Founder, SecureBase</p>
                 </div>
               </div>
             </div>
@@ -187,26 +187,26 @@ export default async function HomePage(props: {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 bg-gradient-to-b from-zinc-900/50 to-charcoal border-t border-white/5">
+        <section className="py-24 bg-card border-t border-border">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6">
                 Ready to Transform Your Leadership?
               </h2>
-              <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+              <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
                 Take the first step towards becoming the leader you were meant to be. Schedule a free discovery call today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/contact"
-                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-medium text-black bg-cyan-400 hover:bg-cyan-300 rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(6,182,212,0.3)]"
+                  className="group inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-medium text-primary-foreground bg-primary hover:bg-primary/90 rounded-full transition-all duration-300 hover:scale-[1.02] shadow-lg hover:shadow-xl"
                 >
                   Schedule Discovery Call
                   <IconArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   href="/about"
-                  className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-white border border-white/20 hover:bg-white/10 rounded-full transition-all duration-300"
+                  className="inline-flex items-center justify-center px-8 py-4 text-base font-medium text-foreground border border-border hover:bg-muted/50 rounded-full transition-all duration-300"
                 >
                   Learn About Dr. Sung
                 </Link>

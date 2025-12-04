@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: peter-sung-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME:-strapi}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-strapi}
+      POSTGRES_DB: ${DATABASE_NAME:-strapi}
+    volumes:
+      - strapi-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+  strapi:
+    build: ./strapi
+    container_name: peter-sung-backend
+    restart: unless-stopped
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_NAME: ${DATABASE_NAME:-strapi}
+      DATABASE_USERNAME: ${DATABASE_USERNAME:-strapi}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-strapi}
+      JWT_SECRET: ${JWT_SECRET:-tobemodified}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET:-tobemodified}
+      APP_KEYS: ${APP_KEYS:-tobemodified}
+      API_TOKEN_SALT: ${API_TOKEN_SALT:-tobemodified}
+      TRANSFER_TOKEN_SALT: ${TRANSFER_TOKEN_SALT:-tobemodified}
+      NODE_ENV: production
+    depends_on:
+      - postgres
+    ports:
+      - "1337:1337"
+    networks:
+      - app-network
+
+  next:
+    build: ./next
+    container_name: peter-sung-frontend
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_STRAPI_API_URL: http://strapi:1337
+      NODE_ENV: production
+    depends_on:
+      - strapi
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  strapi-data:

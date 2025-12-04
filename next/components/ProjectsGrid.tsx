@@ -38,20 +38,20 @@ export default function ProjectsGrid() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   return (
-    <section className="py-24 bg-surface relative overflow-hidden">
+    <section className="py-24 bg-background relative overflow-hidden transition-colors duration-300">
       {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <p className="text-brand-400 font-medium mb-4 tracking-wide uppercase text-sm">
+          <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm">
             Selected Work
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 font-display">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 font-display">
             Digital Experiences
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-muted-foreground text-lg">
             Showcasing the intersection of leadership methodology and digital innovation.
           </p>
         </div>

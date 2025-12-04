@@ -15,35 +15,50 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        background: 'hsl(var(--background))',
+        'background-secondary': 'hsl(var(--background-secondary))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        // Legacy/Brand colors (kept for compatibility but mapped to new system where possible)
         charcoal: '#050d1b',
-        lightblack: '#0d1529',
-        secondary: '#2563eb',
-        muted: '#94a3b8',
-        surface: '#0f172a',
-        surfaceMuted: '#111c34',
         brand: {
           50: '#e3f2ff',
           100: '#bedcff',
-          200: '#95c5ff',
-          300: '#6dadff',
-          400: '#478ffe',
-          500: '#2563eb',
-          600: '#1d4ed8',
-          700: '#1e3a8a',
-          800: '#172c66',
-          900: '#122247',
-        },
-        accent: '#f59e0b',
-        border: '#1e2a45',
-        text: {
-          primary: '#f8fafc',
-          muted: '#cbd5f5',
-          subtle: '#94a3b8',
+          500: 'hsl(var(--primary))', // Map brand-500 to primary
         },
         cyan: {
           400: '#22d3ee',
           500: '#06b6d4',
-          900: '#164e63',
         },
       },
       boxShadow: {

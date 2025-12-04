@@ -27,7 +27,7 @@ export default function ProjectCard({ project, onClick, priority = false }: Proj
   return (
     <motion.div
       layoutId={`card-${project.id}`}
-      className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-surfaceMuted cursor-pointer border border-white/5 hover:border-white/20 transition-colors duration-500"
+      className="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-muted cursor-pointer border border-border hover:border-primary/50 transition-colors duration-500 shadow-sm hover:shadow-xl"
       onClick={onClick}
       whileHover={{ y: -5 }}
       initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ export default function ProjectCard({ project, onClick, priority = false }: Proj
         />
         
         {/* Gradient Overlay - Always visible but stronger at bottom */}
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
       </div>
 
       {/* Content Layer */}
@@ -63,13 +63,13 @@ export default function ProjectCard({ project, onClick, priority = false }: Proj
           <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg font-display tracking-tight">
             {project.title}
           </h3>
-          <p className="text-sm font-medium text-brand-200 uppercase tracking-wider mb-1 opacity-90">
+          <p className="text-sm font-medium text-white/90 uppercase tracking-wider mb-1 opacity-90">
             {project.subtitle}
           </p>
           
           {/* Hidden description that reveals on hover (optional, keeping it clean for now) */}
           <div className="h-0 overflow-hidden group-hover:h-auto transition-all duration-500">
-             <p className="text-gray-300 text-sm mt-2 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+             <p className="text-gray-200 text-sm mt-2 line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                {project.description}
              </p>
           </div>

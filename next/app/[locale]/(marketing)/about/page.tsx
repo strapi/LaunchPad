@@ -16,20 +16,20 @@ const stats = [
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
       {/* Hero Section */}
       <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-900/10 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-cyan-400 font-medium mb-4 tracking-wide uppercase text-sm">
+            <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm">
               About
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mb-6 leading-tight">
               Meet Dr. Peter Sung
             </h1>
-            <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               A trusted guide for leaders navigating complexity with clarity and confidence.
             </p>
           </div>
@@ -37,30 +37,30 @@ export default function AboutPage() {
       </section>
 
       {/* Bio Section */}
-      <section className="py-20 bg-zinc-900/30 border-y border-white/5">
+      <section className="py-20 bg-background-secondary border-y border-border">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             {/* Image */}
             <div className="relative">
-              <div className="aspect-[4/5] relative rounded-2xl overflow-hidden bg-zinc-800">
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent z-10" />
+              <div className="aspect-[4/5] relative rounded-2xl overflow-hidden bg-muted shadow-xl">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10" />
                 {/* Placeholder for profile image */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center">
-                    <span className="text-4xl font-bold text-white">PS</span>
+                <div className="absolute inset-0 flex items-center justify-center bg-muted">
+                  <div className="w-32 h-32 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                    <span className="text-4xl font-bold text-primary">PS</span>
                   </div>
                 </div>
               </div>
               {/* Decorative element */}
-              <div className="absolute -bottom-4 -right-4 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl -z-10" />
+              <div className="absolute -bottom-4 -right-4 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10" />
             </div>
 
             {/* Content */}
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
                 Leadership Refined Through Experience
               </h2>
-              <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
+              <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                 <p>
                   With over three decades of leadership study and experience, Dr. Peter Sung has honed his craft as a leader. Seamlessly navigating both church and corporate domains, he integrates performance and organizational psychology into his coaching and speaking practice.
                 </p>
@@ -74,7 +74,7 @@ export default function AboutPage() {
               <div className="pt-4">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-black bg-cyan-400 hover:bg-cyan-300 rounded-full transition-all duration-200 hover:scale-[1.02]"
+                  className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-primary-foreground bg-primary hover:bg-primary/90 rounded-full transition-all duration-200 hover:scale-[1.02] shadow-lg hover:shadow-primary/20"
                 >
                   Get in Touch
                 </Link>
@@ -85,14 +85,14 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
                 Proven Track Record
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-muted-foreground max-w-2xl mx-auto">
                 Decades of experience transforming leaders and organizations across industries.
               </p>
             </div>
@@ -103,19 +103,19 @@ export default function AboutPage() {
                   key={index}
                   className="relative group"
                 >
-                  <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-8 text-center hover:border-cyan-500/30 transition-all duration-300">
-                    <div className="text-5xl md:text-6xl font-bold text-cyan-400 mb-2">
+                  <div className="bg-card border border-border rounded-2xl p-8 text-center hover:border-primary/30 transition-all duration-300 shadow-sm hover:shadow-md">
+                    <div className="text-5xl md:text-6xl font-display font-bold text-primary mb-2">
                       {stat.value}
                     </div>
-                    <div className="text-xl font-semibold text-white mb-1">
+                    <div className="text-xl font-semibold text-foreground mb-1">
                       {stat.label}
                     </div>
-                    <div className="text-gray-400 text-sm">
+                    <div className="text-muted-foreground text-sm">
                       {stat.sublabel}
                     </div>
                   </div>
                   {/* Glow effect on hover */}
-                  <div className="absolute inset-0 rounded-2xl bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
+                  <div className="absolute inset-0 rounded-2xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
                 </div>
               ))}
             </div>
@@ -124,19 +124,19 @@ export default function AboutPage() {
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-20 bg-zinc-900/30 border-y border-white/5">
+      <section className="py-20 bg-background-secondary border-y border-border">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-cyan-400 font-medium mb-4 tracking-wide uppercase text-sm">
+            <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm">
               Philosophy
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-8">
               The SecureBase Approach
             </h2>
-            <blockquote className="text-2xl md:text-3xl text-gray-300 leading-relaxed font-light italic">
-              &ldquo;I speak <span className="text-cyan-400">to</span> leaders and <span className="text-cyan-400">into</span> their lives. It all starts with self-awareness.&rdquo;
+            <blockquote className="text-2xl md:text-3xl text-foreground/80 leading-relaxed font-light italic font-serif">
+              &ldquo;I speak <span className="text-primary font-normal">to</span> leaders and <span className="text-primary font-normal">into</span> their lives. It all starts with self-awareness.&rdquo;
             </blockquote>
-            <p className="mt-8 text-gray-400 max-w-2xl mx-auto">
+            <p className="mt-8 text-muted-foreground max-w-2xl mx-auto">
               A secure base is the foundation from which leaders can explore, take risks, and grow.
               Dr. Sung provides that foundation through evidence-based coaching methodologies and
               deep psychological insight.
@@ -146,25 +146,25 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24">
+      <section className="py-24 bg-card border-t border-border">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
               Ready to Transform Your Leadership?
             </h2>
-            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Take the first step towards becoming the leader you were meant to be.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-black bg-cyan-400 hover:bg-cyan-300 rounded-full transition-all duration-200 hover:scale-[1.02]"
+                className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-primary-foreground bg-primary hover:bg-primary/90 rounded-full transition-all duration-200 hover:scale-[1.02] shadow-lg"
               >
                 Schedule a Discovery Call
               </Link>
               <Link
                 href="/coaching"
-                className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white border border-white/20 hover:bg-white/10 rounded-full transition-all duration-200"
+                className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-foreground border border-border hover:bg-muted/50 rounded-full transition-all duration-200"
               >
                 Explore Coaching
               </Link>
