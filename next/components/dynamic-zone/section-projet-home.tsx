@@ -1,12 +1,13 @@
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { ArrowUpRight } from 'lucide-react';
 import React from 'react';
 
+import { BlurImage } from '../blur-image';
 import { Button } from '../ui/button';
 import { Typography } from '../ui/typography';
 import { strapiImage } from '@/lib/strapi/strapiImage';
 import { cn } from '@/lib/utils';
 import { Image, Projet } from '@/types/types';
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 type SectionProjetHomeProps = {
   heading: string;
@@ -21,74 +22,90 @@ export function SectionProjetHome({
   projets,
   locale,
 }: SectionProjetHomeProps) {
+  console.log('oli', projets);
   return (
-    <section className=" w-full flex flex-col items-center bg-[var(--tertiare)] py-18 px-4 md:px-10 gap-10">
-      <Typography
+    <section className=" w-full flex flex-col py-18 gap-4 ">
+     <div className='px-16'>
+       <Typography
         variant={'h2'}
-        className="text-primary text-3xl md:text-5xl font-bold text-center"
+        className="text-primary text-3xl md:text-5xl font-bold"
       >
         {heading}
       </Typography>
 
-      <div className="text-black text-center text-base md:text-lg max-w-2xl not-first:mt-2">
-        <BlocksRenderer content={sub_heading}/>
+      <div className="w-full text-black text-justify  text-base md:text-lg not-first:mt-2">
+        <BlocksRenderer content={sub_heading} />
       </div>
+     </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl"></div>
+      <div className="w-full flex bg-tertiare p-16 gap-8">
+        {/* Barre de scroll à gauche */}
+        <div className="w-1 bg-primary/20 rounded-full overflow-hidden">
+          <div className="w-full h-20 bg-primary rounded-full animate-pulse"></div>
+        </div>
+        
+        {/* Conteneur des cartes avec scroll */}
+        <div className="flex-1 flex flex-col gap-8 max-h-[1200px] overflow-y-auto pr-4">
+          {projets.map((projet, index) => (
+            <CardComponent
+              key={projet.documentId}
+              projet={projet}
+              locale={locale}
+            />
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
 
-function CardComponent({
-  heading,
-  sub_heading,
-  slug,
-  locale,
-  bgColor,
-  textColor,
-}: {
-  heading: string;
-  sub_heading: string;
-  slug: string;
-  locale: string;
-  bgColor: string;
-  textColor: string;
-}) {
+function CardComponent({ projet, locale }: { projet: Projet; locale: string }) {
   function OnNavigatePage() {
-    window.location.href = slug;
+    window.location.href = projet.slug;
   }
 
   return (
     <div
       className={cn(
-        ' h-[380px] sm:h-[400px] md:h-[480px] w-full rounded-xl p-6 flex flex-col justify-center items-center bg-cover bg-center relative',
-        bgColor // ✔ background OK
+        ' h-[380px] sm:h-[400px] md:h-[480px] w-full rounded-xl  bg-center relative overflow-hidden group'
       )}
     >
-      <ArrowUpRight className="text-primary absolute top-3 right-3" />
-
-      <Typography
-        variant="h3"
-        className={cn('text-lg md:text-xl font-bold text-center', textColor)}
-      >
-        {heading}
-      </Typography>
-
-      <Typography
-        variant="p"
-        className={cn('text-sm md:text-base text-center mb-12', textColor)}
-      >
-        {sub_heading}
-      </Typography>
-
-      <a href={`/${locale}${slug}`}>
-        <Button
-          onClick={OnNavigatePage}
-          className="bg-primary text-white font-semibold mt-4 w-fit px-4 py-2 hover:bg-primary"
-        >
-          Découvrir le SectionProjetHome
-        </Button>
-      </a>
+      <div className='flex w-full h-full  gap-10  '>
+        {/* image */}
+        <div className='h-[80%] relative w-[40%] '>
+          {projet?.image?.url && (
+            <BlurImage
+              src={strapiImage(projet.image?.url)}
+              alt={projet.image?.alternativeText || ''}
+              fill
+              className="object-cover"
+            />
+          )}
+        </div>
+        <div className='h-[80%] w-[40%] flex flex-col gap-6  '>
+          {' '}
+          <Typography
+            variant="h3"
+            className={cn(' text-primary text-lg md:text-2xl font-bold')}
+          >
+            {projet.heading}
+          </Typography>
+          <Typography
+            variant="p"
+            className={cn('text-sm  text-black md:text-sm mb-8')}
+          >
+            {projet.sub_heading}
+          </Typography>
+          <a href={`/${locale}${projet.slug}`}>
+            <Button
+              onClick={OnNavigatePage}
+              className="bg-primary text-white font-semibold  w-fit px-6 py-2 hover:bg-primary"
+            >
+              Parler à un expert
+            </Button>
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
