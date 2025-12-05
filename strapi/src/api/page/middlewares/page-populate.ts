@@ -72,13 +72,7 @@ const populate = {
       'dynamic-zone.testimonials': {
         populate: {
           testimonials: {
-            populate: {
-              user: {
-                populate: {
-                  image: true,
-                },
-              },
-            },
+            populate: "*"
           },
         },
       },

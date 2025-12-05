@@ -57,15 +57,17 @@ export function ClientSatisfiedSection({
 
       <div className="w-full border-b border-gray-400" />
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 w-full justify-items-center">
-        {client_satisfied_detaileds.map((detail) => (
-          <ClientSatisfiedDetailItem
-            key={detail.id}
-            heading={detail.heading}
-            subHeading={detail.sub_heading}
-            description={detail.description ?? undefined}
-          />
-        ))}
+      <div className="flex justify-center items-center">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 w-full items-center">
+          {client_satisfied_detaileds.map((detail) => (
+            <ClientSatisfiedDetailItem
+              key={detail.id}
+              heading={detail.heading}
+              subHeading={detail.sub_heading}
+              description={detail.description ?? undefined}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -99,7 +101,7 @@ function ClientSatisfiedDetailItem({
   description,
 }: ClientSatisfiedDetailProps) {
   return (
-    <div className="h-30 w-70 bg-gray-300 flex flex-col gap-2 p-4 text-center rounded-lg">
+    <div className="h-38 w-54 bg-gray-300 flex flex-col gap-2 p-4 text-center rounded-lg">
       <span className="text-secondary text-xl font-bold">{heading}</span>
       <span className="text-lg font-semibold">{subHeading}</span>
       {description && (
