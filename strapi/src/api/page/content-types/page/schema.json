@@ -57,7 +57,8 @@
         "sections.section-service",
         "sections.service-card",
         "sections.booste-activity",
-        "sections.client-satified"
+        "sections.client-satified",
+        "sections.trusted-client"
       ]
     }
   }

@@ -76,6 +76,13 @@ const populate = {
           },
         },
       },
+      'sections.trusted-client': {
+        populate: {
+          logos: {
+            populate: '*'
+          }
+        }
+      },
       'dynamic-zone.how-it-works': {
         populate: {
           steps: true,

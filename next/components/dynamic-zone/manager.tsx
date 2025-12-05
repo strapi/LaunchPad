@@ -31,6 +31,9 @@ const componentMapping: { [key: string]: any } = {
       (mod) => mod.ClientSatisfiedSection
     )
   ),
+  'sections.trusted-client': dynamic(() =>
+    import('./trused-client').then((mod) => mod.TrusedClient)
+  ),
   'sections.booste-activity': dynamic(() =>
     import('./expertise-section').then((mod) => mod.ExpertiseSection)
   ),
