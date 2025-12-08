@@ -33,3 +33,21 @@ export interface Product {
   images: any[];
   categories?: any[];
 }
+
+
+export interface Projet  {
+  heading: string;
+  sub_heading: string;
+  description: any;
+  documentId: string;
+  image?: Image;
+  slug: string;
+};
+export interface TeamMember  {
+  heading: string;
+  sub_heading: string;
+  description: any;
+  documentId: string;
+  image?: Image;
+  slug: string;
+};

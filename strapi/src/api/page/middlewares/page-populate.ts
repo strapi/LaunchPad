@@ -19,6 +19,9 @@ const populate = {
           }
         },
       },
+      'sections.section-projet-home': {
+        populate: {
+          projets: {
       'sections.service-card': {
         populate: {
           offres: {
@@ -26,6 +29,15 @@ const populate = {
           }
         },
       },
+      'sections.notre-equipe-home': {
+        populate: {
+          team_members: {
+            populate: {
+              image: true,
+              poste: true,
+            }
+          }
+        },
       'sections.client-satified': {
         populate: {
           client_satisfied_detaileds: {

@@ -1,7 +1,10 @@
+import { ArrowUpRight } from 'lucide-react';
 import React from 'react';
 
 import { Button } from '../ui/button';
+import { Typography } from '../ui/typography';
 import { strapiImage } from '@/lib/strapi/strapiImage';
+import { cn } from '@/lib/utils';
 import { Image } from '@/types/types';
 import { ArrowUpRight } from 'lucide-react';
 import { Typography } from '../ui/typography';
@@ -11,40 +14,60 @@ type ServiceProps = {
   description: string;
   documentId: string;
   background?: Image;
-  slug: string
+  slug: string;
 };
 
 type ServicesProps = {
   heading: string;
   sub_heading: string;
   service: ServiceProps[];
-  locale: string
+  locale: string;
 };
 
-export function Services({ heading, sub_heading, service, locale }: ServicesProps) {
+export function Services({
+  heading,
+  sub_heading,
+  service,
+  locale,
+}: ServicesProps) {
+  const cardStyles = [
+    { bg: 'bg-red-100', text: 'text-black' },
+    { bg: 'bg-blue-600', text: 'text-white' },
+    { bg: 'bg-blue-200', text: 'text-black' },
+  ];
+
   return (
-    <section className="h-screen w-full flex flex-col items-center bg-[var(--tertiare)] py-18 px-4 md:px-10 gap-8">
-      <Typography variant="h2" className="text-primary text-3xl md:text-5xl font-bold text-center">
+    <section className=" w-full flex flex-col items-center bg-tertiare py-18 px-4 md:px-10 gap-10">
+      <Typography
+        variant={'h2'}
+        className="text-primary text-3xl md:text-5xl font-bold text-center"
+      >
         {heading}
       </Typography>
 
-      <Typography variant="p" className="text-black text-center text-base md:text-lg max-w-2xl">
+      <Typography
+        variant={'p'}
+        className="text-black text-center text-base md:text-lg max-w-2xl not-first:mt-2"
+      >
         {sub_heading}
       </Typography>
 
-      <div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl"
-      >
-        {service.map((el) => (
-          <CardComponent
-            key={el.documentId}
-            heading={el.title}
-            sub_heading={el.description}
-            BackgroundImage={el.background}
-            slug={el.slug}
-            locale={locale}
-          />
-        ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
+        {service.map((el, index) => {
+          const style = cardStyles[index % cardStyles.length];
+
+          return (
+            <CardComponent
+              key={el.documentId}
+              heading={el.title}
+              sub_heading={el.description}
+              slug={el.slug}
+              locale={locale}
+              bgColor={style.bg} // ✔ string
+              textColor={style.text} // ✔ string
+            />
+          );
+        })}
       </div>
     </section>
   );
@@ -53,31 +76,42 @@ export function Services({ heading, sub_heading, service, locale }: ServicesProp
 function CardComponent({
   heading,
   sub_heading,
-  BackgroundImage,
   slug,
-  locale
+  locale,
+  bgColor,
+  textColor,
 }: {
   heading: string;
   sub_heading: string;
-  BackgroundImage?: Image;
-  slug: string,
-  locale: string
+  slug: string;
+  locale: string;
+  bgColor: string;
+  textColor: string;
 }) {
   function OnNavigatePage() {
     window.location.href = slug;
   }
 
   return (
-    <div className="h-[380px] sm:h-[400px] md:h-[420px] w-full rounded-xl p-6 flex flex-col justify-center items-center bg-cover bg-center relative"
-      style={BackgroundImage ? { backgroundImage: `url('${strapiImage(BackgroundImage?.url)}')` } : undefined}
+    <div
+      className={cn(
+        ' h-[380px] sm:h-[400px] md:h-[480px] w-full rounded-xl p-6 flex flex-col justify-center items-center bg-cover bg-center relative',
+        bgColor // ✔ background OK
+      )}
     >
-      <ArrowUpRight className='text-primary absolute top-3 right-3' />
+      <ArrowUpRight className="text-primary absolute top-3 right-3" />
 
-      <Typography variant="h3" className="text-lg md:text-xl text-black font-bold text-center">
+      <Typography
+        variant="h3"
+        className={cn('text-lg md:text-xl font-bold text-center', textColor)}
+      >
         {heading}
       </Typography>
 
-      <Typography variant="p" className="text-sm md:text-base text-black mt-2 text-center mb-12">
+      <Typography
+        variant="p"
+        className={cn('text-sm md:text-base text-center mb-12', textColor)}
+      >
         {sub_heading}
       </Typography>
 
@@ -89,7 +123,6 @@ function CardComponent({
           Découvrir le service
         </Button>
       </a>
-
     </div>
   );
 }

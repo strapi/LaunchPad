@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_section_projet_homes",
+  "info": {
+    "displayName": "section_projet_home"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "blocks"
+    },
+    "projets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::projets.projets"
+    }
+  },
+  "config": {}
+}

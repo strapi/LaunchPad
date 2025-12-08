@@ -55,6 +55,8 @@
         "dynamic-zone.form-next-to-section",
         "dynamic-zone.faq",
         "sections.section-service",
+        "sections.section-projet-home",
+        "sections.notre-equipe-home"
         "sections.service-card",
         "sections.booste-activity",
         "sections.client-satified",

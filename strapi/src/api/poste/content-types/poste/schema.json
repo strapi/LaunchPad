@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "postes",
+  "info": {
+    "singularName": "poste",
+    "pluralName": "postes",
+    "displayName": "poste"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "text"
+    },
+    "team_members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member",
+      "mappedBy": "poste"
+    }
+  }
+}
