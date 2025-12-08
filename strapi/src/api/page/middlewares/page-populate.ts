@@ -86,6 +86,13 @@ const populate = {
           }
         }
       },
+      'sections.cas-etude': {
+        populate: {
+          problematique: true,
+          challenge: true,
+          solution: true,
+        }
+      },
       'dynamic-zone.how-it-works': {
         populate: {
           steps: true,
