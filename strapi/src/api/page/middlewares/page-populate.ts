@@ -76,6 +76,9 @@ const populate = {
           },
         },
       },
+      'dynamic-zone.see-realization': {
+        populate: '*'
+      },
       'sections.trusted-client': {
         populate: {
           logos: {
