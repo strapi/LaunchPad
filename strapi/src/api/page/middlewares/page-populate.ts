@@ -88,9 +88,15 @@ const populate = {
       },
       'sections.cas-etude': {
         populate: {
-          problematique: true,
-          challenge: true,
-          solution: true,
+          problematique: {
+            populate: '*'
+          },
+          challenge: {
+            populate: '*'
+          },
+          solution: {
+            populate: '*'
+          },
         }
       },
       'dynamic-zone.how-it-works': {
