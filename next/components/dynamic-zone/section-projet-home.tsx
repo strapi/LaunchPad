@@ -22,7 +22,6 @@ export function SectionProjetHome({
   projets,
   locale,
 }: SectionProjetHomeProps) {
-  console.log('oli', projets);
   return (
     <section className=" w-full flex flex-col py-18 gap-4 ">
       <div className="px-16">

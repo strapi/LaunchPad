@@ -26,6 +26,15 @@ const populate = {
           }
         },
       },
+      'sections.notre-equipe-home': {
+        populate: {
+          team_members: {
+            populate: {
+              image: true,
+            }
+          }
+        },
+      },
       'dynamic-zone.features': {
         populate: {
           globe_card: true,
