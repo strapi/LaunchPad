@@ -31,6 +31,7 @@ const populate = {
           team_members: {
             populate: {
               image: true,
+              poste: true,
             }
           }
         },
