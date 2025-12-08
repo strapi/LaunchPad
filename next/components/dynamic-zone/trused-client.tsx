@@ -29,7 +29,10 @@ export function TrusedClient({
 }: trusedClientProps) {
   return (
     <div className="min-h-screen flex flex-col gap-4 px-4 md:px-8 lg:px-16 py-8">
-      <Typography as="h2" className="text-primary text-2xl md:text-3xl font-bold">
+      <Typography
+        as="h2"
+        className="text-primary text-2xl md:text-3xl font-bold"
+      >
         {heading}
       </Typography>
       <Typography as="p" className="text-base md:text-lg font-semibold">
@@ -39,17 +42,27 @@ export function TrusedClient({
         {description}
       </Typography>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center items-center w-full mt-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 md:gap-10 lg:gap-12 w-full mt-12 md:mt-16">
         {logos.map((el) => (
-          <div key={el.id} className="flex flex-col gap-2 items-center text-center">
-            <Image
-              src={`${strapiImage(el.image?.url)}`}
-              width={50}
-              height={50}
-              className="object-contain object-center rounded-full"
-              alt={el.company}
-            />
-            <Typography as="span" className="text-xs md:text-sm">{el.company}</Typography>
+          <div
+            key={el.id}
+            className="flex flex-col gap-3 items-center justify-center"
+          >
+            <div className="flex items-center justify-center w-full h-24 md:h-32">
+              <Image
+                src={`${strapiImage(el.image?.url)}`}
+                width={80}
+                height={80}
+                className="object-contain object-center max-w-full max-h-full"
+                alt={el.company}
+              />
+            </div>
+            <Typography
+              as="span"
+              className="text-sm md:text-base font-medium text-center"
+            >
+              {el.company}
+            </Typography>
           </div>
         ))}
       </div>

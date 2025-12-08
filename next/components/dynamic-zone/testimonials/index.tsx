@@ -106,7 +106,7 @@ export const Testimonials = ({
                 {el.description}
               </Typography>
 
-              <Button className="bg-primary text-background w-37">
+              <Button className="bg-primary text-background w-37 text-white">
                 Parler à un expert
               </Button>
             </div>
