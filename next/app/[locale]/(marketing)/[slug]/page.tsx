@@ -3,13 +3,13 @@ import { Metadata } from 'next';
 import ClientSlugHandler from '../ClientSlugHandler';
 import PageContent from '@/lib/shared/PageContent';
 import { generateMetadataObject } from '@/lib/shared/metadata';
-import { getCollectionType } from '@/lib/strapi';
+import { fetchCollectionType } from '@/lib/strapi';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const [pageData] = await getCollectionType('pages', {
+  const [pageData] = await fetchCollectionType('pages', {
     filters: {
       slug: {
         $eq: params.slug,
@@ -27,7 +27,7 @@ export default async function Page(props: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const params = await props.params;
-  const [pageData] = await getCollectionType('pages', {
+  const [pageData] = await fetchCollectionType('pages', {
     filters: {
       slug: {
         $eq: params.slug,

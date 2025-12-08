@@ -6,7 +6,7 @@ import { AmbientColor } from '@/components/decorations/ambient-color';
 import DynamicZoneManager from '@/components/dynamic-zone/manager';
 import { SingleProduct } from '@/components/products/single-product';
 import { generateMetadataObject } from '@/lib/shared/metadata';
-import { getCollectionType } from '@/lib/strapi';
+import { fetchCollectionType } from '@/lib/strapi';
 import type { Product } from '@/types/types';
 
 export async function generateMetadata(props: {
@@ -14,7 +14,7 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const params = await props.params;
 
-  const [pageData] = await getCollectionType<Product[]>('products', {
+  const [pageData] = await fetchCollectionType<Product[]>('products', {
     filters: { slug: { $eq: params.slug } },
   });
 
@@ -28,7 +28,7 @@ export default async function SingleProductPage(props: {
 }) {
   const params = await props.params;
 
-  const [pageData] = await getCollectionType<Product[]>('products', {
+  const [pageData] = await fetchCollectionType<Product[]>('products', {
     filters: { slug: { $eq: params.slug } },
   });
 

@@ -10,7 +10,7 @@ import { Navbar } from '@/components/navbar';
 import { AIToast } from '@/components/toast';
 import { CartProvider } from '@/context/cart-context';
 import { generateMetadataObject } from '@/lib/shared/metadata';
-import { getSingleType } from '@/lib/strapi';
+import { fetchSingleType } from '@/lib/strapi';
 import { cn } from '@/lib/utils';
 
 const inter = Inter({
@@ -25,7 +25,7 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const params = await props.params;
 
-  const pageData = await getSingleType('global', { locale: params.locale });
+  const pageData = await fetchSingleType('global', { locale: params.locale });
 
   const seo = pageData.seo;
   const metadata = generateMetadataObject(seo);
@@ -44,7 +44,7 @@ export default async function LocaleLayout(props: {
 
   const { isEnabled: isDraftMode } = await draftMode();
 
-  const pageData = await getSingleType('global', { locale: params.locale });
+  const pageData = await fetchSingleType('global', { locale: params.locale });
 
   return (
     <ViewTransitions>
