@@ -23,6 +23,20 @@ const componentMapping: { [key: string]: any } = {
   'sections.section-service': dynamic(() =>
     import('./services').then((mod) => mod.Services)
   ),
+  'sections.service-card': dynamic(() =>
+    import('./service-card').then((mod) => mod.ServiceCard)
+  ),
+  'sections.client-satified': dynamic(() =>
+    import('./client-satified-section').then(
+      (mod) => mod.ClientSatisfiedSection
+    )
+  ),
+  'sections.trusted-client': dynamic(() =>
+    import('./trused-client').then((mod) => mod.TrusedClient)
+  ),
+  'sections.booste-activity': dynamic(() =>
+    import('./expertise-section').then((mod) => mod.ExpertiseSection)
+  ),
   'dynamic-zone.testimonials': dynamic(() =>
     import('./testimonials').then((mod) => mod.Testimonials)
   ),
@@ -53,7 +67,7 @@ const componentMapping: { [key: string]: any } = {
 
 const DynamicZoneManager: React.FC<Props> = ({ dynamicZone, locale }) => {
   return (
-    <div>    
+    <div>
       {dynamicZone.map((componentData, index) => {
         const Component = componentMapping[componentData.__component];
         if (!Component) {

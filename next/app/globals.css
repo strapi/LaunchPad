@@ -376,3 +376,7 @@
     display: none;
   }
 }
+
+#expertise-items:last-child {
+  border: none;
+}
