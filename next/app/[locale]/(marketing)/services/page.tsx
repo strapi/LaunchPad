@@ -1,60 +1,60 @@
+import { Metadata } from 'next';
+import React from 'react';
+
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import fetchContentType from '@/lib/strapi/fetchContentType';
-import { Metadata } from 'next';
-import React from 'react'
+import ClientSlugHandler from '../ClientSlugHandler';
+import PageContent from '@/lib/shared/PageContent';
 
 export async function generateMetadata(props: {
-    params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-    const params = await props.params;
+  const params = await props.params;
 
-    const pageData = await fetchContentType(
-        'product-page',
-        {
-            filters: {
-                locale: params.locale,
-            },
-        },
-        true
-    );
+  const pageData = await fetchContentType(
+    'pages',
+    {
+      filters: { slug: 'services' },
+      populate: 'seo.metaImage',
+    },
+    true
+  );
 
-    const seo = pageData?.seo;
-    const metadata = generateMetadataObject(seo);
-    return metadata;
+  const seo = pageData?.seo;
+  return generateMetadataObject(seo);
 }
 
 export default async function Services(props: {
-    params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>;
 }) {
-    const params = await props.params;
+  const params = await props.params;
 
-    // Fetch les donnees et recuperer les data de services
-    const productPage = await fetchContentType(
-        'services',
-        {
-            filters: {
-                locale: params.locale,
-            },
-        },
-        true
-    );
-    const services = await fetchContentType('services');
+  // Fetch les donnees et recuperer les data de services
+  const servicePage = await fetchContentType(
+    'pages',
+    {
+      filters: {
+        slug: 'services',
+        locale: params.locale,
+      },
+    },
+    true
+  );
 
-    const localizedSlugs = productPage?.localizations?.reduce(
-        (acc: Record<string, string>, localization: any) => {
-            acc[localization.locale] = 'services';
-            return acc;
-        },
-        { [params.locale]: 'services' }
-    );
-    const featured = services?.data.filter(
-        (product: { featured: boolean }) => product.featured
-    );
+  const localizedSlugs = servicePage?.localizations?.reduce(
+    (acc: Record<string, string>, localization: any) => {
+      acc[localization.locale] = localization.slug;
+      return acc;
+    },
+    { [params.locale]: 'services' }
+  );
 
-    console.log("Donnees venant du Backend : ", productPage, services);
+  console.log('Donnees venant du Backend : ', servicePage);
 
-    return (
-        <div >
-        </div>
-    );
+  return (
+    <>
+          <ClientSlugHandler localizedSlugs={localizedSlugs} />
+          <PageContent pageData={servicePage} />
+        </>
+  )
 }

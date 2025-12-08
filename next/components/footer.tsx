@@ -20,7 +20,6 @@ export const Footer = async ({
 }: {
   data: any;
   locale: string;
-  background: Image;
 }) => {
   
 
@@ -28,8 +27,6 @@ export const Footer = async ({
 
    const bg_image = data.background?.url?strapiImage(data.background.url):null;
   
-
-  console.log("img",bg_image);
   return (
     <div
       className="relative bg-cover bg-center"
