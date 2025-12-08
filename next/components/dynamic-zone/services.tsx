@@ -1,12 +1,8 @@
 import { ArrowUpRight } from 'lucide-react';
 import React from 'react';
-
 import { Button } from '../ui/button';
-import { Typography } from '../ui/typography';
-import { strapiImage } from '@/lib/strapi/strapiImage';
 import { cn } from '@/lib/utils';
 import { Image } from '@/types/types';
-import { ArrowUpRight } from 'lucide-react';
 import { Typography } from '../ui/typography';
 
 type ServiceProps = {

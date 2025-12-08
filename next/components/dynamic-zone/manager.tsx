@@ -27,7 +27,7 @@ const componentMapping: { [key: string]: any } = {
     import('./section-projet-home').then((mod) => mod.SectionProjetHome)
   ),
   'sections.notre-equipe-home': dynamic(() =>
-    import('./notre-equipe-home').then((mod) => mod.NotreEquipeHome)
+    import('./notre-equipe-home').then((mod) => mod.NotreEquipeHome)),
   'sections.service-card': dynamic(() =>
     import('./service-card').then((mod) => mod.ServiceCard)
   ),

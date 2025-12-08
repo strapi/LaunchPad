@@ -4,4 +4,4 @@
 
 import { factories } from '@strapi/strapi';
 
-export default factories.createCoreService('api::offre.offre');
+export default factories.createCoreService('api::offre.offre' as const);

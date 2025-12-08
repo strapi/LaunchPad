@@ -22,6 +22,10 @@ const populate = {
       'sections.section-projet-home': {
         populate: {
           projets: {
+            populate: '*'
+          }
+        },
+      },
       'sections.service-card': {
         populate: {
           offres: {
@@ -38,6 +42,7 @@ const populate = {
             }
           }
         },
+      },
       'sections.client-satified': {
         populate: {
           client_satisfied_detaileds: {
