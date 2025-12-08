@@ -1,10 +1,11 @@
 import './globals.css';
-import type { Viewport } from 'next';
 
-import { Locale, i18n } from '@/i18n.config';
-import { ThemeProvider } from "next-themes"
+import type { Viewport } from 'next';
+import { ThemeProvider } from 'next-themes';
+
 import { SlugProvider } from './context/SlugContext';
 import { Preview } from '@/components/preview';
+import { Locale, i18n } from '@/i18n.config';
 import { cn } from '@/lib/utils';
 
 export const viewport: Viewport = {
@@ -25,10 +26,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={cn(
-        "min-h-screen bg-background font-sans antialiased",
-      )} >
-        <ThemeProvider attribute="class" defaultTheme='light'>
+      <body
+        className={cn(
+          'min-h-screen bg-background text-foreground font-sans antialiased'
+        )}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          // forcedTheme="light"
+        >
           <Preview />
           <SlugProvider>{children}</SlugProvider>
         </ThemeProvider>

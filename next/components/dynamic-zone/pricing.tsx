@@ -116,7 +116,7 @@ const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
           )}
         </div>
         <Button
-          variant="outline"
+          variant="outline-solid"
           className={cn(
             'w-full mt-10 mb-4',
             plan.featured &&

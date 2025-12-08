@@ -22,6 +22,9 @@ const populate = {
       'sections.section-projet-home': {
         populate: {
           projets: {
+      'sections.service-card': {
+        populate: {
+          offres: {
             populate: '*'
           }
         },
@@ -35,6 +38,23 @@ const populate = {
             }
           }
         },
+      'sections.client-satified': {
+        populate: {
+          client_satisfied_detaileds: {
+            populate: '*'
+          },
+          logos: {
+            populate: '*'
+          }
+        }
+      },
+      'sections.booste-activity': {
+        populate: {
+          expertise: {
+            populate: "*"
+          },
+          background: true
+        }
       },
       'dynamic-zone.features': {
         populate: {
@@ -64,15 +84,16 @@ const populate = {
       'dynamic-zone.testimonials': {
         populate: {
           testimonials: {
-            populate: {
-              user: {
-                populate: {
-                  image: true,
-                },
-              },
-            },
+            populate: "*"
           },
         },
+      },
+      'sections.trusted-client': {
+        populate: {
+          logos: {
+            populate: '*'
+          }
+        }
       },
       'dynamic-zone.how-it-works': {
         populate: {
