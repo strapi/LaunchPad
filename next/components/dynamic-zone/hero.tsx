@@ -10,15 +10,15 @@ import StarBackground from '../decorations/star-background';
 import { Button as ElementButton } from '../elements/button';
 import { Heading } from '../elements/heading';
 import { Subheading } from '../elements/subheading';
-import { Image } from '@/types/types';
 import { strapiImage } from '@/lib/strapi/strapiImage';
+import { Image } from '@/types/types';
 
 export const Hero = ({
   heading,
   sub_heading,
   CTAs,
   locale,
-  background
+  background,
 }: {
   heading: string;
   sub_heading: string;
@@ -29,22 +29,28 @@ export const Hero = ({
   return (
     <div
       className="h-dvh min-h-[600px] overflow-hidden relative flex flex-col bg-cover bg-center"
-      style={background ? { backgroundImage: `url('${strapiImage(background?.url)}')` } : undefined}
-    >      <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5, delay: 0.5 }}
+      style={
+        background
+          ? { backgroundImage: `url('${strapiImage(background?.url)}')` }
+          : undefined
+      }
     >
+      {' '}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
         <StarBackground />
         <ShootingStars />
       </motion.div>
-      <div className='relative z-20 flex flex-col items-start justify-center w-full h-full px-6 md:px-12 lg:px-24 pt-20 pb-10'>
+      <div className="relative z-20 flex flex-col items-start justify-center w-full h-full max-w-7xl px-6 md:px-12 lg:px-24 pt-20 pb-10">
         <Heading
           as="h1"
           className="text-3xl md:text-4xl lg:text-6xl font-semibold max-w-7xl text-start mt-6 relative z-10 py-6 text-white"
         >
           {heading.split(' ').slice(0, -2).join(' ')}{' '}
-          <span className='text-secondary'>
+          <span className="text-secondary">
             {heading.split(' ').slice(-2).join(' ')}
           </span>
         </Heading>
