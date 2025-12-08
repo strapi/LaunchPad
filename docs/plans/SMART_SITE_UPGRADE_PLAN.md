@@ -1,9 +1,7 @@
 /# 🏭 SMART SITE UPGRADE PLAN: Dr. Peter Sung (LaunchPad)
 
 **Objective:** Transform the current "LaunchPad" demo into a production-ready, "Smart Site" for Dr. Peter Sung (Psychology/Public Speaker).
-**Design Standard:** 9.5/10, Apple-grade polish, Steve Krug usability, Awwwards aesthetics.
-**Tech Stack:** Next.js 15 (BFF), Strapi v5 (Headless CMS), Postgres (DB), Docker (Deployment).
-
+**Design Standard:** 9.5/10, Apple-grade polish, Steve g
 ---
 
 ## ✅ Phase 0: Immediate Fixes & Setup (The "Finish Today" Foundation)
