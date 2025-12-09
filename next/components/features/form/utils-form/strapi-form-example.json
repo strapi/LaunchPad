@@ -1,0 +1,104 @@
+{
+  "formName": "contact-form",
+  "title": "Contactez-nous",
+  "description": "Remplissez ce formulaire et nous vous répondrons dans les plus brefs délais",
+  "submitButtonText": "Envoyer ma demande",
+  "successMessage": "Merci ! Votre message a été envoyé avec succès. Nous vous contacterons bientôt.",
+  "errorMessage": "Oups ! Une erreur s'est produite. Veuillez réessayer.",
+  "vtigerModuleType": "Leads",
+  "vtigerMapping": {
+    "firstname": "firstname",
+    "lastname": "lastname",
+    "email": "email",
+    "phone": "phone",
+    "company": "company",
+    "website": "website",
+    "leadsource": "leadsource",
+    "message": "description"
+  },
+  "fields": [
+    {
+      "name": "firstname",
+      "type": "text",
+      "label": "Prénom",
+      "placeholder": "Votre prénom",
+      "required": true,
+      "validation": {
+        "minLength": 2,
+        "maxLength": 50
+      }
+    },
+    {
+      "name": "lastname",
+      "type": "text",
+      "label": "Nom",
+      "placeholder": "Votre nom",
+      "required": true,
+      "validation": {
+        "minLength": 2,
+        "maxLength": 50
+      }
+    },
+    {
+      "name": "email",
+      "type": "email",
+      "label": "Email",
+      "placeholder": "votre.email@exemple.com",
+      "required": true,
+      "description": "Nous ne partagerons jamais votre email"
+    },
+    {
+      "name": "phone",
+      "type": "tel",
+      "label": "Téléphone",
+      "placeholder": "+242 XX XXX XX XX",
+      "required": false
+    },
+    {
+      "name": "company",
+      "type": "text",
+      "label": "Entreprise",
+      "placeholder": "Nom de votre entreprise",
+      "required": false
+    },
+    {
+      "name": "website",
+      "type": "url",
+      "label": "Site web",
+      "placeholder": "https://www.exemple.com",
+      "required": false
+    },
+    {
+      "name": "leadsource",
+      "type": "select",
+      "label": "Comment nous avez-vous connu ?",
+      "placeholder": "Sélectionnez une option",
+      "required": false,
+      "options": [
+        { "value": "Website", "label": "Site Web" },
+        { "value": "Phone", "label": "Téléphone" },
+        { "value": "Email", "label": "Email" },
+        { "value": "Referral", "label": "Recommandation" },
+        { "value": "Social Media", "label": "Réseaux sociaux" },
+        { "value": "Other", "label": "Autre" }
+      ]
+    },
+    {
+      "name": "message",
+      "type": "textarea",
+      "label": "Votre message",
+      "placeholder": "Décrivez votre demande en détail...",
+      "required": true,
+      "description": "Minimum 10 caractères",
+      "validation": {
+        "minLength": 10,
+        "maxLength": 1000
+      }
+    }
+  ],
+  "displayConfig": {
+    "layout": "two-columns",
+    "containerClassName": "max-w-4xl mx-auto",
+    "fieldsClassName": "grid grid-cols-1 md:grid-cols-2 gap-4"
+  }
+}

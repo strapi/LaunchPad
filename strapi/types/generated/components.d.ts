@@ -273,6 +273,22 @@ export interface DynamicZoneTestimonials extends Struct.ComponentSchema {
   };
 }
 
+export interface FormContactForm extends Struct.ComponentSchema {
+  collectionName: 'components_form_contact_forms';
+  info: {
+    displayName: 'contact-form';
+  };
+  attributes: {
+    form_config: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::form-config.form-config'
+    >;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    sub_heading: Schema.Attribute.Text;
+  };
+}
+
 export interface GlobalFooter extends Struct.ComponentSchema {
   collectionName: 'components_global_footers';
   info: {
@@ -307,6 +323,24 @@ export interface GlobalNavbar extends Struct.ComponentSchema {
     logo: Schema.Attribute.Relation<'oneToOne', 'api::logo.logo'>;
     right_navbar_items: Schema.Attribute.Component<'shared.link', true>;
     up_navbar_items: Schema.Attribute.Component<'dynamic-zone.header', false>;
+  };
+}
+
+export interface ItemsCasEtudeHeader extends Struct.ComponentSchema {
+  collectionName: 'components_items_cas_etude_headers';
+  info: {
+    displayName: 'cas_etude_header';
+    icon: 'book';
+  };
+  attributes: {
+    button: Schema.Attribute.Component<'shared.button', true>;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    items_cas_utilisation: Schema.Attribute.Component<
+      'items.items-cas-utilisation',
+      true
+    >;
+    sub_heading: Schema.Attribute.Text;
   };
 }
 
@@ -360,6 +394,17 @@ export interface ItemsInput extends Struct.ComponentSchema {
       ]
     > &
       Schema.Attribute.DefaultTo<'text'>;
+  };
+}
+
+export interface ItemsItemsCasUtilisation extends Struct.ComponentSchema {
+  collectionName: 'components_items_items_cas_utilisations';
+  info: {
+    displayName: 'items_cas_utilisation';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -678,6 +723,7 @@ export interface ZonesProblematique extends Struct.ComponentSchema {
     displayName: 'problematique';
   };
   attributes: {
+    background_color: Schema.Attribute.String;
     heading: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     sub_heading: Schema.Attribute.String;
@@ -709,10 +755,13 @@ declare module '@strapi/strapi' {
       'dynamic-zone.related-products': DynamicZoneRelatedProducts;
       'dynamic-zone.see-realization': DynamicZoneSeeRealization;
       'dynamic-zone.testimonials': DynamicZoneTestimonials;
+      'form.contact-form': FormContactForm;
       'global.footer': GlobalFooter;
       'global.navbar': GlobalNavbar;
+      'items.cas-etude-header': ItemsCasEtudeHeader;
       'items.graph-card-top-items': ItemsGraphCardTopItems;
       'items.input': ItemsInput;
+      'items.items-cas-utilisation': ItemsItemsCasUtilisation;
       'items.left-navbar-items': ItemsLeftNavbarItems;
       'items.ray-items': ItemsRayItems;
       'items.title-description': ItemsTitleDescription;

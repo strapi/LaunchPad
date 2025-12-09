@@ -964,6 +964,8 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.trusted-client',
         'dynamic-zone.see-realization',
         'sections.cas-etude',
+        'items.cas-etude-header',
+        'form.contact-form',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
