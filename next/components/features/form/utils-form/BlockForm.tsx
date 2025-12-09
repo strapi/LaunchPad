@@ -50,7 +50,7 @@ export function BlockForm<T extends FieldValues = FieldValues>({
 
   // FIX: Cast explicite du resolver pour résoudre le problème de typage
   const form = useForm<T>({
-    resolver: zodResolver(config.schema) as any,
+    resolver: zodResolver(config.schema as z.ZodType<T, any, any>),
     defaultValues,
   });
 
