@@ -61,6 +61,12 @@ const populate = {
           background: true
         }
       },
+      'items.cas-etude-header': {
+        populate: {
+          items_cas_utilisation: true,
+          button: true
+        }
+      },
       'dynamic-zone.features': {
         populate: {
           globe_card: true,

@@ -62,7 +62,8 @@
         "sections.client-satified",
         "sections.trusted-client",
         "dynamic-zone.see-realization",
-        "sections.cas-etude"
+        "sections.cas-etude",
+        "items.cas-etude-header"
       ]
     }
   }

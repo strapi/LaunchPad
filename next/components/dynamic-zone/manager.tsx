@@ -43,6 +43,9 @@ const componentMapping: { [key: string]: any } = {
   'sections.cas-etude': dynamic(() =>
     import('./cas-etude').then((mod) => mod.CasEtude)
   ),
+  'items.cas-etude-header': dynamic(() =>
+    import('./cas-etude-header').then((mod) => mod.CasUtudeHeader)
+  ),
   'dynamic-zone.see-realization': dynamic(() =>
     import('./see-realization').then((mod) => mod.SeeRealization)
   ),
