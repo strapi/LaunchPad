@@ -27,7 +27,8 @@ const componentMapping: { [key: string]: any } = {
     import('./section-projet-home').then((mod) => mod.SectionProjetHome)
   ),
   'sections.notre-equipe-home': dynamic(() =>
-    import('./notre-equipe-home').then((mod) => mod.NotreEquipeHome)),
+    import('./notre-equipe-home').then((mod) => mod.NotreEquipeHome)
+  ),
   'sections.service-card': dynamic(() =>
     import('./service-card').then((mod) => mod.ServiceCard)
   ),
@@ -38,6 +39,9 @@ const componentMapping: { [key: string]: any } = {
   ),
   'sections.trusted-client': dynamic(() =>
     import('./trused-client').then((mod) => mod.TrusedClient)
+  ),
+  'sections.cas-etude': dynamic(() =>
+    import('./cas-etude').then((mod) => mod.CasEtude)
   ),
   'dynamic-zone.see-realization': dynamic(() =>
     import('./see-realization').then((mod) => mod.SeeRealization)

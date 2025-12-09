@@ -25,6 +25,9 @@
       "type": "component",
       "component": "items.title-description",
       "repeatable": true
+    },
+    "background_color": {
+      "type": "string"
     }
   },
   "config": {}
