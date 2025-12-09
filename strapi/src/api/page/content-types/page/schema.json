@@ -60,7 +60,8 @@
         "sections.service-card",
         "sections.booste-activity",
         "sections.client-satified",
-        "sections.trusted-client"
+        "sections.trusted-client",
+        "sections.technologies-home"
       ]
     }
   }

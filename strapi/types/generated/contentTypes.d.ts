@@ -879,6 +879,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.booste-activity',
         'sections.client-satified',
         'sections.trusted-client',
+        'sections.technologies-home',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1205,6 +1206,35 @@ export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
     poste: Schema.Attribute.Relation<'manyToOne', 'api::poste.poste'>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'first_name'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTechnologieTechnologie extends Struct.CollectionTypeSchema {
+  collectionName: 'technologies';
+  info: {
+    displayName: 'Technologie';
+    pluralName: 'technologies';
+    singularName: 'technologie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::technologie.technologie'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1806,6 +1836,7 @@ declare module '@strapi/strapi' {
       'api::redirection.redirection': ApiRedirectionRedirection;
       'api::service.service': ApiServiceService;
       'api::team-member.team-member': ApiTeamMemberTeamMember;
+      'api::technologie.technologie': ApiTechnologieTechnologie;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

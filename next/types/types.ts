@@ -51,3 +51,10 @@ export interface TeamMember  {
   image?: Image;
   slug: string;
 };
+
+
+export interface Technologie {
+  name: string ;
+  description: string ;
+  documentId: string;
+}

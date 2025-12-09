@@ -1,5 +1,20 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CardsCardTechnologie extends Struct.ComponentSchema {
+  collectionName: 'components_cards_card_technologies';
+  info: {
+    displayName: 'card_technologie';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    technologies: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::technologie.technologie'
+    >;
+  };
+}
+
 export interface CardsGlobeCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_globe_cards';
   info: {
@@ -461,6 +476,18 @@ export interface SectionsServiceCard extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsTechnologiesHome extends Struct.ComponentSchema {
+  collectionName: 'components_sections_technologies_homes';
+  info: {
+    displayName: 'technologies_home';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'cards.card-technologie', true>;
+    heading: Schema.Attribute.String;
+    sub_heading: Schema.Attribute.Text;
+  };
+}
+
 export interface SectionsTrustedClient extends Struct.ComponentSchema {
   collectionName: 'components_sections_trusted_clients';
   info: {
@@ -634,6 +661,7 @@ export interface SharedUser extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'cards.card-technologie': CardsCardTechnologie;
       'cards.globe-card': CardsGlobeCard;
       'cards.graph-card': CardsGraphCard;
       'cards.ray-card': CardsRayCard;
@@ -663,6 +691,7 @@ declare module '@strapi/strapi' {
       'sections.section-projet-home': SectionsSectionProjetHome;
       'sections.section-service': SectionsSectionService;
       'sections.service-card': SectionsServiceCard;
+      'sections.technologies-home': SectionsTechnologiesHome;
       'sections.trusted-client': SectionsTrustedClient;
       'shared.button': SharedButton;
       'shared.form': SharedForm;
