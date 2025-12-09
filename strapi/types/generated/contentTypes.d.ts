@@ -786,6 +786,8 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'dynamic-zone.form-next-to-section',
         'dynamic-zone.faq',
         'sections.section-service',
+        'sections.section-projet-home',
+        'sections.notre-equipe-home',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -843,6 +845,36 @@ export interface ApiPlanPlan extends Struct.CollectionTypeSchema {
     product: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     sub_text: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPostePoste extends Struct.CollectionTypeSchema {
+  collectionName: 'postes';
+  info: {
+    displayName: 'poste';
+    pluralName: 'postes';
+    singularName: 'poste';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::poste.poste'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sub_heading: Schema.Attribute.Text;
+    team_members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -962,6 +994,38 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiProjetsProjets extends Struct.CollectionTypeSchema {
+  collectionName: 'projet';
+  info: {
+    displayName: 'projets';
+    pluralName: 'projet';
+    singularName: 'projets';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Blocks;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::projets.projets'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'heading'>;
+    sub_heading: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRedirectionRedirection extends Struct.CollectionTypeSchema {
   collectionName: 'redirections';
   info: {
@@ -1018,6 +1082,38 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTeamMemberTeamMember extends Struct.CollectionTypeSchema {
+  collectionName: 'team_members';
+  info: {
+    displayName: 'team_members';
+    pluralName: 'team-members';
+    singularName: 'team-member';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    first_name: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    last_name: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    > &
+      Schema.Attribute.Private;
+    poste: Schema.Attribute.Relation<'manyToOne', 'api::poste.poste'>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'first_name'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1587,10 +1683,13 @@ declare module '@strapi/strapi' {
       'api::logo.logo': ApiLogoLogo;
       'api::page.page': ApiPagePage;
       'api::plan.plan': ApiPlanPlan;
+      'api::poste.poste': ApiPostePoste;
       'api::product-page.product-page': ApiProductPageProductPage;
       'api::product.product': ApiProductProduct;
+      'api::projets.projets': ApiProjetsProjets;
       'api::redirection.redirection': ApiRedirectionRedirection;
       'api::service.service': ApiServiceService;
+      'api::team-member.team-member': ApiTeamMemberTeamMember;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

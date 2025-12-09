@@ -19,10 +19,27 @@ const populate = {
           }
         },
       },
+      'sections.section-projet-home': {
+        populate: {
+          projets: {
+            populate: '*'
+          }
+        },
+      },
       'sections.service-card': {
         populate: {
           offres: {
             populate: '*'
+          }
+        },
+      },
+      'sections.notre-equipe-home': {
+        populate: {
+          team_members: {
+            populate: {
+              image: true,
+              poste: true,
+            }
           }
         },
       },

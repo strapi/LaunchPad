@@ -4,4 +4,4 @@
 
 import { factories } from '@strapi/strapi'
 
-export default factories.createCoreController('api::client-satisfied-detailed.client-satisfied-detailed');
+export default factories.createCoreController('api::client-satisfied-detailed.client-satisfied-detailed' as const);

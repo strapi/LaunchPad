@@ -375,6 +375,33 @@ export interface ItemsRayItems extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsNotreEquipeHome extends Struct.ComponentSchema {
+  collectionName: 'components_sections_notre_equipe_homes';
+  info: {
+    displayName: 'notre_equipe_home';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    sub_heading: Schema.Attribute.Text;
+    team_members: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-member.team-member'
+    >;
+  };
+}
+
+export interface SectionsSectionProjetHome extends Struct.ComponentSchema {
+  collectionName: 'components_sections_section_projet_homes';
+  info: {
+    displayName: 'section_projet_home';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    projets: Schema.Attribute.Relation<'oneToMany', 'api::projets.projets'>;
+    sub_heading: Schema.Attribute.Blocks;
+  };
+}
+
 export interface SectionsSectionService extends Struct.ComponentSchema {
   collectionName: 'components_sections_section_services';
   info: {
@@ -567,6 +594,8 @@ declare module '@strapi/strapi' {
       'items.input': ItemsInput;
       'items.left-navbar-items': ItemsLeftNavbarItems;
       'items.ray-items': ItemsRayItems;
+      'sections.notre-equipe-home': SectionsNotreEquipeHome;
+      'sections.section-projet-home': SectionsSectionProjetHome;
       'sections.section-service': SectionsSectionService;
       'shared.button': SharedButton;
       'shared.form': SharedForm;
