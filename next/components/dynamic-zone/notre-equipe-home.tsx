@@ -1,12 +1,17 @@
+'use client';
+
+import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import React from 'react';
+import Image from 'next/image';
+import React, { useState } from 'react';
 
 import { BlurImage } from '../blur-image';
+import HoverImage from '../features/HoverImage';
 import { Button } from '../ui/button';
 import { Typography } from '../ui/typography';
 import { strapiImage } from '@/lib/strapi/strapiImage';
 import { cn } from '@/lib/utils';
-import { Image, TeamMember } from '@/types/types';
+import { TeamMember } from '@/types/types';
 
 type NotreEquipeHomeProps = {
   heading: string;
@@ -40,10 +45,12 @@ export function NotreEquipeHome({
 
       <div className="flex gap-2 justify-center w-full max-w-6xl ">
         {team_members.map((teammember, index) => (
-          <CardComponent
-            key={teammember.documentId}
-            item={teammember}
-            locale={locale}
+          <HoverImage
+            initialSize={200}
+            hoverSize={350}
+            key={index}
+            imageUrl={teammember.image?.url || ''}
+            alt={teammember.image?.alternativeText || ''}
           />
         ))}
       </div>
@@ -56,46 +63,39 @@ function CardComponent({ item, locale }: { item: TeamMember; locale: string }) {
     window.location.href = item.slug;
   }
 
+  const [width, setWidth] = useState('200px'); // taille au repos
+
+  function handleEnter() {
+    setWidth('680px'); // taille au hover
+  }
+
+  function handleLeave() {
+    setWidth('200px'); // revenir à l'état initial
+  }
+
   return (
-    <div
-      className={cn(
-        ' h-[380px] sm:h-[400px] md:h-[420px] w-full relative flex  gap-10 overflow-hidden'
-      )}
-    >
-      {/* image */}
-      
+    <div className="h-[380px] sm:h-[400px] md:h-[420px] w-full relative flex gap-10 overflow-hidden">
+      <div
+        className="relative h-full w-full overflow-hidden flex items-center justify-center"
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+      >
         {item?.image?.url && (
-          <BlurImage
+          <Image
             src={strapiImage(item.image?.url)}
             alt={item.image?.alternativeText || ''}
-            fill
-            className="object-cover"
+            style={{
+              width: width,
+              filter: width === '200px' ? 'grayscale(100%)' : 'grayscale(0%)',
+              transition: 'all 0.35s ease-out',
+            }}
+            className="object-cover h-full block"
+            loading="lazy"
+            width={200}
+            height={500}
           />
         )}
-    
-      {/* <div className="h-[80%] w-[40%] flex flex-col gap-6  ">
-        {' '}
-        <Typography
-          variant="h3"
-          className={cn(' text-primary text-lg md:text-2xl font-bold')}
-        >
-          {item.heading}
-        </Typography>
-        <Typography
-          variant="p"
-          className={cn(' text-black md:text-sm mb-8')}
-        >
-          {item.sub_heading}
-        </Typography>
-        <a href={`/${locale}${item.slug}`}>
-          <Button
-            onClick={OnNavigatePage}
-            className="bg-primary text-white font-semibold  w-fit px-6 py-2 hover:bg-primary"
-          >
-            Parler à un expert
-          </Button>
-        </a>
-      </div> */}
+      </div>
     </div>
   );
 }
