@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_items_items_cas_utilisations",
+  "info": {
+    "displayName": "items_cas_utilisation"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

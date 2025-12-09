@@ -1,7 +1,8 @@
 {
-  "collectionName": "components_zones_problematiques",
+  "collectionName": "components_items_cas_etude_headers",
   "info": {
-    "displayName": "problematique"
+    "displayName": "cas_etude_header",
+    "icon": "book"
   },
   "options": {},
   "attributes": {
@@ -9,7 +10,12 @@
       "type": "string"
     },
     "sub_heading": {
-      "type": "string"
+      "type": "text"
+    },
+    "items_cas_utilisation": {
+      "type": "component",
+      "component": "items.items-cas-utilisation",
+      "repeatable": true
     },
     "image": {
       "type": "media",
@@ -21,13 +27,10 @@
         "audios"
       ]
     },
-    "title_description_items": {
+    "button": {
       "type": "component",
-      "component": "items.title-description",
+      "component": "shared.button",
       "repeatable": true
-    },
-    "background_color": {
-      "type": "string"
     }
   },
   "config": {}
