@@ -10,22 +10,16 @@ import { Subheading } from '@/components/elements/subheading';
 import { Featured } from '@/components/products/featured';
 import { ProductItems } from '@/components/products/product-items';
 import { generateMetadataObject } from '@/lib/shared/metadata';
-import fetchContentType from '@/lib/strapi/fetchContentType';
+import { fetchCollectionType, fetchSingleType } from '@/lib/strapi';
+import { Product } from '@/types/types';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-
-  const pageData = await fetchContentType(
-    'product-page',
-    {
-      filters: {
-        locale: params.locale,
-      },
-    },
-    true
-  );
+  const pageData = await fetchSingleType('product-page', {
+    locale: params.locale,
+  });
 
   const seo = pageData?.seo;
   const metadata = generateMetadataObject(seo);
@@ -38,26 +32,20 @@ export default async function Products(props: {
   const params = await props.params;
 
   // Fetch the product-page and products data
-  const productPage = await fetchContentType(
-    'product-page',
-    {
-      filters: {
-        locale: params.locale,
-      },
-    },
-    true
-  );
-  const products = await fetchContentType('products');
+  const pageData = await fetchSingleType('product-page', {
+    locale: params.locale,
+  });
+  const products = await fetchCollectionType<Product[]>('products');
 
-  const localizedSlugs = productPage.localizations?.reduce(
+  const localizedSlugs = pageData.localizations?.reduce(
     (acc: Record<string, string>, localization: any) => {
       acc[localization.locale] = 'products';
       return acc;
     },
     { [params.locale]: 'products' }
   );
-  const featured = products?.data.filter(
-    (product: { featured: boolean }) => product.featured
+  const featured = products.filter(
+    (product: { featured?: boolean }) => product.featured
   );
 
   return (
@@ -69,13 +57,13 @@ export default async function Products(props: {
           <IconShoppingCartUp className="h-6 w-6 text-white" />
         </FeatureIconContainer>
         <Heading as="h1" className="pt-4">
-          {productPage.heading}
+          {pageData.heading}
         </Heading>
         <Subheading className="max-w-3xl mx-auto">
-          {productPage.sub_heading}
+          {pageData.sub_heading}
         </Subheading>
         <Featured products={featured} locale={params.locale} />
-        <ProductItems products={products?.data} locale={params.locale} />
+        <ProductItems products={products} locale={params.locale} />
       </Container>
     </div>
   );
