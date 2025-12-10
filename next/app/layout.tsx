@@ -6,6 +6,7 @@ import './globals.css';
 
 import { SlugProvider } from './context/SlugContext';
 import { Preview } from '@/components/preview';
+import { fetchApi } from '@/lib/strapi/client';
 
 export const viewport: Viewport = {
   themeColor: [
@@ -18,11 +19,12 @@ export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const locales = await fetchApi('/i18n/locales');
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
