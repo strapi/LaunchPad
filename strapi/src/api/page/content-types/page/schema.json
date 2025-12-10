@@ -64,7 +64,8 @@
         "dynamic-zone.see-realization",
         "sections.cas-etude",
         "items.cas-etude-header",
-        "form.contact-form"
+        "form.contact-form",
+        "items.images-grid"
       ]
     }
   }
