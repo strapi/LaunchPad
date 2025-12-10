@@ -141,3 +141,19 @@ export async function fetchApi<T = any>(
   const data = res.json();
   return data;
 }
+
+/**
+ * Generic Strapi client fetch.
+ * Use only in Global Scope. draftMode() cannot be used outside a request scope.
+ *
+ * @throws {StrapiError} When the fetch fails
+ */
+export async function fetchApiWithoutDraft<T = any>(
+  url: string,
+  params: Record<string, any> = {}
+): Promise<T> {
+  const res = await createClient().fetch(`${url}?${qs.stringify(params)}`);
+
+  const data = res.json();
+  return data;
+}
