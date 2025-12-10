@@ -64,7 +64,8 @@ const populate = {
       'items.cas-etude-header': {
         populate: {
           items_cas_utilisation: true,
-          button: true
+          button: true,
+          image: true
         }
       },
       'dynamic-zone.features': {

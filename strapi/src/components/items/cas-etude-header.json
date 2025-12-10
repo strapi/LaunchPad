@@ -12,6 +12,9 @@
     "sub_heading": {
       "type": "text"
     },
+    "title_items_cas": {
+      "type": "string"
+    },
     "items_cas_utilisation": {
       "type": "component",
       "component": "items.items-cas-utilisation",
