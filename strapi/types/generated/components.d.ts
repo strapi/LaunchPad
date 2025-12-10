@@ -242,6 +242,20 @@ export interface DynamicZoneRelatedProducts extends Struct.ComponentSchema {
   };
 }
 
+export interface DynamicZoneSeeRealization extends Struct.ComponentSchema {
+  collectionName: 'components_dynamic_zone_see_realizations';
+  info: {
+    displayName: 'see-realization';
+    icon: 'briefcase';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    header: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    sub_header: Schema.Attribute.String;
+  };
+}
+
 export interface DynamicZoneTestimonials extends Struct.ComponentSchema {
   collectionName: 'components_dynamic_zone_testimonials';
   info: {
@@ -256,6 +270,22 @@ export interface DynamicZoneTestimonials extends Struct.ComponentSchema {
       'oneToMany',
       'api::testimonial.testimonial'
     >;
+  };
+}
+
+export interface FormContactForm extends Struct.ComponentSchema {
+  collectionName: 'components_form_contact_forms';
+  info: {
+    displayName: 'contact-form';
+  };
+  attributes: {
+    form_config: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::form-config.form-config'
+    >;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    sub_heading: Schema.Attribute.Text;
   };
 }
 
@@ -293,6 +323,24 @@ export interface GlobalNavbar extends Struct.ComponentSchema {
     logo: Schema.Attribute.Relation<'oneToOne', 'api::logo.logo'>;
     right_navbar_items: Schema.Attribute.Component<'shared.link', true>;
     up_navbar_items: Schema.Attribute.Component<'dynamic-zone.header', false>;
+  };
+}
+
+export interface ItemsCasEtudeHeader extends Struct.ComponentSchema {
+  collectionName: 'components_items_cas_etude_headers';
+  info: {
+    displayName: 'cas_etude_header';
+    icon: 'book';
+  };
+  attributes: {
+    button: Schema.Attribute.Component<'shared.button', true>;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    items_cas_utilisation: Schema.Attribute.Component<
+      'items.items-cas-utilisation',
+      true
+    >;
+    sub_heading: Schema.Attribute.Text;
   };
 }
 
@@ -349,6 +397,17 @@ export interface ItemsInput extends Struct.ComponentSchema {
   };
 }
 
+export interface ItemsItemsCasUtilisation extends Struct.ComponentSchema {
+  collectionName: 'components_items_items_cas_utilisations';
+  info: {
+    displayName: 'items_cas_utilisation';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface ItemsLeftNavbarItems extends Struct.ComponentSchema {
   collectionName: 'components_items_left_navbar_items';
   info: {
@@ -372,6 +431,68 @@ export interface ItemsRayItems extends Struct.ComponentSchema {
     item_1: Schema.Attribute.String;
     item_2: Schema.Attribute.String;
     item_3: Schema.Attribute.String;
+  };
+}
+
+export interface ItemsTitleDescription extends Struct.ComponentSchema {
+  collectionName: 'components_items_title_descriptions';
+  info: {
+    displayName: 'title_description';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    sub_heading: Schema.Attribute.Text;
+  };
+}
+
+export interface SectionsBoosteActivity extends Struct.ComponentSchema {
+  collectionName: 'components_sections_booste_activities';
+  info: {
+    displayName: 'booste_activity';
+  };
+  attributes: {
+    background: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    description: Schema.Attribute.Text;
+    expertise: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::expertise.expertise'
+    >;
+    heading: Schema.Attribute.String;
+    sub_heading: Schema.Attribute.Text;
+  };
+}
+
+export interface SectionsCasEtude extends Struct.ComponentSchema {
+  collectionName: 'components_sections_cas_etudes';
+  info: {
+    displayName: 'cas_etude';
+    icon: 'eye';
+  };
+  attributes: {
+    challenge: Schema.Attribute.Component<'zones.problematique', false>;
+    heading: Schema.Attribute.String;
+    problematique: Schema.Attribute.Component<'zones.problematique', false>;
+    solution: Schema.Attribute.Component<'zones.problematique', false>;
+    sub_heading: Schema.Attribute.Text;
+  };
+}
+
+export interface SectionsClientSatified extends Struct.ComponentSchema {
+  collectionName: 'components_sections_client_satifieds';
+  info: {
+    displayName: 'client-satified';
+  };
+  attributes: {
+    client_satisfied_detaileds: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::client-satisfied-detailed.client-satisfied-detailed'
+    >;
+    heading: Schema.Attribute.String;
+    logos: Schema.Attribute.Relation<'oneToMany', 'api::logo.logo'>;
+    sub_heading: Schema.Attribute.Text;
   };
 }
 
@@ -411,6 +532,31 @@ export interface SectionsSectionService extends Struct.ComponentSchema {
     heading: Schema.Attribute.String;
     service: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
     sub_heading: Schema.Attribute.Text;
+  };
+}
+
+export interface SectionsServiceCard extends Struct.ComponentSchema {
+  collectionName: 'components_sections_service_cards';
+  info: {
+    displayName: 'service_card';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    offres: Schema.Attribute.Relation<'oneToMany', 'api::offre.offre'>;
+    sub_heading: Schema.Attribute.Text;
+  };
+}
+
+export interface SectionsTrustedClient extends Struct.ComponentSchema {
+  collectionName: 'components_sections_trusted_clients';
+  info: {
+    displayName: 'trusted_client';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    heading: Schema.Attribute.String;
+    logos: Schema.Attribute.Relation<'oneToMany', 'api::logo.logo'>;
+    sub_heading: Schema.Attribute.String;
   };
 }
 
@@ -561,10 +707,30 @@ export interface SharedUser extends Struct.ComponentSchema {
     icon: 'user';
   };
   attributes: {
+    background: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     firstname: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'>;
     job: Schema.Attribute.String;
     lastname: Schema.Attribute.String;
+  };
+}
+
+export interface ZonesProblematique extends Struct.ComponentSchema {
+  collectionName: 'components_zones_problematiques';
+  info: {
+    displayName: 'problematique';
+  };
+  attributes: {
+    background_color: Schema.Attribute.String;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    sub_heading: Schema.Attribute.String;
+    title_description_items: Schema.Attribute.Component<
+      'items.title-description',
+      true
+    >;
   };
 }
 
@@ -587,16 +753,26 @@ declare module '@strapi/strapi' {
       'dynamic-zone.pricing': DynamicZonePricing;
       'dynamic-zone.related-articles': DynamicZoneRelatedArticles;
       'dynamic-zone.related-products': DynamicZoneRelatedProducts;
+      'dynamic-zone.see-realization': DynamicZoneSeeRealization;
       'dynamic-zone.testimonials': DynamicZoneTestimonials;
+      'form.contact-form': FormContactForm;
       'global.footer': GlobalFooter;
       'global.navbar': GlobalNavbar;
+      'items.cas-etude-header': ItemsCasEtudeHeader;
       'items.graph-card-top-items': ItemsGraphCardTopItems;
       'items.input': ItemsInput;
+      'items.items-cas-utilisation': ItemsItemsCasUtilisation;
       'items.left-navbar-items': ItemsLeftNavbarItems;
       'items.ray-items': ItemsRayItems;
+      'items.title-description': ItemsTitleDescription;
+      'sections.booste-activity': SectionsBoosteActivity;
+      'sections.cas-etude': SectionsCasEtude;
+      'sections.client-satified': SectionsClientSatified;
       'sections.notre-equipe-home': SectionsNotreEquipeHome;
       'sections.section-projet-home': SectionsSectionProjetHome;
       'sections.section-service': SectionsSectionService;
+      'sections.service-card': SectionsServiceCard;
+      'sections.trusted-client': SectionsTrustedClient;
       'shared.button': SharedButton;
       'shared.form': SharedForm;
       'shared.launches': SharedLaunches;
@@ -607,6 +783,7 @@ declare module '@strapi/strapi' {
       'shared.social-media-icon-links': SharedSocialMediaIconLinks;
       'shared.steps': SharedSteps;
       'shared.user': SharedUser;
+      'zones.problematique': ZonesProblematique;
     }
   }
 }

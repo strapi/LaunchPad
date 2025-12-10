@@ -1,0 +1,95 @@
+{
+  "kind": "collectionType",
+  "collectionName": "form_configs",
+  "info": {
+    "singularName": "form-config",
+    "pluralName": "form-configs",
+    "displayName": "form-config",
+    "description": "Configuration des formulaires dynamiques avec intégration Vtiger ou autre"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "formName": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "maxLength": 100,
+      "required": true,
+      "unique": true
+    },
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "submitButtonText": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": "Envoyer"
+    },
+    "successMessage": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": "Formulaire envoyé avec succès !"
+    },
+    "errorMessage": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": "Erreur lors de l'envoi du formulaire"
+    },
+    "vtigerEndpoint": {
+      "type": "string",
+      "required": false
+    },
+    "vtigerModuleType": {
+      "type": "enumeration",
+      "enum": ["Leads", "Contacts"],
+      "default": "Leads"
+    },
+    "vtigerMapping": {
+      "type": "json",
+      "required": true
+    },
+    "fields": {
+      "type": "json",
+      "required": true
+    },
+    "displayConfig": {
+      "type": "json"
+    }
+  }
+}

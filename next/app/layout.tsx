@@ -7,6 +7,8 @@ import { SlugProvider } from './context/SlugContext';
 import { Preview } from '@/components/preview';
 import { Locale, i18n } from '@/i18n.config';
 import { cn } from '@/lib/utils';
+import { Providers } from './Providers';
+import { TailwindIndicator } from '@/lib/utils/TailwindIndicator';
 
 export const viewport: Viewport = {
   themeColor: [
@@ -31,14 +33,11 @@ export default function RootLayout({
           'min-h-screen bg-background text-foreground font-sans antialiased'
         )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          // forcedTheme="light"
-        >
+        <Providers>
           <Preview />
           <SlugProvider>{children}</SlugProvider>
-        </ThemeProvider>
+          <TailwindIndicator />
+        </Providers>
       </body>
     </html>
   );

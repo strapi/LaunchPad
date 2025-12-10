@@ -28,6 +28,7 @@
     "@strapi/blocks-react-renderer": "^1.0.1",
     "@tabler/icons-react": "^3.11.0",
     "@tailwindcss/typography": "^0.5.13",
+    "@tanstack/react-query": "^5.90.12",
     "@tsparticles/engine": "^3.5.0",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.5.0",
