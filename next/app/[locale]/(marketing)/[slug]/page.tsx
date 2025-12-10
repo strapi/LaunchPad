@@ -4,17 +4,18 @@ import ClientSlugHandler from '../ClientSlugHandler';
 import PageContent from '@/lib/shared/PageContent';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import { fetchCollectionType } from '@/lib/strapi';
+import type { LocaleSlugParamsProps } from '@/types/types';
 
-export async function generateMetadata(props: {
-  params: Promise<{ locale: string; slug: string }>;
-}): Promise<Metadata> {
-  const params = await props.params;
+export async function generateMetadata({
+  params,
+}: LocaleSlugParamsProps): Promise<Metadata> {
+  const { slug, locale } = await params;
   const [pageData] = await fetchCollectionType('pages', {
     filters: {
       slug: {
-        $eq: params.slug,
+        $eq: slug,
       },
-      locale: params.locale,
+      locale: locale,
     },
   });
 
@@ -23,16 +24,14 @@ export async function generateMetadata(props: {
   return metadata;
 }
 
-export default async function Page(props: {
-  params: Promise<{ locale: string; slug: string }>;
-}) {
-  const params = await props.params;
+export default async function Page({ params }: LocaleSlugParamsProps) {
+  const { slug, locale } = await params;
   const [pageData] = await fetchCollectionType('pages', {
     filters: {
       slug: {
-        $eq: params.slug,
+        $eq: slug,
       },
-      locale: params.locale,
+      locale: locale,
     },
   });
 
@@ -41,7 +40,7 @@ export default async function Page(props: {
       acc[localization.locale] = localization.slug;
       return acc;
     },
-    { [params.locale]: params.slug }
+    { [locale]: slug }
   );
 
   return (

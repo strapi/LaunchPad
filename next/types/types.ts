@@ -1,3 +1,7 @@
+import type { BlocksContent } from '@strapi/blocks-react-renderer';
+
+import type { StrapiLocaleObject } from '@/types/strapi';
+
 export interface Category {
   name: string;
 }
@@ -10,8 +14,9 @@ export interface Image {
 export interface Article {
   title: string;
   description: string;
+  localizations: StrapiLocaleObject[];
   slug: string;
-  content: string;
+  content: BlocksContent;
   dynamic_zone: any[];
   createdAt: string;
   updatedAt: string;
@@ -34,3 +39,16 @@ export interface Product {
   images: any[];
   categories?: any[];
 }
+
+export type LocaleParamsProps = {
+  params: Promise<{
+    locale: string;
+  }>;
+};
+
+export type LocaleSlugParamsProps = {
+  params: Promise<{
+    slug: string;
+    locale: string;
+  }>;
+};

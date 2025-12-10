@@ -1,6 +1,6 @@
 import type { Viewport } from 'next';
 
-import { Locale, i18n } from '@/i18n.config';
+import { i18n } from '@/i18n.config';
 
 import './globals.css';
 

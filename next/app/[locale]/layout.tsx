@@ -13,11 +13,7 @@ import { CartProvider } from '@/context/cart-context';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import { fetchSingleType } from '@/lib/strapi';
 import { cn } from '@/lib/utils';
-
-type LocaleParams = {
-  params: Promise<{ locale: string }>;
-};
-type LocaleLayoutProps = PropsWithChildren<LocaleParams>;
+import type { LocaleParamsProps } from '@/types/types';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -28,7 +24,7 @@ const inter = Inter({
 // Default Global SEO for pages without them
 export async function generateMetadata({
   params,
-}: LocaleParams): Promise<Metadata> {
+}: PropsWithChildren<LocaleParamsProps>): Promise<Metadata> {
   const { locale } = await params;
   const pageData = await fetchSingleType('global', { locale });
 
@@ -40,7 +36,7 @@ export async function generateMetadata({
 export default async function LocaleLayout({
   children,
   params,
-}: LocaleLayoutProps) {
+}: PropsWithChildren<LocaleParamsProps>) {
   const { isEnabled: isDraftMode } = await draftMode();
   const { locale } = await params;
   const pageData = await fetchSingleType('global', { locale });

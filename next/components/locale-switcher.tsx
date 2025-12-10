@@ -37,7 +37,6 @@ export function LocaleSwitcher({ currentLocale }: { currentLocale: string }) {
 
   return (
     <div className="flex gap-2 p-1 rounded-md">
-      {JSON.stringify(Object.keys(localizedSlugs))}
       {!pathname.includes('/products/') &&
         Object.keys(localizedSlugs).map((locale) => (
           <Link key={locale} href={generateLocalizedPath(locale)}>

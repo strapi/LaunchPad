@@ -7,15 +7,15 @@ import DynamicZoneManager from '@/components/dynamic-zone/manager';
 import { SingleProduct } from '@/components/products/single-product';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import { fetchCollectionType } from '@/lib/strapi';
-import type { Product } from '@/types/types';
+import type { LocaleSlugParamsProps, Product } from '@/types/types';
 
-export async function generateMetadata(props: {
-  params: Promise<{ locale: string; slug: string }>;
-}): Promise<Metadata> {
-  const params = await props.params;
+export async function generateMetadata({
+  params,
+}: LocaleSlugParamsProps): Promise<Metadata> {
+  const { slug } = await params;
 
   const [pageData] = await fetchCollectionType<Product[]>('products', {
-    filters: { slug: { $eq: params.slug } },
+    filters: { slug: { $eq: slug } },
   });
 
   const seo = pageData;
@@ -23,13 +23,13 @@ export async function generateMetadata(props: {
   return metadata;
 }
 
-export default async function SingleProductPage(props: {
-  params: Promise<{ slug: string; locale: string }>;
-}) {
-  const params = await props.params;
+export default async function SingleProductPage({
+  params,
+}: LocaleSlugParamsProps) {
+  const { slug, locale } = await params;
 
   const [pageData] = await fetchCollectionType<Product[]>('products', {
-    filters: { slug: { $eq: params.slug } },
+    filters: { slug: { $eq: slug } },
   });
 
   if (!pageData) {
@@ -44,7 +44,7 @@ export default async function SingleProductPage(props: {
         {pageData?.dynamic_zone && (
           <DynamicZoneManager
             dynamicZone={pageData?.dynamic_zone}
-            locale={params.locale}
+            locale={locale}
           />
         )}
       </Container>
