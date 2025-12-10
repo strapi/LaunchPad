@@ -34,6 +34,13 @@ const componentMapping: { [key: string]: any } = {
   'sections.technologies-home': dynamic(() =>
     import('./sections/technologies-home').then((mod) => mod.TechnologiesHome)
   ),
+  'sections.section-title-content-image': dynamic(() =>
+    import('./sections/section-title-content-image').then((mod) => mod.SectionTitleContentImage)
+  ),
+  'sections.section-image': dynamic(() =>
+    import('./sections/section-image').then((mod) => mod.SectionImage)
+  ),
+
   'sections.client-satified': dynamic(() =>
     import('./client-satified-section').then(
       (mod) => mod.ClientSatisfiedSection

@@ -58,3 +58,15 @@ export interface Technologie {
   description: string ;
   documentId: string;
 }
+
+
+export interface SectionTitleContentImage {
+ heading: string;
+ sub_heading:string;
+ content: any;
+ image?: Image;
+}
+
+export interface SectionImage {
+  image?: Image;
+}

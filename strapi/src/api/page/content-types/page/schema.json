@@ -61,7 +61,9 @@
         "sections.booste-activity",
         "sections.client-satified",
         "sections.trusted-client",
-        "sections.technologies-home"
+        "sections.technologies-home",
+        "sections.section-title-content-image",
+        "sections.section-image"
       ]
     }
   }

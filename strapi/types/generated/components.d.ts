@@ -440,6 +440,19 @@ export interface SectionsNotreEquipeHome extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsSectionImage extends Struct.ComponentSchema {
+  collectionName: 'components_sections_section_images';
+  info: {
+    displayName: 'section_image';
+  };
+  attributes: {
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+  };
+}
+
 export interface SectionsSectionProjetHome extends Struct.ComponentSchema {
   collectionName: 'components_sections_section_projet_homes';
   info: {
@@ -460,6 +473,20 @@ export interface SectionsSectionService extends Struct.ComponentSchema {
   attributes: {
     heading: Schema.Attribute.String;
     service: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+    sub_heading: Schema.Attribute.Text;
+  };
+}
+
+export interface SectionsSectionTitleContentImage
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_section_title_content_images';
+  info: {
+    displayName: 'section_title_content_image';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     sub_heading: Schema.Attribute.Text;
   };
 }
@@ -688,8 +715,10 @@ declare module '@strapi/strapi' {
       'sections.booste-activity': SectionsBoosteActivity;
       'sections.client-satified': SectionsClientSatified;
       'sections.notre-equipe-home': SectionsNotreEquipeHome;
+      'sections.section-image': SectionsSectionImage;
       'sections.section-projet-home': SectionsSectionProjetHome;
       'sections.section-service': SectionsSectionService;
+      'sections.section-title-content-image': SectionsSectionTitleContentImage;
       'sections.service-card': SectionsServiceCard;
       'sections.technologies-home': SectionsTechnologiesHome;
       'sections.trusted-client': SectionsTrustedClient;

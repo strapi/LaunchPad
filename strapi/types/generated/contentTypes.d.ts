@@ -880,6 +880,8 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.client-satified',
         'sections.trusted-client',
         'sections.technologies-home',
+        'sections.section-title-content-image',
+        'sections.section-image',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
