@@ -27,26 +27,26 @@ export interface VtigerMapping {
 
 export interface StrapiFormConfig {
   id: number;
-  attributes: {
-    formName: string;
-    title: string;
-    description?: string;
-    submitButtonText: string;
-    successMessage: string;
-    errorMessage: string;
-    vtigerEndpoint: string;
-    vtigerModuleType: 'Leads' | 'Contacts';
-    vtigerMapping: VtigerMapping;
-    fields: StrapiFormField[];
-    displayConfig?: {
-      layout: 'single' | 'two-columns';
-      containerClassName?: string;
-      fieldsClassName?: string;
-    };
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
+  documentId: string;
+  formName: string;
+  title: string;
+  description?: string;
+  submitButtonText: string;
+  successMessage: string;
+  errorMessage: string;
+  vtigerEndpoint: string;
+  vtigerModuleType: 'Leads' | 'Contacts';
+  vtigerMapping: VtigerMapping;
+  fields: StrapiFormField[];
+  displayConfig?: {
+    layout: 'single' | 'two-columns';
+    containerClassName?: string;
+    fieldsClassName?: string;
   };
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+
 }
 
 export interface StrapiApiResponse<T> {

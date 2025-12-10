@@ -194,6 +194,7 @@ export function VtigerBlockForm({
           <div className="flex items-center gap-4 pt-6 border-t">
             <Button
               type="submit"
+              variant='outline'
               disabled={isLoading || isSubmitting}
               className="min-w-[120px]"
               onClick={(e) => {

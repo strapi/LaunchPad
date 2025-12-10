@@ -163,6 +163,12 @@ const populate = {
           faqs: true,
         },
       },
+      'form.contact-form': {
+        populate: {
+          image: true,
+          form_config : true
+        },
+      },
       'dynamic-zone.form-next-to-section': {
         populate: {
           form: {

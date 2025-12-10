@@ -78,7 +78,7 @@ const componentMapping: { [key: string]: any } = {
   'dynamic-zone.related-articles': dynamic(() =>
     import('./related-articles').then((mod) => mod.RelatedArticles)
   ),
-  'sections.contact-form': dynamic(() =>
+  'form.contact-form': dynamic(() =>
     import('./form/contact-form').then((mod) => mod.ContactForm)
   ),
 };

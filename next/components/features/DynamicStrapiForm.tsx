@@ -12,7 +12,7 @@ interface DynamicStrapiFormProps {
 }
 
 export function DynamicStrapiForm({ formConfig, className }: DynamicStrapiFormProps) {
-  const config = formConfig.attributes;
+  const config = formConfig;
 
   // Déterminer la classe de grille selon la configuration
   const getFieldsClassName = () => {
