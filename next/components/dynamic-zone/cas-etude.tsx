@@ -41,7 +41,7 @@ export function CasEtude({
   solution,
 }: CasEtudeProps) {
   return (
-    <div className="flex flex-col gap-10 text-foreground px-10 md:px-24 py-24 relative">
+    <div className="flex flex-col gap-10 text-foreground px-10 md:px-24 py-24 relative overflow-clip">
       <div className="absolute w-1 h-full bg-primary left-4 md:left-18" />
       <div className="absolute w-6 h-6 bg-primary left-2 md:left-15.5 rounded-full" />
 
@@ -59,7 +59,7 @@ export function CasEtude({
             backgroundColor: problematique.background_color ?? undefined,
           }}
         >
-          <div className="absolute w-6 h-6 bg-primary -left-8.5 top-8 rounded-full" />
+          <div className="absolute w-6 h-6 bg-primary -left-8.5 top-8 xl:-top-6 rounded-full" />
 
           <Typography as="h2" className="text-4xl text-primary">
             {problematique.heading}
