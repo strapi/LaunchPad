@@ -20,6 +20,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::logo.logo"
+    },
+    "background_color": {
+      "type": "string"
+    },
+    "center": {
+      "type": "boolean"
     }
   },
   "config": {}
