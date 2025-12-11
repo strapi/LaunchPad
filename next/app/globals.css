@@ -141,7 +141,7 @@
 
 :root {
   /* Backgrounds - Tons clairs et neutres */
-  --background: oklch(0.99 0.002 264); /* Blanc cassé très léger */
+  --background: oklch(0.99 0.002 0); /* Blanc cassé très léger */
   --foreground: oklch(0.25 0.01 264); /* #1B1B1B approximatif en OKLCH */
   
   /* Cards - Blanc pur avec bon contraste */
@@ -153,7 +153,7 @@
   --popover-foreground: oklch(0.25 0.01 264);
   
   /* Primary - Bleu violet (inchangé) */
-  --primary: oklch(0.39 0.21 214);
+  --primary: oklch(0.3886 0.1774 261.82);
   --primary-foreground: oklch(0.99 0 0); /* Blanc pour contraste */
   
   /* Secondary - Orange/Corail (inchangé) */
@@ -341,7 +341,7 @@
 
   /* text de base de l'application  */
   .font-size-base {
-    @apply font-light leading-[100%] tracking-[0%] text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px];
+    @apply font-extralight leading-[100%] tracking-[0%] text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px];
   }
 
   /* Theme-aware scrollbar styles améliorés */
@@ -516,9 +516,14 @@
   background-color: var(--muted);
 }
 
-/* END layer */
+h3 {
+  @apply scroll-m-20 font-semibold tracking-[0%] text-[24px] leading-[24px] sm:text-[28px] sm:leading-[28px] md:text-[32px] md:leading-[32px] lg:text-[36px] lg:leading-[36px] xl:text-[40px] xl:leading-[40px];
 }
 
 #expertise-items:last-child {
   border: none;
 }
+
+/* END layer */
+}
+
