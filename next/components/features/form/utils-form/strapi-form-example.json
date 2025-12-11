@@ -122,10 +122,3 @@
   "fieldsClassName": "grid grid-cols-1 md:grid-cols-2 gap-4"
 }
 }
-
-
-// {
-//   "layout": "two-columns",
-//   "containerClassName": "max-w-4xl mx-auto",
-//   "fieldsClassName": "grid grid-cols-1 md:grid-cols-2 gap-4"
-// }
