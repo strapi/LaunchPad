@@ -1,7 +1,6 @@
 import { strapi } from '@strapi/client';
 import type { API, Config } from '@strapi/client';
 import { draftMode } from 'next/headers';
-import qs from 'qs';
 
 export class StrapiError extends Error {
   constructor(
@@ -109,51 +108,4 @@ export async function fetchDocument<T = API.Document>(
       error
     );
   }
-}
-
-/**
- * Generic Strapi client fetch.
- *
- * @throws {StrapiError} When the fetch fails
- */
-export async function fetchApi<T = any>(
-  url: string,
-  params: Record<string, any> = {}
-): Promise<T> {
-  const { isEnabled: isDraftMode } = await draftMode();
-
-  const queryParams = { ...params };
-  if (isDraftMode) {
-    // Add status=draft parameter when draft mode is enabled
-    queryParams.status = 'draft';
-  }
-
-  const res = await createClient().fetch(
-    `${url}?${qs.stringify(queryParams)}`,
-    {
-      headers: {
-        // Enable content source maps in preview mode
-        'strapi-encode-source-maps': isDraftMode ? 'true' : 'false',
-      },
-    }
-  );
-
-  const data = res.json();
-  return data;
-}
-
-/**
- * Generic Strapi client fetch.
- * Use only in Global Scope. draftMode() cannot be used outside a request scope.
- *
- * @throws {StrapiError} When the fetch fails
- */
-export async function fetchApiWithoutDraft<T = any>(
-  url: string,
-  params: Record<string, any> = {}
-): Promise<T> {
-  const res = await createClient().fetch(`${url}?${qs.stringify(params)}`);
-
-  const data = res.json();
-  return data;
 }

@@ -4,9 +4,8 @@ import { i18n } from '@/i18n.config';
 
 import './globals.css';
 
-import { SlugProvider } from './context/SlugContext';
+import { SlugProvider } from '@/app/context/SlugContext';
 import { Preview } from '@/components/preview';
-import { fetchApi } from '@/lib/strapi/client';
 
 export const viewport: Viewport = {
   themeColor: [
@@ -24,7 +23,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const locales = await fetchApi('/i18n/locales');
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
