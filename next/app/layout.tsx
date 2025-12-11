@@ -37,7 +37,7 @@ export default function RootLayout({
     <html lang="fr" suppressHydrationWarning className={outfit.variable}>
       <body
         className={cn(
-          'min-h-screen bg-background text-foreground font-sans antialiased',
+          'min-h-screen bg-background text-foreground font-size-base font-sans antialiased scrollbar-responsive',
           outfit.className
         )}
       >
