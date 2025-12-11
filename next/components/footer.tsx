@@ -70,7 +70,7 @@ export const Footer = async ({
           <div className=''>
             <Typography variant="h3">Contact</Typography>
             <LinkSection links={data?.policy_links} locale={locale} />
-            <div className="flex flex-col gap-4 mt-4"><BlocksRenderer content={data.contact} /></div>
+            {/* <div className="flex flex-col gap-4 mt-4"><BlocksRenderer content={data.contact} /></div> */}
           </div>
         </div>
         <div className="flex flex-col">

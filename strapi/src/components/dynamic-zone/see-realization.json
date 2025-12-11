@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_dynamic_zone_see_realizations",
+  "info": {
+    "displayName": "see-realization",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "header": {
+      "type": "string"
+    },
+    "sub_header": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -63,7 +63,12 @@
         "sections.trusted-client",
         "sections.technologies-home",
         "sections.section-title-content-image",
-        "sections.section-image"
+        "sections.section-image",
+        "dynamic-zone.see-realization",
+        "sections.cas-etude",
+        "items.cas-etude-header",
+        "form.contact-form",
+        "items.images-grid"
       ]
     }
   }

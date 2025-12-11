@@ -15,22 +15,25 @@ const populate = {
       'sections.section-service': {
         populate: {
           service: {
-            populate: '*'
-          }
+            populate: '*',
+          },
         },
       },
       'sections.section-projet-home': {
         populate: {
           projets: {
-            populate: '*'
-          }
+            populate: '*',
+          },
         },
+      },
+      'items.images-grid': {
+        populate: '*',
       },
       'sections.service-card': {
         populate: {
           offres: {
-            populate: '*'
-          }
+            populate: '*',
+          },
         },
       },
       'sections.notre-equipe-home': {
@@ -39,8 +42,8 @@ const populate = {
             populate: {
               image: true,
               poste: true,
-            }
-          }
+            },
+          },
         },
       },
       'sections.technologies-home': {
@@ -66,20 +69,27 @@ const populate = {
       'sections.client-satified': {
         populate: {
           client_satisfied_detaileds: {
-            populate: '*'
+            populate: '*',
           },
           logos: {
-            populate: '*'
-          }
-        }
+            populate: '*',
+          },
+        },
       },
       'sections.booste-activity': {
         populate: {
           expertise: {
-            populate: "*"
+            populate: '*',
           },
-          background: true
-        }
+          background: true,
+        },
+      },
+      'items.cas-etude-header': {
+        populate: {
+          items_cas_utilisation: true,
+          button: true,
+          image: true,
+        },
       },
       'dynamic-zone.features': {
         populate: {
@@ -109,16 +119,46 @@ const populate = {
       'dynamic-zone.testimonials': {
         populate: {
           testimonials: {
-            populate: "*"
+            populate: '*',
           },
         },
+      },
+      'dynamic-zone.see-realization': {
+        populate: '*',
       },
       'sections.trusted-client': {
         populate: {
           logos: {
-            populate: '*'
-          }
-        }
+            populate: '*',
+          },
+        },
+      },
+      'sections.cas-etude': {
+        populate: {
+          problematique: {
+            populate: {
+              image: true,
+              title_description_items: true,
+            },
+          },
+          challenge: {
+            populate: {
+              image: true,
+              title_description_items: true,
+            },
+          },
+          solution: {
+            populate: {
+              image: true,
+              title_description_items: {
+                populate: {
+                  image: true,
+                }
+              },
+            },
+
+          },
+        },
       },
       'dynamic-zone.how-it-works': {
         populate: {
@@ -159,6 +199,12 @@ const populate = {
       'dynamic-zone.faq': {
         populate: {
           faqs: true,
+        },
+      },
+      'form.contact-form': {
+        populate: {
+          image: true,
+          form_config : true
         },
       },
       'dynamic-zone.form-next-to-section': {

@@ -27,7 +27,8 @@ const componentMapping: { [key: string]: any } = {
     import('./section-projet-home').then((mod) => mod.SectionProjetHome)
   ),
   'sections.notre-equipe-home': dynamic(() =>
-    import('./notre-equipe-home').then((mod) => mod.NotreEquipeHome)),
+    import('./notre-equipe-home').then((mod) => mod.NotreEquipeHome)
+  ),
   'sections.service-card': dynamic(() =>
     import('./service-card').then((mod) => mod.ServiceCard)
   ),
@@ -48,6 +49,18 @@ const componentMapping: { [key: string]: any } = {
   ),
   'sections.trusted-client': dynamic(() =>
     import('./trused-client').then((mod) => mod.TrusedClient)
+  ),
+  'sections.cas-etude': dynamic(() =>
+    import('./cas-etude').then((mod) => mod.CasEtude)
+  ),
+  'items.images-grid': dynamic(() =>
+    import('./images-grid').then((mod) => mod.ImagesGrid)
+  ),
+  'items.cas-etude-header': dynamic(() =>
+    import('./cas-etude-header').then((mod) => mod.CasUtudeHeader)
+  ),
+  'dynamic-zone.see-realization': dynamic(() =>
+    import('./see-realization').then((mod) => mod.SeeRealization)
   ),
   'sections.booste-activity': dynamic(() =>
     import('./expertise-section').then((mod) => mod.ExpertiseSection)
@@ -77,6 +90,9 @@ const componentMapping: { [key: string]: any } = {
   ),
   'dynamic-zone.related-articles': dynamic(() =>
     import('./related-articles').then((mod) => mod.RelatedArticles)
+  ),
+  'form.contact-form': dynamic(() =>
+    import('./form/contact-form').then((mod) => mod.ContactForm)
   ),
 };
 

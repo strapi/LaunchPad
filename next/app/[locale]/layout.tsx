@@ -60,7 +60,7 @@ export default async function LocaleLayout(props: {
       <CartProvider>
         <div
           className={cn(
-            inter.className,
+            // inter.className,
             'antialiased h-full w-full'
           )}
         >

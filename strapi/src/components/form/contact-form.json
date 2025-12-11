@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_form_contact_forms",
+  "info": {
+    "displayName": "contact-form"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "form_config": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::form-config.form-config"
+    }
+  },
+  "config": {}
+}

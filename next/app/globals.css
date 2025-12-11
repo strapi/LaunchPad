@@ -8,7 +8,6 @@
 @theme {
   --color-charcoal: #08090a;
   --color-lightblack: #1c1c1c;
-  /* --color-secondary: #e6e6e6; */
   --color-muted: var(--neutral-200);
 
   --shadow-derek:
@@ -70,7 +69,7 @@
 
 @layer utilities {
   :root {
-    --foreground-rgb: 255, 255, 255;
+    --foreground-rgb: 27, 27, 27;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -137,136 +136,194 @@
   --shadow-2xl: var(--shadow-2xl);
 
   /* custom */
-
   --color-tertiare: var(--tertiare);
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  /* Backgrounds - Tons clairs et neutres */
+  --background: oklch(0.99 0.002 264); /* Blanc cassé très léger */
+  --foreground: oklch(0.25 0.01 264); /* #1B1B1B approximatif en OKLCH */
+  
+  /* Cards - Blanc pur avec bon contraste */
+  --card: oklch(1 0 0); /* Blanc pur */
+  --card-foreground: oklch(0.25 0.01 264); /* Texte sombre */
+  
+  /* Popover */
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.25 0.01 264);
+  
+  /* Primary - Bleu violet (inchangé) */
   --primary: oklch(0.39 0.21 214);
-  --primary-foreground: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.99 0 0); /* Blanc pour contraste */
+  
+  /* Secondary - Orange/Corail (inchangé) */
   --secondary: oklch(0.646 0.222 41.116);
+  --secondary-foreground: oklch(0.99 0 0); /* Blanc pour contraste */
+  
+  /* Tertiaire - Lavande très clair */
   --tertiare: oklch(0.97 0.014 254.6);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --tertiare-foreground: oklch(0.25 0.01 264); /* Texte sombre */
+  
+  /* Muted - Gris clair pour backgrounds secondaires */
+  --muted: oklch(0.96 0.005 264);
+  --muted-foreground: oklch(0.50 0.01 264); /* Gris moyen pour texte */
+  
+  /* Accent - Nuance de primary plus claire */
+  --accent: oklch(0.95 0.02 214);
+  --accent-foreground: oklch(0.25 0.01 264);
+  
+  /* Destructive - Rouge avec bon contraste */
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --destructive-foreground: oklch(0.99 0 0);
+  
+  /* Borders et inputs */
+  --border: oklch(0.90 0.005 264); /* Bordures légères */
+  --input: oklch(0.95 0.005 264);
+  --ring: oklch(0.39 0.21 214); /* Même que primary pour cohérence */
+  
+  /* Charts - Palette harmonisée avec primary */
   --chart-1: oklch(0.81 0.1 252);
   --chart-2: oklch(0.62 0.19 260);
   --chart-3: oklch(0.55 0.22 263);
   --chart-4: oklch(0.49 0.22 264);
   --chart-5: oklch(0.42 0.18 266);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  
+  /* Sidebar */
+  --sidebar: oklch(0.99 0.002 264);
+  --sidebar-foreground: oklch(0.25 0.01 264);
+  --sidebar-primary: oklch(0.39 0.21 214);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.96 0.005 264);
+  --sidebar-accent-foreground: oklch(0.25 0.01 264);
+  --sidebar-border: oklch(0.90 0.005 264);
+  --sidebar-ring: oklch(0.39 0.21 214);
+  
+  /* Fonts - Outfit comme police principale */
   --font-sans:
-    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Outfit', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;
+  
   --radius: 0.625rem;
+  
+  /* Shadows */
   --shadow-x: 0;
   --shadow-y: 1px;
   --shadow-blur: 3px;
   --shadow-spread: 0px;
   --shadow-opacity: 0.1;
-  --shadow-color: oklch(0 0 0);
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-color: oklch(0.25 0.01 264);
+  --shadow-2xs: 0 1px 2px 0px hsl(264 10% 25% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(264 10% 25% / 0.08);
   --shadow-sm:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    0 1px 3px 0px hsl(264 10% 25% / 0.1), 0 1px 2px -1px hsl(264 10% 25% / 0.1);
+  --shadow: 0 1px 3px 0px hsl(264 10% 25% / 0.1), 0 1px 2px -1px hsl(264 10% 25% / 0.1);
   --shadow-md:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    0 2px 4px 0px hsl(264 10% 25% / 0.1), 0 2px 4px -1px hsl(264 10% 25% / 0.1);
   --shadow-lg:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    0 4px 6px 0px hsl(264 10% 25% / 0.1), 0 4px 6px -2px hsl(264 10% 25% / 0.1);
   --shadow-xl:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+    0 8px 10px 0px hsl(264 10% 25% / 0.1), 0 8px 10px -2px hsl(264 10% 25% / 0.1);
+  --shadow-2xl: 0 12px 24px 0px hsl(264 10% 25% / 0.15);
+  
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.269 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.424 0.199 265.638);
-  --primary-foreground: oklch(0.205 0 0);
+  /* Backgrounds - Tons sombres avec légère teinte */
+  --background: oklch(0.145 0.01 264); /* Fond très sombre avec nuance */
+  --foreground: oklch(0.98 0.005 264); /* Blanc cassé pour le texte */
+  
+  /* Cards - Légèrement plus clair que le background */
+  --card: oklch(0.20 0.01 264);
+  --card-foreground: oklch(0.98 0.005 264);
+  
+  /* Popover */
+  --popover: oklch(0.22 0.01 264);
+  --popover-foreground: oklch(0.98 0.005 264);
+  
+  /* Primary - Version plus claire et saturée pour le mode sombre */
+  --primary: oklch(0.50 0.22 265);
+  --primary-foreground: oklch(0.99 0 0);
+  
+  /* Secondary - Garde sa vivacité */
   --secondary: oklch(0.646 0.222 41.116);
-  --secondary-foreground: oklch(0.985 0 0);
-  --tertiare: oklch(0.97 0.014 254.6);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.371 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.275 0 0);
-  --input: oklch(0.325 0 0);
-  --ring: oklch(0.556 0 0);
+  --secondary-foreground: oklch(0.99 0 0);
+  
+  /* Tertiaire */
+  --tertiare: oklch(0.35 0.03 254.6);
+  --tertiare-foreground: oklch(0.98 0.005 264);
+  
+  /* Muted */
+  --muted: oklch(0.25 0.01 264);
+  --muted-foreground: oklch(0.65 0.01 264);
+  
+  /* Accent */
+  --accent: oklch(0.30 0.02 265);
+  --accent-foreground: oklch(0.98 0.005 264);
+  
+  /* Destructive */
+  --destructive: oklch(0.60 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  
+  /* Borders et inputs */
+  --border: oklch(0.28 0.01 264);
+  --input: oklch(0.30 0.01 264);
+  --ring: oklch(0.50 0.22 265);
+  
+  /* Charts */
   --chart-1: oklch(0.81 0.1 252);
   --chart-2: oklch(0.62 0.19 260);
   --chart-3: oklch(0.55 0.22 263);
   --chart-4: oklch(0.49 0.22 264);
   --chart-5: oklch(0.42 0.18 266);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.275 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  
+  /* Sidebar */
+  --sidebar: oklch(0.18 0.01 264);
+  --sidebar-foreground: oklch(0.98 0.005 264);
+  --sidebar-primary: oklch(0.50 0.22 265);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.25 0.01 264);
+  --sidebar-accent-foreground: oklch(0.98 0.005 264);
+  --sidebar-border: oklch(0.28 0.01 264);
+  --sidebar-ring: oklch(0.50 0.22 265);
+  
+  /* Fonts */
   --font-sans:
-    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Outfit', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;
+  
   --radius: 0.625rem;
+  
+  /* Shadows - Plus subtiles en mode sombre */
   --shadow-x: 0;
   --shadow-y: 1px;
   --shadow-blur: 3px;
   --shadow-spread: 0px;
-  --shadow-opacity: 0.1;
+  --shadow-opacity: 0.3;
   --shadow-color: oklch(0 0 0);
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
+  --shadow-2xs: 0 1px 2px 0px hsl(0 0% 0% / 0.3);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.4);
   --shadow-sm:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
+    0 1px 3px 0px hsl(0 0% 0% / 0.4), 0 1px 2px -1px hsl(0 0% 0% / 0.4);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.4), 0 1px 2px -1px hsl(0 0% 0% / 0.4);
   --shadow-md:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    0 2px 4px 0px hsl(0 0% 0% / 0.4), 0 2px 4px -1px hsl(0 0% 0% / 0.4);
   --shadow-lg:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    0 4px 6px 0px hsl(0 0% 0% / 0.5), 0 4px 6px -2px hsl(0 0% 0% / 0.5);
   --shadow-xl:
-    0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+    0 8px 10px 0px hsl(0 0% 0% / 0.5), 0 8px 10px -2px hsl(0 0% 0% / 0.5);
+  --shadow-2xl: 0 12px 24px 0px hsl(0 0% 0% / 0.6);
 }
 
 /*
@@ -279,6 +336,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
   }
 
   /* Theme-aware scrollbar styles améliorés */
@@ -374,18 +432,6 @@
     background-color: var(--primary);
     outline: 2px solid var(--ring);
     outline-offset: 2px;
-  }
-
-  /* Gestion du mode sombre */
-  @media (prefers-color-scheme: dark) {
-    .scrollbar::-webkit-scrollbar-track {
-      background-color: hsl(var(--background));
-    }
-
-    .scrollbar::-webkit-scrollbar-thumb {
-      background-color: hsl(var(--accent));
-      border-color: hsl(var(--border));
-    }
   }
 
   /* Classe utilitaire pour masquer la scrollbar si nécessaire */
