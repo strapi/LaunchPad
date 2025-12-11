@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_cards_card_technologies",
+  "info": {
+    "displayName": "card_technologie"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "technologies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::technologie.technologie"
+    }
+  },
+  "config": {}
+}

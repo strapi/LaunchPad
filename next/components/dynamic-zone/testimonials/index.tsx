@@ -25,15 +25,15 @@ export const Testimonials = ({
   testimonials,
 }: TestimonialProps) => {
   return (
-    <section className="w-full min-h-screen flex flex-col items-center justify-center px-4 py-12 text-foreground">
+    <section className="w-full bg-[#2E5399]  min-h-screen flex flex-col items-center justify-center px-4 py-12 text-foreground">
       <div className="text-center mb-8">
         <Typography
           as="h2"
-          className="text-2xl md:text-3xl font-bold text-primary mb-2"
+          className="text-2xl text-white md:text-3xl font-bold mb-2"
         >
           {heading}
         </Typography>
-        <Typography as="p" className="text-lg md:text-xl">
+        <Typography as="p" className="text-white px-90 text-lg md:text-base">
           {sub_heading}
         </Typography>
       </div>
@@ -43,10 +43,10 @@ export const Testimonials = ({
           {testimonials.map((el, index) => (
             <div
               key={index}
-              className="shadow-md overflow-hidden flex flex-col h-full"
+              className="shadow-md overflow-hidden flex flex-col h-full bg-background"
             >
               <div
-                className="relative h-48 bg-cover bg-center"
+                className="relative h-48 bg-cover bg-center m-3"
                 style={{
                   backgroundImage: `url(${strapiImage(el.background.url)})`,
                 }}
@@ -78,8 +78,8 @@ export const Testimonials = ({
                 </div>
               </div>
 
-              <div className="p-5 flex flex-col flex-grow">
-                <div className="flex items-start gap-3 mb-4">
+              <div className="p-3 flex bg-white flex-col flex-grow gap-2">
+                <div className="flex items-start gap-3">
                   <Image
                     src={strapiImage(el.profile_image.url)}
                     alt={el.client_name}
@@ -104,12 +104,12 @@ export const Testimonials = ({
                 </div>
                 <Typography
                   as="p"
-                  className="not-first:mt-0 text-sm md:text-base leading-relaxed"
+                  className="not-first:mt-0 text-sm md:text-sm leading-relaxed"
                 >
                   {el.description}
                 </Typography>
 
-                <Button className="bg-primary w-37 text-white">
+                <Button className="bg-primary w-37 text-white mt-6 ">
                   Parler à un expert
                 </Button>
               </div>

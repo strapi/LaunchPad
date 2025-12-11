@@ -1,5 +1,20 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CardsCardTechnologie extends Struct.ComponentSchema {
+  collectionName: 'components_cards_card_technologies';
+  info: {
+    displayName: 'card_technologie';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    technologies: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::technologie.technologie'
+    >;
+  };
+}
+
 export interface CardsGlobeCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_globe_cards';
   info: {
@@ -375,6 +390,41 @@ export interface ItemsRayItems extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsBoosteActivity extends Struct.ComponentSchema {
+  collectionName: 'components_sections_booste_activities';
+  info: {
+    displayName: 'booste_activity';
+  };
+  attributes: {
+    background: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    description: Schema.Attribute.Text;
+    expertise: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::expertise.expertise'
+    >;
+    heading: Schema.Attribute.String;
+    sub_heading: Schema.Attribute.Text;
+  };
+}
+
+export interface SectionsClientSatified extends Struct.ComponentSchema {
+  collectionName: 'components_sections_client_satifieds';
+  info: {
+    displayName: 'client-satified';
+  };
+  attributes: {
+    client_satisfied_detaileds: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::client-satisfied-detailed.client-satisfied-detailed'
+    >;
+    heading: Schema.Attribute.String;
+    logos: Schema.Attribute.Relation<'oneToMany', 'api::logo.logo'>;
+    sub_heading: Schema.Attribute.Text;
+  };
+}
+
 export interface SectionsNotreEquipeHome extends Struct.ComponentSchema {
   collectionName: 'components_sections_notre_equipe_homes';
   info: {
@@ -386,6 +436,19 @@ export interface SectionsNotreEquipeHome extends Struct.ComponentSchema {
     team_members: Schema.Attribute.Relation<
       'oneToMany',
       'api::team-member.team-member'
+    >;
+  };
+}
+
+export interface SectionsSectionImage extends Struct.ComponentSchema {
+  collectionName: 'components_sections_section_images';
+  info: {
+    displayName: 'section_image';
+  };
+  attributes: {
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
     >;
   };
 }
@@ -411,6 +474,57 @@ export interface SectionsSectionService extends Struct.ComponentSchema {
     heading: Schema.Attribute.String;
     service: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
     sub_heading: Schema.Attribute.Text;
+  };
+}
+
+export interface SectionsSectionTitleContentImage
+  extends Struct.ComponentSchema {
+  collectionName: 'components_sections_section_title_content_images';
+  info: {
+    displayName: 'section_title_content_image';
+  };
+  attributes: {
+    content: Schema.Attribute.Blocks;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    sub_heading: Schema.Attribute.Text;
+  };
+}
+
+export interface SectionsServiceCard extends Struct.ComponentSchema {
+  collectionName: 'components_sections_service_cards';
+  info: {
+    displayName: 'service_card';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    offres: Schema.Attribute.Relation<'oneToMany', 'api::offre.offre'>;
+    sub_heading: Schema.Attribute.Text;
+  };
+}
+
+export interface SectionsTechnologiesHome extends Struct.ComponentSchema {
+  collectionName: 'components_sections_technologies_homes';
+  info: {
+    displayName: 'technologies_home';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'cards.card-technologie', true>;
+    heading: Schema.Attribute.String;
+    sub_heading: Schema.Attribute.Text;
+  };
+}
+
+export interface SectionsTrustedClient extends Struct.ComponentSchema {
+  collectionName: 'components_sections_trusted_clients';
+  info: {
+    displayName: 'trusted_client';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    heading: Schema.Attribute.String;
+    logos: Schema.Attribute.Relation<'oneToMany', 'api::logo.logo'>;
+    sub_heading: Schema.Attribute.String;
   };
 }
 
@@ -561,6 +675,9 @@ export interface SharedUser extends Struct.ComponentSchema {
     icon: 'user';
   };
   attributes: {
+    background: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     firstname: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'>;
     job: Schema.Attribute.String;
@@ -571,6 +688,7 @@ export interface SharedUser extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'cards.card-technologie': CardsCardTechnologie;
       'cards.globe-card': CardsGlobeCard;
       'cards.graph-card': CardsGraphCard;
       'cards.ray-card': CardsRayCard;
@@ -594,9 +712,16 @@ declare module '@strapi/strapi' {
       'items.input': ItemsInput;
       'items.left-navbar-items': ItemsLeftNavbarItems;
       'items.ray-items': ItemsRayItems;
+      'sections.booste-activity': SectionsBoosteActivity;
+      'sections.client-satified': SectionsClientSatified;
       'sections.notre-equipe-home': SectionsNotreEquipeHome;
+      'sections.section-image': SectionsSectionImage;
       'sections.section-projet-home': SectionsSectionProjetHome;
       'sections.section-service': SectionsSectionService;
+      'sections.section-title-content-image': SectionsSectionTitleContentImage;
+      'sections.service-card': SectionsServiceCard;
+      'sections.technologies-home': SectionsTechnologiesHome;
+      'sections.trusted-client': SectionsTrustedClient;
       'shared.button': SharedButton;
       'shared.form': SharedForm;
       'shared.launches': SharedLaunches;

@@ -43,6 +43,26 @@ const populate = {
           }
         },
       },
+      'sections.technologies-home': {
+        populate: {
+          cards: {
+            populate: {
+              image: true,
+              technologies: true,
+            }
+          }
+        },
+      },
+      'sections.section-title-content-image': {
+        populate: {
+              image: true, 
+        }
+      },
+      'sections.section-image': {
+        populate: {
+              images: true, 
+        }
+      },
       'sections.client-satified': {
         populate: {
           client_satisfied_detaileds: {
