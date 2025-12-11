@@ -48,7 +48,7 @@ export function Services({
         {sub_heading}
       </Typography>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
+      <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
         {service.map((el, index) => {
           const style = cardStyles[index % cardStyles.length];
 
@@ -59,8 +59,8 @@ export function Services({
               sub_heading={el.description}
               slug={el.slug}
               locale={locale}
-              bgColor={style.bg} // ✔ string
-              textColor={style.text} // ✔ string
+              bgColor={style.bg}
+              textColor={style.text}
             />
           );
         })}
@@ -99,7 +99,7 @@ function CardComponent({
 
       <Typography
         variant="h3"
-        className={cn('text-lg md:text-xl font-bold text-center', textColor)}
+        className={cn('text-lg md:text-3xl font-bold text-center mb-6', textColor)}
       >
         {heading}
       </Typography>
