@@ -339,6 +339,11 @@
     font-family: var(--font-sans);
   }
 
+  /* text de base de l'application  */
+  .font-size-base {
+    @apply font-light leading-[100%] tracking-[0%] text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px];
+  }
+
   /* Theme-aware scrollbar styles améliorés */
   .scrollbar {
     /* Support moderne pour tous les navigateurs */
@@ -347,7 +352,7 @@
 
     /* Améliore le comportement de scroll */
     scroll-behavior: smooth;
-    overscroll-behavior: contain;
+    
   }
 
   .scrollbar::-webkit-scrollbar {
@@ -443,6 +448,75 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  /* responsive scrollbar */
+
+/* Variante adaptative - S'adapte automatiquement selon la taille d'écran */
+.scrollbar-responsive {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ring) var(--muted);
+  scroll-behavior: smooth;
+  
+}
+
+.scrollbar-responsive::-webkit-scrollbar {
+  width: 0.375rem;
+  height: 0.375rem;
+}
+
+@media (min-width: 768px) {
+  .scrollbar-responsive::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .scrollbar-responsive::-webkit-scrollbar {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+}
+
+.scrollbar-responsive::-webkit-scrollbar-track {
+  background-color: var(--muted);
+  border-radius: 9999px;
+  margin: 0.25rem 0;
+}
+
+.scrollbar-responsive::-webkit-scrollbar-thumb {
+  background-color: var(--ring);
+  border-radius: 9999px;
+  border: 1px solid var(--muted);
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .scrollbar-responsive::-webkit-scrollbar-thumb {
+    border-width: 1.5px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .scrollbar-responsive::-webkit-scrollbar-thumb {
+    border-width: 2px;
+  }
+}
+
+.scrollbar-responsive::-webkit-scrollbar-thumb:hover {
+  background-color: var(--muted-foreground);
+  transform: scale(1.05);
+}
+
+.scrollbar-responsive::-webkit-scrollbar-thumb:active {
+  background-color: var(--muted-foreground);
+}
+
+.scrollbar-responsive::-webkit-scrollbar-corner {
+  background-color: var(--muted);
+}
+
+/* END layer */
 }
 
 #expertise-items:last-child {

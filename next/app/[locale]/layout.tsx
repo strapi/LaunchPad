@@ -60,13 +60,30 @@ export default async function LocaleLayout(props: {
       <CartProvider>
         <div
           className={cn(
-            inter.className,
+            // inter.className,
             'antialiased h-full w-full'
           )}
         >
+          {/* Navbar full width */}
           <Navbar data={pageData?.navbar} locale={locale} />
-          {children}
+
+          {/*
+                Main content with max-width constraint 
+                max-w-6xl → 1152px (recommandé pour sites compacts)
+                max-w-7xl → 1280px (standard, équilibré) ✅
+                max-w-[1440px] → 1440px (pour sites larges)
+                max-w-[1600px] → 1600px (très large)
+           */}
+          <main className="w-full min-h-full">
+            {/* <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"> */}
+            <div className="mx-auto max-w-[1600px]">
+              {children}
+            </div>
+          </main>
+
+          {/* Footer full width */}
           <Footer data={pageData.footer} locale={locale} />
+
           <AIToast />
           {isDraftMode && <DraftModeBanner />}
         </div>

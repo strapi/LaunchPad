@@ -47,11 +47,12 @@ export const Hero = ({
       <div className="relative z-20 flex flex-col items-start justify-center w-full h-full max-w-7xl px-6 md:px-12 lg:px-24 pt-20 pb-10">
         <Heading
           as="h1"
-          className="text-3xl md:text-4xl lg:text-6xl font-semibold max-w-7xl text-start mt-6 relative z-10 py-6 text-white"
+          size="h1"
+          className="max-w-7xl text-start mt-6 relative z-10 py-6 text-white"
         >
-          {heading.split(' ').slice(0, -2).join(' ')}{' '}
+          {heading?.split(' ')?.slice(0, -2)?.join(' ')}{' '}
           <span className="text-secondary">
-            {heading.split(' ').slice(-2).join(' ')}
+            {heading?.split(' ')?.slice(-2)?.join(' ')}
           </span>
         </Heading>
         <Subheading className="text-start mt-2 md:mt-6 text-base md:text-xl text-white  max-w-3xl relative z-10">
@@ -59,7 +60,7 @@ export const Hero = ({
         </Subheading>
         <div className="flex flex-wrap gap-4 items-center mt-8 w-full">
           {CTAs &&
-            CTAs.map((cta) => (
+            CTAs?.map((cta) => (
               <ElementButton
                 key={cta?.id}
                 as={Link}
