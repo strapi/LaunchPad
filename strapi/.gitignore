@@ -130,3 +130,4 @@ build
 .strapi-cloud.json
 .seed-completed
 yarn.lock
+types/generated/
