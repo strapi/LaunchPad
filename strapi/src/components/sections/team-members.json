@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sections_team_members",
+  "info": {
+    "displayName": "team-members",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "membre": {
+      "type": "component",
+      "component": "items.member",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

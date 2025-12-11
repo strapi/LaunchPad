@@ -26,6 +26,9 @@
       "type": "component",
       "component": "zones.problematique",
       "repeatable": false
+    },
+    "solution_name": {
+      "type": "string"
     }
   },
   "config": {}

@@ -87,7 +87,7 @@ export function CasUtudeHeader({
             src={strapiImage(image?.url)}
             alt={image.alternativeText ?? ''}
             width={1200}
-            height={800}
+            height={600}
             className="rounded-lg object-cover w-full h-auto"
           />
 

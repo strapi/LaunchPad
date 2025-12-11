@@ -7,6 +7,7 @@ import { strapiImage } from '@/lib/strapi/strapiImage';
 export interface CasEtudeProps {
   heading: string;
   sub_heading: string;
+  solution_name: string;
   problematique: Challenge;
   challenge: Challenge;
   solution: Challenge;
@@ -39,6 +40,7 @@ export function CasEtude({
   problematique,
   challenge,
   solution,
+  solution_name,
 }: CasEtudeProps) {
   return (
     <div className="flex flex-col gap-10 text-foreground px-10 md:px-24 py-24 relative overflow-clip">
@@ -59,7 +61,7 @@ export function CasEtude({
             backgroundColor: problematique.background_color ?? undefined,
           }}
         >
-          <div className="absolute w-6 h-6 bg-primary -left-8.5 top-8 xl:-top-6 rounded-full" />
+          <div className="absolute w-6 h-6 bg-primary -left-8.5 top-8 xl:top-12 rounded-full" />
 
           <Typography as="h2" className="text-4xl text-primary">
             {problematique.heading}
@@ -81,7 +83,7 @@ export function CasEtude({
                 const count = index + 1;
                 const current_index = count < 10 ? `0${count}` : `${count}`;
                 return (
-                  <div key={el.id} className="flex flex-col gap-2">
+                  <div key={el.id} className="flex flex-col gap-2 space-y-3">
                     <div className="border-b border-gray-500 flex items-baseline gap-2 pb-1">
                       <Typography
                         as="span"
@@ -118,7 +120,7 @@ export function CasEtude({
             backgroundColor: problematique.background_color ?? undefined,
           }}
         >
-          <div className="absolute w-6 h-6 bg-primary -left-8.5 top-8 rounded-full" />
+          <div className="absolute w-6 h-6 bg-primary -left-8.5 top-8 xl:top-12 rounded-full" />
 
           <Typography as="h2" className="text-4xl text-primary">
             {challenge.heading}
@@ -132,7 +134,7 @@ export function CasEtude({
                 const count = index + 1;
                 const current_index = count < 10 ? `0${count}` : `${count}`;
                 return (
-                  <div key={el.id} className="flex flex-col gap-2">
+                  <div key={el.id} className="flex flex-col gap-2 space-y-3">
                     <div className="border-b border-gray-500 flex items-baseline gap-2 pb-1">
                       <Typography
                         as="span"
@@ -177,7 +179,7 @@ export function CasEtude({
             backgroundColor: problematique.background_color ?? undefined,
           }}
         >
-          <div className="absolute w-6 h-6 bg-primary -left-8.5 top-8 rounded-full" />
+          <div className="absolute w-6 h-6 bg-primary -left-8.5 top-8 xl:top-12 rounded-full" />
 
           <Typography as="h2" className="text-4xl text-primary">
             {solution.heading}
@@ -190,7 +192,7 @@ export function CasEtude({
               const count = index + 1;
               const current_index = count < 10 ? `0${count}` : `${count}`;
               return (
-                <div key={el.id} className="flex flex-col gap-2">
+                <div key={el.id} className="flex flex-col gap-2 space-y-3">
                   <div className="border-b border-gray-500 flex items-baseline gap-2 pb-1">
                     <Typography as="span" className="text-gray-500">
                       {current_index}
@@ -206,7 +208,7 @@ export function CasEtude({
                     <Image
                       src={strapiImage(el.image.url)}
                       alt={`${el.heading} image`}
-                      className="w-full h-52 object-cover rounded-lg"
+                      className="w-full h-60 object-cover"
                       width={600}
                       height={300}
                     />
@@ -217,6 +219,17 @@ export function CasEtude({
           </div>
         </div>
       )}
+
+      <div className="absolute -bottom-1">
+        {solution_name && (
+          <div className="flex relative">
+            <div className="absolute w-6 h-6 bg-primary -left-8.5 top-2 rounded-full" />
+            <Typography as="h2" className="text-4xl text-primary font-bold">
+              {solution_name}
+            </Typography>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
