@@ -11,41 +11,37 @@ import { Heading } from '@/components/elements/heading';
 import { Subheading } from '@/components/elements/subheading';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import { fetchCollectionType, fetchSingleType } from '@/lib/strapi';
-import type { Article } from '@/types/types';
+import type { Article, LocaleParamsProps } from '@/types/types';
 
-export async function generateMetadata(props: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const params = await props.params;
-  const pageData = await fetchSingleType('blog-page', {
-    locale: params.locale,
-  });
+export async function generateMetadata({
+  params,
+}: LocaleParamsProps): Promise<Metadata> {
+  const { locale } = await params;
+  const pageData = await fetchSingleType('blog-page', { locale });
 
   const seo = pageData.seo;
   const metadata = generateMetadataObject(seo);
   return metadata;
 }
 
-export default async function Blog(props: {
-  params: Promise<{ locale: string; slug: string }>;
-}) {
-  const params = await props.params;
+export default async function Blog({ params }: LocaleParamsProps) {
+  const { locale } = await params;
   const pageData = await fetchSingleType('blog-page', {
-    locale: params.locale,
+    locale: locale,
   });
   const [firstArticle, ...articles] = await fetchCollectionType<Article[]>(
     'articles',
     {
-      filters: { locale: { $eq: params.locale } },
+      filters: { locale: { $eq: locale } },
     }
   );
 
-  const localizedSlugs = pageData.localizations?.reduce(
+  const localizedSlugs = pageData.localizations.reduce(
     (acc: Record<string, string>, localization: any) => {
       acc[localization.locale] = 'blog';
       return acc;
     },
-    { [params.locale]: 'blog' }
+    { [locale]: 'blog' }
   );
 
   return (
@@ -67,7 +63,7 @@ export default async function Blog(props: {
 
         <BlogCard
           article={firstArticle}
-          locale={params.locale}
+          locale={locale}
           key={firstArticle.title}
         />
 

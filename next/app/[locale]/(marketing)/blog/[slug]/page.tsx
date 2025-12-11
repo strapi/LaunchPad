@@ -4,16 +4,16 @@ import React from 'react';
 import ClientSlugHandler from '../../ClientSlugHandler';
 import { BlogLayout } from '@/components/blog-layout';
 import { fetchCollectionType } from '@/lib/strapi';
-import type { Article } from '@/types/types';
+import type { Article, LocaleSlugParamsProps } from '@/types/types';
 
-export default async function SingleArticlePage(props: {
-  params: Promise<{ slug: string; locale: string }>;
-}) {
-  const params = await props.params;
-  const [article] = await fetchCollectionType<any[]>('articles', {
+export default async function SingleArticlePage({
+  params,
+}: LocaleSlugParamsProps) {
+  const { slug, locale } = await params;
+  const [article] = await fetchCollectionType<Article[]>('articles', {
     filters: {
       slug: {
-        $eq: params.slug,
+        $eq: slug,
       },
     },
   });
@@ -22,16 +22,16 @@ export default async function SingleArticlePage(props: {
     return <div>Blog not found</div>;
   }
 
-  const localizedSlugs = article.localizations?.reduce(
+  const localizedSlugs = article.localizations.reduce(
     (acc: Record<string, string>, localization: any) => {
       acc[localization.locale] = localization.slug;
       return acc;
     },
-    { [params.locale]: params.slug }
+    { [locale]: slug }
   );
 
   return (
-    <BlogLayout article={article} locale={params.locale}>
+    <BlogLayout article={article} locale={locale}>
       <ClientSlugHandler localizedSlugs={localizedSlugs} />
       <BlocksRenderer content={article.content} />
     </BlogLayout>

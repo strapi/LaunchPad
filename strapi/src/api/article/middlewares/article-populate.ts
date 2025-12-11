@@ -4,6 +4,7 @@
 import type { Core } from '@strapi/strapi';
 
 const populate = {
+  localizations: true,
   image: true,
   categories: {
     populate: {

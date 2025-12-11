@@ -5,16 +5,23 @@ import React, { useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
-export const BlurImage = (props: React.ComponentProps<typeof Image>) => {
+export const BlurImage = ({
+  src,
+  width,
+  height,
+  alt,
+  layout,
+  className,
+  ...rest
+}: React.ComponentProps<typeof Image>) => {
   const [isLoading, setLoading] = useState(true);
 
-  const { src, width, height, alt, layout, ...rest } = props;
   return (
     <Image
       className={cn(
         'transition duration-300',
         isLoading ? 'blur-sm' : 'blur-0',
-        props.className
+        className
       )}
       onLoad={() => setLoading(false)}
       src={src}

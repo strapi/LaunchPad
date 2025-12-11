@@ -1,10 +1,10 @@
 import type { Viewport } from 'next';
 
-import { Locale, i18n } from '@/i18n.config';
+import { i18n } from '@/i18n.config';
 
 import './globals.css';
 
-import { SlugProvider } from './context/SlugContext';
+import { SlugProvider } from '@/app/context/SlugContext';
 import { Preview } from '@/components/preview';
 
 export const viewport: Viewport = {
