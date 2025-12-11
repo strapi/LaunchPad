@@ -35,7 +35,7 @@ export const Footer = async ({
       }}
     >
       <div className="border-t border-neutral-900 px-8 pt-20 pb-4 relative">
-        <div className="max-w-6xl grid mx-auto text-sm sm:grid-cols-3  items-start justify-items-center">
+        <div className="max-w-6xl grid mx-auto text-sm sm:grid-cols-3  items-start justify-items-center text-white">
           <div>
             <div className="mr-4  md:flex mb-4">
               {/* {data?.logo?.image && <Logo image={data?.logo?.image} />} */}

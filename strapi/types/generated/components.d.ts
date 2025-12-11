@@ -1,5 +1,20 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface CardsCardTechnologie extends Struct.ComponentSchema {
+  collectionName: 'components_cards_card_technologies';
+  info: {
+    displayName: 'card_technologie';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    technologies: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::technologie.technologie'
+    >;
+  };
+}
+
 export interface CardsGlobeCard extends Struct.ComponentSchema {
   collectionName: 'components_cards_globe_cards';
   info: {
@@ -511,6 +526,19 @@ export interface SectionsNotreEquipeHome extends Struct.ComponentSchema {
   };
 }
 
+export interface SectionsSectionImage extends Struct.ComponentSchema {
+  collectionName: 'components_sections_section_images';
+  info: {
+    displayName: 'section_image';
+  };
+  attributes: {
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+  };
+}
+
 export interface SectionsSectionProjetHome extends Struct.ComponentSchema {
   collectionName: 'components_sections_section_projet_homes';
   info: {
@@ -737,6 +765,7 @@ export interface ZonesProblematique extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'cards.card-technologie': CardsCardTechnologie;
       'cards.globe-card': CardsGlobeCard;
       'cards.graph-card': CardsGraphCard;
       'cards.ray-card': CardsRayCard;
@@ -769,6 +798,7 @@ declare module '@strapi/strapi' {
       'sections.cas-etude': SectionsCasEtude;
       'sections.client-satified': SectionsClientSatified;
       'sections.notre-equipe-home': SectionsNotreEquipeHome;
+      'sections.section-image': SectionsSectionImage;
       'sections.section-projet-home': SectionsSectionProjetHome;
       'sections.section-service': SectionsSectionService;
       'sections.service-card': SectionsServiceCard;
