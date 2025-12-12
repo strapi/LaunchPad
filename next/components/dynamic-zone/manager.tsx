@@ -36,12 +36,16 @@ const componentMapping: { [key: string]: any } = {
     import('./sections/technologies-home').then((mod) => mod.TechnologiesHome)
   ),
   'sections.section-title-content-image': dynamic(() =>
-    import('./sections/section-title-content-image').then((mod) => mod.SectionTitleContentImage)
+    import('./sections/section-title-content-image').then(
+      (mod) => mod.SectionTitleContentImage
+    )
   ),
   'sections.section-image': dynamic(() =>
     import('./sections/section-image').then((mod) => mod.SectionImage)
   ),
-
+  'sections.team-members': dynamic(() =>
+    import('./team-member').then((mod) => mod.ThemeMember)
+  ),
   'sections.client-satified': dynamic(() =>
     import('./client-satified-section').then(
       (mod) => mod.ClientSatisfiedSection
