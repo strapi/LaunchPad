@@ -1,16 +1,11 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-import { BlurImage } from '../blur-image';
 import HoverImage from '../features/HoverImage';
-import { Button } from '../ui/button';
 import { Typography } from '../ui/typography';
 import { strapiImage } from '@/lib/strapi/strapiImage';
-import { cn } from '@/lib/utils';
 import { TeamMember } from '@/types/types';
 
 type NotreEquipeHomeProps = {

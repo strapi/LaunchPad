@@ -42,10 +42,11 @@ const populate = {
             populate: {
               image: true,
               poste: true,
-              social: {
+              social_link: {
                 populate: {
-                  image: true,
-                  link: true
+                  social_link_items: {
+                    populate: '*'
+                  }
                 }
               }
             },
