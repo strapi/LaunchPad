@@ -36,6 +36,23 @@ const populate = {
           },
         },
       },
+      'sections.team-members': {
+        populate: {
+          team_members: {
+            populate: {
+              image: true,
+              poste: true,
+              social_link: {
+                populate: {
+                  social_link_items: {
+                    populate: '*'
+                  }
+                }
+              }
+            },
+          },
+        }
+      },
       'sections.notre-equipe-home': {
         populate: {
           team_members: {
@@ -58,12 +75,12 @@ const populate = {
       },
       'sections.section-title-content-image': {
         populate: {
-              image: true, 
+          image: true,
         }
       },
       'sections.section-image': {
         populate: {
-              images: true, 
+          images: true,
         }
       },
       'sections.client-satified': {
@@ -204,7 +221,7 @@ const populate = {
       'form.contact-form': {
         populate: {
           image: true,
-          form_config : true
+          form_config: true
         },
       },
       'dynamic-zone.form-next-to-section': {

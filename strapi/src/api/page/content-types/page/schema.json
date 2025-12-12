@@ -68,7 +68,8 @@
         "sections.cas-etude",
         "items.cas-etude-header",
         "form.contact-form",
-        "items.images-grid"
+        "items.images-grid",
+        "sections.team-members"
       ]
     }
   }

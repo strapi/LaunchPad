@@ -26,10 +26,7 @@ export function SectionProjetHome({
     <section className="w-full flex flex-col py-12 md:py-18 gap-4">
       {/* Header Section */}
       <div className="px-4 sm:px-8 md:px-12 lg:px-16">
-        <Typography
-          variant="h2"
-          className="text-primary text-3xl md:text-5xl font-bold"
-        >
+        <Typography variant="h2" className="text-primary">
           {heading}
         </Typography>
 
@@ -94,11 +91,7 @@ function CardComponent({ projet, locale }: { projet: Projet; locale: string }) {
       <div className="flex-1 flex flex-col gap-3 sm:gap-4 md:gap-6 justify-center sm:justify-start py-2 sm:py-4">
         <Typography
           variant="h3"
-          className={cn(
-            'text-primary',
-            'text-xl sm:text-2xl md:text-3xl lg:text-4xl',
-            'font-bold leading-tight'
-          )}
+          className={cn('text-primary', 'leading-tight')}
         >
           {projet.heading}
         </Typography>
@@ -107,17 +100,13 @@ function CardComponent({ projet, locale }: { projet: Projet; locale: string }) {
           variant="base"
           className={cn(
             'text-black',
-            'text-sm sm:text-base md:text-lg',
             'line-clamp-3 sm:line-clamp-4 md:line-clamp-none'
           )}
         >
           {projet.sub_heading}
         </Typography>
 
-        <a 
-          href={`/${locale}${projet.slug}`}
-          className="mt-auto"
-        >
+        <a href={`/${locale}${projet.slug}`} className="mt-auto">
           <Button
             onClick={OnNavigatePage}
             className={cn(

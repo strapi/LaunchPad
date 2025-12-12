@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_sections_team_members",
+  "info": {
+    "displayName": "team-members",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "team_members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member"
+    }
+  },
+  "config": {}
+}

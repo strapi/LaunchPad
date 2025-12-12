@@ -36,6 +36,11 @@
     "slug": {
       "type": "uid",
       "targetField": "first_name"
+    },
+    "social_link": {
+      "type": "component",
+      "component": "items.social-link",
+      "repeatable": true
     }
   }
 }

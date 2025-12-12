@@ -25,26 +25,15 @@ export function SeeRealization({
     <section className="w-screen flex justify-center py-12 px-4 sm:px-8 lg:px-12">
       <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <div className="flex flex-col gap-6 max-w-2xl">
-          <Typography
-            as="h2"
-            className="text-4xl sm:text-5xl text-primary font-bold leading-tight"
-          >
+          <Typography as="h2" className="text-primary leading-tight">
             {header}
           </Typography>
 
-          <Typography
-            as="h3"
-            className="text-xl sm:text-2xl font-semibold leading-snug"
-          >
+          <Typography as="h3" className="leading-snug">
             {sub_header}
           </Typography>
 
-          <Typography
-            as="p"
-            className="text-base sm:text-lg font-medium leading-relaxed"
-          >
-            {description}
-          </Typography>
+          <Typography as="p">{description}</Typography>
 
           <div className="border-b w-full mt-4" />
         </div>
