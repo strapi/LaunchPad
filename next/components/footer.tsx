@@ -31,24 +31,24 @@ export const Footer = async ({
         backgroundImage: bg_image ? `url(${bg_image})` : 'none',
       }}
     >
-      <div className="border-t border-neutral-900 px-8 pt-20 pb-4 relative">
-        <div className="max-w-6xl grid mx-auto text-sm sm:grid-cols-3  items-start justify-items-center text-white">
+      <div className="border-t border-neutral-900 px-4 sm:px-8 pt-10 sm:pt-20 pb-4 relative">
+        <div className="max-w-6xl grid grid-cols-1 sm:grid-cols-3 mx-auto text-sm items-start justify-items-center text-white gap-8 sm:gap-0">
           <div>
-            <div className="mr-4  md:flex mb-4">
+            <div className="mr-4 md:flex mb-4">
               {/* {data?.logo?.image && <Logo image={data?.logo?.image} />} */}
               <Typography variant="h3">Webtinix</Typography>
             </div>
-            <div className="max-w-xs">{data?.description}</div>
+            <div className="max-w-xs text-center sm:text-left mx-auto sm:mx-0">{data?.description}</div>
             <div className="flex flex-col justify-around mt-4">
               <div className="flex flex-col gap-2">
-                <span>Téléphone</span>
+                <span className="text-center sm:text-left">Téléphone</span>
                 <Input className="rounded-none opacity-80 text-black"></Input>
               </div>
               <div className="flex flex-col gap-2 mt-4">
-                <span>Email</span>
+                <span className="text-center sm:text-left">Email</span>
                 <Input className="rounded-none opacity-80 text-black"></Input>
               </div>
-              <Button className="bg-[#0038A1] mt-4 w-4/5 p-6">
+              <Button className="bg-[#0038A1] mt-4 w-full p-4 sm:w-4/5 sm:p-6 mx-auto sm:mx-0">
                 Contactez-nous
               </Button>
             </div>
@@ -58,13 +58,13 @@ export const Footer = async ({
           {/* <div className=" gap-10 items-start mt-10 md:mt-0">
           </div> */}
           {/* BLOC 2 */}
-          <div>
+          <div className="text-center sm:text-left">
             <Typography variant="h3">Navigation</Typography>
             <LinkSection links={data?.internal_links} locale={locale} />
           </div>
 
           {/* BLOC 3 */}
-          <div className="">
+          <div className="text-center sm:text-left">
             <Typography variant="h3">Contact</Typography>
             <LinkSection links={data?.policy_links} locale={locale} />
 
@@ -77,8 +77,8 @@ export const Footer = async ({
         </div>
         <div className="flex flex-col">
           {/* RS */}
-          <div className="flex gap-4 items-center justify-center mt-28 mb-3">
-            <Typography>Suivez nous</Typography>
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center mt-10 sm:mt-28 mb-3">
+            <Typography className="text-sm">Suivez nous</Typography>
             <div className="flex gap-4 text-muted">
               {data?.social_media_links?.map((item: LinkItem) => (
                 <Link
@@ -102,7 +102,7 @@ export const Footer = async ({
             </div>
           </div>
           <hr className="border-t-3 border-dashed border-white" />
-          <Typography className="text-muted flex gap-1 items-center justify-center mt-6">
+          <Typography className="text-muted flex gap-1 items-center justify-center mt-6 text-center">
             {data?.copyright}
           </Typography>
         </div>
