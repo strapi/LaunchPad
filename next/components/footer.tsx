@@ -1,3 +1,4 @@
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { Link } from 'next-view-transitions';
 import React from 'react';
 
@@ -9,7 +10,6 @@ import { strapiImage } from '@/lib/strapi/strapiImage';
 import { cn } from '@/lib/utils';
 import ImgFooter from '@/public/rectangle.svg';
 import { LinkItem } from '@/types/utils';
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
 export const Footer = async ({
   data,
@@ -18,12 +18,12 @@ export const Footer = async ({
   data: any;
   locale: string;
 }) => {
-  
-
   // const bg_image = StrapiImage(data.background.url)
 
-   const bg_image = data.background?.url?strapiImage(data.background.url):null;
-  
+  const bg_image = data.background?.url
+    ? strapiImage(data.background.url)
+    : null;
+
   return (
     <div
       className="relative bg-cover bg-center"
@@ -63,17 +63,22 @@ export const Footer = async ({
             <LinkSection links={data?.internal_links} locale={locale} />
           </div>
 
-            {/* BLOC 3 */}
-          <div className=''>
+          {/* BLOC 3 */}
+          <div className="">
             <Typography variant="h3">Contact</Typography>
             <LinkSection links={data?.policy_links} locale={locale} />
-            <div className="flex flex-col gap-4 mt-4"><BlocksRenderer content={data.contact} /></div>
+
+            {data.contact && (
+              <div className="flex flex-col gap-4 mt-4">
+                <BlocksRenderer content={data.contact} />
+              </div>
+            )}
           </div>
         </div>
         <div className="flex flex-col">
           {/* RS */}
           <div className="flex gap-4 items-center justify-center mt-28 mb-3">
-            <Typography className="text-sm">Suivez nous</Typography>
+            <Typography>Suivez nous</Typography>
             <div className="flex gap-4 text-muted">
               {data?.social_media_links?.map((item: LinkItem) => (
                 <Link
@@ -104,13 +109,17 @@ export const Footer = async ({
       </div>
       {/* BLOC 1 */}
       <div className="w-full text-center bg-white text-primary  relative">
-         <Typography variant="large" className="lg:text-6xl xl:text-6xl z-10 relative font-black text-[#0038A1]">{data.designed_developed_by}</Typography>
+        <Typography
+          variant="large"
+          className="lg:text-6xl xl:text-6xl z-10 relative font-black text-[#0038A1]"
+        >
+          {data.designed_developed_by}
+        </Typography>
         <BlurImage
           src={ImgFooter}
           alt="rectangle"
           className="absolute inset-0 size-full z-0 object-cover"
         />
-       
       </div>
     </div>
   );

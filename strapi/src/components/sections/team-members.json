@@ -9,10 +9,10 @@
     "heading": {
       "type": "string"
     },
-    "membre": {
-      "type": "component",
-      "component": "items.member",
-      "repeatable": true
+    "team_members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member"
     }
   },
   "config": {}

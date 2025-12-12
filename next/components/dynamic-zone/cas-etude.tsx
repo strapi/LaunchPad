@@ -48,7 +48,7 @@ export function CasEtude({
       <div className="absolute w-6 h-6 bg-primary left-2 md:left-15.5 rounded-full" />
 
       <div className="flex flex-col gap-2 relative pl-4 md:pl-0">
-        <Typography as="h2" className="text-4xl text-primary font-bold">
+        <Typography as="h2" className="text-primary">
           {heading}
         </Typography>
         <Typography as="p">{sub_heading}</Typography>
@@ -63,7 +63,7 @@ export function CasEtude({
         >
           <div className="absolute w-6 h-6 bg-primary -left-8.5 top-8 xl:top-12 rounded-full" />
 
-          <Typography as="h2" className="text-4xl text-primary">
+          <Typography as="h2" className="text-primary">
             {problematique.heading}
           </Typography>
 
@@ -85,10 +85,7 @@ export function CasEtude({
                 return (
                   <div key={el.id} className="flex flex-col gap-2 space-y-3">
                     <div className="border-b border-gray-500 flex items-baseline gap-2 pb-1">
-                      <Typography
-                        as="span"
-                        className="font-semibold text-gray-500"
-                      >
+                      <Typography as="span" className="text-gray-500">
                         {current_index}
                       </Typography>
                       <Typography as="h3">{el.heading}</Typography>
@@ -122,7 +119,7 @@ export function CasEtude({
         >
           <div className="absolute w-6 h-6 bg-primary -left-8.5 top-8 xl:top-12 rounded-full" />
 
-          <Typography as="h2" className="text-4xl text-primary">
+          <Typography as="h2" className="text-primary">
             {challenge.heading}
           </Typography>
 
@@ -136,10 +133,7 @@ export function CasEtude({
                 return (
                   <div key={el.id} className="flex flex-col gap-2 space-y-3">
                     <div className="border-b border-gray-500 flex items-baseline gap-2 pb-1">
-                      <Typography
-                        as="span"
-                        className="font-semibold text-gray-500"
-                      >
+                      <Typography as="span" className="text-gray-500">
                         {current_index}
                       </Typography>
                       <Typography as="h3">{el.heading}</Typography>
@@ -181,7 +175,7 @@ export function CasEtude({
         >
           <div className="absolute w-6 h-6 bg-primary -left-8.5 top-8 xl:top-12 rounded-full" />
 
-          <Typography as="h2" className="text-4xl text-primary">
+          <Typography as="h2" className="text-primary">
             {solution.heading}
           </Typography>
 
@@ -197,9 +191,7 @@ export function CasEtude({
                     <Typography as="span" className="text-gray-500">
                       {current_index}
                     </Typography>
-                    <Typography as="span" className="font-semibold">
-                      {el.heading}
-                    </Typography>
+                    <Typography as="span">{el.heading}</Typography>
                   </div>
 
                   <Typography as="p">{el.sub_heading}</Typography>
@@ -224,7 +216,7 @@ export function CasEtude({
         {solution_name && (
           <div className="flex relative">
             <div className="absolute w-6 h-6 bg-primary -left-8.5 top-2 rounded-full" />
-            <Typography as="h2" className="text-4xl text-primary font-bold">
+            <Typography as="h2" className="text-primary">
               {solution_name}
             </Typography>
           </div>

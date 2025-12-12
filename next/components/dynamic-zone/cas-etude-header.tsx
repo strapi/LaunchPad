@@ -46,21 +46,16 @@ export function CasUtudeHeader({
   return (
     <div className="px-6 py-12 md:px-12 lg:px-24 space-y-10">
       <div className="flex flex-col space-y-2 text-start border-b border-gray-500 pb-4">
-        <Typography
-          variant="h2"
-          className="text-primary font-bold text-3xl md:text-4xl"
-        >
+        <Typography variant="h2" className="text-primary">
           {heading}
         </Typography>
-        <Typography as="p" className="font-semibold text-base md:text-lg">
-          {sub_heading}
-        </Typography>
+        <Typography as="p">{sub_heading}</Typography>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
         <div className="flex flex-col w-full lg:w-1/3 border border-gray-300 shadow overflow-hidden">
           <div className="w-full bg-primary px-4 py-3">
-            <Typography as="h3" className="text-white font-semibold text-lg">
+            <Typography as="h3" className="text-white">
               {title_items_cas}
             </Typography>
           </div>
@@ -68,7 +63,7 @@ export function CasUtudeHeader({
           <div className="p-4 space-y-4">
             {items_cas_utilisation.map((el, index) => (
               <div key={index} className="flex flex-col gap-1">
-                <Typography as="span" className="font-semibold text-gray-800">
+                <Typography as="span" className="text-gray-800">
                   {el.title}
                 </Typography>
                 <Typography

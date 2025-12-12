@@ -38,14 +38,19 @@ const populate = {
       },
       'sections.team-members': {
         populate: {
-          membre: {
+          team_members: {
             populate: {
+              image: true,
+              poste: true,
               social: {
-                populate: '*'
+                populate: {
+                  image: true,
+                  link: true
+                }
               }
-            }
-          }
-        },
+            },
+          },
+        }
       },
       'sections.notre-equipe-home': {
         populate: {
