@@ -24,7 +24,6 @@
     "@strapi/plugin-users-permissions": "5.32.0",
     "@strapi/strapi": "5.32.0",
     "better-sqlite3": "11.7.0",
-    "patch-package": "^8.0.0",
     "pluralize": "^8.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
