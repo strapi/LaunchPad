@@ -1,6 +1,9 @@
 import { draftMode } from 'next/headers';
 import qs from 'qs';
 
+import { spreadStrapiData } from './spreadStrapiData';
+import type { StrapiResponse } from '@/types/strapi';
+
 /**
  * Fetches data for a specified Strapi content type.
  *
@@ -8,26 +11,6 @@ import qs from 'qs';
  * @param {string} params - Query parameters to append to the API request.
  * @return {Promise<object>} The fetched data.
  */
-
-interface StrapiData {
-  id: number;
-  [key: string]: any; // Allow for any additional fields
-}
-
-interface StrapiResponse {
-  data: StrapiData | StrapiData[];
-}
-
-export function spreadStrapiData(data: StrapiResponse): StrapiData | null {
-  if (Array.isArray(data.data) && data.data.length > 0) {
-    return data.data[0];
-  }
-  if (!Array.isArray(data.data)) {
-    return data.data;
-  }
-  return null;
-}
-
 export default async function fetchContentType(
   contentType: string,
   params: Record<string, unknown> = {},
