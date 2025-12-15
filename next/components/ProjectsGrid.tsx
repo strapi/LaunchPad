@@ -1,8 +1,20 @@
 "use client";
 
 import React, { useState } from 'react';
-import ProjectCard, { Project } from './ProjectCard';
+import { motion } from 'framer-motion';
+import { ProjectCard } from './ProjectCard';
 import { DetailModal } from './DetailModal';
+
+// Project interface for the grid with modal support
+export interface Project {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  imageSrc: string;
+  technologies: string[];
+  link: string;
+}
 
 const projects: Project[] = [
   {
@@ -37,6 +49,18 @@ const projects: Project[] = [
 export default function ProjectsGrid() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
+  // Container animation variants for stagger
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
   return (
     <section className="py-24 bg-background relative overflow-hidden transition-colors duration-300">
       {/* Background Elements */}
@@ -44,7 +68,13 @@ export default function ProjectsGrid() {
       <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
       
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 max-w-3xl mx-auto">
+        <motion.div 
+          className="text-center mb-16 max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm">
             Selected Work
           </p>
@@ -54,17 +84,27 @@ export default function ProjectsGrid() {
           <p className="text-muted-foreground text-lg">
             Showcasing the intersection of leadership methodology and digital innovation.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {projects.map((project) => (
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+        >
+          {projects.map((project, index) => (
             <ProjectCard
               key={project.id}
-              project={project}
-              onClick={() => setSelectedProject(project)}
+              title={project.title}
+              description={project.description}
+              image={project.imageSrc}
+              href={project.link}
+              tags={project.technologies}
+              index={index}
             />
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <DetailModal
@@ -75,3 +115,4 @@ export default function ProjectsGrid() {
     </section>
   );
 }
+

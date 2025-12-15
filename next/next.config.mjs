@@ -3,14 +3,14 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true, // Temporarily ignore TS errors to get build working
   },
-  eslint: {
-    ignoreDuringBuilds: true, // Also ignore ESLint during builds
-  },
   turbopack: {
     root: process.cwd().replace('/next', ''),
   },
   images: {
-    remotePatterns: [{ hostname: process.env.IMAGE_HOSTNAME || 'localhost' }],
+    remotePatterns: [
+      { hostname: process.env.IMAGE_HOSTNAME || 'localhost' },
+      { hostname: 'images.unsplash.com' },
+    ],
   },
   pageExtensions: ['ts', 'tsx'],
   async redirects() {

@@ -61,6 +61,6 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Matcher ignoring `/_next/` and `/api/` and `/login` and `/sign-up`
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|login|sign-up|.*\\.png|.*\\.jpg).*)'],
+  // Matcher ignoring `/_next/` and `/api/` and standalone pages
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|login|sign-up|book|dashboard|.*\\.png|.*\\.jpg).*)'],
 };

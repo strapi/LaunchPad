@@ -30,3 +30,7 @@ build/
 out/
 *.log
 npm-debug.log*
+
+# Reference libraries (not part of project)
+cult-directory-template-main/
+motion-primitives-main/
