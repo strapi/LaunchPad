@@ -36,8 +36,7 @@ export const Hero = ({
         as="h1"
         className="text-4xl md:text-4xl lg:text-8xl font-semibold max-w-7xl mx-auto text-center mt-6 relative z-10  py-6"
       >
-        {heading.substring(0, heading.lastIndexOf(' '))}{' '}
-        <Cover>{heading.split(' ').pop()}</Cover>
+        {heading}
       </Heading>
       <Subheading className="text-center mt-2 md:mt-6 text-base md:text-xl text-muted  max-w-3xl mx-auto relative z-10">
         {sub_heading}
