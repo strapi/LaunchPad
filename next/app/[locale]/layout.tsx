@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { ViewTransitions } from 'next-view-transitions';
 import { Inter } from 'next/font/google';
 import { draftMode } from 'next/headers';
+import type { PropsWithChildren } from 'react';
 import React from 'react';
 
 import { DraftModeBanner } from '@/components/draft-mode-banner';
@@ -12,6 +13,7 @@ import { CartProvider } from '@/context/cart-context';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import { fetchSingleType } from '@/lib/strapi';
 import { cn } from '@/lib/utils';
+import type { LocaleParamsProps } from '@/types/types';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,31 +22,24 @@ const inter = Inter({
 });
 
 // Default Global SEO for pages without them
-export async function generateMetadata(props: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const params = await props.params;
-
-  const pageData = await fetchSingleType('global', { locale: params.locale });
+export async function generateMetadata({
+  params,
+}: PropsWithChildren<LocaleParamsProps>): Promise<Metadata> {
+  const { locale } = await params;
+  const pageData = await fetchSingleType('global', { locale });
 
   const seo = pageData.seo;
   const metadata = generateMetadataObject(seo);
   return metadata;
 }
 
-export default async function LocaleLayout(props: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}) {
-  const params = await props.params;
-
-  const { locale } = params;
-
-  const { children } = props;
-
+export default async function LocaleLayout({
+  children,
+  params,
+}: PropsWithChildren<LocaleParamsProps>) {
   const { isEnabled: isDraftMode } = await draftMode();
-
-  const pageData = await fetchSingleType('global', { locale: params.locale });
+  const { locale } = await params;
+  const pageData = await fetchSingleType('global', { locale });
 
   return (
     <ViewTransitions>

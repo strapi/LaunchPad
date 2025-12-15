@@ -4,18 +4,19 @@ import ClientSlugHandler from './ClientSlugHandler';
 import PageContent from '@/lib/shared/PageContent';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import { fetchCollectionType } from '@/lib/strapi';
+import type { LocaleParamsProps } from '@/types/types';
 
-export async function generateMetadata(props: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const params = await props.params;
+export async function generateMetadata({
+  params,
+}: LocaleParamsProps): Promise<Metadata> {
+  const { locale } = await params;
 
   const [pageData] = await fetchCollectionType('pages', {
     filters: {
       slug: {
         $eq: 'homepage',
       },
-      locale: params.locale,
+      locale: locale,
     },
   });
 
@@ -24,17 +25,15 @@ export async function generateMetadata(props: {
   return metadata;
 }
 
-export default async function HomePage(props: {
-  params: Promise<{ locale: string }>;
-}) {
-  const params = await props.params;
+export default async function HomePage({ params }: LocaleParamsProps) {
+  const { locale } = await params;
 
   const [pageData] = await fetchCollectionType('pages', {
     filters: {
       slug: {
         $eq: 'homepage',
       },
-      locale: params.locale,
+      locale: locale,
     },
   });
 
@@ -43,7 +42,7 @@ export default async function HomePage(props: {
       acc[localization.locale] = '';
       return acc;
     },
-    { [params.locale]: '' }
+    { [locale]: '' }
   );
 
   return (
