@@ -19,6 +19,17 @@ const populate = {
           },
         },
       },
+      'sections.a-propos-de-nous': {
+        populate: {
+          cta: true,
+          image: true,
+          cards: {
+            populate: {
+              icon: true,
+            },
+          }
+        },
+      },
       'sections.section-projet-home': {
         populate: {
           projets: {
