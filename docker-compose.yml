@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: wx-refonte-sitepostgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - wx-refonte-sitenetwork
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  strapi:
+    build:
+      context: ./strapi
+      dockerfile: Dockerfile
+    container_name: wx-refonte-sitestrapi
+    restart: unless-stopped
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: postgres
+      DATABASE_PORT: 5432
+      DATABASE_NAME: ${POSTGRES_DB}
+      DATABASE_USERNAME: ${POSTGRES_USER}
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
+      DATABASE_SSL: false
+      HOST: 0.0.0.0
+      PORT: 1337
+      NODE_ENV: production
+      STRAPI_DISABLE_TELEMETRY: true
+      SEED_DB: ${SEED_DB}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - strapi_uploads:/opt/app/public/uploads
+    networks:
+      - wx-refonte-sitenetwork
+    ports:
+      - "${STRAPI_PORT}:1337"
+
+  nextjs:
+    build:
+      context: ./next
+      dockerfile: Dockerfile
+    container_name: wx-refonte-sitenextjs
+    restart: unless-stopped
+    environment:
+      NEXT_PUBLIC_STRAPI_URL: http://${STRAPI_HOST}:${STRAPI_PORT}
+      STRAPI_URL: http://${STRAPI_HOST}:${STRAPI_PORT}
+      NODE_ENV: production
+    depends_on:
+      - strapi
+    networks:
+      - wx-refonte-sitenetwork
+    ports:
+      - "${NEXTJS_PORT}:3000"
+
+volumes:
+  postgres_data:
+  strapi_uploads:
+
+networks:
+  wx-refonte-sitenetwork:
+    driver: bridge

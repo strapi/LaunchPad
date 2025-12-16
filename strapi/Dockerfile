@@ -29,6 +29,9 @@ RUN yarn install
 # Copier le reste du code
 COPY . .
 
+# Créer un script pour envoyer "y" avec délai
+RUN echo '#!/bin/sh\ni=0\nwhile [ $i -lt 10 ]; do\n  echo "y"\n  sleep 1\n  i=$((i+1))\ndone' > /opt/app/seed_input.sh && chmod +x /opt/app/seed_input.sh
+
 # Construire l'application Strapi
 RUN yarn build
 
@@ -36,4 +39,4 @@ RUN yarn build
 EXPOSE 1337
 
 # Script de démarrage
-CMD ["sh", "-c", "if [ \"$SEED_DB\" = \"true\" ]; then yes | yarn seed; fi && yarn start"]
+CMD ["sh", "-c", "if [ \"$SEED_DB\" = \"true\" ]; then /opt/app/seed_input.sh | yarn seed; fi && yarn start"]
