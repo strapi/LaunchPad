@@ -36,7 +36,7 @@ export interface Product {
 }
 
 
-export interface Projet  {
+export interface Projet {
   heading: string;
   sub_heading: string;
   description: any;
@@ -44,7 +44,7 @@ export interface Projet  {
   image?: Image;
   slug: string;
 };
-export interface TeamMember  {
+export interface TeamMember {
   heading: string;
   sub_heading: string;
   description: any;
@@ -55,19 +55,41 @@ export interface TeamMember  {
 
 
 export interface Technologie {
-  name: string ;
-  description: string ;
+  name: string;
+  description: string;
   documentId: string;
 }
 
 
 export interface SectionTitleContentImage {
- heading: string;
- sub_heading:string;
- content: any;
- image?: Image;
+  heading: string;
+  sub_heading: string;
+  content: any;
+  image?: Image;
 }
 
 export interface SectionImage {
   image?: Image;
+}
+
+export interface ButtonComponent {
+  text: string;
+  url: string;
+  target: any;
+  variant: any;
+}
+
+
+export interface SectionAproposDeNous {
+  heading: string;
+  sub_heading: string;
+  description: any;
+  title: string;
+  image?: Image;
+  cta: ButtonComponent;
+  cards: {
+    icon: Image;
+    title: string;
+    description: string;
+  }[]
 }

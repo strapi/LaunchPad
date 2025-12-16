@@ -75,8 +75,8 @@ export default async function LocaleLayout(props: {
           {/* Footer full width */}
           <Footer data={pageData.footer} locale={locale} />
 
-          <AIToast />
-          {isDraftMode && <DraftModeBanner />}
+          {/* <AIToast />
+          {isDraftMode && <DraftModeBanner />} */}
         </div>
       </CartProvider>
     </ViewTransitions>
