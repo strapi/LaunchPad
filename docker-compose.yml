@@ -32,11 +32,11 @@ services:
       DATABASE_NAME: ${POSTGRES_DB}
       DATABASE_USERNAME: ${POSTGRES_USER}
       DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
-      DATABASE_SSL: false
+      DATABASE_SSL:  ${DATABASE_SSL}
       HOST: 0.0.0.0
       PORT: 1337
       NODE_ENV: production
-      STRAPI_DISABLE_TELEMETRY: true
+      STRAPI_DISABLE_TELEMETRY: ${STRAPI_DISABLE_TELEMETRY}
       SEED_DB: ${SEED_DB}
     depends_on:
       postgres:

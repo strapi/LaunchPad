@@ -30,7 +30,7 @@ RUN yarn install
 COPY . .
 
 # Créer un script pour envoyer "y" avec délai
-RUN echo '#!/bin/sh\ni=0\nwhile [ $i -lt 10 ]; do\n  echo "y"\n  sleep 1\n  i=$((i+1))\ndone' > /opt/app/seed_input.sh && chmod +x /opt/app/seed_input.sh
+RUN echo '#!/bin/sh\nfor i in $(seq 1 20); do echo "y"; done' > /opt/app/seed_input.sh && chmod +x /opt/app/seed_input.sh
 
 # Construire l'application Strapi
 RUN yarn build
