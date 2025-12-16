@@ -61,7 +61,7 @@ export function ExpertiseSection({
           </Typography>
 
           <div className="space-y-4">
-            {expertise.map((item, i) => (
+            {expertise?.map((item, i) => (
               <ExpertiseOption
                 key={i}
                 title={item.title}

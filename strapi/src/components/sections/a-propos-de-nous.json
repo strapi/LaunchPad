@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_sections_a_propos_de_nous",
+  "info": {
+    "displayName": "a-propos-de-nous"
+  },
+  "options": {},
+  "attributes": {
+    "cta": {
+      "type": "component",
+      "component": "shared.button",
+      "repeatable": false
+    },
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "cards": {
+      "type": "component",
+      "component": "cards.cards-apropos",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
