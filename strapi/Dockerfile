@@ -29,10 +29,6 @@ RUN yarn install
 # Copier le reste du code
 COPY . .
 
-# Créer un script pour répondre "y" en continu (utilisé pour l'import non-interactif)
-# Utilise `yes` pour fournir des confirmations continues à la commande d'import
-RUN echo '#!/bin/sh\nyes y' > /opt/app/seed_input.sh && chmod +x /opt/app/seed_input.sh
-
 # Construire l'application Strapi
 RUN yarn build
 
@@ -40,4 +36,4 @@ RUN yarn build
 EXPOSE 1337
 
 # Script de démarrage
-CMD ["sh", "-c", "if [ \"$SEED_DB\" = \"true\" ]; then /opt/app/seed_input.sh | yarn seed; fi && yarn start"]
+CMD ["sh", "-c", "if [ \"$SEED_DB\" = \"true\" ]; then yes y | yarn seed; fi && yarn start"]
