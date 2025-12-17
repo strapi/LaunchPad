@@ -29,8 +29,9 @@ RUN yarn install
 # Copier le reste du code
 COPY . .
 
-# Créer un script pour envoyer "y" avec délai
-RUN echo '#!/bin/sh\nfor i in $(seq 1 20); do echo "y"; done' > /opt/app/seed_input.sh && chmod +x /opt/app/seed_input.sh
+# Créer un script pour répondre "y" en continu (utilisé pour l'import non-interactif)
+# Utilise `yes` pour fournir des confirmations continues à la commande d'import
+RUN echo '#!/bin/sh\nyes y' > /opt/app/seed_input.sh && chmod +x /opt/app/seed_input.sh
 
 # Construire l'application Strapi
 RUN yarn build
