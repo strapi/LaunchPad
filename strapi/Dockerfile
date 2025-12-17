@@ -29,6 +29,10 @@ RUN yarn install
 # Copier le reste du code
 COPY . .
 
+# Créer le dossier public et définir les permissions
+RUN mkdir -p /opt/app/public/uploads && \
+    chmod -R 777 /opt/app/public
+
 # Construire l'application Strapi
 RUN yarn build
 
