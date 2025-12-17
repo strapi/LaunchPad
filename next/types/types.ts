@@ -1,3 +1,4 @@
+import { Subheading } from '@/components/elements/subheading';
 export interface Category {
   name: string;
 }
@@ -91,5 +92,16 @@ export interface SectionAproposDeNous {
     icon: Image;
     title: string;
     description: string;
+  }[]
+}
+
+
+export interface SectionNosValeursAPropos {
+    heading: string;
+   sub_heading: string;
+   a_propos_nos_valeurs: {
+    icon: Image;
+    heading: string;
+    sub_heading: string;
   }[]
 }

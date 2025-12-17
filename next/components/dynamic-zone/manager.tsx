@@ -38,6 +38,9 @@ const componentMapping: { [key: string]: any } = {
   'sections.a-propos-de-nous': dynamic(() =>
     import('./sections/section-apropos-de-nous').then((mod) => mod.SectionAProposDeNous)
   ),
+  'sections.nos-valeurs-a-propos': dynamic(() =>
+    import('./sections/nos-valeurs-a-propos').then((mod) => mod.NosValeursAPropros)
+  ),
 
   'sections.section-title-content-image': dynamic(() =>
     import('./sections/section-title-content-image').then(

@@ -70,7 +70,8 @@
         "form.contact-form",
         "items.images-grid",
         "sections.team-members",
-        "sections.a-propos-de-nous"
+        "sections.a-propos-de-nous",
+        "sections.nos-valeurs-a-propos"
       ]
     }
   }

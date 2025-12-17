@@ -37,6 +37,15 @@ const populate = {
           },
         },
       },
+      'sections.nos-valeurs-a-propos': {
+        populate: {
+          a_propos_nos_valeurs: {
+            populate: {
+              icon: true,
+            },
+          },
+        },
+      },
       'items.images-grid': {
         populate: '*',
       },
