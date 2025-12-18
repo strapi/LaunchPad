@@ -1,0 +1,109 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscriptions",
+  "info": {
+    "singularName": "subscription",
+    "pluralName": "subscriptions",
+    "displayName": "Subscription",
+    "description": "User subscription plans and billing"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "plan": {
+      "type": "enumeration",
+      "enum": ["free", "starter", "professional", "enterprise"],
+      "default": "free",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["active", "inactive", "cancelled", "past_due", "trialing"],
+      "default": "active",
+      "required": true
+    },
+    "stripeCustomerId": {
+      "type": "string",
+      "required": false,
+      "private": true
+    },
+    "stripeSubscriptionId": {
+      "type": "string",
+      "required": false,
+      "private": true
+    },
+    "stripePriceId": {
+      "type": "string",
+      "required": false
+    },
+    "currentPeriodStart": {
+      "type": "datetime",
+      "required": false
+    },
+    "currentPeriodEnd": {
+      "type": "datetime",
+      "required": false
+    },
+    "cancelAtPeriodEnd": {
+      "type": "boolean",
+      "default": false
+    },
+    "trialEnd": {
+      "type": "datetime",
+      "required": false
+    },
+    "planLimits": {
+      "type": "json",
+      "required": true,
+      "default": {
+        "posts": 10,
+        "accounts": 3,
+        "scheduledPosts": 5,
+        "teamMembers": 1
+      }
+    },
+    "usage": {
+      "type": "json",
+      "required": true,
+      "default": {
+        "posts": 0,
+        "accounts": 0,
+        "scheduledPosts": 0,
+        "teamMembers": 0
+      }
+    },
+    "billingCycle": {
+      "type": "enumeration",
+      "enum": ["monthly", "yearly"],
+      "default": "monthly"
+    },
+    "amount": {
+      "type": "decimal",
+      "default": 0
+    },
+    "currency": {
+      "type": "string",
+      "default": "usd"
+    },
+    "lastPaymentDate": {
+      "type": "datetime",
+      "required": false
+    },
+    "nextPaymentDate": {
+      "type": "datetime",
+      "required": false
+    },
+    "paymentMethod": {
+      "type": "json",
+      "required": false,
+      "default": {}
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

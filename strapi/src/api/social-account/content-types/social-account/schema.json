@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_accounts",
+  "info": {
+    "singularName": "social-account",
+    "pluralName": "social-accounts",
+    "displayName": "Social Account",
+    "description": "Connected social media accounts"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "platform": {
+      "type": "enumeration",
+      "enum": ["facebook", "instagram", "twitter", "x", "linkedin"],
+      "required": true
+    },
+    "accountId": {
+      "type": "string",
+      "required": true
+    },
+    "accountName": {
+      "type": "string",
+      "required": true
+    },
+    "accountUsername": {
+      "type": "string",
+      "required": false
+    },
+    "accessToken": {
+      "type": "text",
+      "required": true,
+      "private": true
+    },
+    "refreshToken": {
+      "type": "text",
+      "required": false,
+      "private": true
+    },
+    "tokenExpiresAt": {
+      "type": "datetime",
+      "required": false
+    },
+    "accountInfo": {
+      "type": "json",
+      "required": false,
+      "default": {}
+    },
+    "profileImage": {
+      "type": "string",
+      "required": false
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["active", "inactive", "expired", "error"],
+      "default": "active",
+      "required": true
+    },
+    "permissions": {
+      "type": "json",
+      "required": false,
+      "default": []
+    },
+    "lastSyncedAt": {
+      "type": "datetime",
+      "required": false
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
