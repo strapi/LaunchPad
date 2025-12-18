@@ -33,7 +33,7 @@ COPY . .
 RUN yarn build
 
 # Créer un script de démarrage qui gère les permissions et le seeding
-RUN echo '#!/bin/sh\n\
+RUN printf '#!/bin/sh\n\
 set -e\n\
 \n\
 # Créer et définir les permissions pour le dossier public\n\
@@ -48,7 +48,7 @@ fi\n\
 \n\
 # Démarrer Strapi\n\
 echo "Starting Strapi..."\n\
-exec yarn start' > /opt/app/start.sh && chmod +x /opt/app/start.sh
+exec yarn start\n' > /opt/app/start.sh && chmod +x /opt/app/start.sh
 
 # Exposer le port par défaut de Strapi
 EXPOSE 1337
