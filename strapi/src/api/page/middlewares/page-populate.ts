@@ -2,6 +2,7 @@
  * `page` middleware
  */
 import type { Core } from '@strapi/strapi';
+import { link } from 'fs';
 
 const populate = {
   dynamic_zone: {
@@ -62,13 +63,7 @@ const populate = {
             populate: {
               image: true,
               poste: true,
-              social_link: {
-                populate: {
-                  social_link_items: {
-                    populate: '*'
-                  }
-                }
-              }
+              links : true,
             },
           },
         }
@@ -90,6 +85,26 @@ const populate = {
               image: true,
               technologies: true,
             }
+          }
+        },
+      },
+      'sections.team-members-apropos': {
+        populate: {
+          link: true,
+          team_members: {
+            populate: {
+              image: true,
+              poste: true,
+              links: {
+                populate : {
+                  icon : {
+                    populate: {
+                      image: true,
+                    },
+                  }
+                }
+              }
+            },
           }
         },
       },

@@ -1,4 +1,6 @@
+import { Heading } from '@/components/elements/heading';
 import { Subheading } from '@/components/elements/subheading';
+import { LinkItem } from './utils';
 export interface Category {
   name: string;
 }
@@ -46,12 +48,13 @@ export interface Projet {
   slug: string;
 };
 export interface TeamMember {
-  heading: string;
-  sub_heading: string;
+  first_name: string;
+  last_name: string;
+  poste: Poste;
   description: any;
-  documentId: string;
   image?: Image;
   slug: string;
+  links: LinkItem[];
 };
 
 
@@ -59,6 +62,16 @@ export interface Technologie {
   name: string;
   description: string;
   documentId: string;
+}
+
+export interface Poste {
+  heading: string;
+  sub_heading: string; 
+}
+export interface Logo {
+  documentId: string;
+  company: string;
+  image?: Image;
 }
 
 
@@ -97,11 +110,18 @@ export interface SectionAproposDeNous {
 
 
 export interface SectionNosValeursAPropos {
-    heading: string;
-   sub_heading: string;
-   a_propos_nos_valeurs: {
+  heading: string;
+  sub_heading: string;
+  a_propos_nos_valeurs: {
     icon: Image;
     heading: string;
     sub_heading: string;
   }[]
+}
+
+
+export interface SectionTeamMembersAPropos {
+  heading: string;
+  sub_heading: string;
+  team_members: TeamMember[];
 }

@@ -17,7 +17,7 @@ export function NosValeursAPropros({
     return (
         <div className="bg-tertiare w-full py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-12 lg:px-16 xl:px-30">
             {/* Section principale en colonne */}
-            <div className="flex flex-col gap-6 sm:gap-8 md:gap-10 items-center text-center max-w-7xl mx-auto">
+            <div className=" flex flex-col gap-6 sm:gap-8 md:gap-10 items-center text-center max-w-7xl mx-auto">
 
                 {/* Heading */}
                 {heading && (
@@ -41,7 +41,7 @@ export function NosValeursAPropros({
 
                 {/* Cards en flex */}
                 {a_propos_nos_valeurs && a_propos_nos_valeurs.length > 0 && (
-                    <div className="w-full flex flex-wrap gap-6 sm:gap-8 md:gap-10 mt-10 md:mt-8 lg:mt-16">
+                    <div className="w-full flex flex-wrap gap-6 sm:gap-8 md:gap-10 mt-10 md:mt-8 lg:mt-8">
                         {a_propos_nos_valeurs.map((card, index) => (
                             <div
                                 key={index}
@@ -61,7 +61,7 @@ export function NosValeursAPropros({
                             >
                                 {/* Icon */}
                                 {card.icon && (
-                                    <div className="bg-tertiare relative w-20 h-20 sm:w-24 sm:h-24 md:w-20 md:h-20 rounded-xl overflow-hidden">
+                                    <div className="bg-tertiare relative w-20 h-20 sm:w-24 sm:h-24 md:w-20 md:h-20 rounded-full overflow-hidden">
                                         <BlurImage
                                             src={strapiImage(card.icon.url)}
                                             alt={card.icon.alternativeText || card.heading}
