@@ -36,6 +36,12 @@
       "type": "component",
       "repeatable": false,
       "component": "cards.social-media-card"
+    },
+    "visibility": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.visibility",
+      "required": false
     }
   }
 }
