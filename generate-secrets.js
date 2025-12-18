@@ -5,7 +5,7 @@
  * Usage: node generate-secrets.js
  */
 
-const crypto = require('crypto');
+import crypto from 'crypto';
 
 // Generate a random string of specified length
 function generateSecret(length = 32) {
