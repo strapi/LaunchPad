@@ -57,7 +57,8 @@ services:
     container_name: wx-refonte-site-nextjs
     restart: unless-stopped
     environment:
-      NEXT_PUBLIC_STRAPI_URL: http://${STRAPI_HOST}:${STRAPI_PORT}
+      # Mettre à jour les variables du projet Next.js si nécessaire
+      # NEXT_PUBLIC_API_URL: http://${STRAPI_HOST}:${STRAPI_PORT}
       STRAPI_URL: http://${STRAPI_HOST}:${STRAPI_PORT}
       NODE_ENV: production
     depends_on:
