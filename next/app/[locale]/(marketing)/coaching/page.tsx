@@ -97,30 +97,30 @@ export default function CoachingPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-cyan-900/10 via-transparent to-transparent" />
+      <section className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-b from-primary/10 via-background to-background">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-cyan-400 font-medium mb-4 tracking-wide uppercase text-sm">
+            <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm">
               Coaching
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
               Everyone Needs a Coach
             </h1>
-            <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto mb-8">
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8">
               Rediscover your strengths, identify roadblocks, get past feeling stuck, and work towards your goals with personal, executive coaching.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-black bg-cyan-400 hover:bg-cyan-300 rounded-full transition-all duration-200 hover:scale-[1.02]"
+                className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-primary-foreground bg-primary hover:bg-primary/90 rounded-full transition-all duration-200 hover:scale-[1.02]"
               >
                 Start Your Journey
               </Link>
               <a
                 href="#methodology"
-                className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white border border-white/20 hover:bg-white/10 rounded-full transition-all duration-200"
+                className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-foreground border border-border hover:bg-muted/50 rounded-full transition-all duration-200"
               >
                 Learn the Approach
               </a>
@@ -130,13 +130,13 @@ export default function CoachingPage() {
       </section>
 
       {/* Value Proposition */}
-      <section className="py-20 bg-zinc-900/30 border-y border-white/5">
+      <section className="py-20 bg-card border-y border-border">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Your Coach as Your Secure Base
             </h2>
-            <p className="text-xl text-gray-300 leading-relaxed">
+            <p className="text-xl text-muted-foreground leading-relaxed">
               Your coach will become your trusted secure base, seeing you on a transformative journey of learning, growth, and achievement. You will think better thoughts and level-up with coaching!
             </p>
           </div>
@@ -144,17 +144,17 @@ export default function CoachingPage() {
       </section>
 
       {/* The 3 A's Methodology */}
-      <section id="methodology" className="py-24 scroll-mt-20">
+      <section id="methodology" className="py-24 scroll-mt-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <p className="text-cyan-400 font-medium mb-4 tracking-wide uppercase text-sm">
+              <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm">
                 Methodology
               </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 The 3 A&apos;s Framework
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-muted-foreground max-w-2xl mx-auto">
                 A proven approach to leadership transformation built on three foundational pillars.
               </p>
             </div>
@@ -163,26 +163,26 @@ export default function CoachingPage() {
               {methodology.map((item, index) => (
                 <div
                   key={index}
-                  className="group relative bg-zinc-900/50 border border-white/5 rounded-2xl p-8 hover:border-cyan-500/30 transition-all duration-300"
+                  className="group relative bg-card border border-border rounded-2xl p-8 hover:border-primary/30 transition-all duration-300"
                 >
                   {/* Step number */}
-                  <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-400 font-bold text-xl border border-cyan-500/20">
+                  <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-xl border border-primary/20">
                     {index + 1}
                   </div>
 
                   {/* Icon */}
-                  <div className="w-14 h-14 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-6">
-                    <item.icon className="w-7 h-7 text-cyan-400" />
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+                    <item.icon className="w-7 h-7 text-primary" />
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-2xl font-bold text-white mb-1">
+                  <h3 className="text-2xl font-bold text-foreground mb-1">
                     {item.title}
                   </h3>
-                  <p className="text-cyan-400 text-sm font-medium mb-4">
+                  <p className="text-primary text-sm font-medium mb-4">
                     {item.subtitle}
                   </p>
-                  <p className="text-gray-400 mb-6">
+                  <p className="text-muted-foreground mb-6">
                     {item.description}
                   </p>
 
@@ -190,14 +190,14 @@ export default function CoachingPage() {
                   <ul className="space-y-3">
                     {item.benefits.map((benefit, bIndex) => (
                       <li key={bIndex} className="flex items-start gap-3">
-                        <IconCheck className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-300 text-sm">{benefit}</span>
+                        <IconCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-foreground/80 text-sm">{benefit}</span>
                       </li>
                     ))}
                   </ul>
 
                   {/* Hover glow */}
-                  <div className="absolute inset-0 rounded-2xl bg-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
+                  <div className="absolute inset-0 rounded-2xl bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
                 </div>
               ))}
             </div>
@@ -206,17 +206,17 @@ export default function CoachingPage() {
       </section>
 
       {/* Packages */}
-      <section className="py-24 bg-zinc-900/30 border-y border-white/5">
+      <section className="py-24 bg-card border-y border-border">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <p className="text-cyan-400 font-medium mb-4 tracking-wide uppercase text-sm">
+              <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm">
                 Services
               </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Coaching Options
               </h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
+              <p className="text-muted-foreground max-w-2xl mx-auto">
                 Choose the engagement model that fits your needs. All programs are customized to your specific goals.
               </p>
             </div>
@@ -227,31 +227,31 @@ export default function CoachingPage() {
                   key={index}
                   className={`relative rounded-2xl p-8 transition-all duration-300 ${
                     pkg.highlighted
-                      ? 'bg-gradient-to-b from-cyan-500/10 to-cyan-500/5 border-2 border-cyan-500/30'
-                      : 'bg-zinc-900/50 border border-white/5 hover:border-white/10'
+                      ? 'bg-gradient-to-b from-primary/10 to-primary/5 border-2 border-primary/30'
+                      : 'bg-background border border-border hover:border-primary/20'
                   }`}
                 >
                   {pkg.highlighted && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-cyan-500 rounded-full text-sm font-medium text-black">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary rounded-full text-sm font-medium text-primary-foreground">
                       Most Popular
                     </div>
                   )}
 
-                  <h3 className="text-xl font-bold text-white mb-2">
+                  <h3 className="text-xl font-bold text-foreground mb-2">
                     {pkg.name}
                   </h3>
-                  <p className="text-3xl font-bold text-cyan-400 mb-4">
+                  <p className="text-3xl font-bold text-primary mb-4">
                     {pkg.price}
                   </p>
-                  <p className="text-gray-400 text-sm mb-6">
+                  <p className="text-muted-foreground text-sm mb-6">
                     {pkg.description}
                   </p>
 
                   <ul className="space-y-3 mb-8">
                     {pkg.features.map((feature, fIndex) => (
                       <li key={fIndex} className="flex items-start gap-3">
-                        <IconCheck className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                        <span className="text-gray-300 text-sm">{feature}</span>
+                        <IconCheck className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span className="text-foreground/80 text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -260,8 +260,8 @@ export default function CoachingPage() {
                     href="/contact"
                     className={`w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium rounded-xl transition-all duration-200 ${
                       pkg.highlighted
-                        ? 'bg-cyan-400 text-black hover:bg-cyan-300'
-                        : 'bg-white/5 text-white border border-white/10 hover:bg-white/10'
+                        ? 'bg-primary text-primary-foreground hover:bg-primary/90'
+                        : 'bg-muted text-foreground border border-border hover:bg-muted/80'
                     }`}
                   >
                     {pkg.cta}
@@ -275,18 +275,18 @@ export default function CoachingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Ready to Level Up?
             </h2>
-            <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
               Gain clarity, build confidence, and create a roadmap for your personal and professional success.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-medium text-black bg-cyan-400 hover:bg-cyan-300 rounded-full transition-all duration-200 hover:scale-[1.02]"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-medium text-primary-foreground bg-primary hover:bg-primary/90 rounded-full transition-all duration-200 hover:scale-[1.02]"
             >
               Schedule Your Discovery Call
               <IconArrowRight className="w-5 h-5" />

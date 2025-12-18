@@ -63,7 +63,7 @@ export function HeroSection({ className }: HeroProps) {
 
             <FadeIn delay={0.3} direction="up">
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-xl">
-                Executive coaching that combines organizational psychology with deep spiritual grounding to help you navigate complexity without losing your soul.
+                Executive coaching that combines organizational psychology with deep spiritual grounding to help you navigate complexity.
               </p>
             </FadeIn>
 
