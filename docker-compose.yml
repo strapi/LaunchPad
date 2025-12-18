@@ -43,8 +43,8 @@ services:
         condition: service_healthy
     # NE PAS MONTER DE VOLUME SUR /opt/app/public
     # Strapi doit gérer ce dossier lui-même pour l'import
-    # volumes:
-    #   - strapi_uploads:/opt/app/public/uploads
+    volumes:
+      - strapi_uploads:/opt/app/public/uploads
     networks:
       - wx-refonte-site-network
     ports:
@@ -69,7 +69,7 @@ services:
 
 volumes:
   postgres_data:
-  # strapi_uploads: # Commenté car on ne l'utilise plus pour le moment
+  strapi_uploads: # Commenté car on ne l'utilise plus pour le moment
 
 networks:
   wx-refonte-site-network:
