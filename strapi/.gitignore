@@ -131,3 +131,4 @@ build
 .seed-completed
 yarn.lock
 types/generated/
+public/uploads*
