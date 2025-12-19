@@ -112,6 +112,7 @@ export interface SectionAproposDeNous {
 export interface SectionNosValeursAPropos {
   heading: string;
   sub_heading: string;
+  cta: ButtonComponent;
   a_propos_nos_valeurs: {
     icon: Image;
     heading: string;

@@ -45,6 +45,7 @@ const populate = {
               icon: true,
             },
           },
+          cta :true,
         },
       },
       'items.images-grid': {
