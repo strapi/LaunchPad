@@ -9,14 +9,16 @@ export interface ThemeMemberProps {
 }
 
 export interface TeamMember {
+  id: number;
+  documentId: string;
+  slug: null | string;
   first_name: string;
   last_name: string;
   image: Image;
-  social_link: SocialLink[];
+  social_link: SocialLink[] | null;
 }
 
 export interface Image {
-  alternativeText: null;
   url: string;
 }
 
@@ -26,22 +28,9 @@ export interface SocialLink {
 }
 
 export interface SocialLinkItem {
-  id: number;
-  logo: Logo;
-  button: Button;
-}
-
-export interface Button {
-  id: number;
-  text: string;
-  URL: string;
-  target: null;
-  variant: string;
-}
-
-export interface Logo {
-  documentId: string;
-  company: string;
+  logo_name: string;
+  url: string;
+  logo_social: Image;
 }
 
 export function ThemeMember({ heading, team_members }: ThemeMemberProps) {
@@ -55,11 +44,7 @@ export function ThemeMember({ heading, team_members }: ThemeMemberProps) {
           <div key={index} className="flex flex-col space-y-4 p-4 shadow">
             <Image
               src={`${strapiImage(el.image?.url)}`}
-              alt={
-                el.image.alternativeText
-                  ? el.image?.alternativeText
-                  : 'Membre de webtinix'
-              }
+              alt="Membre de webtinix"
               height={300}
               width={300}
               className="object-center object-contain rounded-lg"
@@ -71,9 +56,7 @@ export function ThemeMember({ heading, team_members }: ThemeMemberProps) {
             <Typography as="p"></Typography>
             <div className="flex space-x-2">
               {team_members.map((el, index) => (
-                <div key={index}>
-
-                </div>
+                <div key={index}></div>
               ))}
             </div>
           </div>

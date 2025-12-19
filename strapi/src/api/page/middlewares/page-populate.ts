@@ -41,7 +41,9 @@ const populate = {
           team_members: {
             populate: {
               image: true,
-              poste: true,
+              poste: {
+                populate: '*'
+              },
               social_link: {
                 populate: {
                   social_link_items: {
