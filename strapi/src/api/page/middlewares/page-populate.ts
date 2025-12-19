@@ -47,6 +47,18 @@ const populate = {
           },
         },
       },
+      'sections.our-vision': {
+        populate: {
+          vision_detailled: {
+            populate: {
+              image: true,
+              projet_client_satified: {
+                populate: '*'
+              }
+            }
+          }
+        }
+      },
       'items.images-grid': {
         populate: '*',
       },
