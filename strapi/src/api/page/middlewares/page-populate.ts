@@ -63,7 +63,15 @@ const populate = {
             populate: {
               image: true,
               poste: true,
-              links: true,
+              links: {
+                populate: {
+                  icon: {
+                    populate: {
+                      image: true,
+                    },
+                  }
+                }
+              }
             },
           },
         }
