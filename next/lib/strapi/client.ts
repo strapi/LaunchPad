@@ -13,24 +13,9 @@ export class StrapiError extends Error {
   }
 }
 
-/**
- * Get the appropriate Strapi URL based on the environment
- * Server-side: use API_URL (http://strapi:1337 in Docker)
- * Client-side: use NEXT_PUBLIC_API_URL (http://localhost:1337)
- */
-export function getStrapiURL(): string {
-  // Server-side (SSR, SSG, API routes)
-  if (typeof window === 'undefined') {
-    return process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337';
-  }
-  
-  // Client-side (browser)
-  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:1337';
-}
-
 const createClient = (config?: Omit<Config, 'baseURL'>) =>
   strapi({
-    baseURL: `${getStrapiURL()}/api`,
+    baseURL: `${process.env.NEXT_PUBLIC_API_URL ?? ''}/api`,
     ...config,
   });
 
