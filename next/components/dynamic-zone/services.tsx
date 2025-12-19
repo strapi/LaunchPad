@@ -33,22 +33,25 @@ export function Services({
   ];
 
   return (
-    <section className=" w-full flex flex-col items-center bg-tertiare py-18 px-4 md:px-10 gap-10">
+    <section className="w-full flex flex-col items-center bg-tertiare py-8 sm:py-12 md:py-16 lg:py-18 px-4 sm:px-6 md:px-8 lg:px-10 gap-6 sm:gap-8 md:gap-10">
+      {/* Heading avec responsive amélioré */}
       <Typography
         variant={'h2'}
-        className="text-primary text-3xl md:text-5xl font-bold text-center"
+        className="text-primary font-bold text-center px-2"
       >
         {heading}
       </Typography>
 
+      {/* Sub-heading avec responsive amélioré */}
       <Typography
         variant={'p'}
-        className="text-black text-center text-base md:text-lg max-w-2xl not-first:mt-2"
+        className="text-black text-center max-w-xl lg:max-w-2xl px-4"
       >
         {sub_heading}
       </Typography>
 
-      <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
+      {/* Grid responsive avec breakpoints optimisés */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 w-full max-w-7xl">
         {service.map((el, index) => {
           const style = cardStyles[index % cardStyles.length];
 
@@ -91,30 +94,59 @@ function CardComponent({
   return (
     <div
       className={cn(
-        ' h-[380px] sm:h-[400px] md:h-[480px] w-full rounded-xl p-6 flex flex-col justify-center items-center bg-cover bg-center relative',
-        bgColor // ✔ background OK
+        // Hauteurs responsives optimisées
+        'h-[320px] xs:h-[350px] sm:h-[380px] md:h-[420px] lg:h-[460px] xl:min-h-[480px]',
+        'max-h-[609px] w-full max-w-[497px]',
+        // Padding responsive
+        'rounded-lg sm:rounded-xl',
+        'p-4 sm:p-5 md:p-6',
+        // Flexbox
+        'flex flex-col justify-between items-center',
+        'bg-cover bg-center relative',
+        // Transition pour hover
+        'transition-transform duration-300 hover:scale-[1.02]',
+        bgColor
       )}
     >
-      <ArrowUpRight className="text-primary absolute top-3 right-3" />
+      {/* Icône responsive */}
+      <ArrowUpRight className="text-primary absolute top-2 right-2 sm:top-3 sm:right-3 w-5 h-5 sm:w-6 sm:h-6" />
 
-      <Typography
-        variant="h3"
-        className={cn('text-lg md:text-3xl font-bold text-center mb-6', textColor)}
-      >
-        {heading}
-      </Typography>
+      {/* Contenu centré avec espacement flexible */}
+      <div className="flex-1 flex flex-col justify-center items-center w-full">
+        <Typography
+          variant="h3"
+          className={cn(
+            'font-bold text-center mb-3 sm:mb-4 md:mb-6 px-2',
+            textColor
+          )}
+        >
+          {heading}
+        </Typography>
 
-      <Typography
-        variant="p"
-        className={cn('text-sm md:text-base text-center mb-12', textColor)}
-      >
-        {sub_heading}
-      </Typography>
+        <Typography
+          variant="base"
+          className={cn(
+            'text-center px-2 sm:px-4 line-clamp-4 sm:line-clamp-none',
+            textColor
+          )}
+        >
+          {sub_heading}
+        </Typography>
+      </div>
 
-      <a href={`/${locale}${slug}`}>
+      {/* Bouton avec responsive */}
+      <a href={`/${locale}${slug}`} className="w-full sm:w-auto">
         <Button
           onClick={OnNavigatePage}
-          className="bg-primary text-white font-semibold mt-4 w-fit px-4 py-2 hover:bg-primary"
+          className={cn(
+            'bg-primary text-white font-semibold',
+            'w-full sm:w-auto',
+            'px-4 sm:px-6 md:px-5',
+            'py-2 sm:py-2.5 md:py-6',
+            'text-sm sm:text-base',
+            'hover:bg-primary/90',
+            'transition-colors duration-100'
+          )}
         >
           Découvrir le service
         </Button>
