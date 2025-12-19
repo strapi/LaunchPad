@@ -10,7 +10,7 @@ import { Navbar } from '@/components/navbar';
 import { AIToast } from '@/components/toast';
 import { CartProvider } from '@/context/cart-context';
 import { generateMetadataObject } from '@/lib/shared/metadata';
-import fetchContentType from '@/lib/strapi/fetchContentType';
+import { fetchSingleType } from '@/lib/strapi';
 import { cn } from '@/lib/utils';
 
 const inter = Inter({
@@ -24,16 +24,10 @@ export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const pageData = await fetchContentType(
-    'global',
-    {
-      filters: { locale: params.locale },
-      populate: 'seo.metaImage',
-    },
-    true
-  );
 
-  const seo = pageData?.seo;
+  const pageData = await fetchSingleType('global', { locale: params.locale });
+
+  const seo = pageData.seo;
   const metadata = generateMetadataObject(seo);
   return metadata;
 }
@@ -50,11 +44,8 @@ export default async function LocaleLayout(props: {
 
   const { isEnabled: isDraftMode } = await draftMode();
 
-  const pageData = await fetchContentType(
-    'global',
-    { filters: { locale } },
-    true
-  );
+  const pageData = await fetchSingleType('global', { locale: params.locale });
+
   return (
     <ViewTransitions>
       <CartProvider>
@@ -84,8 +75,8 @@ export default async function LocaleLayout(props: {
           {/* Footer full width */}
           <Footer data={pageData.footer} locale={locale} />
 
-          <AIToast />
-          {isDraftMode && <DraftModeBanner />}
+          {/* <AIToast />
+          {isDraftMode && <DraftModeBanner />} */}
         </div>
       </CartProvider>
     </ViewTransitions>

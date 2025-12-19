@@ -1,5 +1,5 @@
-# Utiliser Node.js LTS
-FROM node:20-alpine
+# Utiliser Node.js 22
+FROM node:22-alpine
 
 # Installer les dépendances système nécessaires
 RUN apk update && apk add --no-cache \
@@ -19,11 +19,12 @@ WORKDIR /opt/app
 # Activer Corepack pour Yarn
 RUN corepack enable
 
-# Copier les fichiers de dépendances
+# Copier les fichiers de dépendances et les scripts nécessaires aux hooks
 COPY package.json yarn.lock* ./
+COPY scripts ./scripts
 
-# Installer les dépendances
-RUN yarn install --frozen-lockfile
+# Installer les dépendances (sans --frozen-lockfile pour permettre la mise à jour)
+RUN yarn install
 
 # Copier le reste du code
 COPY . .
@@ -35,4 +36,4 @@ RUN yarn build
 EXPOSE 1337
 
 # Script de démarrage
-CMD ["sh", "-c", "if [ \"$SEED_DB\" = \"true\" ]; then yarn seed; fi && yarn start"]
+CMD ["sh", "-c", "if [ \"$SEED_DB\" = \"true\" ]; then yes | yarn seed; fi && yarn start"]

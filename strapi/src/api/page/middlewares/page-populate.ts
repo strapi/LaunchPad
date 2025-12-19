@@ -2,6 +2,7 @@
  * `page` middleware
  */
 import type { Core } from '@strapi/strapi';
+import { link } from 'fs';
 
 const populate = {
   dynamic_zone: {
@@ -19,10 +20,30 @@ const populate = {
           },
         },
       },
+      'sections.a-propos-de-nous': {
+        populate: {
+          cta: true,
+          image: true,
+          cards: {
+            populate: {
+              icon: true,
+            },
+          }
+        },
+      },
       'sections.section-projet-home': {
         populate: {
           projets: {
             populate: '*',
+          },
+        },
+      },
+      'sections.nos-valeurs-a-propos': {
+        populate: {
+          a_propos_nos_valeurs: {
+            populate: {
+              icon: true,
+            },
           },
         },
       },
@@ -41,16 +62,8 @@ const populate = {
           team_members: {
             populate: {
               image: true,
-              poste: {
-                populate: '*'
-              },
-              social_link: {
-                populate: {
-                  social_link_items: {
-                    populate: '*'
-                  }
-                }
-              }
+              poste: true,
+              links: true,
             },
           },
         }
@@ -72,6 +85,26 @@ const populate = {
               image: true,
               technologies: true,
             }
+          }
+        },
+      },
+      'sections.team-members-apropos': {
+        populate: {
+          link: true,
+          team_members: {
+            populate: {
+              image: true,
+              poste: true,
+              links: {
+                populate: {
+                  icon: {
+                    populate: {
+                      image: true,
+                    },
+                  }
+                }
+              }
+            },
           }
         },
       },

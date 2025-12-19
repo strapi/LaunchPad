@@ -54,10 +54,14 @@ export function ContactForm({ form_config, ...props }: ContactFormProps) {
                     </Button>
                 </div>
                 <div>
-                    <DynamicStrapiForm
-                        formConfig={form_config}
-                        className=" p-8"
-                    />
+                    {
+                        form_config && (
+                            <DynamicStrapiForm
+                                formConfig={form_config}
+                                className=" p-8"
+                            />
+                        )
+                    }
                 </div>
 
             </CardContent>

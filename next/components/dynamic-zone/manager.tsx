@@ -35,6 +35,13 @@ const componentMapping: { [key: string]: any } = {
   'sections.technologies-home': dynamic(() =>
     import('./sections/technologies-home').then((mod) => mod.TechnologiesHome)
   ),
+  'sections.a-propos-de-nous': dynamic(() =>
+    import('./sections/section-apropos-de-nous').then((mod) => mod.SectionAProposDeNous)
+  ),
+  'sections.nos-valeurs-a-propos': dynamic(() =>
+    import('./sections/nos-valeurs-a-propos').then((mod) => mod.NosValeursAPropros)
+  ),
+
   'sections.section-title-content-image': dynamic(() =>
     import('./sections/section-title-content-image').then(
       (mod) => mod.SectionTitleContentImage
@@ -45,6 +52,10 @@ const componentMapping: { [key: string]: any } = {
   ),
   'sections.team-members': dynamic(() =>
     import('./team-member').then((mod) => mod.ThemeMember)
+  ),
+  'sections.team-members-apropos': dynamic(() =>
+    import('./sections/team-members-apropos').then(
+      (mod) => mod.TeamMembersAPropos)
   ),
   'sections.client-satified': dynamic(() =>
     import('./client-satified-section').then(
