@@ -35,7 +35,7 @@ export function OurValues({ heading, values_items }: OurValuesProps) {
     };
 
     return (
-        <section className="w-full px-6 md:px-12 lg:px-20 py-16 md:py-24 bg-white">
+        <section className="w-full px-6 md:px-12 lg:px-20 py-16 md:py-24">
             <Typography className="text-primary font-bold text-3xl md:text-4xl mb-12 lg:mb-16 uppercase tracking-tight">
                 {heading}
             </Typography>
@@ -69,7 +69,7 @@ export function OurValues({ heading, values_items }: OurValuesProps) {
                     {values_items.map((item, index) => (
                         <div
                             key={index}
-                            className="bg-[#f2f2f2] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start shrink-0 min-h-[220px]"
+                            className="bg-[#f2f2f2] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start shrink-0 h-auto w-[95%]"
                         >
                             <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full flex items-center justify-center">
                                 <Image

@@ -75,7 +75,8 @@
         "sections.team-members-apropos",
         "sections.our-vision",
         "sections.who-are-we",
-        "sections.our-values"
+        "sections.our-values",
+        "sections.team-first-section"
       ]
     }
   }

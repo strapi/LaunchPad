@@ -40,6 +40,11 @@ const populate = {
           }
         }
       },
+      'sections.team-first-section': {
+        populate: {
+          image: true
+        }
+      },
       'sections.section-projet-home': {
         populate: {
           projets: {
