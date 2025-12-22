@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
 type Props = {
-  href: never;
+  href: string;
   children: ReactNode;
   active?: boolean;
   className?: string;
@@ -23,12 +23,18 @@ export function NavbarItem({
 }: Props) {
   const pathname = usePathname();
 
+  const normalizedPathname = pathname?.replace(/\/$/, "") || "/";
+  const normalizedHref = href?.replace(/\/$/, "") || "/";
+
   return (
     <Link
       href={href}
       className={cn(
-        'flex items-center justify-center  text-sm leading-[110%] px-4 py-2 rounded-md  hover:bg-primary/80 hover:text-muted hover:shadow-[0px_1px_0px_0px_var(--neutral-600)_inset] transition duration-200',
-        (active || pathname?.includes(href)) && 'bg-transparent text-muted',
+        'flex items-center justify-center text-sm leading-[110%] px-4 py-2 rounded-md border border-transparent transition duration-200',
+        // Hover : bg blanc + bordure bleu
+        'hover:bg-white hover:border-blue-600',
+        // Actif : bg muted + texte muted
+        (active || normalizedPathname === normalizedHref) && 'bg-muted text-muted-foreground',
         className
       )}
       target={target}

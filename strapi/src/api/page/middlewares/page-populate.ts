@@ -2,7 +2,7 @@
  * `page` middleware
  */
 import type { Core } from '@strapi/strapi';
-import { link } from 'fs';
+import { link, stat } from 'fs';
 
 const populate = {
   dynamic_zone: {
@@ -140,6 +140,7 @@ const populate = {
       'sections.testimony-leur-avis': {
         populate: {
           cta: true,
+          stats: true,
         },
       },
       'items.cas-etude-header': {

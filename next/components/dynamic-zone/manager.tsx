@@ -68,6 +68,10 @@ const componentMapping: { [key: string]: any } = {
   'sections.cas-etude': dynamic(() =>
     import('./cas-etude').then((mod) => mod.CasEtude)
   ),
+  'sections.testimony-leur-avis': dynamic(() =>
+    import('./sections/testimony-leur-avis').then((mod) => mod.TestimonyLeurAvis)
+  ),
+
   'items.images-grid': dynamic(() =>
     import('./images-grid').then((mod) => mod.ImagesGrid)
   ),
@@ -112,9 +116,12 @@ const componentMapping: { [key: string]: any } = {
 };
 
 const DynamicZoneManager: React.FC<Props> = ({ dynamicZone, locale }) => {
+
+
   return (
     <div>
       {dynamicZone.map((componentData, index) => {
+          // console.log('TESTIMONY DATA 👉', componentData);
         const Component = componentMapping[componentData.__component];
         if (!Component) {
           console.warn(`No component found for: ${componentData.__component}`);

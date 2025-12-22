@@ -72,7 +72,8 @@
         "sections.team-members",
         "sections.a-propos-de-nous",
         "sections.nos-valeurs-a-propos",
-        "sections.team-members-apropos"
+        "sections.team-members-apropos",
+        "sections.testimony-leur-avis"
       ]
     }
   }
