@@ -31,6 +31,15 @@ const populate = {
           }
         },
       },
+      'sections.our-values': {
+        populate: {
+          values_items: {
+            populate: {
+              logo: true
+            }
+          }
+        }
+      },
       'sections.section-projet-home': {
         populate: {
           projets: {

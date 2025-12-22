@@ -60,6 +60,9 @@ const componentMapping: { [key: string]: any } = {
   'sections.our-vision': dynamic(() =>
     import('./our-vision-section').then((mod) => mod.OurVisionSection)
   ),
+  'sections.our-values': dynamic(() =>
+    import('./our-values').then((mod) => mod.OurValues)
+  ),
   'sections.team-members': dynamic(() =>
     import('./team-member').then((mod) => mod.ThemeMember)
   ),
