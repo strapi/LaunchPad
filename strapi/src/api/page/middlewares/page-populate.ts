@@ -40,6 +40,30 @@ const populate = {
           }
         }
       },
+      'sections.avis-clients': {
+        populate: {
+          avis_clients: {
+            populate: {
+              client_photo: true,
+              option_projet: {
+                populate: '*'
+              },
+            }
+          }
+        }
+      },
+      'sections.carousel-avis-client': {
+        populate: {
+          avis_clients: {
+            populate: {
+              client_photo: true,
+              option_projet: {
+                populate: '*'
+              },
+            }
+          }
+        }
+      },
       'sections.team-first-section': {
         populate: {
           image: true

@@ -97,6 +97,9 @@ const componentMapping: { [key: string]: any } = {
   'dynamic-zone.see-realization': dynamic(() =>
     import('./see-realization').then((mod) => mod.SeeRealization)
   ),
+  'carousel-avis-client': dynamic(() =>
+    import('./see-realization').then((mod) => mod.SeeRealization)
+  ),
   'sections.booste-activity': dynamic(() =>
     import('./expertise-section').then((mod) => mod.ExpertiseSection)
   ),

@@ -143,51 +143,51 @@
   /* Backgrounds - Tons clairs et neutres */
   --background: oklch(0.99 0.002 0); /* Blanc cassé très léger */
   --foreground: oklch(0.25 0.01 264); /* #1B1B1B approximatif en OKLCH */
-  
+
   /* Cards - Blanc pur avec bon contraste */
   --card: oklch(1 0 0); /* Blanc pur */
   --card-foreground: oklch(0.25 0.01 264); /* Texte sombre */
-  
+
   /* Popover */
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.25 0.01 264);
-  
+
   /* Primary - Bleu violet (inchangé) */
   --primary: oklch(0.3886 0.1774 261.82);
   --primary-foreground: oklch(0.99 0 0); /* Blanc pour contraste */
-  
+
   /* Secondary - Orange/Corail (inchangé) */
   --secondary: oklch(0.646 0.222 41.116);
   --secondary-foreground: oklch(0.99 0 0); /* Blanc pour contraste */
-  
+
   /* Tertiaire - Lavande très clair */
   --tertiare: oklch(0.97 0.014 254.6);
   --tertiare-foreground: oklch(0.25 0.01 264); /* Texte sombre */
-  
+
   /* Muted - Gris clair pour backgrounds secondaires */
   --muted: oklch(0.96 0.005 264);
   --muted-foreground: oklch(0.50 0.01 264); /* Gris moyen pour texte */
-  
+
   /* Accent - Nuance de primary plus claire */
   --accent: oklch(0.95 0.02 214);
   --accent-foreground: oklch(0.25 0.01 264);
-  
+
   /* Destructive - Rouge avec bon contraste */
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.99 0 0);
-  
+
   /* Borders et inputs */
   --border: oklch(0.90 0.005 264); /* Bordures légères */
   --input: oklch(0.95 0.005 264);
   --ring: oklch(0.39 0.21 214); /* Même que primary pour cohérence */
-  
+
   /* Charts - Palette harmonisée avec primary */
   --chart-1: oklch(0.81 0.1 252);
   --chart-2: oklch(0.62 0.19 260);
   --chart-3: oklch(0.55 0.22 263);
   --chart-4: oklch(0.49 0.22 264);
   --chart-5: oklch(0.42 0.18 266);
-  
+
   /* Sidebar */
   --sidebar: oklch(0.99 0.002 264);
   --sidebar-foreground: oklch(0.25 0.01 264);
@@ -197,7 +197,7 @@
   --sidebar-accent-foreground: oklch(0.25 0.01 264);
   --sidebar-border: oklch(0.90 0.005 264);
   --sidebar-ring: oklch(0.39 0.21 214);
-  
+
   /* Fonts - Outfit comme police principale */
   --font-sans:
     'Outfit', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -207,9 +207,9 @@
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;
-  
+
   --radius: 0.625rem;
-  
+
   /* Shadows */
   --shadow-x: 0;
   --shadow-y: 1px;
@@ -229,7 +229,7 @@
   --shadow-xl:
     0 8px 10px 0px hsl(264 10% 25% / 0.1), 0 8px 10px -2px hsl(264 10% 25% / 0.1);
   --shadow-2xl: 0 12px 24px 0px hsl(264 10% 25% / 0.15);
-  
+
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
@@ -238,51 +238,51 @@
   /* Backgrounds - Tons sombres avec légère teinte */
   --background: oklch(0.145 0.01 264); /* Fond très sombre avec nuance */
   --foreground: oklch(0.98 0.005 264); /* Blanc cassé pour le texte */
-  
+
   /* Cards - Légèrement plus clair que le background */
   --card: oklch(0.20 0.01 264);
   --card-foreground: oklch(0.98 0.005 264);
-  
+
   /* Popover */
   --popover: oklch(0.22 0.01 264);
   --popover-foreground: oklch(0.98 0.005 264);
-  
+
   /* Primary - Version plus claire et saturée pour le mode sombre */
   --primary: oklch(0.50 0.22 265);
   --primary-foreground: oklch(0.99 0 0);
-  
+
   /* Secondary - Garde sa vivacité */
   --secondary: oklch(0.646 0.222 41.116);
   --secondary-foreground: oklch(0.99 0 0);
-  
+
   /* Tertiaire */
   --tertiare: oklch(0.35 0.03 254.6);
   --tertiare-foreground: oklch(0.98 0.005 264);
-  
+
   /* Muted */
   --muted: oklch(0.25 0.01 264);
   --muted-foreground: oklch(0.65 0.01 264);
-  
+
   /* Accent */
   --accent: oklch(0.30 0.02 265);
   --accent-foreground: oklch(0.98 0.005 264);
-  
+
   /* Destructive */
   --destructive: oklch(0.60 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
-  
+
   /* Borders et inputs */
   --border: oklch(0.28 0.01 264);
   --input: oklch(0.30 0.01 264);
   --ring: oklch(0.50 0.22 265);
-  
+
   /* Charts */
   --chart-1: oklch(0.81 0.1 252);
   --chart-2: oklch(0.62 0.19 260);
   --chart-3: oklch(0.55 0.22 263);
   --chart-4: oklch(0.49 0.22 264);
   --chart-5: oklch(0.42 0.18 266);
-  
+
   /* Sidebar */
   --sidebar: oklch(0.18 0.01 264);
   --sidebar-foreground: oklch(0.98 0.005 264);
@@ -292,7 +292,7 @@
   --sidebar-accent-foreground: oklch(0.98 0.005 264);
   --sidebar-border: oklch(0.28 0.01 264);
   --sidebar-ring: oklch(0.50 0.22 265);
-  
+
   /* Fonts */
   --font-sans:
     'Outfit', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -302,9 +302,9 @@
   --font-mono:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
     'Courier New', monospace;
-  
+
   --radius: 0.625rem;
-  
+
   /* Shadows - Plus subtiles en mode sombre */
   --shadow-x: 0;
   --shadow-y: 1px;
@@ -352,7 +352,7 @@
 
     /* Améliore le comportement de scroll */
     scroll-behavior: smooth;
-    
+
   }
 
   .scrollbar::-webkit-scrollbar {
@@ -456,7 +456,7 @@
   scrollbar-width: thin;
   scrollbar-color: var(--ring) var(--muted);
   scroll-behavior: smooth;
-  
+
 }
 
 .scrollbar-responsive::-webkit-scrollbar {
