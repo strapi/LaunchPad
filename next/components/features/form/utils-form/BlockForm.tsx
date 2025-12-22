@@ -98,7 +98,7 @@ export function BlockForm<T extends FieldValues = FieldValues>({
         config.fields
       );
 
-      console.log("Données validées:", validatedData);
+      // console.log("Données validées:", validatedData);
 
       if (config.mode === "update" && config.id) {
         await update(validatedData, config.id);

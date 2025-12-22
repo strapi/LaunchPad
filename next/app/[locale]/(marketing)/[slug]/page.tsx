@@ -43,7 +43,7 @@ export default async function Page(props: {
     },
     { [params.locale]: params.slug }
   );
-  console.log(pageData);
+  // console.log(pageData);
 
   return (
     <>

@@ -45,6 +45,7 @@ const populate = {
               icon: true,
             },
           },
+          cta :true,
         },
       },
       'sections.our-vision': {
@@ -154,6 +155,11 @@ const populate = {
             populate: '*',
           },
           background: true,
+        },
+      },
+      'sections.testimony-leur-avis': {
+        populate: {
+          cta: true,
         },
       },
       'items.cas-etude-header': {
