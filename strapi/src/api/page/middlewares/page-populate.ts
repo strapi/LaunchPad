@@ -45,6 +45,18 @@ const populate = {
           image: true
         }
       },
+      'sections.our-trust': {
+        populate: {
+          our_trust_items: {
+            populate: {
+              image: true,
+              client_photo: true,
+              button: '*',
+              entreprise_logo: true
+            }
+          }
+        }
+      },
       'sections.section-projet-home': {
         populate: {
           projets: {

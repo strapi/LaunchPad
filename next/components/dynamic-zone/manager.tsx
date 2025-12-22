@@ -63,6 +63,9 @@ const componentMapping: { [key: string]: any } = {
   'sections.team-first-section': dynamic(() =>
     import('./team-first-section').then((mod) => mod.TeamFirstSection)
   ),
+  'sections.our-trust': dynamic(() =>
+    import('./our-trust').then((mod) => mod.OurTrust)
+  ),
   'sections.our-values': dynamic(() =>
     import('./our-values').then((mod) => mod.OurValues)
   ),

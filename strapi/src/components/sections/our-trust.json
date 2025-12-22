@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_our_trusts",
+  "info": {
+    "displayName": "our-trust"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "our_trust_items": {
+      "type": "component",
+      "component": "items.our-trust-items",
+      "repeatable": true
+    },
+    "background_colors": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
