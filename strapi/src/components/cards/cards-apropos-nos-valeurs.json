@@ -1,11 +1,11 @@
 {
-  "collectionName": "components_items_social_link_items",
+  "collectionName": "components_cards_cards_apropos_nos_valeurs",
   "info": {
-    "displayName": "social_link_items"
+    "displayName": "cards_apropos_nos_valeurs"
   },
   "options": {},
   "attributes": {
-    "logo_social": {
+    "icon": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
@@ -15,11 +15,11 @@
         "audios"
       ]
     },
-    "logo_name": {
+    "heading": {
       "type": "string"
     },
-    "url": {
-      "type": "text"
+    "sub_heading": {
+      "type": "string"
     }
   },
   "config": {}

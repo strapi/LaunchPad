@@ -57,3 +57,11 @@ export interface LinkItem {
   target: string;
   icon: Icon;
 }
+
+export interface Button {
+  id: number;
+  text: string;
+  URL: string;
+  target: null;
+  variant: string;
+}

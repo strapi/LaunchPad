@@ -37,9 +37,9 @@
       "type": "uid",
       "targetField": "first_name"
     },
-    "social_link": {
+    "links": {
       "type": "component",
-      "component": "items.social-link",
+      "component": "shared.link",
       "repeatable": true
     }
   }

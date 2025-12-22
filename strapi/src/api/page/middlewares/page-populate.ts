@@ -2,6 +2,7 @@
  * `page` middleware
  */
 import type { Core } from '@strapi/strapi';
+import { link } from 'fs';
 
 const populate = {
   dynamic_zone: {
@@ -19,12 +20,44 @@ const populate = {
           },
         },
       },
+      'sections.a-propos-de-nous': {
+        populate: {
+          cta: true,
+          image: true,
+          cards: {
+            populate: {
+              icon: true,
+            },
+          }
+        },
+      },
       'sections.section-projet-home': {
         populate: {
           projets: {
             populate: '*',
           },
         },
+      },
+      'sections.nos-valeurs-a-propos': {
+        populate: {
+          a_propos_nos_valeurs: {
+            populate: {
+              icon: true,
+            },
+          },
+        },
+      },
+      'sections.our-vision': {
+        populate: {
+          vision_detailled: {
+            populate: {
+              image: true,
+              projet_client_satified: {
+                populate: '*'
+              }
+            }
+          }
+        }
       },
       'items.images-grid': {
         populate: '*',
@@ -42,10 +75,12 @@ const populate = {
             populate: {
               image: true,
               poste: true,
-              social_link: {
+              links: {
                 populate: {
-                  social_link_items: {
-                    populate: '*'
+                  icon: {
+                    populate: {
+                      image: true,
+                    },
                   }
                 }
               }
@@ -70,6 +105,26 @@ const populate = {
               image: true,
               technologies: true,
             }
+          }
+        },
+      },
+      'sections.team-members-apropos': {
+        populate: {
+          link: true,
+          team_members: {
+            populate: {
+              image: true,
+              poste: true,
+              links: {
+                populate: {
+                  icon: {
+                    populate: {
+                      image: true,
+                    },
+                  }
+                }
+              }
+            },
           }
         },
       },
