@@ -49,7 +49,7 @@ export default async function Services(props: {
     { [params.locale]: 'services' }
   );
 
-  console.log('Donnees venant du Backend : ', servicePage);
+  // console.log('Donnees venant du Backend : ', servicePage);
 
   return (
     <>

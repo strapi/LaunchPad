@@ -41,7 +41,7 @@ export function ClientSatisfiedSection({
   background_color,
   center,
 }: ClientSatisfiedSectionProps) {
-  console.log(background_color, center);
+  // console.log(background_color, center);
   
   return (
     <section className={`w-full h-auto mb-2 flex flex-col items-center gap-8 md:gap-12 lg:gap-16 p-4 sm:p-6 md:p-8 lg:p-16 text-foreground ${center ? 'text-center' : 'text-start'}`} style={{ backgroundColor: background_color || 'transparent' }}>

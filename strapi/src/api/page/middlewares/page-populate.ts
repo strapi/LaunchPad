@@ -137,6 +137,11 @@ const populate = {
           background: true,
         },
       },
+      'sections.testimony-leur-avis': {
+        populate: {
+          cta: true,
+        },
+      },
       'items.cas-etude-header': {
         populate: {
           items_cas_utilisation: true,
