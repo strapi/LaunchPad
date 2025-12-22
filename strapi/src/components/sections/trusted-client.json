@@ -6,10 +6,10 @@
   "options": {},
   "attributes": {
     "heading": {
-      "type": "string"
+      "type": "text"
     },
     "sub_heading": {
-      "type": "string"
+      "type": "text"
     },
     "logos": {
       "type": "relation",

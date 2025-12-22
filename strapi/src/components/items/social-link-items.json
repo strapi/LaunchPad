@@ -5,15 +5,21 @@
   },
   "options": {},
   "attributes": {
-    "logo": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::logo.logo"
+    "logo_social": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
-    "button": {
-      "type": "component",
-      "component": "shared.button",
-      "repeatable": false
+    "logo_name": {
+      "type": "string"
+    },
+    "url": {
+      "type": "text"
     }
   },
   "config": {}

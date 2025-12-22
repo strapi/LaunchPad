@@ -48,6 +48,18 @@ const populate = {
           cta :true,
         },
       },
+      'sections.our-vision': {
+        populate: {
+          vision_detailled: {
+            populate: {
+              image: true,
+              projet_client_satified: {
+                populate: '*'
+              }
+            }
+          }
+        }
+      },
       'items.images-grid': {
         populate: '*',
       },
@@ -64,7 +76,15 @@ const populate = {
             populate: {
               image: true,
               poste: true,
-              links : true,
+              links: {
+                populate: {
+                  icon: {
+                    populate: {
+                      image: true,
+                    },
+                  }
+                }
+              }
             },
           },
         }
@@ -97,8 +117,8 @@ const populate = {
               image: true,
               poste: true,
               links: {
-                populate : {
-                  icon : {
+                populate: {
+                  icon: {
                     populate: {
                       image: true,
                     },

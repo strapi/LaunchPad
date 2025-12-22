@@ -29,11 +29,36 @@ RUN yarn install
 # Copier le reste du code
 COPY . .
 
+# Créer le dossier public avec les bonnes permissions AVANT le build
+RUN mkdir -p /opt/app/public/uploads && \
+    chmod -R 777 /opt/app/public
+
 # Construire l'application Strapi
 RUN yarn build
+
+# S'assurer que les permissions sont toujours là après le build
+RUN chmod -R 777 /opt/app/public
+
+# Créer un script de démarrage qui gère les permissions et le seeding
+RUN printf '#!/bin/sh\n\
+set -e\n\
+\n\
+# Créer et définir les permissions pour le dossier public\n\
+mkdir -p /opt/app/public/uploads\n\
+chmod -R 777 /opt/app/public\n\
+\n\
+# Exécuter le seed si demandé\n\
+if [ "$SEED_DB" = "true" ]; then\n\
+  echo "Starting database seeding..."\n\
+  yes y | yarn seed || echo "Seed failed or already completed, continuing..."\n\
+fi\n\
+\n\
+# Démarrer Strapi\n\
+echo "Starting Strapi..."\n\
+exec yarn start\n' > /opt/app/start.sh && chmod +x /opt/app/start.sh
 
 # Exposer le port par défaut de Strapi
 EXPOSE 1337
 
-# Script de démarrage
-CMD ["sh", "-c", "if [ \"$SEED_DB\" = \"true\" ]; then yes | yarn seed; fi && yarn start"]
+# Utiliser le script de démarrage
+CMD ["/opt/app/start.sh"]
