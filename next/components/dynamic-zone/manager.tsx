@@ -54,6 +54,9 @@ const componentMapping: { [key: string]: any } = {
   'sections.section-image': dynamic(() =>
     import('./sections/section-image').then((mod) => mod.SectionImage)
   ),
+  'sections.who-are-we': dynamic(() =>
+    import('./who-are-we').then((mod) => mod.Who_are_we)
+  ),
   'sections.our-vision': dynamic(() =>
     import('./our-vision-section').then((mod) => mod.OurVisionSection)
   ),

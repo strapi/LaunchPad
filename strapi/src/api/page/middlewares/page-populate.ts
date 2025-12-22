@@ -47,6 +47,12 @@ const populate = {
           },
         },
       },
+      'sections.who-are-we': {
+        populate: {
+          images: true,
+          three_words: true
+        }
+      },
       'sections.our-vision': {
         populate: {
           vision_detailled: {
