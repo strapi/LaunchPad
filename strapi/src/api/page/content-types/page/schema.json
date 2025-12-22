@@ -73,7 +73,8 @@
         "sections.a-propos-de-nous",
         "sections.nos-valeurs-a-propos",
         "sections.team-members-apropos",
-        "sections.our-vision"
+        "sections.our-vision",
+        "zone-data.zone-realisation"
       ]
     }
   }

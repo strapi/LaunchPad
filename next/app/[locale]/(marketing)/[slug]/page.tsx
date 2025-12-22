@@ -4,7 +4,6 @@ import ClientSlugHandler from '../ClientSlugHandler';
 import PageContent from '@/lib/shared/PageContent';
 import { generateMetadataObject } from '@/lib/shared/metadata';
 import { fetchCollectionType } from '@/lib/strapi';
-import { ProjectList } from '@/components/dynamic-zone/data/zone-projets';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string; slug: string }>;
@@ -50,7 +49,6 @@ export default async function Page(props: {
     <>
       <ClientSlugHandler localizedSlugs={localizedSlugs} />
       <PageContent pageData={pageData} />
-       <ProjectList />
     </>
   );
 }

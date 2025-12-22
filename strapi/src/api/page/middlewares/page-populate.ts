@@ -285,6 +285,9 @@ const populate = {
           form_config: true
         },
       },
+      'zone-data.zone-realisation': {
+        populate: '*',
+      },
       'dynamic-zone.form-next-to-section': {
         populate: {
           form: {
