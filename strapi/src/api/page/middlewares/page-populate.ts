@@ -92,6 +92,15 @@ const populate = {
           }
         }
       },
+      'shared.features-and-capacity': {
+        populate: {
+          features_items: {
+            populate: {
+              image: true
+            }
+          }
+        }
+      },
       'sections.team-first-section': {
         populate: {
           image: true

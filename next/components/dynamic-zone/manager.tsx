@@ -115,6 +115,9 @@ const componentMapping: { [key: string]: any } = {
   'shared.etude-de-cas': dynamic(() =>
     import('./etude-de-cas').then((mod) => mod.EtudeDeCas)
   ),
+  'shared.features-and-capacity': dynamic(() =>
+    import('./features-and-capacity').then((mod) => mod.FeaturesAndCapacity)
+  ),
   'sections.booste-activity': dynamic(() =>
     import('./expertise-section').then((mod) => mod.ExpertiseSection)
   ),
