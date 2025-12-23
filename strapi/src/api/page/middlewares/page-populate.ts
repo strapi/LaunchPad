@@ -52,6 +52,15 @@ const populate = {
           }
         }
       },
+      'sections.our-services-have': {
+        populate: {
+          services_have_items: {
+            populate: {
+              items_services: true
+            }
+          }
+        }
+      },
       'sections.carousel-avis-client': {
         populate: {
           avis_clients: {

@@ -79,7 +79,8 @@
         "sections.team-first-section",
         "sections.our-trust",
         "sections.carousel-avis-client",
-        "sections.avis-clients"
+        "sections.avis-clients",
+        "sections.our-services-have"
       ]
     }
   }
