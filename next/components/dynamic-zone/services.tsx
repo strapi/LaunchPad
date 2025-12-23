@@ -45,7 +45,7 @@ export function Services({
       {/* Sub-heading avec responsive amélioré */}
       <Typography
         variant={'p'}
-        className="text-black text-center max-w-xl lg:max-w-2xl px-4"
+        className="text-black text-center leading-10  px-4"
       >
         {sub_heading}
       </Typography>
@@ -126,7 +126,7 @@ function CardComponent({
         <Typography
           variant="base"
           className={cn(
-            'text-center px-2 sm:px-4 line-clamp-4 sm:line-clamp-none',
+            'text-center px-2 sm:px-4 ',
             textColor
           )}
         >

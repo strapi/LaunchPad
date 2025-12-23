@@ -1,60 +1,54 @@
 import { Metadata } from 'next';
-import React from 'react';
 
-import { generateMetadataObject } from '@/lib/shared/metadata';
-import fetchContentType from '@/lib/strapi/fetchContentType';
 import ClientSlugHandler from '../ClientSlugHandler';
 import PageContent from '@/lib/shared/PageContent';
+import { generateMetadataObject } from '@/lib/shared/metadata';
+import { fetchCollectionType } from '@/lib/strapi';
 
 export async function generateMetadata(props: {
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-
-  const pageData = await fetchContentType(
-    'pages',
-    {
-      filters: { slug: 'services' },
-      populate: 'seo.metaImage',
+  const [pageData] = await fetchCollectionType('pages', {
+    filters: {
+      slug: {
+        $eq: 'services',
+      },
+      locale: params.locale,
     },
-    true
-  );
+  });
 
-  const seo = pageData?.seo;
-  return generateMetadataObject(seo);
+  const seo = pageData?.seo || {};
+  const metadata = generateMetadataObject(seo);
+  return metadata;
 }
 
-export default async function Services(props: {
-  params: Promise<{ locale: string }>;
+export default async function Page(props: {
+  params: Promise<{ locale: string; slug: string }>;
 }) {
   const params = await props.params;
-
-  // Fetch les donnees et recuperer les data de services
-  const servicePage = await fetchContentType(
-    'pages',
-    {
-      filters: {
-        slug: 'services',
-        locale: params.locale,
+  const [pageData] = await fetchCollectionType('pages', {
+    filters: {
+      slug: {
+        $eq: 'services',
       },
+      locale: params.locale,
     },
-    true
-  );
+  });
 
-  const localizedSlugs = servicePage?.localizations?.reduce(
+  const localizedSlugs = pageData?.localizations?.reduce(
     (acc: Record<string, string>, localization: any) => {
       acc[localization.locale] = localization.slug;
       return acc;
     },
     { [params.locale]: 'services' }
   );
-
-  console.log('Donnees venant du Backend : ', servicePage);
+//  console.log(pageData);
 
   return (
     <>
-          <ClientSlugHandler localizedSlugs={localizedSlugs} />
-          <PageContent pageData={servicePage} />
-        </>
-  )
+      <ClientSlugHandler localizedSlugs={localizedSlugs} />
+      <PageContent pageData={pageData} />
+    </>
+  );
 }

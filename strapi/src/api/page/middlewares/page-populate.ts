@@ -2,7 +2,7 @@
  * `page` middleware
  */
 import type { Core } from '@strapi/strapi';
-import { link } from 'fs';
+import { link, stat } from 'fs';
 
 const populate = {
   dynamic_zone: {
@@ -132,6 +132,7 @@ const populate = {
               icon: true,
             },
           },
+          cta :true,
         },
       },
       'sections.who-are-we': {
@@ -247,6 +248,12 @@ const populate = {
             populate: '*',
           },
           background: true,
+        },
+      },
+      'sections.testimony-leur-avis': {
+        populate: {
+          cta: true,
+          stats: true,
         },
       },
       'items.cas-etude-header': {
@@ -371,6 +378,9 @@ const populate = {
           image: true,
           form_config: true
         },
+      },
+      'zone-data.zone-realisation': {
+        populate: '*',
       },
       'dynamic-zone.form-next-to-section': {
         populate: {

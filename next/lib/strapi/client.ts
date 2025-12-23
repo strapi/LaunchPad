@@ -13,11 +13,16 @@ export class StrapiError extends Error {
   }
 }
 
-const createClient = (config?: Omit<Config, 'baseURL'>) =>
-  strapi({
+const createClient = (config?: Omit<Config, 'baseURL'>, isDraftMode: boolean = false) => {
+  return strapi({
     baseURL: `${process.env.NEXT_PUBLIC_API_URL ?? ''}/api`,
+    headers: {
+      "strapi-encode-source-maps": isDraftMode ? "true" : "false",
+      ...config?.headers,
+    },
     ...config,
   });
+}
 
 /**
  * Fetches a collection type from Strapi.
@@ -32,7 +37,7 @@ export async function fetchCollectionType<T = API.Document[]>(
   const { isEnabled: isDraftMode } = await draftMode();
 
   try {
-    const { data } = await createClient(config)
+    const { data } = await createClient(config, isDraftMode)
       .collection(collectionName)
       .find({
         ...options,
@@ -62,7 +67,7 @@ export async function fetchSingleType<T = API.Document>(
   const { isEnabled: isDraftMode } = await draftMode();
 
   try {
-    const { data } = await createClient(config)
+    const { data } = await createClient(config, isDraftMode)
       .single(singleTypeName)
       .find({
         ...options,
@@ -93,7 +98,7 @@ export async function fetchDocument<T = API.Document>(
   const { isEnabled: isDraftMode } = await draftMode();
 
   try {
-    const { data } = await createClient(config)
+    const { data } = await createClient(config, isDraftMode)
       .collection(collectionName)
       .findOne(documentId, {
         ...options,
@@ -109,3 +114,4 @@ export async function fetchDocument<T = API.Document>(
     );
   }
 }
+

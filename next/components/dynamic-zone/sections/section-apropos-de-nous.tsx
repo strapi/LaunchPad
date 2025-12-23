@@ -28,7 +28,7 @@ export function SectionAProposDeNous({
         {cta && (
           <div>
             <Button 
-              className="w-auto bg-[#EBEBEB] text-white border-none rounded-full text-sm sm:text-base px-5 sm:px-7 py-2.5 sm:py-3 flex items-center gap-2 hover:bg-[#D5D5D5] transition-colors"
+              className="w-auto bg-[#EBEBEB]  border-none rounded-full text-sm sm:text-base px-5 sm:px-7 py-2.5 sm:py-3 flex items-center gap-2 hover:bg-[#D5D5D5] transition-colors"
               asChild
             >
               <a href={cta.url} target={cta.target || '_self'} className="flex items-center gap-2">

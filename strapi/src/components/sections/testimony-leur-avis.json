@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_testimony_leur_avis",
+  "info": {
+    "displayName": "testimony_leur_avis"
+  },
+  "options": {},
+  "attributes": {
+    "cta": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": false
+    },
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    },
+    "stats": {
+      "type": "component",
+      "component": "cards.card-stats",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

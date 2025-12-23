@@ -112,6 +112,7 @@ export interface SectionAproposDeNous {
 export interface SectionNosValeursAPropos {
   heading: string;
   sub_heading: string;
+  cta: ButtonComponent;
   a_propos_nos_valeurs: {
     icon: Image;
     heading: string;
@@ -124,4 +125,14 @@ export interface SectionTeamMembersAPropos {
   heading: string;
   sub_heading: string;
   team_members: TeamMember[];
+}
+
+export interface SectionTestimonyLeurAvis {
+  cta: ButtonComponent;
+  heading: string;
+  sub_heading: string;
+  stats: {
+    titre: string;
+    description: string;
+  }[]
 }

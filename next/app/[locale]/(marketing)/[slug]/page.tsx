@@ -18,7 +18,7 @@ export async function generateMetadata(props: {
     },
   });
 
-  const seo = pageData?.seo;
+  const seo = pageData?.seo || {};
   const metadata = generateMetadataObject(seo);
   return metadata;
 }
@@ -43,7 +43,7 @@ export default async function Page(props: {
     },
     { [params.locale]: params.slug }
   );
-  console.log(pageData);
+  // console.log(pageData);
 
   return (
     <>

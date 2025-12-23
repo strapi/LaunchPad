@@ -1,111 +1,276 @@
-# LaunchPad - Official Strapi Demo
+# Site Webtinix - Moderne et Optimisé
 
 ![LaunchPad](./LaunchPad.jpg)
 
-Welcome aboard **LaunchPad**, the official Strapi demo application, where we launch your content into the stratosphere at the speed of _"we-can't-even-measure-it!"_.
-This repository contains the following:
+Bienvenue sur le nouveau site de **Webtinix**, propulsé par Strapi et Next.js. Ce projet est un fork du dépôt officiel [Strapi LaunchPad](https://github.com/strapi/LaunchPad), adapté et optimisé pour les besoins de Webtinix.
 
-- A Strapi project with content-types and data already onboard
-- A Next.js client that's primed and ready to fetch the content from Strapi faster than you can say "blast off!"
+Ce dépôt contient :
 
-## 🌌 Get started
+* Un projet Strapi avec des types de contenu et des données préchargées
+* Un client Next.js prêt à récupérer et afficher le contenu depuis Strapi
+* Une configuration optimisée pour PostgreSQL en production
 
-Strap yourself in! You can get started with this project on your local machine by following the instructions below, or you can [request a private instance on our website](https://strapi.io/demo)
+## 🚀 Démarrage rapide
 
-## 1. Clone Launchpad
+Vous pouvez démarrer ce projet sur votre machine locale en suivant les instructions ci-dessous.
 
-To infinity and beyond! 🚀 Clone the repo with this command:
+### 1. Cloner le projet
 
+Clonez le dépôt avec cette commande :
+
+```bash
+git clone https://github.com/webtinix1/wx-refonte-with-launchpad.git
+cd wx-refonte-with-launchpad
 ```
-git clone https://github.com/strapi/launchpad.git
+
+### 2. Configurer PostgreSQL
+
+Ce projet utilise PostgreSQL comme base de données. Voici comment la configurer :
+
+#### Installation de PostgreSQL
+
+Si PostgreSQL n'est pas installé sur votre machine :
+
+**Windows :**
+- Téléchargez PostgreSQL depuis [postgresql.org](https://www.postgresql.org/download/windows/)
+- Installez-le avec l'assistant d'installation
+- Notez le mot de passe que vous définissez pour l'utilisateur `postgres`
+
+**Linux (Ubuntu/Debian) :**
+```bash
+sudo apt update
+sudo apt install postgresql postgresql-contrib
 ```
 
-- Navigate to your project folder by running `cd launchpad`.
+**macOS :**
+```bash
+brew install postgresql
+brew services start postgresql
+```
 
-## 2. Set up environment variables
+#### Créer la base de données
 
-Before you take off, set up the required environment variables for both Strapi and Next.js.
+Connectez-vous à PostgreSQL et créez la base de données pour Strapi :
 
-To create the Strapi .env file, copy the content of the `./strapi/.env.example` file into a new file named `./strapi/.env`, then modify the values to match your setup:
+```bash
+# Connectez-vous en tant que superutilisateur postgres
+psql -U postgres
 
-```sh
+# Dans le shell PostgreSQL, exécutez :
+CREATE USER strapi WITH PASSWORD 'strapi';
+CREATE DATABASE strapi OWNER strapi;
+
+# Accordez tous les droits nécessaires
+GRANT ALL PRIVILEGES ON DATABASE strapi TO strapi;
+
+# Connectez-vous à la base strapi
+\c strapi
+
+# Accordez les droits sur le schéma public
+GRANT ALL ON SCHEMA public TO strapi;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO strapi;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO strapi;
+
+# Quittez le shell PostgreSQL
+\q
+```
+
+**Note :** Pour les environnements de production, utilisez un mot de passe fort et sécurisé !
+
+### 3. Configurer les variables d'environnement
+
+#### Configuration de Strapi
+
+Créez le fichier `.env` pour Strapi :
+
+```bash
 cp ./strapi/.env.example ./strapi/.env
 ```
 
-Then do the same for the Next.js .env file, and modify it too:
+Modifiez `./strapi/.env` avec vos paramètres :
 
-```sh
+```env
+HOST=0.0.0.0
+PORT=1337
+APP_KEYS="votre-clé-1,votre-clé-2"
+API_TOKEN_SALT=votre-token-salt
+ADMIN_JWT_SECRET=votre-admin-secret
+TRANSFER_TOKEN_SALT=votre-transfer-salt
+JWT_SECRET=votre-jwt-secret
+
+# Base de données PostgreSQL
+DATABASE_CLIENT=postgres
+DATABASE_HOST=localhost
+DATABASE_PORT=5432
+DATABASE_NAME=strapi
+DATABASE_USERNAME=strapi
+DATABASE_PASSWORD=strapi
+DATABASE_SSL=false
+DATABASE_SCHEMA=public
+
+# Optimisations
+DATABASE_POOL_MIN=2
+DATABASE_POOL_MAX=20
+DATABASE_CONNECTION_TIMEOUT=600000
+
+# Configuration Next.js (optionnel)
+CLIENT_URL=http://localhost:3000
+PREVIEW_SECRET=votre-preview-secret
+
+# Environnement
+NODE_ENV=development
+STRAPI_DISABLE_TELEMETRY=true
+
+# Mémoire Node.js (pour les imports volumineux)
+NODE_OPTIONS=--max-old-space-size=4096
+```
+
+**Important :** Générez des clés sécurisées pour `APP_KEYS`, `API_TOKEN_SALT`, `ADMIN_JWT_SECRET`, etc. Ne réutilisez jamais les valeurs par défaut en production !
+
+#### Configuration de Next.js
+
+Créez le fichier `.env` pour Next.js :
+
+```bash
 cp ./next/.env.example ./next/.env
 ```
 
-## 3. Start Strapi
+Modifiez `./next/.env` selon vos besoins :
 
-Take a deep breath. It's time to power up the Strapi engines. Navigate to your ./my-projects/launchpad/strapi folder by running:
-
-Navigate to your `./my-projects/launchpad/strapi` folder by running `cd strapi` from your command line.
-
-- Run the following command in your `./launchpad/strapi` folder:
-
-```
-yarn && yarn seed && yarn develop
+```env
+NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
+STRAPI_URL=http://localhost:1337
+PREVIEW_SECRET=votre-preview-secret
 ```
 
-This will install dependencies, sprinkle in some data magic, and run the server. (You can run these commands separately, but why not be efficient?)
+### 4. Démarrer Strapi
 
-## 4. Start Next.js
+Installez les dépendances, importez les données initiales et démarrez le serveur :
 
-We're almost ready for lift-off! Next.js is your sleek, futuristic interface for getting all that glorious content out into the world. 🚀
-
-Open a new terminal tab or window to leave Strapi running, and navigate to your `./my-projects/launchpad/next` folder by running `cd next`.
-
-- Run the following command in your `./launchpad/next` folder
-
-```
-yarn && yarn build && yarn start
+```bash
+cd strapi
+yarn install
+yarn seed
+yarn develop
 ```
 
-This installs dependencies, builds your project, and starts your server. You’re now a spacefaring content master!
+Le panneau d'administration Strapi sera accessible sur [http://localhost:1337/admin](http://localhost:1337/admin)
 
-## Features Overview ✨
+**Note :** La commande `yarn seed` importe les données de démonstration. Si vous rencontrez des erreurs liées aux droits PostgreSQL, vérifiez que vous avez bien exécuté toutes les commandes SQL de la section "Créer la base de données".
 
-### User
+### 5. Démarrer Next.js
 
-<br />
+Ouvrez un nouveau terminal et démarrez le client Next.js :
 
-**An intuitive, minimal editor** The editor allows you to pull in dynamic blocks of content. It’s 100% open-source, and it’s fully extensible.<br />
-**Media Library** Upload images, video or any files and crop and optimize their sizes, without quality loss.<br />
-**Flexible content management** Build any type of category, section, format or flow to adapt to your needs. <br />
-**Sort and Filter** Built-in sorting and filtering: you can manage thousands of entries without effort.<br />
-**User-friendly interface** The most user-friendly open-source interface on the market.<br />
-**SEO optimized** Easily manage your SEO metadata with a repeatable field and use our Media Library to add captions, notes, and custom filenames to optimize the SEO of media assets.<br /><br />
+```bash
+cd next
+yarn install
+yarn build
+yarn start
+```
 
-### Global
+Ou pour le mode développement :
 
-<br />
+```bash
+yarn dev
+```
 
-[Customizable API](https://strapi.io/features/customizable-api): Automatically build out the schema, models, controllers for your API from the editor. Get REST or GraphQL API out of the box without writing a single line of code.<br />
-[Media Library](https://strapi.io/features/media-library): The media library allows you to store your images, videos and files in your Strapi admin panel with many ways to visualize and manage them.<br />
-[Role-Based Access Control (RBAC)](https://strapi.io/features/custom-roles-and-permissions): Role-Based Access Control is a feature available in the Administration Panel settings that let your team members have access rights only to the information they need.<br />
-[Internationalization (i18n)](https://strapi.io/features/internationalization): Internationalization (i18n) lets you create many content versions, also called locales, in different languages and for different countries.<br />
-[Audit Logs](https://strapi.io/blog/reasons-and-best-practices-for-using-audit-logs-in-your-application)The Audit Logs section provides a searchable and filterable display of all activities performed by users of the Strapi application<br />
-[Data transfer](https://strapi.io/blog/importing-exporting-and-transferring-data-with-the-strapi-cli) Streams your data from one Strapi instance to another Strapi instance.<br />
-[Review Worfklows](https://docs.strapi.io/user-docs/settings/review-workflows) Create and manage any desired review stages for your content, enabling your team to collaborate in the content creation flow from draft to publication. <br />
+Le site sera accessible sur [http://localhost:3000](http://localhost:3000)
 
-## Resources
+## 📚 Fonctionnalités
 
-[Docs](https://docs.strapi.io) • [Demo](https://strapi.io/demo) • [Forum](https://forum.strapi.io/) • [Discord](https://discord.strapi.io) • [Youtube](https://www.youtube.com/c/Strapi/featured) • [Strapi Design System](https://design-system.strapi.io/) • [Marketplace](https://market.strapi.io/) • [Cloud Free Trial](https://cloud.strapi.io)
+### Côté Utilisateur
 
-## Todo
+* **Éditeur intuitif et minimaliste** : Créez du contenu avec des blocs dynamiques
+* **Bibliothèque média** : Téléchargez et optimisez vos images et vidéos
+* **Gestion de contenu flexible** : Adaptez la structure selon vos besoins
+* **Tri et filtrage** : Gérez facilement des milliers d'entrées
+* **Interface conviviale** : L'une des interfaces open-source les plus faciles à utiliser
+* **Optimisé SEO** : Gérez vos métadonnées SEO simplement
 
-- [ ] Implement the official Strapi SEO plugin
-- [ ] Implement the community Strapi preview plugin
-- [ ] Create localized content for the pricing plans and products
-- [ ] Populate creator fields when it'll work on Strapi 5 (article authors information are missing)
+### Fonctionnalités Globales
 
-## Customization
+* **API personnalisable** : REST ou GraphQL générées automatiquement
+* **Bibliothèque média avancée** : Stockage et gestion optimisés
+* **Contrôle d'accès basé sur les rôles (RBAC)** : Droits d'accès granulaires
+* **Internationalisation (i18n)** : Gestion multilingue du contenu
+* **Journaux d'audit** : Traçabilité de toutes les actions
+* **Transfert de données** : Import/export entre instances Strapi
+* **Workflow de révision** : Collaboration sur le cycle de vie du contenu
 
-- The Strapi application contains a custom population middlewares in every api route.
+## 🛠️ Scripts disponibles
 
-- The Strapi application contains a postinstall script that will regenerate an uuid for the project in order to get some anonymous usage information concerning this demo. You can disable it by removing the uuid inside the `./strapi/packages.json` file.
+### Strapi
 
-- The Strapi application contains a patch for the @strapi/admin package. It is only necessary for the hosted demos since we automatically create the Super Admin users for them when they request this demo on our website.
+```bash
+yarn develop       # Démarrer en mode développement
+yarn start        # Démarrer en mode production
+yarn build        # Construire le projet
+yarn seed         # Importer les données de démonstration
+```
+
+### Next.js
+
+```bash
+yarn dev          # Démarrer en mode développement
+yarn build        # Construire pour la production
+yarn start        # Démarrer en mode production
+yarn lint         # Vérifier le code
+```
+
+## 🔧 Dépannage
+
+### Erreur "droit refusé pour le schéma public"
+
+Si vous rencontrez cette erreur lors de l'exécution de `yarn seed`, c'est que l'utilisateur PostgreSQL n'a pas les droits nécessaires. Exécutez les commandes suivantes :
+
+```bash
+psql -U postgres -d strapi
+
+GRANT ALL ON SCHEMA public TO strapi;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO strapi;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO strapi;
+
+\q
+```
+
+### Erreur de connexion à PostgreSQL
+
+Vérifiez que :
+1. PostgreSQL est bien démarré sur votre machine
+2. Les identifiants dans `.env` correspondent à ceux configurés
+3. La base de données `strapi` existe bien
+4. L'utilisateur `strapi` a les droits nécessaires
+
+## 📖 Documentation
+
+* [Documentation Strapi](https://docs.strapi.io)
+* [Documentation Next.js](https://nextjs.org/docs)
+* [Forum Strapi](https://forum.strapi.io/)
+* [Discord Strapi](https://discord.strapi.io)
+
+## 🌐 Déploiement
+
+Consultez les guides de déploiement dans le dépôt :
+* `wx-deployment-docker-guide.md` - Déploiement avec Docker
+* `wx-fork-launchpad-guide.md` - Guide du fork LaunchPad
+* `wx-dev-best-practices.md` - Bonnes pratiques de développement
+
+## 📝 Personnalisations
+
+Ce projet contient plusieurs personnalisations par rapport au LaunchPad original :
+
+* Configuration PostgreSQL optimisée pour la production
+* Middlewares de population personnalisés dans les routes API
+* Script postinstall pour la gestion des UUID
+* Support natif de PostgreSQL au lieu de SQLite
+
+## 📄 Licence
+
+MIT
+
+## 👥 À propos
+
+Développé par **Webtinix** - [Site web](https://webtinix.com)
+
+Basé sur [Strapi LaunchPad](https://github.com/strapi/LaunchPad)
