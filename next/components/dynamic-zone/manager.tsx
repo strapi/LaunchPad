@@ -121,6 +121,9 @@ const componentMapping: { [key: string]: any } = {
   'form.contact-form': dynamic(() =>
     import('./form/contact-form').then((mod) => mod.ContactForm)
   ),
+  'zone-data.zone-realisation': dynamic(() =>
+    import('./data/zone-data').then((mod) => mod.DatatListZone)
+  ),
 };
 
 const DynamicZoneManager: React.FC<Props> = ({ dynamicZone, locale }) => {
