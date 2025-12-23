@@ -47,7 +47,7 @@ export function OurValues({ heading, values_items }: OurValuesProps) {
                     <div className="absolute inset-0 w-[1px] bg-gray-200 left-1/2 -translate-x-1/2"></div>
 
                     <div
-                        className="absolute w-[6px] h-12 bg-black rounded-full transition-all duration-75 ease-out"
+                        className="absolute w-[6px] h-12 bg-black dark:bg-white rounded-full transition-all duration-75 ease-out"
                         style={{
                             top: `${scrollProgress}%`,
                             transform: `translateY(-${scrollProgress}%) translateX(-50%)`,
@@ -69,7 +69,7 @@ export function OurValues({ heading, values_items }: OurValuesProps) {
                     {values_items.map((item, index) => (
                         <div
                             key={index}
-                            className="bg-[#f2f2f2] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start shrink-0 h-auto w-[95%]"
+                            className="bg-[#f2f2f2] dark:bg-gray-900 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-start shrink-0 h-auto w-[95%]"
                         >
                             <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-full flex items-center justify-center">
                                 <Image

@@ -111,7 +111,7 @@ export function OurTrust({
                                     </div>
                                 </div>
 
-                                <Typography className="text-[12px] leading-snug italic">
+                                <Typography className="text-black text-[12px] leading-snug italic">
                                     {el.description}
                                 </Typography>
 

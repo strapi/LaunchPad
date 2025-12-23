@@ -81,7 +81,9 @@
         "sections.carousel-avis-client",
         "sections.avis-clients",
         "sections.our-services-have",
-        "sections.our-vision-of-developpement"
+        "sections.our-vision-of-developpement",
+        "sections.most-asked-question",
+        "shared.etude-de-cas"
       ]
     }
   }

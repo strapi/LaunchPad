@@ -78,6 +78,20 @@ const populate = {
           }
         }
       },
+      'sections.most-asked-question': {
+        populate: {
+          faqs: {
+            populate: '*'
+          }
+        }
+      },
+      'shared.etude-de-cas': {
+        populate: {
+          solition_appporter_resultat: {
+            populate: '*'
+          }
+        }
+      },
       'sections.team-first-section': {
         populate: {
           image: true

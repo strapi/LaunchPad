@@ -109,6 +109,12 @@ const componentMapping: { [key: string]: any } = {
   'sections.our-vision-of-developpement': dynamic(() =>
     import('./our-vision-of-developpement').then((mod) => mod.OurVisionOfDeveloppement)
   ),
+  'sections.most-asked-question': dynamic(() =>
+    import('./most-asked-question').then((mod) => mod.MostAskedQuestion)
+  ),
+  'shared.etude-de-cas': dynamic(() =>
+    import('./etude-de-cas').then((mod) => mod.EtudeDeCas)
+  ),
   'sections.booste-activity': dynamic(() =>
     import('./expertise-section').then((mod) => mod.ExpertiseSection)
   ),
