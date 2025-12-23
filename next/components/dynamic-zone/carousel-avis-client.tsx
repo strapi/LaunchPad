@@ -4,12 +4,12 @@ import Image from "next/image";
 import {
     Carousel,
     CarouselContent,
+    CarouselIndicator,
     CarouselItem
 } from "@/components/ui/carousel";
 import { strapiImage } from "@/lib/strapi/strapiImage";
 import { Typography } from "../ui/typography";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
-import { Quote } from "lucide-react"; // Optionnel : pour l'icône de guillemet
 
 export interface CarouselAvisClientProps {
     avis_clients: AvisClient[];
@@ -47,19 +47,19 @@ export interface OptionProjet {
 
 export function CarouselAvisClient({ avis_clients }: CarouselAvisClientProps) {
     return (
-        <section className="w-full bg-[#f9f9f9] py-20">
-            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+        <section className="w-full py-20">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-24">
                 <Carousel
                     opts={{
                         align: "start",
                         loop: true,
                     }}
-                    className="w-full"
+                    className="w-full p-8"
                 >
                     <CarouselContent>
                         {avis_clients.map((el, index) => (
                             <CarouselItem key={index}>
-                                <div className="bg-white rounded-sm p-8 md:p-12 flex flex-col md:flex-row gap-10 md:gap-16 items-center shadow-sm">
+                                <div className=" p-8 md:p-12 flex flex-col md:flex-row gap-10 md:gap-16 items-center shadow-sm">
 
                                     {/* --- IMAGE CLIENT --- */}
                                     <div className="relative w-full max-w-[320px] aspect-square shrink-0 overflow-hidden rounded-sm">
@@ -74,16 +74,14 @@ export function CarouselAvisClient({ avis_clients }: CarouselAvisClientProps) {
                                     {/* --- CONTENU --- */}
                                     <div className="flex flex-col flex-1 space-y-6">
                                         {/* Icône Guillemet */}
-                                        <div className="bg-black rounded-full w-10 h-10 flex items-center justify-center">
-                                            <span className="text-white text-2xl font-serif">“</span>
-                                        </div>
+                                        <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/quote.png" alt="quote" />
 
                                         {/* Texte de l'avis */}
                                         <div className="prose prose-sm md:prose-base text-gray-700 leading-relaxed max-w-2xl">
                                             <BlocksRenderer
-                                                content={el.description}
+                                                content={el.description as any}
                                                 modifiers={{
-                                                    bold: ({ children }) => <strong className="text-orange-600 font-bold">{children}</strong>
+                                                    bold: ({ children }) => <strong className="text-secondary font-bold">{children}</strong>
                                                 }}
                                             />
                                         </div>
@@ -124,13 +122,7 @@ export function CarouselAvisClient({ avis_clients }: CarouselAvisClientProps) {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-
-                    {/* Indicateurs de pagination (dots) au centre en bas */}
-                    <div className="flex justify-center gap-2 mt-10">
-                        {avis_clients.map((_, i) => (
-                            <div key={i} className={`h-1.5 rounded-full transition-all ${i === 0 ? 'w-6 bg-gray-800' : 'w-1.5 bg-gray-300'}`} />
-                        ))}
-                    </div>
+                    <CarouselIndicator />
                 </Carousel>
             </div>
         </section>
