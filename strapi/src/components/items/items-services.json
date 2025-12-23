@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_items_items_services",
+  "info": {
+    "displayName": "items_services"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

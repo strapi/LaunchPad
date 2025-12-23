@@ -54,8 +54,20 @@ const componentMapping: { [key: string]: any } = {
   'sections.section-image': dynamic(() =>
     import('./sections/section-image').then((mod) => mod.SectionImage)
   ),
+  'sections.who-are-we': dynamic(() =>
+    import('./who-are-we').then((mod) => mod.Who_are_we)
+  ),
   'sections.our-vision': dynamic(() =>
     import('./our-vision-section').then((mod) => mod.OurVisionSection)
+  ),
+  'sections.team-first-section': dynamic(() =>
+    import('./team-first-section').then((mod) => mod.TeamFirstSection)
+  ),
+  'sections.our-trust': dynamic(() =>
+    import('./our-trust').then((mod) => mod.OurTrust)
+  ),
+  'sections.our-values': dynamic(() =>
+    import('./our-values').then((mod) => mod.OurValues)
   ),
   'sections.team-members': dynamic(() =>
     import('./team-member').then((mod) => mod.ThemeMember)
@@ -88,6 +100,27 @@ const componentMapping: { [key: string]: any } = {
   ),
   'dynamic-zone.see-realization': dynamic(() =>
     import('./see-realization').then((mod) => mod.SeeRealization)
+  ),
+  'sections.carousel-avis-client': dynamic(() =>
+    import('./carousel-avis-client').then((mod) => mod.CarouselAvisClient)
+  ),
+  'sections.avis-clients': dynamic(() =>
+    import('./avis-clients').then((mod) => mod.AvisClients)
+  ),
+  'sections.our-services-have': dynamic(() =>
+    import('./our-services-have').then((mod) => mod.OurServicesHave)
+  ),
+  'sections.our-vision-of-developpement': dynamic(() =>
+    import('./our-vision-of-developpement').then((mod) => mod.OurVisionOfDeveloppement)
+  ),
+  'sections.most-asked-question': dynamic(() =>
+    import('./most-asked-question').then((mod) => mod.MostAskedQuestion)
+  ),
+  'shared.etude-de-cas': dynamic(() =>
+    import('./etude-de-cas').then((mod) => mod.EtudeDeCas)
+  ),
+  'shared.features-and-capacity': dynamic(() =>
+    import('./features-and-capacity').then((mod) => mod.FeaturesAndCapacity)
   ),
   'sections.booste-activity': dynamic(() =>
     import('./expertise-section').then((mod) => mod.ExpertiseSection)

@@ -31,6 +31,93 @@ const populate = {
           }
         },
       },
+      'sections.our-values': {
+        populate: {
+          values_items: {
+            populate: {
+              logo: true
+            }
+          }
+        }
+      },
+      'sections.avis-clients': {
+        populate: {
+          avis_clients: {
+            populate: {
+              client_photo: true,
+              option_projet: {
+                populate: '*'
+              },
+            }
+          }
+        }
+      },
+      'sections.our-services-have': {
+        populate: {
+          services_have_items: {
+            populate: {
+              items_services: true
+            }
+          }
+        }
+      },
+      'sections.our-vision-of-developpement': {
+        populate: {
+          image: true
+        }
+      },
+      'sections.carousel-avis-client': {
+        populate: {
+          avis_clients: {
+            populate: {
+              client_photo: true,
+              option_projet: {
+                populate: '*'
+              },
+            }
+          }
+        }
+      },
+      'sections.most-asked-question': {
+        populate: {
+          faqs: {
+            populate: '*'
+          }
+        }
+      },
+      'shared.etude-de-cas': {
+        populate: {
+          solition_appporter_resultat: {
+            populate: '*'
+          }
+        }
+      },
+      'shared.features-and-capacity': {
+        populate: {
+          features_items: {
+            populate: {
+              image: true
+            }
+          }
+        }
+      },
+      'sections.team-first-section': {
+        populate: {
+          image: true
+        }
+      },
+      'sections.our-trust': {
+        populate: {
+          our_trust_items: {
+            populate: {
+              image: true,
+              client_photo: true,
+              button: '*',
+              entreprise_logo: true
+            }
+          }
+        }
+      },
       'sections.section-projet-home': {
         populate: {
           projets: {
@@ -47,6 +134,12 @@ const populate = {
           },
           cta :true,
         },
+      },
+      'sections.who-are-we': {
+        populate: {
+          images: true,
+          three_words: true
+        }
       },
       'sections.our-vision': {
         populate: {
