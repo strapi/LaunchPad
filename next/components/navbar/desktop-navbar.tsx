@@ -96,20 +96,20 @@ export const DesktopNavbar = ({
           })}
         >
           <div className="flex gap-17 items-center text-center px-20 text-black">
-            <Typography className="text-sm">{upNavbarItems.heading}</Typography>
-            <span className="flex gap-1 text-sm">
+            <Typography variant="muted">{upNavbarItems.heading}</Typography>
+            <Typography variant="muted" className="flex gap-1 text-sm">
              
               {upNavbarItems.icon?.image?.url && (
                 <BlurImage
                   src={strapiImage(upNavbarItems.icon?.image?.url)}
                   alt={upNavbarItems.icon.image?.alternativeText || ''}
-                  width={18}
-                  height={18}
+                  width={19}
+                  height={19}
                   className=""
                 />
               )}
               {upNavbarItems.sub_heading}
-            </span>
+            </Typography>
           </div>
 
           <div className="flex items-center gap-3 text-black px-27">

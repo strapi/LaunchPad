@@ -29,14 +29,14 @@ export function ServiceCard({
       <div className="pt-4 md:pt-8">
         <Typography
           variant="h2"
-          className="text-primary font-bold text-start text-2xl md:text-3xl lg:text-4xl"
+          className="text-primary font-bold text-start"
         >
           {heading}
         </Typography>
 
         <Typography
           variant="p"
-          className="text-base md:text-lg font-normal text-start max-w-xl md:max-w-2xl lg:max-w-3xl mt-2"
+          className="font-normal text-start max-w-xl md:max-w-2xl lg:max-w-3xl mt-2"
         >
           {sub_heading}
         </Typography>
@@ -78,7 +78,7 @@ function CardService({
       <div className="self-start w-full">
         <Typography
           variant="h3"
-          className="text-start text-lg md:text-xl lg:text-2xl"
+          className="text-start"
         >
           {title}
         </Typography>

@@ -126,3 +126,13 @@ export interface SectionTeamMembersAPropos {
   sub_heading: string;
   team_members: TeamMember[];
 }
+
+export interface SectionTestimonyLeurAvis {
+  cta: ButtonComponent;
+  heading: string;
+  sub_heading: string;
+  stats: {
+    titre: string;
+    description: string;
+  }[]
+}
