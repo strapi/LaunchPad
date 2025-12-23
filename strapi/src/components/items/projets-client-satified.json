@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_items_projets_client_satifieds",
+  "info": {
+    "displayName": "projets-client-satified"
+  },
+  "options": {},
+  "attributes": {
+    "total": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

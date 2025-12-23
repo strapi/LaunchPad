@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_items_vision_detailleds",
+  "info": {
+    "displayName": "vision-detailled"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "projet_client_satified": {
+      "type": "component",
+      "component": "items.projets-client-satified",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
