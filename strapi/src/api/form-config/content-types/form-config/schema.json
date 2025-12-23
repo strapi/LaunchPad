@@ -10,65 +10,31 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-    "i18n": {
-      "localized": true
-    }
-  },
+  "pluginOptions": {},
   "attributes": {
     "formName": {
       "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "maxLength": 100,
       "required": true,
       "unique": true
     },
     "title": {
       "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": true
+      "required": false
     },
     "description": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      "type": "text"
     },
     "submitButtonText": {
       "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "default": "Envoyer"
     },
     "successMessage": {
       "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "default": "Formulaire envoyé avec succès !"
     },
     "errorMessage": {
       "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "default": "Erreur lors de l'envoi du formulaire"
     },
     "vtigerEndpoint": {
@@ -77,8 +43,11 @@
     },
     "vtigerModuleType": {
       "type": "enumeration",
-      "enum": ["Leads", "Contacts"],
-      "default": "Leads"
+      "default": "Leads",
+      "enum": [
+        "Leads",
+        "Contacts"
+      ]
     },
     "vtigerMapping": {
       "type": "json",

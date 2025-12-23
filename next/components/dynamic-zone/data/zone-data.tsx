@@ -8,6 +8,7 @@ import { strapiImage } from '@/lib/strapi/strapiImage';
 import { Typography } from '../../ui/typography';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
 
 interface Props {
     collection: string;
@@ -94,17 +95,17 @@ const ItemProject = ({ projet, index }: { projet: Projet, index: number }) => {
                 {/* Tags/Categories */}
                 <div className='flex flex-wrap gap-2'>
                     {['UX Research', 'UI Design', 'Developpement', 'Mobile'].slice(0, isLarge ? 4 : 3).map((tag, i) => (
-                        <span
+                        <Badge
                             key={i}
-                            className='px-4 py-1.5 text-xs font-medium bg-gray-100 text-gray-700 rounded-full border border-gray-200 hover:bg-gray-200 transition-colors'
+                            className='px-4 py-1.5 text-xs font-medium bg-tertiare text-gray-700 border border-gray-200 hover:bg-gray-200 transition-colors'
                         >
                             {tag}
-                        </span>
+                        </Badge>
                     ))}
                 </div>
 
                 {/* Séparateur */}
-                <div className='w-full h-px bg-black' />
+                <div className='w-full h-px bg-black/80' />
 
                 {/* Bouton */}
                 <Button
