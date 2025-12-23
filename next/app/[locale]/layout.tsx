@@ -54,6 +54,13 @@ export default async function LocaleLayout(props: {
             // inter.className,
             'antialiased h-full w-full'
           )}
+          style={{
+            backgroundImage: 'url(/bg.webp)',
+            backgroundAttachment: 'fixed',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+          }}
         >
           {/* Navbar full width */}
           <Navbar data={pageData?.navbar} locale={locale} />
@@ -79,6 +86,6 @@ export default async function LocaleLayout(props: {
           {isDraftMode && <DraftModeBanner />} */}
         </div>
       </CartProvider>
-    </ViewTransitions>
+    </ViewTransitions >
   );
 }
