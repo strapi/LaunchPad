@@ -61,6 +61,11 @@ const populate = {
           }
         }
       },
+      'sections.our-vision-of-developpement': {
+        populate: {
+          image: true
+        }
+      },
       'sections.carousel-avis-client': {
         populate: {
           avis_clients: {
