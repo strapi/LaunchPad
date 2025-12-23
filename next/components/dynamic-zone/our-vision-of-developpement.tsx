@@ -32,7 +32,7 @@ export function OurVisionOfDeveloppement({ heading, sub_heading, image }: OurVis
                         alt={heading}
                         fill
                         priority
-                        className="object-cover"
+                        className="object-cover object-center"
                     />
                 </div>
             </div>
