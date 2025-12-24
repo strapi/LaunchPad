@@ -50,10 +50,10 @@ export function CarouselAvisClient({ avis_clients }: CarouselAvisClientProps) {
         <section className="w-full py-20">
             <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-24">
                 <Carousel
-                    opts={{
-                        align: "start",
-                        loop: true,
-                    }}
+                    // opts={{
+                    //     align: "start",
+                    //     loop: true,
+                    // }}
                     className="w-full p-8"
                 >
                     <CarouselContent>
