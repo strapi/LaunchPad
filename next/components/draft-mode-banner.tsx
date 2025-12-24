@@ -28,7 +28,7 @@ export function DraftModeBanner() {
       <button
         onClick={handleExitDraft}
         disabled={isExiting}
-        className="bg-black text-white px-4 py-1 rounded text-sm font-medium hover:bg-gray-800 disabled:opacity-50 transition-colors"
+        className="bg-black text-white px-4 py-1 rounded-sm text-sm font-medium hover:bg-gray-800 disabled:opacity-50 transition-colors"
       >
         {isExiting ? 'Exiting...' : 'Exit Draft'}
       </button>

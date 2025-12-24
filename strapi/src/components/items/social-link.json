@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_items_social_links",
+  "info": {
+    "displayName": "social_link"
+  },
+  "options": {},
+  "attributes": {
+    "social_link_items": {
+      "type": "component",
+      "component": "items.social-link-items",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

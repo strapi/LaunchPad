@@ -17,8 +17,8 @@ export const TestimonialsMarquee = ({
   return (
     <div className="max-w-7xl mx-auto">
       <div className="flex h-full relative">
-        <div className="h-full absolute w-20 left-0 inset-y-0 z-30 bg-gradient-to-r from-charcoal to-transparent" />
-        <div className="h-full absolute w-20 right-0 inset-y-0 z-30 bg-gradient-to-l from-charcoal to-transparent" />
+        <div className="h-full absolute w-20 left-0 inset-y-0 z-30 bg-linear-to-r from-charcoal to-transparent" />
+        <div className="h-full absolute w-20 right-0 inset-y-0 z-30 bg-linear-to-l from-charcoal to-transparent" />
         <Marquee>
           {levelOne.map((testimonial: any, index: any) => (
             <Card
@@ -48,8 +48,8 @@ export const TestimonialsMarquee = ({
         </Marquee>
       </div>
       <div className="flex h-full relative mt-8">
-        <div className="h-full absolute w-20 left-0 inset-y-0 z-30 bg-gradient-to-r from-charcoal to-transparent" />
-        <div className="h-full absolute w-20 right-0 inset-y-0 z-30 bg-gradient-to-l from-charcoal to-transparent" />
+        <div className="h-full absolute w-20 left-0 inset-y-0 z-30 bg-linear-to-r from-charcoal to-transparent" />
+        <div className="h-full absolute w-20 right-0 inset-y-0 z-30 bg-linear-to-l from-charcoal to-transparent" />
         <Marquee direction="right" speed={20}>
           {levelTwo.map((testimonial: any, index: any) => (
             <Card

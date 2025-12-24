@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_our_vision_of_developpements",
+  "info": {
+    "displayName": "our_vision_of_developpement"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

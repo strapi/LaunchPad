@@ -18,31 +18,31 @@
   "attributes": {
     "seo": {
       "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "repeatable": false
     },
     "slug": {
+      "type": "uid",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "uid",
-      "default": "slug",
-      "required": true
+      "required": true,
+      "default": "slug"
     },
     "dynamic_zone": {
+      "type": "dynamiczone",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "dynamiczone",
       "components": [
         "dynamic-zone.hero",
         "dynamic-zone.features",
@@ -53,7 +53,40 @@
         "dynamic-zone.launches",
         "dynamic-zone.cta",
         "dynamic-zone.form-next-to-section",
-        "dynamic-zone.faq"
+        "dynamic-zone.faq",
+        "sections.section-service",
+        "sections.section-projet-home",
+        "sections.notre-equipe-home",
+        "sections.service-card",
+        "sections.booste-activity",
+        "sections.client-satified",
+        "sections.trusted-client",
+        "sections.technologies-home",
+        "sections.section-title-content-image",
+        "sections.section-image",
+        "dynamic-zone.see-realization",
+        "sections.cas-etude",
+        "items.cas-etude-header",
+        "form.contact-form",
+        "items.images-grid",
+        "sections.team-members",
+        "sections.a-propos-de-nous",
+        "sections.nos-valeurs-a-propos",
+        "sections.team-members-apropos",
+        "sections.our-vision",
+        "sections.who-are-we",
+        "sections.our-values",
+        "sections.team-first-section",
+        "sections.our-trust",
+        "sections.carousel-avis-client",
+        "sections.avis-clients",
+        "sections.our-services-have",
+        "sections.our-vision-of-developpement",
+        "sections.most-asked-question",
+        "shared.etude-de-cas",
+        "shared.features-and-capacity",
+        "sections.testimony-leur-avis",
+        "zone-data.zone-realisation"
       ]
     }
   }

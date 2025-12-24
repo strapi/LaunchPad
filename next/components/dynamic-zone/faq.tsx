@@ -27,7 +27,7 @@ export const FAQ = ({
         {faqs &&
           faqs.map((faq: { question: string; answer: string }) => (
             <div key={faq.question}>
-              <h4 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-400">
+              <h4 className="text-lg font-bold bg-clip-text text-transparent bg-linear-to-b from-white to-neutral-400">
                 {faq.question}
               </h4>
               <p className="mt-4 text-neutral-400">{faq.answer}</p>

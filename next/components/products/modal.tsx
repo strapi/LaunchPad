@@ -64,7 +64,7 @@ export default function AddToCartModal({ onClick }: { onClick: () => void }) {
                     }}
                     min="1"
                     step="1"
-                    className="w-16 p-2 h-full rounded-md focus:outline-none bg-neutral-50 border border-neutral-100 focus:bg-neutral-100 text-black mr-4"
+                    className="w-16 p-2 h-full rounded-md focus:outline-hidden bg-neutral-50 border border-neutral-100 focus:bg-neutral-100 text-black mr-4"
                     style={{
                       WebkitAppearance: 'none',
                       MozAppearance: 'textfield',

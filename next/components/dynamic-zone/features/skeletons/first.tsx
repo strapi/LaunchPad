@@ -411,7 +411,7 @@ export function SkeletonOne() {
   return (
     <div className="relative w-full h-full">
       <div className="flex flex-col gap-4 items-center justify-center h-full relative">
-        <div className="flex gap-4 items-center justify-center flex-shrink-0 opacity-40">
+        <div className="flex gap-4 items-center justify-center shrink-0 opacity-40">
           <IconContainer>
             <InstagramIcon />
           </IconContainer>
@@ -437,7 +437,7 @@ export function SkeletonOne() {
             <InstagramIcon />
           </IconContainer>
         </div>
-        <div className="flex gap-4 items-center justify-center flex-shrink-0 ml-8 opacity-40">
+        <div className="flex gap-4 items-center justify-center shrink-0 ml-8 opacity-40">
           <IconContainer>
             <MetaIcon />
           </IconContainer>

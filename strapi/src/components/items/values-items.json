@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_items_values_items",
+  "info": {
+    "displayName": "values-items"
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

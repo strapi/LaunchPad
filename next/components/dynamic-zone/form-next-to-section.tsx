@@ -7,7 +7,7 @@ import {
 } from '@tabler/icons-react';
 import Link from 'next/link';
 
-import { Button } from '../elements/button';
+import { Button as ElementButton } from '../elements/button';
 import ShootingStars from '@/components/decorations/shooting-star';
 import StarBackground from '@/components/decorations/star-background';
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
@@ -81,20 +81,20 @@ export function FormNextToSection({
                             rows={5}
                             id="message"
                             placeholder={input.placeholder}
-                            className="block w-full bg-neutral-900  px-4 rounded-md border-0 py-1.5  shadow-aceternity text-neutral-100 placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 "
+                            className="block w-full bg-neutral-900  px-4 rounded-md border-0 py-1.5  shadow-aceternity text-neutral-100 placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-hidden sm:text-sm sm:leading-6 "
                           />
                         ) : input.type === 'submit' ? (
                           <div>
-                            <Button className="w-full mt-6">
+                            <ElementButton className="w-full mt-6">
                               {input.name}
-                            </Button>
+                            </ElementButton>
                           </div>
                         ) : (
                           <input
                             id="name"
                             type={input.type}
                             placeholder={input.placeholder}
-                            className="block w-full bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-neutral-100 placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 "
+                            className="block w-full bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-neutral-100 placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-hidden sm:text-sm sm:leading-6 "
                           />
                         )}
                       </div>

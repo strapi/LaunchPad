@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_sections_who_are_wes",
+  "info": {
+    "displayName": "who-are-we"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "text"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "background_color": {
+      "type": "string"
+    },
+    "three_words": {
+      "type": "component",
+      "component": "items.three-words",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,54 @@
+{
+  "collectionName": "components_items_our_trust_items",
+  "info": {
+    "displayName": "our-trust-items"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "client_name": {
+      "type": "string"
+    },
+    "client_post": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "client_photo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "button": {
+      "type": "component",
+      "component": "shared.button",
+      "repeatable": true
+    },
+    "entreprise_logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_our_values",
+  "info": {
+    "displayName": "our-values"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "values_items": {
+      "type": "component",
+      "component": "items.values-items",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

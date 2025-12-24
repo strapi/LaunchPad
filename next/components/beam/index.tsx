@@ -58,7 +58,7 @@ const Beam = ({
       <span
         ref={meteorRef}
         className={cn(
-          'absolute z-[40] -top-4  h-[0.1rem] w-[0.1rem] rounded-[9999px] bg-blue-700 shadow-[0_0_0_1px_#ffffff10] rotate-[180deg]',
+          'absolute z-40 -top-4  h-[0.1rem] w-[0.1rem] rounded-[9999px] bg-blue-700 shadow-[0_0_0_1px_#ffffff10] rotate-180',
           styles.meteor,
           className
         )}

@@ -7,7 +7,7 @@ import {
 import React from 'react';
 
 import { Container } from './container';
-import { Button } from './elements/button';
+import { Button as ElementButton } from './elements/button';
 import { Logo } from './logo';
 
 export const Register = () => {
@@ -22,16 +22,16 @@ export const Register = () => {
         <input
           type="email"
           placeholder="Email Address"
-          className="h-10 pl-4 w-full mb-4 rounded-md text-sm bg-charcoal border border-neutral-800 text-white placeholder-neutral-500 outline-none focus:outline-none active:outline-none focus:ring-2 focus:ring-neutral-800"
+          className="h-10 pl-4 w-full mb-4 rounded-md text-sm bg-background border border-neutral-800 text-white placeholder-neutral-500 outline-hidden focus:outline-hidden active:outline-hidden focus:ring-2 focus:ring-neutral-800"
         />
         <input
           type="password"
           placeholder="Password"
-          className="h-10 pl-4 w-full mb-4 rounded-md text-sm bg-charcoal border border-neutral-800 text-white placeholder-neutral-500 outline-none focus:outline-none active:outline-none focus:ring-2 focus:ring-neutral-800"
+          className="h-10 pl-4 w-full mb-4 rounded-md text-sm bg-background border border-neutral-800 text-white placeholder-neutral-500 outline-hidden focus:outline-hidden active:outline-hidden focus:ring-2 focus:ring-neutral-800"
         />
-        <Button variant="muted" type="submit" className="w-full py-3">
+        <ElementButton variant="muted" type="submit" className="w-full py-3">
           <span className="text-sm">Sign up</span>
-        </Button>
+        </ElementButton>
       </form>
 
       <Divider />

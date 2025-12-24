@@ -18,7 +18,7 @@ export async function generateMetadata(props: {
     },
   });
 
-  const seo = pageData.seo;
+  const seo = pageData?.seo || {};
   const metadata = generateMetadataObject(seo);
   return metadata;
 }
@@ -36,13 +36,14 @@ export default async function Page(props: {
     },
   });
 
-  const localizedSlugs = pageData.localizations?.reduce(
+  const localizedSlugs = pageData?.localizations?.reduce(
     (acc: Record<string, string>, localization: any) => {
       acc[localization.locale] = localization.slug;
       return acc;
     },
     { [params.locale]: params.slug }
   );
+  // console.log(pageData);
 
   return (
     <>

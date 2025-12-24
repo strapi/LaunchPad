@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_sections_cas_etudes",
+  "info": {
+    "displayName": "cas_etude",
+    "icon": "eye"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "text"
+    },
+    "problematique": {
+      "type": "component",
+      "component": "zones.problematique",
+      "repeatable": false
+    },
+    "challenge": {
+      "type": "component",
+      "component": "zones.problematique",
+      "repeatable": false
+    },
+    "solution": {
+      "type": "component",
+      "component": "zones.problematique",
+      "repeatable": false
+    },
+    "solution_name": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

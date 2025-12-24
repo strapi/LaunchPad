@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_most_asked_questions",
+  "info": {
+    "displayName": "most_asked_question"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "text"
+    },
+    "faqs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::faq.faq"
+    }
+  },
+  "config": {}
+}

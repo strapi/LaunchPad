@@ -114,3 +114,4 @@ export async function fetchDocument<T = API.Document>(
     );
   }
 }
+

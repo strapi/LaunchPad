@@ -5,7 +5,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-Icon
+# Icon (commented out because it was blocking src/api/icon folder)
 .Spotlight-V100
 .Trashes
 ._*
@@ -128,3 +128,7 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
+.seed-completed
+yarn.lock
+types/generated/
+public/uploads*

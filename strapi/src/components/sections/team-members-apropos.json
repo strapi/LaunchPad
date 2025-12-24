@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_team_members_apropos",
+  "info": {
+    "displayName": "team_members_apropos"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    },
+    "link": {
+      "type": "component",
+      "component": "shared.link",
+      "repeatable": false
+    },
+    "team_members": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::team-member.team-member"
+    }
+  },
+  "config": {}
+}

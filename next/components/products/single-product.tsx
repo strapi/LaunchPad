@@ -18,7 +18,7 @@ export const SingleProduct = ({ product }: { product: Product }) => {
   const { addToCart } = useCart();
 
   return (
-    <div className="bg-gradient-to-b from-neutral-900 to-neutral-950  p-4 md:p-10 rounded-md">
+    <div className="bg-linear-to-b from-neutral-900 to-neutral-950  p-4 md:p-10 rounded-md">
       <div className=" grid grid-cols-1 md:grid-cols-2 gap-12">
         <div>
           {/* <AnimatePresence initial={false} mode="popLayout"> */}
@@ -130,8 +130,8 @@ const Divider = () => {
 const Step = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="flex items-start justify-start gap-2 my-4">
-      <div className="h-4 w-4 rounded-full bg-neutral-700 flex items-center justify-center flex-shrink-0 mt-0.5">
-        <IconCheck className="h-3 w-3 [stroke-width:4px] text-neutral-300" />
+      <div className="h-4 w-4 rounded-full bg-neutral-700 flex items-center justify-center shrink-0 mt-0.5">
+        <IconCheck className="h-3 w-3 stroke-[4px] text-neutral-300" />
       </div>
       <div className="font-medium text-white text-sm">{children}</div>
     </div>

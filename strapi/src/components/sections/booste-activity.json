@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_sections_booste_activities",
+  "info": {
+    "displayName": "booste_activity"
+  },
+  "options": {},
+  "attributes": {
+    "background": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "expertise": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::expertise.expertise"
+    }
+  },
+  "config": {}
+}

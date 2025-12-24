@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_cards_cards_apropos_nos_valeurs",
+  "info": {
+    "displayName": "cards_apropos_nos_valeurs"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

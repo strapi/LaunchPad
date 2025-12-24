@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_zone_data_zone_realisations",
+  "info": {
+    "displayName": "zone-realisation"
+  },
+  "options": {},
+  "attributes": {
+    "collection": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

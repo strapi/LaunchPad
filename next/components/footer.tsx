@@ -1,7 +1,15 @@
+import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { Link } from 'next-view-transitions';
 import React from 'react';
 
-import { Logo } from '@/components/logo';
+import { BlurImage } from './blur-image';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
+import { Typography } from './ui/typography';
+import { strapiImage } from '@/lib/strapi/strapiImage';
+import { cn } from '@/lib/utils';
+import ImgFooter from '@/public/rectangle.svg';
+import { LinkItem } from '@/types/utils';
 
 export const Footer = async ({
   data,
@@ -10,64 +18,108 @@ export const Footer = async ({
   data: any;
   locale: string;
 }) => {
+  // const bg_image = StrapiImage(data.background.url)
+
+  const bg_image = data.background?.url
+    ? strapiImage(data.background.url)
+    : null;
+
   return (
-    <div className="relative">
-      <div className="border-t border-neutral-900 px-8 pt-20 pb-32 relative bg-primary">
-        <div className="max-w-7xl mx-auto text-sm text-neutral-500 flex sm:flex-row flex-col justify-between items-start ">
+    <div
+      className="relative bg-cover bg-center"
+      style={{
+        backgroundImage: bg_image ? `url(${bg_image})` : 'none',
+      }}
+    >
+      <div className="border-t border-neutral-900 px-4 sm:px-8 pt-10 sm:pt-20 pb-4 relative">
+        <div className="max-w-6xl grid grid-cols-1 sm:grid-cols-3 mx-auto text-sm items-start justify-items-center text-white gap-8 sm:gap-0">
           <div>
-            <div className="mr-4  md:flex mb-4">
-              {data?.logo?.image && <Logo image={data?.logo?.image} />}
+            <div className="mr-4 md:flex mb-4">
+              {/* {data?.logo?.image && <Logo image={data?.logo?.image} />} */}
+              <Typography variant="h3">Webtinix</Typography>
             </div>
-            <div className="max-w-xs">{data?.description}</div>
-            <div className="mt-4">{data?.copyright}</div>
-            <div className="mt-10">
-              Designed and Developed by{' '}
-              <a className="text-white underline" href="https://aceternity.com">
-                Aceternity
-              </a>{' '}
-              &{' '}
-              <a className="text-white underline" href="https://strapi.io">
-                Strapi
-              </a>
+            <div className="max-w-xs text-center sm:text-left mx-auto sm:mx-0">{data?.description}</div>
+            <div className="flex flex-col justify-around mt-4">
+              <div className="flex flex-col gap-2">
+                <span className="text-center sm:text-left">Téléphone</span>
+                <Input className="rounded-none opacity-80 text-black"></Input>
+              </div>
+              <div className="flex flex-col gap-2 mt-4">
+                <span className="text-center sm:text-left">Email</span>
+                <Input className="rounded-none opacity-80 text-black"></Input>
+              </div>
+              <Button className="bg-[#0038A1] mt-4 w-full p-4 sm:w-4/5 sm:p-6 mx-auto sm:mx-0">
+                Contactez-nous
+              </Button>
             </div>
-            <div className="mt-2">
-              built with{' '}
-              <a className="text-white underline" href="https://strapi.io">
-                Strapi
-              </a>
-              ,{' '}
-              <a className="text-white underline" href="https://nextjs.org">
-                Next.js
-              </a>
-              ,{' '}
-              <a
-                className="text-white underline"
-                href="https://tailwindcss.com"
-              >
-                Tailwind CSS
-              </a>
-              ,{' '}
-              <a
-                className="text-white underline"
-                href="https://framer.com/motion"
-              >
-                Motion Animation Lib
-              </a>
-              , and{' '}
-              <a
-                className="text-white underline"
-                href="https://ui.aceternity.com"
-              >
-                Aceternity UI
-              </a>
-            </div>
+
+            {/* <div className="mt-4">{data?.copyright}</div> */}
           </div>
-          <div className="grid grid-cols-3 gap-10 items-start mt-10 md:mt-0">
+          {/* <div className=" gap-10 items-start mt-10 md:mt-0">
+          </div> */}
+          {/* BLOC 2 */}
+          <div className="text-center sm:text-left">
+            <Typography variant="h3">Navigation</Typography>
             <LinkSection links={data?.internal_links} locale={locale} />
+          </div>
+
+          {/* BLOC 3 */}
+          <div className="text-center sm:text-left">
+            <Typography variant="h3">Contact</Typography>
             <LinkSection links={data?.policy_links} locale={locale} />
-            <LinkSection links={data?.social_media_links} locale={locale} />
+
+            {data.contact && (
+              <div className="flex flex-col gap-4 mt-4">
+                <BlocksRenderer content={data.contact} />
+              </div>
+            )}
           </div>
         </div>
+        <div className="flex flex-col">
+          {/* RS */}
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center mt-10 sm:mt-28 mb-3">
+            <Typography className="text-sm">Suivez nous</Typography>
+            <div className="flex gap-4 text-muted">
+              {data?.social_media_links?.map((item: LinkItem) => (
+                <Link
+                  target={item.target}
+                  href={`${item.URL.startsWith('http') ? '' : `/${locale}`}${item.URL}`}
+                  key={item.id}
+                >
+                  {item.icon?.image?.url ? (
+                    <BlurImage
+                      src={strapiImage(item.icon.image.url)}
+                      alt={item.icon.image.alternativeText || ''}
+                      width={18}
+                      height={18}
+                      className=""
+                    />
+                  ) : (
+                    <>{item.text}</>
+                  )}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <hr className="border-t-3 border-dashed border-white" />
+          <Typography className="text-muted flex gap-1 items-center justify-center mt-6 text-center">
+            {data?.copyright}
+          </Typography>
+        </div>
+      </div>
+      {/* BLOC 1 */}
+      <div className="w-full text-center bg-white text-primary  relative">
+        <Typography
+          variant="large"
+          className="lg:text-6xl xl:text-6xl z-10 relative font-black text-[#0038A1]"
+        >
+          {data.designed_developed_by}
+        </Typography>
+        <BlurImage
+          src={ImgFooter}
+          alt="rectangle"
+          className="absolute inset-0 size-full z-0 object-cover"
+        />
       </div>
     </div>
   );
@@ -76,11 +128,15 @@ export const Footer = async ({
 const LinkSection = ({
   links,
   locale,
+  ...props
 }: {
   links: { text: string; URL: never | string }[];
   locale: string;
+  class?: string;
 }) => (
-  <div className="flex justify-center space-y-4 flex-col mt-4">
+  <div
+    className={cn('flex justify-center space-y-4 flex-col mt-4', props.class)}
+  >
     {links.map((link) => (
       <Link
         key={link.text}

@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "avis_clients",
+  "info": {
+    "singularName": "avis-client",
+    "pluralName": "avis-clients",
+    "displayName": "avis_client"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "client_name": {
+      "type": "string"
+    },
+    "pseudo_client": {
+      "type": "string"
+    },
+    "client_photo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "option_projet": {
+      "type": "component",
+      "component": "items.option-projet",
+      "repeatable": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "entreprise_name": {
+      "type": "string"
+    }
+  }
+}

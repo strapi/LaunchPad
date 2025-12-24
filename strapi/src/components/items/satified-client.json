@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_items_satified_clients",
+  "info": {
+    "displayName": "satified-client"
+  },
+  "options": {},
+  "attributes": {
+    "number_client_satified": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

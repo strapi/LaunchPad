@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_trusted_clients",
+  "info": {
+    "displayName": "trusted_client"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "text"
+    },
+    "sub_heading": {
+      "type": "text"
+    },
+    "logos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::logo.logo"
+    },
+    "description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

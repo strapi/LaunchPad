@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_features_and_capacities",
+  "info": {
+    "displayName": "features_and_capacity"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "features_items": {
+      "type": "component",
+      "component": "items.features-items",
+      "repeatable": true
+    },
+    "background_color": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

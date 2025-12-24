@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_items_images_grids",
+  "info": {
+    "displayName": "images_grid",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

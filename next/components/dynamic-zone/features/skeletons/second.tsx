@@ -31,17 +31,17 @@ export const SkeletonTwo = () => {
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setSliderXPercent(50)}
     >
-      <div className="absolute right-0 w-10 h-full bg-gradient-to-r from-transparent to-[#121314] z-40"></div>
+      <div className="absolute right-0 w-10 h-full bg-linear-to-r from-transparent to-[#121314] z-40"></div>
       <div
-        className="h-full w-px absolute top-0 m-auto z-30 bg-gradient-to-b from-transparent from-[10%] to-[90%] via-cyan-500 to-transparent"
+        className="h-full w-px absolute top-0 m-auto z-30 bg-linear-to-b from-transparent from-10% to-90% via-cyan-500 to-transparent"
         style={{
           left: `${sliderXPercent}%`,
           top: '0',
         }}
       >
-        <div className="w-36 h-full [mask-image:radial-gradient(100px_at_left,white,transparent)] absolute top-1/2 -translate-y-1/2 left-0 bg-gradient-to-r from-indigo-400 via-transparent to-transparent z-20 opacity-50" />
-        <div className="w-10 h-1/2 [mask-image:radial-gradient(50px_at_left,white,transparent)] absolute top-1/2 -translate-y-1/2 left-0 bg-gradient-to-r from-cyan-400 via-transparent to-transparent z-10 opacity-100 blur-lg" />
-        <div className="w-10 h-3/4 top-1/2 -translate-y-1/2 absolute -right-10 [mask-image:radial-gradient(100px_at_left,white,transparent)]">
+        <div className="w-36 h-full mask-[radial-gradient(100px_at_left,white,transparent)] absolute top-1/2 -translate-y-1/2 left-0 bg-linear-to-r from-indigo-400 via-transparent to-transparent z-20 opacity-50" />
+        <div className="w-10 h-1/2 mask-[radial-gradient(50px_at_left,white,transparent)] absolute top-1/2 -translate-y-1/2 left-0 bg-linear-to-r from-cyan-400 via-transparent to-transparent z-10 opacity-100 blur-lg" />
+        <div className="w-10 h-3/4 top-1/2 -translate-y-1/2 absolute -right-10 mask-[radial-gradient(100px_at_left,white,transparent)]">
           <MemoizedSparklesCore
             background="transparent"
             minSize={0.4}
@@ -136,7 +136,7 @@ const Cover = ({
 
 const BackgroundLines = () => {
   return (
-    <div className="absolute inset-0 h-full w-full flex flex-row gap-4 justify-center flex-shrink-0 ">
+    <div className="absolute inset-0 h-full w-full flex flex-row gap-4 justify-center shrink-0 ">
       <CircleWithLine index={0} />
       <CircleWithLine index={1} />
       <CircleWithLine index={2} />

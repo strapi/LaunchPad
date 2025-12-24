@@ -6,7 +6,7 @@ import React from 'react';
 
 import { Container } from '../container';
 import { AmbientColor } from '../decorations/ambient-color';
-import { Button } from '../elements/button';
+import { Button as ElementButton } from '../elements/button';
 
 export const CTA = ({
   heading,
@@ -34,7 +34,7 @@ export const CTA = ({
         <div className="flex items-center gap-4">
           {CTAs &&
             CTAs.map((cta, index) => (
-              <Button
+              <ElementButton
                 as={Link}
                 key={index}
                 href={`/${locale}${cta.URL}`}
@@ -42,7 +42,7 @@ export const CTA = ({
                 className="py-3"
               >
                 {cta.text}
-              </Button>
+              </ElementButton>
             ))}
         </div>
       </Container>

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_technologies_homes",
+  "info": {
+    "displayName": "technologies_home"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "text"
+    },
+    "cards": {
+      "type": "component",
+      "component": "cards.card-technologie",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_shared_etude_de_cas",
+  "info": {
+    "displayName": "etude_de_cas"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "secteur_etude_cas": {
+      "type": "text"
+    },
+    "probleme_title": {
+      "type": "string"
+    },
+    "probleme_description": {
+      "type": "text"
+    },
+    "solution_title": {
+      "type": "string"
+    },
+    "solution_description": {
+      "type": "text"
+    },
+    "solition_appporter_resultat": {
+      "type": "component",
+      "component": "items.title-description",
+      "repeatable": true
+    },
+    "background_color": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
