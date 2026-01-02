@@ -1,5 +1,15 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { v4 as uuidv4 } from 'uuid';
+import dotenv from 'dotenv'
+
+dotenv.config({ path: '../next/.env' })
+
+const TO_BE_MODIFIED_KEY = /tobemodified/g;
+const PREVIEW_SECRET_KEY = 'preview_secret';
+
+const generateSecret = () => uuidv4().replace(/-/g, '_');
+const previewSecret = process.env.PREVIEW_SECRET || generateSecret();
 
 function copyEnvFile(targetDir: string): void {
   // Ensure targetDir is trimmed
@@ -27,6 +37,19 @@ function copyEnvFile(targetDir: string): void {
             return;
           }
           console.log(`.env.example has been copied to ${envPath}`);
+
+          // Update env variables with generated secrets
+          const currentEnv = fs.readFileSync(envPath, 'utf8');
+        
+          // Replace all occurrences with a new secret
+          const updatedEnv = currentEnv
+            .replace(TO_BE_MODIFIED_KEY, generateSecret)
+            .replace(PREVIEW_SECRET_KEY, previewSecret)
+
+          // Rewrite .env file with updated env variables
+          fs.writeFileSync(envPath, updatedEnv, 'utf8');
+
+          console.log(`${envPath} has been updated with new secrets.`);
         });
       } else {
         // .env file exists, no action needed
