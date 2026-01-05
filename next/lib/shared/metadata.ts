@@ -2,8 +2,8 @@ import { strapiImage } from '../strapi/strapiImage';
 
 export function generateMetadataObject(seo: any) {
   return {
-    title: seo?.metaTitle || 'Default Title', // Fallback to 'Default Title' if title is not provided
-    description: seo?.metaDescription || 'Default Description', // Fallback to 'Default Description'
+    title: seo?.metaTitle || 'Webtinix', // Fallback to 'Default Title' if title is not provided
+    description: seo?.metaDescription || 'Nous concevons et développons pour vous des sites internet, des logiciels, des applications web et Android ainsi que d’autres services complémentaires dans le cadre du digital.', // Fallback to 'Default Description'
     openGraph: {
       title: seo?.ogTitle || seo?.metaTitle || 'Default OG Title',
       description:

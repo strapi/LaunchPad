@@ -32,14 +32,14 @@ export function NotreEquipeHome({
         {sub_heading}
       </Typography>
 
-      <div className="flex gap-2 justify-center w-full max-w-6xl">
+      <div className="flex flex-col md:flex-row gap-2 justify-center w-full max-w-6xl">
         {team_members.map((teammember, index) => (
           <TeamMemberCard
             key={teammember.slug || index}
             member={teammember}
             initialSize={200}
-            hoverSize={350}
-          />
+            hoverSize={350} index={index} />
+
         ))}
       </div>
     </section>
