@@ -155,7 +155,7 @@ const componentMapping: { [key: string]: any } = {
     import('./form/contact-form').then((mod) => mod.ContactForm)
   ),
   'zone-data.zone-realisation': dynamic(() =>
-    import('./data/zone-data').then((mod) => mod.DatatListZone)
+    import('./data/zone-data-project').then((mod) => mod.DatatListZoneproject)
   ),
 };
 

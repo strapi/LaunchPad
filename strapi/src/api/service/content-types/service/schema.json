@@ -30,6 +30,12 @@
         "videos",
         "audios"
       ]
+    },
+    "projets": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::projets.projets",
+      "mappedBy": "services"
     }
   }
 }

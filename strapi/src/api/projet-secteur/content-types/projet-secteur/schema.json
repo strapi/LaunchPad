@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projet_secteurs",
+  "info": {
+    "singularName": "projet-secteur",
+    "pluralName": "projet-secteurs",
+    "displayName": "projet-secteur"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
+    },
+    "projets": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::projets.projets",
+      "inversedBy": "secteurs"
+    }
+  }
+}
