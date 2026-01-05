@@ -86,7 +86,8 @@
         "shared.etude-de-cas",
         "shared.features-and-capacity",
         "sections.testimony-leur-avis",
-        "zone-data.zone-realisation"
+        "zone-data.zone-realisation",
+        "form.avis-form"
       ]
     }
   }

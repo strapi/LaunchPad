@@ -45,7 +45,7 @@ const componentMapping: { [key: string]: any } = {
       (mod) => mod.NosValeursAPropros
     )
   ),
-
+  'form.avis-form': dynamic(() => import('./avis-form').then((mod) => mod.AvisForm)),
   'sections.section-title-content-image': dynamic(() =>
     import('./sections/section-title-content-image').then(
       (mod) => mod.SectionTitleContentImage

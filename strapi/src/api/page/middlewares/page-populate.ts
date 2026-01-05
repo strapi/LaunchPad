@@ -78,6 +78,12 @@ const populate = {
           }
         }
       },
+      'form.avis-form': {
+        populate: {
+          input_avis: true,
+          button: true
+        }
+      },
       'sections.most-asked-question': {
         populate: {
           faqs: {
@@ -132,7 +138,7 @@ const populate = {
               icon: true,
             },
           },
-          cta :true,
+          cta: true,
         },
       },
       'sections.who-are-we': {

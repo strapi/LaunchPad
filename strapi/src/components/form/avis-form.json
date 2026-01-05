@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_form_avis_forms",
+  "info": {
+    "displayName": "avis-form"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    },
+    "note_experience_text": {
+      "type": "string"
+    },
+    "input_avis": {
+      "type": "component",
+      "component": "items.input",
+      "repeatable": true
+    },
+    "button": {
+      "type": "component",
+      "component": "shared.button",
+      "repeatable": false
+    },
+    "textarea_placeholder": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
