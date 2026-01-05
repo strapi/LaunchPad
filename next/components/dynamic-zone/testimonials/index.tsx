@@ -17,25 +17,27 @@ export interface TestimonialProps {
   heading: string;
   sub_heading: string;
   testimonials: Testimonial[];
+  background_color?: string;
 }
 
 export const Testimonials = ({
   heading,
   sub_heading,
   testimonials,
+  background_color,
 }: TestimonialProps) => {
   return (
-    <section className="w-full bg-[#2E5399] min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 md:py-16 lg:py-20 text-foreground">
+    <section style={{ backgroundColor: background_color || '#2E5399' }} className="w-full min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 py-8 sm:py-12 md:py-16 lg:py-20 text-foreground">
       <div className="flex flex-col gap-2 sm:gap-3 md:gap-4 text-center mb-6 sm:mb-8 md:mb-10 max-w-4xl">
         <Typography
           variant="h2"
-          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white font-bold mb-1 sm:mb-2 px-2"
+          className={`${background_color ? "text-primary" : "text-white"} mb-1 sm:mb-2 px-2`}
         >
           {heading}
         </Typography>
-        <Typography 
-          variant="p" 
-          className="text-white text-sm sm:text-base md:text-lg lg:text-xl px-4 sm:px-8 md:px-12 lg:px-16"
+        <Typography
+          variant="p"
+          className={`${background_color ? "text-black" : "text-white"} px-4 sm:px-8 md:px-12 lg:px-16`}
         >
           {sub_heading}
         </Typography>

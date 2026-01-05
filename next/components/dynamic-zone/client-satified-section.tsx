@@ -8,7 +8,7 @@ import { Image as ImageType } from '@/types/types';
 export interface ClientSatisfiedSectionProps {
   heading: string;
   sub_heading: string;
-  client_satisfied_detaileds: ClientSatisfiedDetailed[];
+  client_satisfied_detaileds?: ClientSatisfiedDetailed[];
   logos: Logo[];
   center?: boolean;
   background_color?: string;
@@ -64,8 +64,12 @@ export function ClientSatisfiedSection({
         {logos && logos.map((el) => <LogoImage key={el.id} logo={el.image} />)}
       </div>
 
+      {client_satisfied_detaileds?.length === 0 ? (
+        null
+      ) : <div className="w-full border-t border-gray-300" />}
+
       {client_satisfied_detaileds && (
-      <div className="w-full flex justify-center border-t border-gray-300">
+      <div className="w-full flex justify-center">
         <div className="w-full max-w-7xl px-4 sm:px-6 md:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 justify-items-center w-full">
             {client_satisfied_detaileds?.map((detail) => (
@@ -111,7 +115,7 @@ function ClientSatisfiedDetailItem({
   description,
 }: ClientSatisfiedDetailProps) {
   return (
-    <div className="w-full max-w-xs sm:max-w-sm md:max-w-md bg-gray-100 dark:bg-gray-800 flex flex-col gap-2 p-4 sm:p-5 md:p-6 text-center rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+    <div className="w-full max-w-xs sm:max-w-sm md:max-w-md  dark:bg-gray-800 flex flex-col gap-2 p-4 sm:p-5 md:p-6 text-center rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
       <span className="text-secondary text-lg sm:text-xl md:text-2xl font-bold">
         {heading}
       </span>
