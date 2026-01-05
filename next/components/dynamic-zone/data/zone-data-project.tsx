@@ -9,6 +9,7 @@ import { Typography } from '../../ui/typography';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Badge } from '@/components/ui/badge';
+import { Select } from '@/components/ui/select';
 
 interface Props {
     collection: string;
@@ -36,6 +37,10 @@ export function DatatListZoneproject({ collection, locale }: Props) {
 
     return (
         <div className='w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 2xl:px-32 py-8'>
+            <div className='w-full flex items-center'>
+                {/* Zone de filtres */}
+                <Select></Select>
+            </div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10'>
                 {data && data.map((item, index) => {
                     return <ItemProject key={item.documentId} projet={item} index={index} />

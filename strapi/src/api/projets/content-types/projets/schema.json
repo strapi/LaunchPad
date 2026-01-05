@@ -33,6 +33,24 @@
     "slug": {
       "type": "uid",
       "targetField": "heading"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::projet-categorie.projet-categorie",
+      "mappedBy": "projets"
+    },
+    "secteurs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::projet-secteur.projet-secteur",
+      "mappedBy": "projets"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::service.service",
+      "inversedBy": "projets"
     }
   }
 }
