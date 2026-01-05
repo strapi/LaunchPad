@@ -20,13 +20,16 @@
     },
     "background": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
       ]
+    },
+    "text_change": {
+      "type": "text"
     }
   }
 }

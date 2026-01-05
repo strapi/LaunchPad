@@ -46,8 +46,35 @@ export interface Projet {
   documentId: string;
   image?: Image;
   slug: string;
+  categories : CategoryProjet[];
+  secteurs : SecteurProjet[];
+  services : Service[];
 };
+
+export interface Service  {
+  title: string;
+  description: string;
+  documentId: string;
+  background?: Image;
+  slug: string;
+  projets : Projet[];
+};
+
+export interface CategoryProjet {
+  documentId: string;
+  name: string;
+  slug: string;
+  projets : Projet[];
+}
+export interface SecteurProjet {
+  documentId: string;
+  name: string;
+  slug: string;
+  projets : Projet[];
+}
+
 export interface TeamMember {
+  documentId: string;
   first_name: string;
   last_name: string;
   poste: Poste;

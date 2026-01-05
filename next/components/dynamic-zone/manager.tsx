@@ -45,7 +45,7 @@ const componentMapping: { [key: string]: any } = {
       (mod) => mod.NosValeursAPropros
     )
   ),
-
+  'form.avis-form': dynamic(() => import('./avis-form').then((mod) => mod.AvisForm)),
   'sections.section-title-content-image': dynamic(() =>
     import('./sections/section-title-content-image').then(
       (mod) => mod.SectionTitleContentImage
@@ -155,7 +155,7 @@ const componentMapping: { [key: string]: any } = {
     import('./form/contact-form').then((mod) => mod.ContactForm)
   ),
   'zone-data.zone-realisation': dynamic(() =>
-    import('./data/zone-data').then((mod) => mod.DatatListZone)
+    import('./data/zone-data-project').then((mod) => mod.DatatListZoneproject)
   ),
 };
 
