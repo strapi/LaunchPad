@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_avis_clients",
+  "info": {
+    "displayName": "avis_clients"
+  },
+  "options": {},
+  "attributes": {
+    "avis_clients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::avis-client.avis-client"
+    }
+  },
+  "config": {}
+}

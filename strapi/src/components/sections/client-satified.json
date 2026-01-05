@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_sections_client_satifieds",
+  "info": {
+    "displayName": "client-satified"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "text"
+    },
+    "client_satisfied_detaileds": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::client-satisfied-detailed.client-satisfied-detailed"
+    },
+    "logos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::logo.logo"
+    },
+    "background_color": {
+      "type": "string"
+    },
+    "center": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

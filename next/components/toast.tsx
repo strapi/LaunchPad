@@ -42,11 +42,11 @@ export const AIToast = () => {
             </a>
           </div>
         </div>
-        <div className="ml-4 flex flex-shrink-0">
+        <div className="ml-4 flex shrink-0">
           <button
             type="button"
             onClick={() => setIsOpen(false)}
-            className="inline-flex rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
+            className="inline-flex rounded-md text-gray-400 hover:text-gray-500 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
           >
             <span className="sr-only">Close</span>
             <XIcon className="h-5 w-5" />

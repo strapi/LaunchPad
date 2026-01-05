@@ -1,11 +1,21 @@
-import type { Viewport } from 'next';
-
-import { Locale, i18n } from '@/i18n.config';
-
 import './globals.css';
+
+import type { Viewport } from 'next';
+import { Outfit } from 'next/font/google';
 
 import { SlugProvider } from './context/SlugContext';
 import { Preview } from '@/components/preview';
+import { Locale, i18n } from '@/i18n.config';
+import { cn } from '@/lib/utils';
+import { Providers } from './Providers';
+import { TailwindIndicator } from '@/lib/utils/TailwindIndicator';
+
+// Configuration de la police Outfit
+const outfit = Outfit({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
+});
 
 export const viewport: Viewport = {
   themeColor: [
@@ -24,10 +34,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning>
-        <Preview />
-        <SlugProvider>{children}</SlugProvider>
+    <html lang="fr" suppressHydrationWarning className={outfit.variable}>
+      <body
+        className={cn(
+          'min-h-screen bg-background text-foreground font-size-base font-sans antialiased scrollbar-responsive',
+          outfit.className
+        )}
+      >
+        <Providers>
+          <Preview />
+          <SlugProvider>{children}</SlugProvider>
+          <TailwindIndicator />
+        </Providers>
       </body>
     </html>
   );

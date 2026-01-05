@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "icons",
+  "info": {
+    "singularName": "icon",
+    "pluralName": "icons",
+    "displayName": "Icon"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    }
+  }
+}

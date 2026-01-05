@@ -1,24 +1,529 @@
-@import './prism.css';
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import './prism.css' layer(base);
+@import 'tailwindcss';
+/*
+  ---break---
+*/
+@custom-variant dark (&:is(.dark *));
 
-:root {
-  --foreground-rgb: 255, 255, 255;
-}
+@theme {
+  --color-charcoal: #08090a;
+  --color-lightblack: #1c1c1c;
+  --color-muted: var(--neutral-200);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
+  --shadow-derek:
+    0px 0px 0px 1px rgb(0 0 0 / 0.06), 0px 1px 1px -0.5px rgb(0 0 0 / 0.06),
+    0px 3px 3px -1.5px rgb(0 0 0 / 0.06), 0px 6px 6px -3px rgb(0 0 0 / 0.06),
+    0px 12px 12px -6px rgb(0 0 0 / 0.06), 0px 24px 24px -12px rgb(0 0 0 / 0.06);
+  --shadow-aceternity:
+    0px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(25, 28, 33, 0.02),
+    0px 0px 0px 1px rgba(25, 28, 33, 0.08);
+
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+  --background-image-gradient-conic: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
+
+  --animate-move: move 5s linear infinite;
+  --animate-spin-circle: spin-circle 3s linear infinite;
+
+  @keyframes move {
+    0% {
+      transform: translateX(-200px);
+    }
+    100% {
+      transform: translateX(200px);
+    }
+  }
+  @keyframes spin-circle {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  :root {
+    --foreground-rgb: 27, 27, 27;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --foreground-rgb: 255, 255, 255;
+    }
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
   }
 }
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+
+  /* custom */
+  --color-tertiare: var(--tertiare);
+}
+
+:root {
+  /* Backgrounds - Tons clairs et neutres */
+  --background: oklch(0.99 0.002 0); /* Blanc cassé très léger */
+  --foreground: oklch(0.25 0.01 264); /* #1B1B1B approximatif en OKLCH */
+
+  /* Cards - Blanc pur avec bon contraste */
+  --card: oklch(1 0 0); /* Blanc pur */
+  --card-foreground: oklch(0.25 0.01 264); /* Texte sombre */
+
+  /* Popover */
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.25 0.01 264);
+
+  /* Primary - Bleu violet (inchangé) */
+  --primary: oklch(0.3886 0.1774 261.82);
+  --primary-foreground: oklch(0.99 0 0); /* Blanc pour contraste */
+
+  /* Secondary - Orange/Corail (inchangé) */
+  --secondary: oklch(0.646 0.222 41.116);
+  --secondary-foreground: oklch(0.99 0 0); /* Blanc pour contraste */
+
+  /* Tertiaire - Lavande très clair */
+  --tertiare: oklch(0.97 0.014 254.6);
+  --tertiare-foreground: oklch(0.25 0.01 264); /* Texte sombre */
+
+  /* Muted - Gris clair pour backgrounds secondaires */
+  --muted: oklch(0.96 0.005 264);
+  --muted-foreground: oklch(0.50 0.01 264); /* Gris moyen pour texte */
+
+  /* Accent - Nuance de primary plus claire */
+  --accent: oklch(0.95 0.02 214);
+  --accent-foreground: oklch(0.25 0.01 264);
+
+  /* Destructive - Rouge avec bon contraste */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  /* Borders et inputs */
+  --border: oklch(0.90 0.005 264); /* Bordures légères */
+  --input: oklch(0.95 0.005 264);
+  --ring: oklch(0.39 0.21 214); /* Même que primary pour cohérence */
+
+  /* Charts - Palette harmonisée avec primary */
+  --chart-1: oklch(0.81 0.1 252);
+  --chart-2: oklch(0.62 0.19 260);
+  --chart-3: oklch(0.55 0.22 263);
+  --chart-4: oklch(0.49 0.22 264);
+  --chart-5: oklch(0.42 0.18 266);
+
+  /* Sidebar */
+  --sidebar: oklch(0.99 0.002 264);
+  --sidebar-foreground: oklch(0.25 0.01 264);
+  --sidebar-primary: oklch(0.39 0.21 214);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.96 0.005 264);
+  --sidebar-accent-foreground: oklch(0.25 0.01 264);
+  --sidebar-border: oklch(0.90 0.005 264);
+  --sidebar-ring: oklch(0.39 0.21 214);
+
+  /* Fonts - Outfit comme police principale */
+  --font-sans:
+    'Outfit', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+
+  --radius: 0.625rem;
+
+  /* Shadows */
+  --shadow-x: 0;
+  --shadow-y: 1px;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.1;
+  --shadow-color: oklch(0.25 0.01 264);
+  --shadow-2xs: 0 1px 2px 0px hsl(264 10% 25% / 0.05);
+  --shadow-xs: 0 1px 3px 0px hsl(264 10% 25% / 0.08);
+  --shadow-sm:
+    0 1px 3px 0px hsl(264 10% 25% / 0.1), 0 1px 2px -1px hsl(264 10% 25% / 0.1);
+  --shadow: 0 1px 3px 0px hsl(264 10% 25% / 0.1), 0 1px 2px -1px hsl(264 10% 25% / 0.1);
+  --shadow-md:
+    0 2px 4px 0px hsl(264 10% 25% / 0.1), 0 2px 4px -1px hsl(264 10% 25% / 0.1);
+  --shadow-lg:
+    0 4px 6px 0px hsl(264 10% 25% / 0.1), 0 4px 6px -2px hsl(264 10% 25% / 0.1);
+  --shadow-xl:
+    0 8px 10px 0px hsl(264 10% 25% / 0.1), 0 8px 10px -2px hsl(264 10% 25% / 0.1);
+  --shadow-2xl: 0 12px 24px 0px hsl(264 10% 25% / 0.15);
+
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+}
+
+.dark {
+  /* Backgrounds - Tons sombres avec légère teinte */
+  --background: oklch(0.145 0.01 264); /* Fond très sombre avec nuance */
+  --foreground: oklch(0.98 0.005 264); /* Blanc cassé pour le texte */
+
+  /* Cards - Légèrement plus clair que le background */
+  --card: oklch(0.20 0.01 264);
+  --card-foreground: oklch(0.98 0.005 264);
+
+  /* Popover */
+  --popover: oklch(0.22 0.01 264);
+  --popover-foreground: oklch(0.98 0.005 264);
+
+  /* Primary - Version plus claire et saturée pour le mode sombre */
+  --primary: oklch(0.50 0.22 265);
+  --primary-foreground: oklch(0.99 0 0);
+
+  /* Secondary - Garde sa vivacité */
+  --secondary: oklch(0.646 0.222 41.116);
+  --secondary-foreground: oklch(0.99 0 0);
+
+  /* Tertiaire */
+  --tertiare: oklch(0.35 0.03 254.6);
+  --tertiare-foreground: oklch(0.98 0.005 264);
+
+  /* Muted */
+  --muted: oklch(0.25 0.01 264);
+  --muted-foreground: oklch(0.65 0.01 264);
+
+  /* Accent */
+  --accent: oklch(0.30 0.02 265);
+  --accent-foreground: oklch(0.98 0.005 264);
+
+  /* Destructive */
+  --destructive: oklch(0.60 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  /* Borders et inputs */
+  --border: oklch(0.28 0.01 264);
+  --input: oklch(0.30 0.01 264);
+  --ring: oklch(0.50 0.22 265);
+
+  /* Charts */
+  --chart-1: oklch(0.81 0.1 252);
+  --chart-2: oklch(0.62 0.19 260);
+  --chart-3: oklch(0.55 0.22 263);
+  --chart-4: oklch(0.49 0.22 264);
+  --chart-5: oklch(0.42 0.18 266);
+
+  /* Sidebar */
+  --sidebar: oklch(0.18 0.01 264);
+  --sidebar-foreground: oklch(0.98 0.005 264);
+  --sidebar-primary: oklch(0.50 0.22 265);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.25 0.01 264);
+  --sidebar-accent-foreground: oklch(0.98 0.005 264);
+  --sidebar-border: oklch(0.28 0.01 264);
+  --sidebar-ring: oklch(0.50 0.22 265);
+
+  /* Fonts */
+  --font-sans:
+    'Outfit', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+
+  --radius: 0.625rem;
+
+  /* Shadows - Plus subtiles en mode sombre */
+  --shadow-x: 0;
+  --shadow-y: 1px;
+  --shadow-blur: 3px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.3;
+  --shadow-color: oklch(0 0 0);
+  --shadow-2xs: 0 1px 2px 0px hsl(0 0% 0% / 0.3);
+  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.4);
+  --shadow-sm:
+    0 1px 3px 0px hsl(0 0% 0% / 0.4), 0 1px 2px -1px hsl(0 0% 0% / 0.4);
+  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.4), 0 1px 2px -1px hsl(0 0% 0% / 0.4);
+  --shadow-md:
+    0 2px 4px 0px hsl(0 0% 0% / 0.4), 0 2px 4px -1px hsl(0 0% 0% / 0.4);
+  --shadow-lg:
+    0 4px 6px 0px hsl(0 0% 0% / 0.5), 0 4px 6px -2px hsl(0 0% 0% / 0.5);
+  --shadow-xl:
+    0 8px 10px 0px hsl(0 0% 0% / 0.5), 0 8px 10px -2px hsl(0 0% 0% / 0.5);
+  --shadow-2xl: 0 12px 24px 0px hsl(0 0% 0% / 0.6);
+}
+
+/*
+  ---break---
+*/
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+  }
+
+  /* text de base de l'application  */
+  .font-size-base {
+    @apply font-extralight leading-[100%] tracking-[0%] text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px];
+  }
+
+  /* Theme-aware scrollbar styles améliorés */
+  .scrollbar {
+    /* Support moderne pour tous les navigateurs */
+    scrollbar-width: thin;
+    scrollbar-color: var(--ring) var(--muted);
+
+    /* Améliore le comportement de scroll */
+    scroll-behavior: smooth;
+
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 0.375rem; /* Légèrement plus large pour une meilleure UX */
+    height: 0.375rem;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background-color: var(--muted);
+    border-radius: 9999px;
+    margin: 0.25rem 0; /* Espace en haut et en bas */
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--ring);
+    border-radius: 9999px;
+    border: 1px solid var(--muted);
+    transition: all 0.2s ease;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--muted-foreground);
+    transform: scale(1.05);
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:active {
+    background-color: var(--primary);
+  }
+
+  .scrollbar::-webkit-scrollbar-corner {
+    background-color: var(--muted);
+  }
+
+  /* Variante fine pour les cas où on veut une scrollbar plus discrète */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--ring) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 0.25rem;
+    height: 0.25rem;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: var(--ring);
+    border-radius: 9999px;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    opacity: 1;
+    background-color: var(--muted-foreground);
+  }
+
+  /* Animation pour un scroll plus fluide */
+  @media (prefers-reduced-motion: no-preference) {
+    .scrollbar {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Amélioration pour les appareils tactiles */
+  @media (hover: none) and (pointer: coarse) {
+    .scrollbar::-webkit-scrollbar {
+      width: 0.5rem;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+      background-color: var(--ring);
+      opacity: 0.8;
+    }
+  }
+
+  /* Styles pour le focus et l'accessibilité */
+  .scrollbar:focus-within::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  /* Classe utilitaire pour masquer la scrollbar si nécessaire */
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* responsive scrollbar */
+
+/* Variante adaptative - S'adapte automatiquement selon la taille d'écran */
+.scrollbar-responsive {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ring) var(--muted);
+  scroll-behavior: smooth;
+
+}
+
+.scrollbar-responsive::-webkit-scrollbar {
+  width: 0.375rem;
+  height: 0.375rem;
+}
+
+@media (min-width: 768px) {
+  .scrollbar-responsive::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .scrollbar-responsive::-webkit-scrollbar {
+    width: 0.625rem;
+    height: 0.625rem;
+  }
+}
+
+.scrollbar-responsive::-webkit-scrollbar-track {
+  background-color: var(--muted);
+  border-radius: 9999px;
+  margin: 0.25rem 0;
+}
+
+.scrollbar-responsive::-webkit-scrollbar-thumb {
+  background-color: var(--ring);
+  border-radius: 9999px;
+  border: 1px solid var(--muted);
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .scrollbar-responsive::-webkit-scrollbar-thumb {
+    border-width: 1.5px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .scrollbar-responsive::-webkit-scrollbar-thumb {
+    border-width: 2px;
+  }
+}
+
+.scrollbar-responsive::-webkit-scrollbar-thumb:hover {
+  background-color: var(--muted-foreground);
+  transform: scale(1.05);
+}
+
+.scrollbar-responsive::-webkit-scrollbar-thumb:active {
+  background-color: var(--muted-foreground);
+}
+
+.scrollbar-responsive::-webkit-scrollbar-corner {
+  background-color: var(--muted);
+}
+
+h3 {
+  @apply scroll-m-20 font-semibold tracking-[0%] text-[24px] leading-[24px] sm:text-[28px] sm:leading-[28px] md:text-[32px] md:leading-[32px] lg:text-[36px] lg:leading-[36px] xl:text-[40px] xl:leading-[40px];
+}
+
+#expertise-items:last-child {
+  border: none;
+}
+
+/* END layer */
+}
+

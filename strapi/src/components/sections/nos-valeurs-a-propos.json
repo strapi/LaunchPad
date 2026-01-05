@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_nos_valeurs_a_propos",
+  "info": {
+    "displayName": "nos_valeurs_a_propos"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    },
+    "a_propos_nos_valeurs": {
+      "type": "component",
+      "component": "cards.cards-apropos-nos-valeurs",
+      "repeatable": true
+    },
+    "cta": {
+      "type": "component",
+      "component": "shared.button",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

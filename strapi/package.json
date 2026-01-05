@@ -13,9 +13,12 @@
     "postinstall": "node ./scripts/updateUuid.js"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^6.0.0",
     "@types/node": "^20",
+    "@types/pg": "^8",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "prettier": "^3.7.4",
     "typescript": "^5"
   },
   "dependencies": {
@@ -25,6 +28,7 @@
     "@strapi/strapi": "^5.30.0",
     "better-sqlite3": "11.7.0",
     "patch-package": "^8.0.0",
+    "pg": "^8.16.3",
     "pluralize": "^8.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -33,7 +37,7 @@
     "uuid": "^10.0.0"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "Webtinix"
   },
   "strapi": {
     "uuid": "LAUNCHPAD-LOCAL"

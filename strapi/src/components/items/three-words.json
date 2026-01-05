@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_items_three_words",
+  "info": {
+    "displayName": "three_words"
+  },
+  "options": {},
+  "attributes": {
+    "word1": {
+      "type": "string"
+    },
+    "word2": {
+      "type": "string"
+    },
+    "word3": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

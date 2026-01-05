@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_items_option_projets",
+  "info": {
+    "displayName": "option_projet"
+  },
+  "options": {},
+  "attributes": {
+    "options": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

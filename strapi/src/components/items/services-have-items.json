@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_items_services_have_items",
+  "info": {
+    "displayName": "services_have_items"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "text"
+    },
+    "items_services": {
+      "type": "component",
+      "component": "items.items-services",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

@@ -73,7 +73,7 @@ export const MobileNavbar = ({
               />
             </div>
           </div>
-          <div className="flex flex-col items-start justify-start gap-[14px] px-8">
+          <div className="flex flex-col items-start justify-start gap-[14px] px-8 text-sm">
             {leftNavbarItems.map((navItem: any, idx: number) => (
               <>
                 {navItem.children && navItem.children.length > 0 ? (
@@ -83,7 +83,7 @@ export const MobileNavbar = ({
                         key={`link=${idx}`}
                         href={`/${locale}${childNavItem.URL}`}
                         onClick={() => setOpen(false)}
-                        className="relative max-w-[15rem] text-left text-2xl"
+                        className="relative max-w-60 text-left text-2xl"
                       >
                         <span className="block text-white">
                           {childNavItem.text}

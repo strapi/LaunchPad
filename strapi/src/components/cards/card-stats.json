@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_cards_card_stats",
+  "info": {
+    "displayName": "card_stats"
+  },
+  "options": {},
+  "attributes": {
+    "titre": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_service_cards",
+  "info": {
+    "displayName": "service_card"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "text"
+    },
+    "offres": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::offre.offre"
+    }
+  },
+  "config": {}
+}

@@ -31,7 +31,7 @@ export const BlogPostRows = ({ articles }: { articles: Article[] }) => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search articles"
-          className="text-sm min-w-full sm:min-w-96  p-2 rounded-md bg-neutral-800 border-none  focus:ring-0 focus:outline-none outline-none text-neutral-200 placeholder-neutral-400"
+          className="text-sm min-w-full sm:min-w-96  p-2 rounded-md bg-neutral-800 border-none  focus:ring-0 focus:outline-hidden outline-hidden text-neutral-200 placeholder-neutral-400"
         />
       </div>
 

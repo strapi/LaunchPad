@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_zones_problematiques",
+  "info": {
+    "displayName": "problematique"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "sub_heading": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title_description_items": {
+      "type": "component",
+      "component": "items.title-description",
+      "repeatable": true
+    },
+    "background_color": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
