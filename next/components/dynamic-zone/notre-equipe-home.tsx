@@ -1,12 +1,10 @@
 'use client';
 
-import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
 
-import HoverImage from '../features/HoverImage';
-import { Typography } from '../ui/typography';
-import { strapiImage } from '@/lib/strapi/strapiImage';
 import { TeamMember } from '@/types/types';
+import TeamMemberCard from './features/TeamMemberCard';
+import { Typography } from '../ui/typography';
 
 type NotreEquipeHomeProps = {
   heading: string;
@@ -22,7 +20,7 @@ export function NotreEquipeHome({
   locale,
 }: NotreEquipeHomeProps) {
   return (
-    <section className=" w-full flex flex-col items-center py-18 px-4 md:px-10 gap-10">
+    <section className="w-full flex flex-col items-center py-18 px-4 md:px-10 gap-10">
       <Typography variant={'h2'} className="text-primary text-center">
         {heading}
       </Typography>
@@ -34,59 +32,16 @@ export function NotreEquipeHome({
         {sub_heading}
       </Typography>
 
-      <div className="flex gap-2 justify-center w-full max-w-6xl ">
+      <div className="flex gap-2 justify-center w-full max-w-6xl">
         {team_members.map((teammember, index) => (
-          <HoverImage
+          <TeamMemberCard
+            key={teammember.slug || index}
+            member={teammember}
             initialSize={200}
             hoverSize={350}
-            key={index}
-            imageUrl={teammember.image?.url || ''}
-            alt={teammember.image?.alternativeText || ''}
           />
         ))}
       </div>
     </section>
-  );
-}
-
-function CardComponent({ item, locale }: { item: TeamMember; locale: string }) {
-  function OnNavigatePage() {
-    window.location.href = item.slug;
-  }
-
-  const [width, setWidth] = useState('200px'); // taille au repos
-
-  function handleEnter() {
-    setWidth('680px'); // taille au hover
-  }
-
-  function handleLeave() {
-    setWidth('200px'); // revenir à l'état initial
-  }
-
-  return (
-    <div className="h-[380px] sm:h-[400px] md:h-[420px] w-full relative flex gap-10 overflow-hidden">
-      <div
-        className="relative h-full w-full overflow-hidden flex items-center justify-center"
-        onMouseEnter={handleEnter}
-        onMouseLeave={handleLeave}
-      >
-        {item?.image?.url && (
-          <Image
-            src={strapiImage(item.image?.url)}
-            alt={item.image?.alternativeText || ''}
-            style={{
-              width: width,
-              filter: width === '200px' ? 'grayscale(100%)' : 'grayscale(0%)',
-              transition: 'all 0.35s ease-out',
-            }}
-            className="object-cover h-full block"
-            loading="lazy"
-            width={200}
-            height={500}
-          />
-        )}
-      </div>
-    </div>
   );
 }
