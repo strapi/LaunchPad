@@ -15,7 +15,7 @@ interface Props {
     locale?: string;
 }
 
-export function DatatListZone({ collection, locale }: Props) {
+export function DatatListZoneproject({ collection, locale }: Props) {
     const { data, isLoading, error } = useStrapiQuery<Projet[]>({
         collection: collection,
         filters: {},
