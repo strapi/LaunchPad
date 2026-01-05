@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react';
 
-import { Cover } from '../decorations/cover';
 import ShootingStars from '../decorations/shooting-star';
 import StarBackground from '../decorations/star-background';
 import { Button as ElementButton } from '../elements/button';
@@ -24,16 +23,30 @@ export const Hero = ({
   sub_heading: string;
   CTAs: any[];
   locale: string;
-  background: Image;
+  background: Image[];
 }) => {
+  const [ImageBackground, setImageBackground] = React.useState<Image>(background[0])
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setImageBackground(background[Math.floor(Math.random() * background.length)])
+    }, 2000)
+
+    return () => clearInterval(interval)
+  }, [background])
+
   return (
-    <div
-      className="h-dvh min-h-[600px] overflow-hidden relative flex flex-col bg-cover bg-center"
-      style={
-        background
-          ? { backgroundImage: `url('${strapiImage(background?.url)}')` }
-          : undefined
-      }
+    <motion.div
+      className="h-dvh min-h-[600px] overflow-hidden inset-0 relative flex flex-col bg-cover bg-center transition-all duration-500"
+      key={ImageBackground?.url}
+      initial={{ opacity: 0, x: 100 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }}
+      style={{
+        backgroundImage: `url('${strapiImage(ImageBackground?.url)}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
     >
       {' '}
       <motion.div
@@ -73,6 +86,6 @@ export const Hero = ({
             ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
