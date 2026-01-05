@@ -51,7 +51,7 @@ export interface Projet {
   services : Service[];
 };
 
-interface Service  {
+export interface Service  {
   title: string;
   description: string;
   documentId: string;
@@ -61,17 +61,20 @@ interface Service  {
 };
 
 export interface CategoryProjet {
+  documentId: string;
   name: string;
   slug: string;
   projets : Projet[];
 }
 export interface SecteurProjet {
+  documentId: string;
   name: string;
   slug: string;
   projets : Projet[];
 }
 
 export interface TeamMember {
+  documentId: string;
   first_name: string;
   last_name: string;
   poste: Poste;
