@@ -4,6 +4,7 @@ import React from 'react';
 import { Typography } from '../ui/typography';
 import { strapiImage } from '@/lib/strapi/strapiImage';
 import { Image as ImageType } from '@/types/types';
+import { InfiniteSlider } from '../InfiniteSlider';
 
 export interface ClientSatisfiedSectionProps {
   heading: string;
@@ -60,9 +61,9 @@ export function ClientSatisfiedSection({
         </Typography>
       </header>
 
-      <div className="w-full max-w-6xl flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+      <InfiniteSlider >
         {logos && logos.map((el) => <LogoImage key={el.id} logo={el.image} />)}
-      </div>
+      </InfiniteSlider>
 
       {client_satisfied_detaileds && (
       <div className="w-full flex justify-center border-t border-gray-300">
