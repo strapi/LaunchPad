@@ -62,7 +62,7 @@ export function OurTrust({
                     {our_trust_items.map((el, index) => (
                         <div
                             key={index}
-                            className="bg-white overflow-hidden flex flex-col shadow-md max-w-sm lg:max-w-md mx-auto w-full"
+                            className="bg-white p-4 overflow-hidden flex flex-col shadow-md max-w-sm lg:max-w-md mx-auto w-full"
                         >
                             <div className="relative h-[180px] md:h-[220px] w-full">
                                 <Image
