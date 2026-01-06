@@ -122,10 +122,11 @@ export function AvisForm(props: AvisFormProps) {
                                 />
                             ) : (
                                 <div
+                                    key={index}
                                     className='flex flex-colgap-2'
                                 >
                                     <Input
-                                        key={index}
+                                        
                                         type={input.type}
                                         name={input.name}
                                         placeholder={input.placeholder}
