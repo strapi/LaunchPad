@@ -11,6 +11,7 @@
     "deploy": "strapi deploy",
     "seed": "strapi import -f ./data/export_20250116105447.tar.gz",
     "seed:safe": "node ./scripts/fix-and-import.js",
+    "clean-exeport": "node ./scripts/clean-export.js",
     "seed:fixed": "node ./scripts/fix-export-and-import-v3.js",
     "verify": "node ./scripts/verify-import.js",
     "postinstall": "node ./scripts/updateUuid.js"
