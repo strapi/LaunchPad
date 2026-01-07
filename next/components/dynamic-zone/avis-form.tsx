@@ -50,8 +50,20 @@ export function AvisForm(props: AvisFormProps) {
         e.preventDefault()
         setIsSubmitting(true)
 
+        // Préparation des données pour Strapi
         const payload = {
-            data: { ...formData }
+            data: {
+                ...formData,
+                note,
+                description: [
+                    {
+                        type: "paragraph",
+                        children: [
+                            { type: "text", text: formData.description || "" }
+                        ],
+                    },
+                ],
+            }
         }
 
         try {
@@ -68,11 +80,13 @@ export function AvisForm(props: AvisFormProps) {
                 setFormData({})
                 toast.success('Merci pour votre avis !')
             } else {
-                toast.error('Une erreur est survenue')
+                const errorData = await response.json();
+                console.error('Erreur Strapi:', errorData);
+                toast.error('Une erreur est survenue lors de l\'enregistrement')
             }
         } catch (error) {
-            console.error('Erreur lors de l\'envoi du formulaire:', error)
-            toast.error('Une erreur est survenue lors de l\'envoi du formulaire')
+            console.error('Erreur réseau:', error)
+            toast.error('Erreur de connexion au serveur')
         } finally {
             setIsSubmitting(false)
         }
@@ -131,7 +145,7 @@ export function AvisForm(props: AvisFormProps) {
                                         placeholder={input.placeholder}
                                         value={formData[input.name] || ''}
                                         onChange={handleInputChange}
-                                        required
+                                        required={input.name !== 'entreprise_name'}
                                     />
                                 </div>
                             )
