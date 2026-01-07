@@ -37,6 +37,9 @@
     },
     "entreprise_name": {
       "type": "string"
+    },
+    "note": {
+      "type": "integer"
     }
   }
 }
