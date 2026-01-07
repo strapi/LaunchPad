@@ -90,7 +90,6 @@ function TeamMemberCard({ member, locale }: TeamMemberCardProps) {
                 flex
                 flex-col
                 bg-white
-                rounded-xl
                 shadow-md
                 hover:shadow-lg
                 transition-all

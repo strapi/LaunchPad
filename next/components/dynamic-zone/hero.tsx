@@ -32,7 +32,7 @@ export const Hero = ({
 
   // 1. Extraire les mots entre guillemets ["mot1", "mot2"]
   const wordsArray = useMemo(() => {
-    const matches = text_change.match(/"([^"]+)"/g);
+    const matches = text_change?.match(/"([^"]+)"/g);
     return matches ? matches.map(m => m.replace(/"/g, '')) : [];
   }, [text_change]);
 

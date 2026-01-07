@@ -48,21 +48,21 @@ export interface OptionProjet {
 export function CarouselAvisClient({ avis_clients }: CarouselAvisClientProps) {
     return (
         <section className="w-full py-20">
-            <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+            <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-12">
                 <Carousel
                     // opts={{
                     //     align: "start",
                     //     loop: true,
                     // }}
-                    className="w-full p-8"
+                    className="w-full"
                 >
                     <CarouselContent>
                         {avis_clients.map((el, index) => (
                             <CarouselItem key={index}>
-                                <div className=" p-8 md:p-12 flex flex-col md:flex-row gap-10 md:gap-16 items-center shadow-sm">
+                                <div className=" p-8 md:p-12 flex flex-col md:flex-row gap-10 md:gap-16 items-center bg-white  shadow-md">
 
                                     {/* --- IMAGE CLIENT --- */}
-                                    <div className="relative w-full max-w-[320px] aspect-square shrink-0 overflow-hidden rounded-sm">
+                                    <div className="relative w-full max-w-[320px] aspect-square shrink-0 overflow-hidden">
                                         <Image
                                             src={strapiImage(el.client_photo?.url)}
                                             alt={el.client_name}
@@ -109,7 +109,7 @@ export function CarouselAvisClient({ avis_clients }: CarouselAvisClientProps) {
                                                     {el.option_projet.map((opt, idx) => (
                                                         <span
                                                             key={idx}
-                                                            className="bg-gray-100 text-gray-600 px-4 py-1.5 rounded-full text-[11px] font-medium"
+                                                            className=" text-gray-600 px-4 py-1.5 rounded-full text-[11px] font-medium"
                                                         >
                                                             {opt.options}
                                                         </span>
@@ -122,7 +122,10 @@ export function CarouselAvisClient({ avis_clients }: CarouselAvisClientProps) {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselIndicator />
+                    {/* Indicateur positionné en dessous de la carte blanche */}
+                    <div className="mt-8">
+                        <CarouselIndicator />
+                    </div>
                 </Carousel>
             </div>
         </section>

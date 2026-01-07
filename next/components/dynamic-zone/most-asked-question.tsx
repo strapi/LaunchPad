@@ -24,11 +24,12 @@ export function MostAskedQuestion({ faqs, heading, sub_heading }: MostAskedQuest
     };
 
     return (
-        <section className="w-full px-6 md:px-12 lg:px-24 py-16 md:py-24 bg-transparent">
+        <section className="w-full px-6 md:px-12 lg:px-24 py-16 md:py-2 bg-transparent">
             <div className="mx-auto flex flex-col items-center mb-12 md:mb-16">
                 <Typography
                     as="h2"
-                    className="font-bold text-primary text-center mb-4"
+                    variant="h2"
+                    className="text-primary text-center mb-4"
                 >
                     {heading}
                 </Typography>
