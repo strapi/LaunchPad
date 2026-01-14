@@ -4,7 +4,27 @@ const nextConfig = {
     root: process.cwd().replace('/next', ''),
   },
   images: {
-    remotePatterns: [{ hostname: process.env.IMAGE_HOSTNAME || 'localhost' }],
+    // Disable image optimization for localhost in development
+    ...(process.env.NODE_ENV === 'development' && {
+      unoptimized: true,
+    }),
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '1337',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: process.env.IMAGE_HOSTNAME || 'localhost',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.strapiapp.com',
+      },
+    ],
   },
   pageExtensions: ['ts', 'tsx'],
   async redirects() {
