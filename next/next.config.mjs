@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable Next.js 16 cache components
+  cacheComponents: true,
   turbopack: {
     root: process.cwd().replace('/next', ''),
   },
@@ -46,6 +48,11 @@ const nextConfig = {
 
       return redirections;
     } catch (error) {
+      // Log warning but don't fail build - redirects are optional
+      console.warn(
+        '[next.config] Failed to fetch redirects from Strapi:',
+        error instanceof Error ? error.message : error
+      );
       return [];
     }
   },
