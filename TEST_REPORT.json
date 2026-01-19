@@ -1,0 +1,112 @@
+{
+  "generatedAt": "2026-01-19T20:53:44.323Z",
+  "duration": 6.735,
+  "summary": {
+    "passed": 9,
+    "warnings": 0,
+    "failed": 3,
+    "total": 12
+  },
+  "results": [
+    {
+      "category": "Framer-motion",
+      "status": "FAIL",
+      "details": [
+        "Framer-motion not found"
+      ],
+      "timestamp": "2026-01-19T20:53:39.830Z"
+    },
+    {
+      "category": "Tailwind CSS",
+      "status": "FAIL",
+      "details": [
+        "Tailwind CSS not found"
+      ],
+      "timestamp": "2026-01-19T20:53:42.051Z"
+    },
+    {
+      "category": "NextAuth",
+      "status": "FAIL",
+      "details": [
+        "NextAuth not found"
+      ],
+      "timestamp": "2026-01-19T20:53:44.283Z"
+    },
+    {
+      "category": "Component Directories",
+      "status": "PASS",
+      "details": [
+        "Checked 6 component directories",
+        "All directories present"
+      ],
+      "timestamp": "2026-01-19T20:53:44.285Z"
+    },
+    {
+      "category": "Configuration Files",
+      "status": "PASS",
+      "details": [
+        "Found 6/6 configuration files",
+        "All critical configs present: Yes"
+      ],
+      "timestamp": "2026-01-19T20:53:44.286Z"
+    },
+    {
+      "category": "Environment Variables",
+      "status": "PASS",
+      "details": [
+        "Found 5/5 required variables"
+      ],
+      "timestamp": "2026-01-19T20:53:44.287Z"
+    },
+    {
+      "category": "Build Configuration",
+      "status": "PASS",
+      "details": [
+        "4/4 build features configured"
+      ],
+      "timestamp": "2026-01-19T20:53:44.287Z"
+    },
+    {
+      "category": "TypeScript Configuration",
+      "status": "PASS",
+      "details": [
+        "4/4 TS features enabled"
+      ],
+      "timestamp": "2026-01-19T20:53:44.288Z"
+    },
+    {
+      "category": "Authentication",
+      "status": "PASS",
+      "details": [
+        "5/5 auth features configured"
+      ],
+      "timestamp": "2026-01-19T20:53:44.289Z"
+    },
+    {
+      "category": "API Routes",
+      "status": "PASS",
+      "details": [
+        "10 API endpoints configured",
+        "Includes: auth, webhooks, upload, contact, chat"
+      ],
+      "timestamp": "2026-01-19T20:53:44.298Z"
+    },
+    {
+      "category": "Page Routes",
+      "status": "PASS",
+      "details": [
+        "22 pages configured",
+        "Includes: marketing, auth, dashboard, book, product pages"
+      ],
+      "timestamp": "2026-01-19T20:53:44.321Z"
+    },
+    {
+      "category": "Deployment Documentation",
+      "status": "PASS",
+      "details": [
+        "5/5 deployment files present"
+      ],
+      "timestamp": "2026-01-19T20:53:44.322Z"
+    }
+  ]
+}
