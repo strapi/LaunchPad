@@ -1,211 +1,116 @@
-import { getSession } from "next-auth/react";
+import { strapi } from '@strapi/client';
+import type { API, Config } from '@strapi/client';
+import { draftMode } from 'next/headers';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
-
-export interface StrapiResponse<T> {
-  data: T;
-  meta?: any;
+export class StrapiError extends Error {
+  constructor(
+    message: string,
+    public readonly contentType: string,
+    public readonly cause?: unknown
+  ) {
+    super(message);
+    this.name = 'StrapiError';
+  }
 }
 
-export interface StrapiListResponse<T> {
-  data: T[];
-  meta: {
-    pagination?: {
-      page: number;
-      pageSize: number;
-      pageCount: number;
-      total: number;
-    };
-  };
+const createClient = (config?: Omit<Config, 'baseURL'>, isDraftMode: boolean = false) => {
+  return strapi({
+    baseURL: `${process.env.NEXT_PUBLIC_API_URL ?? ''}/api`,
+    headers: {
+      "strapi-encode-source-maps": isDraftMode ? "true" : "false",
+      ...config?.headers,
+    },
+    ...config,
+  });
 }
 
-// Helper to get Strapi token from session
-export async function getStrapiToken() {
-  const session = await getSession();
-  return (session?.user as any)?.strapiToken;
-}
-
-// Generic fetch wrapper with authentication
-async function strapiRequest<T>(
-  endpoint: string,
-  options: RequestInit = {}
+/**
+ * Fetches a collection type from Strapi.
+ *
+ * @throws {StrapiError} When the fetch fails
+ */
+export async function fetchCollectionType<T = API.Document[]>(
+  collectionName: string,
+  options?: API.BaseQueryParams,
+  config?: Omit<Config, 'baseURL'>
 ): Promise<T> {
-  const token = await getStrapiToken();
+  const { isEnabled: isDraftMode } = await draftMode();
 
-  const headers: Record<string, string> = {
-    "Content-Type": "application/json",
-    ...(options.headers as Record<string, string> || {}),
-  };
+  try {
+    const { data } = await createClient(config, isDraftMode)
+      .collection(collectionName)
+      .find({
+        ...options,
+        status: isDraftMode ? 'draft' : 'published',
+      });
 
-  if (token) {
-    headers.Authorization = `Bearer ${token}`;
+    return data as T;
+  } catch (error) {
+    throw new StrapiError(
+      `Failed to fetch collection "${collectionName}"`,
+      collectionName,
+      error
+    );
   }
+}
 
-  const response = await fetch(`${API_URL}${endpoint}`, {
-    ...options,
-    headers,
-  });
+/**
+ * Fetches a single type from Strapi.
+ *
+ * @throws {StrapiError} When the fetch fails
+ */
+export async function fetchSingleType<T = API.Document>(
+  singleTypeName: string,
+  options?: API.BaseQueryParams,
+  config?: Omit<Config, 'baseURL'>
+): Promise<T> {
+  const { isEnabled: isDraftMode } = await draftMode();
 
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.message || "API Error");
+  try {
+    const { data } = await createClient(config, isDraftMode)
+      .single(singleTypeName)
+      .find({
+        ...options,
+        status: isDraftMode ? 'draft' : 'published',
+      });
+
+    return data as T;
+  } catch (error) {
+    throw new StrapiError(
+      `Failed to fetch single type "${singleTypeName}"`,
+      singleTypeName,
+      error
+    );
   }
-
-  return response.json();
 }
 
-// CLIENT ENDPOINTS
-export async function getClients(
-  page = 1,
-  pageSize = 10,
-  filters?: Record<string, any>
-) {
-  let query = `/api/clients?pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
+/**
+ * Fetches a single document from a collection by documentId.
+ *
+ * @throws {StrapiError} When the fetch fails
+ */
+export async function fetchDocument<T = API.Document>(
+  collectionName: string,
+  documentId: string,
+  options?: API.BaseQueryParams,
+  config?: Omit<Config, 'baseURL'>
+): Promise<T> {
+  const { isEnabled: isDraftMode } = await draftMode();
 
-  if (filters) {
-    Object.entries(filters).forEach(([key, value]) => {
-      query += `&filters[${key}][$eq]=${value}`;
-    });
+  try {
+    const { data } = await createClient(config, isDraftMode)
+      .collection(collectionName)
+      .findOne(documentId, {
+        ...options,
+        status: isDraftMode ? 'draft' : 'published',
+      });
+
+    return data as T;
+  } catch (error) {
+    throw new StrapiError(
+      `Failed to fetch document "${documentId}" from "${collectionName}"`,
+      collectionName,
+      error
+    );
   }
-
-  return strapiRequest<StrapiListResponse<any>>(query);
-}
-
-export async function getClientById(id: string) {
-  return strapiRequest<StrapiResponse<any>>(
-    `/api/clients/${id}?populate=*`
-  );
-}
-
-export async function createClient(data: Record<string, any>) {
-  return strapiRequest<StrapiResponse<any>>("/api/clients", {
-    method: "POST",
-    body: JSON.stringify({ data }),
-  });
-}
-
-export async function updateClient(id: string, data: Record<string, any>) {
-  return strapiRequest<StrapiResponse<any>>(`/api/clients/${id}`, {
-    method: "PUT",
-    body: JSON.stringify({ data }),
-  });
-}
-
-export async function deleteClient(id: string) {
-  return strapiRequest<StrapiResponse<any>>(`/api/clients/${id}`, {
-    method: "DELETE",
-  });
-}
-
-// RESOURCE ENDPOINTS
-export async function getResources(
-  page = 1,
-  pageSize = 12,
-  locale = "en"
-) {
-  return strapiRequest<StrapiListResponse<any>>(
-    `/api/resources?locale=${locale}&pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=thumbnail`
-  );
-}
-
-export async function getResourceById(id: string, locale = "en") {
-  return strapiRequest<StrapiResponse<any>>(
-    `/api/resources/${id}?locale=${locale}&populate=*`
-  );
-}
-
-export async function createResource(data: Record<string, any>) {
-  return strapiRequest<StrapiResponse<any>>("/api/resources", {
-    method: "POST",
-    body: JSON.stringify({ data }),
-  });
-}
-
-export async function updateResource(id: string, data: Record<string, any>) {
-  return strapiRequest<StrapiResponse<any>>(`/api/resources/${id}`, {
-    method: "PUT",
-    body: JSON.stringify({ data }),
-  });
-}
-
-// SESSION ENDPOINTS
-export async function getSessions(
-  clientId?: string,
-  page = 1,
-  pageSize = 10
-) {
-  let query = `/api/sessions?pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=client`;
-
-  if (clientId) {
-    query += `&filters[client][id][$eq]=${clientId}`;
-  }
-
-  return strapiRequest<StrapiListResponse<any>>(query);
-}
-
-export async function getSessionById(id: string) {
-  return strapiRequest<StrapiResponse<any>>(
-    `/api/sessions/${id}?populate=*`
-  );
-}
-
-export async function createSession(data: Record<string, any>) {
-  return strapiRequest<StrapiResponse<any>>("/api/sessions", {
-    method: "POST",
-    body: JSON.stringify({ data }),
-  });
-}
-
-export async function updateSession(id: string, data: Record<string, any>) {
-  return strapiRequest<StrapiResponse<any>>(`/api/sessions/${id}`, {
-    method: "PUT",
-    body: JSON.stringify({ data }),
-  });
-}
-
-// ASSESSMENT ENDPOINTS
-export async function getAssessments(sessionId?: string) {
-  let query = "/api/assessments?populate=*";
-
-  if (sessionId) {
-    query += `&filters[session][id][$eq]=${sessionId}`;
-  }
-
-  return strapiRequest<StrapiListResponse<any>>(query);
-}
-
-export async function createAssessment(data: Record<string, any>) {
-  return strapiRequest<StrapiResponse<any>>("/api/assessments", {
-    method: "POST",
-    body: JSON.stringify({ data }),
-  });
-}
-
-// UPLOAD HELPER
-export async function uploadFile(file: File, folder?: string) {
-  const formData = new FormData();
-  formData.append("files", file);
-
-  if (folder) {
-    formData.append("folder", folder);
-  }
-
-  const token = await getStrapiToken();
-  const headers: HeadersInit = {};
-
-  if (token) {
-    headers.Authorization = `Bearer ${token}`;
-  }
-
-  const response = await fetch(`${API_URL}/api/upload`, {
-    method: "POST",
-    headers,
-    body: formData,
-  });
-
-  if (!response.ok) {
-    throw new Error("Upload failed");
-  }
-
-  return response.json();
 }

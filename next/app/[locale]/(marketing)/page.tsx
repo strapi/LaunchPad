@@ -4,7 +4,7 @@ import Link from 'next/link';
 import ClientSlugHandler from './ClientSlugHandler';
 import PageContent from '@/lib/shared/PageContent';
 import { generateMetadataObject } from '@/lib/shared/metadata';
-import fetchContentType from '@/lib/strapi/fetchContentType';
+import { fetchCollectionType } from '@/lib/strapi';
 import { HeroSection } from '@/components/HeroSection';
 import { FeatureCard } from '@/components/FeatureCard';
 import LandingIntro from '@/components/LandingIntro';
@@ -17,17 +17,14 @@ export async function generateMetadata(props: {
   const params = await props.params;
 
   try {
-    const pageData = await fetchContentType(
-      'pages',
-      {
-        filters: {
-          slug: 'homepage',
-          locale: params.locale,
+    const [pageData] = await fetchCollectionType('pages', {
+      filters: {
+        slug: {
+          $eq: 'homepage',
         },
-        populate: 'seo.metaImage',
+        locale: params.locale,
       },
-      true
-    );
+    });
 
     const seo = pageData?.seo;
     return generateMetadataObject(seo);
@@ -75,16 +72,15 @@ export default async function HomePage(props: {
   let pageData = null;
 
   try {
-    pageData = await fetchContentType(
-      'pages',
-      {
-        filters: {
-          slug: 'homepage',
-          locale: params.locale,
+    const [data] = await fetchCollectionType('pages', {
+      filters: {
+        slug: {
+          $eq: 'homepage',
         },
+        locale: params.locale,
       },
-      true
-    );
+    });
+    pageData = data;
   } catch (error) {
     console.warn("Strapi unreachable or empty, rendering fallback UI.");
   }

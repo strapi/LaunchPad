@@ -5,6 +5,7 @@
   "description": "A Strapi application",
   "scripts": {
     "develop": "strapi develop",
+    "dev": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
@@ -19,10 +20,10 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.30.0",
+    "@strapi/plugin-cloud": "^5.30.0",
     "@strapi/plugin-seo": "^2.0.4",
-    "@strapi/plugin-users-permissions": "5.30.0",
-    "@strapi/strapi": "5.30.0",
+    "@strapi/plugin-users-permissions": "^5.30.0",
+    "@strapi/strapi": "^5.30.0",
     "better-sqlite3": "11.7.0",
     "form-data": "^4.0.5",
     "patch-package": "^8.0.0",
@@ -37,7 +38,7 @@
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "LAUNCHPAD-LOCAL"
+    "uuid": "LAUNCHPAD"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

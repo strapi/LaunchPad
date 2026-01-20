@@ -86,7 +86,7 @@ export const Hero = ({
           </div>
           <figure className="absolute -right-6 top-8 hidden max-w-xs rounded-3xl border border-border/50 bg-surfaceMuted/80 p-6 text-sm text-text-muted shadow-card backdrop-blur-lg lg:block">
             <blockquote className="italic">
-              “I speak to leaders and into their lives. It all starts with self-awareness.”
+              "I speak to leaders and into their lives. It all starts with self-awareness."
             </blockquote>
             <figcaption className="mt-4 text-xs uppercase tracking-[0.25em] text-brand-200">
               Dr. Peter Sung

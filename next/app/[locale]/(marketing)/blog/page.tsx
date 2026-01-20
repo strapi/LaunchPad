@@ -10,23 +10,18 @@ import { FeatureIconContainer } from '@/components/dynamic-zone/features/feature
 import { Heading } from '@/components/elements/heading';
 import { Subheading } from '@/components/elements/subheading';
 import { generateMetadataObject } from '@/lib/shared/metadata';
-import fetchContentType from '@/lib/strapi/fetchContentType';
-import { Article } from '@/types/types';
+import { fetchCollectionType, fetchSingleType } from '@/lib/strapi';
+import type { Article } from '@/types/types';
 
 export async function generateMetadata(props: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
-  const pageData = await fetchContentType(
-    'blog-page',
-    {
-      filters: { locale: params.locale },
-      populate: 'seo.metaImage',
-    },
-    true
-  );
+  const pageData = await fetchSingleType('blog-page', {
+    locale: params.locale,
+  });
 
-  const seo = pageData?.seo;
+  const seo = pageData.seo;
   const metadata = generateMetadataObject(seo);
   return metadata;
 }
@@ -35,22 +30,17 @@ export default async function Blog(props: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const params = await props.params;
-  const blogPage = await fetchContentType(
-    'blog-page',
-    {
-      filters: { locale: params.locale },
-    },
-    true
-  );
-  const articles = await fetchContentType(
+  const pageData = await fetchSingleType('blog-page', {
+    locale: params.locale,
+  });
+  const [firstArticle, ...articles] = await fetchCollectionType<Article[]>(
     'articles',
     {
-      filters: { locale: params.locale },
-    },
-    false
+      filters: { locale: { $eq: params.locale } },
+    }
   );
 
-  const localizedSlugs = blogPage.localizations?.reduce(
+  const localizedSlugs = pageData.localizations?.reduce(
     (acc: Record<string, string>, localization: any) => {
       acc[localization.locale] = 'blog';
       return acc;
@@ -68,22 +58,20 @@ export default async function Blog(props: {
             <IconClipboardText className="h-6 w-6 text-foreground" />
           </FeatureIconContainer>
           <Heading as="h1" className="mt-4">
-            {blogPage.heading}
+            {pageData.heading}
           </Heading>
           <Subheading className="max-w-3xl mx-auto">
-            {blogPage.sub_heading}
+            {pageData.sub_heading}
           </Subheading>
         </div>
 
-        {articles.data.slice(0, 1).map((article: Article) => (
-          <BlogCard
-            article={article}
-            locale={params.locale}
-            key={article.title}
-          />
-        ))}
+        <BlogCard
+          article={firstArticle}
+          locale={params.locale}
+          key={firstArticle.title}
+        />
 
-        <BlogPostRows articles={articles.data} />
+        <BlogPostRows articles={articles} />
       </Container>
     </div>
   );
