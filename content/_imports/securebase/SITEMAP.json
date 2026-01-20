@@ -1,0 +1,31 @@
+{
+  "generatedAt": "2025-11-21T07:36:25.710Z",
+  "source": "https://securebase.cc",
+  "pages": [
+    {
+      "url": "https://securebase.cc/",
+      "status": 200,
+      "slug": "index"
+    },
+    {
+      "url": "https://securebase.cc/about",
+      "status": 200,
+      "slug": "about"
+    },
+    {
+      "url": "https://securebase.cc/speaking",
+      "status": 200,
+      "slug": "speaking"
+    },
+    {
+      "url": "https://securebase.cc/coaching",
+      "status": 200,
+      "slug": "coaching"
+    },
+    {
+      "url": "https://securebase.cc/contact",
+      "status": 200,
+      "slug": "contact"
+    }
+  ]
+}

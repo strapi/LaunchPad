@@ -1,0 +1,92 @@
+{
+  "kind": "collectionType",
+  "collectionName": "invoices",
+  "info": {
+    "singularName": "invoice",
+    "pluralName": "invoices",
+    "displayName": "Invoice",
+    "description": "Billing invoices"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "invoice_number": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "stripe_invoice_id": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "invoices"
+    },
+    "amount": {
+      "type": "decimal",
+      "required": true
+    },
+    "currency": {
+      "type": "string",
+      "default": "usd"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "draft",
+        "open",
+        "paid",
+        "void",
+        "uncollectible"
+      ],
+      "default": "draft"
+    },
+    "description": {
+      "type": "text"
+    },
+    "invoice_date": {
+      "type": "datetime",
+      "required": true
+    },
+    "due_date": {
+      "type": "datetime"
+    },
+    "paid_date": {
+      "type": "datetime"
+    },
+    "pdf_url": {
+      "type": "string"
+    },
+    "line_items": {
+      "type": "json",
+      "default": []
+    },
+    "tax_amount": {
+      "type": "decimal",
+      "default": 0
+    },
+    "discount_amount": {
+      "type": "decimal",
+      "default": 0
+    },
+    "notes": {
+      "type": "text"
+    },
+    "metadata": {
+      "type": "json",
+      "default": {}
+    }
+  }
+}

@@ -1,0 +1,603 @@
+project: securebase_site_overhaul
+version: 1.0
+meta:
+  author: DARA - THE PUNISHER
+  description: >-
+    Master prompts for Gemini 3.0 to completely redesign and re-copy the
+    SecureBase site (https://peter-sung.vercel.app/en) to 95+ UX/visual/persuasion
+    level, including full-page hero, design system, page layouts, and
+    full copy replacement.
+  pages:
+    - home
+    - about
+    - coaching
+    - contact
+    - blog
+  principles:
+    - Steve Krug "Don’t Make Me Think"
+    - Cialdini persuasion (authority, social proof, scarcity, reciprocity)
+    - Modern 2025 executive coaching aesthetic
+    - SecureBase 3A framework (Awareness → Agency → Action)
+
+prompts:
+  # ---------------------------------------------------------------------------
+  # 1) MASTER DESIGN + IA + COMPONENT PROMPT (FOR GEMINI 3.0)
+  #    - Overhauls entire visual system, IA, and component model for all pages
+  #    - Output: POML with embedded JSON design spec per page
+  # ---------------------------------------------------------------------------
+  - id: site_overhaul_master
+    label: "SecureBase – Full Site Overhaul (Design System + Layouts)"
+    target_model: gemini-3.0-pro
+    format: xml
+    content: |
+      <DesignTask model="gemini-3.0-pro" thinking="high">
+        <role>
+          You are an award-winning 2025-level senior product designer, UX architect,
+          and brand systems thinker.
+
+          You specialize in:
+          - Executive & leadership coaching brands
+          - High-conversion expert-service websites
+          - Building coherent design systems across multiple pages and touchpoints
+
+          Your job is to completely redesign the SecureBase website
+          (https://peter-sung.vercel.app/en) end-to-end.
+        </role>
+
+        <context>
+          SecureBase is the coaching and leadership brand of Dr. Peter Sung.
+
+          Current site (to be PUNISHED and TRANSFORMED):
+          - Home: generic hero, weak visual hierarchy, template-like layout.
+          - About: CV-style narrative, no real story arc or tension.
+          - Coaching: strong 3A framework content but visually reads like
+            a terms-of-service document rather than a high-fee offer.
+          - Contact: generic contact page; lacks expectation-setting
+            and strong framing for a premium discovery call.
+          - Blog: currently empty, which undermines authority and thought leadership.
+
+          Core SecureBase ideas:
+          - Psychological safety as a "secure base" for high performance.
+          - 3A framework: Awareness → Agency → Action.
+          - 4000+ coaching hours, 2000+ speaking events, 30+ years in leadership.
+          - Works with founders, executives, senior leaders, and faith-driven
+            leaders navigating complexity.
+
+          Brand target:
+          - Score 95+ on UX, visual design, persuasion, and accessibility.
+          - Feel: calm, grounded, psychologically sophisticated, deeply human.
+          - Look: modern, minimal, with just enough art direction to feel premium.
+        </context>
+
+        <uxPrinciples>
+          Apply these non-negotiables:
+
+          1) Krug "Don’t Make Me Think"
+             - Each page must have a clear billboard message (5-second rule).
+             - Obvious navigation and next steps.
+             - No walls of text without scannable structure.
+
+          2) Cialdini persuasion levers (ethical)
+             - AUTHORITY: Dr. Sung’s credentials, years, hours, and events
+               are leveraged visually and contextually (not just counters).
+             - SOCIAL PROOF: explicit use of categories/logos, testimonials,
+               micro-case blurbs.
+             - SCARCITY: subtle — limited capacity, bespoke work, never fake urgency.
+
+          3) Modern 2025 design heuristics
+             - Strong typography hierarchy.
+             - Intentional negative space and grid.
+             - Accessible contrast and touch targets.
+             - Motion that is calm and purposeful (no gimmicks).
+
+          4) SecureBase as a system
+             - Use Awareness → Agency → Action as a visible progression in
+               at least the Home and Coaching pages.
+             - Treat "secure base" as a visual metaphor: foundation, support,
+               and safe launchpad.
+        </uxPrinciples>
+
+        <brandSystem>
+          You are allowed to invent custom font families and treat them as
+          named tokens. Assume the implementation team will map them to
+          closest available real-world fonts (e.g., Google Fonts) if needed.
+
+          Design a minimal but opinionated design system:
+          - Typography families:
+            * SecureBase Sans (primary UI + body text)
+            * SecureBase Serif (headlines and pull quotes)
+            * SecureBase Mono (small, optional for data or code-like labels)
+
+          - Typography behavior:
+            * High legibility, generous line-height, large enough sizes for
+              older senior leaders reading on a laptop.
+
+          - Color system:
+            * Backgrounds that feel secure, warm, and stable (no harsh pure white,
+              no neon accents).
+            * A clear primary action color and a softer "ghost" variant.
+            * Use color to express "secure base" (grounded) and "exploration"
+              (forward motion).
+
+          - Elevation & surfaces:
+            * Soft shadows, rounded corners, and layered surfaces that subtly
+              communicate depth and psychological safety.
+        </brandSystem>
+
+        <scope>
+          You are redesigning the following:
+          - Global navigation (desktop + mobile) and footer
+          - Home page
+          - About page
+          - Coaching page
+          - Contact page
+          - Blog index page (even if content is empty, design for future posts)
+        </scope>
+
+        <tasks>
+          1) Information Architecture
+             - Define the IA for the whole site (nav labels, footer structure,
+               cross-links between pages) to support a clear persuasion journey.
+
+          2) Design Tokens & Foundations
+             - Create a full set of design tokens (colors, typography, spacing,
+               radii, shadows, breakpoints, z-index layers) under a SecureBase
+               naming scheme.
+
+          3) Layout & Components by Page
+             - For EACH page (home, about, coaching, contact, blog):
+               * Describe the page as a tree of sections and components.
+               * Specify their hierarchy, intended content, and layout behavior.
+               * Reference design tokens where appropriate.
+
+          4) Motion & Interaction
+             - Define a motion language (durations, easings, principles).
+             - Specify key interactions: nav, CTAs, cards, hero imagery, section
+               reveals on scroll.
+
+          5) Accessibility & Responsiveness
+             - Call out specific accessibility behaviors (ARIA, focus states,
+               color contrast, font sizes, min touch targets).
+             - Describe how layout adapts across breakpoints (mobile, tablet,
+               desktop, large desktop).
+        </tasks>
+
+        <outputFormat>
+          Respond using POML (Prompt Object Markup Language) with a SINGLE
+          <prompt-object> root element.
+
+          Inside <prompt-object>, you MUST embed a single JSON object in a
+          <design-spec> tag. That JSON must strictly follow the schema below.
+
+          Do NOT output anything except POML with this structure:
+          - Root: <prompt-object>
+          - Child: <design-spec> containing ONE JSON object
+
+          JSON SCHEMA (MUST be valid JSON):
+
+          {
+            "meta": {
+              "brandName": "SecureBase",
+              "siteUrl": "https://peter-sung.vercel.app/en",
+              "designVersion": "1.0",
+              "designRationale": "string (1-3 sentences that capture the main idea)"
+            },
+            "tokens": {
+              "colors": {
+                "backgroundBase": "string",
+                "backgroundSoft": "string",
+                "surface": "string",
+                "surfaceAlt": "string",
+                "primary": "string",
+                "primarySoft": "string",
+                "accent": "string",
+                "accentSoft": "string",
+                "textMain": "string",
+                "textMuted": "string",
+                "borderSubtle": "string",
+                "borderStrong": "string"
+              },
+              "typography": {
+                "families": {
+                  "sans": "SecureBase Sans",
+                  "serif": "SecureBase Serif",
+                  "mono": "SecureBase Mono"
+                },
+                "scale": {
+                  "xs": "string",
+                  "sm": "string",
+                  "md": "string",
+                  "lg": "string",
+                  "xl": "string",
+                  "display": "string"
+                },
+                "lineHeights": {
+                  "tight": "number",
+                  "normal": "number",
+                  "relaxed": "number"
+                }
+              },
+              "spacing": {
+                "scale": [4, 8, 12, 16, 24, 32, 40, 56, 72],
+                "sectionY": "string",
+                "sectionX": "string"
+              },
+              "radii": {
+                "sm": "string",
+                "md": "string",
+                "lg": "string",
+                "pill": "string"
+              },
+              "shadows": {
+                "soft": "string",
+                "medium": "string",
+                "strong": "string"
+              },
+              "breakpoints": {
+                "sm": "string",
+                "md": "string",
+                "lg": "string",
+                "xl": "string"
+              }
+            },
+            "ia": {
+              "nav": {
+                "primary": [
+                  { "label": "string", "href": "string" }
+                ],
+                "secondary": [
+                  { "label": "string", "href": "string" }
+                ],
+                "cta": {
+                  "label": "string",
+                  "href": "string"
+                }
+              },
+              "footer": {
+                "sections": [
+                  {
+                    "title": "string",
+                    "links": [
+                      { "label": "string", "href": "string" }
+                    ]
+                  }
+                ]
+              }
+            },
+            "pages": {
+              "home": {
+                "purpose": "string",
+                "sections": [
+                  {
+                    "id": "string",
+                    "label": "string",
+                    "type": "string",
+                    "intent": "string",
+                    "components": [
+                      {
+                        "id": "string",
+                        "type": "string",
+                        "props": {
+                          "layout": "string",
+                          "tokens": ["string"],
+                          "notes": "string"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "about": {
+                "purpose": "string",
+                "sections": []
+              },
+              "coaching": {
+                "purpose": "string",
+                "sections": []
+              },
+              "contact": {
+                "purpose": "string",
+                "sections": []
+              },
+              "blog": {
+                "purpose": "string",
+                "sections": []
+              }
+            },
+            "motion": {
+              "principles": ["string"],
+              "tokens": {
+                "fast": "number",
+                "normal": "number",
+                "slow": "number"
+              },
+              "patterns": {
+                "pageLoad": {
+                  "description": "string",
+                  "durationMs": "number",
+                  "easing": "string"
+                },
+                "hero": {
+                  "description": "string",
+                  "durationMs": "number",
+                  "easing": "string"
+                },
+                "cta": {
+                  "description": "string",
+                  "durationMs": "number",
+                  "easing": "string"
+                }
+              }
+            },
+            "accessibility": {
+              "contrastMinimum": "string",
+              "focusVisible": "string",
+              "ariaGuidelines": "string",
+              "notes": "string"
+            }
+          }
+        </outputFormat>
+      </DesignTask>
+
+  # ---------------------------------------------------------------------------
+  # 2) FULL COPY REPLACEMENT PROMPT (FOR GEMINI 3.0)
+  #    - Uses the design spec from prompt 1 as input context
+  #    - Outputs final, production-ready copy for ALL pages
+  # ---------------------------------------------------------------------------
+  - id: site_copy_overwrite
+    label: "SecureBase – Full Site Copy Replacement"
+    target_model: gemini-3.0-pro
+    format: xml
+    content: |
+      <CopyTask model="gemini-3.0-pro" thinking="high">
+        <role>
+          You are a senior UX copywriter and narrative strategist for
+          high-ticket leadership coaches.
+
+          You write:
+          - Clear, psychologically sophisticated copy
+          - That converts without hype
+          - In the voice of a calm, grounded, deeply experienced guide
+        </role>
+
+        <inputs>
+          1) Treat the output JSON from the DESIGN prompt (site_overhaul_master)
+             as your design context. Assume you have its full `design-spec` JSON.
+
+          2) Existing site content at https://peter-sung.vercel.app/en is your
+             baseline, BUT you are expected to significantly improve it.
+
+          3) Brand pillars:
+             - SecureBase = leaders having a psychological "home base" that
+               allows them to explore, risk, and grow.
+             - 3A framework: Awareness → Agency → Action.
+             - Audience: founders, executives, senior leaders, and faith-driven
+               leaders facing complex people and systems challenges.
+        </inputs>
+
+        <objectives>
+          - Replace ALL major on-page copy for:
+            * Home
+            * About
+            * Coaching
+            * Contact
+            * Blog index (even if content is stubbed)
+
+          - Maintain existing information where it is structurally correct
+            (e.g., 4000+ hours, 2000+ events, 30+ years) but reframe it within
+            a sharper narrative spine.
+
+          - Write in a way that:
+            * Honors Dr. Sung’s existing experience and tone.
+            * Increases clarity, specificity, and emotional resonance.
+            * Aligns perfectly with the component structure from the DESIGN
+              prompt (section IDs, component IDs, and their intents).
+        </objectives>
+
+        <voiceAndTone>
+          - Calm, confident, unhurried.
+          - Uses plain English, not consultant jargon.
+          - Shows deep understanding of human psychology and systems thinking.
+          - Avoids shouting, exclamation points, and cliché leadership phrases.
+        </voiceAndTone>
+
+        <pageGuidelines>
+          <home>
+            - Hero: make the visitor feel seen in the first 2 lines.
+            - Explain SecureBase and the 3A framework briefly but powerfully.
+            - Include:
+              * Eyebrow, headline, subheadline, primary + secondary CTAs.
+              * 3 core stats.
+              * A 1–2 sentence testimonial.
+
+            - Subsequent sections should:
+              * Clarify who this is for.
+              * Highlight core offers (coaching, org design, speaking) with
+                outcome-focused copy.
+              * Explain how the 3A framework works as a journey.
+          </home>
+
+          <about>
+            - Reframe from CV to STORY.
+            - 3-act arc:
+              * Act I – The tension: what Peter saw broken in leadership.
+              * Act II – The insight: leaders need a secure base.
+              * Act III – The promise: how he now serves as that base.
+
+            - Include:
+              * Short bio.
+              * Credibility (years, hours, events) in context.
+              * 2–3 micro case examples (anonymized) with before/after.
+          </about>
+
+          <coaching>
+            - Lead with the pains of the ICP: feeling alone, overwhelmed,
+              navigating people complexity, etc.
+            - Present the 3A framework as a journey with benefits at each stage.
+            - For each coaching offer (discovery, executive coaching, team
+              workshops), write:
+              * Who it’s for.
+              * What problems it solves.
+              * What outcomes to expect.
+              * A concise set of bullets that are benefits, not features.
+          </coaching>
+
+          <contact>
+            - Reframe as a "SecureBase Discovery Call" invitation.
+            - Set expectations clearly:
+              * Response-time promise.
+              * Length and purpose of the first call.
+              * What happens after.
+            - Provide reassuring copy around privacy and the bespoke nature
+              of engagements.
+          </contact>
+
+          <blog>
+            - If there are no posts, avoid "No results found".
+            - Instead, explain what leaders will find here in future posts.
+            - Offer 3 "coming soon" topic blurbs, each 1–2 sentences.
+          </blog>
+        </pageGuidelines>
+
+        <outputFormat>
+          Respond with JSON ONLY (no POML wrapper for this prompt).
+
+          The JSON MUST strictly follow this schema:
+
+          {
+            "meta": {
+              "brandName": "SecureBase",
+              "siteUrl": "https://peter-sung.vercel.app/en",
+              "copyVersion": "1.0",
+              "notes": "string (1-3 sentences referencing alignment with design-spec)"
+            },
+            "pages": {
+              "home": {
+                "hero": {
+                  "eyebrow": "string",
+                  "headline": "string",
+                  "subheadline": "string",
+                  "primaryCTA": {
+                    "label": "string",
+                    "ariaLabel": "string",
+                    "destination": "string"
+                  },
+                  "secondaryCTA": {
+                    "label": "string",
+                    "ariaLabel": "string",
+                    "destination": "string"
+                  },
+                  "stats": [
+                    { "value": "string", "label": "string", "supportingText": "string" }
+                  ],
+                  "testimonial": {
+                    "quote": "string",
+                    "name": "string",
+                    "role": "string",
+                    "organization": "string"
+                  }
+                },
+                "sections": [
+                  {
+                    "id": "string (should match design-spec section id)",
+                    "title": "string",
+                    "body": "string",
+                    "bullets": ["string"],
+                    "cta": {
+                      "label": "string",
+                      "ariaLabel": "string",
+                      "destination": "string"
+                    }
+                  }
+                ]
+              },
+              "about": {
+                "hero": {
+                  "headline": "string",
+                  "subheadline": "string"
+                },
+                "story": {
+                  "act1": "string",
+                  "act2": "string",
+                  "act3": "string"
+                },
+                "trackRecord": {
+                  "summary": "string",
+                  "stats": [
+                    { "value": "string", "label": "string", "supportingText": "string" }
+                  ]
+                },
+                "microCases": [
+                  {
+                    "title": "string",
+                    "context": "string",
+                    "challenge": "string",
+                    "approach": "string",
+                    "outcome": "string"
+                  }
+                ]
+              },
+              "coaching": {
+                "hero": {
+                  "headline": "string",
+                  "subheadline": "string"
+                },
+                "framework": {
+                  "intro": "string",
+                  "stages": [
+                    {
+                      "name": "Awareness | Agency | Action",
+                      "tagline": "string",
+                      "description": "string",
+                      "benefits": ["string"]
+                    }
+                  ]
+                },
+                "offers": [
+                  {
+                    "id": "discovery | executive | team_workshop | other",
+                    "name": "string",
+                    "headline": "string",
+                    "whoItsFor": "string",
+                    "problems": ["string"],
+                    "outcomes": ["string"],
+                    "bullets": ["string"],
+                    "cta": {
+                      "label": "string",
+                      "ariaLabel": "string",
+                      "destination": "string"
+                    }
+                  }
+                ]
+              },
+              "contact": {
+                "hero": {
+                  "headline": "string",
+                  "subheadline": "string"
+                },
+                "intro": "string",
+                "expectations": {
+                  "responseTime": "string",
+                  "callLength": "string",
+                  "purpose": "string",
+                  "afterCall": "string"
+                },
+                "reassurance": "string"
+              },
+              "blog": {
+                "hero": {
+                  "headline": "string",
+                  "subheadline": "string"
+                },
+                "intro": "string",
+                "comingSoonTopics": [
+                  {
+                    "title": "string",
+                    "teaser": "string"
+                  }
+                ]
+              }
+            }
+          }
+        </outputFormat>
+      </CopyTask>

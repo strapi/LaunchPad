@@ -2,23 +2,48 @@ import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { getToken } from 'next-auth/jwt';
 
 import { i18n } from '@/i18n.config';
 
 function getLocale(request: NextRequest): string | undefined {
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
+  try {
+    const negotiatorHeaders: Record<string, string> = {};
+    request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
-  // @ts-ignore locales are readonly
-  const locales: string[] = i18n.locales;
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+    // @ts-ignore locales are readonly
+    const locales: string[] = i18n.locales;
+    const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
 
-  const locale = matchLocale(languages, locales, i18n.defaultLocale);
-  return locale;
+    const locale = matchLocale(languages, locales, i18n.defaultLocale);
+    return locale;
+  } catch (error) {
+    console.error('Locale negotiation failed:', error);
+    return i18n.defaultLocale;
+  }
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+
+  // Protect dashboard routes - require authentication
+  if (pathname.startsWith('/dashboard')) {
+    const token = await getToken({
+      req: request,
+      secret: process.env.NEXTAUTH_SECRET
+    });
+
+    if (!token) {
+      // Redirect to login with callback URL
+      const loginUrl = new URL('/login', request.url);
+      loginUrl.searchParams.set('callbackUrl', pathname);
+      return NextResponse.redirect(loginUrl);
+    }
+
+    // User is authenticated, allow access
+    return NextResponse.next();
+  }
+
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
@@ -36,6 +61,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Matcher ignoring `/_next/` and `/api/`
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
+  // Matcher ignoring `/_next/` and `/api/` and standalone pages
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|login|sign-up|book|dashboard|.*\\.png|.*\\.jpg).*)'],
 };

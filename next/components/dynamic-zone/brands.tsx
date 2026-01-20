@@ -45,8 +45,12 @@ export const Brands = ({
 
   return (
     <div className="relative z-20 py-10 md:py-40">
-      <Heading className="pt-4">{heading}</Heading>
-      <Subheading className="max-w-3xl mx-auto">{sub_heading}</Subheading>
+      <Heading className="pt-4 text-center" size="xl">
+        {heading}
+      </Heading>
+      <Subheading className="mx-auto max-w-3xl text-center text-base text-text-subtle">
+        {sub_heading}
+      </Subheading>
 
       <div className="flex gap-10 flex-wrap justify-center md:gap-40 relative h-full w-full mt-20">
         <AnimatePresence mode="popLayout">

@@ -1,24 +1,94 @@
-@import './prism.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
+    /* LIGHT MODE - Warm Professional (Psychology/Speaker) */
+    --background: 40 20% 99%; /* #FEFDFB - Warm White */
+    --background-secondary: 30 20% 97%; /* #FDF8F3 - Soft Cream */
+    --foreground: 220 15% 10%; /* #1A1A1A - Soft Black */
+
+    --primary: 160 40% 30%; /* #2D6A4F - Forest Green (Trust/Growth) */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 10 60% 50%; /* #C44536 - Terracotta (Warmth) */
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 140 20% 60%; /* #84A98C - Sage */
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 220 10% 90%;
+    --muted-foreground: 220 10% 40%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 10%;
+
+    --border: 220 10% 90%;
+    --input: 220 10% 90%;
+    --ring: 160 40% 30%;
+
+    /* Semantic Status Colors */
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --destructive: 0 84% 60%;
+    --info: 199 89% 48%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* DARK MODE - Relaxing Dark (No Neons) */
+    --background: 225 15% 7%; /* #0F1115 - Warm Black */
+    --background-secondary: 225 15% 12%; /* #1A1D23 */
+    --foreground: 220 10% 96%;
+
+    --primary: 160 50% 45%; /* Muted Teal/Green */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 10 60% 60%; /* Muted Terracotta */
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 215 25% 27%; /* Dark Slate */
+    --accent-foreground: 220 10% 96%;
+
+    --muted: 220 10% 20%;
+    --muted-foreground: 220 10% 70%;
+
+    --card: 225 15% 10%; /* Slightly lighter than bg */
+    --card-foreground: 220 10% 96%;
+
+    --border: 220 10% 20%;
+    --input: 220 10% 20%;
+    --ring: 160 50% 45%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased transition-colors duration-300;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:opacity-90 px-6 py-3 rounded-lg font-medium transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5;
+  }
+  .card-glass {
+    @apply bg-card/80 backdrop-blur-md border border-white/10 shadow-xl;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
   }
 }

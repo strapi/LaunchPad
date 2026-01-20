@@ -1,0 +1,38 @@
+<svg width="400" height="500" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="500" rx="16" fill="#1a2744"/>
+
+  <!-- Gradient circle background -->
+  <defs>
+    <linearGradient id="profileGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Profile circle -->
+  <circle cx="200" cy="180" r="100" fill="url(#profileGrad)"/>
+
+  <!-- Initials -->
+  <text x="200" y="200" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="700" fill="white" text-anchor="middle">
+    PS
+  </text>
+
+  <!-- Name -->
+  <text x="200" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="600" fill="white" text-anchor="middle">
+    Dr. Peter Sung
+  </text>
+
+  <!-- Title -->
+  <text x="200" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#9ca3af" text-anchor="middle">
+    Leadership Coach &amp; Speaker
+  </text>
+
+  <!-- Accent line -->
+  <rect x="140" y="420" width="120" height="3" rx="1.5" fill="#06b6d4"/>
+
+  <!-- SecureBase text -->
+  <text x="200" y="465" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#06b6d4" text-anchor="middle">
+    SecureBase
+  </text>
+</svg>

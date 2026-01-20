@@ -1,0 +1,87 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "Payment",
+    "description": "Payment transaction records"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "stripe_payment_id": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::customer.customer",
+      "inversedBy": "payments"
+    },
+    "invoice": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::invoice.invoice"
+    },
+    "amount": {
+      "type": "decimal",
+      "required": true
+    },
+    "currency": {
+      "type": "string",
+      "default": "usd"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "succeeded",
+        "processing",
+        "requires_action",
+        "requires_capture",
+        "requires_confirmation",
+        "requires_payment_method",
+        "canceled"
+      ],
+      "default": "processing"
+    },
+    "payment_method": {
+      "type": "string"
+    },
+    "card_last_four": {
+      "type": "string"
+    },
+    "card_brand": {
+      "type": "string"
+    },
+    "payment_date": {
+      "type": "datetime"
+    },
+    "description": {
+      "type": "text"
+    },
+    "receipt_url": {
+      "type": "string"
+    },
+    "failure_code": {
+      "type": "string"
+    },
+    "failure_message": {
+      "type": "text"
+    },
+    "metadata": {
+      "type": "json",
+      "default": {}
+    }
+  }
+}

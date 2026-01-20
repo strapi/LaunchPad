@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini Logo Lens</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      body { font-family: 'Inter', sans-serif; }
+      /* Custom scrollbar for webkit */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: #0f172a; }
+      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+      ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+      /* 3D Animations */
+      @keyframes float {
+        0%, 100% { transform: translateY(0) rotateX(0); }
+        50% { transform: translateY(-10px) rotateX(2deg); }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float-delayed {
+        0%, 100% { transform: translateY(0) rotateX(0); }
+        50% { transform: translateY(-15px) rotateX(-2deg); }
+      }
+      .animate-float-delayed {
+        animation: float-delayed 7s ease-in-out infinite 1s;
+      }
+
+      @keyframes shimmer {
+        0% { transform: translateX(-200%) skewX(-15deg); }
+        100% { transform: translateX(200%) skewX(-15deg); }
+      }
+      .animate-shimmer {
+        animation: shimmer 2.5s infinite;
+      }
+
+      @keyframes shimmer-fast {
+        0% { transform: translateX(-150%) skewX(-20deg); }
+        50%, 100% { transform: translateX(150%) skewX(-20deg); }
+      }
+      .animate-shimmer-fast {
+        animation: shimmer-fast 3.5s infinite; /* Runs every 3.5s */
+      }
+
+      @keyframes pulse-slow {
+        0%, 100% { opacity: 0.3; transform: scale(1) translate(-50%, -50%); }
+        50% { opacity: 0.6; transform: scale(1.1) translate(-50%, -50%); }
+      }
+      .animate-pulse-slow {
+        animation: pulse-slow 4s ease-in-out infinite;
+      }
+
+      /* Background Blobs for Marketing Card */
+      @keyframes blob {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
+      .animate-blob {
+        animation: blob 7s infinite;
+      }
+
+      /* Page Load Animation */
+      @keyframes fade-in-up {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-up {
+        animation: fade-in-up 0.8s ease-out forwards;
+      }
+
+      @keyframes fade-out {
+        0% { opacity: 1; pointer-events: auto; }
+        100% { opacity: 0; pointer-events: none; }
+      }
+      .animate-fade-out {
+        animation: fade-out 1s ease-out forwards;
+      }
+      
+      .transform-style-3d {
+        transform-style: preserve-3d;
+      }
+      
+      .perspective-1000 {
+        perspective: 1000px;
+      }
+
+      .bg-grid-white {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "html-to-image": "https://esm.sh/html-to-image@1.11.11"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

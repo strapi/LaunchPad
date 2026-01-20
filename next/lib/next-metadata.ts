@@ -1,27 +1,26 @@
 const seoData = {
-  title:
-    'LaunchPad - Your content delivery partner for large scale applications',
-  description: `A platform integrating Aceternity with Strapi for seamless content management.`,
-  image: 'https://ui.aceternity.com/banner.png',
+  title: 'Dr. Peter Sung | SecureBase Leadership Coaching',
+  description: `Empowering leaders with high-performance coaching, speaking, and assessments. Build psychological safety and strategic clarity with Dr. Peter Sung.`,
+  image: '/images/og-image.svg',
   openGraph: {
     type: 'website',
-    title: `LaunchPad - Your content delivery partner for large scale applications`,
-    url: 'https://ui.aceternity.com', // TODO: Fix this
-    description: `A platform integrating Aceternity with Strapi for seamless content management.`,
-    locale: 'en_EN',
-    keywords: 'content, delivery, web, hosting',
+    title: 'Dr. Peter Sung | SecureBase Leadership Coaching',
+    url: 'https://peter-sung.vercel.app',
+    description: `Empowering leaders with high-performance coaching, speaking, and assessments. Build psychological safety and strategic clarity with Dr. Peter Sung.`,
+    locale: 'en_US',
+    keywords: 'leadership coaching, executive coaching, organizational design, keynote speaker, Peter Sung, SecureBase',
     images: [
       {
         width: 1200,
         height: 630,
-        url: `https://ui.aceternity.com/banner.png`, // TODO: Fix this
+        url: '/images/og-image.svg',
       },
     ],
-    site_name: 'launchpad',
+    site_name: 'SecureBase',
   },
   twitter: {
-    handle: '@mannupaaji',
-    site: 'ui.aceternity.com', // TODO: Fix this
+    handle: '@drpetersung',
+    site: 'securebase.cc',
     cardType: 'summary_large_image',
   },
 };

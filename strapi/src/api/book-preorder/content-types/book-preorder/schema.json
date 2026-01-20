@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "book_preorders",
+  "info": {
+    "singularName": "book-preorder",
+    "pluralName": "book-preorders",
+    "displayName": "Book Preorder",
+    "description": "Preorders for Dr. Peter Sung's book"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fullName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "orderType": {
+      "type": "enumeration",
+      "enum": ["signed-hardcover", "hardcover", "ebook", "bundle"],
+      "required": true
+    },
+    "quantity": {
+      "type": "integer",
+      "default": 1,
+      "min": 1
+    },
+    "personalizationMessage": {
+      "type": "text",
+      "maxLength": 50
+    },
+    "shippingAddress": {
+      "type": "json"
+    },
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "paid", "refunded"],
+      "default": "pending"
+    },
+    "fulfillmentStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "processing", "shipped", "delivered"],
+      "default": "pending"
+    },
+    "stripePaymentId": {
+      "type": "string"
+    },
+    "totalAmount": {
+      "type": "decimal"
+    },
+    "coachingUpsell": {
+      "type": "boolean",
+      "default": false
+    },
+    "coachingPackage": {
+      "type": "string"
+    },
+    "trackingNumber": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+}

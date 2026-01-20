@@ -1,0 +1,160 @@
+"use client";
+
+import React, { useState, useEffect, useRef } from 'react';
+import { IconMicrophone, IconSend, IconSparkles } from '@tabler/icons-react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+export default function LemonAgentWidget() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<{role: 'user' | 'agent', content: string}[]>([
+    { role: 'agent', content: "Good morning, Dr. Sung. I've analyzed the latest session with Mark. Would you like a summary?" }
+  ]);
+  const [input, setInput] = useState("");
+  const [isListening, setIsListening] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+
+  const toggleOpen = () => setIsOpen(!isOpen);
+
+  const handleSend = async () => {
+    if (!input.trim()) return;
+    
+    const userMessage = input;
+    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setInput("");
+    setIsTyping(true);
+    
+    try {
+      const response = await fetch('/api/agent/process', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: userMessage,
+          history: messages,
+        }),
+      });
+
+      const data = await response.json();
+      
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      setIsTyping(false);
+      setMessages(prev => [...prev, { role: 'agent', content: data.response }]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setIsTyping(false);
+      setMessages(prev => [...prev, { 
+        role: 'agent', 
+        content: "I'm having trouble connecting right now. Please try again in a moment." 
+      }]);
+    }
+  };
+
+  const toggleListening = () => {
+    setIsListening(!isListening);
+    // Simulate voice input
+    if (!isListening) {
+      setTimeout(() => {
+        setInput("Show me the psychological safety trends for the executive team.");
+        setIsListening(false);
+      }, 2000);
+    }
+  };
+
+  return (
+    <>
+      {/* Floating Trigger */}
+      <motion.button
+        onClick={toggleOpen}
+        className="fixed bottom-8 right-4 sm:right-8 w-14 h-14 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full shadow-lg flex items-center justify-center z-50 hover:scale-110 transition-transform"
+        whileHover={{ rotate: 15 }}
+      >
+        <IconSparkles className="text-white w-8 h-8" />
+      </motion.button>
+
+      {/* Chat Window */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            className="fixed bottom-24 right-4 sm:right-8 w-[calc(100vw-2rem)] sm:w-96 h-[500px] max-h-[70vh] bg-charcoal border border-white/10 rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden backdrop-blur-xl bg-opacity-90"
+          >
+            {/* Header */}
+            <div className="p-4 border-b border-white/10 bg-white/5 flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                <span className="font-semibold text-white">LemonAI Agent</span>
+              </div>
+              <span className="text-xs text-gray-400">Proactive Mode</span>
+            </div>
+
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {messages.map((msg, idx) => (
+                <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  <div className={`max-w-[80%] p-3 rounded-xl text-sm ${
+                    msg.role === 'user' 
+                      ? 'bg-cyan-600 text-white rounded-tr-none' 
+                      : 'bg-white/10 text-gray-200 rounded-tl-none'
+                  }`}>
+                    {msg.content}
+                  </div>
+                </div>
+              ))}
+              {isTyping && (
+                <div className="flex justify-start">
+                  <div className="bg-white/10 p-3 rounded-xl rounded-tl-none flex gap-1">
+                    <motion.div 
+                      animate={{ scale: [1, 1.2, 1] }} 
+                      transition={{ repeat: Infinity, duration: 0.6 }} 
+                      className="w-2 h-2 bg-gray-400 rounded-full" 
+                    />
+                    <motion.div 
+                      animate={{ scale: [1, 1.2, 1] }} 
+                      transition={{ repeat: Infinity, duration: 0.6, delay: 0.2 }} 
+                      className="w-2 h-2 bg-gray-400 rounded-full" 
+                    />
+                    <motion.div 
+                      animate={{ scale: [1, 1.2, 1] }} 
+                      transition={{ repeat: Infinity, duration: 0.6, delay: 0.4 }} 
+                      className="w-2 h-2 bg-gray-400 rounded-full" 
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Input */}
+            <div className="p-4 border-t border-white/10 bg-white/5">
+              <div className="flex items-center gap-2">
+                <button 
+                  onClick={toggleListening}
+                  className={`p-2 rounded-full transition-colors ${isListening ? 'bg-red-500/20 text-red-400' : 'hover:bg-white/10 text-gray-400'}`}
+                >
+                  <IconMicrophone size={20} />
+                </button>
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+                  placeholder="Ask LemonAI..."
+                  className="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder-gray-500 text-sm"
+                />
+                <button 
+                  onClick={handleSend}
+                  className="p-2 hover:bg-white/10 rounded-full text-cyan-400 transition-colors"
+                >
+                  <IconSend size={20} />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}

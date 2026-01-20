@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "assessments",
+  "info": {
+    "singularName": "assessment",
+    "pluralName": "assessments",
+    "displayName": "Assessment",
+    "description": "Client assessments and evaluations"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": ["createdAt", "updatedAt"],
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": ["intake", "progress", "final", "custom"],
+      "required": true
+    },
+    "session": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::session.session",
+      "inversedBy": "assessments"
+    },
+    "client": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::client.client"
+    },
+    "results": {
+      "type": "json"
+    },
+    "score": {
+      "type": "decimal"
+    },
+    "notes": {
+      "type": "richtext"
+    },
+    "recommendations": {
+      "type": "richtext"
+    }
+  }
+}

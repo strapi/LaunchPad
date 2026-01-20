@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Application Initialization...</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding-top: 50px; background-color: #f9f9f9; }
+        .container { max-width: 600px; margin: 0 auto; }
+        .steps-container { display: flex; justify-content: space-between; align-items: flex-start; }
+        .step-item { width: calc(33.33% - 20px); position: relative;    display: flex;flex-direction: column;align-content: center;align-items: center;}
+        #progress-bar-container { display: none; width: 80%; margin: 20px auto; background-color: #f3f3f3; border-radius: 5px; }
+        #progress-bar { width: 0%; height: 25px; background-color: #4CAF50; border-radius: 5px; text-align: center; line-height: 25px; color: white; }
+        .step-number { 
+            font-size: 1em; font-weight: bold; color: #fff;
+            width: 32px;
+            height: 32px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 100px;
+            background: #d9d9d9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #status-message{
+            margin-top: 30px;
+        }
+        .step-number.active { background: #1677ff; }
+        /* .step-number.success { color: #52c41a; }
+        .step-number.failed { color: #f5222d; } */
+        .step-title { font-size: 16px; margin-bottom: 5px; color: #333; text-align: center; }
+        .status-message { color: #777; text-align: center; }
+        .progress-bar-container { width: 100%; background-color: #e0e0e0; border-radius: 5px; overflow: hidden; display: none; margin-top: 10px; }
+        .progress-bar { height: 25px; background-color: #1890ff; border-radius: 5px; text-align: center; line-height: 25px; color: white; transition: width 1s ease-in-out; }
+        .progress-bar.failed { background-color: #f5222d; }
+        .arrow { position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 2em; color: #aaa; }
+        .last-step .arrow { display: none; }
+        #error-message { color: red; margin-top: 20px; display: none; font-size: 1.1em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #333;">Application Initialization</h1>
+        <div class="steps-container">
+            <div class="step-item">
+                <span class="step-number active" id="step-number-step1">1</span>
+                <div class="step-title">Check if Docker is Installed</div>
+            </div>
+            <div class="step-item">
+                <span class="step-number" id="step-number-step2">2</span>
+                <div class="step-title">Check if Docker is Start </div>
+            </div>
+            <div class="step-item last-step">
+                <span class="step-number" id="step-number-step3">3</span>
+                <div class="step-title">Check if image exists</div>
+            </div>
+        </div>
+        <div id="status-message">Initializing...</div>
+        <div id="progress-bar-container">
+            <div id="progress-bar">0%</div>
+        </div>
+        <div id="error-message"></div>
+    </div>
+     <script src="./setup-renderer.js"></script>
+</body>
+</html>

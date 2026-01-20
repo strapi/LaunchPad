@@ -2,6 +2,8 @@ node_modules
 .DS_Store
 .vscode
 .env
+.env.local
+.env.*.local
 .claude/settings.local.json
 .pnp.*
 .yarn/*
@@ -10,3 +12,25 @@ node_modules
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+.clinerules/byterover-rules.md
+.kilocode/rules/byterover-rules.md
+.roo/rules/byterover-rules.md
+.windsurf/rules/byterover-rules.md
+.cursor/rules/byterover-rules.mdc
+.kiro/steering/byterover-rules.md
+.qoder/rules/byterover-rules.md
+.augment/rules/byterover-rules.md
+.vercel
+playwright-report/
+test-results/
+lighthouse-results.json
+.next/
+dist/
+build/
+out/
+*.log
+npm-debug.log*
+
+# Reference libraries (not part of project)
+cult-directory-template-main/
+motion-primitives-main/

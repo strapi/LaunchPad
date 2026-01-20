@@ -1,5 +1,7 @@
 # LaunchPad - Official Strapi Demo
 
+> **Project fork notice**: This workspace is being transformed into the Peter Sung monorepo (Strapi v5 + Next.js 15). For design-focused collaborations, reference the SYNTHIA system prompt in `docs/prompts/god-tier-design-agent-system-prompt-v2.md` and associated Spec Kit artifacts under `docs/specs/` and `docs/plans/`.
+
 ![LaunchPad](./LaunchPad.jpg)
 
 Welcome aboard **LaunchPad**, the official Strapi demo application, where we launch your content into the stratosphere at the speed of _"we-can't-even-measure-it!"_.

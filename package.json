@@ -16,31 +16,45 @@
     "repo:upstream": "git fetch upstream && git merge upstream/main",
     "check:format": "prettier . --check --cache",
     "fix:format": "prettier . --write --cache",
-    "fix": "yarn fix:format",
-    "lint-staged": "lint-staged"
+    "fix": "npm run fix:format",
+    "lint-staged": "lint-staged",
+    "deploy:agent": "tsx tools/vercel-agent/agent.ts",
+    "deploy:check": "tsx tools/vercel-agent/check-deployment.ts",
+    "test:e2e": "playwright test",
+    "test:lighthouse": "lighthouse http://localhost:3000 --output=json --output-path=./lighthouse-results.json",
+    "build": "cd next && npm run build"
   },
   "dependencies": {
+    "@playwright/test": "^1.48.0",
     "@types/node": "^22.5.2",
     "concurrently": "^8.2.2",
+    "dotenv": "^16.6.1",
+    "gray-matter": "^4.0.3",
+    "lighthouse": "^12.2.1",
+    "tsx": "^4.16.2",
     "typescript": "^5.0.0",
     "wait-on": "^8.0.1"
   },
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "dotenv": "^17.2.3",
     "husky": "^9.1.7",
+    "jsdom": "^27.2.0",
     "lint-staged": "^15.2.10",
+    "node-fetch": "^3.3.2",
+    "p-limit": "^7.2.0",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
+    "turndown": "^7.2.2",
     "uuid": "^13.0.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,md,yml,yaml}": [
-      "yarn fix:format"
+      "npm run fix:format"
     ],
     "next/**/*.{js,jsx,ts,tsx}": [
-      "cd next && yarn lint --fix"
+      "cd next && npm run lint --fix"
     ]
-  },
-  "packageManager": "yarn@4.5.0"
+  }
 }

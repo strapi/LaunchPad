@@ -1,0 +1,47 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#050d1b"/>
+
+  <!-- Gradient overlay -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#050d1b;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grad1)"/>
+
+  <!-- Grid pattern -->
+  <defs>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M 64 0 L 0 0 0 64" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Decorative circle -->
+  <circle cx="900" cy="315" r="200" fill="#06b6d4" opacity="0.1"/>
+
+  <!-- Main text -->
+  <text x="100" y="250" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="white">
+    SecureBase
+  </text>
+
+  <!-- Subtitle -->
+  <text x="100" y="320" font-family="system-ui, -apple-system, sans-serif" font-size="32" fill="#9ca3af">
+    Leadership Coaching by Dr. Peter Sung
+  </text>
+
+  <!-- Tagline -->
+  <text x="100" y="400" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#06b6d4">
+    Empowering leaders with psychological safety and strategic clarity
+  </text>
+
+  <!-- Accent line -->
+  <rect x="100" y="440" width="120" height="4" rx="2" fill="#06b6d4"/>
+
+  <!-- Stats -->
+  <text x="100" y="520" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#6b7280">
+    4000+ Coaching Hours • 2000+ Speaking Events • 30+ Years Experience
+  </text>
+</svg>

@@ -1,0 +1,45 @@
+node_modules
+data/*
+public/files/*
+.env
+*.local
+llm.json
+
+.vscode
+.DS_Store
+
+
+cache/*
+Caches/*
+local_cache/*
+uploads/*
+scripts/*
+
+# agent workspace directory
+workspace/**
+!workspace
+
+src/cache
+src/Caches
+
+#jetbrains
+.idea
+
+# complied files
+out
+.vite
+Caches
+*.pyc
+
+# ignore mcp-local
+mcp-local.json
+
+# python 
+.venv
+__pycache__
+
+# trae
+.trae
+
+# browser bin
+resources/browser/chromium

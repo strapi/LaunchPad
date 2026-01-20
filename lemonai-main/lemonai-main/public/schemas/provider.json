@@ -1,0 +1,34 @@
+{
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Provider ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Provider name"
+        },
+        "logo_url": {
+          "type": "string",
+          "description": "URL of the provider's logo"
+        },
+        "base_config_schema": {
+          "type": "string",
+          "description": "Base configuration schema for the provider"
+        },
+        "create_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        },
+        "update_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Update timestamp"
+        }
+      }
+    }
+  }

@@ -1,0 +1,17 @@
+
+> nextjs@0.1.0 build
+> next build
+
+   Γû▓ Next.js 15.5.0
+   - Environments: .env.local, .env
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./components/ui/SmoothScroll.tsx
+Module not found: Can't resolve 'lenis'
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+> Build failed because of webpack errors
