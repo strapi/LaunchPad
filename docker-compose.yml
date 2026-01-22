@@ -1,4 +1,4 @@
-version: '3.8'
+name: wx-2026
 
 services:
   postgres:
@@ -47,8 +47,37 @@ services:
       - strapi_uploads:/opt/app/public/uploads
     networks:
       - wx-refonte-site-network
-    ports:
-      - "${STRAPI_PORT}:1337"
+      - traefik-platform-network
+    # ports:
+    #   - "${STRAPI_PORT}:1337"
+    expose:
+      - 1337
+
+    # Treafik labels for reverse proxy
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.wx-refonte-site-strapi.rule=Host(`${STRAPI_HOST}`)"
+    #   - "traefik.http.routers.wx-refonte-site-strapi.entrypoints=websecure"
+    #   - "traefik.http.routers.wx-refonte-site-strapi.tls=true"
+    #   - "traefik.http.services.wx-refonte-site-strapi.loadbalancer.server.port=1337"
+
+    labels:
+      - "traefik.enable=true"
+
+      # Router
+      - "traefik.http.routers.wx-refonte-site-strapi.rule=Host(`preprod.webtinix.com`)"
+      - "traefik.http.routers.wx-refonte-site-strapi.entrypoints=websecure"
+      - "traefik.http.routers.wx-refonte-site-strapi.tls.certresolver=le"
+
+      # Service
+      - "traefik.http.services.wx-refonte-site-strapi.loadbalancer.server.port=1337"
+
+      # Sécurité
+      - "traefik.http.middlewares.wx-refonte-site-strapi-secure.headers.sslredirect=true"
+      - "traefik.http.middlewares.wx-refonte-site-strapi-secure.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.wx-refonte-site-strapi-secure.headers.stsIncludeSubdomains=true"
+
+      - "traefik.http.routers.wx-refonte-site-strapi.middlewares=wx-refonte-site-strapi-secure"
 
   nextjs:
     build:
@@ -65,8 +94,31 @@ services:
       - strapi
     networks:
       - wx-refonte-site-network
-    ports:
-      - "${NEXTJS_PORT}:3000"
+      - traefik-platform-network
+
+    # ports:
+    #   - "${NEXTJS_PORT}:3000"
+
+    expose:
+      - 3000
+
+    labels:
+      - "traefik.enable=true"
+
+      # Router
+      - "traefik.http.routers.wx-refonte-site-api.rule=Host(`preprod-api.webtinix.com`)"
+      - "traefik.http.routers.wx-refonte-site-api.entrypoints=websecure"
+      - "traefik.http.routers.wx-refonte-site-api.tls.certresolver=le"
+
+      # Service
+      - "traefik.http.services.wx-refonte-site-api.loadbalancer.server.port=3000"
+
+      # Sécurité
+      - "traefik.http.middlewares.wx-refonte-site-api-secure.headers.sslredirect=true"
+      - "traefik.http.middlewares.wx-refonte-site-api-secure.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.wx-refonte-site-api-secure.headers.stsIncludeSubdomains=true"
+
+      - "traefik.http.routers.wx-refonte-site-api.middlewares=wx-refonte-site-api-secure"
 
 volumes:
   postgres_data:
@@ -75,3 +127,5 @@ volumes:
 networks:
   wx-refonte-site-network:
     driver: bridge
+  traefik-platform-network:
+    external: true
