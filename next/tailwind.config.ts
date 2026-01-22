@@ -14,6 +14,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '375px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
       colors: {
         background: 'hsl(var(--background))',
         'background-secondary': 'hsl(var(--background-secondary))',
@@ -87,6 +95,20 @@ const config: Config = {
         sans: ['Satoshi', 'var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
         serif: ['var(--font-serif)', 'Newsreader', 'serif'],
         display: ['var(--font-display)', 'Cinzel', 'serif'],
+      },
+      zIndex: {
+        '0': '0',
+        '10': '10',
+        '20': '20',
+        '30': '30',
+        '40': '40',
+        '50': '50',
+        '60': '60',
+        '70': '70',
+        '80': '80',
+        '90': '90',
+        '100': '100',
+        'auto': 'auto',
       },
       animation: {
         move: 'move 5s linear infinite',

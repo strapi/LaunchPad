@@ -7,6 +7,7 @@ const nextConfig = {
     root: process.cwd().replace('/next', ''),
   },
   images: {
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       { hostname: process.env.IMAGE_HOSTNAME || 'localhost' },
       { hostname: 'images.unsplash.com' },
