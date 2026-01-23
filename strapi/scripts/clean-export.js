@@ -1,75 +1,58 @@
-const { Pool } = require('pg');
+#!/bin/bash
+set -e
 
-async function cleanExport() {
-  const env = (key, defaultValue) => process.env[key] || defaultValue;
-  const envInt = (key, defaultValue) => {
-    const value = process.env[key];
-    return value ? parseInt(value, 10) : defaultValue;
-  };
+DB=".tmp/data.db"
+EXPORT_DIR="./exports"
+DATE=$(date +"%Y%m%d_%H%M%S")
+EXPORT_FILE="$EXPORT_DIR/strapi_export_$DATE.tar.gz"
 
-  const poolConfig = env('DATABASE_URL')
-    ? { connectionString: env('DATABASE_URL') }
-    : {
-        host: env('DATABASE_HOST', 'localhost'),
-        port: envInt('DATABASE_PORT', 5432),
-        database: env('DATABASE_NAME', 'strapi'),
-        user: env('DATABASE_USERNAME', 'strapi'),
-        password: env('DATABASE_PASSWORD', 'strapi'),
-      };
+echo "🚀 Strapi generic clean export (SQLite)"
 
-  const pool = new Pool(poolConfig);
+if [ ! -f "$DB" ]; then
+  echo "❌ DB SQLite introuvable : $DB"
+  exit 1
+fi
 
-  try {
-    console.log('Cleaning orphaned links before export...\n');
+mkdir -p "$EXPORT_DIR"
 
-    // Trouver tous les liens orphelins
-    const linkTables = await pool.query(`
-      SELECT tablename
-      FROM pg_tables
-      WHERE schemaname = 'public'
-      AND tablename LIKE '%_lnk'
-    `);
+echo "🔍 Détection des relations (FK) dans SQLite..."
 
-    for (const row of linkTables.rows) {
-      const tableName = row.tablename;
+TABLES=$(sqlite3 "$DB" "
+SELECT name FROM sqlite_master
+WHERE type='table'
+AND name NOT LIKE 'sqlite_%';
+")
 
-      const columns = await pool.query(`
-        SELECT
-          kcu.column_name,
-          ccu.table_name AS foreign_table_name
-        FROM information_schema.table_constraints AS tc
-        JOIN information_schema.key_column_usage AS kcu
-          ON tc.constraint_name = kcu.constraint_name
-        JOIN information_schema.constraint_column_usage AS ccu
-          ON ccu.constraint_name = tc.constraint_name
-        WHERE tc.constraint_type = 'FOREIGN KEY'
-        AND tc.table_name = $1
-      `, [tableName]);
+for TABLE in $TABLES; do
+  FKS=$(sqlite3 "$DB" "PRAGMA foreign_key_list($TABLE);")
 
-      for (const col of columns.rows) {
-        const columnName = col.column_name;
-        const foreignTable = col.foreign_table_name;
+  if [ -n "$FKS" ]; then
+    echo "🧩 Table: $TABLE"
 
-        const deleted = await pool.query(`
-          DELETE FROM ${tableName}
-          WHERE ${columnName} NOT IN (SELECT id FROM ${foreignTable})
-        `);
+    echo "$FKS" | while read -r row; do
+      REF_TABLE=$(echo "$row" | awk -F'|' '{print $3}')
+      FROM_COL=$(echo "$row" | awk -F'|' '{print $4}')
+      TO_COL=$(echo "$row" | awk -F'|' '{print $5}')
 
-        if (deleted.rowCount > 0) {
-          console.log(`✓ Removed ${deleted.rowCount} orphaned links from ${tableName}.${columnName}`);
-        }
-      }
-    }
+      echo "   🔗 $TABLE.$FROM_COL → $REF_TABLE.$TO_COL"
 
-    console.log('\n✓ Database cleaned! You can now export with:');
-    console.log('  strapi export -f ./data/export_clean.tar.gz\n');
+      sqlite3 "$DB" <<SQL
+PRAGMA foreign_keys = OFF;
+DELETE FROM "$TABLE"
+WHERE "$FROM_COL" IS NOT NULL
+AND "$FROM_COL" NOT IN (
+  SELECT "$TO_COL" FROM "$REF_TABLE"
+);
+PRAGMA foreign_keys = ON;
+SQL
 
-  } catch (error) {
-    console.error('Error:', error.message);
-    process.exit(1);
-  } finally {
-    await pool.end();
-  }
-}
+    done
+  fi
+done
 
-cleanExport();
+echo "✅ Nettoyage générique terminé"
+
+echo "📦 Export Strapi..."
+npx strapi export -f "$EXPORT_FILE"
+
+echo "🎉 Export prêt : $EXPORT_FILE"

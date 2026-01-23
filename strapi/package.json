@@ -10,7 +10,7 @@
     "strapi": "strapi",
     "deploy": "strapi deploy",
     "seed": "strapi import -f ./data/export_20250116105447.tar.gz",
-    "clean-exeport": "node ./scripts/clean-export.js",
+    "clean-export": "node ./scripts/clean-export.js",
     "seed:fixed": "node ./scripts/fix-export-and-import-v3.js",
     "seed:twopass": "node ./scripts/import-two-pass.js",
     "verify": "node ./scripts/verify-import.js",
