@@ -30,7 +30,7 @@ export function TeamFirstSection({
 
                 <Typography
                     as="p"
-                    className="text-base leading-relaxed mb-10"
+                    className="text-base leading-relaxed mb-10 font-bold"
                 >
                     {sub_heading}
                 </Typography>

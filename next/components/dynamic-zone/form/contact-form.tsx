@@ -22,6 +22,7 @@ export function ContactForm({ form_config, ...props }: ContactFormProps) {
 
     return (
         <Card
+            id="contact-us"
             className="
                 bg-tertiare
                 rounded-sm
