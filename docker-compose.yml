@@ -65,7 +65,7 @@ services:
       - "traefik.enable=true"
 
       # Router
-      - "traefik.http.routers.wx-refonte-site-strapi.rule=Host(`preprod.webtinix.com`)"
+      - "traefik.http.routers.wx-refonte-site-strapi.rule=Host(`preprod-api.webtinix.com`)"
       - "traefik.http.routers.wx-refonte-site-strapi.entrypoints=websecure"
       - "traefik.http.routers.wx-refonte-site-strapi.tls.certresolver=le"
 
@@ -106,19 +106,19 @@ services:
       - "traefik.enable=true"
 
       # Router
-      - "traefik.http.routers.wx-refonte-site-api.rule=Host(`preprod-api.webtinix.com`)"
-      - "traefik.http.routers.wx-refonte-site-api.entrypoints=websecure"
-      - "traefik.http.routers.wx-refonte-site-api.tls.certresolver=le"
+      - "traefik.http.routers.wx-refonte-site-nestjs.rule=Host(`preprod.webtinix.com`)"
+      - "traefik.http.routers.wx-refonte-site-nestjs.entrypoints=websecure"
+      - "traefik.http.routers.wx-refonte-site-nestjs.tls.certresolver=le"
 
       # Service
-      - "traefik.http.services.wx-refonte-site-api.loadbalancer.server.port=3000"
+      - "traefik.http.services.wx-refonte-site-nestjs.loadbalancer.server.port=3000"
 
       # Sécurité
-      - "traefik.http.middlewares.wx-refonte-site-api-secure.headers.sslredirect=true"
-      - "traefik.http.middlewares.wx-refonte-site-api-secure.headers.stsSeconds=31536000"
-      - "traefik.http.middlewares.wx-refonte-site-api-secure.headers.stsIncludeSubdomains=true"
+      - "traefik.http.middlewares.wx-refonte-site-nestjs-secure.headers.sslredirect=true"
+      - "traefik.http.middlewares.wx-refonte-site-nestjs-secure.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.wx-refonte-site-nestjs-secure.headers.stsIncludeSubdomains=true"
 
-      - "traefik.http.routers.wx-refonte-site-api.middlewares=wx-refonte-site-api-secure"
+      - "traefik.http.routers.wx-refonte-site-nestjs.middlewares=wx-refonte-site-nestjs-secure"
 
 volumes:
   postgres_data:
