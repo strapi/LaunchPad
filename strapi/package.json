@@ -11,8 +11,9 @@
     "deploy": "strapi deploy",
     "seed": "strapi import -f ./data/export_20250116105447.tar.gz",
     "clean-export": "node ./scripts/clean-export.js",
+    "prepare-export": "node ./scripts/prepare-export.js",
     "clean-export-whith-sqlite": "node ./scripts/strapi-clean-export-whith-sqlite.js",
-    "seed:fixed": "node ./scripts/fix-export-and-import-v3.js",
+    "seed:fixed": "node ./scripts/fix-import.js",
     "seed:twopass": "node ./scripts/import-two-pass.js",
     "verify": "node ./scripts/verify-import.js",
     "postinstall": "node ./scripts/updateUuid.js"
