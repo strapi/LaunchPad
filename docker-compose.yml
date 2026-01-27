@@ -26,57 +26,77 @@ services:
     container_name: wx-refonte-site-strapi
     restart: unless-stopped
     environment:
+      # Database Configuration
       DATABASE_CLIENT: postgres
       DATABASE_HOST: postgres
       DATABASE_PORT: 5432
       DATABASE_NAME: ${POSTGRES_DB}
       DATABASE_USERNAME: ${POSTGRES_USER}
       DATABASE_PASSWORD: ${POSTGRES_PASSWORD}
-      DATABASE_SSL:  ${DATABASE_SSL}
+      DATABASE_SSL: ${DATABASE_SSL}
+      
+      # Server Configuration
       HOST: 0.0.0.0
       PORT: 1337
       NODE_ENV: production
       STRAPI_DISABLE_TELEMETRY: ${STRAPI_DISABLE_TELEMETRY}
-      SEED_DB: ${SEED_DB}
+      
+      # ==========================================
+      # IMPORT SQL CONFIGURATION
+      # ==========================================
+      # Active l'import SQL automatique au démarrage
+      IMPORT_SQL: ${IMPORT_SQL:-true}
+      
+      # Force le réimport même si la base existe déjà
+      # ⚠️ DANGER: Mettre à true efface toute la base existante
+      FORCE_IMPORT: ${FORCE_IMPORT:-false}
+      
+      # Chemin vers le fichier SQL dans le conteneur
+      SQL_FILE: /opt/app/data/strapi_backup.sql
+      
+      # Legacy seed (ne pas utiliser avec IMPORT_SQL)
+      SEED_DB: false
+      
     depends_on:
       postgres:
         condition: service_healthy
-    # NE PAS MONTER DE VOLUME SUR /opt/app/public
-    # Strapi doit gérer ce dossier lui-même pour l'import
+    
     volumes:
+      # ==========================================
+      # VOLUMES IMPORTANTS
+      # ==========================================
+      
+      # 1. Dossier data contenant:
+      #    - strapi_backup.sql (dump PostgreSQL)
+      #    - uploads.tar.gz (archive des médias)
+      #    - OU export_20250116105447.tar.gz (export Strapi complet)
+      - ./strapi/data:/opt/app/data:ro
+      
+      # 2. Uploads persistants (géré par Strapi)
       - strapi_uploads:/opt/app/public/uploads
+      
     networks:
       - wx-refonte-site-network
       - traefik-platform-network
-    # ports:
-    #   - "${STRAPI_PORT}:1337"
+    
     expose:
       - 1337
 
-    # Treafik labels for reverse proxy
-    # labels:
-    #   - "traefik.enable=true"
-    #   - "traefik.http.routers.wx-refonte-site-strapi.rule=Host(`${STRAPI_HOST}`)"
-    #   - "traefik.http.routers.wx-refonte-site-strapi.entrypoints=websecure"
-    #   - "traefik.http.routers.wx-refonte-site-strapi.tls=true"
-    #   - "traefik.http.services.wx-refonte-site-strapi.loadbalancer.server.port=1337"
-
     labels:
       - "traefik.enable=true"
-
+      
       # Router
       - "traefik.http.routers.wx-refonte-site-strapi.rule=Host(`preprod-api.webtinix.com`)"
       - "traefik.http.routers.wx-refonte-site-strapi.entrypoints=websecure"
       - "traefik.http.routers.wx-refonte-site-strapi.tls.certresolver=le"
-
+      
       # Service
       - "traefik.http.services.wx-refonte-site-strapi.loadbalancer.server.port=1337"
-
+      
       # Sécurité
       - "traefik.http.middlewares.wx-refonte-site-strapi-secure.headers.sslredirect=true"
       - "traefik.http.middlewares.wx-refonte-site-strapi-secure.headers.stsSeconds=31536000"
       - "traefik.http.middlewares.wx-refonte-site-strapi-secure.headers.stsIncludeSubdomains=true"
-
       - "traefik.http.routers.wx-refonte-site-strapi.middlewares=wx-refonte-site-strapi-secure"
 
   nextjs:
@@ -86,43 +106,38 @@ services:
     container_name: wx-refonte-site-nextjs
     restart: unless-stopped
     environment:
-      # Mettre à jour les variables du projet Next.js si nécessaire
-      # NEXT_PUBLIC_API_URL: http://${STRAPI_HOST}:${STRAPI_PORT}
-      STRAPI_URL: http://${STRAPI_HOST}:${STRAPI_PORT}
+      STRAPI_URL: http://strapi:1337
       NODE_ENV: production
     depends_on:
       - strapi
     networks:
       - wx-refonte-site-network
       - traefik-platform-network
-
-    # ports:
-    #   - "${NEXTJS_PORT}:3000"
-
     expose:
       - 3000
 
     labels:
       - "traefik.enable=true"
-
+      
       # Router
-      - "traefik.http.routers.wx-refonte-site-nestjs.rule=Host(`preprod.webtinix.com`)"
-      - "traefik.http.routers.wx-refonte-site-nestjs.entrypoints=websecure"
-      - "traefik.http.routers.wx-refonte-site-nestjs.tls.certresolver=le"
-
+      - "traefik.http.routers.wx-refonte-site-nextjs.rule=Host(`preprod.webtinix.com`)"
+      - "traefik.http.routers.wx-refonte-site-nextjs.entrypoints=websecure"
+      - "traefik.http.routers.wx-refonte-site-nextjs.tls.certresolver=le"
+      
       # Service
-      - "traefik.http.services.wx-refonte-site-nestjs.loadbalancer.server.port=3000"
-
+      - "traefik.http.services.wx-refonte-site-nextjs.loadbalancer.server.port=3000"
+      
       # Sécurité
-      - "traefik.http.middlewares.wx-refonte-site-nestjs-secure.headers.sslredirect=true"
-      - "traefik.http.middlewares.wx-refonte-site-nestjs-secure.headers.stsSeconds=31536000"
-      - "traefik.http.middlewares.wx-refonte-site-nestjs-secure.headers.stsIncludeSubdomains=true"
-
-      - "traefik.http.routers.wx-refonte-site-nestjs.middlewares=wx-refonte-site-nestjs-secure"
+      - "traefik.http.middlewares.wx-refonte-site-nextjs-secure.headers.sslredirect=true"
+      - "traefik.http.middlewares.wx-refonte-site-nextjs-secure.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.wx-refonte-site-nextjs-secure.headers.stsIncludeSubdomains=true"
+      - "traefik.http.routers.wx-refonte-site-nextjs.middlewares=wx-refonte-site-nextjs-secure"
 
 volumes:
   postgres_data:
-  strapi_uploads: # Commenté car on ne l'utilise plus pour le moment
+    driver: local
+  strapi_uploads:
+    driver: local
 
 networks:
   wx-refonte-site-network:
