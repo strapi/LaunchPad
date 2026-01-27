@@ -53,7 +53,7 @@ chmod -R 777 /opt/app/public\n\
 # Exécuter le seed et extraire les uploads si demandé\n\
 if [ "$SEED_DB" = "true" ]; then\n\
   echo "Starting database seeding..."\n\
-  yarn seed:twopass || echo "Seed failed or already completed, continuing..."\n\
+  yarn seed:fixed || echo "Seed failed or already completed, continuing..."\n\
   \n\
   # Appeler le script d extraction des uploads\n\
   echo ""\n\
