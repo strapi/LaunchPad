@@ -2,7 +2,7 @@ name: wx-2026
 
 services:
   postgres:
-    image: postgres:15-alpine
+    image: postgres:17-alpine
     container_name: wx-refonte-site-postgres
     restart: unless-stopped
     environment:
