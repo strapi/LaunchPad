@@ -21,11 +21,18 @@ WORKDIR /opt/app
 # Activer Corepack pour Yarn
 RUN corepack enable
 
-# Copier les fichiers de dépendances
-COPY package.json yarn.lock* ./
+# Copier TOUS les fichiers de configuration Yarn d'abord
+COPY package.json yarn.lock .yarnrc.yml* ./
+
+# Copier aussi .yarn/ si présent (pour Yarn 4 PnP)
+# COPY .yarn .yarn 2>/dev/null || true
+
+# Copier les scripts nécessaires pour le postinstall
+COPY scripts ./scripts
 
 # Installer les dépendances
-RUN yarn install --frozen-lockfile
+# Yarn 4 utilise --immutable au lieu de --frozen-lockfile
+RUN yarn install --immutable || yarn install
 
 # Copier le reste du code
 COPY . .
@@ -35,15 +42,8 @@ RUN mkdir -p /opt/app/data \
     /opt/app/public/uploads \
     /opt/app/scripts
 
-# Copier les scripts d'import
-COPY scripts/import-sql.sh /opt/app/scripts/import-sql.sh
-COPY scripts/entrypoint.sh /opt/app/scripts/entrypoint.sh
-
-# Si vous avez extract-uploads.sh, le copier aussi
-# COPY scripts/extract-uploads.sh /opt/app/scripts/extract-uploads.sh
-
-# Rendre les scripts exécutables
-RUN chmod +x /opt/app/scripts/*.sh
+# S'assurer que les scripts sont bien présents et exécutables
+RUN chmod +x /opt/app/scripts/*.sh 2>/dev/null || true
 
 # Construire l'application Strapi
 ENV NODE_ENV=production
