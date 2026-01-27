@@ -14,11 +14,19 @@ export class StrapiError extends Error {
   }
 }
 
-const createClient = (config?: Omit<Config, 'baseURL'>) =>
-  strapi({
+const createClient = (
+  config?: Omit<Config, 'baseURL'>,
+  isDraftMode: boolean = false
+) => {
+  return strapi({
     baseURL: `${process.env.NEXT_PUBLIC_API_URL ?? ''}/api`,
+    headers: {
+      'strapi-encode-source-maps': isDraftMode ? 'true' : 'false',
+      ...config?.headers,
+    },
     ...config,
   });
+};
 
 /**
  * Cached fetch for collection types (published content only).
