@@ -5,8 +5,8 @@ import type { DataSourceConfig } from '@/types/data-source';
 import type { API } from '@strapi/client';
 import { buildStrapiOptions, buildQueryKey } from '@/lib/strapi/query-builder';
 import { 
-  fetchCollectionTypeClient, 
-  fetchDocumentClient,
+  fetchCollectionTypeClientPublic, 
+  fetchDocumentClientPublic,
   StrapiError 
 } from '@/lib/strapi/client-browser';
 
@@ -21,13 +21,13 @@ export const useStrapiQuery = <T = API.Document[]>(
     queryKey,
     queryFn: async () => {
       if (config.documentId) {
-        return fetchDocumentClient<T>(
+        return fetchDocumentClientPublic<T>(
           config.collection,
           config.documentId,
           strapiOptions
         );
       } else {
-        return fetchCollectionTypeClient<T>(
+        return fetchCollectionTypeClientPublic<T>(
           config.collection,
           strapiOptions
         );
