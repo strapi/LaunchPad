@@ -115,6 +115,60 @@ import_sql() {
     fi
 }
 
+# Fonction pour marquer les migrations comme exécutées
+mark_migrations_done() {
+    echo -e "${YELLOW}───────────────────────────────────────────────────────────${NC}"
+    echo -e "${YELLOW}ÉTAPE 3: Marquage des migrations Strapi comme exécutées${NC}"
+    echo -e "${YELLOW}───────────────────────────────────────────────────────────${NC}\n"
+
+    echo "Création de la table des migrations et marquage..."
+
+    PGPASSWORD="$DB_PASSWORD" psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -d "$DB_NAME" << 'EOF'
+-- Créer la table de migrations si elle n'existe pas
+CREATE TABLE IF NOT EXISTS strapi_migrations (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    "time" TIMESTAMP
+);
+
+-- Marquer toutes les migrations Strapi 5.x comme exécutées
+INSERT INTO strapi_migrations (name, "time")
+SELECT '5.0.0-01-convert-published-at-field', CURRENT_TIMESTAMP
+WHERE NOT EXISTS (SELECT 1 FROM strapi_migrations WHERE name = '5.0.0-01-convert-published-at-field');
+
+INSERT INTO strapi_migrations (name, "time")
+SELECT '5.0.0-02-convert-fields-to-locale-field', CURRENT_TIMESTAMP
+WHERE NOT EXISTS (SELECT 1 FROM strapi_migrations WHERE name = '5.0.0-02-convert-fields-to-locale-field');
+
+INSERT INTO strapi_migrations (name, "time")
+SELECT '5.0.0-03-enable-documents-experimental-feature', CURRENT_TIMESTAMP
+WHERE NOT EXISTS (SELECT 1 FROM strapi_migrations WHERE name = '5.0.0-03-enable-documents-experimental-feature');
+
+INSERT INTO strapi_migrations (name, "time")
+SELECT '5.0.0-04-convert-relation-morphs', CURRENT_TIMESTAMP
+WHERE NOT EXISTS (SELECT 1 FROM strapi_migrations WHERE name = '5.0.0-04-convert-relation-morphs');
+
+INSERT INTO strapi_migrations (name, "time")
+SELECT '5.0.0-05-drop-slug-fields-index', CURRENT_TIMESTAMP
+WHERE NOT EXISTS (SELECT 1 FROM strapi_migrations WHERE name = '5.0.0-05-drop-slug-fields-index');
+
+INSERT INTO strapi_migrations (name, "time")
+SELECT '5.0.0-06-drop-slug-fields-index-remaining-types', CURRENT_TIMESTAMP
+WHERE NOT EXISTS (SELECT 1 FROM strapi_migrations WHERE name = '5.0.0-06-drop-slug-fields-index-remaining-types');
+
+INSERT INTO strapi_migrations (name, "time")
+SELECT '5.0.0-07-convert-component-dynamic-zone-relations-to-morph-relations', CURRENT_TIMESTAMP
+WHERE NOT EXISTS (SELECT 1 FROM strapi_migrations WHERE name = '5.0.0-07-convert-component-dynamic-zone-relations-to-morph-relations');
+EOF
+
+    if [ $? -eq 0 ]; then
+        echo -e "${GREEN}✓ Migrations marquées comme exécutées${NC}\n"
+    else
+        echo -e "${RED}✗ Erreur lors du marquage des migrations${NC}\n"
+        return 1
+    fi
+}
+
 # Fonction pour vérifier les données importées
 verify_import() {
     echo -e "${YELLOW}───────────────────────────────────────────────────────────${NC}"
@@ -184,6 +238,7 @@ main() {
 
     clean_database
     import_sql
+    mark_migrations_done
     verify_import
 
     EXIT_CODE=$?
