@@ -27,12 +27,12 @@ type option_projet = {
 
 export function AvisClients({ avis_clients }: AvisClientProps) {
     return (
-        <section className="w-full py-24 px-6 md:px-12 lg:px-24">
+        <section className="w-full py-24 px-6 md:px-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 {avis_clients.map((el, index) => (
                     <div
                         key={index}
-                        className="space-y-1 p-8 md:p-10 rounded-2xl shadow-lg border border-gray-100 flex flex-col h-full"
+                        className="bg-white space-y-1 p-8 md:p-10 rounded-2xl shadow-lg border border-gray-100 flex flex-col h-full"
                     >
                         <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/quote.png" alt="quote" />
 

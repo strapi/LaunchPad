@@ -9,6 +9,7 @@ import { Locale, i18n } from '@/i18n.config';
 import { cn } from '@/lib/utils';
 import { Providers } from './Providers';
 import { TailwindIndicator } from '@/lib/utils/TailwindIndicator';
+import { Toaster } from "sonner"
 
 // Configuration de la police Outfit
 const outfit = Outfit({
@@ -45,6 +46,7 @@ export default function RootLayout({
           <Preview />
           <SlugProvider>{children}</SlugProvider>
           <TailwindIndicator />
+          <Toaster />
         </Providers>
       </body>
     </html>

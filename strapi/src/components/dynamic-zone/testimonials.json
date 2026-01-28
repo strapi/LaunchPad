@@ -17,6 +17,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::testimonial.testimonial"
+    },
+    "background_color": {
+      "type": "string"
     }
   }
 }

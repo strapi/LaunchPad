@@ -2,7 +2,7 @@
   "name": "strapi",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "Webinix Vitrine Backend",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
@@ -10,6 +10,12 @@
     "strapi": "strapi",
     "deploy": "strapi deploy",
     "seed": "strapi import -f ./data/export_20250116105447.tar.gz",
+    "clean-export": "node ./scripts/clean-export.js",
+    "prepare-export": "node ./scripts/prepare-export.js",
+    "clean-export-whith-sqlite": "node ./scripts/strapi-clean-export-whith-sqlite.js",
+    "seed:fixed": "node ./scripts/fix-import.js",
+    "seed:twopass": "node ./scripts/import-two-pass.js",
+    "verify": "node ./scripts/verify-import.js",
     "postinstall": "node ./scripts/updateUuid.js"
   },
   "devDependencies": {
@@ -34,6 +40,7 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "styled-components": "^6.0.0",
+    "tar": "^7.5.2",
     "uuid": "^10.0.0"
   },
   "author": {

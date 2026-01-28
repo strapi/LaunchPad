@@ -10,7 +10,7 @@ export const LogoLarge = ({ image, locale }: { image?: Image; locale?: string })
       return (
       <Link
         href={`/${locale || 'en'}`}
-        className="font-normal flex space-x-2 items-center text-sm mr-4  text-black   relative z-20"
+        className="font-normal flex space-x-2 items-center text-sm mr-4 text-black relative z-20 h-8"
       >
         <BlurImage
           src={strapiImage(image?.url)}
