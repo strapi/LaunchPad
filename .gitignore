@@ -10,3 +10,5 @@ node_modules
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+uploads-extracted/
+uploads.tar.gz*
