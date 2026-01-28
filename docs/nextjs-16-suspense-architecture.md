@@ -148,16 +148,16 @@ export default async function BlogPost({ params }) {
 │  └─ <Suspense fallback={<RootLoading />}>  ← BOUNDARY 1         │
 │     └─ LocaleLayout (app/[locale]/layout.tsx)                   │
 │        ├─ <Suspense fallback={<NavSkeleton />}>  ← BOUNDARY 2   │
-│        │  └─ <Navbar /> (fetches data)                          │
+│        │  └─ <NavbarWrapper /> (fetches data)                   │
 │        │                                                        │
-│        ├─ <Suspense fallback={<PageLoading />}>  ← BOUNDARY 3   │
-│        │  └─ {children} (page content)                          │
+│        ├─ {children} ← NO Suspense needed here!                 │
+│        │  └─ loading.tsx handles each route automatically       │
 │        │                                                        │
-│        └─ <Suspense fallback={<FooterSkeleton />}> ← BOUNDARY 4 │
-│           └─ <Footer /> (fetches data)                          │
+│        └─ <Suspense fallback={<FooterSkeleton />}> ← BOUNDARY 3 │
+│           └─ <FooterWrapper /> (fetches data)                   │
 │                                                                 │
 │  Page (app/[locale]/blog/[slug]/page.tsx)                       │
-│  └─ loading.tsx provides fallback  ← BOUNDARY 5                 │
+│  └─ loading.tsx provides fallback  ← BOUNDARY 4 (automatic)    │
 │     └─ <BlogPost /> (fetches article data)                      │
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
@@ -167,8 +167,9 @@ export default async function BlogPost({ params }) {
 
 1. **Every async operation needs a Suspense boundary above it**
 2. **Client components that wrap server components need Suspense inside them**
-3. **Dynamic routes need `loading.tsx` or explicit `<Suspense>`**
-4. **Data fetching components should be isolated and wrapped**
+3. **Dynamic routes should use `loading.tsx`** - this automatically creates Suspense boundaries
+4. **Async components in layouts need explicit `<Suspense>`** - only for non-page components like Navbar/Footer wrappers
+5. **Don't duplicate boundaries** - if a route has `loading.tsx`, you don't need Suspense around `{children}` in the layout
 
 ---
 
@@ -264,14 +265,6 @@ function FooterSkeleton() {
   );
 }
 
-function PageLoading() {
-  return (
-    <div className="min-h-[50vh] flex items-center justify-center">
-      <div className="h-8 w-8 animate-spin rounded-full border-4 border-cyan-500 border-t-transparent" />
-    </div>
-  );
-}
-
 export default async function LocaleLayout(props: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
@@ -289,10 +282,8 @@ export default async function LocaleLayout(props: {
           <NavbarWrapper locale={locale} />
         </Suspense>
 
-        {/* Page content with its own Suspense boundary */}
-        <Suspense fallback={<PageLoading />}>
-          {children}
-        </Suspense>
+        {/* Page content - loading.tsx files handle Suspense for each route */}
+        {children}
 
         {/* Footer with its own Suspense boundary */}
         <Suspense fallback={<FooterSkeleton />}>
@@ -306,7 +297,9 @@ export default async function LocaleLayout(props: {
 }
 ```
 
-**Why:** By isolating each data-fetching component (Navbar, Footer) in its own Suspense boundary, they can load independently. The page content also gets its own boundary.
+**Why:** Async components like Navbar and Footer need explicit Suspense boundaries because they fetch data but aren't pages. The `{children}` (page content) does NOT need Suspense here because each route's `loading.tsx` file automatically creates a Suspense boundary for that page.
+
+> **Note:** `loading.tsx` files automatically wrap page content in `<Suspense>`. You only need explicit `<Suspense>` in layouts for async components that aren't pages (like Navbar/Footer wrappers).
 
 ---
 
@@ -689,8 +682,8 @@ Use this checklist when migrating to `cacheComponents: true`:
 - [ ] Identify all data fetching in layouts
 - [ ] Create wrapper components for data-fetching UI (Navbar, Footer, etc.)
 - [ ] Wrap each wrapper component in `<Suspense>`
-- [ ] Wrap `{children}` in `<Suspense>`
 - [ ] Create skeleton components for each fallback
+- [ ] **Do NOT** wrap `{children}` in Suspense - `loading.tsx` files handle this automatically
 
 ### Dynamic Routes
 
@@ -861,9 +854,31 @@ async function Layout({ children }) {
       <Suspense fallback={<HeaderSkeleton />}>
         <Header />  {/* Fetches its own data */}
       </Suspense>
+      {children}  {/* loading.tsx files handle Suspense for pages */}
+    </div>
+  );
+}
+```
+
+### 5. Redundant Suspense Around Children
+
+```typescript
+// ❌ Unnecessary - duplicates what loading.tsx already does
+async function Layout({ children }) {
+  return (
+    <div>
       <Suspense fallback={<PageLoading />}>
-        {children}
+        {children}  {/* Each route already has loading.tsx! */}
       </Suspense>
+    </div>
+  );
+}
+
+// ✅ Correct - let loading.tsx handle page boundaries
+async function Layout({ children }) {
+  return (
+    <div>
+      {children}  {/* loading.tsx creates Suspense automatically */}
     </div>
   );
 }

@@ -7,9 +7,7 @@ const nextConfig = {
   },
   images: {
     // Disable image optimization for localhost in development
-    ...(process.env.NODE_ENV === 'development' && {
-      unoptimized: true,
-    }),
+    ...(process.env.NODE_ENV === 'development' ? { unoptimized: true } : {}),
     remotePatterns: [
       {
         protocol: 'http',
