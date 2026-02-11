@@ -29,6 +29,13 @@ const nextConfig = {
   },
   pageExtensions: ['ts', 'tsx'],
   async redirects() {
+    if (process.env.NEXT_PUBLIC_API_URL === undefined) {
+      console.warn(
+        '[next.config] NEXT_PUBLIC_API_URL is not defined. Skipping redirect generation.'
+      );
+      return [];
+    }
+
     let redirections = [];
     try {
       const res = await fetch(

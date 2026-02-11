@@ -2,6 +2,7 @@ import { strapi } from '@strapi/client';
 import type { API, Config } from '@strapi/client';
 import { cacheLife, cacheTag, revalidateTag } from 'next/cache';
 import { draftMode } from 'next/headers';
+import { API_URL } from '../utils';
 
 export class StrapiError extends Error {
   constructor(
@@ -19,7 +20,7 @@ const createClient = (
   isDraftMode: boolean = false
 ) => {
   return strapi({
-    baseURL: `${process.env.NEXT_PUBLIC_API_URL ?? ''}/api`,
+    baseURL: `${API_URL}/api`,
     headers: {
       'strapi-encode-source-maps': isDraftMode ? 'true' : 'false',
       ...config?.headers,
