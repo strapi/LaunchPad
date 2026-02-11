@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: process.env.NEXT_OUTPUT || undefined,
   // Enable Next.js 16 cache components
   cacheComponents: true,
   turbopack: {
