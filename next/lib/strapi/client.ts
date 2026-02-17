@@ -76,6 +76,17 @@ export async function fetchCollectionType<T = API.Document[]>(
       return data as T;
     }
 
+    // Bypass cache in development mode
+    if (process.env.ENVIRONMENT === 'development') {
+      const { data } = await createClient(config)
+        .collection(collectionName)
+        .find({
+          ...options,
+          status: 'published',
+        });
+      return data as T;
+    }
+
     // Use cached version for published content
     return fetchCollectionCached<T>(collectionName, options, config);
   } catch (error) {
@@ -129,6 +140,16 @@ export async function fetchSingleType<T = API.Document>(
         .find({
           ...options,
           status: 'draft',
+        });
+      return data as T;
+    }
+
+    if (process.env.ENVIRONMENT === 'development') {
+      const { data } = await createClient(config)
+        .single(singleTypeName)
+        .find({
+          ...options,
+          status: 'published',
         });
       return data as T;
     }
@@ -187,6 +208,16 @@ export async function fetchDocument<T = API.Document>(
         .findOne(documentId, {
           ...options,
           status: 'draft',
+        });
+      return data as T;
+    }
+
+    if (process.env.ENVIRONMENT === 'development') {
+      const { data } = await createClient(config)
+        .collection(collectionName)
+        .findOne(documentId, {
+          ...options,
+          status: 'published',
         });
       return data as T;
     }
