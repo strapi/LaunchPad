@@ -10,38 +10,74 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "price": {
-      "type": "integer"
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "sub_text": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "featured": {
       "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "default": false
     },
     "CTA": {
-      "displayName": "CTA",
       "type": "component",
-      "repeatable": false,
-      "component": "shared.button"
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.button",
+      "repeatable": false
     },
     "perks": {
-      "displayName": "Perks",
       "type": "component",
-      "repeatable": true,
-      "component": "shared.perks"
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.perks",
+      "repeatable": true
     },
     "additional_perks": {
-      "displayName": "Additional Perks",
       "type": "component",
-      "repeatable": true,
-      "component": "shared.perks"
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "shared.perks",
+      "repeatable": true
     },
     "product": {
       "type": "relation",
