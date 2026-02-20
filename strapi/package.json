@@ -10,7 +10,7 @@
     "build": "strapi build",
     "strapi": "strapi",
     "deploy": "strapi deploy",
-    "seed": "strapi import -f ./data/export_20250116105447.tar.gz",
+    "seed": "strapi import -f ./data/export_20260220001139.tar.gz",
     "postinstall": "node ./scripts/updateUuid.js"
   },
   "devDependencies": {
@@ -20,10 +20,10 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.36.0",
+    "@strapi/plugin-cloud": "5.36.1",
     "@strapi/plugin-seo": "^2.0.4",
-    "@strapi/plugin-users-permissions": "5.36.0",
-    "@strapi/strapi": "5.36.0",
+    "@strapi/plugin-users-permissions": "5.36.1",
+    "@strapi/strapi": "5.36.1",
     "better-sqlite3": "11.7.0",
     "pluralize": "^8.0.0",
     "react": "^18.0.0",

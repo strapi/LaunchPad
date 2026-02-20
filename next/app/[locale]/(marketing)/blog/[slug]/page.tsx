@@ -16,6 +16,7 @@ export default async function SingleArticlePage({
         $eq: slug,
       },
     },
+    locale,
   });
 
   if (!article) {

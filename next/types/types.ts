@@ -13,7 +13,7 @@ export interface Image {
 
 export interface Article {
   title: string;
-  description: string;
+  description?: string | null;
   localizations: StrapiLocaleObject[];
   slug: string;
   content: BlocksContent;
@@ -38,6 +38,7 @@ export interface Product {
   featured?: boolean;
   images: any[];
   categories?: any[];
+  localizations?: any[];
 }
 
 export type LocaleParamsProps = {
