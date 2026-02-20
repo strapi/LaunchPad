@@ -1,3 +1,4 @@
+import { API_URL } from '@/lib/utils';
 import { unstable_noStore as noStore } from 'next/cache';
 import Image from 'next/image';
 import { ComponentProps } from 'react';
@@ -9,17 +10,11 @@ interface StrapiImageProps
 }
 
 export function getStrapiMedia(url: string | null) {
-  const strapiURL = process.env.NEXT_PUBLIC_API_URL;
   if (url == null) return null;
   if (url.startsWith('data:')) return url;
   if (url.startsWith('http') || url.startsWith('//')) return url;
-  if (url.startsWith('/')) {
-    if (!strapiURL && document?.location.host.endsWith('.strapidemo.com')) {
-      return `https://${document.location.host.replace('client-', 'api-')}${url}`;
-    }
-    return strapiURL + url;
-  }
-  return `${strapiURL}${url}`;
+
+  return API_URL + url;
 }
 
 export function StrapiImage({

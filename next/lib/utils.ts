@@ -19,3 +19,6 @@ export const formatNumber = (
     maximumFractionDigits: 2,
   }).format(number);
 };
+
+export const API_URL = process.env.NEXT_PUBLIC_API_URL ||
+      (globalThis.document?.location.host.endsWith('.strapidemo.com') ? `https://${document.location.host.replace('client-', 'api-')}` : '');

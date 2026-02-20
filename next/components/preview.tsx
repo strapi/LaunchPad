@@ -1,5 +1,6 @@
 'use client';
 
+import { API_URL } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
@@ -10,7 +11,7 @@ export const Preview = () => {
     const handleMessage = async (message: MessageEvent<any>) => {
       const { origin, data } = message;
 
-      if (origin !== process.env.NEXT_PUBLIC_API_URL) {
+      if (origin !== API_URL) {
         return;
       }
 
