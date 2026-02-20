@@ -5,7 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const truncate = (text: string, length: number) => {
+export const truncate = (text: string | null | undefined, length: number) => {
+  if (!text) return '';
   return text.length > length ? text.slice(0, length) + '...' : text;
 };
 

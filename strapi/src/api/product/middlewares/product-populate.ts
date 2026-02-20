@@ -6,6 +6,7 @@ import type { Core } from '@strapi/strapi';
 const populate = {
   perks: true,
   images: true,
+  localizations: true,
   dynamic_zone: {
     on: {
       'dynamic-zone.related-products': {
@@ -43,6 +44,13 @@ const populate = {
       perks: true,
       CTA: true,
       product: true,
+      localizations: {
+        populate: {
+          perks: true,
+          additional_perks: true,
+          CTA: true,
+        },
+      },
     },
   },
 };

@@ -27,16 +27,36 @@ type Plan = {
   number: string;
   featured?: boolean;
   CTA?: CTA | undefined;
+  localizations?: Plan[];
+  locale?: string;
+};
+
+// Helper to ensure the plan object has the correct shape if needed
+const normalizePlan = (plan: any): Plan => {
+  return plan as Plan;
+};
+
+const translations = {
+  en: {
+    currency: '$',
+    featured: 'Featured',
+  },
+  fr: {
+    currency: '€',
+    featured: 'En vedette',
+  },
 };
 
 export const Pricing = ({
   heading,
   sub_heading,
   plans,
+  locale = 'en',
 }: {
   heading: string;
   sub_heading: string;
   plans: any[];
+  locale?: string;
 }) => {
   const onClick = (plan: Plan) => {
     console.log('click', plan);
@@ -51,7 +71,12 @@ export const Pricing = ({
         <Subheading className="max-w-3xl mx-auto">{sub_heading}</Subheading>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto gap-4 py-20 lg:items-start">
           {plans.map((plan) => (
-            <Card onClick={() => onClick(plan)} key={plan.name} plan={plan} />
+            <Card
+              onClick={onClick}
+              key={plan.name}
+              plan={plan}
+              locale={locale}
+            />
           ))}
         </div>
       </Container>
@@ -59,59 +84,82 @@ export const Pricing = ({
   );
 };
 
-const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
+const Card = ({
+  plan,
+  onClick,
+  locale,
+}: {
+  plan: Plan;
+  onClick: (plan: Plan) => void;
+  locale: string;
+}) => {
+  const t = translations[locale as keyof typeof translations] || translations.en;
+
+  // Try to find the plan content that matches the current locale
+  // This handles cases where the page links to the English plan but a French version exists
+  let displayPlan = plan;
+  if (plan.localizations && plan.localizations.length > 0) {
+    const localizedPlan = plan.localizations.find((p) => p.locale === locale);
+    if (localizedPlan) {
+      displayPlan = normalizePlan(localizedPlan); // helper to ensure shape matches if needed, but assuming same shape
+    }
+  }
+
+  // Ensure perks are also localized if the plan didn't switch or if structure is different
+  // Assuming localizedPlan has its own perks.
+
   return (
     <div
       className={cn(
         'p-4 md:p-4 rounded-3xl bg-neutral-900 border-2 border-neutral-800',
-        plan.featured && 'border-neutral-50 bg-neutral-100'
+        displayPlan.featured && 'border-neutral-50 bg-neutral-100'
       )}
     >
       <div
         className={cn(
           'p-4 bg-neutral-800 rounded-2xl shadow-[0px_-1px_0px_0px_var(--neutral-700)]',
-          plan.featured && 'bg-white shadow-aceternity'
+          displayPlan.featured && 'bg-white shadow-aceternity'
         )}
       >
         <div className="flex justify-between items-center">
-          <p className={cn('font-medium', plan.featured && 'text-black')}>
-            {plan.name}
+          <p className={cn('font-medium', displayPlan.featured && 'text-black')}>
+            {displayPlan.name}
           </p>
-          {plan.featured && (
+          {displayPlan.featured && (
             <div
               className={cn(
                 'font-medium text-xs px-3 py-1 rounded-full relative bg-neutral-900'
               )}
             >
               <div className="absolute inset-x-0 bottom-0 w-3/4 mx-auto h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
-              Featured
+              {t.featured}
             </div>
           )}
         </div>
-        <div className="mt-8">
-          {plan.price && (
+        <div className="mt-8 flex items-baseline">
+          {displayPlan.price && (
             <span
               className={cn(
                 'text-lg font-bold text-neutral-500',
-                plan.featured && 'text-neutral-700'
+                displayPlan.featured && 'text-neutral-700'
               )}
             >
-              $
+              {t.currency}
             </span>
           )}
           <span
-            className={cn('text-4xl font-bold', plan.featured && 'text-black')}
+            className={cn('text-4xl font-bold', displayPlan.featured && 'text-black')}
           >
-            {plan.price || plan?.CTA?.text}
+            {displayPlan.price || displayPlan?.CTA?.text}
           </span>
-          {plan.price && (
+          {displayPlan.price && (
             <span
               className={cn(
                 'text-lg font-normal text-neutral-500 ml-2',
-                plan.featured && 'text-neutral-700'
+                displayPlan.featured && 'text-neutral-700'
               )}
             >
-              / launch
+              launch
             </span>
           )}
         </div>
@@ -119,27 +167,27 @@ const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
           variant="outline"
           className={cn(
             'w-full mt-10 mb-4',
-            plan.featured &&
-              'bg-black text-white hover:bg-black/80 hover:text-white'
+            displayPlan.featured &&
+            'bg-black text-white hover:bg-black/80 hover:text-white'
           )}
-          onClick={onClick}
+          onClick={() => onClick(displayPlan)}
         >
-          {plan?.CTA?.text}
+          {displayPlan?.CTA?.text}
         </Button>
       </div>
       <div className="mt-1 p-4">
-        {plan.perks.map((feature, idx) => (
-          <Step featured={plan.featured} key={idx}>
+        {displayPlan.perks.map((feature, idx) => (
+          <Step featured={displayPlan.featured} key={idx}>
             {feature.text}
           </Step>
         ))}
       </div>
-      {plan.additional_perks && plan.additional_perks.length > 0 && (
-        <Divider featured={plan.featured} />
+      {displayPlan.additional_perks && displayPlan.additional_perks.length > 0 && (
+        <Divider featured={displayPlan.featured} />
       )}
       <div className="p-4">
-        {plan.additional_perks?.map((feature, idx) => (
-          <Step featured={plan.featured} additional key={idx}>
+        {displayPlan.additional_perks?.map((feature, idx) => (
+          <Step featured={displayPlan.featured} additional key={idx}>
             {feature.text}
           </Step>
         ))}
@@ -147,6 +195,7 @@ const Card = ({ plan, onClick }: { plan: Plan; onClick: () => void }) => {
     </div>
   );
 };
+
 
 const Step = ({
   children,

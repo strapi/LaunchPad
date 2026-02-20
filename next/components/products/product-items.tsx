@@ -6,22 +6,24 @@ import { formatNumber, truncate } from '@/lib/utils';
 import { Product } from '@/types/types';
 
 export const ProductItems = ({
-  heading = 'Popular',
-  sub_heading = 'Recently rose to popularity',
+  heading,
+  sub_heading,
   products,
   locale,
 }: {
-  heading?: string;
-  sub_heading?: string;
+  heading?: string | null;
+  sub_heading?: string | null;
   products: Product[];
   locale: string;
 }) => {
   return (
     <div className="py-20">
       <h2 className="text-2xl md:text-4xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-800 via-white to-white mb-2">
-        {heading}
+        {heading || 'Popular'}
       </h2>
-      <p className="text-neutral-500 text-lg mt-4 mb-10">{sub_heading}</p>
+      <p className="text-neutral-500 text-lg mt-4 mb-10">
+        {sub_heading || 'Recently rose to popularity'}
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-3  gap-20">
         {products.map((product) => (
           <ProductItem
@@ -65,7 +67,8 @@ const ProductItem = ({
             {product.name}
           </span>
           <span className="bg-white text-black shadow-derek text-xs px-2 py-1 rounded-full">
-            ${formatNumber(product.price)}
+            {locale === 'fr' ? '€' : '$'}
+            {formatNumber(product.price, locale)}
           </span>
         </div>
         <p className="text-neutral-400 text-sm mt-4">
