@@ -1,12 +1,17 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export function DraftModeBanner() {
   const router = useRouter();
   const pathname = usePathname();
   const [isExiting, setIsExiting] = useState(false);
+  const [isIframe, setIsIframe] = useState(true);
+
+  useEffect(() => {
+    setIsIframe(window !== window.top);
+  }, []);
 
   const handleExitDraft = async () => {
     setIsExiting(true);
@@ -18,6 +23,10 @@ export function DraftModeBanner() {
       setIsExiting(false);
     }
   };
+
+  if (isIframe) {
+    return null;
+  }
 
   return (
     <div className="fixed bottom-4 right-4 z-50 bg-secondary text-black px-6 py-3 rounded-lg shadow-lg flex items-center gap-4">

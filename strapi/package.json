@@ -20,10 +20,10 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.36.1",
+    "@strapi/plugin-cloud": "5.37.0",
     "@strapi/plugin-seo": "^2.0.4",
-    "@strapi/plugin-users-permissions": "5.36.1",
-    "@strapi/strapi": "5.36.1",
+    "@strapi/plugin-users-permissions": "5.37.0",
+    "@strapi/strapi": "5.37.0",
     "better-sqlite3": "11.7.0",
     "pluralize": "^8.0.0",
     "react": "^18.0.0",

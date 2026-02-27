@@ -40,6 +40,7 @@ export const Button: React.FC<ButtonProps> = ({
         className
       )}
       {...props}
+      suppressHydrationWarning
     >
       {children ?? `Get Started`}
     </Element>

@@ -84,6 +84,7 @@ export const MobileNavbar = ({
                         href={`/${locale}${childNavItem.URL}`}
                         onClick={() => setOpen(false)}
                         className="relative max-w-[15rem] text-left text-2xl"
+                        suppressHydrationWarning
                       >
                         <span className="block text-white">
                           {childNavItem.text}
@@ -97,6 +98,7 @@ export const MobileNavbar = ({
                     href={`/${locale}${navItem.URL}`}
                     onClick={() => setOpen(false)}
                     className="relative"
+                    suppressHydrationWarning
                   >
                     <span className="block text-[26px] text-white">
                       {navItem.text}
