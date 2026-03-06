@@ -5,6 +5,7 @@ import { draftMode } from 'next/headers';
 import type { PropsWithChildren } from 'react';
 import React from 'react';
 
+import { Banner } from '@/components/banner';
 import { DraftModeBanner } from '@/components/draft-mode-banner';
 import { Footer } from '@/components/footer';
 import { Navbar } from '@/components/navbar';
@@ -40,6 +41,7 @@ export default async function LocaleLayout({
   const { isEnabled: isDraftMode } = await draftMode();
   const { locale } = await params;
   const pageData = await fetchSingleType('global', { locale });
+  const isDemo = process.env.NEXT_IS_DEMO === 'true';
 
   return (
     <ViewTransitions>
@@ -50,7 +52,8 @@ export default async function LocaleLayout({
             'bg-charcoal antialiased h-full w-full'
           )}
         >
-          <Navbar data={pageData.navbar} locale={locale} />
+          {isDemo && <Banner />}
+          <Navbar data={pageData.navbar} locale={locale} hasBanner={isDemo} />
           {children}
           <Footer data={pageData.footer} locale={locale} />
           <AIToast />
