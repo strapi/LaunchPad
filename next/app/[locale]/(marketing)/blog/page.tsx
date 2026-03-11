@@ -67,7 +67,7 @@ export default async function Blog({ params }: LocaleParamsProps) {
           key={firstArticle.title}
         />
 
-        <BlogPostRows articles={articles} />
+        <BlogPostRows articles={articles} locale={locale} />
       </Container>
     </div>
   );

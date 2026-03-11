@@ -29,7 +29,7 @@ export default async function Products({ params }: LocaleParamsProps) {
 
   // Fetch the product-page and products data
   const pageData = await fetchSingleType('product-page', { locale });
-  const products = await fetchCollectionType<Product[]>('products');
+  const products = await fetchCollectionType<Product[]>('products', { locale });
 
   const localizedSlugs = pageData.localizations.reduce(
     (acc: Record<string, string>, localization: any) => {
@@ -56,8 +56,18 @@ export default async function Products({ params }: LocaleParamsProps) {
         <Subheading className="max-w-3xl mx-auto">
           {pageData.sub_heading}
         </Subheading>
-        <Featured products={featured} locale={locale} />
-        <ProductItems products={products} locale={locale} />
+        <Featured
+          products={featured}
+          locale={locale}
+          heading={pageData.featured_heading}
+          sub_heading={pageData.featured_sub_heading}
+        />
+        <ProductItems
+          products={products}
+          locale={locale}
+          heading={pageData.popular_heading}
+          sub_heading={pageData.popular_sub_heading}
+        />
       </Container>
     </div>
   );

@@ -5,7 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const truncate = (text: string, length: number) => {
+export const truncate = (text: string | null | undefined, length: number) => {
+  if (!text) return '';
   return text.length > length ? text.slice(0, length) + '...' : text;
 };
 
@@ -19,3 +20,6 @@ export const formatNumber = (
     maximumFractionDigits: 2,
   }).format(number);
 };
+
+export const API_URL = process.env.NEXT_PUBLIC_API_URL ||
+      (globalThis.document?.location.host.endsWith('.strapidemo.com') ? `https://${document.location.host.replace('client-', 'api-')}` : '');

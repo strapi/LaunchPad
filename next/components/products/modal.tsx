@@ -15,12 +15,22 @@ import { StrapiImage } from '@/components/ui/strapi-image';
 import { useCart } from '@/context/cart-context';
 import { formatNumber } from '@/lib/utils';
 
-export default function AddToCartModal({ onClick }: { onClick: () => void }) {
+export default function AddToCartModal({
+  onClick,
+  ctaText = 'Add to cart',
+  buyNowText = 'Buy now',
+  locale = 'en',
+}: {
+  onClick: () => void;
+  ctaText?: string;
+  buyNowText?: string;
+  locale?: string;
+}) {
   const { items, updateQuantity, getCartTotal, removeFromCart } = useCart();
   return (
     <Modal>
       <ModalTrigger onClick={onClick} className="mt-10 w-full">
-        Add to cart
+        {ctaText}
       </ModalTrigger>
       <ModalBody>
         <ModalContent>
@@ -71,7 +81,8 @@ export default function AddToCartModal({ onClick }: { onClick: () => void }) {
                     }}
                   />
                   <div className="text-black text-sm font-medium w-20">
-                    ${formatNumber(item.product.price)}
+                    {locale === 'fr' ? '€' : '$'}
+                    {formatNumber(item.product.price, locale)}
                   </div>
                   <button onClick={() => removeFromCart(item.product.id)}>
                     <IconTrash className="w-4 h-4 text-neutral-900" />
@@ -83,14 +94,17 @@ export default function AddToCartModal({ onClick }: { onClick: () => void }) {
         </ModalContent>
         <ModalFooter className="gap-4 items-center">
           <div className="text-neutral-700 ">
-            total amount{' '}
-            <span className="font-bold">${formatNumber(getCartTotal())}</span>
+            Total{' '}
+            <span className="font-bold">
+              {locale === 'fr' ? '€' : '$'}
+              {formatNumber(getCartTotal(), locale)}
+            </span>
           </div>
           <button
             disabled={!items.length}
             className="bg-black text-white disabled:opacity-50 disabled:cursor-not-allowed text-sm px-2 py-1 rounded-md border border-black w-28"
           >
-            Buy now
+            {buyNowText}
           </button>
         </ModalFooter>
       </ModalBody>

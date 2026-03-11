@@ -93,12 +93,6 @@ Visit http://localhost:1337/admin to create your first Strapi user, and http://l
 
 [Docs](https://docs.strapi.io) • [Discord](https://discord.strapi.io) • [YouTube](https://www.youtube.com/c/Strapi/featured) • [Strapi Design System](https://design-system.strapi.io/) • [Marketplace](https://market.strapi.io/) • [Cloud Free Trial](https://cloud.strapi.io)
 
-## Todo
-
-- [ ] Implement the official Strapi SEO plugin
-- [ ] Create localized content for the pricing plans and products
-- [ ] Populate creator fields when it'll work on Strapi 5 (article authors information are missing)
-
 ## Customization
 
 - The Strapi application contains a custom population middlewares in every api route.

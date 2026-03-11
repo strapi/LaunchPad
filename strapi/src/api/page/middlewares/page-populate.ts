@@ -72,6 +72,13 @@ const populate = {
               additional_perks: true,
               CTA: true,
               product: true,
+              localizations: {
+                populate: {
+                  perks: true,
+                  additional_perks: true,
+                  CTA: true,
+                },
+              },
             },
           },
         },

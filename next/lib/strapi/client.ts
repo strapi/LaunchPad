@@ -2,6 +2,7 @@ import { strapi } from '@strapi/client';
 import type { API, Config } from '@strapi/client';
 import { cacheLife, cacheTag, revalidateTag } from 'next/cache';
 import { draftMode } from 'next/headers';
+import { API_URL } from '../utils';
 
 export class StrapiError extends Error {
   constructor(
@@ -19,7 +20,7 @@ const createClient = (
   isDraftMode: boolean = false
 ) => {
   return strapi({
-    baseURL: `${process.env.NEXT_PUBLIC_API_URL ?? ''}/api`,
+    baseURL: `${API_URL}/api`,
     headers: {
       'strapi-encode-source-maps': isDraftMode ? 'true' : 'false',
       ...config?.headers,
@@ -72,6 +73,17 @@ export async function fetchCollectionType<T = API.Document[]>(
         .find({
           ...options,
           status: 'draft',
+        });
+      return data as T;
+    }
+
+    // Bypass cache in development mode
+    if (process.env.ENVIRONMENT === 'development') {
+      const { data } = await createClient(config)
+        .collection(collectionName)
+        .find({
+          ...options,
+          status: 'published',
         });
       return data as T;
     }
@@ -133,6 +145,16 @@ export async function fetchSingleType<T = API.Document>(
       return data as T;
     }
 
+    if (process.env.ENVIRONMENT === 'development') {
+      const { data } = await createClient(config)
+        .single(singleTypeName)
+        .find({
+          ...options,
+          status: 'published',
+        });
+      return data as T;
+    }
+
     return fetchSingleCached<T>(singleTypeName, options, config);
   } catch (error) {
     throw new StrapiError(
@@ -187,6 +209,16 @@ export async function fetchDocument<T = API.Document>(
         .findOne(documentId, {
           ...options,
           status: 'draft',
+        });
+      return data as T;
+    }
+
+    if (process.env.ENVIRONMENT === 'development') {
+      const { data } = await createClient(config)
+        .collection(collectionName)
+        .findOne(documentId, {
+          ...options,
+          status: 'published',
         });
       return data as T;
     }

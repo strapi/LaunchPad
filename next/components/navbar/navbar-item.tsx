@@ -32,6 +32,7 @@ export function NavbarItem({
         className
       )}
       target={target}
+      suppressHydrationWarning
     >
       {children}
     </Link>

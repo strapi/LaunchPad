@@ -214,7 +214,7 @@ export interface DynamicZoneRelatedArticles extends Struct.ComponentSchema {
 export interface DynamicZoneRelatedProducts extends Struct.ComponentSchema {
   collectionName: 'components_dynamic_zone_related_products';
   info: {
-    displayName: 'Related_Products';
+    displayName: 'related_products';
     icon: 'stack';
   };
   attributes: {
@@ -494,7 +494,7 @@ export interface SharedUser extends Struct.ComponentSchema {
   collectionName: 'components_shared_users';
   info: {
     description: '';
-    displayName: 'User';
+    displayName: 'user';
     icon: 'user';
   };
   attributes: {

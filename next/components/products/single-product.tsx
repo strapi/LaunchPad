@@ -11,7 +11,17 @@ import { strapiImage } from '@/lib/strapi/strapiImage';
 import { cn, formatNumber } from '@/lib/utils';
 import { Product } from '@/types/types';
 
-export const SingleProduct = ({ product }: { product: Product }) => {
+export const SingleProduct = ({
+  product,
+  locale,
+  addToCartText,
+  buyNowText,
+}: {
+  product: Product;
+  locale: string;
+  addToCartText?: string;
+  buyNowText?: string;
+}) => {
   const [activeThumbnail, setActiveThumbnail] = useState(
     strapiImage(product.images[0].url)
   );
@@ -69,7 +79,8 @@ export const SingleProduct = ({ product }: { product: Product }) => {
         <div>
           <h2 className="text-2xl font-semibold mb-4">{product.name}</h2>
           <p className=" mb-6 bg-white text-xs px-4 py-1 rounded-full text-black w-fit">
-            ${formatNumber(product.price)}
+            {locale === 'fr' ? '€' : '$'}
+            {formatNumber(product.price, locale)}
           </p>
           <p className="text-base font-normal mb-4 text-neutral-400">
             {product.description}
@@ -82,36 +93,49 @@ export const SingleProduct = ({ product }: { product: Product }) => {
                 <Step key={index}>{perk.text}</Step>
               ))}
           </ul>
-          <h3 className="text-sm font-medium text-neutral-400 mb-2">
-            Available for
-          </h3>
-          <ul className="list-none flex gap-4 flex-wrap">
-            {product.plans &&
-              product.plans.map((plan, index) => (
-                <li
-                  key={index}
-                  className=" bg-neutral-800 text-sm text-white px-3 py-1 rounded-full font-medium"
-                >
-                  {plan.name}
-                </li>
-              ))}
-          </ul>
+          {product.plans && product.plans.length > 0 && (
+            <>
+              <h3 className="text-sm font-medium text-neutral-400 mb-2">
+                Available for
+              </h3>
+              <ul className="list-none flex gap-4 flex-wrap">
+                {product.plans &&
+                  product.plans.map((plan, index) => (
+                    <li
+                      key={index}
+                      className=" bg-neutral-800 text-sm text-white px-3 py-1 rounded-full font-medium"
+                    >
+                      {plan.name}
+                    </li>
+                  ))}
+              </ul>
+            </>
+          )}
 
-          <h3 className="text-sm font-medium text-neutral-400 mb-2 mt-8">
-            Categories
-          </h3>
-          <ul className="flex gap-4 flex-wrap">
-            {product.categories &&
-              product.categories?.map((category, idx) => (
-                <li
-                  key={`category-${idx}`}
-                  className=" bg-neutral-800 text-sm text-white px-3 py-1 rounded-full font-medium"
-                >
-                  {category.name}
-                </li>
-              ))}
-          </ul>
-          <AddToCartModal onClick={() => addToCart(product)} />
+          {product.categories && product.categories.length > 0 && (
+            <>
+              <h3 className="text-sm font-medium text-neutral-400 mb-2 mt-8">
+                Categories
+              </h3>
+              <ul className="flex gap-4 flex-wrap">
+                {product.categories &&
+                  product.categories?.map((category, idx) => (
+                    <li
+                      key={`category-${idx}`}
+                      className=" bg-neutral-800 text-sm text-white px-3 py-1 rounded-full font-medium"
+                    >
+                      {category.name}
+                    </li>
+                  ))}
+              </ul>
+            </>
+          )}
+          <AddToCartModal
+            onClick={() => addToCart(product)}
+            ctaText={addToCartText}
+            buyNowText={buyNowText}
+            locale={locale}
+          />
         </div>
       </div>
     </div>
