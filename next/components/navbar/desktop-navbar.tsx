@@ -11,8 +11,10 @@ import { useState } from 'react';
 
 import { LocaleSwitcher } from '../locale-switcher';
 import { NavbarItem } from './navbar-item';
+import { UserMenu } from './user-menu';
 import { Button } from '@/components/elements/button';
 import { Logo } from '@/components/logo';
+import { useSession } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
 
 type Props = {
@@ -37,6 +39,7 @@ export const DesktopNavbar = ({
   locale,
 }: Props) => {
   const { scrollY } = useScroll();
+  const { data: session } = useSession();
 
   const [showBackground, setShowBackground] = useState(false);
 
@@ -90,18 +93,22 @@ export const DesktopNavbar = ({
       <div className="flex space-x-2 items-center">
         <LocaleSwitcher currentLocale={locale} />
 
-        {rightNavbarItems.map((item, index) => (
-          <Button
-            key={item.text}
-            variant={
-              index === rightNavbarItems.length - 1 ? 'primary' : 'simple'
-            }
-            as={Link}
-            href={`/${locale}${item.URL}`}
-          >
-            {item.text}
-          </Button>
-        ))}
+        {session?.user ? (
+          <UserMenu locale={locale} />
+        ) : (
+          rightNavbarItems.map((item, index) => (
+            <Button
+              key={item.text}
+              variant={
+                index === rightNavbarItems.length - 1 ? 'primary' : 'simple'
+              }
+              as={Link}
+              href={`/${locale}${item.URL}`}
+            >
+              {item.text}
+            </Button>
+          ))
+        )}
       </div>
     </motion.div>
   );

@@ -20,10 +20,12 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@strapi-community/plugin-better-auth": "^1.0.0-alpha.2",
     "@strapi/plugin-cloud": "5.42.1",
     "@strapi/plugin-seo": "^2.0.4",
     "@strapi/plugin-users-permissions": "5.42.1",
     "@strapi/strapi": "5.42.1",
+    "better-auth": "^1.4.10",
     "better-sqlite3": "11.7.0",
     "pluralize": "^8.0.0",
     "react": "^18.0.0",
@@ -36,7 +38,7 @@
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "LAUNCHPAD"
+    "uuid": "LAUNCHPAD-LOCAL-b7319935-7ee5-4d22-9c9a-b7abebe54084"
   },
   "engines": {
     "node": ">=18.0.0 <=22.x.x",

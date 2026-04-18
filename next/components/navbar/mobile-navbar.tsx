@@ -3,12 +3,13 @@
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import { Link } from 'next-view-transitions';
 import { useState } from 'react';
-import { IoIosMenu } from 'react-icons/io';
-import { IoIosClose } from 'react-icons/io';
+import { IoIosMenu, IoIosClose } from 'react-icons/io';
 
 import { LocaleSwitcher } from '../locale-switcher';
+import { UserMenu } from './user-menu';
 import { Button } from '@/components/elements/button';
 import { Logo } from '@/components/logo';
+import { useSession } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
 
 type Props = {
@@ -33,6 +34,7 @@ export const MobileNavbar = ({
   locale,
 }: Props) => {
   const [open, setOpen] = useState(false);
+  const { data: session } = useSession();
 
   const { scrollY } = useScroll();
 
@@ -109,18 +111,22 @@ export const MobileNavbar = ({
             ))}
           </div>
           <div className="flex flex-row w-full items-start gap-2.5  px-8 py-4 ">
-            {rightNavbarItems.map((item, index) => (
-              <Button
-                key={item.text}
-                variant={
-                  index === rightNavbarItems.length - 1 ? 'primary' : 'simple'
-                }
-                as={Link}
-                href={`/${locale}${item.URL}`}
-              >
-                {item.text}
-              </Button>
-            ))}
+            {session?.user ? (
+              <UserMenu locale={locale} />
+            ) : (
+              rightNavbarItems.map((item, index) => (
+                <Button
+                  key={item.text}
+                  variant={
+                    index === rightNavbarItems.length - 1 ? 'primary' : 'simple'
+                  }
+                  as={Link}
+                  href={`/${locale}${item.URL}`}
+                >
+                  {item.text}
+                </Button>
+              ))
+            )}
           </div>
         </div>
       )}
