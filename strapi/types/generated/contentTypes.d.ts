@@ -1243,6 +1243,482 @@ export interface ApiTestimonialTestimonial extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface PluginBetterAuthAccount extends Struct.CollectionTypeSchema {
+  collectionName: 'better_auth_accounts';
+  info: {
+    description: 'Better Auth account';
+    displayName: 'Accounts';
+    pluralName: 'accounts';
+    singularName: 'account';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    accessToken: Schema.Attribute.Text;
+    accessTokenExpiresAt: Schema.Attribute.DateTime;
+    accountId: Schema.Attribute.Integer & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    idToken: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::better-auth.account'
+    > &
+      Schema.Attribute.Private;
+    password: Schema.Attribute.String;
+    providerId: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    refreshToken: Schema.Attribute.Text;
+    refreshTokenExpiresAt: Schema.Attribute.DateTime;
+    scope: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userId: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
+export interface PluginBetterAuthJwk extends Struct.CollectionTypeSchema {
+  collectionName: 'better_auth_jwks';
+  info: {
+    description: 'Better Auth JSON Web Keys';
+    displayName: 'JWKs';
+    pluralName: 'jwks';
+    singularName: 'jwk';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::better-auth.jwk'
+    > &
+      Schema.Attribute.Private;
+    privateKey: Schema.Attribute.Text & Schema.Attribute.Required;
+    publicKey: Schema.Attribute.Text & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface PluginBetterAuthOauthAccessToken
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'better_auth_oauth_access_tokens';
+  info: {
+    description: 'Better Auth OAuth access tokens';
+    displayName: 'OAuth Access Tokens';
+    pluralName: 'oauth-access-tokens';
+    singularName: 'oauth-access-token';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    accessToken: Schema.Attribute.String & Schema.Attribute.Unique;
+    accessTokenExpiresAt: Schema.Attribute.DateTime;
+    clientId: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::better-auth.oauth-access-token'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    refreshToken: Schema.Attribute.String & Schema.Attribute.Unique;
+    refreshTokenExpiresAt: Schema.Attribute.DateTime;
+    scopes: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userId: Schema.Attribute.Integer;
+  };
+}
+
+export interface PluginBetterAuthOauthApplication
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'better_auth_oauth_applications';
+  info: {
+    description: 'Better Auth OAuth applications';
+    displayName: 'OAuth Applications';
+    pluralName: 'oauth-applications';
+    singularName: 'oauth-application';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    clientId: Schema.Attribute.String & Schema.Attribute.Unique;
+    clientSecret: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    disabled: Schema.Attribute.Boolean;
+    icon: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::better-auth.oauth-application'
+    > &
+      Schema.Attribute.Private;
+    metadata: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    redirectURLs: Schema.Attribute.Text;
+    type: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userId: Schema.Attribute.Integer;
+  };
+}
+
+export interface PluginBetterAuthOauthConsent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'better_auth_oauth_consents';
+  info: {
+    description: 'Better Auth OAuth user consents';
+    displayName: 'OAuth Consents';
+    pluralName: 'oauth-consents';
+    singularName: 'oauth-consent';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    clientId: Schema.Attribute.String;
+    consentGiven: Schema.Attribute.Boolean;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::better-auth.oauth-consent'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    scopes: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userId: Schema.Attribute.Integer;
+  };
+}
+
+export interface PluginBetterAuthPasskey extends Struct.CollectionTypeSchema {
+  collectionName: 'better_auth_passkeys';
+  info: {
+    description: 'Better Auth passkey authentication';
+    displayName: 'Passkeys';
+    pluralName: 'passkeys';
+    singularName: 'passkey';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    aaguid: Schema.Attribute.String;
+    backedUp: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    counter: Schema.Attribute.Integer & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    credentialID: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    deviceType: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::better-auth.passkey'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publicKey: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    transports: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userId: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
+export interface PluginBetterAuthRateLimit extends Struct.CollectionTypeSchema {
+  collectionName: 'better_auth_rate_limits';
+  info: {
+    description: 'Better Auth rate limiting';
+    displayName: 'Rate Limits';
+    pluralName: 'rate-limits';
+    singularName: 'rate-limit';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    count: Schema.Attribute.Integer;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    key: Schema.Attribute.String & Schema.Attribute.Unique;
+    lastRequest: Schema.Attribute.BigInteger;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::better-auth.rate-limit'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface PluginBetterAuthSession extends Struct.CollectionTypeSchema {
+  collectionName: 'better_auth_sessions';
+  info: {
+    description: 'Better Auth session';
+    displayName: 'Sessions';
+    pluralName: 'sessions';
+    singularName: 'session';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    expiresAt: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    ipAddress: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::better-auth.session'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    token: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userAgent: Schema.Attribute.String;
+    userId: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
+export interface PluginBetterAuthTwoFactor extends Struct.CollectionTypeSchema {
+  collectionName: 'better_auth_two_factor';
+  info: {
+    description: 'Better Auth two factor authentication';
+    displayName: 'Two Factors';
+    pluralName: 'two-factors';
+    singularName: 'two-factor';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    backupCodes: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::better-auth.two-factor'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    secret: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userId: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
+export interface PluginBetterAuthUser extends Struct.CollectionTypeSchema {
+  collectionName: 'better_auth_users';
+  info: {
+    description: 'Better Auth user';
+    displayName: 'Users';
+    pluralName: 'users';
+    singularName: 'user';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: true;
+    };
+    'content-type-builder': {
+      visible: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    displayUsername: Schema.Attribute.String;
+    email: Schema.Attribute.Email &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    emailVerified: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    image: Schema.Attribute.String;
+    isAnonymous: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::better-auth.user'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    phoneNumber: Schema.Attribute.String & Schema.Attribute.Unique;
+    phoneNumberVerified: Schema.Attribute.Boolean;
+    publishedAt: Schema.Attribute.DateTime;
+    strapi_assignee: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
+    strapi_stage: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::review-workflows.workflow-stage'
+    >;
+    twoFactorEnabled: Schema.Attribute.Boolean;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    username: Schema.Attribute.String & Schema.Attribute.Unique;
+  };
+}
+
+export interface PluginBetterAuthVerification
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'better_auth_verifications';
+  info: {
+    description: 'Better Auth verification';
+    displayName: 'Verifications';
+    pluralName: 'verifications';
+    singularName: 'verification';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    expiresAt: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    identifier: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::better-auth.verification'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    value: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1772,6 +2248,17 @@ declare module '@strapi/strapi' {
       'api::product.product': ApiProductProduct;
       'api::redirection.redirection': ApiRedirectionRedirection;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
+      'plugin::better-auth.account': PluginBetterAuthAccount;
+      'plugin::better-auth.jwk': PluginBetterAuthJwk;
+      'plugin::better-auth.oauth-access-token': PluginBetterAuthOauthAccessToken;
+      'plugin::better-auth.oauth-application': PluginBetterAuthOauthApplication;
+      'plugin::better-auth.oauth-consent': PluginBetterAuthOauthConsent;
+      'plugin::better-auth.passkey': PluginBetterAuthPasskey;
+      'plugin::better-auth.rate-limit': PluginBetterAuthRateLimit;
+      'plugin::better-auth.session': PluginBetterAuthSession;
+      'plugin::better-auth.two-factor': PluginBetterAuthTwoFactor;
+      'plugin::better-auth.user': PluginBetterAuthUser;
+      'plugin::better-auth.verification': PluginBetterAuthVerification;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

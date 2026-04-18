@@ -3,7 +3,7 @@ docs
 .DS_Store
 .vscode
 .env
-.claude/settings.local.json
+.claude/
 .pnp.*
 .yarn/*
 !.yarn/patches

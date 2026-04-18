@@ -11,13 +11,12 @@ import React, { useState } from 'react';
 import { Container } from './container';
 import { Button } from './elements/button';
 import { Logo } from './logo';
-import { signIn, signUp } from '@/lib/auth-client';
+import { signIn } from '@/lib/auth-client';
 
-export const Register = () => {
+export const SignInForm = () => {
   const router = useRouter();
   const params = useParams<{ locale: string }>();
   const locale = params?.locale ?? 'en';
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -28,16 +27,12 @@ export const Register = () => {
     setError(null);
     setIsSubmitting(true);
 
-    const { error: signUpError } = await signUp.email({
-      email,
-      password,
-      name: name || email,
-    });
+    const { error: signInError } = await signIn.email({ email, password });
 
     setIsSubmitting(false);
 
-    if (signUpError) {
-      setError(signUpError.message ?? 'Sign up failed');
+    if (signInError) {
+      setError(signInError.message ?? 'Sign in failed');
       return;
     }
 
@@ -60,17 +55,10 @@ export const Register = () => {
     <Container className="h-screen max-w-lg mx-auto flex flex-col items-center justify-center">
       <Logo />
       <h1 className="text-xl md:text-4xl font-bold my-4">
-        Sign up for LaunchPad
+        Sign in to LaunchPad
       </h1>
 
       <form className="w-full my-4" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="h-10 pl-4 w-full mb-4 rounded-md text-sm bg-charcoal border border-neutral-800 text-white placeholder-neutral-500 outline-none focus:outline-none active:outline-none focus:ring-2 focus:ring-neutral-800"
-        />
         <input
           type="email"
           placeholder="Email Address"
@@ -85,29 +73,26 @@ export const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          minLength={8}
           className="h-10 pl-4 w-full mb-4 rounded-md text-sm bg-charcoal border border-neutral-800 text-white placeholder-neutral-500 outline-none focus:outline-none active:outline-none focus:ring-2 focus:ring-neutral-800"
         />
-        {error && (
-          <p className="text-sm text-red-400 mb-4">{error}</p>
-        )}
+        {error && <p className="text-sm text-red-400 mb-4">{error}</p>}
         <Button
           variant="muted"
           type="submit"
           className="w-full py-3"
           disabled={isSubmitting}
         >
-          <span className="text-sm">{isSubmitting ? 'Signing up…' : 'Sign up'}</span>
+          <span className="text-sm">{isSubmitting ? 'Signing in…' : 'Sign in'}</span>
         </Button>
       </form>
 
       <p className="text-sm text-neutral-400">
-        Already have an account?{' '}
+        Don&apos;t have an account?{' '}
         <Link
-          href={`/${locale}/sign-in`}
+          href={`/${locale}/sign-up`}
           className="text-white underline underline-offset-2 hover:text-secondary"
         >
-          Sign in
+          Sign up
         </Link>
       </p>
 
