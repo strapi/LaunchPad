@@ -9,6 +9,7 @@ export interface Category {
 export interface Image {
   url: string;
   alternativeText: string;
+  mime?: string;
 }
 
 export interface Article {

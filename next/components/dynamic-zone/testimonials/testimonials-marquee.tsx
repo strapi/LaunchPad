@@ -4,7 +4,7 @@ import Image from 'next/image';
 import React from 'react';
 import Marquee from 'react-fast-marquee';
 
-import { StrapiImage } from '@/components/ui/strapi-image';
+import { StrapiMedia } from '@/components/ui/strapi-media';
 import { cn } from '@/lib/utils';
 
 export const TestimonialsMarquee = ({
@@ -27,7 +27,7 @@ export const TestimonialsMarquee = ({
             >
               <Quote>{testimonial?.text}</Quote>
               <div className="flex gap-2 items-center mt-8">
-                <StrapiImage
+                <StrapiMedia
                   src={testimonial?.user?.image?.url}
                   alt={`${testimonial.user.firstname} ${testimonial.user.lastname}`}
                   width={40}
@@ -58,7 +58,7 @@ export const TestimonialsMarquee = ({
             >
               <Quote>{testimonial.text}</Quote>
               <div className="flex gap-2 items-center mt-8">
-                <StrapiImage
+                <StrapiMedia
                   src={testimonial?.user?.image?.url}
                   alt={`${testimonial.user.firstname} ${testimonial.user.lastname}`}
                   width={40}
