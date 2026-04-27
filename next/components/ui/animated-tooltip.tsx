@@ -9,7 +9,7 @@ import {
 } from 'framer-motion';
 import React, { useState } from 'react';
 
-import { StrapiImage } from '@/components/ui/strapi-image';
+import { StrapiMedia } from '@/components/ui/strapi-media';
 
 export const AnimatedTooltip = ({
   items,
@@ -80,7 +80,7 @@ export const AnimatedTooltip = ({
               </motion.div>
             )}
           </AnimatePresence>
-          <StrapiImage
+          <StrapiMedia
             onMouseMove={handleMouseMove}
             height={100}
             width={100}
