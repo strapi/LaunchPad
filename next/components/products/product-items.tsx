@@ -1,7 +1,7 @@
 import { Link } from 'next-view-transitions';
 import React from 'react';
 
-import { StrapiImage } from '@/components/ui/strapi-image';
+import { StrapiMedia } from '@/components/ui/strapi-media';
 import { formatNumber, truncate } from '@/lib/utils';
 import { Product } from '@/types/types';
 
@@ -52,7 +52,7 @@ const ProductItem = ({
       <div className="relative border border-neutral-800  rounded-md overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black transition-all duration-200 z-30" />
 
-        <StrapiImage
+        <StrapiMedia
           src={product?.images?.[0].url}
           alt={product.name}
           width={600}

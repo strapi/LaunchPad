@@ -5,7 +5,7 @@ import { Link } from 'next-view-transitions';
 import { Container } from './container';
 import { AmbientColor } from './decorations/ambient-color';
 import DynamicZoneManager from './dynamic-zone/manager';
-import { StrapiImage } from '@/components/ui/strapi-image';
+import { StrapiMedia } from '@/components/ui/strapi-media';
 import { Article } from '@/types/types';
 
 export async function BlogLayout({
@@ -29,15 +29,16 @@ export async function BlogLayout({
       </div>
       <div className="w-full mx-auto">
         {article?.image ? (
-          <StrapiImage
+          <StrapiMedia
             src={article.image.url}
+            mime={article.image.mime}
             height={800}
             width={800}
             className="h-40 md:h-96 w-full aspect-square object-cover rounded-3xl [mask-image:radial-gradient(circle,white,transparent)]"
             alt={article.title}
           />
         ) : (
-          <div className="h-40 md:h-96 w-full aspect-squace rounded-3xl shadow-derek bg-neutral-900 flex items-center justify-center">
+          <div className="h-40 md:h-96 w-full aspect-square rounded-3xl shadow-derek bg-neutral-900 flex items-center justify-center">
             {/* <Logo /> */}
           </div>
         )}

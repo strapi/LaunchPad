@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 
 import AddToCartModal from '@/components/products/modal';
-import { StrapiImage } from '@/components/ui/strapi-image';
+import { StrapiMedia } from '@/components/ui/strapi-media';
 import { useCart } from '@/context/cart-context';
 import { strapiImage } from '@/lib/strapi/strapiImage';
 import { cn, formatNumber } from '@/lib/utils';
@@ -44,7 +44,7 @@ export const SingleProduct = ({
               damping: 35,
             }}
           >
-            <StrapiImage
+            <StrapiMedia
               src={activeThumbnail}
               alt={product.name}
               width={600}
