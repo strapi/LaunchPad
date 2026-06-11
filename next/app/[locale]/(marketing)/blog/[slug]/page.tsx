@@ -1,7 +1,5 @@
-import { BlocksRenderer } from '@strapi/blocks-react-renderer';
-import React from 'react';
-
 import ClientSlugHandler from '../../ClientSlugHandler';
+import { ArticleContent } from '@/components/article-content';
 import { BlogLayout } from '@/components/blog-layout';
 import { fetchCollectionType } from '@/lib/strapi';
 import type { Article, LocaleSlugParamsProps } from '@/types/types';
@@ -34,7 +32,7 @@ export default async function SingleArticlePage({
   return (
     <BlogLayout article={article} locale={locale}>
       <ClientSlugHandler localizedSlugs={localizedSlugs} />
-      <BlocksRenderer content={article.content} />
+      <ArticleContent content={article.content} />
     </BlogLayout>
   );
 }
