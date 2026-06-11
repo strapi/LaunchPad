@@ -1,4 +1,4 @@
-import { API_URL } from '@/lib/utils';
+import { API_URL, stripStegaMarkers } from '@/lib/utils';
 import { unstable_noStore as noStore } from 'next/cache';
 import Image from 'next/image';
 import {
@@ -18,10 +18,11 @@ interface StrapiMediaProps
 
 export function getStrapiMedia(url: string | null) {
   if (url == null) return null;
-  if (url.startsWith('data:')) return url;
-  if (url.startsWith('http') || url.startsWith('//')) return url;
+  const cleanUrl = stripStegaMarkers(url);
+  if (cleanUrl.startsWith('data:')) return cleanUrl;
+  if (cleanUrl.startsWith('http') || cleanUrl.startsWith('//')) return cleanUrl;
 
-  return API_URL + url;
+  return API_URL + cleanUrl;
 }
 
 /**
