@@ -1,4 +1,5 @@
 import { API_URL, stripStegaMarkers } from '@/lib/utils';
+import { getStrapiSource } from '@/lib/strapi/sourceMap';
 import { unstable_noStore as noStore } from 'next/cache';
 import Image from 'next/image';
 import {
@@ -41,6 +42,11 @@ export function StrapiMedia({
 }: Readonly<StrapiMediaProps>) {
   noStore();
 
+  // Decode the visual-editing source from the raw URL *before* getStrapiMedia
+  // strips the markers, and render it as a literal data attribute the preview
+  // overlay reads directly. Undefined outside draft mode -> attribute omitted.
+  const strapiSource = getStrapiSource(src);
+
   if (mime?.startsWith('video/')) {
     const url = getStrapiMedia(src);
     if (!url) return null;
@@ -50,6 +56,7 @@ export function StrapiMedia({
         controls
         preload="metadata"
         className={className}
+        data-strapi-source={strapiSource}
         {...videoProps}
       />
     );
@@ -59,7 +66,13 @@ export function StrapiMedia({
     const url = getStrapiMedia(src);
     if (!url) return null;
     return (
-      <audio src={url} controls className={className} {...audioProps} />
+      <audio
+        src={url}
+        controls
+        className={className}
+        data-strapi-source={strapiSource}
+        {...audioProps}
+      />
     );
   }
 
@@ -70,6 +83,7 @@ export function StrapiMedia({
       src={imageUrl}
       alt={alt ?? 'No alternative text provided'}
       className={className}
+      data-strapi-source={strapiSource}
       {...imageProps}
     />
   );
