@@ -2275,6 +2275,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vercel/stega@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "@vercel/stega@npm:0.1.2"
+  checksum: 10c0/66eb80f286d46806004a2eacd215af80ad3cd443e7a96a6070d390dbb3f4d1f6e063013ec0d196c7fe852721d5dbe62e23b44c32975e36b18cda30e5e0728e04
+  languageName: node
+  linkType: hard
+
 "@webgpu/types@npm:*":
   version: 0.1.64
   resolution: "@webgpu/types@npm:0.1.64"
@@ -5336,6 +5343,7 @@ __metadata:
     "@types/react": "npm:^19.2.0"
     "@types/react-dom": "npm:^19.2.0"
     "@types/three": "npm:^0.179.0"
+    "@vercel/stega": "npm:^0.1.2"
     class-variance-authority: "npm:^0.7.0"
     clsx: "npm:^2.1.1"
     date-fns: "npm:^3.6.0"

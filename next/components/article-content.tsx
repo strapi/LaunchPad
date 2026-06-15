@@ -8,6 +8,7 @@ import type { ComponentProps } from 'react';
 
 import { BlurImage } from './blur-image';
 import { normalizeStrapiMediaUrl, stripStegaMarkers } from '@/lib/utils';
+import { getStrapiSource } from '@/lib/strapi/sourceMap';
 
 type BlockComponents = NonNullable<
   ComponentProps<typeof BlocksRenderer>['blocks']
@@ -20,6 +21,9 @@ const ImageBlock: BlockComponents['image'] = ({ image }) => (
     width={image.width}
     height={image.height}
     className="rounded-lg"
+    // Decode from the raw url before normalizeStrapiMediaUrl cleans it, so the
+    // preview overlay can map this block image back to its media field.
+    data-strapi-source={getStrapiSource(image.url)}
   />
 );
 
