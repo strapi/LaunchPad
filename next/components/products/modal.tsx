@@ -11,7 +11,7 @@ import {
   ModalFooter,
   ModalTrigger,
 } from '../ui/animated-modal';
-import { StrapiImage } from '@/components/ui/strapi-image';
+import { StrapiMedia } from '@/components/ui/strapi-media';
 import { useCart } from '@/context/cart-context';
 import { formatNumber } from '@/lib/utils';
 
@@ -50,7 +50,7 @@ export default function AddToCartModal({
                 className="flex gap-2 justify-between items-center py-4"
               >
                 <div className="flex items-center gap-4">
-                  <StrapiImage
+                  <StrapiMedia
                     src={item.product?.images?.[0].url}
                     alt={item.product.name}
                     width={60}

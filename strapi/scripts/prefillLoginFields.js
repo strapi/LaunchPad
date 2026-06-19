@@ -1,11 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-const glob = require('glob');
 
-// Base directory and target file patterns
+// Base directory and target files
 const directoryPath =
   './node_modules/@strapi/admin/dist/admin/admin/src/pages/Auth/components';
-const targetFiles = ['Login.js', 'Login.mjs']; // You can add more file patterns here
+const targetFiles = ['Login.js', 'Login.mjs']; // You can add more files here
 
 // Content to replace
 const originalContent = `initialValues: {
@@ -20,50 +19,31 @@ const newContent = `initialValues: {
                                 rememberMe: false
                             },`;
 
-// Function to update a given file
-const updateFile = (filePath) => {
-  fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      console.error(`❌ Error reading file ${filePath}:`, err);
-      return;
-    }
+let found = 0;
 
-    if (data.includes(newContent)) {
-      console.log(
-        `✅ File already modified with demo credentials: ${filePath}`
-      );
-      return;
-    }
+targetFiles.forEach((file) => {
+  const filePath = path.join(directoryPath, file);
 
-    if (data.includes(originalContent)) {
-      const updatedData = data.replace(originalContent, newContent);
+  if (!fs.existsSync(filePath)) {
+    console.log(`⚠️ No matching file found for: ${file}`);
+    return;
+  }
 
-      fs.writeFile(filePath, updatedData, 'utf8', (err) => {
-        if (err) {
-          console.error(`❌ Error writing to file ${filePath}:`, err);
-          return;
-        }
-        console.log(`✅ Successfully updated: ${filePath}`);
-      });
-    } else {
-      console.log(`⚠️ Original content not found in: ${filePath}`);
-    }
-  });
-};
+  found++;
+  const data = fs.readFileSync(filePath, 'utf8');
 
-// Iterate over each file pattern
-targetFiles.forEach((pattern) => {
-  glob(path.join(directoryPath, pattern), (err, files) => {
-    if (err) {
-      console.error('❌ Error finding files:', err);
-      return;
-    }
-
-    if (files.length > 0) {
-      files.forEach(updateFile);
-    } else {
-      console.log(`⚠️ No matching files found for: ${pattern}`);
-      process.exit(1);
-    }
-  });
+  if (data.includes(newContent)) {
+    console.log(`✅ File already modified with demo credentials: ${filePath}`);
+  } else if (data.includes(originalContent)) {
+    fs.writeFileSync(filePath, data.replace(originalContent, newContent), 'utf8');
+    console.log(`✅ Successfully updated: ${filePath}`);
+  } else {
+    console.log(`⚠️ Original content not found in: ${filePath}`);
+    process.exit(1);
+  }
 });
+
+if (found === 0) {
+  console.error('❌ No Login.js / Login.mjs found — admin dist layout may have changed.');
+  process.exit(1);
+}

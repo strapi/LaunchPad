@@ -4,7 +4,7 @@ import { Transition } from '@headlessui/react';
 import { memo, useEffect, useRef, useState } from 'react';
 
 import { SparklesCore } from '../../ui/sparkles';
-import { StrapiImage } from '@/components/ui/strapi-image';
+import { StrapiMedia } from '@/components/ui/strapi-media';
 import { cn } from '@/lib/utils';
 
 export const TestimonialsSlider = ({ testimonials }: { testimonials: any }) => {
@@ -80,7 +80,7 @@ export const TestimonialsSlider = ({ testimonials }: { testimonials: any }) => {
                     beforeEnter={() => heightFix()}
                   >
                     <div className="absolute inset-0 h-full -z-10">
-                      <StrapiImage
+                      <StrapiMedia
                         className="relative top-11 left-1/2 -translate-x-1/2 rounded-full"
                         src={item.user.image.url}
                         width={56}

@@ -6,7 +6,7 @@ import Balancer from 'react-wrap-balancer';
 
 import { Logo } from './logo';
 import { BlurImage } from '@/components/blur-image';
-import { strapiImage } from '@/lib/strapi/strapiImage';
+import { resolveStrapiMedia } from '@/lib/strapi/strapiImage';
 import { truncate } from '@/lib/utils';
 import { Article } from '@/types/types';
 
@@ -25,7 +25,7 @@ export const BlogCard = ({
       <div className="">
         {article.image ? (
           <BlurImage
-            src={strapiImage(article.image.url)}
+            {...resolveStrapiMedia(article.image.url)}
             alt={article.title}
             height="1200"
             width="1200"
@@ -90,7 +90,7 @@ export const BlogCardVertical = ({
       <div className="">
         {article.image ? (
           <BlurImage
-            src={strapiImage(article.image.url || '')}
+            {...resolveStrapiMedia(article.image.url)}
             alt={article.title}
             height="800"
             width="800"

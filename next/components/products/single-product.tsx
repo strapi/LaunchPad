@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 
 import AddToCartModal from '@/components/products/modal';
-import { StrapiImage } from '@/components/ui/strapi-image';
+import { StrapiMedia } from '@/components/ui/strapi-media';
 import { useCart } from '@/context/cart-context';
 import { strapiImage } from '@/lib/strapi/strapiImage';
 import { cn, formatNumber } from '@/lib/utils';
@@ -22,8 +22,11 @@ export const SingleProduct = ({
   addToCartText?: string;
   buyNowText?: string;
 }) => {
+  // Hold the *raw* Strapi URL so StrapiMedia can resolve it and decode the
+  // visual-editing source mapping. Passing a pre-cleaned URL here would strip
+  // the markers before StrapiMedia could read them.
   const [activeThumbnail, setActiveThumbnail] = useState(
-    strapiImage(product.images[0].url)
+    product.images[0].url
   );
   const { addToCart } = useCart();
 
@@ -44,7 +47,7 @@ export const SingleProduct = ({
               damping: 35,
             }}
           >
-            <StrapiImage
+            <StrapiMedia
               src={activeThumbnail}
               alt={product.name}
               width={600}
@@ -58,7 +61,7 @@ export const SingleProduct = ({
             {product.images &&
               product.images.map((image, index) => (
                 <button
-                  onClick={() => setActiveThumbnail(strapiImage(image.url))}
+                  onClick={() => setActiveThumbnail(image.url)}
                   key={'product-image' + index}
                   className={cn(
                     'h-20 w-20 rounded-xl',
