@@ -20,10 +20,10 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.47.1",
+    "@strapi/plugin-cloud": "0.0.0-experimental.5281af240fc8ba10a5a2e34b9593ac192d11fa4f",
     "@strapi/plugin-seo": "^2.0.4",
-    "@strapi/plugin-users-permissions": "5.47.1",
-    "@strapi/strapi": "5.47.1",
+    "@strapi/plugin-users-permissions": "0.0.0-experimental.5281af240fc8ba10a5a2e34b9593ac192d11fa4f",
+    "@strapi/strapi": "0.0.0-experimental.5281af240fc8ba10a5a2e34b9593ac192d11fa4f",
     "better-sqlite3": "11.7.0",
     "pluralize": "^8.0.0",
     "react": "^18.0.0",
