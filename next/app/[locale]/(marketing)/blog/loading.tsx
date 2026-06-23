@@ -1,17 +1,31 @@
+import { Container } from '@/components/container';
+import {
+  PageHeroSkeleton,
+  SkeletonBlock,
+} from '@/components/skeletons/page-skeleton';
+
 export default function Loading() {
   return (
-    <div className="container mx-auto px-4 py-16">
-      <div className="h-10 bg-gray-700 rounded w-48 mb-8 animate-pulse" />
+    <div className="relative overflow-hidden w-full">
+      <Container className="flex flex-col items-center pb-20">
+        <PageHeroSkeleton />
 
-      <div className="grid md:grid-cols-3 gap-8">
-        {[...Array(6)].map((_, i) => (
-          <div key={i} className="space-y-4">
-            <div className="aspect-video bg-gray-700 rounded-lg animate-pulse" />
-            <div className="h-6 bg-gray-700 rounded w-3/4 animate-pulse" />
-            <div className="h-4 bg-gray-700 rounded w-1/2 animate-pulse" />
-          </div>
-        ))}
-      </div>
+        {/* Featured article card */}
+        <SkeletonBlock className="mt-16 aspect-[16/9] w-full max-w-5xl" />
+
+        {/* Article rows */}
+        <div className="w-full max-w-5xl mt-12 space-y-6">
+          {[...Array(4)].map((_, index) => (
+            <div key={index} className="flex items-center gap-4">
+              <SkeletonBlock className="h-20 w-32 shrink-0" />
+              <div className="flex-1 space-y-3">
+                <SkeletonBlock className="h-5 w-2/3" />
+                <SkeletonBlock className="h-4 w-1/3" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </Container>
     </div>
   );
 }

@@ -1,28 +1,33 @@
+import { Container } from '@/components/container';
+import { SkeletonBlock } from '@/components/skeletons/page-skeleton';
+
 export default function Loading() {
   return (
-    <article className="container mx-auto px-4 py-16 max-w-4xl">
-      {/* Title skeleton */}
-      <div className="h-12 bg-gray-700 rounded w-3/4 mb-4 animate-pulse" />
+    <div className="relative overflow-hidden w-full">
+      <Container className="pt-40 pb-20">
+        <article className="max-w-4xl mx-auto">
+          {/* Title */}
+          <SkeletonBlock className="h-12 w-3/4 mb-4" />
 
-      {/* Meta info skeleton */}
-      <div className="flex gap-4 mb-8">
-        <div className="h-4 bg-gray-700 rounded w-24 animate-pulse" />
-        <div className="h-4 bg-gray-700 rounded w-32 animate-pulse" />
-      </div>
+          {/* Meta info */}
+          <div className="flex gap-4 mb-8">
+            <SkeletonBlock className="h-4 w-24" />
+            <SkeletonBlock className="h-4 w-32" />
+          </div>
 
-      {/* Featured image skeleton */}
-      <div className="aspect-video bg-gray-700 rounded-lg mb-8 animate-pulse" />
+          {/* Featured image */}
+          <SkeletonBlock className="aspect-video w-full mb-8" />
 
-      {/* Content skeleton */}
-      <div className="space-y-4">
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="h-4 bg-gray-700 rounded animate-pulse"
-            style={{ width: `${70 + (i % 4) * 8}%` }}
-          />
-        ))}
-      </div>
-    </article>
+          {/* Content */}
+          <div className="space-y-4">
+            {['w-full', 'w-11/12', 'w-10/12', 'w-full', 'w-9/12', 'w-11/12'].map(
+              (width, index) => (
+                <SkeletonBlock key={index} className={`h-4 ${width}`} />
+              )
+            )}
+          </div>
+        </article>
+      </Container>
+    </div>
   );
 }
