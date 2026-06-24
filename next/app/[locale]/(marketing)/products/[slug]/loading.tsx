@@ -1,22 +1,27 @@
+import { Container } from '@/components/container';
+import { SkeletonBlock } from '@/components/skeletons/page-skeleton';
+
 export default function Loading() {
   return (
-    <div className="container mx-auto px-4 py-16">
-      <div className="grid md:grid-cols-2 gap-12">
-        {/* Image skeleton */}
-        <div className="aspect-square bg-gray-700 rounded-lg animate-pulse" />
+    <div className="relative overflow-hidden w-full">
+      <Container className="pt-40 pb-20">
+        <div className="grid md:grid-cols-2 gap-12">
+          {/* Image */}
+          <SkeletonBlock className="aspect-square w-full" />
 
-        {/* Details skeleton */}
-        <div className="space-y-6">
-          <div className="h-10 bg-gray-700 rounded w-3/4 animate-pulse" />
-          <div className="h-6 bg-gray-700 rounded w-1/4 animate-pulse" />
-          <div className="space-y-2">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-4 bg-gray-700 rounded animate-pulse" />
-            ))}
+          {/* Details */}
+          <div className="space-y-6">
+            <SkeletonBlock className="h-10 w-3/4" />
+            <SkeletonBlock className="h-6 w-1/4" />
+            <div className="space-y-2">
+              {[...Array(4)].map((_, index) => (
+                <SkeletonBlock key={index} className="h-4 w-full" />
+              ))}
+            </div>
+            <SkeletonBlock className="h-12 w-40" />
           </div>
-          <div className="h-12 bg-gray-700 rounded w-40 animate-pulse" />
         </div>
-      </div>
+      </Container>
     </div>
   );
 }
