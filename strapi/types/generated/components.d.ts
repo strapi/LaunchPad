@@ -506,7 +506,7 @@ export interface SharedUser extends Struct.ComponentSchema {
 }
 
 declare module '@strapi/strapi' {
-  export module Public {
+  export namespace Public {
     export interface ComponentSchemas {
       'cards.globe-card': CardsGlobeCard;
       'cards.graph-card': CardsGraphCard;
