@@ -5,7 +5,7 @@
   ],
   "defaultLocale": "en-us",
   "slots": {
-    "launchpad-home-dynamic-zones": "1"
+    "dynamic-zone-map": "1"
   },
   "components": {},
   "paths": {

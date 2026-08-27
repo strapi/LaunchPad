@@ -30,20 +30,22 @@ export async function generateMetadata({
   return metadata;
 }
 
+const slug = 'homepage';
+
 export default async function HomePage({ params }: { params: { locale: string } }) {
-  const [staticPageData, slots] = await Promise.all([
+  const [staticPageData, slots = []] = await Promise.all([
     await fetchContentType(
       'pages',
       {
         filters: {
-          slug: 'homepage',
+          slug: slug,
           locale: params.locale,
         },
       },
       true,
     ),
-    fetchContent('launchpad-home-dynamic-zones@1', { static: true })
-      .then(({content}) => content.map)
+    fetchContent('dynamic-zone-map@1', { static: true })
+      .then(({content}) => content.map.find((map) => map.slug === slug)?.sections)
   ]);
 
   const componentIndex: Record<string, number> = {};

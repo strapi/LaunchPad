@@ -1,14 +1,19 @@
 {
-  "launchpad-home-dynamic-zones": [
+  "dynamic-zone-map": [
     {
       "version": 1,
       "content": {
         "en-us": {
-          "_component": "strapi-dynamic-zone-map@1",
+          "_component": "dynamic-zone-map@1",
           "map": [
             {
-              "slot": "launchpad-home-hero",
-              "component": "hero"
+              "slug": "homepage",
+              "sections": [
+                {
+                  "slot": "launchpad-home-hero",
+                  "component": "hero"
+                }
+              ]
             }
           ]
         }

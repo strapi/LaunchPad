@@ -6,7 +6,7 @@
  * To regenerate, run `croct update`.
  */
 
-type Def$db5c56a6 = {
+type Def$a0a59591 = {
   /**
    * Map
    * 
@@ -14,27 +14,40 @@ type Def$db5c56a6 = {
    */
   'map': Array<{
     /**
-     * Croct slot
+     * Slug
      * 
-     * The ID of the slot as defined in Croct.
+     * The slug of the page as defined in Strapi.
      */
-    'slot': string,
+    'slug': string,
     /**
-     * Strapi component
+     * Sections
      * 
-     * The ID of the component as defined in Strapi.
+     * The list of the sections that should be connected.
      */
-    'component': string,
+    'sections': Array<{
+      /**
+       * Croct slot
+       * 
+       * The ID of the slot as defined in Croct.
+       */
+      'slot': string,
+      /**
+       * Strapi component
+       * 
+       * The ID of the component as defined in Strapi.
+       */
+      'component': string,
+    }>,
   }>,
 };
 
 declare module '@croct/plug/slot' {
-  type LaunchpadHomeDynamicZonesV1 = Def$db5c56a6 & {'_component': 'strapi-dynamic-zone-map@1' | null};
+  type DynamicZoneMapV1 = Def$a0a59591 & {'_component': 'dynamic-zone-map@1' | null};
   
   export interface VersionedSlotMap {
-    'launchpad-home-dynamic-zones': {
-      latest: LaunchpadHomeDynamicZonesV1,
-      '1': LaunchpadHomeDynamicZonesV1,
+    'dynamic-zone-map': {
+      latest: DynamicZoneMapV1,
+      '1': DynamicZoneMapV1,
     };
   }
 }
