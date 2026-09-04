@@ -30,6 +30,7 @@
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@vue/compiler-sfc": "^3.5.42",
     "dotenv": "^17.2.3",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",

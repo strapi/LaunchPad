@@ -1,0 +1,215 @@
+<script setup lang="ts">
+/**
+ * The rotating globe, LaunchPad's signature visual.
+ *
+ * The original is `@react-three/fiber` + `three-globe`. Here it is three.js
+ * directly: a sphere with a dotted shell and a subtle atmosphere — about 100
+ * lines against two libraries and their runtimes.
+ *
+ * Loaded lazily and only when scrolled into view. three.js is ~600KB, and this
+ * sits inside a feature card most visitors never reach, so paying for it up
+ * front would be the single worst thing on the page for performance.
+ */
+const root = ref<HTMLElement | null>(null);
+const canvas = ref<HTMLCanvasElement | null>(null);
+
+let cleanup: (() => void) | null = null;
+
+onMounted(() => {
+  if (!root.value) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        observer.disconnect();
+        void mountGlobe();
+      }
+    },
+    { rootMargin: '200px' }
+  );
+
+  observer.observe(root.value);
+  cleanup = () => observer.disconnect();
+});
+
+onBeforeUnmount(() => {
+  cleanup?.();
+  cleanup = null;
+});
+
+async function mountGlobe() {
+  const host = root.value;
+  const surface = canvas.value;
+  if (!host || !surface) return;
+
+  // Dynamic import so three.js is a separate chunk, fetched only when a globe
+  // actually scrolls into view.
+  const THREE = await import('three');
+
+  const reduceMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.z = 3.2;
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas: surface,
+    alpha: true,
+    antialias: true,
+  });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const group = new THREE.Group();
+  // Tilt to match the original's axis.
+  group.rotation.z = -0.4;
+  scene.add(group);
+
+  // Base sphere, slightly smaller than the dot shell so dots sit proudly.
+  const sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(1, 64, 64),
+    new THREE.MeshBasicMaterial({
+      color: 0x0b1120,
+      transparent: true,
+      opacity: 0.9,
+    })
+  );
+  group.add(sphere);
+
+  // Wireframe graticule, standing in for three-globe's country polygons.
+  const graticule = new THREE.LineSegments(
+    new THREE.WireframeGeometry(new THREE.SphereGeometry(1.001, 24, 16)),
+    new THREE.LineBasicMaterial({
+      color: 0x22d3ee,
+      transparent: true,
+      opacity: 0.16,
+    })
+  );
+  group.add(graticule);
+
+  // Points scattered on a Fibonacci sphere — even coverage without the
+  // clustering at the poles that naive lat/long sampling produces.
+  const COUNT = 1400;
+  const positions = new Float32Array(COUNT * 3);
+  const golden = Math.PI * (3 - Math.sqrt(5));
+  for (let i = 0; i < COUNT; i++) {
+    const y = 1 - (i / (COUNT - 1)) * 2;
+    const radius = Math.sqrt(Math.max(0, 1 - y * y));
+    const theta = golden * i;
+    positions[i * 3] = Math.cos(theta) * radius * 1.02;
+    positions[i * 3 + 1] = y * 1.02;
+    positions[i * 3 + 2] = Math.sin(theta) * radius * 1.02;
+  }
+  const dotGeometry = new THREE.BufferGeometry();
+  dotGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  const dots = new THREE.Points(
+    dotGeometry,
+    new THREE.PointsMaterial({
+      color: 0x67e8f9,
+      size: 0.018,
+      transparent: true,
+      opacity: 0.85,
+      sizeAttenuation: true,
+    })
+  );
+  group.add(dots);
+
+  // Atmosphere: a slightly larger back-facing sphere reads as a rim glow.
+  const atmosphere = new THREE.Mesh(
+    new THREE.SphereGeometry(1.15, 48, 48),
+    new THREE.MeshBasicMaterial({
+      color: 0x0891b2,
+      transparent: true,
+      opacity: 0.08,
+      side: THREE.BackSide,
+    })
+  );
+  group.add(atmosphere);
+
+  const resize = () => {
+    const { clientWidth, clientHeight } = host;
+    if (!clientWidth || !clientHeight) return;
+    renderer.setSize(clientWidth, clientHeight, false);
+    camera.aspect = clientWidth / clientHeight;
+    camera.updateProjectionMatrix();
+  };
+  resize();
+  const resizeObserver = new ResizeObserver(resize);
+  resizeObserver.observe(host);
+
+  let frame = 0;
+  let running = true;
+
+  const render = () => {
+    if (!running) return;
+    if (!reduceMotion) group.rotation.y += 0.0016;
+    renderer.render(scene, camera);
+    frame = requestAnimationFrame(render);
+  };
+  render();
+
+  // Stop work entirely when scrolled away or the tab is hidden — an always-on
+  // rAF loop is the usual reason a page like this drains battery.
+  const visibility = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting && !running) {
+        running = true;
+        render();
+      } else if (!entry.isIntersecting && running) {
+        running = false;
+        cancelAnimationFrame(frame);
+      }
+    }
+  });
+  visibility.observe(host);
+
+  const onVisibilityChange = () => {
+    if (document.hidden) {
+      running = false;
+      cancelAnimationFrame(frame);
+    } else if (!running) {
+      running = true;
+      render();
+    }
+  };
+  document.addEventListener('visibilitychange', onVisibilityChange);
+
+  // Navigating away has to release the WebGL context; browsers only allow a
+  // handful at a time, so leaking one per visit eventually blanks the canvas.
+  cleanup = () => {
+    running = false;
+    cancelAnimationFrame(frame);
+    document.removeEventListener('visibilitychange', onVisibilityChange);
+    visibility.disconnect();
+    resizeObserver.disconnect();
+    renderer.dispose();
+    scene.traverse((object) => {
+      const mesh = object as unknown as {
+        geometry?: { dispose: () => void };
+        material?: { dispose: () => void };
+      };
+      mesh.geometry?.dispose();
+      mesh.material?.dispose();
+    });
+  };
+}
+</script>
+
+<template>
+  <div
+    ref="root"
+    class="globe-root relative"
+    role="img"
+    aria-label="Rotating globe showing global content delivery"
+  >
+    <canvas ref="canvas" class="h-full w-full" />
+  </div>
+</template>
+
+<style scoped>
+.globe-root canvas {
+  display: block;
+}
+</style>
