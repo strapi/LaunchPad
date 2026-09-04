@@ -36,6 +36,7 @@ nuxt/.output/
 tanstack/.output/
 tanstack/.vinxi/
 tanstack/.tanstack/
+tanstack/src/routeTree.gen.ts
 
 # Logs
 *.log
