@@ -1,0 +1,30 @@
+---
+import BlocksNode from '@/components/BlocksNode.astro';
+import type { BlockNode } from '@/types/strapi';
+
+/**
+ * Renders a Strapi `blocks` (rich text) field.
+ *
+ * Replaces `@strapi/blocks-react-renderer`, which is React-only. The node
+ * types are a small closed set, so a recursive Astro component covers them
+ * without any client-side JavaScript at all — the React renderer ships a
+ * runtime to do the same job.
+ */
+
+interface Props {
+  content?: BlockNode[] | null;
+  class?: string;
+}
+
+const { content, class: className } = Astro.props;
+---
+
+{
+  content?.length ? (
+    <div class={className}>
+      {content.map((node) => (
+        <BlocksNode node={node} />
+      ))}
+    </div>
+  ) : null
+}

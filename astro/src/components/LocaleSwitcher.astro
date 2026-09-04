@@ -1,0 +1,51 @@
+---
+/*
+ * Locale toggle.
+ *
+ * Rendered as real links so it works without JavaScript and search engines can
+ * follow it — the React version used a click handler and a router call.
+ *
+ * Localized slugs differ between locales (`/en/blog/foo` vs `/fr/blog/bar`), so
+ * pages that know their translations pass them in. Without them, only the
+ * locale segment is swapped, which is correct for the static routes.
+ */
+import { LOCALES } from '@/lib/i18n';
+
+interface Props {
+  currentLocale: string;
+  /** Map of locale -> path *after* the locale prefix, e.g. `blog/bonjour`. */
+  localizedPaths?: Record<string, string>;
+}
+
+const { currentLocale, localizedPaths } = Astro.props;
+
+const segments = Astro.url.pathname.split('/').filter(Boolean);
+
+function hrefFor(locale: string): string {
+  const localized = localizedPaths?.[locale];
+  if (localized !== undefined) {
+    return localized === '' ? `/${locale}` : `/${locale}/${localized}`;
+  }
+  const rest = segments.slice(1);
+  return rest.length ? `/${locale}/${rest.join('/')}` : `/${locale}`;
+}
+---
+
+<div class="flex gap-2 rounded-md p-1">
+  {
+    LOCALES.map((locale) => (
+      <a
+        href={hrefFor(locale)}
+        hreflang={locale}
+        aria-current={locale === currentLocale ? 'true' : undefined}
+        class:list={[
+          'flex w-8 cursor-pointer items-center justify-center rounded-md py-1 text-sm leading-[110%] text-white transition duration-200 hover:bg-neutral-800 hover:text-white/80 hover:shadow-[0px_1px_0px_0px_var(--color-neutral-600)_inset]',
+          locale === currentLocale &&
+            'bg-neutral-800 text-white shadow-[0px_1px_0px_0px_var(--color-neutral-600)_inset]',
+        ]}
+      >
+        {locale}
+      </a>
+    ))
+  }
+</div>

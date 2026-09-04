@@ -1,0 +1,78 @@
+---
+/**
+ * Hero particle field.
+ *
+ * The original uses `@tsparticles/react`; tsparticles itself is framework
+ * agnostic, so the vanilla `tsParticles.load()` API gives the same effect
+ * without a React wrapper.
+ *
+ * Deferred behind `requestIdleCallback` and skipped entirely when the user
+ * prefers reduced motion — it is pure decoration, so it should never compete
+ * with content for the main thread.
+ */
+
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div
+  class:list={['pointer-events-none', className]}
+  data-sparkles
+  aria-hidden="true"
+>
+</div>
+
+<script>
+  const containers = document.querySelectorAll<HTMLElement>('[data-sparkles]');
+
+  if (
+    containers.length &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
+    const start = () => void mountSparkles();
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(start, { timeout: 2000 });
+    } else {
+      setTimeout(start, 500);
+    }
+  }
+
+  async function mountSparkles() {
+    const [{ tsParticles }, { loadSlim }] = await Promise.all([
+      import('@tsparticles/engine'),
+      import('@tsparticles/slim'),
+    ]);
+
+    await loadSlim(tsParticles);
+
+    const containers =
+      document.querySelectorAll<HTMLElement>('[data-sparkles]');
+    for (const [index, container] of containers.entries()) {
+      const id = container.id || `sparkles-${index}`;
+      container.id = id;
+
+      await tsParticles.load({
+        id,
+        options: {
+          fullScreen: { enable: false },
+          background: { color: { value: 'transparent' } },
+          fpsLimit: 60,
+          detectRetina: true,
+          particles: {
+            number: { value: 60, density: { enable: true } },
+            color: { value: '#FFFFFF' },
+            opacity: {
+              value: { min: 0.1, max: 0.8 },
+              animation: { enable: true, speed: 1, sync: false },
+            },
+            size: { value: { min: 0.6, max: 1.6 } },
+            move: { enable: true, speed: 0.4, direction: 'none', random: true },
+            links: { enable: false },
+          },
+        },
+      });
+    }
+  }
+</script>

@@ -1,0 +1,32 @@
+{
+  "name": "launchpad-astro",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/node": "^11.0.3",
+    "@strapi/client": "^1.6.2",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
+    "@tsparticles/engine": "^4.3.2",
+    "@tsparticles/slim": "^4.3.2",
+    "@vercel/stega": "^1.1.0",
+    "astro": "^6",
+    "strapi-community-astro-loader": "^4.0.0",
+    "tailwindcss": "^4.3.3",
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/node": "^26.1.2",
+    "@types/three": "^0.185.3",
+    "typescript": "^5.9.3"
+  }
+}

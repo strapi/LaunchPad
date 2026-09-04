@@ -1,0 +1,29 @@
+---
+import { DEFAULT_LOCALE } from '@/lib/i18n';
+
+/**
+ * Root index.
+ *
+ * Astro's `redirectToDefaultLocale` needs this file to exist — it generates the
+ * `/` → `/en` redirect *from* it, and errors at build time without it.
+ *
+ * The markup below is the fallback for anything that reaches the page itself
+ * rather than following the generated redirect: a meta refresh plus a real
+ * link, so it works with JavaScript disabled and leaves something clickable if
+ * even that is blocked.
+ */
+const target = `/${DEFAULT_LOCALE}`;
+---
+
+<!doctype html>
+<html lang={DEFAULT_LOCALE}>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <title>LaunchPad</title>
+  </head>
+  <body>
+    <a href={target}>Continue to LaunchPad</a>
+  </body>
+</html>

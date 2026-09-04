@@ -1,0 +1,167 @@
+---
+import AmbientColor from '@/components/AmbientColor.astro';
+import Container from '@/components/Container.astro';
+import Logo from '@/components/Logo.astro';
+import type { StrapiMedia } from '@/types/strapi';
+
+/**
+ * Sign-in and sign-up share a layout and a submit path, so they share a
+ * component. `mode` decides the endpoint, the copy, and whether a username
+ * field appears — Strapi's `register` requires one, `login` does not.
+ *
+ * Submission is fetch-based rather than a native form POST so the response can
+ * be handled in place: a failed sign-in should say why without losing what was
+ * typed, which a full page reload would discard.
+ */
+
+interface Props {
+  mode: 'sign-in' | 'sign-up';
+  locale: string;
+  logo?: StrapiMedia | null;
+}
+
+const { mode, locale, logo } = Astro.props;
+
+const isSignUp = mode === 'sign-up';
+const heading = isSignUp ? 'Sign up for LaunchPad' : 'Sign in to LaunchPad';
+const action = isSignUp ? '/api/auth/register' : '/api/auth/login';
+const submitLabel = isSignUp ? 'Sign up' : 'Sign in';
+
+const inputClass =
+  'h-10 w-full rounded-md border border-neutral-800 bg-charcoal pl-4 text-sm text-white placeholder-neutral-500 focus:ring-2 focus:ring-neutral-800 focus:outline-none';
+---
+
+<div class="relative overflow-hidden">
+  <AmbientColor />
+  <Container
+    class="relative z-10 flex min-h-screen max-w-lg flex-col items-center justify-center py-24"
+  >
+    <Logo image={logo} locale={locale} />
+
+    <h1 class="my-4 text-xl font-bold md:text-4xl">{heading}</h1>
+
+    <form
+      class="my-4 w-full"
+      data-auth-form
+      data-action={action}
+      data-locale={locale}
+      novalidate
+    >
+      {
+        isSignUp && (
+          <>
+            <label class="sr-only" for="auth-username">
+              Username
+            </label>
+            <input
+              id="auth-username"
+              type="text"
+              name="username"
+              autocomplete="username"
+              placeholder="Username"
+              required
+              class={`${inputClass} mb-4`}
+            />
+          </>
+        )
+      }
+
+      <label class="sr-only" for="auth-email">Email address</label>
+      <input
+        id="auth-email"
+        type="email"
+        name="email"
+        autocomplete="email"
+        placeholder="Email Address"
+        required
+        class={`${inputClass} mb-4`}
+      />
+
+      <label class="sr-only" for="auth-password">Password</label>
+      <input
+        id="auth-password"
+        type="password"
+        name="password"
+        autocomplete={isSignUp ? 'new-password' : 'current-password'}
+        placeholder="Password"
+        required
+        minlength="6"
+        class={`${inputClass} mb-4`}
+      />
+
+      <button
+        type="submit"
+        data-auth-submit
+        class="w-full rounded-md bg-neutral-800 py-3 text-sm font-medium text-white shadow-[0px_1px_0px_0px_var(--color-neutral-600)_inset] transition hover:bg-neutral-700 disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {submitLabel}
+      </button>
+
+      <p
+        class="mt-4 min-h-5 text-center text-sm text-red-400"
+        data-auth-error
+        role="alert"
+        aria-live="polite"
+      >
+      </p>
+    </form>
+
+    <p class="text-muted text-sm">
+      {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
+      <a
+        href={`/${locale}/${isSignUp ? 'sign-in' : 'sign-up'}`}
+        class="text-white underline underline-offset-4"
+      >
+        {isSignUp ? 'Sign in' : 'Sign up'}
+      </a>
+    </p>
+  </Container>
+</div>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-auth-form]');
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const action = form.dataset.action!;
+    const locale = form.dataset.locale ?? 'en';
+    const button = form.querySelector<HTMLButtonElement>('[data-auth-submit]');
+    const error = form.querySelector<HTMLElement>('[data-auth-error]');
+
+    if (error) error.textContent = '';
+    if (button) button.disabled = true;
+
+    const data = new FormData(form);
+    const payload = Object.fromEntries(data.entries());
+
+    try {
+      const response = await fetch(action, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        // Full navigation rather than a client-side update: the session cookie
+        // is now set, and every page re-asks /api/auth/me on load anyway.
+        window.location.href = `/${locale}`;
+        return;
+      }
+
+      const body = (await response.json().catch(() => null)) as {
+        error?: string;
+      } | null;
+      if (error) {
+        error.textContent = body?.error ?? 'Something went wrong. Try again.';
+      }
+    } catch {
+      if (error) {
+        error.textContent = 'Could not reach the server. Try again.';
+      }
+    } finally {
+      if (button) button.disabled = false;
+    }
+  });
+</script>

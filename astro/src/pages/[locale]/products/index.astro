@@ -1,0 +1,58 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import Heading from '@/components/Heading.astro';
+import ProductCard from '@/components/ProductCard.astro';
+import Subheading from '@/components/Subheading.astro';
+import AmbientColor from '@/components/AmbientColor.astro';
+import { LOCALES } from '@/lib/i18n';
+import { fetchCollection, fetchSingle } from '@/lib/strapi';
+import type { Global, Product } from '@/types/strapi';
+
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params as { locale: string };
+
+const [products, global, productPage] = await Promise.all([
+  fetchCollection<Product>('products', { locale }),
+  fetchSingle<Global>('global', { locale }),
+  fetchSingle<{ heading?: string; sub_heading?: string; seo?: any }>(
+    'product-page',
+    { locale }
+  ).catch(() => null),
+]);
+---
+
+<BaseLayout locale={locale} global={global} seo={productPage?.seo}>
+  <div class="relative overflow-hidden pt-40 pb-20">
+    <AmbientColor />
+    <Container class="relative z-10">
+      <Heading data-reveal>{productPage?.heading ?? 'Products'}</Heading>
+      {
+        productPage?.sub_heading && (
+          <Subheading class="mt-4" data-reveal>
+            {productPage.sub_heading}
+          </Subheading>
+        )
+      }
+
+      {
+        products.length ? (
+          <div class="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
+            {products.map((product, index) => (
+              <ProductCard
+                product={product}
+                locale={locale}
+                delay={index * 80}
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="text-muted mt-16 text-center">No products yet.</p>
+        )
+      }
+    </Container>
+  </div>
+</BaseLayout>

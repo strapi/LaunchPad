@@ -1,0 +1,70 @@
+---
+import Brands from '@/components/blocks/Brands.astro';
+import Cta from '@/components/blocks/Cta.astro';
+import Faq from '@/components/blocks/Faq.astro';
+import Features from '@/components/blocks/Features.astro';
+import FormNextToSection from '@/components/blocks/FormNextToSection.astro';
+import Hero from '@/components/blocks/Hero.astro';
+import HowItWorks from '@/components/blocks/HowItWorks.astro';
+import Launches from '@/components/blocks/Launches.astro';
+import Pricing from '@/components/blocks/Pricing.astro';
+import RelatedArticles from '@/components/blocks/RelatedArticles.astro';
+import RelatedProducts from '@/components/blocks/RelatedProducts.astro';
+import Testimonials from '@/components/blocks/Testimonials.astro';
+import type { DynamicZoneEntry } from '@/types/strapi';
+
+/**
+ * Renders a Strapi dynamic zone.
+ *
+ * The React version lazy-loaded each block with `next/dynamic`. Here every
+ * block is a static import: Astro renders them to HTML at build time and ships
+ * no component runtime, so there is nothing to code-split. Blocks that need
+ * browser behaviour bring their own scoped `<script>`.
+ *
+ * An unknown `__component` is skipped with a warning rather than throwing, so
+ * adding a block in Strapi degrades to a gap in the page instead of a failed
+ * build.
+ */
+
+interface Props {
+  zone?: DynamicZoneEntry[] | null;
+  locale: string;
+  localizedPaths?: Record<string, string>;
+}
+
+const { zone, locale } = Astro.props;
+
+const registry: Record<string, any> = {
+  'dynamic-zone.hero': Hero,
+  'dynamic-zone.features': Features,
+  'dynamic-zone.testimonials': Testimonials,
+  'dynamic-zone.how-it-works': HowItWorks,
+  'dynamic-zone.brands': Brands,
+  'dynamic-zone.pricing': Pricing,
+  'dynamic-zone.launches': Launches,
+  'dynamic-zone.cta': Cta,
+  'dynamic-zone.faq': Faq,
+  'dynamic-zone.form-next-to-section': FormNextToSection,
+  'dynamic-zone.related-articles': RelatedArticles,
+  'dynamic-zone.related-products': RelatedProducts,
+};
+
+const blocks = (zone ?? []).map((entry) => ({
+  entry,
+  Component: registry[entry.__component],
+}));
+
+for (const { entry, Component } of blocks) {
+  if (!Component) {
+    console.warn(`[DynamicZone] No renderer for "${entry.__component}"`);
+  }
+}
+---
+
+<div>
+  {
+    blocks.map(({ entry, Component }) =>
+      Component ? <Component {...entry} locale={locale} /> : null
+    )
+  }
+</div>

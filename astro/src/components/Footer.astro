@@ -1,0 +1,87 @@
+---
+import Logo from '@/components/Logo.astro';
+import type { Global, NavbarLink } from '@/types/strapi';
+
+interface Props {
+  data: Global['footer'];
+  locale: string;
+}
+
+const { data, locale } = Astro.props;
+
+const columns: Array<NavbarLink[] | undefined> = [
+  data?.internal_links,
+  data?.policy_links,
+  data?.social_media_links,
+];
+
+/** External links keep their URL; internal ones get the locale prefix. */
+const hrefFor = (url: string) =>
+  url.startsWith('http') ? url : `/${locale}${url}`;
+---
+
+<footer class="relative">
+  <div class="bg-primary relative border-t border-neutral-900 px-8 pt-20 pb-32">
+    <div
+      class="mx-auto flex max-w-7xl flex-col items-start justify-between text-sm text-neutral-500 sm:flex-row"
+    >
+      <div>
+        <div class="mr-4 mb-4 md:flex">
+          {
+            data?.logo?.image && (
+              <Logo image={data.logo.image} locale={locale} />
+            )
+          }
+        </div>
+        <div class="max-w-xs">{data?.description}</div>
+        <div class="mt-4">{data?.copyright}</div>
+        <div class="mt-10">
+          Designed and Developed by{' '}
+          <a class="text-white underline" href="https://aceternity.com">
+            Aceternity
+          </a>{' '}
+          &amp;{' '}
+          <a class="text-white underline" href="https://strapi.io">Strapi</a>
+        </div>
+        <div class="mt-2">
+          built with{' '}
+          <a class="text-white underline" href="https://strapi.io">Strapi</a>,{
+            ' '
+          }
+          <a class="text-white underline" href="https://astro.build">Astro</a>,{
+            ' '
+          }
+          and{' '}
+          <a class="text-white underline" href="https://tailwindcss.com">
+            Tailwind CSS
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-10 grid grid-cols-3 items-start gap-10 md:mt-0">
+        {
+          columns.map((links) =>
+            links?.length ? (
+              <div class="mt-4 flex flex-col justify-center space-y-4">
+                {links.map((link) => (
+                  <a
+                    class="text-muted text-xs transition-colors hover:text-neutral-400 sm:text-sm"
+                    href={hrefFor(link.URL)}
+                    target={link.URL.startsWith('http') ? '_blank' : undefined}
+                    rel={
+                      link.URL.startsWith('http')
+                        ? 'noopener noreferrer'
+                        : undefined
+                    }
+                  >
+                    {link.text}
+                  </a>
+                ))}
+              </div>
+            ) : null
+          )
+        }
+      </div>
+    </div>
+  </div>
+</footer>

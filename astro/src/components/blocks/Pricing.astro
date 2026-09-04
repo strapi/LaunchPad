@@ -1,0 +1,127 @@
+---
+import Button from '@/components/Button.astro';
+import Container from '@/components/Container.astro';
+import Heading from '@/components/Heading.astro';
+import Subheading from '@/components/Subheading.astro';
+import type { NavbarLink, Perk } from '@/types/strapi';
+
+interface Plan {
+  name: string;
+  price?: number | null;
+  sub_text?: string | null;
+  featured?: boolean;
+  CTA?: (NavbarLink & { variant?: string }) | null;
+  perks?: Perk[];
+  additional_perks?: Perk[];
+}
+interface Props {
+  heading?: string;
+  sub_heading?: string;
+  plans?: Plan[];
+  locale: string;
+}
+const { heading, sub_heading, plans = [], locale } = Astro.props;
+
+const formatPrice = (price?: number | null) =>
+  price === null || price === undefined
+    ? null
+    : new Intl.NumberFormat(locale === 'fr' ? 'fr-FR' : 'en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0,
+      }).format(price);
+---
+
+<div class="relative py-20">
+  <Container>
+    <Heading data-reveal>{heading}</Heading>
+    {
+      sub_heading && (
+        <Subheading class="mt-4" data-reveal>
+          {sub_heading}
+        </Subheading>
+      )
+    }
+
+    {
+      plans.length > 0 && (
+        <div class="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:items-start">
+          {plans.map((plan, index) => (
+            <div
+              data-reveal
+              style={`--reveal-delay: ${index * 80}ms`}
+              class:list={[
+                'rounded-3xl border-2 p-4',
+                plan.featured
+                  ? 'border-cyan-600 bg-neutral-900'
+                  : 'border-neutral-800 bg-neutral-900',
+              ]}
+            >
+              <div class="rounded-2xl bg-neutral-800 p-4">
+                <p class="text-sm font-medium text-neutral-200">{plan.name}</p>
+                {formatPrice(plan.price) && (
+                  <p class="mt-8 text-4xl font-bold text-white">
+                    {formatPrice(plan.price)}
+                  </p>
+                )}
+                {plan.sub_text && (
+                  <p class="text-muted mt-1 text-xs">{plan.sub_text}</p>
+                )}
+                {plan.CTA && (
+                  <Button
+                    class="mt-8 mb-2 w-full"
+                    variant={plan.featured ? 'primary' : 'muted'}
+                    href={
+                      plan.CTA.URL?.startsWith('http')
+                        ? plan.CTA.URL
+                        : `/${locale}${plan.CTA.URL}`
+                    }
+                  >
+                    {plan.CTA.text}
+                  </Button>
+                )}
+              </div>
+
+              <ul class="mt-1 space-y-4 p-4">
+                {(plan.perks ?? []).map((perk) => (
+                  <li class="flex items-start gap-2">
+                    <svg
+                      class="mt-0.5 h-4 w-4 shrink-0 text-cyan-400"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12l5 5L20 7" />
+                    </svg>
+                    <span class="text-muted text-sm">{perk.text}</span>
+                  </li>
+                ))}
+                {(plan.additional_perks ?? []).map((perk) => (
+                  <li class="flex items-start gap-2 opacity-70">
+                    <svg
+                      class="mt-0.5 h-4 w-4 shrink-0 text-neutral-500"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12l5 5L20 7" />
+                    </svg>
+                    <span class="text-muted text-sm">{perk.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )
+    }
+  </Container>
+</div>

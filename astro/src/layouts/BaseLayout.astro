@@ -1,0 +1,127 @@
+---
+import '@/styles/global.css';
+import DraftModeBanner from '@/components/DraftModeBanner.astro';
+import Footer from '@/components/Footer.astro';
+import Navbar from '@/components/Navbar.astro';
+import PreviewBridge from '@/components/PreviewBridge.astro';
+import { strapiMedia } from '@/lib/media';
+import type { Global, Seo } from '@/types/strapi';
+
+/**
+ * Page shell: head metadata, navbar, footer, and the preview plumbing.
+ *
+ * Every page passes the `global` single type in rather than fetching it here,
+ * because Astro layouts run per page and refetching navbar/footer on every one
+ * would multiply build-time requests by the number of routes.
+ */
+
+interface Props {
+  locale: string;
+  global: Global;
+  seo?: Seo | null;
+  /** Falls back to the global SEO when a page has none of its own. */
+  isDraftMode?: boolean;
+}
+
+const { locale, global, seo, isDraftMode = false } = Astro.props;
+
+const fallback = global.seo ?? null;
+const title = seo?.metaTitle || fallback?.metaTitle || 'LaunchPad';
+const description =
+  seo?.metaDescription ||
+  fallback?.metaDescription ||
+  'The official Strapi demo application.';
+const ogTitle = seo?.ogTitle || title;
+const ogDescription = seo?.ogDescription || description;
+const ogImage = strapiMedia(seo?.metaImage?.url ?? fallback?.metaImage?.url);
+const twitterCard = seo?.twitterCard || 'summary_large_image';
+const twitterImage = seo?.twitterImage ?? null;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+---
+
+<!doctype html>
+<html lang={locale} class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical.href} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:title" content={seo?.twitterTitle || title} />
+    <meta
+      name="twitter:description"
+      content={seo?.twitterDescription || description}
+    />
+    {twitterImage && <meta name="twitter:image" content={twitterImage} />}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    />
+
+    {
+      /* Swap the no-js class before first paint so reveal styles apply without a flash. */
+    }
+    <script is:inline>
+      document.documentElement.classList.remove('no-js');
+    </script>
+  </head>
+
+  <body class="bg-charcoal h-full w-full antialiased">
+    <PreviewBridge />
+    <Navbar data={global.navbar} locale={locale} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer data={global.footer} locale={locale} />
+    {isDraftMode && <DraftModeBanner />}
+
+    <script>
+      /**
+       * Scroll reveal, replacing framer-motion's `whileInView`.
+       *
+       * One observer for the whole page rather than a component instance each,
+       * and it unobserves after revealing so nothing accumulates. Elements are
+       * already visible if this never runs — see the `no-js` rule in global.css.
+       */
+      const reveal = () => {
+        const targets = document.querySelectorAll('[data-reveal]');
+        if (!targets.length) return;
+
+        if (!('IntersectionObserver' in window)) {
+          targets.forEach((el) => el.setAttribute('data-revealed', ''));
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              entry.target.setAttribute('data-revealed', '');
+              observer.unobserve(entry.target);
+            }
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
+        );
+
+        targets.forEach((el) => observer.observe(el));
+      };
+
+      reveal();
+      document.addEventListener('astro:after-swap', reveal);
+    </script>
+  </body>
+</html>

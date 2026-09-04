@@ -1,0 +1,22 @@
+---
+/*
+ * Decorative background wash behind hero sections.
+ * Pure CSS gradients — the React original animated these with framer-motion,
+ * but they are static in practice, so nothing is shipped to the client.
+ */
+---
+
+<div
+  class="pointer-events-none absolute inset-0 z-0 h-full w-full overflow-hidden"
+>
+  <div
+    class="absolute -top-40 -left-40 h-[40rem] w-[40rem] rounded-full opacity-20 blur-[120px]"
+    style="background: radial-gradient(circle, var(--color-cyan-500), transparent 70%)"
+  >
+  </div>
+  <div
+    class="absolute -top-20 right-0 h-[30rem] w-[30rem] rounded-full opacity-20 blur-[120px]"
+    style="background: radial-gradient(circle, var(--color-indigo-500), transparent 70%)"
+  >
+  </div>
+</div>

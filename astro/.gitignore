@@ -1,0 +1,13 @@
+# dependencies
+/node_modules
+.yarn/install-state.gz
+
+# astro
+/dist/
+/.astro/
+
+# environment
+.env
+
+# misc
+.DS_Store

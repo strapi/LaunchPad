@@ -1,0 +1,141 @@
+---
+import Container from '@/components/Container.astro';
+import Heading from '@/components/Heading.astro';
+import Subheading from '@/components/Subheading.astro';
+import StrapiMedia from '@/components/StrapiMedia.astro';
+import type { StrapiMedia as Media } from '@/types/strapi';
+
+/*
+ * `type` is authored in Strapi as free text, so it is narrowed to the input
+ * types this form actually supports rather than trusted straight into the DOM.
+ */
+type FieldType = 'text' | 'email' | 'tel' | 'url' | 'number';
+const FIELD_TYPES: FieldType[] = ['text', 'email', 'tel', 'url', 'number'];
+
+/** `textarea` selects a different element, so it is not an <input> type. */
+const isTextarea = (value?: string) => value === 'textarea';
+const asFieldType = (value?: string): FieldType =>
+  FIELD_TYPES.includes(value as FieldType) ? (value as FieldType) : 'text';
+
+interface Input {
+  type?: string;
+  name?: string;
+  placeholder?: string;
+}
+interface Props {
+  heading?: string;
+  sub_heading?: string;
+  form?: { inputs?: Input[] } | null;
+  section?: {
+    heading?: string;
+    sub_heading?: string;
+    users?: Array<{
+      firstname?: string;
+      lastname?: string;
+      image?: Media | null;
+    }>;
+  } | null;
+}
+const { heading, sub_heading, form, section } = Astro.props;
+const inputs = form?.inputs ?? [];
+---
+
+<div class="relative py-20">
+  <Container class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
+    <div data-reveal>
+      <Heading class="text-left md:text-left">{heading}</Heading>
+      {
+        sub_heading && (
+          <Subheading class="mt-4 mx-0 text-left md:text-left">
+            {sub_heading}
+          </Subheading>
+        )
+      }
+
+      {
+        inputs.length > 0 && (
+          <form class="mt-8 space-y-4" data-contact-form>
+            {inputs.map((input) => (
+              <div>
+                <label class="sr-only" for={`field-${input.name}`}>
+                  {input.placeholder ?? input.name}
+                </label>
+                {isTextarea(input.type) ? (
+                  <textarea
+                    id={`field-${input.name}`}
+                    name={input.name}
+                    placeholder={input.placeholder}
+                    rows="4"
+                    class="h-auto w-full rounded-md border border-neutral-800 bg-neutral-900 px-4 py-3 text-sm text-white placeholder-neutral-500 focus:ring-2 focus:ring-neutral-700 focus:outline-none"
+                  />
+                ) : (
+                  <input
+                    id={`field-${input.name}`}
+                    name={input.name}
+                    type={asFieldType(input.type)}
+                    placeholder={input.placeholder}
+                    class="h-11 w-full rounded-md border border-neutral-800 bg-neutral-900 px-4 text-sm text-white placeholder-neutral-500 focus:ring-2 focus:ring-neutral-700 focus:outline-none"
+                  />
+                )}
+              </div>
+            ))}
+            <button
+              type="submit"
+              class="bg-secondary w-full rounded-md px-4 py-3 text-sm font-medium text-black transition hover:bg-white"
+            >
+              Submit
+            </button>
+            <p
+              class="text-xs text-neutral-500"
+              data-form-status
+              role="status"
+            />
+          </form>
+        )
+      }
+    </div>
+
+    {
+      section && (
+        <div
+          data-reveal
+          style="--reveal-delay: 120ms"
+          class="rounded-3xl border border-neutral-800 bg-neutral-900/60 p-8"
+        >
+          <h3 class="text-xl font-semibold text-neutral-100">
+            {section.heading}
+          </h3>
+          <p class="text-muted mt-2 text-sm">{section.sub_heading}</p>
+          {section.users?.length ? (
+            <div class="mt-6 flex -space-x-3">
+              {section.users.map((user) => (
+                <StrapiMedia
+                  media={user.image}
+                  alt={`${user.firstname ?? ''} ${user.lastname ?? ''}`.trim()}
+                  width={56}
+                  height={56}
+                  class="h-14 w-14 rounded-full border-2 border-neutral-900 object-cover"
+                />
+              ))}
+            </div>
+          ) : null}
+        </div>
+      )
+    }
+  </Container>
+</div>
+
+<script>
+  // The demo backend has no submission endpoint, so the form reports rather
+  // than pretending to send. Better an honest message than a silent no-op.
+  document.querySelectorAll('[data-contact-form]').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const status = form.querySelector('[data-form-status]');
+      if (status) {
+        status.textContent =
+          'This demo does not submit the form — wire it to your own endpoint.';
+      }
+    });
+  });
+</script>

@@ -1,0 +1,50 @@
+---
+import AmbientColor from '@/components/AmbientColor.astro';
+import Button from '@/components/Button.astro';
+import Container from '@/components/Container.astro';
+import Heading from '@/components/Heading.astro';
+import Subheading from '@/components/Subheading.astro';
+import type { NavbarLink } from '@/types/strapi';
+
+interface Props {
+  heading?: string;
+  sub_heading?: string;
+  CTAs?: Array<NavbarLink & { variant?: string }>;
+  locale: string;
+}
+const { heading, sub_heading, CTAs = [], locale } = Astro.props;
+---
+
+<div class="relative overflow-hidden py-40">
+  <AmbientColor />
+  <Container class="relative z-10 flex flex-col items-center">
+    <Heading data-reveal>{heading}</Heading>
+    {
+      sub_heading && (
+        <Subheading class="mt-4" data-reveal>
+          {sub_heading}
+        </Subheading>
+      )
+    }
+    {
+      CTAs.length > 0 && (
+        <div
+          class="mt-8 flex flex-wrap items-center justify-center gap-4"
+          data-reveal
+        >
+          {CTAs.map((cta) => (
+            <Button
+              href={
+                cta.URL?.startsWith('http') ? cta.URL : `/${locale}${cta.URL}`
+              }
+              target={cta.target}
+              variant={(cta.variant as any) ?? 'primary'}
+            >
+              {cta.text}
+            </Button>
+          ))}
+        </div>
+      )
+    }
+  </Container>
+</div>

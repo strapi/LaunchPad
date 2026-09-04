@@ -6,10 +6,15 @@
   "tabWidth": 2,
   "trailingComma": "es5",
   "arrowParens": "always",
-  "importOrder": ["^(@\/|[./])(.*)$"],
+  "importOrder": [
+    "^(@/|[./])(.*)$"
+  ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "importOrderGroupNamespaceSpecifiers": true,
   "importOrderSideEffects": false,
-  "plugins": ["@trivago/prettier-plugin-sort-imports"]
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-astro"
+  ]
 }

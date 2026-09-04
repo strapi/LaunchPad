@@ -1,0 +1,152 @@
+@import 'tailwindcss';
+
+@plugin '@tailwindcss/typography';
+
+/*
+ * LaunchPad's theme, ported from `launchpad/next/tailwind.config.ts`.
+ *
+ * Tailwind v4 is CSS-first, so the palette and keyframes live here rather than
+ * in a config file. Semantic tokens only — components should reference
+ * `bg-charcoal` / `text-muted`, never a raw hex.
+ */
+@theme {
+  --color-charcoal: #08090a;
+  --color-lightblack: #1c1c1c;
+  --color-secondary: #e6e6e6;
+  --color-muted: var(--color-neutral-200);
+
+  --font-heading:
+    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --shadow-derek:
+    0px 0px 0px 1px rgb(0 0 0 / 0.06), 0px 1px 1px -0.5px rgb(0 0 0 / 0.06),
+    0px 3px 3px -1.5px rgb(0 0 0 / 0.06), 0px 6px 6px -3px rgb(0 0 0 / 0.06),
+    0px 12px 12px -6px rgb(0 0 0 / 0.06), 0px 24px 24px -12px rgb(0 0 0 / 0.06);
+  --shadow-aceternity:
+    0px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(25, 28, 33, 0.02),
+    0px 0px 0px 1px rgba(25, 28, 33, 0.08);
+
+  /*
+   * Motion. The React original drove these with framer-motion; here they are
+   * plain CSS animations so no JavaScript is shipped for them at all.
+   */
+  --animate-move: move 5s linear infinite;
+  --animate-spin-circle: spin-circle 3s linear infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-shooting-star: shooting-star 3s ease-in-out infinite;
+
+  @keyframes move {
+    0% {
+      transform: translateX(-200px);
+    }
+    100% {
+      transform: translateX(200px);
+    }
+  }
+
+  @keyframes spin-circle {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Replaces react-fast-marquee. Track is duplicated, so -50% loops seamlessly. */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes shooting-star {
+    0% {
+      transform: translate(0, 0) rotate(215deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-500px, 500px) rotate(215deg);
+      opacity: 0;
+    }
+  }
+}
+
+@utility bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+
+@utility bg-gradient-conic {
+  background-image: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
+}
+
+/*
+ * Scroll-reveal, replacing framer-motion's `whileInView`.
+ *
+ * Elements marked `data-reveal` start hidden and are revealed by an
+ * IntersectionObserver adding `data-revealed`. If JavaScript never runs the
+ * `no-js` fallback keeps everything visible, so content is never lost —
+ * important for a mostly-static site.
+ */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition:
+      opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  [data-reveal][data-revealed],
+  .no-js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}
+
+html,
+body {
+  background: var(--color-charcoal);
+}
+
+body {
+  color: #fff;
+  font-family: var(--font-heading);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

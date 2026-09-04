@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import AmbientColor from '@/components/AmbientColor.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Container from '@/components/Container.astro';
+import Heading from '@/components/Heading.astro';
+import Subheading from '@/components/Subheading.astro';
+import { LOCALES } from '@/lib/i18n';
+import { fetchSingle } from '@/lib/strapi';
+import type { Article, Global } from '@/types/strapi';
+
+/*
+ * Reads from the Content Layer rather than fetching directly — see
+ * `src/content.config.ts`. `getCollection` is already typed and validated
+ * against the Zod schema, and the loader ran once for the whole build instead
+ * of once per page.
+ */
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params as { locale: string };
+
+// One collection per locale — see the note in src/content.config.ts.
+const entries = await getCollection(
+  locale === 'fr' ? 'articles-fr' : 'articles-en'
+);
+
+const articles = entries
+  .map((entry) => entry.data as unknown as Article)
+  .sort(
+    (a, b) =>
+      new Date(b.publishedAt ?? 0).getTime() -
+      new Date(a.publishedAt ?? 0).getTime()
+  );
+
+const [global, blogPage] = await Promise.all([
+  fetchSingle<Global>('global', { locale }),
+  fetchSingle<{ heading?: string; sub_heading?: string; seo?: any }>(
+    'blog-page',
+    { locale }
+  ).catch(() => null),
+]);
+---
+
+<BaseLayout locale={locale} global={global} seo={blogPage?.seo}>
+  <div class="relative overflow-hidden pt-40 pb-20">
+    <AmbientColor />
+    <Container class="relative z-10">
+      <Heading data-reveal>{blogPage?.heading ?? 'Blog'}</Heading>
+      {
+        blogPage?.sub_heading && (
+          <Subheading class="mt-4" data-reveal>
+            {blogPage.sub_heading}
+          </Subheading>
+        )
+      }
+
+      {
+        articles.length ? (
+          <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {articles.map((article, index) => (
+              <ArticleCard
+                article={article}
+                locale={locale}
+                delay={index * 80}
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="text-muted mt-16 text-center">No articles yet.</p>
+        )
+      }
+    </Container>
+  </div>
+</BaseLayout>

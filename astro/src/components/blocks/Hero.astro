@@ -1,0 +1,65 @@
+---
+import AmbientColor from '@/components/AmbientColor.astro';
+import Button from '@/components/Button.astro';
+import Container from '@/components/Container.astro';
+import Sparkles from '@/components/effects/Sparkles.astro';
+import type { NavbarLink } from '@/types/strapi';
+
+interface Props {
+  heading?: string;
+  sub_heading?: string;
+  CTAs?: Array<NavbarLink & { variant?: string }>;
+  locale: string;
+}
+const { heading, sub_heading, CTAs = [], locale } = Astro.props;
+---
+
+<div
+  class="relative flex min-h-[60vh] flex-col items-center justify-center overflow-hidden pt-40 pb-20"
+>
+  <AmbientColor />
+  <Sparkles class="absolute inset-0 -z-0 h-full w-full" />
+
+  <Container class="relative z-10 flex flex-col items-center">
+    <h1
+      data-reveal
+      class="text-secondary mx-auto max-w-4xl bg-gradient-to-b from-white to-neutral-400 bg-clip-text text-center text-3xl font-bold tracking-tight text-transparent text-balance md:text-6xl md:leading-tight"
+    >
+      {heading}
+    </h1>
+
+    {
+      sub_heading && (
+        <p
+          data-reveal
+          style="--reveal-delay: 100ms"
+          class="text-muted mx-auto mt-6 max-w-2xl text-center text-base md:text-lg"
+        >
+          {sub_heading}
+        </p>
+      )
+    }
+
+    {
+      CTAs.length > 0 && (
+        <div
+          data-reveal
+          style="--reveal-delay: 200ms"
+          class="mt-8 flex flex-wrap items-center justify-center gap-4"
+        >
+          {CTAs.map((cta) => (
+            <Button
+              href={
+                cta.URL?.startsWith('http') ? cta.URL : `/${locale}${cta.URL}`
+              }
+              target={cta.target}
+              variant={(cta.variant as any) ?? 'primary'}
+            >
+              {cta.text}
+            </Button>
+          ))}
+        </div>
+      )
+    }
+  </Container>
+</div>

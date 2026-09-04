@@ -1,0 +1,171 @@
+---
+import Container from '@/components/Container.astro';
+import Globe from '@/components/effects/Globe.astro';
+import Heading from '@/components/Heading.astro';
+import Subheading from '@/components/Subheading.astro';
+
+/*
+ * The four feature cards. In LaunchPad each carries an Aceternity effect;
+ * the globe is the signature one and is ported to vanilla three.js, while the
+ * ray / graph / social cards use CSS gradients and SVG instead of their
+ * canvas-shader originals.
+ */
+interface Card {
+  title?: string;
+  description?: string;
+}
+interface Props {
+  heading?: string;
+  sub_heading?: string;
+  globe_card?: Card;
+  ray_card?: Card;
+  graph_card?: Card;
+  social_media_card?: Card;
+}
+const {
+  heading,
+  sub_heading,
+  globe_card,
+  ray_card,
+  graph_card,
+  social_media_card,
+} = Astro.props;
+---
+
+<div class="relative py-20">
+  <Container>
+    <Heading data-reveal>{heading}</Heading>
+    {
+      sub_heading && (
+        <Subheading class="mt-4" data-reveal>
+          {sub_heading}
+        </Subheading>
+      )
+    }
+
+    <div class="mt-16 grid grid-cols-1 gap-4 lg:grid-cols-2">
+      {
+        globe_card && (
+          <div
+            data-reveal
+            class="group overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900/60 p-6 lg:row-span-2"
+          >
+            <h3 class="text-lg font-semibold text-neutral-100">
+              {globe_card.title}
+            </h3>
+            <p class="text-muted mt-2 text-sm">{globe_card.description}</p>
+            <Globe class="mt-6 h-72 w-full lg:h-96" />
+          </div>
+        )
+      }
+
+      {
+        ray_card && (
+          <div
+            data-reveal
+            style="--reveal-delay: 80ms"
+            class="relative overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900/60 p-6"
+          >
+            <h3 class="text-lg font-semibold text-neutral-100">
+              {ray_card.title}
+            </h3>
+            <p class="text-muted mt-2 text-sm">{ray_card.description}</p>
+            <div class="relative mt-6 h-40 overflow-hidden rounded-xl bg-neutral-950">
+              <div class="ray absolute inset-y-0 -left-1/2 w-1/2 opacity-60" />
+            </div>
+          </div>
+        )
+      }
+
+      {
+        graph_card && (
+          <div
+            data-reveal
+            style="--reveal-delay: 160ms"
+            class="rounded-3xl border border-neutral-800 bg-neutral-900/60 p-6"
+          >
+            <h3 class="text-lg font-semibold text-neutral-100">
+              {graph_card.title}
+            </h3>
+            <p class="text-muted mt-2 text-sm">{graph_card.description}</p>
+            <svg
+              viewBox="0 0 300 120"
+              class="mt-6 h-40 w-full"
+              role="img"
+              aria-label="Growth chart"
+            >
+              <defs>
+                <linearGradient id="graph-fill" x1="0" x2="0" y1="0" y2="1">
+                  <stop
+                    offset="0%"
+                    stop-color="var(--color-cyan-500)"
+                    stop-opacity="0.4"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="var(--color-cyan-500)"
+                    stop-opacity="0"
+                  />
+                </linearGradient>
+              </defs>
+              <path
+                d="M0 100 L50 82 L100 88 L150 54 L200 62 L250 26 L300 12 L300 120 L0 120 Z"
+                fill="url(#graph-fill)"
+              />
+              <path
+                d="M0 100 L50 82 L100 88 L150 54 L200 62 L250 26 L300 12"
+                fill="none"
+                stroke="var(--color-cyan-400)"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        )
+      }
+
+      {
+        social_media_card && (
+          <div
+            data-reveal
+            style="--reveal-delay: 240ms"
+            class="rounded-3xl border border-neutral-800 bg-neutral-900/60 p-6 lg:col-span-2"
+          >
+            <h3 class="text-lg font-semibold text-neutral-100">
+              {social_media_card.title}
+            </h3>
+            <p class="text-muted mt-2 text-sm">
+              {social_media_card.description}
+            </p>
+          </div>
+        )
+      }
+    </div>
+  </Container>
+</div>
+
+<style>
+  .ray {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-cyan-400),
+      transparent
+    );
+    animation: sweep 4s linear infinite;
+  }
+  @keyframes sweep {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(400%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ray {
+      animation: none;
+    }
+  }
+</style>

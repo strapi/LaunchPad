@@ -1,0 +1,41 @@
+---
+import { STRAPI_URL } from '@/lib/strapi';
+
+/**
+ * Strapi preview bridge.
+ *
+ * When the site runs inside Strapi's admin preview iframe this:
+ *   1. announces readiness so the admin sends its click-to-edit overlay script
+ *   2. injects that script when it arrives
+ *   3. reloads on `strapiUpdate`, so a save in the admin shows up here
+ *
+ * Origin-checked against the Strapi URL, so no other frame can inject a script.
+ *
+ * Safe to mount always: outside an iframe `window.parent` is `window`, the
+ * postMessage goes nowhere, and no listener ever fires.
+ */
+---
+
+<script is:inline define:vars={{ strapiUrl: STRAPI_URL }}>
+  (() => {
+    const handleMessage = (message) => {
+      if (message.origin !== strapiUrl) return;
+
+      const data = message.data;
+      if (!data || typeof data !== 'object') return;
+
+      if (data.type === 'strapiUpdate') {
+        // The page is server-rendered per request in draft mode, so a reload
+        // is enough to pick up the saved content.
+        window.location.reload();
+      } else if (data.type === 'strapiScript' && data.payload?.script) {
+        const script = document.createElement('script');
+        script.textContent = data.payload.script;
+        document.head.appendChild(script);
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    window.parent.postMessage({ type: 'previewReady' }, '*');
+  })();
+</script>

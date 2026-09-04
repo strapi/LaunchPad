@@ -1,0 +1,155 @@
+---
+import BlocksNode from '@/components/BlocksNode.astro';
+import BlocksText from '@/components/BlocksText.astro';
+import { normalizeStrapiMediaUrl, stripStegaMarkers } from '@/lib/media';
+import { getStrapiSource } from '@/lib/source-map';
+import type { BlockNode } from '@/types/strapi';
+
+/**
+ * One node of a Strapi blocks tree. Recurses into `children`.
+ *
+ * The `image` case matters: blocks content stores the media URL captured in
+ * the authoring environment, which for local uploads is a relative
+ * `/uploads/...` path. Rendered as-is it resolves against the Astro origin
+ * and 404s, so it is rebuilt against the current Strapi host.
+ */
+
+interface Props {
+  node: BlockNode;
+}
+
+const { node } = Astro.props;
+const children = node.children ?? [];
+---
+
+{
+  node.type === 'paragraph' && (
+    <p class="mb-4 leading-relaxed">
+      {children.map((child) => (
+        <BlocksNode node={child} />
+      ))}
+    </p>
+  )
+}
+
+{
+  node.type === 'heading' && node.level === 1 && (
+    <h1 class="mt-10 mb-4 text-3xl font-bold text-neutral-100 md:text-4xl">
+      {children.map((child) => (
+        <BlocksNode node={child} />
+      ))}
+    </h1>
+  )
+}
+
+{
+  node.type === 'heading' && node.level === 2 && (
+    <h2 class="mt-10 mb-4 text-2xl font-bold text-neutral-100 md:text-3xl">
+      {children.map((child) => (
+        <BlocksNode node={child} />
+      ))}
+    </h2>
+  )
+}
+
+{
+  node.type === 'heading' && node.level === 3 && (
+    <h3 class="mt-8 mb-3 text-xl font-bold text-neutral-100 md:text-2xl">
+      {children.map((child) => (
+        <BlocksNode node={child} />
+      ))}
+    </h3>
+  )
+}
+
+{
+  node.type === 'heading' && (node.level ?? 0) >= 4 && (
+    <h4 class="mt-6 mb-2 text-lg font-bold text-neutral-100">
+      {children.map((child) => (
+        <BlocksNode node={child} />
+      ))}
+    </h4>
+  )
+}
+
+{
+  node.type === 'list' && node.format === 'ordered' && (
+    <ol class="mb-4 list-decimal space-y-2 pl-6">
+      {children.map((child) => (
+        <BlocksNode node={child} />
+      ))}
+    </ol>
+  )
+}
+
+{
+  node.type === 'list' && node.format !== 'ordered' && (
+    <ul class="mb-4 list-disc space-y-2 pl-6">
+      {children.map((child) => (
+        <BlocksNode node={child} />
+      ))}
+    </ul>
+  )
+}
+
+{
+  node.type === 'list-item' && (
+    <li>
+      {children.map((child) => (
+        <BlocksNode node={child} />
+      ))}
+    </li>
+  )
+}
+
+{
+  node.type === 'quote' && (
+    <blockquote class="my-6 border-l-2 border-neutral-700 pl-4 text-neutral-300 italic">
+      {children.map((child) => (
+        <BlocksNode node={child} />
+      ))}
+    </blockquote>
+  )
+}
+
+{
+  node.type === 'code' && (
+    <pre class="my-6 overflow-x-auto rounded-lg bg-neutral-900 p-4 text-sm">
+      <code>{children.map((child) => child.text ?? '').join('')}</code>
+    </pre>
+  )
+}
+
+{
+  node.type === 'link' && (
+    <a
+      href={node.url}
+      class="text-cyan-400 underline underline-offset-4 hover:text-cyan-300"
+      rel={node.url?.startsWith('http') ? 'noopener noreferrer' : undefined}
+      target={node.url?.startsWith('http') ? '_blank' : undefined}
+    >
+      {children.map((child) => (
+        <BlocksNode node={child} />
+      ))}
+    </a>
+  )
+}
+
+{
+  node.type === 'image' && node.image?.url && (
+    <img
+      src={normalizeStrapiMediaUrl(node.image.url)}
+      alt={stripStegaMarkers(
+        node.image.alternativeText || node.image.name || ''
+      )}
+      width={node.image.width}
+      height={node.image.height}
+      loading="lazy"
+      decoding="async"
+      class="my-6 rounded-lg"
+      data-strapi-source={getStrapiSource(node.image.url)}
+    />
+  )
+}
+
+{node.type === 'text' && <BlocksText node={node} />}

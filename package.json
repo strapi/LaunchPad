@@ -34,6 +34,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
     "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.23.13",
     "uuid": "^13.0.0"
