@@ -1,5 +1,6 @@
 // @ts-check
 import node from '@astrojs/node';
+import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
@@ -29,6 +30,13 @@ export default defineConfig({
   output: 'static',
   adapter: node({ mode: 'standalone' }),
 
+  // The features section reuses LaunchPad's Next components verbatim so all
+  // four frontends render an identical visual. They are the only React on the
+  // site — islands keep that contained to one section, and everything else
+  // stays plain Astro. Delete the island and the React dependencies to go
+  // back to a pure-Astro build.
+  integrations: [react()],
+
   // LaunchPad ships English and French. `prefixDefaultLocale` keeps both under
   // an explicit prefix (/en, /fr) so the routes match the other ports and the
   // locale is never implicit.
@@ -45,5 +53,12 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+
+    // Astro 6 runs on Rolldown, whose *native* React Fast Refresh plugin
+    // crashes with "Missing field `moduleType`" and takes the whole transform
+    // pipeline down with it — Astro's own scoped styles 500 in dev. Falling
+    // back to the JS implementations fixes it. Fast Refresh only buys HMR for
+    // React state, and the React here is a set of static visuals.
+    experimental: { enableNativePlugin: false },
   },
 });

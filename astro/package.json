@@ -12,20 +12,32 @@
   },
   "dependencies": {
     "@astrojs/node": "^11.0.3",
+    "@astrojs/react": "^6.0.5",
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.7.0",
     "@strapi/client": "^1.6.2",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
-    "@tsparticles/engine": "^4.3.2",
-    "@tsparticles/slim": "^4.3.2",
+    "@tsparticles/engine": "^3.5.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.5.0",
     "@vercel/stega": "^1.1.0",
     "astro": "^6",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.12",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "strapi-community-astro-loader": "^4.0.0",
+    "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.3",
-    "three": "^0.185.1"
+    "three": "^0.185.1",
+    "three-globe": "^2.45.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@types/node": "^26.1.2",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
     "@types/three": "^0.185.3",
     "typescript": "^5.9.3"
   }
