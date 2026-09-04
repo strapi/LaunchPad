@@ -164,7 +164,7 @@ export function checkEnv(): CheckResult {
       problems.push(`strapi/.env: ${key} is missing or empty`);
     } else if (!isReal(value)) {
       problems.push(
-        `strapi/.env: ${key} is still the placeholder "${value}" — replace it with a real value`,
+        `strapi/.env: ${key} is still the placeholder "${value}" — replace it with a real value`
       );
     }
   }
@@ -189,7 +189,7 @@ export function checkEnv(): CheckResult {
       problems.push(`${f.name}/.env: PREVIEW_SECRET is missing or empty`);
     } else if (backendPreview && preview !== backendPreview) {
       problems.push(
-        `${f.name}/.env: PREVIEW_SECRET differs from strapi/.env — Strapi will sign preview URLs this frontend rejects with 401. Run \`yarn setup\` to sync them.`,
+        `${f.name}/.env: PREVIEW_SECRET differs from strapi/.env — Strapi will sign preview URLs this frontend rejects with 401. Run \`yarn setup\` to sync them.`
       );
     }
 
@@ -197,7 +197,7 @@ export function checkEnv(): CheckResult {
     const session = readEnvValue(envPath, 'SESSION_SECRET');
     if (session && session.length < 32) {
       problems.push(
-        `${f.name}/.env: SESSION_SECRET must be at least 32 characters (currently ${session.length})`,
+        `${f.name}/.env: SESSION_SECRET must be at least 32 characters (currently ${session.length})`
       );
     }
   }
@@ -205,9 +205,11 @@ export function checkEnv(): CheckResult {
   // CLIENT_URL must name a frontend that is actually checked out.
   const clientUrl = readEnvValue(backendEnv, 'CLIENT_URL');
   if (clientUrl && !present.some((f) => frontendUrl(f) === clientUrl)) {
-    const known = present.map((f) => `${f.name} (${frontendUrl(f)})`).join(', ');
+    const known = present
+      .map((f) => `${f.name} (${frontendUrl(f)})`)
+      .join(', ');
     problems.push(
-      `strapi/.env: CLIENT_URL is ${clientUrl}, which is not a checked-out frontend. Known: ${known}. Run \`yarn use <framework>\`.`,
+      `strapi/.env: CLIENT_URL is ${clientUrl}, which is not a checked-out frontend. Known: ${known}. Run \`yarn use <framework>\`.`
     );
   }
 
@@ -222,6 +224,6 @@ export function reportCheck(result: CheckResult): void {
   console.error('\n✖ Environment problems:\n');
   for (const problem of result.problems) console.error(`  • ${problem}`);
   console.error(
-    `\nChecked against ${path.relative(process.cwd(), rootDir) || '.'}\n`,
+    `\nChecked against ${path.relative(process.cwd(), rootDir) || '.'}\n`
   );
 }

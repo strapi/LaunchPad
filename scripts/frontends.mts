@@ -22,7 +22,7 @@ const define = (
   name: string,
   label: string,
   port: number,
-  strapiUrlKey: string,
+  strapiUrlKey: string
 ): Frontend => ({
   name,
   label,
@@ -45,7 +45,7 @@ export const FRONTENDS: Frontend[] = [
  */
 export function presentFrontends(): Frontend[] {
   return FRONTENDS.filter((f) =>
-    fs.existsSync(path.join(f.dir, 'package.json')),
+    fs.existsSync(path.join(f.dir, 'package.json'))
   );
 }
 
