@@ -2,7 +2,6 @@
 import Container from '@/components/Container.astro';
 import Heading from '@/components/Heading.astro';
 import Subheading from '@/components/Subheading.astro';
-import { FeaturesGrid } from '@/components/react/FeaturesGrid';
 
 interface FeatureCard {
   title?: string | null;
@@ -18,6 +17,7 @@ interface Props {
   graph_card?: FeatureCard;
   social_media_card?: FeatureCard;
 }
+
 const {
   heading,
   sub_heading,
@@ -26,6 +26,16 @@ const {
   graph_card,
   social_media_card,
 } = Astro.props;
+
+// Handed to the React island through a data attribute. Astro's client
+// scripts are compiled separately from the frontmatter and cannot close over
+// these values.
+const cards = JSON.stringify({
+  globe_card,
+  ray_card,
+  graph_card,
+  social_media_card,
+});
 ---
 
 <div class="relative py-20">
@@ -39,12 +49,40 @@ const {
       )
     }
 
-    <FeaturesGrid
-      client:only="react"
-      globe_card={globe_card}
-      ray_card={ray_card}
-      graph_card={graph_card}
-      social_media_card={social_media_card}
-    />
+    <div data-features-grid data-cards={cards}></div>
   </Container>
 </div>
+
+<script>
+  /**
+   * Mounts the React features grid.
+   *
+   * This is the only React on the site, and it is mounted by hand rather than
+   * through @astrojs/react. That integration pulls in Rolldown's native React
+   * Fast Refresh plugin, which throws "Missing field `moduleType`" and takes
+   * the whole dev transform pipeline down with it — including Astro's own
+   * scoped styles, which then 500 and leave the site unstyled.
+   *
+   * Fast Refresh only buys HMR for React state and these are static visuals,
+   * so nothing is lost. It also means Astro and Nuxt mount the island the
+   * same way.
+   */
+  import React from 'react';
+  import { createRoot } from 'react-dom/client';
+
+  import { FeaturesGrid } from '@/components/react/FeaturesGrid';
+
+  const mounted = new WeakSet<Element>();
+
+  const mount = () => {
+    document.querySelectorAll('[data-features-grid]').forEach((el) => {
+      if (mounted.has(el)) return;
+      mounted.add(el);
+      const cards = JSON.parse((el as HTMLElement).dataset.cards ?? '{}');
+      createRoot(el).render(React.createElement(FeaturesGrid, cards));
+    });
+  };
+
+  mount();
+  document.addEventListener('astro:page-load', mount);
+</script>
