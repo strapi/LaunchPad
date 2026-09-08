@@ -8,71 +8,73 @@ import ora from 'ora';
 import {
   DEFAULT_FRAMEWORK,
   FRAMEWORKS,
+  MULTI_FRONTEND_REF,
   STRAPI_PORT,
   frameworkNames,
   getFramework,
+  needsRef,
 } from '../frameworks.js';
 import { log } from '../utils/logger.js';
 import { isPortAvailable } from '../utils/ports.js';
 import { checkPrerequisites } from '../utils/prerequisites.js';
 
-const REPO_URL = 'https://github.com/strapi/LaunchPad.git';
+const DEFAULT_REPO = 'https://github.com/strapi/LaunchPad.git';
+
+/**
+ * git treats a local path as a clone source, which is far quicker than going
+ * to GitHub and works offline. `--depth` is ignored for a plain path, so a
+ * local source is rewritten to a file:// URL to keep the clone shallow.
+ */
+function normalizeRepo(repo) {
+  if (!repo) return { url: DEFAULT_REPO, local: false };
+  if (/^[a-z]+:\/\//i.test(repo) || repo.includes('@')) {
+    return { url: repo, local: false };
+  }
+  const abs = path.resolve(process.cwd(), repo);
+  if (!fs.existsSync(path.join(abs, '.git'))) {
+    console.log();
+    log.error(`No git repository at ${abs}`);
+    console.log();
+    process.exit(1);
+  }
+  return { url: `file://${abs}`, local: true };
+}
 
 // LaunchPad pins yarn in its root package.json, so Corepack will refuse any
 // other package manager. There is no point offering a choice.
 const PM = 'yarn';
 
 /**
- * Which frontend to scaffold, chosen from the ones this clone actually has.
+ * Which frontend to scaffold.
  *
- * `available` comes from the cloned tree rather than the registry, so the
- * prompt never offers something the checked-out ref cannot provide. Offering
- * a choice and then rejecting it is worse than not offering it.
+ * Always offers the full set. Frontends that are not on LaunchPad's default
+ * branch yet are still selectable — `resolveRef` fetches a ref that has them.
  */
-async function resolveFramework(flag, available) {
+async function resolveFramework(flag) {
   if (flag) {
-    const framework = available.find((f) => f.name === flag);
-    if (framework) return framework;
-
-    const known = getFramework(flag);
-    console.log();
-    if (known) {
-      // A real frontend, just not in this ref.
-      log.error(
-        `This LaunchPad ref has no ${known.name}/ directory, so --framework ${known.name} cannot work.`
-      );
-      console.log(
-        `  Available here: ${available.map((f) => f.name).join(', ')}`
-      );
-      console.log(
-        '  Try a ref that includes it, e.g. --ref feat/tanstack-frontend'
-      );
-    } else {
+    const framework = getFramework(flag);
+    if (!framework) {
+      console.log();
       log.error(
         `Unknown framework "${flag}". Expected one of: ${frameworkNames().join(', ')}`
       );
+      console.log();
+      process.exit(1);
     }
-    console.log();
-    process.exit(1);
+    return framework;
   }
-
-  if (available.length === 1) return available[0];
 
   // Not a TTY (CI, piped input) — prompting would hang.
-  if (!process.stdin.isTTY) {
-    return available.find((f) => f.name === DEFAULT_FRAMEWORK) ?? available[0];
-  }
+  if (!process.stdin.isTTY) return getFramework(DEFAULT_FRAMEWORK);
 
   const choice = await p.select({
     message: 'Which frontend would you like to run?',
-    options: available.map((f) => ({
+    options: FRAMEWORKS.map((f) => ({
       value: f.name,
       label: f.label,
       hint: `port ${f.port}`,
     })),
-    initialValue:
-      available.find((f) => f.name === DEFAULT_FRAMEWORK)?.name ??
-      available[0].name,
+    initialValue: DEFAULT_FRAMEWORK,
   });
 
   if (p.isCancel(choice)) {
@@ -80,7 +82,19 @@ async function resolveFramework(flag, available) {
     process.exit(0);
   }
 
-  return available.find((f) => f.name === choice);
+  return getFramework(choice);
+}
+
+/**
+ * The ref to clone: an explicit --ref wins, otherwise the branch that carries
+ * the chosen frontend.
+ */
+function resolveRef(framework, explicitRef) {
+  if (explicitRef) return { ref: explicitRef, automatic: false };
+  if (needsRef(framework.name)) {
+    return { ref: MULTI_FRONTEND_REF, automatic: true };
+  }
+  return { ref: undefined, automatic: false };
 }
 
 /** The frontends present in a cloned LaunchPad tree. */
@@ -90,9 +104,9 @@ function detectFrameworks(targetDir) {
   );
 }
 
-function printPlan(targetDir, framework, options, ref) {
+function printPlan(targetDir, framework, options, ref, automatic, repoUrl) {
   const steps = [
-    `clone ${REPO_URL}${ref ? ` (ref ${ref})` : ''} into ${targetDir}`,
+    `clone ${repoUrl}${ref ? ` (ref ${ref}${automatic ? ', chosen automatically' : ''})` : ''} into ${targetDir}`,
     options.git ? 'git init' : 'skip git init (--no-git)',
     `${PM} install && ${PM} setup`,
     options.seed ? `${PM} seed` : 'skip seed (--no-seed)',
@@ -111,19 +125,29 @@ function printPlan(targetDir, framework, options, ref) {
 
 export async function createLaunchpadApp(directory, options) {
   const targetDir = path.resolve(process.cwd(), directory);
-  const ref = options.ref;
 
   console.log();
 
-  // A dry run has nothing to inspect, so it works from the registry and shows
-  // every frontend the CLI knows about.
+  const framework = await resolveFramework(options.framework);
+  const repo = normalizeRepo(options.repo);
+  // A local clone is whatever that checkout has; the automatic ref only makes
+  // sense for the canonical GitHub repo.
+  const { ref, automatic } = repo.local
+    ? { ref: options.ref, automatic: false }
+    : resolveRef(framework, options.ref);
+
   if (options.dryRun) {
-    const framework = await resolveFramework(options.framework, FRAMEWORKS);
-    printPlan(targetDir, framework, options, ref);
+    printPlan(targetDir, framework, options, ref, automatic, repo.url);
     return;
   }
 
   log.info(`Creating LaunchPad app in ${targetDir}`);
+  log.info(`Frontend: ${chalk.bold(framework.label)}`);
+  if (automatic) {
+    log.info(
+      `Using branch ${chalk.bold(ref)} — ${framework.label} is not on LaunchPad's default branch yet.`
+    );
+  }
 
   await checkPrerequisites(PM);
   console.log();
@@ -150,15 +174,27 @@ export async function createLaunchpadApp(directory, options) {
     process.exit(1);
   }
 
-  const cloneSpinner = ora('Cloning...').start();
+  // LaunchPad is ~54MB, so this takes roughly 20 seconds over the network.
+  // A bare spinner for that long reads as a hang, so the elapsed time is
+  // shown. git's own --progress is not used: it emits thousands of
+  // carriage-return updates that do not collapse when stdout is not a TTY.
+  const started = Date.now();
+  const cloneSpinner = ora('Cloning (about 20s, ~54MB)...').start();
+  const tick = setInterval(() => {
+    const secs = Math.round((Date.now() - started) / 1000);
+    cloneSpinner.text = `Cloning (about 20s, ~54MB)... ${secs}s`;
+  }, 1000);
+
   try {
     const args = ['clone', '--depth=1'];
     if (ref) args.push('--branch', ref);
-    args.push(REPO_URL, targetDir);
+    args.push(repo.url, targetDir);
     await execa('git', args);
     fs.rmSync(path.join(targetDir, '.git'), { recursive: true, force: true });
+    clearInterval(tick);
     cloneSpinner.succeed(`Repository cloned${ref ? ` (${ref})` : ''}`);
   } catch (error) {
+    clearInterval(tick);
     cloneSpinner.fail('Failed to clone repository');
     log.error(
       ref
@@ -168,19 +204,23 @@ export async function createLaunchpadApp(directory, options) {
     process.exit(1);
   }
 
-  // Ask only now: the choice is limited to what this ref actually contains,
-  // which the registry alone cannot tell us.
+  // Safety net: the ref resolved above should always carry the chosen
+  // frontend, but a stale --ref or a renamed directory would slip through and
+  // fail much later on a dev script that does not exist.
   const available = detectFrameworks(targetDir);
-  if (available.length === 0) {
+  if (!available.some((f) => f.name === framework.name)) {
     console.log();
-    log.error('That ref has no recognizable frontend directory.');
-    console.log(`  Expected one of: ${frameworkNames().join(', ')}`);
+    log.error(
+      `This ref has no ${framework.name}/ directory, so ${framework.label} cannot run.`
+    );
+    console.log(
+      `  Available here: ${available.map((f) => f.name).join(', ') || 'none'}`
+    );
+    if (options.ref)
+      console.log('  Try omitting --ref, or pick a ref that has it.');
     console.log();
     process.exit(1);
   }
-
-  const framework = await resolveFramework(options.framework, available);
-  log.info(`Frontend: ${chalk.bold(framework.label)}`);
 
   // The clone's history is removed above, so give the user a repo of their own
   // rather than leaving the directory untracked.

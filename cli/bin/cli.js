@@ -24,6 +24,10 @@ program
     `frontend to run (${frameworkNames().join(', ')}) — prompts if omitted`
   )
   .option('-r, --ref <ref>', 'branch or tag of the LaunchPad repo to clone')
+  .option(
+    '--repo <url|path>',
+    'clone from somewhere else — a fork, or a local checkout for testing'
+  )
   .option('--no-seed', 'skip seeding demo data')
   .option('--no-start', 'skip starting dev servers after setup')
   .option('--no-git', 'skip initializing a git repository')
@@ -39,6 +43,7 @@ Examples:
   $ create-launchpad-app my-app --framework astro
   $ create-launchpad-app my-app --framework nuxt --no-start
   $ create-launchpad-app my-app --dry-run
+  $ create-launchpad-app my-app --repo ../LaunchPad --framework nuxt
 
 All frontends share one Strapi backend on port ${1337}.
 `
