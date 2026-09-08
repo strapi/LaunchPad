@@ -15,7 +15,7 @@ import {
   needsRef,
 } from '../frameworks.js';
 import { log } from '../utils/logger.js';
-import { isPortAvailable } from '../utils/ports.js';
+import { isPortAvailable, portOwner } from '../utils/ports.js';
 import { checkPrerequisites } from '../utils/prerequisites.js';
 
 const DEFAULT_REPO = 'https://github.com/strapi/LaunchPad.git';
@@ -104,6 +104,35 @@ function detectFrameworks(targetDir) {
   );
 }
 
+/**
+ * Ports the chosen frontend needs, and who currently holds them.
+ *
+ * Reported before anything is cloned. A second LaunchPad checkout left
+ * running is the awkward case: it answers on the right port with its own
+ * PREVIEW_SECRET, so the admin's preview fails with "Invalid token" rather
+ * than anything that points at a port conflict.
+ */
+async function findBlockedPorts(framework) {
+  const wanted = [
+    { port: STRAPI_PORT, label: 'Strapi' },
+    { port: framework.port, label: framework.label },
+  ];
+
+  const blocked = [];
+  for (const { port, label } of wanted) {
+    if (await isPortAvailable(port)) continue;
+    blocked.push({ port, label, owner: await portOwner(port) });
+  }
+  return blocked;
+}
+
+function reportBlockedPorts(blocked) {
+  for (const { port, label, owner } of blocked) {
+    log.warn(`Port ${port} (${label}) is already in use.`);
+    if (owner) console.log(`    held by: ${owner}`);
+  }
+}
+
 function printPlan(targetDir, framework, options, ref, automatic, repoUrl) {
   const steps = [
     `clone ${repoUrl}${ref ? ` (ref ${ref}${automatic ? ', chosen automatically' : ''})` : ''} into ${targetDir}`,
@@ -143,6 +172,18 @@ export async function createLaunchpadApp(directory, options) {
 
   log.info(`Creating LaunchPad app in ${targetDir}`);
   log.info(`Frontend: ${chalk.bold(framework.label)}`);
+
+  // Checked here rather than only before starting, so a conflict surfaces now
+  // instead of after a clone and an install — and so it is still reported when
+  // --no-start means nothing will be started at all.
+  const blockedUpFront = await findBlockedPorts(framework);
+  if (blockedUpFront.length > 0) {
+    console.log();
+    reportBlockedPorts(blockedUpFront);
+    console.log(
+      `    another LaunchPad on that port has its own PREVIEW_SECRET, which makes preview fail with "Invalid token"`
+    );
+  }
   if (automatic) {
     log.info(
       `Using branch ${chalk.bold(ref)} — ${framework.label} is not on LaunchPad's default branch yet.`
@@ -286,25 +327,23 @@ export async function createLaunchpadApp(directory, options) {
 
   nextStep('Starting development servers...');
 
-  const blocked = [];
-  if (!(await isPortAvailable(STRAPI_PORT))) {
-    blocked.push(`${STRAPI_PORT} (Strapi)`);
-  }
-  if (!(await isPortAvailable(framework.port))) {
-    blocked.push(`${framework.port} (${framework.label})`);
-  }
+  const blocked = await findBlockedPorts(framework);
 
   if (blocked.length > 0) {
     console.log();
-    log.error(`Port ${blocked.join(' and ')} already in use.`);
+    reportBlockedPorts(blocked);
     console.log();
     console.log(
       '  Either stop whatever is using them, or change the ports in:'
     );
-    console.log(`    ${directory}/strapi/.env            → Strapi`);
-    console.log(
-      `    ${directory}/${framework.name}/.env${' '.repeat(Math.max(0, 12 - framework.name.length))} → ${framework.label}`
-    );
+    const envPaths = [
+      [`${directory}/strapi/.env`, 'Strapi'],
+      [`${directory}/${framework.name}/.env`, framework.label],
+    ];
+    const width = Math.max(...envPaths.map(([envPath]) => envPath.length));
+    for (const [envPath, label] of envPaths) {
+      console.log(`    ${envPath.padEnd(width)}  → ${label}`);
+    }
     console.log();
     console.log('  Then start it yourself:');
     console.log(`    cd ${directory}`);
