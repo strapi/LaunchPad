@@ -246,6 +246,13 @@ export async function createLaunchpadApp(directory, options) {
   try {
     await execa(PM, ['install'], { cwd: targetDir });
     await execa(PM, ['setup'], { cwd: targetDir });
+
+    // setup writes the shared PREVIEW_SECRET to every frontend, but leaves
+    // CLIENT_URL at its default of Next. Strapi reads CLIENT_URL to build the
+    // admin's Preview link, so without this the Preview button opens Next
+    // whatever frontend was chosen.
+    await execa(PM, ['use', framework.name], { cwd: targetDir });
+
     installSpinner.succeed('Dependencies installed');
   } catch (error) {
     installSpinner.fail('Failed to install dependencies');
