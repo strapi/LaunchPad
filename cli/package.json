@@ -1,0 +1,42 @@
+{
+  "name": "create-launchpad-app",
+  "version": "1.0.0",
+  "description": "CLI to scaffold the official Strapi LaunchPad demo application with the frontend of your choice",
+  "type": "module",
+  "bin": {
+    "create-launchpad-app": "./bin/cli.js"
+  },
+  "scripts": {
+    "dev": "node ./bin/cli.js",
+    "test": "node --test \"test/**/*.test.js\""
+  },
+  "keywords": [
+    "strapi",
+    "launchpad",
+    "demo",
+    "cli",
+    "scaffold",
+    "astro",
+    "nuxt",
+    "tanstack",
+    "nextjs"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@clack/prompts": "^1.8.0",
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "execa": "^9.5.2",
+    "ora": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ]
+}

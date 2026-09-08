@@ -12,6 +12,8 @@
     "dev:tanstack": "node --import tsx ./scripts/dev.mts tanstack",
     "use": "node --import tsx ./scripts/use.mts",
     "check:env": "node --import tsx ./scripts/check-env.mts",
+    "cli": "cd cli && npm install --silent --no-audit --no-fund && node bin/cli.js",
+    "test:cli": "cd cli && npm install --silent --no-audit --no-fund && npm test",
     "next": "yarn dev --prefix ../next/",
     "strapi": "yarn dev --prefix ../strapi/",
     "seed": "cd strapi && yarn strapi import -f ./data/export_20250116105447.tar.gz --force",
