@@ -23,34 +23,56 @@ const REPO_URL = 'https://github.com/strapi/LaunchPad.git';
 const PM = 'yarn';
 
 /**
- * Which frontend to scaffold: the flag if given, otherwise a prompt.
+ * Which frontend to scaffold, chosen from the ones this clone actually has.
  *
- * An unknown --framework is rejected rather than silently falling back, so a
- * typo in a script fails loudly.
+ * `available` comes from the cloned tree rather than the registry, so the
+ * prompt never offers something the checked-out ref cannot provide. Offering
+ * a choice and then rejecting it is worse than not offering it.
  */
-async function resolveFramework(flag) {
+async function resolveFramework(flag, available) {
   if (flag) {
-    const framework = getFramework(flag);
-    if (!framework) {
+    const framework = available.find((f) => f.name === flag);
+    if (framework) return framework;
+
+    const known = getFramework(flag);
+    console.log();
+    if (known) {
+      // A real frontend, just not in this ref.
+      log.error(
+        `This LaunchPad ref has no ${known.name}/ directory, so --framework ${known.name} cannot work.`
+      );
+      console.log(
+        `  Available here: ${available.map((f) => f.name).join(', ')}`
+      );
+      console.log(
+        '  Try a ref that includes it, e.g. --ref feat/tanstack-frontend'
+      );
+    } else {
       log.error(
         `Unknown framework "${flag}". Expected one of: ${frameworkNames().join(', ')}`
       );
-      process.exit(1);
     }
-    return framework;
+    console.log();
+    process.exit(1);
   }
 
+  if (available.length === 1) return available[0];
+
   // Not a TTY (CI, piped input) — prompting would hang.
-  if (!process.stdin.isTTY) return getFramework(DEFAULT_FRAMEWORK);
+  if (!process.stdin.isTTY) {
+    return available.find((f) => f.name === DEFAULT_FRAMEWORK) ?? available[0];
+  }
 
   const choice = await p.select({
     message: 'Which frontend would you like to run?',
-    options: FRAMEWORKS.map((f) => ({
+    options: available.map((f) => ({
       value: f.name,
       label: f.label,
       hint: `port ${f.port}`,
     })),
-    initialValue: DEFAULT_FRAMEWORK,
+    initialValue:
+      available.find((f) => f.name === DEFAULT_FRAMEWORK)?.name ??
+      available[0].name,
   });
 
   if (p.isCancel(choice)) {
@@ -58,33 +80,14 @@ async function resolveFramework(flag) {
     process.exit(0);
   }
 
-  return getFramework(choice);
+  return available.find((f) => f.name === choice);
 }
 
-/**
- * Fails early when the cloned ref predates the chosen frontend.
- *
- * Without this the run gets several steps further before `yarn dev:astro`
- * fails with something far less obvious.
- */
-function assertFrameworkPresent(targetDir, framework, ref) {
-  if (framework.name === DEFAULT_FRAMEWORK) return;
-  if (fs.existsSync(path.join(targetDir, framework.name))) return;
-
-  const available = FRAMEWORKS.filter((f) =>
-    fs.existsSync(path.join(targetDir, f.name))
-  ).map((f) => f.name);
-
-  console.log();
-  log.error(
-    `This LaunchPad ref has no ${framework.name}/ directory, so --framework ${framework.name} cannot work.`
+/** The frontends present in a cloned LaunchPad tree. */
+function detectFrameworks(targetDir) {
+  return FRAMEWORKS.filter((f) =>
+    fs.existsSync(path.join(targetDir, f.name, 'package.json'))
   );
-  console.log(`  Available here: ${available.join(', ') || 'none'}`);
-  console.log(
-    `  Try a ref that includes it, e.g. --ref feat/tanstack-frontend`
-  );
-  console.log();
-  process.exit(1);
 }
 
 function printPlan(targetDir, framework, options, ref) {
@@ -111,15 +114,16 @@ export async function createLaunchpadApp(directory, options) {
   const ref = options.ref;
 
   console.log();
-  const framework = await resolveFramework(options.framework);
 
+  // A dry run has nothing to inspect, so it works from the registry and shows
+  // every frontend the CLI knows about.
   if (options.dryRun) {
+    const framework = await resolveFramework(options.framework, FRAMEWORKS);
     printPlan(targetDir, framework, options, ref);
     return;
   }
 
   log.info(`Creating LaunchPad app in ${targetDir}`);
-  log.info(`Frontend: ${chalk.bold(framework.label)}\n`);
 
   await checkPrerequisites(PM);
   console.log();
@@ -164,7 +168,19 @@ export async function createLaunchpadApp(directory, options) {
     process.exit(1);
   }
 
-  assertFrameworkPresent(targetDir, framework, ref);
+  // Ask only now: the choice is limited to what this ref actually contains,
+  // which the registry alone cannot tell us.
+  const available = detectFrameworks(targetDir);
+  if (available.length === 0) {
+    console.log();
+    log.error('That ref has no recognizable frontend directory.');
+    console.log(`  Expected one of: ${frameworkNames().join(', ')}`);
+    console.log();
+    process.exit(1);
+  }
+
+  const framework = await resolveFramework(options.framework, available);
+  log.info(`Frontend: ${chalk.bold(framework.label)}`);
 
   // The clone's history is removed above, so give the user a repo of their own
   // rather than leaving the directory untracked.
