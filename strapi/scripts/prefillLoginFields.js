@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
 
 // Base directory and target files
 const directoryPath =
@@ -24,7 +24,7 @@ let found = 0;
 targetFiles.forEach((file) => {
   const filePath = path.join(directoryPath, file);
 
-  if (!fs.existsSync(filePath)) {
+  if (fs.existsSync(filePath) === false) {
     console.log(`⚠️ No matching file found for: ${file}`);
     return;
   }
@@ -35,7 +35,11 @@ targetFiles.forEach((file) => {
   if (data.includes(newContent)) {
     console.log(`✅ File already modified with demo credentials: ${filePath}`);
   } else if (data.includes(originalContent)) {
-    fs.writeFileSync(filePath, data.replace(originalContent, newContent), 'utf8');
+    fs.writeFileSync(
+      filePath,
+      data.replace(originalContent, newContent),
+      'utf8'
+    );
     console.log(`✅ Successfully updated: ${filePath}`);
   } else {
     console.log(`⚠️ Original content not found in: ${filePath}`);
@@ -44,6 +48,8 @@ targetFiles.forEach((file) => {
 });
 
 if (found === 0) {
-  console.error('❌ No Login.js / Login.mjs found — admin dist layout may have changed.');
+  console.error(
+    '❌ No Login.js / Login.mjs found — admin dist layout may have changed.'
+  );
   process.exit(1);
 }
