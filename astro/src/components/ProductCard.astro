@@ -1,0 +1,45 @@
+---
+import StrapiMedia from '@/components/StrapiMedia.astro';
+import type { Product } from '@/types/strapi';
+
+interface Props {
+  product: Product;
+  locale: string;
+  delay?: number;
+}
+const { product, locale, delay = 0 } = Astro.props;
+
+const price =
+  product.price === null || product.price === undefined
+    ? null
+    : new Intl.NumberFormat(locale === 'fr' ? 'fr-FR' : 'en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0,
+      }).format(product.price);
+---
+
+<a
+  href={`/${locale}/products/${product.slug}`}
+  data-reveal
+  style={`--reveal-delay: ${delay}ms`}
+  class="group flex flex-col overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900/50 transition duration-200 hover:border-neutral-700"
+>
+  <div class="aspect-square w-full overflow-hidden bg-neutral-900">
+    {
+      product.images?.[0] ? (
+        <StrapiMedia
+          media={product.images[0]}
+          alt={product.name}
+          width={600}
+          height={600}
+          class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+        />
+      ) : null
+    }
+  </div>
+  <div class="flex flex-1 flex-col p-5">
+    <h3 class="text-base font-semibold text-neutral-100">{product.name}</h3>
+    {price && <p class="mt-2 text-sm text-cyan-400">{price}</p>}
+  </div>
+</a>

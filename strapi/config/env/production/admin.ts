@@ -23,6 +23,17 @@ const getPreviewPathname = (uid, { locale, document }): string | null => {
 
 export default ({ env }) => {
   const clientUrl = env('CLIENT_URL');
+
+  // Deployed frontends live on real domains, so the dev localhost list is
+  // meaningless here. Set PREVIEW_ALLOWED_ORIGINS to a comma-separated list
+  // when more than one frontend is deployed against this backend.
+  const allowedOrigins = Array.from(
+    new Set(
+      [clientUrl, ...env('PREVIEW_ALLOWED_ORIGINS', '').split(',')]
+        .map((origin) => origin.trim())
+        .filter(Boolean),
+    ),
+  );
   const previewSecret = env('PREVIEW_SECRET');
 
   return {
@@ -44,7 +55,7 @@ export default ({ env }) => {
     preview: {
       enabled: true,
       config: {
-        allowedOrigins: [clientUrl],
+        allowedOrigins,
         async handler(uid, { documentId, locale, status }) {
           const document = await strapi
             .documents(uid)

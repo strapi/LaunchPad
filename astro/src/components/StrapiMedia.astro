@@ -1,0 +1,98 @@
+---
+import { isAudio, isVideo, strapiMedia } from '@/lib/media';
+import { getStrapiSource } from '@/lib/source-map';
+import type { StrapiMedia as StrapiMediaType } from '@/types/strapi';
+
+/**
+ * Renders a Strapi media field.
+ *
+ * Branches on `mime` because LaunchPad's media fields accept videos and audio,
+ * not just images — `product.images` and `article.image` both do. Feeding a
+ * video to an `<img>` renders a broken icon, so the type has to be respected.
+ *
+ * Deliberately a plain `<img>` rather than Astro's `<Image />`: these are
+ * remote CMS URLs whose dimensions vary per entry, and optimising them would
+ * mean either proxying every asset at build time or configuring a remote image
+ * service. Neither is worth it for a demo, and both would break draft mode,
+ * where the URL is only known per request.
+ */
+
+interface Props {
+  media?: StrapiMediaType | null;
+  /** Overrides `media.alternativeText`; required when the media has none. */
+  alt?: string | null;
+  class?: string;
+  width?: number | string;
+  height?: number | string;
+  loading?: 'lazy' | 'eager';
+  /**
+   * Visual-editing mapping. Decoded from the media URL automatically — only
+   * pass this to override it.
+   */
+  dataStrapiSource?: string;
+  /** Passed through so callers can target the element from a script. */
+  id?: string;
+}
+
+const {
+  media,
+  alt,
+  class: className,
+  width,
+  height,
+  loading = 'lazy',
+  dataStrapiSource,
+  id,
+} = Astro.props;
+
+const src = strapiMedia(media?.url);
+const label = alt ?? media?.alternativeText ?? '';
+
+/*
+ * Decode from the RAW url, before strapiMedia() strips the markers out of it.
+ * Undefined outside draft mode, so the attribute is simply absent in
+ * production rather than empty.
+ */
+const strapiSource = dataStrapiSource ?? getStrapiSource(media?.url);
+---
+
+{
+  src && isVideo(media?.mime) && (
+    <video
+      id={id}
+      src={src}
+      class={className}
+      controls
+      preload="metadata"
+      data-strapi-source={strapiSource}
+    />
+  )
+}
+
+{
+  src && isAudio(media?.mime) && (
+    <audio
+      id={id}
+      src={src}
+      class={className}
+      controls
+      data-strapi-source={strapiSource}
+    />
+  )
+}
+
+{
+  src && !isVideo(media?.mime) && !isAudio(media?.mime) && (
+    <img
+      id={id}
+      src={src}
+      alt={label}
+      class={className}
+      width={width}
+      height={height}
+      loading={loading}
+      decoding="async"
+      data-strapi-source={strapiSource}
+    />
+  )
+}

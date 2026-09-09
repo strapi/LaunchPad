@@ -1,0 +1,36 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import DynamicZone from '@/components/DynamicZone.astro';
+import { LOCALES, localizedPaths } from '@/lib/i18n';
+import { fetchBySlug, fetchSingle } from '@/lib/strapi';
+import type { Global, Page } from '@/types/strapi';
+
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params as { locale: string };
+
+const [page, global] = await Promise.all([
+  fetchBySlug<Page>('pages', 'homepage', { locale }),
+  fetchSingle<Global>('global', { locale }),
+]);
+
+if (!page) return Astro.rewrite('/404');
+
+// The homepage lives at the locale root, so every locale maps to an empty path.
+const paths = Object.fromEntries(
+  Object.keys(localizedPaths(locale, '', page.localizations)).map((l) => [
+    l,
+    '',
+  ])
+);
+---
+
+<BaseLayout locale={locale} global={global} seo={page.seo}>
+  <DynamicZone
+    zone={page.dynamic_zone}
+    locale={locale}
+    localizedPaths={paths}
+  />
+</BaseLayout>

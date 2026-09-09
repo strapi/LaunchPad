@@ -1,0 +1,29 @@
+---
+import StrapiMedia from '@/components/StrapiMedia.astro';
+import type { StrapiMedia as StrapiMediaType } from '@/types/strapi';
+
+interface Props {
+  image?: StrapiMediaType | null;
+  locale: string;
+}
+const { image, locale } = Astro.props;
+---
+
+<a
+  href={`/${locale}`}
+  class="relative z-20 mr-4 flex items-center space-x-2 text-sm font-normal"
+>
+  {
+    image && (
+      <StrapiMedia
+        media={image}
+        alt={image.alternativeText ?? 'LaunchPad'}
+        width={200}
+        height={200}
+        loading="eager"
+        class="mr-2 h-10 w-10 rounded-xl object-cover"
+      />
+    )
+  }
+  <span class="font-bold text-white">LaunchPad</span>
+</a>

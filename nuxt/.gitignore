@@ -1,0 +1,14 @@
+# dependencies
+/node_modules
+.yarn/install-state.gz
+
+# nuxt
+/.nuxt/
+/.output/
+/dist/
+
+# environment
+.env
+
+# misc
+.DS_Store

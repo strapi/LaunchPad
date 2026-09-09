@@ -1,0 +1,22 @@
+---
+import AuthForm from '@/components/AuthForm.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { LOCALES } from '@/lib/i18n';
+import { fetchSingle } from '@/lib/strapi';
+import type { Global } from '@/types/strapi';
+
+/*
+ * Prerendered like every other page. The form posts to the on-demand auth
+ * endpoints, so nothing here needs to be rendered per request.
+ */
+export function getStaticPaths() {
+  return LOCALES.map((locale) => ({ params: { locale } }));
+}
+
+const { locale } = Astro.params as { locale: string };
+const global = await fetchSingle<Global>('global', { locale });
+---
+
+<BaseLayout locale={locale} global={global} seo={{ metaTitle: 'Sign up' }}>
+  <AuthForm mode="sign-up" locale={locale} logo={global.navbar?.logo?.image} />
+</BaseLayout>

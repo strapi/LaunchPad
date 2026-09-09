@@ -1,0 +1,114 @@
+---
+import Container from '@/components/Container.astro';
+import Heading from '@/components/Heading.astro';
+import StrapiMedia from '@/components/StrapiMedia.astro';
+import Subheading from '@/components/Subheading.astro';
+import type { StrapiMedia as Media } from '@/types/strapi';
+
+/*
+ * Two-row testimonial marquee, matching LaunchPad's layout. The rows scroll in
+ * opposite directions via one CSS animation and a reversed direction, rather
+ * than the React version's per-item framer-motion transforms.
+ */
+interface Testimonial {
+  text: string;
+  user?: {
+    firstname?: string;
+    lastname?: string;
+    job?: string;
+    image?: Media | null;
+  } | null;
+}
+interface Props {
+  heading?: string;
+  sub_heading?: string;
+  testimonials?: Testimonial[];
+}
+const { heading, sub_heading, testimonials = [] } = Astro.props;
+
+const half = Math.ceil(testimonials.length / 2);
+const rows =
+  testimonials.length > 3
+    ? [testimonials.slice(0, half), testimonials.slice(half)]
+    : [testimonials];
+---
+
+<div class="relative py-20">
+  <Container>
+    <Heading data-reveal>{heading}</Heading>
+    {
+      sub_heading && (
+        <Subheading class="mt-4" data-reveal>
+          {sub_heading}
+        </Subheading>
+      )
+    }
+  </Container>
+
+  {
+    testimonials.length > 0 && (
+      <div class="mt-16 space-y-6">
+        {rows.map((row, rowIndex) => (
+          <div class="marquee flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+            {[false, true].map((isClone) => (
+              <div
+                class:list={[
+                  'marquee__track flex shrink-0 gap-6 px-3',
+                  rowIndex % 2 === 1 && 'marquee__track--reverse',
+                ]}
+                aria-hidden={isClone ? 'true' : undefined}
+              >
+                {row.map((item) => (
+                  <figure class="w-[22rem] shrink-0 rounded-2xl border border-neutral-800 bg-neutral-900/60 p-6">
+                    <blockquote class="text-muted text-sm leading-relaxed">
+                      {item.text}
+                    </blockquote>
+                    <figcaption class="mt-4 flex items-center gap-3">
+                      {item.user?.image && (
+                        <StrapiMedia
+                          media={item.user.image}
+                          alt={`${item.user.firstname ?? ''} ${item.user.lastname ?? ''}`.trim()}
+                          width={40}
+                          height={40}
+                          class="h-10 w-10 rounded-full object-cover"
+                        />
+                      )}
+                      <div>
+                        <p class="text-sm font-medium text-neutral-200">
+                          {item.user?.firstname} {item.user?.lastname}
+                        </p>
+                        {item.user?.job && (
+                          <p class="text-xs text-neutral-500">
+                            {item.user.job}
+                          </p>
+                        )}
+                      </div>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .marquee__track {
+    animation: var(--animate-marquee);
+    animation-duration: 60s;
+  }
+  .marquee__track--reverse {
+    animation-direction: reverse;
+  }
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track {
+      animation: none;
+    }
+  }
+</style>

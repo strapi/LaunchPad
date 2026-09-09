@@ -1,0 +1,37 @@
+---
+import Container from '@/components/Container.astro';
+import Heading from '@/components/Heading.astro';
+import Subheading from '@/components/Subheading.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
+import type { Article } from '@/types/strapi';
+
+interface Props {
+  heading?: string;
+  sub_heading?: string;
+  articles?: Article[];
+  locale: string;
+}
+const { heading, sub_heading, articles = [], locale } = Astro.props;
+---
+
+<div class="relative py-20">
+  <Container>
+    <Heading data-reveal>{heading}</Heading>
+    {
+      sub_heading && (
+        <Subheading class="mt-4" data-reveal>
+          {sub_heading}
+        </Subheading>
+      )
+    }
+    {
+      articles.length > 0 && (
+        <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {articles.map((article, index) => (
+            <ArticleCard article={article} locale={locale} delay={index * 80} />
+          ))}
+        </div>
+      )
+    }
+  </Container>
+</div>

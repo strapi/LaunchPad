@@ -6,9 +6,12 @@ Guidance for LLM agents working in this repository.
 
 LaunchPad is the official Strapi demo app.
 
-- `strapi/`: Strapi 5 backend, content types, components, seeded demo data, SQLite default database.
-- `next/`: Next.js 15 App Router frontend, React 19, Tailwind, localized `en` and `fr` routes.
-- Root: workspace-level setup/dev/format scripts using Yarn 4.5.0.
+- `strapi/`: Strapi 5 backend, content types, components, seeded demo data, SQLite default database. Shared by every frontend.
+- `next/`: Next.js App Router frontend, React 19, Tailwind, localized `en` and `fr` routes. The default frontend.
+- `astro/`: Astro frontend, same content and routes.
+- `nuxt/`: Nuxt 4 frontend, same content and routes.
+- `tanstack/`: TanStack Start frontend, same content and routes.
+- Root: setup/dev/format scripts using Yarn 4.5.0. Each directory keeps its own lockfile; this is not a Yarn workspace.
 
 ## First Read
 
@@ -24,36 +27,39 @@ Before editing, read:
 
 Run commands from the correct directory.
 
-- Root setup: `yarn setup`
-- Root dev: `yarn dev`
+- Root setup: `yarn setup` (installs Strapi and every checked-out frontend)
+- Root dev: `yarn dev` (Strapi + Next)
+- Other frontends: `yarn dev:astro`, `yarn dev:nuxt`, `yarn dev:tanstack`
+- Switch the admin Preview target: `yarn use <framework>`
+- Check environment consistency: `yarn check:env`
 - Seed Strapi: `yarn seed`
 - Format check: `yarn check:format`
 - Format fix: `yarn fix:format`
-- Next dev: `cd next && yarn dev`
-- Next build: `cd next && yarn build`
-- Next lint: `cd next && yarn lint`
 - Strapi dev: `cd strapi && yarn develop`
 - Strapi build: `cd strapi && yarn build`
+- A frontend directly: `cd <framework> && yarn dev`
 
 ## Setup
 
 Run once after cloning, from the repo root:
 
 ```sh
-yarn install          # install root workspace deps first
-yarn setup            # installs next/ and strapi/ deps, copies .env files
+yarn install          # install root deps first
+yarn setup            # installs strapi/ and every frontend, creates .env files
 yarn seed             # imports demo data into SQLite (191 entities, 115 assets)
 ```
 
-`yarn setup` calls `setup:next` and `setup:strapi` in sequence. Each sub-script runs `yarn` in the sub-directory then copies `.env.example` → `.env` only if `.env` does not already exist.
+`yarn setup` installs each directory in turn, creates any missing `.env` from its `.env.example`, and propagates `PREVIEW_SECRET` from `strapi/.env` to every frontend. It is safe to re-run: existing `.env` files are left alone and an already-configured preview secret is preserved.
+
+Only frontends actually checked out are set up. The registry in `scripts/frontends.mts` declares all four; `presentFrontends()` filters to what is on disk.
 
 `yarn seed` is destructive — it wipes existing data before importing. Re-run it to reset to the demo baseline.
 
 After setup, verify both apps are healthy:
 
 ```sh
-cd next && yarn build
 cd strapi && yarn build
+cd next && yarn build      # and astro/, nuxt/, tanstack/ as needed
 ```
 
 First `yarn develop` in `strapi/` will prompt to create a Super Admin at `http://localhost:1337/admin`; the seed does not include admin credentials.
@@ -86,7 +92,15 @@ Create local env files before running the apps:
 - Be careful with `deepPopulate`: it affects default GET API responses globally.
 - The default database is SQLite at `strapi/.tmp/data.db`; do not commit generated database files.
 
-## Next Changes
+## Frontend Changes
+
+All four frontends render the same Strapi content and must stay at feature
+parity: the full dynamic-zone block set, blog, products, CMS-driven pages,
+`en`/`fr` routing, draft preview, and authentication. A change to one
+frontend's rendering usually needs the same change in the other three.
+
+Paths below are given for `next/`; each other frontend has an equivalent
+location following its own framework's conventions.
 
 - App routes live under `next/app/[locale]`.
 - Shared Strapi rendering logic lives under `next/lib/shared`.
@@ -103,4 +117,3 @@ Choose the smallest useful check for the change:
 - Next UI/data changes: `cd next && yarn lint && yarn build`
 - Strapi schema/backend changes: `cd strapi && yarn build`
 - Full confidence path: `yarn check:format`, `cd next && yarn lint && yarn build`, `cd strapi && yarn build`
-

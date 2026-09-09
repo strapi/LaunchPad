@@ -1,0 +1,151 @@
+---
+import Button from '@/components/Button.astro';
+import type { NavbarLink } from '@/types/strapi';
+
+/**
+ * The signed-in / signed-out part of the navbar.
+ *
+ * This is the piece that makes auth work on a fully prerendered site. Identity
+ * cannot be baked into HTML that is built once and served to everyone, so the
+ * markup ships in its signed-out state and `/api/auth/me` decides what to show
+ * after load.
+ *
+ * The tradeoff is a brief moment where a signed-in visitor sees the signed-out
+ * links. `data-auth-pending` hides both states until the answer arrives, which
+ * trades that flash for a slightly emptier navbar for one request — the lesser
+ * of the two, since flashing "Sign up" at someone who is already signed in
+ * reads as being logged out.
+ */
+
+interface Props {
+  locale: string;
+  links: NavbarLink[];
+}
+
+const { locale, links } = Astro.props;
+---
+
+<div class="flex items-center gap-2" data-auth-menu data-auth-pending>
+  <!-- Signed out: whatever Strapi has configured, e.g. Book a demo / Sign up -->
+  <div class="flex items-center gap-2" data-auth-signed-out>
+    <a
+      href={`/${locale}/sign-in`}
+      class="px-4 py-2 text-sm text-white transition-colors hover:text-neutral-300"
+    >
+      Sign in
+    </a>
+    {
+      links.map((item, index) => (
+        <Button
+          href={`/${locale}${item.URL}`}
+          variant={index === links.length - 1 ? 'primary' : 'simple'}
+        >
+          {item.text}
+        </Button>
+      ))
+    }
+  </div>
+
+  <!-- Signed in -->
+  <div class="flex items-center gap-2" data-auth-signed-in hidden>
+    <span class="hidden px-3 py-2 text-sm text-white xl:inline">
+      Hi, <span class="font-medium" data-auth-username></span>
+    </span>
+    <button
+      type="button"
+      data-auth-logout
+      class="flex items-center gap-2 rounded-md border border-transparent px-4 py-2 text-sm text-white transition duration-200 hover:bg-neutral-800 disabled:opacity-50"
+    >
+      <svg
+        class="h-4 w-4"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path
+          d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"
+        ></path>
+        <path d="M9 12h12l-3 -3"></path>
+        <path d="M18 15l3 -3"></path>
+      </svg>
+      <span class="hidden md:inline">Log out</span>
+    </button>
+  </div>
+</div>
+
+<style>
+  /* Hide both states until /api/auth/me answers. */
+  [data-auth-menu][data-auth-pending] > * {
+    visibility: hidden;
+  }
+</style>
+
+<script>
+  /**
+   * Resolves the auth state once per page load and updates every auth menu on
+   * the page — there are two, desktop and mobile.
+   */
+  type Me = { user: { username: string } | null };
+
+  const menus = document.querySelectorAll<HTMLElement>('[data-auth-menu]');
+
+  const render = (user: { username: string } | null) => {
+    for (const menu of menus) {
+      const signedOut = menu.querySelector<HTMLElement>(
+        '[data-auth-signed-out]'
+      );
+      const signedIn = menu.querySelector<HTMLElement>('[data-auth-signed-in]');
+      const name = menu.querySelector<HTMLElement>('[data-auth-username]');
+
+      if (signedOut) signedOut.hidden = Boolean(user);
+      if (signedIn) signedIn.hidden = !user;
+      if (name && user) name.textContent = user.username;
+
+      menu.removeAttribute('data-auth-pending');
+    }
+  };
+
+  const resolve = async () => {
+    if (!menus.length) return;
+    try {
+      const response = await fetch('/api/auth/me', {
+        credentials: 'same-origin',
+      });
+      const data = (await response.json()) as Me;
+      render(data.user);
+    } catch {
+      // Offline, or the endpoint is unreachable. Showing the signed-out state
+      // is the safe default — worst case someone signed in sees a sign-in
+      // link, rather than the page implying a session that isn't there.
+      render(null);
+    }
+  };
+
+  document.addEventListener('click', async (event) => {
+    const button = (event.target as HTMLElement)?.closest?.(
+      '[data-auth-logout]'
+    ) as HTMLButtonElement | null;
+    if (!button) return;
+
+    button.disabled = true;
+    try {
+      await fetch('/api/auth/logout', {
+        method: 'POST',
+        // Astro's origin check treats a POST without a JSON content type as a
+        // form submission, which it blocks cross-site. Being explicit keeps
+        // this on the fetch path rather than relying on that classification.
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+      });
+      render(null);
+    } finally {
+      button.disabled = false;
+    }
+  });
+
+  void resolve();
+</script>

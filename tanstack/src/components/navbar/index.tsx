@@ -1,0 +1,46 @@
+import { motion } from 'framer-motion';
+
+import { DesktopNavbar } from './desktop-navbar';
+import { MobileNavbar } from './mobile-navbar';
+import type { TAuthUser } from '@/types/auth';
+
+export function Navbar({
+  data,
+  locale,
+  hasBanner,
+  currentUser,
+}: {
+  data: any;
+  locale: string;
+  hasBanner?: boolean;
+  currentUser?: TAuthUser | null;
+}) {
+  return (
+    <motion.nav
+      className={`max-w-7xl fixed ${hasBanner ? 'top-[4.25rem]' : 'top-4'} mx-auto inset-x-0 z-50 w-[95%] lg:w-full`}
+    >
+      <div className="hidden lg:block w-full">
+        {data?.left_navbar_items && (
+          <DesktopNavbar
+            locale={locale}
+            leftNavbarItems={data.left_navbar_items}
+            rightNavbarItems={data.right_navbar_items}
+            logo={data.logo}
+            currentUser={currentUser}
+          />
+        )}
+      </div>
+      <div className="flex h-full w-full items-center lg:hidden ">
+        {data?.left_navbar_items && (
+          <MobileNavbar
+            locale={locale}
+            leftNavbarItems={data.left_navbar_items}
+            rightNavbarItems={data.right_navbar_items}
+            logo={data.logo}
+            currentUser={currentUser}
+          />
+        )}
+      </div>
+    </motion.nav>
+  );
+}

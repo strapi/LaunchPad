@@ -1,0 +1,155 @@
+---
+import AmbientColor from '@/components/AmbientColor.astro';
+import Container from '@/components/Container.astro';
+import DynamicZone from '@/components/DynamicZone.astro';
+import StrapiMedia from '@/components/StrapiMedia.astro';
+import type { Product } from '@/types/strapi';
+
+/**
+ * The product detail body, shared by the prerendered route and the on-demand
+ * preview route.
+ */
+interface Props {
+  product: Product;
+  locale: string;
+}
+
+const { product, locale } = Astro.props;
+
+const price =
+  product.price === null || product.price === undefined
+    ? null
+    : new Intl.NumberFormat(locale === 'fr' ? 'fr-FR' : 'en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0,
+      }).format(product.price);
+
+const images = product.images ?? [];
+---
+
+<div class="relative overflow-hidden pt-40 pb-20">
+  <AmbientColor />
+  <Container class="relative z-10">
+    <div
+      class="rounded-md bg-gradient-to-b from-neutral-900 to-neutral-950 p-4 md:p-10"
+    >
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
+        <div>
+          <div class="relative overflow-hidden rounded-lg">
+            {
+              images[0] && (
+                <StrapiMedia
+                  media={images[0]}
+                  alt={product.name}
+                  width={600}
+                  height={600}
+                  loading="eager"
+                  class="w-full rounded-lg object-cover"
+                  id="product-active-image"
+                />
+              )
+            }
+          </div>
+
+          {
+            images.length > 1 && (
+              <div
+                class="mt-4 flex items-center justify-center gap-4"
+                data-product-thumbs
+              >
+                {images.map((image, index) => (
+                  <button
+                    type="button"
+                    data-index={index}
+                    data-src={image.url}
+                    aria-label={`Show image ${index + 1}`}
+                    class:list={[
+                      'h-20 w-20 rounded-xl border-2 bg-cover bg-center bg-no-repeat',
+                      index === 0 ? 'border-neutral-200' : 'border-transparent',
+                    ]}
+                  >
+                    <StrapiMedia
+                      media={image}
+                      alt=""
+                      width={80}
+                      height={80}
+                      class="h-full w-full rounded-xl object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )
+          }
+        </div>
+
+        <div>
+          <h1 class="text-3xl font-bold text-neutral-100 md:text-4xl">
+            {product.name}
+          </h1>
+          {price && <p class="mt-4 text-2xl text-cyan-400">{price}</p>}
+          {
+            product.description && (
+              <p class="text-muted mt-6 leading-relaxed">
+                {product.description}
+              </p>
+            )
+          }
+          {
+            product.perks?.length ? (
+              <ul class="mt-8 space-y-3">
+                {product.perks.map((perk) => (
+                  <li class="flex items-start gap-2">
+                    <svg
+                      class="mt-0.5 h-4 w-4 shrink-0 text-cyan-400"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12l5 5L20 7" />
+                    </svg>
+                    <span class="text-muted text-sm">{perk.text}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null
+          }
+        </div>
+      </div>
+    </div>
+
+    {
+      product.dynamic_zone?.length ? (
+        <DynamicZone zone={product.dynamic_zone} locale={locale} />
+      ) : null
+    }
+  </Container>
+</div>
+
+<script>
+  // Thumbnail switching. Swaps the main image src rather than re-rendering —
+  // the alternative would be shipping a component runtime for one <img>.
+  const thumbs = document.querySelector('[data-product-thumbs]');
+  const main = document.getElementById(
+    'product-active-image'
+  ) as HTMLImageElement | null;
+
+  thumbs?.addEventListener('click', (event) => {
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>(
+      'button[data-index]'
+    );
+    if (!button || !main) return;
+
+    const thumbImage = button.querySelector('img');
+    if (thumbImage) main.src = thumbImage.src;
+
+    thumbs.querySelectorAll('button').forEach((el) => {
+      el.classList.toggle('border-neutral-200', el === button);
+      el.classList.toggle('border-transparent', el !== button);
+    });
+  });
+</script>

@@ -22,7 +22,20 @@ const getPreviewPathname = (uid, { locale, document }): string | null => {
 };
 
 export default ({ env }) => {
-  const clientUrl = env('CLIENT_URL');
+  const clientUrl = env('CLIENT_URL', 'http://localhost:3000');
+
+  // Every LaunchPad frontend on its dev port, so preview works whichever one
+  // is running. CLIENT_URL still selects which one the admin's Preview button
+  // opens, because Strapi's preview handler must return a single URL.
+  const allowedOrigins = Array.from(
+    new Set([
+      clientUrl,
+      'http://localhost:3000', // next
+      'http://localhost:3001', // nuxt
+      'http://localhost:3002', // tanstack
+      'http://localhost:4321', // astro
+    ]),
+  );
   const previewSecret = env('PREVIEW_SECRET');
 
   return {
@@ -44,7 +57,7 @@ export default ({ env }) => {
     preview: {
       enabled: true,
       config: {
-        allowedOrigins: [clientUrl],
+        allowedOrigins,
         async handler(uid, { documentId, locale, status }) {
           const document = await strapi
             .documents(uid)

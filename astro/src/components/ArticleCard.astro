@@ -1,0 +1,70 @@
+---
+import StrapiMedia from '@/components/StrapiMedia.astro';
+import type { Article } from '@/types/strapi';
+
+interface Props {
+  article: Article;
+  locale: string;
+  delay?: number;
+}
+const { article, locale, delay = 0 } = Astro.props;
+
+const published = article.publishedAt
+  ? new Intl.DateTimeFormat(locale === 'fr' ? 'fr-FR' : 'en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }).format(new Date(article.publishedAt))
+  : null;
+---
+
+<a
+  href={`/${locale}/blog/${article.slug}`}
+  data-reveal
+  style={`--reveal-delay: ${delay}ms`}
+  class="group flex flex-col overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900/50 transition duration-200 hover:border-neutral-700"
+>
+  <div class="aspect-[16/10] w-full overflow-hidden bg-neutral-900">
+    {
+      article.image ? (
+        <StrapiMedia
+          media={article.image}
+          alt={article.title}
+          width={800}
+          height={500}
+          class="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+        />
+      ) : null
+    }
+  </div>
+  <div class="flex flex-1 flex-col p-5">
+    {
+      article.categories?.length ? (
+        <div class="mb-3 flex flex-wrap gap-2">
+          {article.categories.map((category) => (
+            <span class="text-muted rounded-full bg-neutral-800 px-2 py-1 text-xs font-bold capitalize">
+              {category.name}
+            </span>
+          ))}
+        </div>
+      ) : null
+    }
+    <h3
+      class="text-base font-semibold text-neutral-100 transition group-hover:text-white md:text-lg"
+    >
+      {article.title}
+    </h3>
+    {
+      article.description && (
+        <p class="text-muted mt-2 line-clamp-3 text-sm">
+          {article.description}
+        </p>
+      )
+    }
+    {
+      published && (
+        <time class="mt-4 text-xs text-neutral-500">{published}</time>
+      )
+    }
+  </div>
+</a>

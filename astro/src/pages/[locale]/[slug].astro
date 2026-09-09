@@ -1,0 +1,31 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import DynamicZone from '@/components/DynamicZone.astro';
+import { LOCALES } from '@/lib/i18n';
+import { fetchCollection, fetchSingle } from '@/lib/strapi';
+import type { Global, Page } from '@/types/strapi';
+
+/*
+ * CMS-driven pages: /pricing, /contact, /faq and anything else an editor adds.
+ * `homepage` is excluded because it renders at the locale root instead.
+ */
+export async function getStaticPaths() {
+  const paths = [];
+  for (const locale of LOCALES) {
+    const pages = await fetchCollection<Page>('pages', { locale });
+    for (const page of pages) {
+      if (page.slug === 'homepage') continue;
+      paths.push({ params: { locale, slug: page.slug }, props: { page } });
+    }
+  }
+  return paths;
+}
+
+const { locale } = Astro.params as { locale: string };
+const { page } = Astro.props as { page: Page };
+const global = await fetchSingle<Global>('global', { locale });
+---
+
+<BaseLayout locale={locale} global={global} seo={page.seo}>
+  <DynamicZone zone={page.dynamic_zone} locale={locale} />
+</BaseLayout>

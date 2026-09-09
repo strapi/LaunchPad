@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ProductView from '@/components/views/ProductView.astro';
+import { LOCALES } from '@/lib/i18n';
+import { fetchCollection, fetchSingle } from '@/lib/strapi';
+import type { Global, Product } from '@/types/strapi';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const locale of LOCALES) {
+    const products = await fetchCollection<Product>('products', { locale });
+    for (const product of products) {
+      paths.push({
+        params: { locale, slug: product.slug },
+        props: { product },
+      });
+    }
+  }
+  return paths;
+}
+
+const { locale } = Astro.params as { locale: string };
+const { product } = Astro.props as { product: Product };
+const global = await fetchSingle<Global>('global', { locale });
+---
+
+<BaseLayout locale={locale} global={global} seo={product.seo}>
+  <ProductView product={product} locale={locale} />
+</BaseLayout>

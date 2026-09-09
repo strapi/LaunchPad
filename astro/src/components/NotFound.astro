@@ -1,0 +1,29 @@
+---
+interface Props {
+  title?: string;
+  message?: string;
+  locale?: string;
+}
+
+const {
+  title = 'Page not found',
+  message = "We couldn't find what you're looking for.",
+  locale = 'en',
+} = Astro.props;
+---
+
+<div class="flex min-h-screen items-center justify-center">
+  <div class="px-6 text-center">
+    <p class="font-mono text-sm text-cyan-400">404</p>
+    <h1 class="mt-4 text-3xl font-bold text-neutral-100 md:text-4xl">
+      {title}
+    </h1>
+    <p class="text-muted mt-3">{message}</p>
+    <a
+      href={`/${locale}`}
+      class="bg-secondary mt-8 inline-flex rounded-md px-4 py-2 text-sm font-medium text-black transition hover:bg-white"
+    >
+      Back home
+    </a>
+  </div>
+</div>

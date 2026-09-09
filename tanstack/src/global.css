@@ -1,0 +1,150 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@plugin '@tailwindcss/typography';
+
+/* Tailwind v4 CSS-first theme (ported from launchpad/next/tailwind.config.ts) */
+@theme {
+  --color-charcoal: #08090a;
+  --color-lightblack: #1c1c1c;
+  --color-secondary: #e6e6e6;
+  --color-muted: var(--neutral-200);
+
+  --shadow-derek:
+    0px 0px 0px 1px rgb(0 0 0 / 0.06), 0px 1px 1px -0.5px rgb(0 0 0 / 0.06),
+    0px 3px 3px -1.5px rgb(0 0 0 / 0.06), 0px 6px 6px -3px rgb(0 0 0 / 0.06),
+    0px 12px 12px -6px rgb(0 0 0 / 0.06), 0px 24px 24px -12px rgb(0 0 0 / 0.06);
+  --shadow-aceternity:
+    0px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(25, 28, 33, 0.02),
+    0px 0px 0px 1px rgba(25, 28, 33, 0.08);
+
+  --animate-move: move 5s linear infinite;
+  --animate-spin-circle: spin-circle 3s linear infinite;
+
+  @keyframes move {
+    0% {
+      transform: translateX(-200px);
+    }
+    100% {
+      transform: translateX(200px);
+    }
+  }
+
+  @keyframes spin-circle {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* Radial / conic gradient helpers (ported from Tailwind v3 config) */
+@utility bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+@utility bg-gradient-conic {
+  background-image: conic-gradient(
+    from 180deg at 50% 50%,
+    var(--tw-gradient-stops)
+  );
+}
+
+/*
+ * Tailwind v3 color-variable compatibility shim.
+ *
+ * The Next launchpad's `addVariablesForColors` plugin exposed every Tailwind
+ * color as `--{name}-{shade}` at :root. Tailwind v4 exposes these as
+ * `--color-{name}-{shade}` instead. Rather than rewriting every ported
+ * component, we alias the v3-style names here so `var(--neutral-900)` etc.
+ * resolve correctly inside framer-motion `animate` props, inline styles,
+ * and CSS modules.
+ */
+:root {
+  --foreground-rgb: 255, 255, 255;
+
+  --charcoal: var(--color-charcoal);
+  --lightblack: var(--color-lightblack);
+
+  --neutral-50: var(--color-neutral-50);
+  --neutral-100: var(--color-neutral-100);
+  --neutral-200: var(--color-neutral-200);
+  --neutral-300: var(--color-neutral-300);
+  --neutral-400: var(--color-neutral-400);
+  --neutral-500: var(--color-neutral-500);
+  --neutral-600: var(--color-neutral-600);
+  --neutral-700: var(--color-neutral-700);
+  --neutral-800: var(--color-neutral-800);
+  --neutral-900: var(--color-neutral-900);
+  --neutral-950: var(--color-neutral-950);
+
+  --zinc-50: var(--color-zinc-50);
+  --zinc-100: var(--color-zinc-100);
+  --zinc-200: var(--color-zinc-200);
+  --zinc-300: var(--color-zinc-300);
+  --zinc-400: var(--color-zinc-400);
+  --zinc-500: var(--color-zinc-500);
+  --zinc-600: var(--color-zinc-600);
+  --zinc-700: var(--color-zinc-700);
+  --zinc-800: var(--color-zinc-800);
+  --zinc-900: var(--color-zinc-900);
+  --zinc-950: var(--color-zinc-950);
+
+  --blue-50: var(--color-blue-50);
+  --blue-100: var(--color-blue-100);
+  --blue-200: var(--color-blue-200);
+  --blue-300: var(--color-blue-300);
+  --blue-400: var(--color-blue-400);
+  --blue-500: var(--color-blue-500);
+  --blue-600: var(--color-blue-600);
+  --blue-700: var(--color-blue-700);
+  --blue-800: var(--color-blue-800);
+  --blue-900: var(--color-blue-900);
+  --blue-950: var(--color-blue-950);
+
+  --cyan-50: var(--color-cyan-50);
+  --cyan-100: var(--color-cyan-100);
+  --cyan-200: var(--color-cyan-200);
+  --cyan-300: var(--color-cyan-300);
+  --cyan-400: var(--color-cyan-400);
+  --cyan-500: var(--color-cyan-500);
+  --cyan-600: var(--color-cyan-600);
+  --cyan-700: var(--color-cyan-700);
+  --cyan-800: var(--color-cyan-800);
+  --cyan-900: var(--color-cyan-900);
+  --cyan-950: var(--color-cyan-950);
+
+  --indigo-50: var(--color-indigo-50);
+  --indigo-100: var(--color-indigo-100);
+  --indigo-200: var(--color-indigo-200);
+  --indigo-300: var(--color-indigo-300);
+  --indigo-400: var(--color-indigo-400);
+  --indigo-500: var(--color-indigo-500);
+  --indigo-600: var(--color-indigo-600);
+  --indigo-700: var(--color-indigo-700);
+  --indigo-800: var(--color-indigo-800);
+  --indigo-900: var(--color-indigo-900);
+  --indigo-950: var(--color-indigo-950);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+  }
+}
+
+html,
+body {
+  background: #08090a;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

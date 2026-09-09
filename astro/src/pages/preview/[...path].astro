@@ -1,0 +1,170 @@
+---
+import ArticleView from '@/components/views/ArticleView.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import DynamicZone from '@/components/DynamicZone.astro';
+import ProductView from '@/components/views/ProductView.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
+import ProductCard from '@/components/ProductCard.astro';
+import AmbientColor from '@/components/AmbientColor.astro';
+import Container from '@/components/Container.astro';
+import Heading from '@/components/Heading.astro';
+import NotFound from '@/components/NotFound.astro';
+import { isDraftMode } from '@/lib/draft';
+import { isLocale } from '@/lib/i18n';
+import { fetchBySlug, fetchCollection, fetchSingle } from '@/lib/strapi';
+import type { Article, Global, Page, Product } from '@/types/strapi';
+
+/**
+ * Draft-mode renderer.
+ *
+ * The public site is prerendered from published content, so a draft-only entry
+ * has no page to visit — which is exactly what an editor previewing an unsaved
+ * article needs. This route renders the same views against `status=draft`,
+ * per request.
+ *
+ * It lives under `/preview/...` rather than rewriting the public URLs because
+ * with `output: 'static'` a prerendered page is served straight off disk by the
+ * adapter; middleware never sees the request, so there is nothing to intercept.
+ * `/api/preview` redirects here after validating the secret.
+ *
+ * Requires the draft cookie: landing here directly, without going through
+ * `/api/preview`, gets a 404 rather than a way to read unpublished content.
+ */
+export const prerender = false;
+
+const { path = '' } = Astro.params as { path?: string };
+const segments = path.split('/').filter(Boolean);
+const [locale, ...rest] = segments;
+
+/*
+ * Astro forbids an on-demand route from rewriting to a prerendered one, so
+ * "not found" is expressed as a status plus a rendered body rather than a
+ * rewrite to /404.
+ */
+const allowed = isDraftMode(Astro.cookies) && isLocale(locale);
+if (!allowed) Astro.response.status = 404;
+
+const safeLocale = isLocale(locale) ? locale : 'en';
+const draft = { locale: safeLocale, draft: true } as const;
+const global = await fetchSingle<Global>('global', {
+  locale: safeLocale,
+});
+
+type Resolved =
+  | { kind: 'page'; page: Page }
+  | { kind: 'article'; article: Article }
+  | { kind: 'product'; product: Product }
+  | { kind: 'blog-index'; articles: Article[]; heading?: string }
+  | { kind: 'product-index'; products: Product[]; heading?: string }
+  | null;
+
+async function resolve(): Promise<Resolved> {
+  // /en
+  if (rest.length === 0) {
+    const page = await fetchBySlug<Page>('pages', 'homepage', draft);
+    return page ? { kind: 'page', page } : null;
+  }
+
+  // /en/blog and /en/blog/<slug>
+  if (rest[0] === 'blog') {
+    if (rest.length === 1) {
+      const [articles, blogPage] = await Promise.all([
+        fetchCollection<Article>('articles', {
+          ...draft,
+          sort: 'publishedAt:desc',
+        }),
+        fetchSingle<{ heading?: string }>('blog-page', draft).catch(() => null),
+      ]);
+      return { kind: 'blog-index', articles, heading: blogPage?.heading };
+    }
+    const article = await fetchBySlug<Article>('articles', rest[1], draft);
+    return article ? { kind: 'article', article } : null;
+  }
+
+  // /en/products and /en/products/<slug>
+  if (rest[0] === 'products') {
+    if (rest.length === 1) {
+      const [products, productPage] = await Promise.all([
+        fetchCollection<Product>('products', draft),
+        fetchSingle<{ heading?: string }>('product-page', draft).catch(
+          () => null
+        ),
+      ]);
+      return { kind: 'product-index', products, heading: productPage?.heading };
+    }
+    const product = await fetchBySlug<Product>('products', rest[1], draft);
+    return product ? { kind: 'product', product } : null;
+  }
+
+  // /en/<slug> — any other CMS-driven page
+  const page = await fetchBySlug<Page>('pages', rest[0], draft);
+  return page ? { kind: 'page', page } : null;
+}
+
+const resolved = allowed ? await resolve() : null;
+
+if (!resolved) Astro.response.status = 404;
+
+const seo =
+  resolved?.kind === 'page'
+    ? resolved.page.seo
+    : resolved?.kind === 'article'
+      ? resolved.article.seo
+      : resolved?.kind === 'product'
+        ? resolved.product.seo
+        : null;
+---
+
+<BaseLayout locale={safeLocale} global={global} seo={seo} isDraftMode={allowed}>
+  {!resolved && <NotFound locale={isLocale(locale) ? locale : 'en'} />}
+
+  {
+    resolved?.kind === 'page' && (
+      <DynamicZone zone={resolved.page.dynamic_zone} locale={safeLocale} />
+    )
+  }
+
+  {
+    resolved?.kind === 'article' && (
+      <ArticleView article={resolved.article} locale={safeLocale} />
+    )
+  }
+
+  {
+    resolved?.kind === 'product' && (
+      <ProductView product={resolved.product} locale={safeLocale} />
+    )
+  }
+
+  {
+    resolved?.kind === 'blog-index' && (
+      <div class="relative overflow-hidden pt-40 pb-20">
+        <AmbientColor />
+        <Container class="relative z-10">
+          <Heading>{resolved.heading ?? 'Blog'}</Heading>
+          <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {resolved.articles.map((article) => (
+              <ArticleCard article={article} locale={safeLocale} />
+            ))}
+          </div>
+        </Container>
+      </div>
+    )
+  }
+
+  {
+    resolved?.kind === 'product-index' && (
+      <div class="relative overflow-hidden pt-40 pb-20">
+        <AmbientColor />
+        <Container class="relative z-10">
+          <Heading>{resolved.heading ?? 'Products'}</Heading>
+          <div class="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
+            {resolved.products.map((product) => (
+              <ProductCard product={product} locale={safeLocale} />
+            ))}
+          </div>
+        </Container>
+      </div>
+    )
+  }
+</BaseLayout>

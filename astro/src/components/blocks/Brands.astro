@@ -1,0 +1,69 @@
+---
+import Container from '@/components/Container.astro';
+import Heading from '@/components/Heading.astro';
+import StrapiMedia from '@/components/StrapiMedia.astro';
+import Subheading from '@/components/Subheading.astro';
+import type { StrapiMedia as Media } from '@/types/strapi';
+
+/*
+ * Logo marquee. Replaces `react-fast-marquee` with a CSS animation over a
+ * duplicated track — the second copy is aria-hidden so screen readers and the
+ * accessibility tree only see each logo once.
+ */
+interface Props {
+  heading?: string;
+  sub_heading?: string;
+  logos?: Array<{ image?: Media | null }>;
+}
+const { heading, sub_heading, logos = [] } = Astro.props;
+---
+
+<div class="relative py-20">
+  <Container>
+    <Heading data-reveal>{heading}</Heading>
+    {
+      sub_heading && (
+        <Subheading class="mt-4" data-reveal>
+          {sub_heading}
+        </Subheading>
+      )
+    }
+  </Container>
+
+  {
+    logos.length > 0 && (
+      <div class="marquee mt-16 flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
+        {[false, true].map((isClone) => (
+          <div
+            class="marquee__track flex shrink-0 items-center gap-16 px-8"
+            aria-hidden={isClone ? 'true' : undefined}
+          >
+            {logos.map((logo) => (
+              <StrapiMedia
+                media={logo.image}
+                alt={logo.image?.alternativeText ?? ''}
+                width={400}
+                height={400}
+                class="h-10 w-40 object-contain md:h-20 md:w-60"
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .marquee__track {
+    animation: var(--animate-marquee);
+  }
+  .marquee:hover .marquee__track {
+    animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track {
+      animation: none;
+    }
+  }
+</style>

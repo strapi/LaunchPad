@@ -1,0 +1,15 @@
+# dependencies
+/node_modules
+.yarn/install-state.gz
+
+# tanstack / vite
+/.output/
+/.vinxi/
+/.tanstack/
+/dist/
+
+# environment
+.env
+
+# misc
+.DS_Store

@@ -1,0 +1,39 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'simple' | 'muted';
+  class?: string;
+  target?: string | null;
+}
+const {
+  href,
+  variant = 'primary',
+  class: className = '',
+  target,
+} = Astro.props;
+
+const base =
+  'relative z-10 inline-flex cursor-pointer items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition duration-200 hover:-translate-y-0.5';
+
+const variants: Record<string, string> = {
+  primary:
+    'bg-secondary text-black shadow-[0px_-1px_0px_0px_#FFFFFF40_inset,0px_1px_0px_0px_#FFFFFF40_inset] hover:bg-white',
+  secondary: 'bg-transparent text-white shadow-none',
+  simple:
+    'bg-transparent text-white shadow-none hover:bg-neutral-800 hover:shadow-[0px_1px_0px_0px_var(--color-neutral-600)_inset]',
+  muted:
+    'bg-neutral-800 text-white shadow-[0px_1px_0px_0px_var(--color-neutral-600)_inset] hover:bg-neutral-700',
+};
+
+const Tag = href ? 'a' : 'button';
+const rel = target === '_blank' ? 'noopener noreferrer' : undefined;
+---
+
+<Tag
+  href={href}
+  target={target ?? undefined}
+  rel={rel}
+  class:list={[base, variants[variant] ?? variants.primary, className]}
+>
+  <slot />
+</Tag>

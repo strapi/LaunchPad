@@ -25,6 +25,19 @@ strapi/src/components/*/*.json
 next/.next/
 next/out/
 
+# Astro specific
+astro/.astro/
+
+# Nuxt specific
+nuxt/.nuxt/
+nuxt/.output/
+
+# TanStack specific
+tanstack/.output/
+tanstack/.vinxi/
+tanstack/.tanstack/
+tanstack/src/routeTree.gen.ts
+
 # Logs
 *.log
 
