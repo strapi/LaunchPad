@@ -344,12 +344,61 @@ export async function createLaunchpadApp(directory, options) {
   );
   console.log();
 
+  // Ctrl+C sends SIGINT to the whole process group, so Node tears this process
+  // down before anything after the await can run. Handling it explicitly is
+  // the only way to get the last word — without this the message never prints,
+  // which is exactly what happened the first time round.
+  let printed = false;
+  const sayGoodbye = () => {
+    if (printed) return;
+    printed = true;
+    printRestartHelp(directory, framework);
+  };
+  process.on('SIGINT', () => {
+    sayGoodbye();
+    process.exit(0);
+  });
+  process.on('SIGTERM', () => {
+    sayGoodbye();
+    process.exit(0);
+  });
+
   try {
     await execa(PM, [framework.devScript], {
       cwd: targetDir,
       stdio: 'inherit',
     });
   } catch {
-    // Ctrl+C is the normal way out of a dev server.
+    // The dev servers exiting non-zero is normal on shutdown.
   }
+
+  // Covers the servers stopping on their own rather than by Ctrl+C.
+  sayGoodbye();
+}
+
+/**
+ * Printed when the dev servers stop.
+ *
+ * The same command is shown before they start, but by then it is hundreds of
+ * lines up — a real run buries it under about 280 lines of server output. The
+ * moment someone actually needs it is right after Ctrl+C, so this puts it on
+ * the last line of the terminal.
+ *
+ * `yarn dev` is named explicitly as Next. It is the command people reach for,
+ * and in a scaffold built for another frontend it silently starts the wrong
+ * one — worth saying out loud rather than letting them discover it.
+ */
+function printRestartHelp(directory, framework) {
+  const others = FRAMEWORKS.filter((f) => f.name !== framework.name).map((f) =>
+    f.devScript === 'dev' ? `${PM} dev (${f.label})` : `${PM} ${f.devScript}`
+  );
+
+  console.log();
+  log.info('Stopped.');
+  console.log();
+  console.log(
+    `  Restart:          cd ${directory} && ${PM} ${framework.devScript}`
+  );
+  console.log(`  Other frontends:  ${others.join(', ')}`);
+  console.log();
 }
