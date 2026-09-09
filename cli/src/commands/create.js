@@ -248,7 +248,7 @@ export async function createLaunchpadApp(directory, options) {
       await execa('git', ['add', '-A'], { cwd: targetDir });
       await execa(
         'git',
-        ['commit', '-q', '-m', 'Initial commit from create-launchpad-app'],
+        ['commit', '-q', '-m', 'Initial commit from create-strapi-launchpad'],
         { cwd: targetDir }
       );
       log.success('Initialized a git repository');

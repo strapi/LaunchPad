@@ -1,10 +1,10 @@
 {
-  "name": "create-launchpad-app",
+  "name": "create-strapi-launchpad",
   "version": "1.0.0",
   "description": "CLI to scaffold the official Strapi LaunchPad demo application with the frontend of your choice",
   "type": "module",
   "bin": {
-    "create-launchpad-app": "./bin/cli.js"
+    "create-strapi-launchpad": "./bin/cli.js"
   },
   "scripts": {
     "dev": "node ./bin/cli.js",

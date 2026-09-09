@@ -32,7 +32,7 @@ Strap yourself in! You can get started with this project on your local machine b
 ## Quickest start
 
 ```bash
-npx create-launchpad-app my-app
+npx create-strapi-launchpad my-app
 ```
 
 It asks which frontend you want, then clones, installs, seeds and starts it.

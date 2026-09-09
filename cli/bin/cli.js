@@ -15,7 +15,7 @@ const frameworkList = FRAMEWORKS.map(
 ).join('\n');
 
 program
-  .name('create-launchpad-app')
+  .name('create-strapi-launchpad')
   .description('Scaffold the official Strapi LaunchPad demo application')
   .version(version)
   .argument('[directory]', 'directory to create the project in', 'launchpad')
@@ -39,11 +39,11 @@ Frontends:
 ${frameworkList}
 
 Examples:
-  $ create-launchpad-app my-app
-  $ create-launchpad-app my-app --framework astro
-  $ create-launchpad-app my-app --framework nuxt --no-start
-  $ create-launchpad-app my-app --dry-run
-  $ create-launchpad-app my-app --repo ../LaunchPad --framework nuxt
+  $ create-strapi-launchpad my-app
+  $ create-strapi-launchpad my-app --framework astro
+  $ create-strapi-launchpad my-app --framework nuxt --no-start
+  $ create-strapi-launchpad my-app --dry-run
+  $ create-strapi-launchpad my-app --repo ../LaunchPad --framework nuxt
 
 All frontends share one Strapi backend on port ${1337}.
 `

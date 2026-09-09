@@ -1,10 +1,10 @@
-# create-launchpad-app
+# create-strapi-launchpad
 
 Scaffold [LaunchPad](https://github.com/strapi/LaunchPad), Strapi's official
 demo application, with the frontend you want to work in.
 
 ```bash
-npx create-launchpad-app my-app
+npx create-strapi-launchpad my-app
 ```
 
 That clones LaunchPad, installs it, seeds the demo content, and starts the
@@ -24,7 +24,7 @@ LaunchPad ships four frontends against one Strapi backend.
 Strapi runs on **1337** for all of them.
 
 ```bash
-npx create-launchpad-app my-app --framework astro
+npx create-strapi-launchpad my-app --framework astro
 ```
 
 ## Options
