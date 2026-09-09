@@ -8,11 +8,9 @@ import ora from 'ora';
 import {
   DEFAULT_FRAMEWORK,
   FRAMEWORKS,
-  MULTI_FRONTEND_REF,
   STRAPI_PORT,
   frameworkNames,
   getFramework,
-  needsRef,
 } from '../frameworks.js';
 import { log } from '../utils/logger.js';
 import { isPortAvailable, portOwner } from '../utils/ports.js';
@@ -47,8 +45,8 @@ const PM = 'yarn';
 /**
  * Which frontend to scaffold.
  *
- * Always offers the full set. Frontends that are not on LaunchPad's default
- * branch yet are still selectable — `resolveRef` fetches a ref that has them.
+ * All four live on LaunchPad's default branch, so every option works without
+ * a --ref.
  */
 async function resolveFramework(flag) {
   if (flag) {
@@ -83,18 +81,6 @@ async function resolveFramework(flag) {
   }
 
   return getFramework(choice);
-}
-
-/**
- * The ref to clone: an explicit --ref wins, otherwise the branch that carries
- * the chosen frontend.
- */
-function resolveRef(framework, explicitRef) {
-  if (explicitRef) return { ref: explicitRef, automatic: false };
-  if (needsRef(framework.name)) {
-    return { ref: MULTI_FRONTEND_REF, automatic: true };
-  }
-  return { ref: undefined, automatic: false };
 }
 
 /** The frontends present in a cloned LaunchPad tree. */
@@ -133,9 +119,9 @@ function reportBlockedPorts(blocked) {
   }
 }
 
-function printPlan(targetDir, framework, options, ref, automatic, repoUrl) {
+function printPlan(targetDir, framework, options, ref, repoUrl) {
   const steps = [
-    `clone ${repoUrl}${ref ? ` (ref ${ref}${automatic ? ', chosen automatically' : ''})` : ''} into ${targetDir}`,
+    `clone ${repoUrl}${ref ? ` (ref ${ref})` : ''} into ${targetDir}`,
     options.git ? 'git init' : 'skip git init (--no-git)',
     `${PM} install && ${PM} setup`,
     options.seed ? `${PM} seed` : 'skip seed (--no-seed)',
@@ -159,14 +145,10 @@ export async function createLaunchpadApp(directory, options) {
 
   const framework = await resolveFramework(options.framework);
   const repo = normalizeRepo(options.repo);
-  // A local clone is whatever that checkout has; the automatic ref only makes
-  // sense for the canonical GitHub repo.
-  const { ref, automatic } = repo.local
-    ? { ref: options.ref, automatic: false }
-    : resolveRef(framework, options.ref);
+  const ref = options.ref;
 
   if (options.dryRun) {
-    printPlan(targetDir, framework, options, ref, automatic, repo.url);
+    printPlan(targetDir, framework, options, ref, repo.url);
     return;
   }
 
@@ -182,11 +164,6 @@ export async function createLaunchpadApp(directory, options) {
     reportBlockedPorts(blockedUpFront);
     console.log(
       `    another LaunchPad on that port has its own PREVIEW_SECRET, which makes preview fail with "Invalid token"`
-    );
-  }
-  if (automatic) {
-    log.info(
-      `Using branch ${chalk.bold(ref)} — ${framework.label} is not on LaunchPad's default branch yet.`
     );
   }
 

@@ -28,21 +28,6 @@ export const STRAPI_PORT = 1337;
 /** The frontend used when none is chosen. */
 export const DEFAULT_FRAMEWORK = 'next';
 
-/**
- * Temporary: astro, nuxt and tanstack are not on LaunchPad's default branch
- * yet. Choosing one clones this ref instead, so the CLI can offer all four
- * before the multi-frontend PR lands.
- *
- * Delete this and `needsRef` once that PR merges — `git log --oneline main`
- * will show the four frontends and the post-clone check will cover the rest.
- */
-export const MULTI_FRONTEND_REF = 'feat/tanstack-frontend';
-
-const ON_DEFAULT_BRANCH = new Set(['next']);
-
-/** True when this frontend still needs MULTI_FRONTEND_REF to be available. */
-export const needsRef = (name) => !ON_DEFAULT_BRANCH.has(name);
-
 export const frameworkNames = () => FRAMEWORKS.map((f) => f.name);
 
 export function getFramework(name) {
