@@ -11,6 +11,7 @@ LaunchPad is the official Strapi demo app.
 - `astro/`: Astro frontend, same content and routes.
 - `nuxt/`: Nuxt 4 frontend, same content and routes.
 - `tanstack/`: TanStack Start frontend, same content and routes.
+- `cli/`: `create-strapi-launchpad`, the npm package that scaffolds this repo. Uses npm, not yarn, since it is published separately.
 - Root: setup/dev/format scripts using Yarn 4.5.0. Each directory keeps its own lockfile; this is not a Yarn workspace.
 
 ## First Read
@@ -38,6 +39,7 @@ Run commands from the correct directory.
 - Strapi dev: `cd strapi && yarn develop`
 - Strapi build: `cd strapi && yarn build`
 - A frontend directly: `cd <framework> && yarn dev`
+- CLI tests: `yarn test:cli` (verifies the CLI's frontend list still matches this repo)
 
 ## Setup
 

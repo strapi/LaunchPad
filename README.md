@@ -29,6 +29,18 @@ Strap yourself in! You can get started with this project on your local machine b
 > npm install -g yarn
 > ```
 
+## Quickest start
+
+```bash
+npx create-strapi-launchpad my-app
+```
+
+It asks which frontend you want, then clones, installs, seeds and starts it.
+Pass `--framework astro` (or `nuxt`, `tanstack`, `next`) to skip the question.
+The CLI lives in [`cli/`](cli/).
+
+To set the project up by hand instead, carry on below.
+
 ## 1. Clone and Install
 
 To infinity and beyond! Clone the repo and install root dependencies:
