@@ -75,7 +75,7 @@ export const SingleProduct = ({
           </div>
         </div>
         <div>
-          <h2 className="text-2xl font-semibold mb-4">{product.name}</h2>
+          <h1 className="text-2xl font-semibold mb-4">{product.name}</h1>
           <p className=" mb-6 bg-white text-xs px-4 py-1 rounded-full text-black w-fit">
             {locale === 'fr' ? '€' : '$'}
             {formatNumber(product.price, locale)}
