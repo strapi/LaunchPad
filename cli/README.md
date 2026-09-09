@@ -43,9 +43,9 @@ npx create-strapi-launchpad my-app --framework astro
 - Node.js 20.19 or newer
 - Git
 
-Yarn is required — LaunchPad pins `yarn@4.5.0` in its root `package.json`, so
-npm and pnpm will not work. If yarn is missing, the CLI enables it through
-Corepack for you.
+Yarn is required. Every LaunchPad directory ships a `yarn.lock` and its
+scripts call yarn directly, so that is what the CLI drives. If yarn is
+missing, the CLI enables it through Corepack for you.
 
 ## What it does
 

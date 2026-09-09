@@ -38,8 +38,10 @@ function normalizeRepo(repo) {
   return { url: `file://${abs}`, local: true };
 }
 
-// LaunchPad pins yarn in its root package.json, so Corepack will refuse any
-// other package manager. There is no point offering a choice.
+// Every LaunchPad directory ships a yarn.lock and its scripts shell out to
+// yarn, so that is what the CLI drives. npm technically runs here, but it
+// would resolve against no lockfile and write a package-lock beside the
+// yarn one.
 const PM = 'yarn';
 
 /**
@@ -332,6 +334,14 @@ export async function createLaunchpadApp(directory, options) {
   console.log();
   log.info(`Strapi admin  → http://localhost:${STRAPI_PORT}/admin`);
   log.info(`${framework.label} → http://localhost:${framework.port}`);
+  console.log();
+  // Printed before the dev servers take the terminal over, because their
+  // output scrolls past immediately and this is what people need after the
+  // first Ctrl+C. `yarn dev` is Next for every scaffold, so naming the
+  // frontend-specific script matters.
+  console.log(
+    `  To restart later:  cd ${directory} && ${PM} ${framework.devScript}`
+  );
   console.log();
 
   try {

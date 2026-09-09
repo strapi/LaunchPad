@@ -37,9 +37,9 @@ export async function checkPrerequisites() {
     process.exit(1);
   }
 
-  // LaunchPad pins yarn@4.5.0 in its root package.json, so this is the only
-  // package manager that will work. Corepack ships with Node and can provide
-  // it without a global install.
+  // Every LaunchPad directory ships a yarn.lock and its scripts shell out to
+  // yarn, so that is what the CLI drives. Corepack comes with Node and can
+  // provide yarn without a global install.
   try {
     await execaCommand('yarn --version');
     log.success('Yarn available');
@@ -54,7 +54,8 @@ export async function checkPrerequisites() {
           '  corepack enable\n' +
           '  — or —\n' +
           '  npm install -g yarn\n\n' +
-          'LaunchPad pins yarn@4.5.0, so npm and pnpm will not work.'
+          'LaunchPad is set up for yarn: every directory ships a yarn.lock\n' +
+          'and its scripts call yarn directly.'
       );
       process.exit(1);
     }
