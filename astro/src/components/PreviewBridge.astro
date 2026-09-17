@@ -18,6 +18,10 @@ import { STRAPI_URL } from '@/lib/strapi';
 
 <script is:inline define:vars={{ strapiUrl: STRAPI_URL }}>
   (() => {
+    const SCRIPT_ID = 'strapi-preview-script';
+    const QUIET_MS = 300;
+    const MAX_WAIT_MS = 5000;
+
     const handleMessage = (message) => {
       if (message.origin !== strapiUrl) return;
 
@@ -29,13 +33,70 @@ import { STRAPI_URL } from '@/lib/strapi';
         // is enough to pick up the saved content.
         window.location.reload();
       } else if (data.type === 'strapiScript' && data.payload?.script) {
+        // The admin answers every previewReady, so guard against a second
+        // inject leaving two overlays competing for the same elements.
+        if (document.getElementById(SCRIPT_ID)) return;
+
         const script = document.createElement('script');
+        script.id = SCRIPT_ID;
         script.textContent = data.payload.script;
         document.head.appendChild(script);
       }
     };
 
+    /**
+     * Announce readiness only once the page has stopped changing.
+     *
+     * Strapi's overlay script rewrites the DOM the moment it executes: it
+     * decodes the invisible stega markers out of text nodes and tags elements
+     * with `data-strapi-source`. Astro ships React islands on these pages, so
+     * if that lands mid-hydration the island's markup no longer matches the
+     * server HTML, React regenerates it, and the overlay and handlers the
+     * script just installed are thrown away — click-to-edit silently stops
+     * working. There is no public "hydration complete" event, so watch for the
+     * DOM going quiet instead.
+     */
+    const whenSettled = (run) => {
+      let quiet, cap, observer;
+      let done = false;
+
+      const finish = () => {
+        if (done) return;
+        done = true;
+        clearTimeout(quiet);
+        clearTimeout(cap);
+        observer?.disconnect();
+        run();
+      };
+
+      const start = () => {
+        if (done) return;
+        // Hydration shows up as childList/characterData churn. Attributes are
+        // deliberately excluded: animation libraries write inline styles every
+        // frame, so watching them would mean the page never looks quiet.
+        observer = new MutationObserver(() => {
+          clearTimeout(quiet);
+          quiet = setTimeout(finish, QUIET_MS);
+        });
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+          characterData: true,
+        });
+        quiet = setTimeout(finish, QUIET_MS);
+        cap = setTimeout(finish, MAX_WAIT_MS);
+      };
+
+      if (document.readyState === 'complete') {
+        start();
+      } else {
+        window.addEventListener('load', start, { once: true });
+      }
+    };
+
     window.addEventListener('message', handleMessage);
-    window.parent.postMessage({ type: 'previewReady' }, '*');
+    whenSettled(() => {
+      window.parent.postMessage({ type: 'previewReady' }, '*');
+    });
   })();
 </script>
