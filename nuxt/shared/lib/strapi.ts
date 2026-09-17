@@ -95,13 +95,19 @@ export function createStrapiClient(baseUrl: string): StrapiClient {
     const url = `${apiUrl}/${path}${buildQuery(options)}`;
 
     const response = await fetch(url, {
-      headers: {
-        // Only meaningful in draft mode: tells Strapi to embed invisible stega
-        // markers so its preview overlay can locate each field in the DOM.
-        // See `shared/lib/source-map.ts` for how those are handled on the way
-        // out.
-        'strapi-encode-source-maps': options.draft ? 'true' : 'false',
-      },
+      // Only sent in draft mode, where it tells Strapi to embed invisible
+      // stega markers so its preview overlay can locate each field in the DOM.
+      // See `shared/lib/source-map.ts` for how those are handled on the way
+      // out.
+      //
+      // Sending it as "false" the rest of the time is not free. Nuxt refetches
+      // on the client during in-app navigation, and any custom header makes
+      // that a preflighted cross-origin request. Strapi's CORS defaults allow
+      // only Content-Type, Authorization, Origin and Accept, so the preflight
+      // fails, the fetch throws, and the page renders its 404 — while a full
+      // page load of the same URL works, because that fetch runs on the
+      // server. Omitting the header keeps it a simple request.
+      headers: options.draft ? { 'strapi-encode-source-maps': 'true' } : {},
     });
 
     if (!response.ok) {
