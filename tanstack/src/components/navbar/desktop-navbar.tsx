@@ -12,7 +12,7 @@ import { LogoutButton } from '../logout-button';
 import { NavbarItem } from './navbar-item';
 import { Button } from '@/components/elements/button';
 import { Logo } from '@/components/logo';
-import { cn } from '@/lib/utils';
+import { cn, stripStegaMarkers } from '@/lib/utils';
 import type { TAuthUser } from '@/types/auth';
 
 type NavItem = {
@@ -76,7 +76,7 @@ export const DesktopNavbar = ({
         <div className="flex items-center gap-1.5">
           {leftNavbarItems.map((item) => (
             <NavbarItem
-              href={`/${locale}${item.URL}`}
+              href={stripStegaMarkers(`/${locale}${item.URL}`)}
               key={item.text}
               target={item.target}
             >
@@ -113,7 +113,7 @@ export const DesktopNavbar = ({
                   index === rightNavbarItems.length - 1 ? 'primary' : 'simple'
                 }
                 as={Link}
-                to={`/${locale}${item.URL}` as any}
+                to={stripStegaMarkers(`/${locale}${item.URL}`) as any}
               >
                 {item.text}
               </Button>

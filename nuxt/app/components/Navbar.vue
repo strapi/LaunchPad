@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { stripStegaMarkers } from '#shared/lib/stega';
 import type { Global } from '#shared/types/strapi';
 
 /**
@@ -18,7 +19,13 @@ const props = defineProps<{
 
 const left = computed(() => props.data?.left_navbar_items ?? []);
 const right = computed(() => props.data?.right_navbar_items ?? []);
-const localePath = (url: string) => `/${props.locale}${url}`;
+/*
+ * Stripped: in draft mode `item.URL` arrives with stega markers appended, and
+ * an `href` is not a place they can live — the browser percent-encodes them
+ * into the request and every navbar link dies. They belong in the link's text,
+ * which is rendered untouched below and stays click-to-edit.
+ */
+const localePath = (url: string) => stripStegaMarkers(`/${props.locale}${url}`);
 
 const scrolled = ref(false);
 const menuOpen = ref(false);

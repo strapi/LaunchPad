@@ -1,8 +1,9 @@
 ---
 import BlocksNode from '@/components/BlocksNode.astro';
 import BlocksText from '@/components/BlocksText.astro';
-import { normalizeStrapiMediaUrl, stripStegaMarkers } from '@/lib/media';
+import { normalizeStrapiMediaUrl } from '@/lib/media';
 import { getStrapiSource } from '@/lib/source-map';
+import { stripStegaMarkers } from '@/lib/stega';
 import type { BlockNode } from '@/types/strapi';
 
 /**
@@ -123,7 +124,7 @@ const children = node.children ?? [];
 {
   node.type === 'link' && (
     <a
-      href={node.url}
+      href={node.url ? stripStegaMarkers(node.url) : undefined}
       class="text-cyan-400 underline underline-offset-4 hover:text-cyan-300"
       rel={node.url?.startsWith('http') ? 'noopener noreferrer' : undefined}
       target={node.url?.startsWith('http') ? '_blank' : undefined}

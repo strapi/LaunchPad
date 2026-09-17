@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { PreviewPayload } from '#shared/types/preview';
-
 /**
  * Draft-mode renderer.
  *
@@ -27,15 +25,12 @@ const path = computed(() => {
   return Array.isArray(value) ? value.join('/') : String(value ?? '');
 });
 
-const { data } = await useAsyncData(
-  computed(() => `preview-${path.value}`),
-  () =>
-    $fetch<PreviewPayload>('/api/preview-content', {
-      query: { path: path.value },
-      headers: useRequestHeaders(['cookie']),
-    }),
-  { watch: [path] }
-);
+/*
+ * Shared with the layout, which needs the same payload's `global` for the
+ * navbar and footer and renders before this page does. Same key, one request —
+ * see `usePreviewPayload`.
+ */
+const { data } = await usePreviewPayload(path);
 
 const resolved = computed(() => data.value?.resolved ?? null);
 const locale = computed(() => data.value?.locale ?? 'en');

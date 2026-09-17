@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 
 import { BlurImage } from '@/components/blur-image';
 import { resolveStrapiMedia } from '@/lib/strapi/strapi-image';
-import { truncate } from '@/lib/utils';
+import { stripStegaMarkers, truncate } from '@/lib/utils';
 import type { Article } from '@/types/types';
 
 export const BlogCard = ({
@@ -16,7 +16,7 @@ export const BlogCard = ({
   return (
     <Link
       className="shadow-derek grid grid-cols-1 md:grid-cols-2  rounded-3xl group border border-transparent hover:border-neutral-800 w-full hover:bg-neutral-900  overflow-hidden  hover:scale-[1.02] transition duration-200"
-      to={`/${locale}/blog/${article.slug}` as any}
+      to={stripStegaMarkers(`/${locale}/blog/${article.slug}`) as any}
     >
       <div className="">
         {article.image ? (
@@ -71,7 +71,7 @@ export const BlogCardVertical = ({
   return (
     <Link
       className="shadow-derek   rounded-3xl group border border-transparent hover:border-neutral-800 w-full hover:bg-neutral-900  overflow-hidden  hover:scale-[1.02] transition duration-200"
-      to={`/${locale}/blog/${article.slug}` as any}
+      to={stripStegaMarkers(`/${locale}/blog/${article.slug}`) as any}
     >
       <div className="">
         {article.image ? (

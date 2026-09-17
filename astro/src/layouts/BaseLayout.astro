@@ -5,6 +5,7 @@ import Footer from '@/components/Footer.astro';
 import Navbar from '@/components/Navbar.astro';
 import PreviewBridge from '@/components/PreviewBridge.astro';
 import { strapiMedia } from '@/lib/media';
+import { stripStegaMarkers } from '@/lib/stega';
 import type { Global, Seo } from '@/types/strapi';
 
 /**
@@ -35,7 +36,9 @@ const ogTitle = seo?.ogTitle || title;
 const ogDescription = seo?.ogDescription || description;
 const ogImage = strapiMedia(seo?.metaImage?.url ?? fallback?.metaImage?.url);
 const twitterCard = seo?.twitterCard || 'summary_large_image';
-const twitterImage = seo?.twitterImage ?? null;
+const twitterImage = seo?.twitterImage
+  ? stripStegaMarkers(seo.twitterImage)
+  : null;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
 ---

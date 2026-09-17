@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { normalizeStrapiMediaUrl, stripStegaMarkers } from '#shared/lib/media';
+import { normalizeStrapiMediaUrl } from '#shared/lib/media';
 import { getStrapiSource } from '#shared/lib/source-map';
+import { stripStegaMarkers } from '#shared/lib/stega';
 import type { BlockNode } from '#shared/types/strapi';
 
 /**
@@ -30,7 +31,14 @@ const HEADING_CLASSES: Record<string, string> = {
   h4: 'mt-6 mb-2 text-lg font-bold text-neutral-100',
 };
 
-const isExternalLink = computed(() => !!props.node.url?.startsWith('http'));
+/*
+ * Blocks are not source-mapped on Strapi 5.52, so today this changes nothing.
+ * It is here because the field is a Strapi string heading for an `href`, and
+ * the day blocks do get encoded a link that silently 404s is a bad way to find
+ * out.
+ */
+const linkHref = computed(() => stripStegaMarkers(props.node.url ?? ''));
+const isExternalLink = computed(() => linkHref.value.startsWith('http'));
 
 const codeText = computed(() =>
   children.value.map((child) => child.text ?? '').join('')
@@ -91,7 +99,7 @@ const imageAlt = computed(() =>
 
   <NuxtLink
     v-else-if="node.type === 'link' && !isExternalLink"
-    :to="node.url ?? '#'"
+    :to="linkHref || '#'"
     class="text-cyan-400 underline underline-offset-4 hover:text-cyan-300"
   >
     <BlocksNode v-for="(child, i) in children" :key="i" :node="child" />
@@ -99,7 +107,7 @@ const imageAlt = computed(() =>
 
   <a
     v-else-if="node.type === 'link'"
-    :href="node.url"
+    :href="linkHref"
     class="text-cyan-400 underline underline-offset-4 hover:text-cyan-300"
     rel="noopener noreferrer"
     target="_blank"

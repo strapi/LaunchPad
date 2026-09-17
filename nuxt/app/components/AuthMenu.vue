@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { stripStegaMarkers } from '#shared/lib/stega';
 import type { NavbarLink } from '#shared/types/strapi';
 
 /**
@@ -10,10 +11,13 @@ import type { NavbarLink } from '#shared/types/strapi';
  *
  * While `pending` holds, neither state renders — see the note in `useAuth`.
  */
-defineProps<{
+const props = defineProps<{
   locale: string;
   links: NavbarLink[];
 }>();
+
+/** Stega markers out of the URL — see `shared/lib/stega.ts`. */
+const hrefFor = (url: string) => stripStegaMarkers(`/${props.locale}${url}`);
 
 const { user, pending, refresh, logout } = useAuth();
 const loggingOut = ref(false);
@@ -47,7 +51,7 @@ async function onLogout() {
       <Button
         v-for="(item, index) in links"
         :key="item.URL"
-        :href="`/${locale}${item.URL}`"
+        :href="hrefFor(item.URL)"
         :variant="index === links.length - 1 ? 'primary' : 'simple'"
       >
         {{ item.text }}

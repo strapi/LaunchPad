@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Container } from '../container';
 import { AmbientColor } from '../decorations/ambient-color';
 import { Button } from '../elements/button';
+import { stripStegaMarkers } from '@/lib/utils';
 
 export const CTA = ({
   heading,
@@ -34,7 +35,7 @@ export const CTA = ({
               <Button
                 as={Link}
                 key={index}
-                to={`/${locale}${cta.URL}`}
+                to={stripStegaMarkers(`/${locale}${cta.URL}`)}
                 variant={cta.variant}
                 className="py-3"
               >

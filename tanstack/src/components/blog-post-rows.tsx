@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import FuzzySearch from 'fuzzy-search';
 import { useEffect, useMemo, useState } from 'react';
 
-import { truncate } from '@/lib/utils';
+import { stripStegaMarkers, truncate } from '@/lib/utils';
 import type { Article } from '@/types/types';
 
 export const BlogPostRows = ({
@@ -65,7 +65,7 @@ export const BlogPostRow = ({
 }) => {
   return (
     <Link
-      to={`/${locale}/blog/${article.slug}` as any}
+      to={stripStegaMarkers(`/${locale}/blog/${article.slug}`) as any}
       className="flex md:flex-row flex-col items-start justify-between md:items-center group py-4"
     >
       <div>

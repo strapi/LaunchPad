@@ -1,7 +1,7 @@
 import { useMatches, useRouter } from '@tanstack/react-router';
 
 import { i18n } from '@/i18n.config';
-import { cn } from '@/lib/utils';
+import { cn, stripStegaMarkers } from '@/lib/utils';
 
 /**
  * Reads `localizedSlugs` from the deepest matched route's loaderData.
@@ -35,11 +35,15 @@ export function LocaleSwitcher({ currentLocale }: { currentLocale: string }) {
 
   const buildTargetPath = (targetLocale: string): string => {
     if (localizedSlugs) {
-      const slug = localizedSlugs[targetLocale];
-      if (slug === undefined) {
+      // Slugs come from Strapi, so in draft mode they can carry invisible
+      // stega markers. Router targets are not visible text — left in, the
+      // marker is percent-encoded into the URL and the route stops matching.
+      const rawSlug = localizedSlugs[targetLocale];
+      if (rawSlug === undefined) {
         // No localization for this route → send to the target locale's home.
         return `/${targetLocale}`;
       }
+      const slug = stripStegaMarkers(rawSlug);
       return slug === '' ? `/${targetLocale}` : `/${targetLocale}/${slug}`;
     }
 

@@ -1,4 +1,5 @@
 import type { NuxtApp } from '#app';
+import type { PreviewPayload } from '#shared/types/preview';
 import type {
   Article,
   Global,
@@ -38,13 +39,61 @@ const useSharedCache = <T>() => ({
     (nuxtApp.payload.data[key] ?? nuxtApp.static.data[key]) as T | undefined,
 });
 
-export function useGlobal(locale: Ref<string>) {
+/**
+ * The `global` single type — navbar, footer, fallback SEO.
+ *
+ * Published content only: this reads Strapi straight from the app, and draft
+ * reads are gated by an HttpOnly cookie the browser cannot show. `/preview/**`
+ * therefore does *not* use this — it takes its global out of the preview
+ * payload, which the server assembles with `draft: true`. See
+ * `usePreviewPayload` and `app/layouts/default.vue`.
+ *
+ * `enabled` is how the layout opts out on a preview route, in the same shape as
+ * `useEntry` below: a disabled call resolves to null under its own `idle:` key
+ * so it cannot leave a null behind the real one.
+ */
+export function useGlobal(locale: Ref<string>, enabled?: Ref<boolean>) {
   const strapi = useStrapiClient();
+  const on = computed(() => (enabled ? enabled.value : true));
 
-  return useAsyncData(
-    computed(() => `global-${locale.value}`),
-    () => strapi.single<Global>('global', { locale: locale.value }),
-    { watch: [locale], ...useSharedCache<Global>() }
+  return useAsyncData<Global | null>(
+    computed(() => (on.value ? `global-${locale.value}` : 'idle:global')),
+    () =>
+      on.value
+        ? strapi.single<Global>('global', { locale: locale.value })
+        : Promise.resolve(null),
+    { watch: [locale, on], ...useSharedCache<Global | null>() }
+  );
+}
+
+/**
+ * Everything `/preview/<locale>/<...>` renders, drafts included.
+ *
+ * Both the layout and the preview page need this, and the layout renders first
+ * — the navbar is written before the page's `<slot>` is reached, so the page
+ * cannot hand its data upwards (same constraint as `useLocalizedPaths`). They
+ * call this with the same key instead and `useSharedCache` collapses the two
+ * into one request, so the draft global that feeds the navbar and footer is the
+ * same object the page renders from.
+ *
+ * It goes through `/api/preview-content` rather than Strapi directly because
+ * the draft cookie is HttpOnly: only the server can see whether this request is
+ * allowed to read unpublished content, and only the server may ask for source
+ * maps on its behalf.
+ */
+export function usePreviewPayload(path: Ref<string>, enabled?: Ref<boolean>) {
+  const on = computed(() => (enabled ? enabled.value : true));
+
+  return useAsyncData<PreviewPayload | null>(
+    computed(() => (on.value ? `preview-${path.value}` : 'idle:preview')),
+    () =>
+      on.value
+        ? $fetch<PreviewPayload>('/api/preview-content', {
+            query: { path: path.value },
+            headers: useRequestHeaders(['cookie']),
+          })
+        : Promise.resolve(null),
+    { watch: [path, on], ...useSharedCache<PreviewPayload | null>() }
   );
 }
 

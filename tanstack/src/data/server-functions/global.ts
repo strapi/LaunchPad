@@ -19,6 +19,7 @@ export const getGlobalData = createServerFn({ method: 'GET' })
     const client = getContentClient(draft);
     const response = await client.single('global').find({
       locale: data.locale,
+      status: draft ? 'draft' : 'published',
     });
     return { data: response.data as any };
   });

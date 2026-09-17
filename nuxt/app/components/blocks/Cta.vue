@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { stripStegaMarkers } from '#shared/lib/stega';
 import type { NavbarLink } from '#shared/types/strapi';
 
 withDefaults(
@@ -11,8 +12,11 @@ withDefaults(
   { CTAs: () => [] }
 );
 
-const hrefFor = (url: string | undefined, locale: string) =>
-  url?.startsWith('http') ? url : `/${locale}${url ?? ''}`;
+// Stripped before it becomes an `href` — see `shared/lib/stega.ts`.
+const hrefFor = (url: string | undefined, locale: string) => {
+  const clean = stripStegaMarkers(url ?? '');
+  return clean.startsWith('http') ? clean : `/${locale}${clean}`;
+};
 </script>
 
 <template>

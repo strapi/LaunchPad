@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { stripStegaMarkers } from '#shared/lib/stega';
 import type { Global, NavbarLink } from '#shared/types/strapi';
 
 const props = defineProps<{
@@ -12,11 +13,18 @@ const columns = computed<Array<NavbarLink[] | undefined>>(() => [
   props.data?.social_media_links,
 ]);
 
-const isExternal = (url: string) => url.startsWith('http');
+/*
+ * Markers come off first, not last: they would otherwise ride into the `href`
+ * and break the link, and `startsWith('http')` still matches because Strapi
+ * appends them — one lucky ordering is not something to depend on.
+ */
+const isExternal = (url: string) => stripStegaMarkers(url).startsWith('http');
 
 /** External links keep their URL; internal ones get the locale prefix. */
-const hrefFor = (url: string) =>
-  isExternal(url) ? url : `/${props.locale}${url}`;
+const hrefFor = (url: string) => {
+  const clean = stripStegaMarkers(url);
+  return clean.startsWith('http') ? clean : `/${props.locale}${clean}`;
+};
 </script>
 
 <template>

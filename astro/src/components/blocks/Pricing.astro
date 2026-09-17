@@ -3,6 +3,7 @@ import Button from '@/components/Button.astro';
 import Container from '@/components/Container.astro';
 import Heading from '@/components/Heading.astro';
 import Subheading from '@/components/Subheading.astro';
+import { stripStegaMarkers } from '@/lib/stega';
 import type { NavbarLink, Perk } from '@/types/strapi';
 
 interface Plan {
@@ -71,11 +72,11 @@ const formatPrice = (price?: number | null) =>
                   <Button
                     class="mt-8 mb-2 w-full"
                     variant={plan.featured ? 'primary' : 'muted'}
-                    href={
+                    href={stripStegaMarkers(
                       plan.CTA.URL?.startsWith('http')
                         ? plan.CTA.URL
                         : `/${locale}${plan.CTA.URL}`
-                    }
+                    )}
                   >
                     {plan.CTA.text}
                   </Button>
