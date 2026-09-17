@@ -12,7 +12,7 @@ import { ClientOnly } from '@/components/client-only';
 import ShootingStars from '@/components/decorations/shooting-star';
 import StarBackground from '@/components/decorations/star-background';
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
-import { cn } from '@/lib/utils';
+import { cn, stripStegaMarkers } from '@/lib/utils';
 
 /**
  * Strapi input shape. Each form.inputs entry comes from the
@@ -30,7 +30,7 @@ interface StrapiFormInput {
  */
 function normalizeKey(name: string): string {
   return (
-    name
+    stripStegaMarkers(name)
       .toLowerCase()
       .replaceAll(/\s+/g, '_')
       .replaceAll(/[^a-z0-9_]/g, '') || 'field'
@@ -101,7 +101,16 @@ export function FormNextToSection({
     },
   ];
 
-  const inputs: Array<StrapiFormInput> = form?.inputs ?? [];
+  // Draft mode appends invisible stega markers to every Strapi string. A raw
+  // comparison against a literal never matches, so `submitInput` would be
+  // undefined (no submit button), the submit row would become a required
+  // validated field, and email would lose its validation. Strip `type` once,
+  // here, rather than at each comparison. `name` and `placeholder` keep their
+  // markers so those fields stay click-to-editable.
+  const inputs: Array<StrapiFormInput> = (form?.inputs ?? []).map((i) => ({
+    ...i,
+    type: stripStegaMarkers(i.type ?? ''),
+  }));
   const submitInput = inputs.find((i) => i.type === 'submit');
 
   // Memoize the schema + defaults so the form instance isn't torn down on

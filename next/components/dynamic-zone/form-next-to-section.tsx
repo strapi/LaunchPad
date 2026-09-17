@@ -11,6 +11,7 @@ import { Button } from '../elements/button';
 import ShootingStars from '@/components/decorations/shooting-star';
 import StarBackground from '@/components/decorations/star-background';
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip';
+import { stripStegaMarkers } from '@/lib/utils';
 
 export function FormNextToSection({
   heading,
@@ -64,42 +65,49 @@ export function FormNextToSection({
             <div>
               <form className="space-y-4">
                 {form &&
-                  form?.inputs?.map((input: any, index: number) => (
-                    <div key={`form-input-${index}`}>
-                      {input.type !== 'submit' && (
-                        <label
-                          htmlFor="name"
-                          className="block text-sm font-medium leading-6 text-neutral-400 "
-                        >
-                          {input.name}
-                        </label>
-                      )}
-
-                      <div className="mt-2">
-                        {input.type === 'textarea' ? (
-                          <textarea
-                            rows={5}
-                            id="message"
-                            placeholder={input.placeholder}
-                            className="block w-full bg-neutral-900  px-4 rounded-md border-0 py-1.5  shadow-aceternity text-neutral-100 placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 "
-                          />
-                        ) : input.type === 'submit' ? (
-                          <div>
-                            <Button className="w-full mt-6">
-                              {input.name}
-                            </Button>
-                          </div>
-                        ) : (
-                          <input
-                            id="name"
-                            type={input.type}
-                            placeholder={input.placeholder}
-                            className="block w-full bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-neutral-100 placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 "
-                          />
+                  form?.inputs?.map((input: any, index: number) => {
+                    // Draft mode appends invisible stega markers to every
+                    // Strapi string, so a raw comparison against a literal
+                    // never matches: every field would fall through to a plain
+                    // text input and the submit row would render as one too.
+                    const inputType = stripStegaMarkers(input.type ?? '');
+                    return (
+                      <div key={`form-input-${index}`}>
+                        {inputType !== 'submit' && (
+                          <label
+                            htmlFor="name"
+                            className="block text-sm font-medium leading-6 text-neutral-400 "
+                          >
+                            {input.name}
+                          </label>
                         )}
+
+                        <div className="mt-2">
+                          {inputType === 'textarea' ? (
+                            <textarea
+                              rows={5}
+                              id="message"
+                              placeholder={input.placeholder}
+                              className="block w-full bg-neutral-900  px-4 rounded-md border-0 py-1.5  shadow-aceternity text-neutral-100 placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 "
+                            />
+                          ) : inputType === 'submit' ? (
+                            <div>
+                              <Button className="w-full mt-6">
+                                {input.name}
+                              </Button>
+                            </div>
+                          ) : (
+                            <input
+                              id="name"
+                              type={inputType}
+                              placeholder={input.placeholder}
+                              className="block w-full bg-neutral-900 px-4 rounded-md border-0 py-1.5  shadow-aceternity text-neutral-100 placeholder:text-gray-400 focus:ring-2 focus:ring-neutral-400 focus:outline-none sm:text-sm sm:leading-6 "
+                            />
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
               </form>
             </div>
           </div>

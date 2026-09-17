@@ -38,6 +38,7 @@ const whenSettled = (run: () => void): (() => void) => {
     clearTimeout(quiet);
     clearTimeout(cap);
     observer?.disconnect();
+    window.removeEventListener('load', start);
     run();
   };
 
@@ -56,9 +57,13 @@ const whenSettled = (run: () => void): (() => void) => {
       characterData: true,
     });
     quiet = setTimeout(finish, QUIET_MS);
-    // Never strand the preview if something mutates forever.
-    cap = setTimeout(finish, MAX_WAIT_MS);
   };
+
+  // Armed before the load wait, not inside start(). A single stalled
+  // subresource means `load` never fires; Strapi only sends the script in
+  // response to previewReady and never retries, so without this the preview
+  // would sit dead forever rather than for MAX_WAIT_MS.
+  cap = setTimeout(finish, MAX_WAIT_MS);
 
   if (document.readyState === 'complete') {
     start();
