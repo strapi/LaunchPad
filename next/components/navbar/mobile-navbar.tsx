@@ -9,7 +9,7 @@ import { IoIosClose } from 'react-icons/io';
 import { LocaleSwitcher } from '../locale-switcher';
 import { Button } from '@/components/elements/button';
 import { Logo } from '@/components/logo';
-import { cn } from '@/lib/utils';
+import { cn, stripStegaMarkers } from '@/lib/utils';
 
 type Props = {
   leftNavbarItems: {
@@ -81,7 +81,9 @@ export const MobileNavbar = ({
                     {navItem.children.map((childNavItem: any, idx: number) => (
                       <Link
                         key={`link=${idx}`}
-                        href={`/${locale}${childNavItem.URL}`}
+                        href={stripStegaMarkers(
+                          `/${locale}${childNavItem.URL}`
+                        )}
                         onClick={() => setOpen(false)}
                         className="relative max-w-[15rem] text-left text-2xl"
                         suppressHydrationWarning
@@ -95,7 +97,7 @@ export const MobileNavbar = ({
                 ) : (
                   <Link
                     key={`link=${idx}`}
-                    href={`/${locale}${navItem.URL}`}
+                    href={stripStegaMarkers(`/${locale}${navItem.URL}`)}
                     onClick={() => setOpen(false)}
                     className="relative"
                     suppressHydrationWarning
@@ -116,7 +118,7 @@ export const MobileNavbar = ({
                   index === rightNavbarItems.length - 1 ? 'primary' : 'simple'
                 }
                 as={Link}
-                href={`/${locale}${item.URL}`}
+                href={stripStegaMarkers(`/${locale}${item.URL}`)}
               >
                 {item.text}
               </Button>

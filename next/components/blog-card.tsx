@@ -7,7 +7,7 @@ import Balancer from 'react-wrap-balancer';
 import { Logo } from './logo';
 import { BlurImage } from '@/components/blur-image';
 import { resolveStrapiMedia } from '@/lib/strapi/strapiImage';
-import { truncate } from '@/lib/utils';
+import { stripStegaMarkers, truncate } from '@/lib/utils';
 import { Article } from '@/types/types';
 
 export const BlogCard = ({
@@ -20,7 +20,7 @@ export const BlogCard = ({
   return (
     <Link
       className="shadow-derek grid grid-cols-1 md:grid-cols-2  rounded-3xl group border border-transparent hover:border-neutral-800 w-full hover:bg-neutral-900  overflow-hidden  hover:scale-[1.02] transition duration-200"
-      href={`/${locale}/blog/${article.slug}`}
+      href={stripStegaMarkers(`/${locale}/blog/${article.slug}`)}
     >
       <div className="">
         {article.image ? (
@@ -85,7 +85,7 @@ export const BlogCardVertical = ({
   return (
     <Link
       className="shadow-derek   rounded-3xl group border border-transparent hover:border-neutral-800 w-full hover:bg-neutral-900  overflow-hidden  hover:scale-[1.02] transition duration-200"
-      href={`/${locale}/blog/${article.slug}`}
+      href={stripStegaMarkers(`/${locale}/blog/${article.slug}`)}
     >
       <div className="">
         {article.image ? (

@@ -2,7 +2,7 @@ import { Link } from 'next-view-transitions';
 import React from 'react';
 
 import { StrapiMedia } from '@/components/ui/strapi-media';
-import { formatNumber } from '@/lib/utils';
+import { formatNumber, stripStegaMarkers } from '@/lib/utils';
 import { Product } from '@/types/types';
 
 export const Featured = ({
@@ -55,7 +55,7 @@ const FeaturedItem = ({
 }) => {
   return (
     <Link
-      href={`/${locale}/products/${product.slug}` as never}
+      href={stripStegaMarkers(`/${locale}/products/${product.slug}`) as never}
       className="group border border-neutral-800 rounded-md overflow-hidden relative block"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black transition-all duration-200 z-30" />

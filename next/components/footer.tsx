@@ -2,6 +2,7 @@ import { Link } from 'next-view-transitions';
 import React from 'react';
 
 import { Logo } from '@/components/logo';
+import { stripStegaMarkers } from '@/lib/utils';
 
 export const Footer = async ({
   data,
@@ -85,7 +86,9 @@ const LinkSection = ({
       <Link
         key={link.text}
         className="transition-colors hover:text-neutral-400 text-muted text-xs sm:text-sm"
-        href={`${link.URL.startsWith('http') ? '' : `/${locale}`}${link.URL}`}
+        href={stripStegaMarkers(
+          `${link.URL.startsWith('http') ? '' : `/${locale}`}${link.URL}`
+        )}
       >
         {link.text}
       </Link>
