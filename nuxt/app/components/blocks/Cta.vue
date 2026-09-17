@@ -36,7 +36,7 @@ const hrefFor = (url: string | undefined, locale: string) => {
           v-for="cta in CTAs"
           :key="cta.URL"
           :href="hrefFor(cta.URL, locale)"
-          :target="cta.target"
+          :target="cta.target ? stripStegaMarkers(cta.target) : undefined"
           :variant="cta.variant ?? 'primary'"
         >
           {{ cta.text }}

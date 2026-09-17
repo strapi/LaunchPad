@@ -80,7 +80,7 @@ export const DesktopNavbar = ({
             <NavbarItem
               href={stripStegaMarkers(`/${locale}${item.URL}`) as never}
               key={item.text}
-              target={item.target}
+              target={stripStegaMarkers(item.target ?? '') || undefined}
             >
               {item.text}
             </NavbarItem>

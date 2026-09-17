@@ -24,4 +24,4 @@
  * attribute sides cannot drift apart.
  */
 export const stripStegaMarkers = (value: string): string =>
-  value.replace(/[​-‍⁠﻿]/g, '');
+  value.replace(/[\u200B-\u200D\u2060\uFEFF]/g, '');

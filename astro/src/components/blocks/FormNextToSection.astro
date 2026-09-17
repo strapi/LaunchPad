@@ -14,9 +14,17 @@ type FieldType = 'text' | 'email' | 'tel' | 'url' | 'number';
 const FIELD_TYPES: FieldType[] = ['text', 'email', 'tel', 'url', 'number'];
 
 /** `textarea` selects a different element, so it is not an <input> type. */
-const isTextarea = (value?: string) => value === 'textarea';
-const asFieldType = (value?: string): FieldType =>
-  FIELD_TYPES.includes(value as FieldType) ? (value as FieldType) : 'text';
+/*
+ * Draft mode appends invisible stega markers to every Strapi string, so a raw
+ * comparison against a literal never matches and the preview renders a form
+ * that is not the form. Strip before comparing.
+ */
+const isTextarea = (value?: string) =>
+  stripStegaMarkers(value ?? '') === 'textarea';
+const asFieldType = (value?: string): FieldType => {
+  const clean = stripStegaMarkers(value ?? '') as FieldType;
+  return FIELD_TYPES.includes(clean) ? clean : 'text';
+};
 
 interface Input {
   type?: string;
