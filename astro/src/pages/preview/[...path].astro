@@ -46,9 +46,7 @@ if (!allowed) Astro.response.status = 404;
 
 const safeLocale = isLocale(locale) ? locale : 'en';
 const draft = { locale: safeLocale, draft: true } as const;
-const global = await fetchSingle<Global>('global', {
-  locale: safeLocale,
-});
+const global = await fetchSingle<Global>('global', draft);
 
 type Resolved =
   | { kind: 'page'; page: Page }
