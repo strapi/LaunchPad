@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { stripStegaMarkers } from '#shared/lib/stega';
 /**
  * Renders an `<a>` when given an href and a `<button>` otherwise.
  *
@@ -32,7 +33,7 @@ const VARIANTS: Record<Variant, string> = {
 
 const classes = computed(() => [
   base,
-  VARIANTS[props.variant as Variant] ?? VARIANTS.primary,
+  VARIANTS[stripStegaMarkers(props.variant ?? '') as Variant] ?? VARIANTS.primary,
 ]);
 
 const isExternal = computed(() => !!props.href?.startsWith('http'));

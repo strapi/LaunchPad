@@ -33,8 +33,11 @@ import { STRAPI_URL } from '@/lib/strapi';
         // is enough to pick up the saved content.
         window.location.reload();
       } else if (data.type === 'strapiScript' && data.payload?.script) {
-        // The admin answers every previewReady, so guard against a second
-        // inject leaving two overlays competing for the same elements.
+        // The admin answers every previewReady and never retries. A second
+        // inject is fatal: the script is not idempotent. Run 2 appends a new
+        // highlight stylesheet, then calls run 1's stale cleanup, which deletes
+        // it by id. Zero stylesheets remain, the highlights inherit
+        // pointer-events:none, and every click passes through them.
         if (document.getElementById(SCRIPT_ID)) return;
 
         const script = document.createElement('script');

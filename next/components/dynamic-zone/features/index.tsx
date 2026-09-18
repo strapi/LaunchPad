@@ -16,6 +16,7 @@ import { SkeletonOne } from './skeletons/first';
 import { SkeletonFour } from './skeletons/fourth';
 import { SkeletonTwo } from './skeletons/second';
 import { SkeletonThree } from './skeletons/third';
+import { stripStegaMarkers } from '@/lib/utils';
 
 const wordToNumber: { [key: string]: number } = {
   one: 1,
@@ -24,7 +25,10 @@ const wordToNumber: { [key: string]: number } = {
 };
 
 function convertWordToNumber(word: string) {
-  return wordToNumber[word.toLowerCase()] || null;
+  // Draft mode inks every Strapi string, so a raw lookup always misses and the
+  // card silently takes the fallback width.
+  const clean = stripStegaMarkers(word ?? '');
+  return wordToNumber[clean.toLowerCase()] || null;
 }
 
 export const Features = ({

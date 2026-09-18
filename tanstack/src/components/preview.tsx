@@ -107,9 +107,12 @@ export const Preview = () => {
       if (data?.type === 'strapiUpdate') {
         router.invalidate();
       } else if (data?.type === 'strapiScript') {
-        // StrictMode mounts effects twice in development, so the handshake can
-        // run twice and Strapi answers every previewReady. Injecting the script
-        // twice leaves two overlays competing for the same elements.
+        // The handshake can run twice (StrictMode, or Next 16.3's double-invoke
+        // in the sibling app), and Strapi answers every previewReady. A second
+        // injection is fatal, because the script is not idempotent: run 2 appends a new
+        // highlight stylesheet, then calls run 1's stale cleanup, which deletes
+        // it by id. Zero stylesheets remain, the overlay highlights inherit
+        // pointer-events:none, and every click passes straight through them.
         if (document.getElementById(SCRIPT_ID)) {
           return;
         }
