@@ -3,6 +3,7 @@ import AmbientColor from '@/components/AmbientColor.astro';
 import Container from '@/components/Container.astro';
 import DynamicZone from '@/components/DynamicZone.astro';
 import StrapiMedia from '@/components/StrapiMedia.astro';
+import { stripStegaMarkers } from '@/lib/stega';
 import type { Product } from '@/types/strapi';
 
 /**
@@ -62,7 +63,7 @@ const images = product.images ?? [];
                   <button
                     type="button"
                     data-index={index}
-                    data-src={image.url}
+                    data-src={stripStegaMarkers(image.url)}
                     aria-label={`Show image ${index + 1}`}
                     class:list={[
                       'h-20 w-20 rounded-xl border-2 bg-cover bg-center bg-no-repeat',

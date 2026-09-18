@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 
 import { StrapiMedia } from '@/components/ui/strapi-media';
-import { formatNumber } from '@/lib/utils';
+import { formatNumber, stripStegaMarkers } from '@/lib/utils';
 import type { Product } from '@/types/types';
 
 export const Featured = ({
@@ -54,7 +54,7 @@ const FeaturedItem = ({
 }) => {
   return (
     <Link
-      to={`/${locale}/products/${product.slug}` as any}
+      to={stripStegaMarkers(`/${locale}/products/${product.slug}`) as any}
       className="group border border-neutral-800 rounded-md overflow-hidden relative block"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black transition-all duration-200 z-30" />

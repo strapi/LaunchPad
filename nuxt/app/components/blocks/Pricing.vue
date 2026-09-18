@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { formatPrice } from '#shared/lib/i18n';
+import { stripStegaMarkers } from '#shared/lib/stega';
 import type { NavbarLink, Perk } from '#shared/types/strapi';
 
 interface Plan {
@@ -24,8 +25,11 @@ const props = withDefaults(
 
 const price = (value?: number | null) => formatPrice(value, props.locale);
 
-const ctaHref = (cta: Plan['CTA']) =>
-  cta?.URL?.startsWith('http') ? cta.URL : `/${props.locale}${cta?.URL ?? ''}`;
+// Stripped before it becomes an `href` — see `shared/lib/stega.ts`.
+const ctaHref = (cta: Plan['CTA']) => {
+  const clean = stripStegaMarkers(cta?.URL ?? '');
+  return clean.startsWith('http') ? clean : `/${props.locale}${clean}`;
+};
 </script>
 
 <template>

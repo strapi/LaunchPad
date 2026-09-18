@@ -10,6 +10,7 @@ import { SkeletonOne } from './skeletons/first';
 import { SkeletonFour } from './skeletons/fourth';
 import { SkeletonTwo } from './skeletons/second';
 import { SkeletonThree } from './skeletons/third';
+import { stripStegaMarkers } from '@/lib/stega';
 
 /**
  * The features card grid, mirroring the Next frontend's
@@ -40,8 +41,12 @@ const SPAN: Record<string, string> = {
   two: 'md:col-span-2',
   three: 'md:col-span-3',
 };
-const spanClass = (span?: string | null, fallback = 'md:col-span-1') =>
-  (span && SPAN[span]) || fallback;
+const spanClass = (span?: string | null, fallback = 'md:col-span-1') => {
+  // Draft mode inks every Strapi string, so a raw lookup always misses and
+  // the card silently takes the fallback width.
+  const clean = stripStegaMarkers(span ?? '');
+  return (clean && SPAN[clean]) || fallback;
+};
 
 export const FeaturesGrid = ({
   globe_card,

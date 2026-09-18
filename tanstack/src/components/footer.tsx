@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router';
 
 import { Logo } from '@/components/logo';
+import { stripStegaMarkers } from '@/lib/utils';
 
 export const Footer = ({ data, locale }: { data: any; locale: string }) => {
   return (
@@ -82,8 +83,12 @@ const LinkSection = ({
   return (
     <div className="flex justify-center space-y-4 flex-col mt-4">
       {links.map((link) => {
-        const isExternal = link.URL.startsWith('http');
-        const href = isExternal ? link.URL : `/${locale}${link.URL}`;
+        // `link.URL` is a Strapi string field, so in draft mode it carries
+        // invisible stega markers. They belong in visible text only — left in an
+        // href the browser percent-encodes them and the link 404s.
+        const url = stripStegaMarkers(link.URL);
+        const isExternal = url.startsWith('http');
+        const href = isExternal ? url : `/${locale}${url}`;
         if (isExternal) {
           return (
             <a

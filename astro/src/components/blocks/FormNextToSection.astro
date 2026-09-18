@@ -3,6 +3,7 @@ import Container from '@/components/Container.astro';
 import Heading from '@/components/Heading.astro';
 import Subheading from '@/components/Subheading.astro';
 import StrapiMedia from '@/components/StrapiMedia.astro';
+import { stripStegaMarkers } from '@/lib/stega';
 import type { StrapiMedia as Media } from '@/types/strapi';
 
 /*
@@ -13,9 +14,17 @@ type FieldType = 'text' | 'email' | 'tel' | 'url' | 'number';
 const FIELD_TYPES: FieldType[] = ['text', 'email', 'tel', 'url', 'number'];
 
 /** `textarea` selects a different element, so it is not an <input> type. */
-const isTextarea = (value?: string) => value === 'textarea';
-const asFieldType = (value?: string): FieldType =>
-  FIELD_TYPES.includes(value as FieldType) ? (value as FieldType) : 'text';
+/*
+ * Draft mode appends invisible stega markers to every Strapi string, so a raw
+ * comparison against a literal never matches and the preview renders a form
+ * that is not the form. Strip before comparing.
+ */
+const isTextarea = (value?: string) =>
+  stripStegaMarkers(value ?? '') === 'textarea';
+const asFieldType = (value?: string): FieldType => {
+  const clean = stripStegaMarkers(value ?? '') as FieldType;
+  return FIELD_TYPES.includes(clean) ? clean : 'text';
+};
 
 interface Input {
   type?: string;
@@ -38,6 +47,14 @@ interface Props {
 }
 const { heading, sub_heading, form, section } = Astro.props;
 const inputs = form?.inputs ?? [];
+
+/*
+ * `name` is authored content, so in draft mode it arrives carrying stega
+ * markers. They belong in text, not in the id/for pair that ties a label to
+ * its field or in the key the field submits under, so they come off here.
+ */
+const fieldName = (name?: string) => stripStegaMarkers(name ?? '');
+const fieldId = (name?: string) => `field-${fieldName(name)}`;
 ---
 
 <div class="relative py-20">
@@ -57,21 +74,21 @@ const inputs = form?.inputs ?? [];
           <form class="mt-8 space-y-4" data-contact-form>
             {inputs.map((input) => (
               <div>
-                <label class="sr-only" for={`field-${input.name}`}>
+                <label class="sr-only" for={fieldId(input.name)}>
                   {input.placeholder ?? input.name}
                 </label>
                 {isTextarea(input.type) ? (
                   <textarea
-                    id={`field-${input.name}`}
-                    name={input.name}
+                    id={fieldId(input.name)}
+                    name={fieldName(input.name)}
                     placeholder={input.placeholder}
                     rows="4"
                     class="h-auto w-full rounded-md border border-neutral-800 bg-neutral-900 px-4 py-3 text-sm text-white placeholder-neutral-500 focus:ring-2 focus:ring-neutral-700 focus:outline-none"
                   />
                 ) : (
                   <input
-                    id={`field-${input.name}`}
-                    name={input.name}
+                    id={fieldId(input.name)}
+                    name={fieldName(input.name)}
                     type={asFieldType(input.type)}
                     placeholder={input.placeholder}
                     class="h-11 w-full rounded-md border border-neutral-800 bg-neutral-900 px-4 text-sm text-white placeholder-neutral-500 focus:ring-2 focus:ring-neutral-700 focus:outline-none"

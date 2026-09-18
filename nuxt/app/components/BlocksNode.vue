@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { normalizeStrapiMediaUrl, stripStegaMarkers } from '#shared/lib/media';
+import { normalizeStrapiMediaUrl } from '#shared/lib/media';
 import { getStrapiSource } from '#shared/lib/source-map';
+import { stripStegaMarkers } from '#shared/lib/stega';
 import type { BlockNode } from '#shared/types/strapi';
 
 /**
@@ -30,7 +31,14 @@ const HEADING_CLASSES: Record<string, string> = {
   h4: 'mt-6 mb-2 text-lg font-bold text-neutral-100',
 };
 
-const isExternalLink = computed(() => !!props.node.url?.startsWith('http'));
+/*
+ * Strapi 5.54 encodes blocks content, so this is load-bearing: the url is a
+ * Strapi string heading for an `href`, and markers inside an href produce a
+ * link that silently 404s. On 5.52 blocks carried no markers and this was a
+ * no-op.
+ */
+const linkHref = computed(() => stripStegaMarkers(props.node.url ?? ''));
+const isExternalLink = computed(() => linkHref.value.startsWith('http'));
 
 const codeText = computed(() =>
   children.value.map((child) => child.text ?? '').join('')
@@ -91,7 +99,7 @@ const imageAlt = computed(() =>
 
   <NuxtLink
     v-else-if="node.type === 'link' && !isExternalLink"
-    :to="node.url ?? '#'"
+    :to="linkHref || '#'"
     class="text-cyan-400 underline underline-offset-4 hover:text-cyan-300"
   >
     <BlocksNode v-for="(child, i) in children" :key="i" :node="child" />
@@ -99,7 +107,7 @@ const imageAlt = computed(() =>
 
   <a
     v-else-if="node.type === 'link'"
-    :href="node.url"
+    :href="linkHref"
     class="text-cyan-400 underline underline-offset-4 hover:text-cyan-300"
     rel="noopener noreferrer"
     target="_blank"

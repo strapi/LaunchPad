@@ -4,6 +4,7 @@
  * Astro's i18n config is not importable at runtime, so the list lives here and
  * both places reference the same two values. LaunchPad ships `en` and `fr`.
  */
+import { stripStegaMarkers } from '@/lib/stega';
 
 export const LOCALES = ['en', 'fr'] as const;
 
@@ -30,7 +31,8 @@ export function localizedPaths(
   localizations: Array<{ locale: string; slug: string }> | undefined,
   prefix = ''
 ): Record<string, string> {
-  const withPrefix = (value: string) => (prefix ? `${prefix}/${value}` : value);
+  const withPrefix = (value: string) =>
+    stripStegaMarkers(prefix ? `${prefix}/${value}` : value);
 
   return (localizations ?? []).reduce<Record<string, string>>(
     (acc, localization) => {

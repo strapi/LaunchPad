@@ -1,5 +1,6 @@
 ---
 import Logo from '@/components/Logo.astro';
+import { stripStegaMarkers } from '@/lib/stega';
 import type { Global, NavbarLink } from '@/types/strapi';
 
 interface Props {
@@ -17,7 +18,7 @@ const columns: Array<NavbarLink[] | undefined> = [
 
 /** External links keep their URL; internal ones get the locale prefix. */
 const hrefFor = (url: string) =>
-  url.startsWith('http') ? url : `/${locale}${url}`;
+  stripStegaMarkers(url.startsWith('http') ? url : `/${locale}${url}`);
 ---
 
 <footer class="relative">

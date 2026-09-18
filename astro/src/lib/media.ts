@@ -1,15 +1,5 @@
+import { stripStegaMarkers } from '@/lib/stega';
 import { STRAPI_URL } from '@/lib/strapi';
-
-/**
- * Strapi's content source maps append invisible stega characters to every
- * string when draft mode requests them. They are harmless inside visible text
- * — that is the whole point, the preview overlay reads them — but inside a URL
- * the browser percent-encodes them, and the request 404s.
- *
- * So every media URL is stripped on its way into the DOM.
- */
-export const stripStegaMarkers = (value: string): string =>
-  value.replace(/[\u200B-\u200D\u2060\uFEFF]/g, '');
 
 /**
  * Resolves a Strapi media URL to something the browser can load.

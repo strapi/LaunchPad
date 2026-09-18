@@ -5,7 +5,7 @@ import FuzzySearch from 'fuzzy-search';
 import { Link } from 'next-view-transitions';
 import React, { useEffect, useState } from 'react';
 
-import { truncate } from '@/lib/utils';
+import { stripStegaMarkers, truncate } from '@/lib/utils';
 import { Article } from '@/types/types';
 
 export const BlogPostRows = ({
@@ -67,7 +67,7 @@ export const BlogPostRow = ({
 }) => {
   return (
     <Link
-      href={`/${locale}/blog/${article.slug}`}
+      href={stripStegaMarkers(`/${locale}/blog/${article.slug}`)}
       key={`${article.slug}`}
       className="flex md:flex-row flex-col items-start justify-between md:items-center group py-4"
     >

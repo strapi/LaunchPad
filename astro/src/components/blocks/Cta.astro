@@ -4,6 +4,7 @@ import Button from '@/components/Button.astro';
 import Container from '@/components/Container.astro';
 import Heading from '@/components/Heading.astro';
 import Subheading from '@/components/Subheading.astro';
+import { stripStegaMarkers } from '@/lib/stega';
 import type { NavbarLink } from '@/types/strapi';
 
 interface Props {
@@ -34,10 +35,10 @@ const { heading, sub_heading, CTAs = [], locale } = Astro.props;
         >
           {CTAs.map((cta) => (
             <Button
-              href={
+              href={stripStegaMarkers(
                 cta.URL?.startsWith('http') ? cta.URL : `/${locale}${cta.URL}`
-              }
-              target={cta.target}
+              )}
+              target={cta.target ? stripStegaMarkers(cta.target) : undefined}
               variant={(cta.variant as any) ?? 'primary'}
             >
               {cta.text}

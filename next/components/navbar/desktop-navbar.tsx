@@ -13,7 +13,7 @@ import { LocaleSwitcher } from '../locale-switcher';
 import { NavbarItem } from './navbar-item';
 import { Button } from '@/components/elements/button';
 import { Logo } from '@/components/logo';
-import { cn } from '@/lib/utils';
+import { cn, stripStegaMarkers } from '@/lib/utils';
 
 type Props = {
   leftNavbarItems: {
@@ -78,9 +78,9 @@ export const DesktopNavbar = ({
         <div className="flex items-center gap-1.5">
           {leftNavbarItems.map((item) => (
             <NavbarItem
-              href={`/${locale}${item.URL}` as never}
+              href={stripStegaMarkers(`/${locale}${item.URL}`) as never}
               key={item.text}
-              target={item.target}
+              target={stripStegaMarkers(item.target ?? '') || undefined}
             >
               {item.text}
             </NavbarItem>
@@ -97,7 +97,7 @@ export const DesktopNavbar = ({
               index === rightNavbarItems.length - 1 ? 'primary' : 'simple'
             }
             as={Link}
-            href={`/${locale}${item.URL}`}
+            href={stripStegaMarkers(`/${locale}${item.URL}`)}
           >
             {item.text}
           </Button>

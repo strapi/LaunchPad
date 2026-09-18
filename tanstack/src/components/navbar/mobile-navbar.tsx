@@ -7,7 +7,7 @@ import { LocaleSwitcher } from '../locale-switcher';
 import { LogoutButton } from '../logout-button';
 import { Button } from '@/components/elements/button';
 import { Logo } from '@/components/logo';
-import { cn } from '@/lib/utils';
+import { cn, stripStegaMarkers } from '@/lib/utils';
 import type { TAuthUser } from '@/types/auth';
 
 type NavItem = {
@@ -79,7 +79,11 @@ export const MobileNavbar = ({
                       (childNavItem: any, childIdx: number) => (
                         <Link
                           key={`link-${idx}-${childIdx}`}
-                          to={`/${locale}${childNavItem.URL}` as any}
+                          to={
+                            stripStegaMarkers(
+                              `/${locale}${childNavItem.URL}`
+                            ) as any
+                          }
                           onClick={() => setOpen(false)}
                           className="relative max-w-[15rem] text-left text-2xl"
                           suppressHydrationWarning
@@ -93,7 +97,7 @@ export const MobileNavbar = ({
                   </>
                 ) : (
                   <Link
-                    to={`/${locale}${navItem.URL}` as any}
+                    to={stripStegaMarkers(`/${locale}${navItem.URL}`) as any}
                     onClick={() => setOpen(false)}
                     className="relative"
                     suppressHydrationWarning
@@ -123,7 +127,7 @@ export const MobileNavbar = ({
                     index === rightNavbarItems.length - 1 ? 'primary' : 'simple'
                   }
                   as={Link}
-                  to={`/${locale}${item.URL}` as any}
+                  to={stripStegaMarkers(`/${locale}${item.URL}`) as any}
                 >
                   {item.text}
                 </Button>

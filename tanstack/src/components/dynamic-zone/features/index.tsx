@@ -15,6 +15,7 @@ import { SkeletonOne } from './skeletons/first';
 import { SkeletonFour } from './skeletons/fourth';
 import { SkeletonTwo } from './skeletons/second';
 import { SkeletonThree } from './skeletons/third';
+import { stripStegaMarkers } from '@/lib/utils';
 
 /**
  * Maps Strapi span words to full Tailwind class names.
@@ -32,8 +33,11 @@ const spanClassMap: Record<string, string> = {
 };
 
 function spanClass(span: string | undefined, fallback: string): string {
-  if (!span) return fallback;
-  return spanClassMap[span.toLowerCase()] || fallback;
+  // Draft mode inks every Strapi string, so a raw lookup misses and the card
+  // silently takes the fallback width.
+  const clean = stripStegaMarkers(span ?? '');
+  if (!clean) return fallback;
+  return spanClassMap[clean.toLowerCase()] || fallback;
 }
 
 export const Features = ({

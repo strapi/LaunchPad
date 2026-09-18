@@ -2,7 +2,7 @@ import { Link } from 'next-view-transitions';
 import React from 'react';
 
 import { StrapiMedia } from '@/components/ui/strapi-media';
-import { formatNumber, truncate } from '@/lib/utils';
+import { formatNumber, stripStegaMarkers, truncate } from '@/lib/utils';
 import { Product } from '@/types/types';
 
 export const ProductItems = ({
@@ -46,7 +46,7 @@ const ProductItem = ({
 }) => {
   return (
     <Link
-      href={`/${locale}/products/${product.slug}` as never}
+      href={stripStegaMarkers(`/${locale}/products/${product.slug}`) as never}
       className="group relative block"
     >
       <div className="relative border border-neutral-800  rounded-md overflow-hidden">

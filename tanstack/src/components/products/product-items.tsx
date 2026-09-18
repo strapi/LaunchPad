@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 
 import { StrapiMedia } from '@/components/ui/strapi-media';
-import { formatNumber, truncate } from '@/lib/utils';
+import { formatNumber, stripStegaMarkers, truncate } from '@/lib/utils';
 import type { Product } from '@/types/types';
 
 export const ProductItems = ({
@@ -45,7 +45,7 @@ const ProductItem = ({
 }) => {
   return (
     <Link
-      to={`/${locale}/products/${product.slug}` as any}
+      to={stripStegaMarkers(`/${locale}/products/${product.slug}`) as any}
       className="group relative block"
     >
       <div className="relative border border-neutral-800  rounded-md overflow-hidden">

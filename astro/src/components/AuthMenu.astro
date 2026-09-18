@@ -1,5 +1,6 @@
 ---
 import Button from '@/components/Button.astro';
+import { stripStegaMarkers } from '@/lib/stega';
 import type { NavbarLink } from '@/types/strapi';
 
 /**
@@ -37,7 +38,7 @@ const { locale, links } = Astro.props;
     {
       links.map((item, index) => (
         <Button
-          href={`/${locale}${item.URL}`}
+          href={stripStegaMarkers(`/${locale}${item.URL}`)}
           variant={index === links.length - 1 ? 'primary' : 'simple'}
         >
           {item.text}

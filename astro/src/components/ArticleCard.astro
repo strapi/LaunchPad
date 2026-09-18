@@ -1,5 +1,6 @@
 ---
 import StrapiMedia from '@/components/StrapiMedia.astro';
+import { stripStegaMarkers } from '@/lib/stega';
 import type { Article } from '@/types/strapi';
 
 interface Props {
@@ -19,7 +20,7 @@ const published = article.publishedAt
 ---
 
 <a
-  href={`/${locale}/blog/${article.slug}`}
+  href={stripStegaMarkers(`/${locale}/blog/${article.slug}`)}
   data-reveal
   style={`--reveal-delay: ${delay}ms`}
   class="group flex flex-col overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900/50 transition duration-200 hover:border-neutral-700"

@@ -10,6 +10,7 @@ import StarBackground from '../decorations/star-background';
 import { Button } from '../elements/button';
 import { Heading } from '../elements/heading';
 import { Subheading } from '../elements/subheading';
+import { stripStegaMarkers } from '@/lib/utils';
 
 export const Hero = ({
   heading,
@@ -47,7 +48,7 @@ export const Hero = ({
             <Button
               key={cta?.id}
               as={Link}
-              href={`/${locale}${cta.URL}`}
+              href={stripStegaMarkers(`/${locale}${cta.URL}`)}
               {...(cta.variant ? { variant: cta.variant } : {})}
             >
               {cta.text}

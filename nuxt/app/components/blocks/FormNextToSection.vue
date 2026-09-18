@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { stripStegaMarkers } from '#shared/lib/stega';
 import type { StrapiMedia as Media } from '#shared/types/strapi';
 
 /*
@@ -8,10 +9,19 @@ import type { StrapiMedia as Media } from '#shared/types/strapi';
 type FieldType = 'text' | 'email' | 'tel' | 'url' | 'number';
 const FIELD_TYPES: FieldType[] = ['text', 'email', 'tel', 'url', 'number'];
 
-/** `textarea` selects a different element, so it is not an <input> type. */
-const isTextarea = (value?: string) => value === 'textarea';
-const asFieldType = (value?: string): FieldType =>
-  FIELD_TYPES.includes(value as FieldType) ? (value as FieldType) : 'text';
+/*
+ * Draft mode appends invisible stega markers to every Strapi string, so a raw
+ * comparison against a literal never matches: the preview then renders a form
+ * that is not the form — every field falls back to <input type="text">.
+ * Strip before comparing, and before the value reaches an attribute.
+ */
+const isTextarea = (value?: string) =>
+  stripStegaMarkers(value ?? '') === 'textarea';
+const asFieldType = (value?: string): FieldType => {
+  const clean = stripStegaMarkers(value ?? '') as FieldType;
+  return FIELD_TYPES.includes(clean) ? clean : 'text';
+};
+const fieldName = (value?: string) => stripStegaMarkers(value ?? '');
 
 interface Input {
   type?: string;
@@ -63,21 +73,21 @@ const fullName = (user: { firstname?: string; lastname?: string }) =>
           @submit.prevent="onSubmit"
         >
           <div v-for="(input, index) in inputs" :key="index">
-            <label class="sr-only" :for="`field-${input.name}`">
+            <label class="sr-only" :for="`field-${fieldName(input.name)}`">
               {{ input.placeholder ?? input.name }}
             </label>
             <textarea
               v-if="isTextarea(input.type)"
-              :id="`field-${input.name}`"
-              :name="input.name"
+              :id="`field-${fieldName(input.name)}`"
+              :name="fieldName(input.name)"
               :placeholder="input.placeholder"
               rows="4"
               class="h-auto w-full rounded-md border border-neutral-800 bg-neutral-900 px-4 py-3 text-sm text-white placeholder-neutral-500 focus:ring-2 focus:ring-neutral-700 focus:outline-none"
             />
             <input
               v-else
-              :id="`field-${input.name}`"
-              :name="input.name"
+              :id="`field-${fieldName(input.name)}`"
+              :name="fieldName(input.name)"
               :type="asFieldType(input.type)"
               :placeholder="input.placeholder"
               class="h-11 w-full rounded-md border border-neutral-800 bg-neutral-900 px-4 text-sm text-white placeholder-neutral-500 focus:ring-2 focus:ring-neutral-700 focus:outline-none"

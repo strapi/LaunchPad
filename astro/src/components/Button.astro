@@ -1,4 +1,5 @@
 ---
+import { stripStegaMarkers } from '@/lib/stega';
 interface Props {
   href?: string;
   variant?: 'primary' | 'secondary' | 'simple' | 'muted';
@@ -33,7 +34,7 @@ const rel = target === '_blank' ? 'noopener noreferrer' : undefined;
   href={href}
   target={target ?? undefined}
   rel={rel}
-  class:list={[base, variants[variant] ?? variants.primary, className]}
+  class:list={[base, variants[stripStegaMarkers(variant ?? '')] ?? variants.primary, className]}
 >
   <slot />
 </Tag>

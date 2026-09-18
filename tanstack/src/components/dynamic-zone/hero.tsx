@@ -7,6 +7,7 @@ import { Button } from '../elements/button';
 import { Heading } from '../elements/heading';
 import { Subheading } from '../elements/subheading';
 import { ClientOnly } from '@/components/client-only';
+import { stripStegaMarkers } from '@/lib/utils';
 
 export const Hero = ({
   heading,
@@ -46,7 +47,7 @@ export const Hero = ({
             <Button
               key={cta?.id}
               as={Link}
-              to={`/${locale}${cta.URL}`}
+              to={stripStegaMarkers(`/${locale}${cta.URL}`)}
               {...(cta.variant ? { variant: cta.variant } : {})}
             >
               {cta.text}
