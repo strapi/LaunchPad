@@ -107,7 +107,8 @@ export function FormNextToSection({
   // validated field, and email would lose its validation. Strip `type` once,
   // here, rather than at each comparison. `name` and `placeholder` keep their
   // markers so those fields stay click-to-editable.
-  const inputs: Array<StrapiFormInput> = (form?.inputs ?? []).map((i) => ({
+  const rawInputs: Array<StrapiFormInput> = form?.inputs ?? [];
+  const inputs: Array<StrapiFormInput> = rawInputs.map((i) => ({
     ...i,
     type: stripStegaMarkers(i.type ?? ''),
   }));

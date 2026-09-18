@@ -32,10 +32,10 @@ const HEADING_CLASSES: Record<string, string> = {
 };
 
 /*
- * Blocks are not source-mapped on Strapi 5.52, so today this changes nothing.
- * It is here because the field is a Strapi string heading for an `href`, and
- * the day blocks do get encoded a link that silently 404s is a bad way to find
- * out.
+ * Strapi 5.54 encodes blocks content, so this is load-bearing: the url is a
+ * Strapi string heading for an `href`, and markers inside an href produce a
+ * link that silently 404s. On 5.52 blocks carried no markers and this was a
+ * no-op.
  */
 const linkHref = computed(() => stripStegaMarkers(props.node.url ?? ''));
 const isExternalLink = computed(() => linkHref.value.startsWith('http'));

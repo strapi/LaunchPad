@@ -92,7 +92,6 @@ const whenSettled = (run: () => void): (() => void) => {
       characterData: true,
     });
     quiet = setTimeout(finish, QUIET_MS);
-    cap = setTimeout(finish, MAX_WAIT_MS);
   };
 
   // Armed before the load wait, not inside start(). A single stalled

@@ -101,6 +101,14 @@ import { STRAPI_URL } from '@/lib/strapi';
       } else {
         window.addEventListener('load', start, { once: true });
       }
+
+      return () => {
+        done = true;
+        clearTimeout(quiet);
+        clearTimeout(cap);
+        observer?.disconnect();
+        window.removeEventListener('load', start);
+      };
     };
 
     window.addEventListener('message', handleMessage);

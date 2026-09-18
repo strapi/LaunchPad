@@ -35,9 +35,11 @@ export function LocaleSwitcher({ currentLocale }: { currentLocale: string }) {
 
   const buildTargetPath = (targetLocale: string): string => {
     if (localizedSlugs) {
-      // Slugs come from Strapi, so in draft mode they can carry invisible
-      // stega markers. Router targets are not visible text — left in, the
-      // marker is percent-encoded into the URL and the route stops matching.
+      // Defensive only. `slug` is a uid field, and uid is absent from Strapi's
+      // ENCODABLE_TYPES, so a slug carries no markers today (verified against a
+      // live draft response: slug 0 markers, title 556). Kept because a router
+      // target is not visible text: if that list ever widens, a marker left in
+      // here is percent-encoded into the URL and the route stops matching.
       const rawSlug = localizedSlugs[targetLocale];
       if (rawSlug === undefined) {
         // No localization for this route → send to the target locale's home.
