@@ -618,5 +618,625 @@
         ]
       }
     }
+  },
+  {
+    "key": "travel-abroad",
+    "category": "general",
+    "localizations": {
+      "en": {
+        "question": "Does Travel Go cover trips outside Europe?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Yes, worldwide. Medical limits are the same everywhere; some countries require a visa letter, which we issue instantly from your account."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Voyage Go couvre-t-il les voyages hors Europe ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Oui, dans le monde entier. Les plafonds médicaux sont identiques partout ; certains pays exigent une attestation pour le visa, délivrée instantanément depuis votre espace."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Deckt Reise Go Reisen außerhalb Europas?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Ja, weltweit. Die medizinischen Grenzen sind überall gleich; manche Länder verlangen eine Visabescheinigung, die wir sofort in Ihrem Konto ausstellen."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Viaggio Go copre i viaggi fuori dall'Europa?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Sì, in tutto il mondo. I massimali medici sono uguali ovunque; alcuni paesi richiedono una lettera per il visto, che rilasciamo subito dalla tua area personale."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "pet-age",
+    "category": "health",
+    "localizations": {
+      "en": {
+        "question": "Is there an age limit for pets?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "New policies up to age 8 for dogs and 10 for cats. Once insured, there is no upper age limit as long as the policy is renewed without a break."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Y a-t-il une limite d'âge pour les animaux ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Nouveaux contrats jusqu'à 8 ans pour les chiens et 10 ans pour les chats. Une fois assuré, pas de limite d'âge tant que le contrat est renouvelé sans interruption."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Gibt es eine Altersgrenze für Tiere?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Neuverträge bis 8 Jahre bei Hunden und 10 Jahre bei Katzen. Einmal versichert, gibt es keine Obergrenze, solange der Vertrag ohne Unterbrechung verlängert wird."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "C'è un limite di età per gli animali?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Nuove polizze fino a 8 anni per i cani e 10 per i gatti. Una volta assicurato, nessun limite superiore finché la polizza è rinnovata senza interruzioni."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "home-plus-vs",
+    "category": "home",
+    "localizations": {
+      "en": {
+        "question": "What is the difference between Home Secure and Home Plus?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Home Secure covers events that happen to you: fire, water, theft. Home Plus adds accidental damage you cause yourself, home emergency call-outs, and valuables outside the home."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Quelle différence entre Habitation Sécurité et Habitation Plus ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Habitation Sécurité couvre ce qui vous arrive : incendie, dégâts des eaux, vol. Habitation Plus ajoute les dommages accidentels que vous causez, les interventions d'urgence et les objets de valeur hors domicile."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Was ist der Unterschied zwischen Wohnen Sicher und Wohnen Plus?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Wohnen Sicher deckt, was Ihnen passiert: Feuer, Wasser, Einbruch. Wohnen Plus ergänzt selbst verursachte Unfallschäden, Notfalleinsätze und Wertsachen außer Haus."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Che differenza c'è tra Casa Sicura e Casa Plus?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Casa Sicura copre ciò che ti succede: incendio, acqua, furto. Casa Plus aggiunge i danni accidentali che causi tu, gli interventi di emergenza e gli oggetti di valore fuori casa."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "business-who",
+    "category": "general",
+    "localizations": {
+      "en": {
+        "question": "Who can buy Business Shield?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Sole traders and companies with up to 20 employees in France, Germany and Italy. Some activities, such as construction above two storeys, need a bespoke quote from an agent."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Qui peut souscrire Business Shield ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Indépendants et sociétés jusqu'à 20 salariés en France, en Allemagne et en Italie. Certaines activités, comme la construction au-delà de deux étages, nécessitent un devis sur mesure par un agent."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Wer kann Business Shield abschließen?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Einzelunternehmer und Firmen mit bis zu 20 Mitarbeitenden in Frankreich, Deutschland und Italien. Manche Tätigkeiten, etwa Bau über zwei Stockwerke, brauchen ein individuelles Angebot vom Berater."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Chi può acquistare Business Shield?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Partite IVA e società fino a 20 dipendenti in Francia, Germania e Italia. Alcune attività, come l'edilizia oltre due piani, richiedono un preventivo su misura da un agente."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "claim-time",
+    "category": "claims",
+    "localizations": {
+      "en": {
+        "question": "How long does a claim take?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "84% of claims are settled in under ten days. Motor glass and health invoices are usually paid within three working days."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Combien de temps prend un sinistre ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "84 % des sinistres sont réglés en moins de dix jours. Le bris de glace auto et les factures santé sont généralement payés sous trois jours ouvrés."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Wie lange dauert ein Schadenfall?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "84 % der Schäden werden in unter zehn Tagen reguliert. Kfz-Glasschäden und Gesundheitsrechnungen werden meist innerhalb von drei Werktagen bezahlt."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Quanto tempo richiede un sinistro?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "L'84% dei sinistri viene liquidato in meno di dieci giorni. Cristalli auto e fatture sanitarie sono di solito pagati entro tre giorni lavorativi."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "claim-track",
+    "category": "claims",
+    "localizations": {
+      "en": {
+        "question": "Can I follow my claim online?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Yes. Every claim has a status page in your account, updated at each step, with the name and direct line of your handler."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Puis-je suivre mon sinistre en ligne ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Oui. Chaque sinistre a une page de suivi dans votre espace, mise à jour à chaque étape, avec le nom et la ligne directe de votre gestionnaire."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Kann ich meinen Schaden online verfolgen?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Ja. Jeder Schaden hat eine Statusseite in Ihrem Konto, bei jedem Schritt aktualisiert, mit Name und Durchwahl Ihres Sachbearbeiters."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Posso seguire il mio sinistro online?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Sì. Ogni sinistro ha una pagina di stato nella tua area personale, aggiornata a ogni passaggio, con nome e linea diretta del tuo gestore."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "switch-insurer",
+    "category": "policy",
+    "localizations": {
+      "en": {
+        "question": "Can you handle cancelling my current insurer?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "For motor and home, yes. Give us your current policy number and we send the cancellation on your behalf at the next renewal date."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Pouvez-vous résilier mon assureur actuel ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Pour l'auto et l'habitation, oui. Donnez-nous votre numéro de contrat actuel et nous envoyons la résiliation à votre place à la prochaine échéance."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Kündigen Sie meinen bisherigen Versicherer für mich?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Bei Kfz und Wohnen ja. Geben Sie uns Ihre aktuelle Vertragsnummer, und wir senden die Kündigung zum nächsten Ablaufdatum in Ihrem Namen."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Potete gestire la disdetta del mio assicuratore attuale?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Per auto e casa, sì. Dacci il numero della polizza attuale e inviamo noi la disdetta alla prossima scadenza."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "family-discount",
+    "category": "general",
+    "localizations": {
+      "en": {
+        "question": "Is there a discount for several policies?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Yes. The second policy in the same household gets 5% off, the third and beyond 10%, applied automatically."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Y a-t-il une remise pour plusieurs contrats ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Oui. Le deuxième contrat du même foyer bénéficie de 5 % de remise, le troisième et les suivants de 10 %, appliqués automatiquement."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Gibt es einen Rabatt für mehrere Verträge?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Ja. Der zweite Vertrag im selben Haushalt erhält 5 % Rabatt, der dritte und weitere 10 %, automatisch angerechnet."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "C'è uno sconto per più polizze?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Sì. La seconda polizza dello stesso nucleo familiare ha il 5% di sconto, dalla terza in poi il 10%, applicati automaticamente."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "member-vote",
+    "category": "general",
+    "localizations": {
+      "en": {
+        "question": "What does being a member mean?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "As a mutual we have no shareholders. Every policyholder is a member, receives the annual report, and can vote at the general meeting, in person or online."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Que signifie être sociétaire ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "En tant que mutuelle, nous n'avons pas d'actionnaires. Chaque assuré est sociétaire, reçoit le rapport annuel et peut voter à l'assemblée générale, sur place ou en ligne."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Was bedeutet Mitgliedschaft?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Als Verein auf Gegenseitigkeit haben wir keine Aktionäre. Jeder Versicherte ist Mitglied, erhält den Jahresbericht und kann bei der Hauptversammlung abstimmen, vor Ort oder online."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Cosa significa essere socio?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Come mutua non abbiamo azionisti. Ogni assicurato è socio, riceve il bilancio annuale e può votare all'assemblea generale, di persona o online."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "complaint",
+    "category": "policy",
+    "localizations": {
+      "en": {
+        "question": "How do I make a complaint?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Write to complaints@meridian-demo.test or to your agent. We acknowledge within two working days and answer within ten. If you disagree, the mediator for your market is listed in the policy terms."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Comment faire une réclamation ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Écrivez à complaints@meridian-demo.test ou à votre agent. Accusé de réception sous deux jours ouvrés, réponse sous dix. En cas de désaccord, le médiateur de votre marché figure dans les conditions générales."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Wie reiche ich eine Beschwerde ein?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Schreiben Sie an complaints@meridian-demo.test oder an Ihren Berater. Eingangsbestätigung innerhalb von zwei Werktagen, Antwort innerhalb von zehn. Bei Uneinigkeit steht der Ombudsmann Ihres Marktes in den Bedingungen."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Come presento un reclamo?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Scrivi a complaints@meridian-demo.test o al tuo agente. Confermiamo entro due giorni lavorativi e rispondiamo entro dieci. Se non sei d'accordo, il mediatore del tuo mercato è indicato nelle condizioni di polizza."
+              }
+            ]
+          }
+        ]
+      }
+    }
   }
 ]

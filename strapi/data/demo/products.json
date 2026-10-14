@@ -1735,6 +1735,1394 @@
     }
   },
   {
+    "slug": "travel-go",
+    "category": "home",
+    "heroImage": "product-travel-go.png",
+    "documents": [
+      "travel-go"
+    ],
+    "faqs": [
+      "claim-how",
+      "cancel",
+      "travel-abroad"
+    ],
+    "localizations": {
+      "en": {
+        "name": "Travel Go",
+        "tagline": "Medical, cancellation and luggage, for one trip or the whole year.",
+        "localRate": 0,
+        "rateWording": "Single trip from EUR 19. Annual multi-trip from EUR 89. No APR applies.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Travel Go is underwritten by Meridian Mutual Group. Cover is subject to the policy terms and the pre-contractual information document for your market. This page is a demonstration and not an offer."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Travel Go",
+            "subtitle": "Buy it in two minutes before you leave. Medical costs abroad, cancellation, delayed or lost luggage, 24-hour assistance line.",
+            "cta": {
+              "label": "Get a quote",
+              "url": "/quote/travel-go",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "What is covered",
+            "rows": [
+              {
+                "name": "Medical costs abroad",
+                "included": true,
+                "note": "Up to EUR 1,000,000"
+              },
+              {
+                "name": "Trip cancellation",
+                "included": true,
+                "note": "Up to EUR 5,000"
+              },
+              {
+                "name": "Luggage",
+                "included": true,
+                "note": "Up to EUR 2,000"
+              },
+              {
+                "name": "Winter sports",
+                "included": false,
+                "note": "Optional add-on"
+              },
+              {
+                "name": "Business equipment",
+                "included": false,
+                "note": "Available in Business Shield"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "Read these before you buy. They explain what is and is not covered in your market."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Common questions"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Leaving soon?",
+            "text": "Cover starts the moment you pay. Policy documents by email in seconds.",
+            "cta": {
+              "label": "Start your quote",
+              "url": "/quote/travel-go",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Travel Go | Meridian Mutual",
+          "metaDescription": "Travel insurance with medical, cancellation and luggage cover."
+        }
+      },
+      "fr": {
+        "name": "Voyage Go",
+        "tagline": "Santé, annulation et bagages, pour un voyage ou toute l'année.",
+        "localRate": 0,
+        "rateWording": "Voyage unique à partir de 19 EUR. Multi-voyages annuel à partir de 89 EUR. Aucun TAEG.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Voyage Go est assuré par Meridian Mutual Group. La garantie est soumise aux conditions générales et au document d'information précontractuel de votre marché. Cette page est une démonstration et ne constitue pas une offre."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Voyage Go",
+            "subtitle": "Souscrivez en deux minutes avant de partir. Frais médicaux à l'étranger, annulation, bagages retardés ou perdus, assistance 24h/24.",
+            "cta": {
+              "label": "Obtenir un devis",
+              "url": "/quote/travel-go",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Ce qui est couvert",
+            "rows": [
+              {
+                "name": "Frais médicaux à l'étranger",
+                "included": true,
+                "note": "Jusqu'à 1 000 000 EUR"
+              },
+              {
+                "name": "Annulation",
+                "included": true,
+                "note": "Jusqu'à 5 000 EUR"
+              },
+              {
+                "name": "Bagages",
+                "included": true,
+                "note": "Jusqu'à 2 000 EUR"
+              },
+              {
+                "name": "Sports d'hiver",
+                "included": false,
+                "note": "Option"
+              },
+              {
+                "name": "Matériel professionnel",
+                "included": false,
+                "note": "Disponible avec Business Shield"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "À lire avant de souscrire. Ils expliquent ce qui est couvert ou non dans votre marché."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Questions fréquentes"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Vous partez bientôt ?",
+            "text": "La garantie démarre dès le paiement. Documents par e-mail en quelques secondes.",
+            "cta": {
+              "label": "Commencer mon devis",
+              "url": "/quote/travel-go",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Voyage Go | Meridian Mutual",
+          "metaDescription": "Assurance voyage avec frais médicaux, annulation et bagages."
+        }
+      },
+      "de": {
+        "name": "Reise Go",
+        "tagline": "Krankheit, Storno und Gepäck, für eine Reise oder das ganze Jahr.",
+        "localRate": 0,
+        "rateWording": "Einzelreise ab 19 EUR. Jahresversicherung ab 89 EUR. Kein effektiver Jahreszins.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Reise Go wird von der Meridian Mutual Group versichert. Der Schutz unterliegt den Versicherungsbedingungen und dem vorvertraglichen Informationsblatt Ihres Marktes. Diese Seite ist eine Demonstration und kein Angebot."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Reise Go",
+            "subtitle": "In zwei Minuten vor der Abreise abschließen. Krankheitskosten im Ausland, Storno, verspätetes oder verlorenes Gepäck, 24-Stunden-Notrufnummer.",
+            "cta": {
+              "label": "Angebot anfordern",
+              "url": "/quote/travel-go",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Was versichert ist",
+            "rows": [
+              {
+                "name": "Krankheitskosten im Ausland",
+                "included": true,
+                "note": "Bis 1.000.000 EUR"
+              },
+              {
+                "name": "Reiserücktritt",
+                "included": true,
+                "note": "Bis 5.000 EUR"
+              },
+              {
+                "name": "Gepäck",
+                "included": true,
+                "note": "Bis 2.000 EUR"
+              },
+              {
+                "name": "Wintersport",
+                "included": false,
+                "note": "Optionaler Zusatz"
+              },
+              {
+                "name": "Geschäftsausrüstung",
+                "included": false,
+                "note": "Verfügbar mit Business Shield"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Dokumente",
+            "intro": "Bitte vor dem Abschluss lesen. Sie erklären, was in Ihrem Markt versichert ist und was nicht."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Häufige Fragen"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Bald unterwegs?",
+            "text": "Der Schutz beginnt mit der Zahlung. Unterlagen in Sekunden per E-Mail.",
+            "cta": {
+              "label": "Angebot starten",
+              "url": "/quote/travel-go",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Reise Go | Meridian Mutual",
+          "metaDescription": "Reiseversicherung mit Krankheits-, Storno- und Gepäckschutz."
+        }
+      },
+      "it": {
+        "name": "Viaggio Go",
+        "tagline": "Spese mediche, annullamento e bagaglio, per un viaggio o tutto l'anno.",
+        "localRate": 0,
+        "rateWording": "Viaggio singolo da 19 EUR. Annuale multiviaggio da 89 EUR. Nessun TAEG.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Viaggio Go è assicurata da Meridian Mutual Group. La copertura è soggetta alle condizioni di polizza e al documento informativo precontrattuale del tuo mercato. Questa pagina è una dimostrazione e non costituisce un'offerta."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Viaggio Go",
+            "subtitle": "Acquista in due minuti prima di partire. Spese mediche all'estero, annullamento, bagaglio in ritardo o smarrito, assistenza 24 ore su 24.",
+            "cta": {
+              "label": "Richiedi un preventivo",
+              "url": "/quote/travel-go",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Cosa è coperto",
+            "rows": [
+              {
+                "name": "Spese mediche all'estero",
+                "included": true,
+                "note": "Fino a 1.000.000 EUR"
+              },
+              {
+                "name": "Annullamento viaggio",
+                "included": true,
+                "note": "Fino a 5.000 EUR"
+              },
+              {
+                "name": "Bagaglio",
+                "included": true,
+                "note": "Fino a 2.000 EUR"
+              },
+              {
+                "name": "Sport invernali",
+                "included": false,
+                "note": "Opzione aggiuntiva"
+              },
+              {
+                "name": "Attrezzatura professionale",
+                "included": false,
+                "note": "Disponibile con Business Shield"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documenti",
+            "intro": "Da leggere prima di acquistare. Spiegano cosa è coperto e cosa no nel tuo mercato."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Domande frequenti"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Parti presto?",
+            "text": "La copertura parte al pagamento. Documenti via e-mail in pochi secondi.",
+            "cta": {
+              "label": "Inizia il preventivo",
+              "url": "/quote/travel-go",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Viaggio Go | Meridian Mutual",
+          "metaDescription": "Assicurazione viaggio con spese mediche, annullamento e bagaglio."
+        }
+      }
+    }
+  },
+  {
+    "slug": "pet-care",
+    "category": "health",
+    "heroImage": "product-pet-care.png",
+    "documents": [
+      "pet-care"
+    ],
+    "faqs": [
+      "claim-how",
+      "cancel",
+      "pet-age"
+    ],
+    "localizations": {
+      "en": {
+        "name": "Pet Care",
+        "tagline": "Vet bills for dogs and cats, without the surprise.",
+        "localRate": 0,
+        "rateWording": "Monthly premium from EUR 12 for a cat, EUR 19 for a dog under 5. No APR applies.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Pet Care is underwritten by Meridian Mutual Group. Cover is subject to the policy terms and the pre-contractual information document for your market. This page is a demonstration and not an offer."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Pet Care",
+            "subtitle": "Accidents and illness, surgery, medication, and a vet line you can call at 2am.",
+            "cta": {
+              "label": "Get a quote",
+              "url": "/quote/pet-care",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "What is covered",
+            "rows": [
+              {
+                "name": "Accidents and illness",
+                "included": true,
+                "note": "Up to EUR 4,000 per year"
+              },
+              {
+                "name": "Surgery",
+                "included": true,
+                "note": "Included"
+              },
+              {
+                "name": "Medication",
+                "included": true,
+                "note": "Prescribed by a vet"
+              },
+              {
+                "name": "Dental",
+                "included": false,
+                "note": "Optional add-on"
+              },
+              {
+                "name": "Pre-existing conditions",
+                "included": false,
+                "note": "Excluded"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "Read these before you buy. They explain what is and is not covered in your market."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Common questions"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Two questions and a photo",
+            "text": "Tell us the breed and age, upload a photo, and you are covered.",
+            "cta": {
+              "label": "Start your quote",
+              "url": "/quote/pet-care",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Pet Care | Meridian Mutual",
+          "metaDescription": "Pet insurance for dogs and cats covering accidents, illness and surgery."
+        }
+      },
+      "fr": {
+        "name": "Animaux Care",
+        "tagline": "Les frais vétérinaires des chiens et chats, sans surprise.",
+        "localRate": 0,
+        "rateWording": "Cotisation mensuelle à partir de 12 EUR pour un chat, 19 EUR pour un chien de moins de 5 ans. Aucun TAEG.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Animaux Care est assuré par Meridian Mutual Group. La garantie est soumise aux conditions générales et au document d'information précontractuel de votre marché. Cette page est une démonstration et ne constitue pas une offre."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Animaux Care",
+            "subtitle": "Accidents et maladie, chirurgie, médicaments, et une ligne vétérinaire joignable à 2h du matin.",
+            "cta": {
+              "label": "Obtenir un devis",
+              "url": "/quote/pet-care",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Ce qui est couvert",
+            "rows": [
+              {
+                "name": "Accidents et maladie",
+                "included": true,
+                "note": "Jusqu'à 4 000 EUR par an"
+              },
+              {
+                "name": "Chirurgie",
+                "included": true,
+                "note": "Incluse"
+              },
+              {
+                "name": "Médicaments",
+                "included": true,
+                "note": "Sur prescription vétérinaire"
+              },
+              {
+                "name": "Dentaire",
+                "included": false,
+                "note": "Option"
+              },
+              {
+                "name": "Affections préexistantes",
+                "included": false,
+                "note": "Exclues"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "À lire avant de souscrire. Ils expliquent ce qui est couvert ou non dans votre marché."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Questions fréquentes"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Deux questions et une photo",
+            "text": "Indiquez la race et l'âge, ajoutez une photo, et vous êtes couvert.",
+            "cta": {
+              "label": "Commencer mon devis",
+              "url": "/quote/pet-care",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Animaux Care | Meridian Mutual",
+          "metaDescription": "Assurance chiens et chats : accidents, maladie et chirurgie."
+        }
+      },
+      "de": {
+        "name": "Tier Care",
+        "tagline": "Tierarztkosten für Hunde und Katzen, ohne Überraschung.",
+        "localRate": 0,
+        "rateWording": "Monatsbeitrag ab 12 EUR für eine Katze, 19 EUR für einen Hund unter 5 Jahren. Kein effektiver Jahreszins.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Tier Care wird von der Meridian Mutual Group versichert. Der Schutz unterliegt den Versicherungsbedingungen und dem vorvertraglichen Informationsblatt Ihres Marktes. Diese Seite ist eine Demonstration und kein Angebot."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Tier Care",
+            "subtitle": "Unfall und Krankheit, Operationen, Medikamente, und eine Tierarzt-Hotline, die Sie um 2 Uhr nachts anrufen können.",
+            "cta": {
+              "label": "Angebot anfordern",
+              "url": "/quote/pet-care",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Was versichert ist",
+            "rows": [
+              {
+                "name": "Unfall und Krankheit",
+                "included": true,
+                "note": "Bis 4.000 EUR pro Jahr"
+              },
+              {
+                "name": "Operationen",
+                "included": true,
+                "note": "Enthalten"
+              },
+              {
+                "name": "Medikamente",
+                "included": true,
+                "note": "Vom Tierarzt verschrieben"
+              },
+              {
+                "name": "Zahn",
+                "included": false,
+                "note": "Optionaler Zusatz"
+              },
+              {
+                "name": "Vorerkrankungen",
+                "included": false,
+                "note": "Ausgeschlossen"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Dokumente",
+            "intro": "Bitte vor dem Abschluss lesen. Sie erklären, was in Ihrem Markt versichert ist und was nicht."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Häufige Fragen"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Zwei Fragen und ein Foto",
+            "text": "Rasse und Alter angeben, Foto hochladen, versichert.",
+            "cta": {
+              "label": "Angebot starten",
+              "url": "/quote/pet-care",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Tier Care | Meridian Mutual",
+          "metaDescription": "Tierversicherung für Hunde und Katzen: Unfall, Krankheit, Operationen."
+        }
+      },
+      "it": {
+        "name": "Animali Care",
+        "tagline": "Le spese veterinarie di cani e gatti, senza sorprese.",
+        "localRate": 0,
+        "rateWording": "Premio mensile da 12 EUR per un gatto, 19 EUR per un cane sotto i 5 anni. Nessun TAEG.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Animali Care è assicurata da Meridian Mutual Group. La copertura è soggetta alle condizioni di polizza e al documento informativo precontrattuale del tuo mercato. Questa pagina è una dimostrazione e non costituisce un'offerta."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Animali Care",
+            "subtitle": "Infortuni e malattia, chirurgia, farmaci, e una linea veterinaria che risponde alle 2 di notte.",
+            "cta": {
+              "label": "Richiedi un preventivo",
+              "url": "/quote/pet-care",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Cosa è coperto",
+            "rows": [
+              {
+                "name": "Infortuni e malattia",
+                "included": true,
+                "note": "Fino a 4.000 EUR all'anno"
+              },
+              {
+                "name": "Chirurgia",
+                "included": true,
+                "note": "Inclusa"
+              },
+              {
+                "name": "Farmaci",
+                "included": true,
+                "note": "Su prescrizione veterinaria"
+              },
+              {
+                "name": "Dentista",
+                "included": false,
+                "note": "Opzione aggiuntiva"
+              },
+              {
+                "name": "Patologie pregresse",
+                "included": false,
+                "note": "Escluse"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documenti",
+            "intro": "Da leggere prima di acquistare. Spiegano cosa è coperto e cosa no nel tuo mercato."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Domande frequenti"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Due domande e una foto",
+            "text": "Indica razza ed età, carica una foto, e sei coperto.",
+            "cta": {
+              "label": "Inizia il preventivo",
+              "url": "/quote/pet-care",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Animali Care | Meridian Mutual",
+          "metaDescription": "Assicurazione per cani e gatti: infortuni, malattia e chirurgia."
+        }
+      }
+    }
+  },
+  {
+    "slug": "home-plus",
+    "category": "home",
+    "heroImage": "product-home-plus.png",
+    "documents": [
+      "home-plus"
+    ],
+    "faqs": [
+      "claim-how",
+      "home-contents",
+      "home-plus-vs"
+    ],
+    "localizations": {
+      "en": {
+        "name": "Home Plus",
+        "tagline": "Everything in Home Secure, plus accidental damage and the things that go wrong.",
+        "localRate": 4.4,
+        "rateWording": "Representative APR 4.4% on monthly instalments. Annual premium from EUR 268.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Home Plus is underwritten by Meridian Mutual Group. Cover is subject to the policy terms and the pre-contractual information document for your market. This page is a demonstration and not an offer."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Home Plus",
+            "subtitle": "Spilled wine on the sofa, a drill through a pipe, a broken laptop. Home Plus covers the accidents that Home Secure does not.",
+            "cta": {
+              "label": "Get a quote",
+              "url": "/quote/home-plus",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "What is covered",
+            "rows": [
+              {
+                "name": "Everything in Home Secure",
+                "included": true,
+                "note": "Fire, water, theft"
+              },
+              {
+                "name": "Accidental damage",
+                "included": true,
+                "note": "Building and contents"
+              },
+              {
+                "name": "Home emergency",
+                "included": true,
+                "note": "Plumber or electrician within 4 hours"
+              },
+              {
+                "name": "Valuables away from home",
+                "included": true,
+                "note": "Up to EUR 5,000"
+              },
+              {
+                "name": "Rent guarantee",
+                "included": false,
+                "note": "Landlord product"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "Read these before you buy. They explain what is and is not covered in your market."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Common questions"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Already with Home Secure?",
+            "text": "Upgrade in your account in two clicks. The difference is prorated.",
+            "cta": {
+              "label": "Start your quote",
+              "url": "/quote/home-plus",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Home Plus | Meridian Mutual",
+          "metaDescription": "Home insurance with accidental damage and home emergency cover."
+        }
+      },
+      "fr": {
+        "name": "Habitation Plus",
+        "tagline": "Tout Habitation Sécurité, plus les dommages accidentels et les imprévus.",
+        "localRate": 4.2,
+        "rateWording": "TAEG représentatif de 4,2 % pour un paiement mensuel. Prime annuelle à partir de 259 EUR.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Habitation Plus est assuré par Meridian Mutual Group. La garantie est soumise aux conditions générales et au document d'information précontractuel de votre marché. Cette page est une démonstration et ne constitue pas une offre."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Habitation Plus",
+            "subtitle": "Du vin sur le canapé, une perceuse dans une canalisation, un ordinateur cassé. Habitation Plus couvre les accidents qu'Habitation Sécurité ne couvre pas.",
+            "cta": {
+              "label": "Obtenir un devis",
+              "url": "/quote/home-plus",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Ce qui est couvert",
+            "rows": [
+              {
+                "name": "Tout Habitation Sécurité",
+                "included": true,
+                "note": "Incendie, dégâts des eaux, vol"
+              },
+              {
+                "name": "Dommages accidentels",
+                "included": true,
+                "note": "Bâtiment et contenu"
+              },
+              {
+                "name": "Urgence habitation",
+                "included": true,
+                "note": "Plombier ou électricien sous 4 heures"
+              },
+              {
+                "name": "Objets de valeur hors domicile",
+                "included": true,
+                "note": "Jusqu'à 5 000 EUR"
+              },
+              {
+                "name": "Garantie loyers",
+                "included": false,
+                "note": "Produit propriétaire bailleur"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "À lire avant de souscrire. Ils expliquent ce qui est couvert ou non dans votre marché."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Questions fréquentes"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Déjà client Habitation Sécurité ?",
+            "text": "Passez à Plus depuis votre espace en deux clics. La différence est calculée au prorata.",
+            "cta": {
+              "label": "Commencer mon devis",
+              "url": "/quote/home-plus",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Habitation Plus | Meridian Mutual",
+          "metaDescription": "Assurance habitation avec dommages accidentels et urgence habitation."
+        }
+      },
+      "de": {
+        "name": "Wohnen Plus",
+        "tagline": "Alles aus Wohnen Sicher, plus Unfallschäden und das, was schiefgeht.",
+        "localRate": 4.0,
+        "rateWording": "Repräsentativer effektiver Jahreszins 4,0 % bei monatlicher Zahlung. Jahresbeitrag ab 249 EUR.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Wohnen Plus wird von der Meridian Mutual Group versichert. Der Schutz unterliegt den Versicherungsbedingungen und dem vorvertraglichen Informationsblatt Ihres Marktes. Diese Seite ist eine Demonstration und kein Angebot."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Wohnen Plus",
+            "subtitle": "Rotwein auf dem Sofa, ein Bohrer im Rohr, ein kaputter Laptop. Wohnen Plus deckt die Unfälle, die Wohnen Sicher nicht deckt.",
+            "cta": {
+              "label": "Angebot anfordern",
+              "url": "/quote/home-plus",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Was versichert ist",
+            "rows": [
+              {
+                "name": "Alles aus Wohnen Sicher",
+                "included": true,
+                "note": "Feuer, Wasser, Einbruch"
+              },
+              {
+                "name": "Unfallschäden",
+                "included": true,
+                "note": "Gebäude und Hausrat"
+              },
+              {
+                "name": "Notfallhilfe",
+                "included": true,
+                "note": "Klempner oder Elektriker innerhalb von 4 Stunden"
+              },
+              {
+                "name": "Wertsachen außer Haus",
+                "included": true,
+                "note": "Bis 5.000 EUR"
+              },
+              {
+                "name": "Mietausfall",
+                "included": false,
+                "note": "Vermieterprodukt"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Dokumente",
+            "intro": "Bitte vor dem Abschluss lesen. Sie erklären, was in Ihrem Markt versichert ist und was nicht."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Häufige Fragen"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Schon bei Wohnen Sicher?",
+            "text": "Upgrade in Ihrem Konto mit zwei Klicks. Die Differenz wird anteilig berechnet.",
+            "cta": {
+              "label": "Angebot starten",
+              "url": "/quote/home-plus",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Wohnen Plus | Meridian Mutual",
+          "metaDescription": "Wohnversicherung mit Unfallschäden und Notfallhilfe."
+        }
+      },
+      "it": {
+        "name": "Casa Plus",
+        "tagline": "Tutto Casa Sicura, più i danni accidentali e gli imprevisti.",
+        "localRate": 4.6,
+        "rateWording": "TAEG 4,6% per pagamento mensile. Premio annuo da 275 EUR.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Casa Plus è assicurata da Meridian Mutual Group. La copertura è soggetta alle condizioni di polizza e al documento informativo precontrattuale del tuo mercato. Questa pagina è una dimostrazione e non costituisce un'offerta."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Casa Plus",
+            "subtitle": "Vino sul divano, un trapano in una tubatura, un portatile rotto. Casa Plus copre gli incidenti che Casa Sicura non copre.",
+            "cta": {
+              "label": "Richiedi un preventivo",
+              "url": "/quote/home-plus",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Cosa è coperto",
+            "rows": [
+              {
+                "name": "Tutto Casa Sicura",
+                "included": true,
+                "note": "Incendio, acqua, furto"
+              },
+              {
+                "name": "Danni accidentali",
+                "included": true,
+                "note": "Fabbricato e contenuto"
+              },
+              {
+                "name": "Emergenza casa",
+                "included": true,
+                "note": "Idraulico o elettricista entro 4 ore"
+              },
+              {
+                "name": "Oggetti di valore fuori casa",
+                "included": true,
+                "note": "Fino a 5.000 EUR"
+              },
+              {
+                "name": "Garanzia affitto",
+                "included": false,
+                "note": "Prodotto per proprietari"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documenti",
+            "intro": "Da leggere prima di acquistare. Spiegano cosa è coperto e cosa no nel tuo mercato."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Domande frequenti"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Hai già Casa Sicura?",
+            "text": "Passa a Plus dalla tua area personale in due clic. La differenza è calcolata pro rata.",
+            "cta": {
+              "label": "Inizia il preventivo",
+              "url": "/quote/home-plus",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Casa Plus | Meridian Mutual",
+          "metaDescription": "Assicurazione casa con danni accidentali ed emergenza casa."
+        }
+      }
+    }
+  },
+  {
+    "slug": "business-shield",
+    "category": "savings",
+    "heroImage": "product-business-shield.png",
+    "documents": [
+      "business-shield"
+    ],
+    "faqs": [
+      "claim-how",
+      "cancel",
+      "business-who"
+    ],
+    "localizations": {
+      "en": {
+        "name": "Business Shield",
+        "tagline": "Liability and equipment cover for independents and small firms.",
+        "localRate": 0,
+        "rateWording": "Annual premium from EUR 240 for a sole trader. Quoted per activity. No APR applies.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Business Shield is underwritten by Meridian Mutual Group. Cover is subject to the policy terms and the pre-contractual information document for your market. This page is a demonstration and not an offer."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Business Shield",
+            "subtitle": "Public and professional liability, equipment, legal costs. Built for the 180,000 small businesses our agents already know by name.",
+            "cta": {
+              "label": "Get a quote",
+              "url": "/quote/business-shield",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "What is covered",
+            "rows": [
+              {
+                "name": "Public liability",
+                "included": true,
+                "note": "Up to EUR 2,000,000"
+              },
+              {
+                "name": "Professional liability",
+                "included": true,
+                "note": "Up to EUR 500,000"
+              },
+              {
+                "name": "Equipment",
+                "included": true,
+                "note": "Up to EUR 20,000"
+              },
+              {
+                "name": "Legal costs",
+                "included": true,
+                "note": "Up to EUR 25,000"
+              },
+              {
+                "name": "Cyber incidents",
+                "included": false,
+                "note": "Coming in 2027"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "Read these before you buy. They explain what is and is not covered in your market."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Common questions"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Talk to an agent who knows your trade",
+            "text": "Quotes depend on what you do. Ten minutes with an agent gets you the right one.",
+            "cta": {
+              "label": "Start your quote",
+              "url": "/quote/business-shield",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Business Shield | Meridian Mutual",
+          "metaDescription": "Business liability and equipment insurance for small firms."
+        }
+      },
+      "fr": {
+        "name": "Business Shield",
+        "tagline": "Responsabilité et matériel pour indépendants et petites entreprises.",
+        "localRate": 0,
+        "rateWording": "Prime annuelle à partir de 240 EUR pour un indépendant. Tarif selon activité. Aucun TAEG.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Business Shield est assuré par Meridian Mutual Group. La garantie est soumise aux conditions générales et au document d'information précontractuel de votre marché. Cette page est une démonstration et ne constitue pas une offre."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Business Shield",
+            "subtitle": "Responsabilité civile et professionnelle, matériel, frais de justice. Conçu pour les 180 000 petites entreprises que nos agents connaissent déjà par leur nom.",
+            "cta": {
+              "label": "Obtenir un devis",
+              "url": "/quote/business-shield",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Ce qui est couvert",
+            "rows": [
+              {
+                "name": "Responsabilité civile",
+                "included": true,
+                "note": "Jusqu'à 2 000 000 EUR"
+              },
+              {
+                "name": "Responsabilité professionnelle",
+                "included": true,
+                "note": "Jusqu'à 500 000 EUR"
+              },
+              {
+                "name": "Matériel",
+                "included": true,
+                "note": "Jusqu'à 20 000 EUR"
+              },
+              {
+                "name": "Frais de justice",
+                "included": true,
+                "note": "Jusqu'à 25 000 EUR"
+              },
+              {
+                "name": "Incidents cyber",
+                "included": false,
+                "note": "Prévu en 2027"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "À lire avant de souscrire. Ils expliquent ce qui est couvert ou non dans votre marché."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Questions fréquentes"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Parlez à un agent qui connaît votre métier",
+            "text": "Le tarif dépend de votre activité. Dix minutes avec un agent pour le bon devis.",
+            "cta": {
+              "label": "Commencer mon devis",
+              "url": "/quote/business-shield",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Business Shield | Meridian Mutual",
+          "metaDescription": "Assurance responsabilité et matériel pour petites entreprises."
+        }
+      },
+      "de": {
+        "name": "Business Shield",
+        "tagline": "Haftpflicht und Ausrüstung für Selbstständige und kleine Firmen.",
+        "localRate": 0,
+        "rateWording": "Jahresbeitrag ab 240 EUR für Einzelunternehmer. Angebot je nach Tätigkeit. Kein effektiver Jahreszins.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Business Shield wird von der Meridian Mutual Group versichert. Der Schutz unterliegt den Versicherungsbedingungen und dem vorvertraglichen Informationsblatt Ihres Marktes. Diese Seite ist eine Demonstration und kein Angebot."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Business Shield",
+            "subtitle": "Betriebs- und Berufshaftpflicht, Ausrüstung, Rechtskosten. Gemacht für die 180.000 kleinen Unternehmen, die unsere Berater schon beim Namen kennen.",
+            "cta": {
+              "label": "Angebot anfordern",
+              "url": "/quote/business-shield",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Was versichert ist",
+            "rows": [
+              {
+                "name": "Betriebshaftpflicht",
+                "included": true,
+                "note": "Bis 2.000.000 EUR"
+              },
+              {
+                "name": "Berufshaftpflicht",
+                "included": true,
+                "note": "Bis 500.000 EUR"
+              },
+              {
+                "name": "Ausrüstung",
+                "included": true,
+                "note": "Bis 20.000 EUR"
+              },
+              {
+                "name": "Rechtskosten",
+                "included": true,
+                "note": "Bis 25.000 EUR"
+              },
+              {
+                "name": "Cyber-Vorfälle",
+                "included": false,
+                "note": "Ab 2027"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Dokumente",
+            "intro": "Bitte vor dem Abschluss lesen. Sie erklären, was in Ihrem Markt versichert ist und was nicht."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Häufige Fragen"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Sprechen Sie mit einem Berater, der Ihr Gewerbe kennt",
+            "text": "Der Preis hängt von Ihrer Tätigkeit ab. Zehn Minuten mit einem Berater für das richtige Angebot.",
+            "cta": {
+              "label": "Angebot starten",
+              "url": "/quote/business-shield",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Business Shield | Meridian Mutual",
+          "metaDescription": "Betriebshaftpflicht- und Ausrüstungsversicherung für kleine Firmen."
+        }
+      },
+      "it": {
+        "name": "Business Shield",
+        "tagline": "Responsabilità e attrezzature per partite IVA e piccole imprese.",
+        "localRate": 0,
+        "rateWording": "Premio annuo da 240 EUR per un lavoratore autonomo. Preventivo per attività. Nessun TAEG.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Business Shield è assicurata da Meridian Mutual Group. La copertura è soggetta alle condizioni di polizza e al documento informativo precontrattuale del tuo mercato. Questa pagina è una dimostrazione e non costituisce un'offerta."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Business Shield",
+            "subtitle": "Responsabilità civile e professionale, attrezzature, spese legali. Pensata per le 180.000 piccole imprese che i nostri agenti conoscono già per nome.",
+            "cta": {
+              "label": "Richiedi un preventivo",
+              "url": "/quote/business-shield",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Cosa è coperto",
+            "rows": [
+              {
+                "name": "Responsabilità civile",
+                "included": true,
+                "note": "Fino a 2.000.000 EUR"
+              },
+              {
+                "name": "Responsabilità professionale",
+                "included": true,
+                "note": "Fino a 500.000 EUR"
+              },
+              {
+                "name": "Attrezzature",
+                "included": true,
+                "note": "Fino a 20.000 EUR"
+              },
+              {
+                "name": "Spese legali",
+                "included": true,
+                "note": "Fino a 25.000 EUR"
+              },
+              {
+                "name": "Incidenti cyber",
+                "included": false,
+                "note": "In arrivo nel 2027"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documenti",
+            "intro": "Da leggere prima di acquistare. Spiegano cosa è coperto e cosa no nel tuo mercato."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Domande frequenti"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Parla con un agente che conosce il tuo mestiere",
+            "text": "Il prezzo dipende da cosa fai. Dieci minuti con un agente per il preventivo giusto.",
+            "cta": {
+              "label": "Inizia il preventivo",
+              "url": "/quote/business-shield",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Business Shield | Meridian Mutual",
+          "metaDescription": "Assicurazione responsabilità e attrezzature per piccole imprese."
+        }
+      }
+    }
+  },
+  {
     "slug": "motor-flex-2027",
     "category": "motor",
     "heroImage": "product-motor-flex.png",

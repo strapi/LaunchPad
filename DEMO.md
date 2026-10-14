@@ -42,7 +42,7 @@ Every scene uses the same layout: **Start**, **Actions** (numbered), **The momen
 
 **Actions**
 1. Point at the dashboard widgets: entries, drafts, assigned to me, upcoming releases, review stage, recent audit activity. They are drag and drop. This is where a content lead starts the day.
-2. Open the Content Manager. Show collection types (Products, Pages, News, Press releases, Regulated documents, Promo banners) versus single types (Global, Header, Footer).
+2. Open the Content Manager. The types are grouped in folders: "Products & regulated documents", "Website", "Newsroom", and "Site settings" for the single types. Collapse and expand one. Say the folders are configuration in the repo, not something each editor sets up.
 3. On the Products list, add two columns (locale, status) with the column picker. The list is customisable per team.
 4. Point at the three statuses: Draft, Published, Modified. Modified means: it is published, and there is a newer draft that is not live yet.
 
@@ -53,7 +53,7 @@ Every scene uses the same layout: **Start**, **Actions** (numbered), **The momen
 **Talk track**
 - *(the outcome first)* "Here is what a group like yours gets from this platform, and then I will show you what makes it possible. Three things: you always know what is live, what is pending and what is at risk, without a status meeting; a legal or brand change is made once and lands everywhere; and your teams can prepare next quarter's content while this quarter's is being served, with no risk of leaking it."
 - *(what makes it possible, on the home page)* "The first one comes from this dashboard. Drafts, assignments, upcoming releases, items in review, recent changes, all live. The content lead starts here, not in a spreadsheet."
-- *(opening the Content Manager)* "The second comes from how content is organised. Collection types are the things you have many of: products, pages, regulated documents. Single types exist once: the legal footer, the header. Change the footer here, it changes in every market. One regulatory update, done once."
+- *(opening the Content Manager)* "The second comes from how content is organised. The types sit in folders that match how your teams think: products and regulated documents, the website, the newsroom, and the site settings. Collection types are the things you have many of; single types exist once, like the legal footer. Change the footer here, it changes in every market. One regulatory update, done once."
 - *(pointing at the statuses)* "The third comes from Draft & Publish. Three states: Draft is not live, Published is live, Modified means live plus a newer version in preparation. You can work on the new rates while the old ones are served. That is the end of 'do not touch the page until launch day'."
 - *(adding the columns)* "And a small thing that saves real time every day: each team configures its own list view. Compliance sees review stage and assignee, country teams see locale and last editor. Less hunting, fewer mistakes, no developer involved."
 - *(closing)* "Everything here is also available through an API. So one approved correction updates the website, the app and the agent portal at once. One source of truth, every channel."

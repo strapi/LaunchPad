@@ -1,5 +1,122 @@
 [
   {
+    "slug": "baisse-cotisation-habitation-2027",
+    "market": "FR",
+    "locale": "fr",
+    "publishedOn": "2026-10-06",
+    "cover": "news-home-fr.png",
+    "title": "Habitation Sécurité : cotisation en baisse de 2 % en 2027",
+    "excerpt": "La sinistralité 2025 a été inférieure aux prévisions. La différence revient aux sociétaires.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Le conseil d'administration a validé une baisse de 2 % de la cotisation Habitation Sécurité pour les contrats renouvelés à partir du 1er janvier 2027."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "La décision s'appuie sur une sinistralité 2025 inférieure de 6 % aux prévisions, principalement grâce à une année sans épisode climatique majeur. En tant que mutuelle, le groupe restitue la différence plutôt que de la conserver."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "auto-essenziale-tassi-2026",
+    "market": "IT",
+    "locale": "it",
+    "publishedOn": "2026-09-30",
+    "cover": "news-motor-it.png",
+    "title": "Auto Essenziale: aggiornamento del TAEG per il pagamento mensile",
+    "excerpt": "Il tasso applicato alle rate mensili è stato aggiornato. Il premio annuo non cambia.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Dal 1° ottobre il TAEG applicato al pagamento mensile di Auto Essenziale è stato aggiornato. Il premio annuo resta invariato per chi paga in un'unica soluzione."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Il dettaglio è riportato nella pagina prodotto e nel documento informativo precontrattuale aggiornato."
+          }
+        ]
+      }
+    ],
+    "demoState": "draft; this is the news item that would announce the rate in scene 5, left in draft on purpose"
+  },
+  {
+    "slug": "nouvelle-agence-nantes",
+    "market": "FR",
+    "locale": "fr",
+    "publishedOn": "2026-09-22",
+    "cover": "news-agency.png",
+    "title": "Nouvelle agence à Nantes, quartier Chantenay",
+    "excerpt": "Six agents, ouverture du lundi au samedi, et un espace dédié aux déclarations de sinistre.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "La nouvelle agence de Nantes Chantenay ouvre ses portes le 29 septembre. Six agents y accueillent les sociétaires du lundi au samedi, de 9h à 19h."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "L'agence dispose d'un espace sinistres où un gestionnaire reçoit sur rendez-vous, une première dans le réseau. Si l'expérience est concluante, le dispositif sera étendu aux agences de Lyon et Bordeaux en 2027."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "grandine-nord-italia",
+    "market": "IT",
+    "locale": "it",
+    "publishedOn": "2026-09-15",
+    "cover": "news-it-grandine.png",
+    "title": "Grandine nel Nord Italia: perizie entro cinque giorni",
+    "excerpt": "Dopo le grandinate di settembre, 2.300 denunce auto e casa, perizie fissate entro cinque giorni lavorativi.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Per i danni auto da grandine la franchigia è azzerata su Auto Flex, come previsto dalle condizioni."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "I periti arrivano con un tablet collegato alla piattaforma sinistri: il socio vede la perizia nella sua area personale la sera stessa."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "group-results-h1-2026",
     "market": "group",
     "locale": "en",
@@ -38,20 +155,20 @@
     ]
   },
   {
-    "slug": "new-claims-platform",
+    "slug": "one-content-platform-for-three-markets",
     "market": "group",
     "locale": "en",
-    "publishedOn": "2026-03-16",
-    "cover": "news-claims.png",
-    "title": "One claims platform for three countries",
-    "excerpt": "From today, a claim started in Milan, Munich or Lyon follows the same steps and the same timelines.",
+    "publishedOn": "2026-08-25",
+    "cover": "news-platform-cms.png",
+    "title": "One content platform for three markets",
+    "excerpt": "The group website now runs on a single content platform: one product page, four languages, one approval flow.",
     "body": [
       {
         "type": "paragraph",
         "children": [
           {
             "type": "text",
-            "text": "The group has replaced three national claims systems with one. Members see the same online form, the same reference number format and the same status updates regardless of market."
+            "text": "Until this summer, each country ran its own website on its own system. A product update meant three tickets, three agencies and three go-live dates."
           }
         ]
       },
@@ -60,27 +177,7 @@
         "children": [
           {
             "type": "text",
-            "text": "Agents can now follow a claim end to end from their own screen, which removes the phone calls between branches and head office that used to add two to three days."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "slug": "agents-recruitment-2026",
-    "market": "group",
-    "locale": "en",
-    "publishedOn": "2026-06-10",
-    "cover": "news-agents.png",
-    "title": "Forty new agents in 2026, all employees",
-    "excerpt": "The group keeps its model: agents on payroll, trained for every product, measured on member satisfaction.",
-    "body": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "text": "Forty agents will join the network this year, twenty in Italy, twelve in Germany and eight in France. All are employees, not franchisees, and all are trained to quote, sell and handle claims for the full range."
+            "text": "Since August, headquarters writes a product once in English, each country adapts it in its language, compliance approves per market, and a launch goes live everywhere at the same moment."
           }
         ]
       },
@@ -89,94 +186,7 @@
         "children": [
           {
             "type": "text",
-            "text": "The group has no plan to move to a franchise model. Member satisfaction with agents is at 91%, and the group considers the employee model the reason."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "slug": "nouvelle-agence-nantes",
-    "market": "FR",
-    "locale": "fr",
-    "publishedOn": "2026-09-22",
-    "cover": "news-agency.png",
-    "title": "Nouvelle agence à Nantes, quartier Chantenay",
-    "excerpt": "Six agents, ouverture du lundi au samedi, et un espace dédié aux déclarations de sinistre.",
-    "body": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "text": "La nouvelle agence de Nantes Chantenay ouvre ses portes le 29 septembre. Six agents y accueillent les sociétaires du lundi au samedi, de 9h à 19h."
-          }
-        ]
-      },
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "text": "L'agence dispose d'un espace sinistres où un gestionnaire reçoit sur rendez-vous, une première dans le réseau. Si l'expérience est concluante, le dispositif sera étendu aux agences de Lyon et Bordeaux en 2027."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "slug": "baisse-cotisation-habitation-2027",
-    "market": "FR",
-    "locale": "fr",
-    "publishedOn": "2026-10-06",
-    "cover": "news-home-fr.png",
-    "title": "Habitation Sécurité : cotisation en baisse de 2 % en 2027",
-    "excerpt": "La sinistralité 2025 a été inférieure aux prévisions. La différence revient aux sociétaires.",
-    "body": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "text": "Le conseil d'administration a validé une baisse de 2 % de la cotisation Habitation Sécurité pour les contrats renouvelés à partir du 1er janvier 2027."
-          }
-        ]
-      },
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "text": "La décision s'appuie sur une sinistralité 2025 inférieure de 6 % aux prévisions, principalement grâce à une année sans épisode climatique majeur. En tant que mutuelle, le groupe restitue la différence plutôt que de la conserver."
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "slug": "assistance-vacances-ete",
-    "market": "FR",
-    "locale": "fr",
-    "publishedOn": "2026-06-24",
-    "cover": "news-summer.png",
-    "title": "Assistance routière : ce qui change pour l'été",
-    "excerpt": "Rayon étendu à toute l'Union européenne du 1er juillet au 31 août pour tous les contrats auto.",
-    "body": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "text": "Du 1er juillet au 31 août, l'assistance routière incluse dans Auto Essentiel et Auto Flex couvre l'ensemble de l'Union européenne, sans surcoût."
-          }
-        ]
-      },
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "text": "Il suffit d'appeler le numéro habituel. Le véhicule est rapatrié si la réparation sur place dépasse cinq jours."
+            "text": "The first launch on the new platform will be Motor Flex 2027 in November."
           }
         ]
       }
@@ -212,6 +222,239 @@
     ]
   },
   {
+    "slug": "canicule-assistance-renforcee",
+    "market": "FR",
+    "locale": "fr",
+    "publishedOn": "2026-08-11",
+    "cover": "news-fr-canicule.png",
+    "title": "Canicule : assistance renforcée pour les sociétaires fragiles",
+    "excerpt": "Du 1er juillet au 15 septembre, un appel par semaine aux sociétaires de plus de 80 ans vivant seuls.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Les agents appellent, prennent des nouvelles et peuvent déclencher une visite ou une aide à domicile."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Le dispositif a touché 6 200 personnes l'été dernier et sera étendu à l'Italie en 2027."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "solvency-ratio-212",
+    "market": "group",
+    "locale": "en",
+    "publishedOn": "2026-07-21",
+    "cover": "news-solvency.png",
+    "title": "Solvency ratio at 212% after the climate reserve",
+    "excerpt": "Even after setting aside EUR 120 million for climate events, the group keeps one of the strongest balance sheets among European mutuals.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The ratio is measured against the Solvency II standard formula and audited every year."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The reserve will be drawn on only when weather-related claims exceed 130% of the ten-year average."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "agenti-sud-italia",
+    "market": "IT",
+    "locale": "it",
+    "publishedOn": "2026-07-14",
+    "cover": "news-agents-it.png",
+    "title": "Venti nuovi agenti nel Sud Italia entro fine anno",
+    "excerpt": "Napoli, Bari e Palermo le prime città. Tutti dipendenti, formati su tutti i prodotti.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Entro dicembre venti nuovi agenti entreranno nella rete italiana, a partire da Napoli, Bari e Palermo. Come nel resto del gruppo sono dipendenti, non franchisee, e possono fare preventivi, vendere e gestire sinistri per ogni prodotto."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Le selezioni sono aperte sulla pagina Carriere."
+          }
+        ]
+      }
+    ],
+    "demoState": "draft"
+  },
+  {
+    "slug": "hochwasser-soforthilfe",
+    "market": "DE",
+    "locale": "de",
+    "publishedOn": "2026-07-07",
+    "cover": "news-de-hochwasser.png",
+    "title": "Hochwasser: Soforthilfe binnen 48 Stunden",
+    "excerpt": "Nach den Unwettern im Juni wurden 1.900 Schäden gemeldet und 1.700 innerhalb von zwei Tagen mit einer Vorauszahlung bedient.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Die Vorauszahlung von 2.000 EUR deckt Trocknung und Notreparaturen, bevor der Gutachter kommt."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Die Regelung gilt bei jedem Ereignis, das die Behörden als Unwetter einstufen."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "assistance-vacances-ete",
+    "market": "FR",
+    "locale": "fr",
+    "publishedOn": "2026-06-24",
+    "cover": "news-summer.png",
+    "title": "Assistance routière : ce qui change pour l'été",
+    "excerpt": "Rayon étendu à toute l'Union européenne du 1er juillet au 31 août pour tous les contrats auto.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Du 1er juillet au 31 août, l'assistance routière incluse dans Auto Essentiel et Auto Flex couvre l'ensemble de l'Union européenne, sans surcoût."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Il suffit d'appeler le numéro habituel. Le véhicule est rapatrié si la réparation sur place dépasse cinq jours."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "agents-recruitment-2026",
+    "market": "group",
+    "locale": "en",
+    "publishedOn": "2026-06-10",
+    "cover": "news-agents.png",
+    "title": "Forty new agents in 2026, all employees",
+    "excerpt": "The group keeps its model: agents on payroll, trained for every product, measured on member satisfaction.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Forty agents will join the network this year, twenty in Italy, twelve in Germany and eight in France. All are employees, not franchisees, and all are trained to quote, sell and handle claims for the full range."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The group has no plan to move to a franchise model. Member satisfaction with agents is at 91%, and the group considers the employee model the reason."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "nuova-agenzia-napoli",
+    "market": "IT",
+    "locale": "it",
+    "publishedOn": "2026-06-02",
+    "cover": "news-it-agenzia-napoli.png",
+    "title": "Nuova agenzia a Napoli, via Toledo",
+    "excerpt": "Cinque agenti, aperta dal lunedì al sabato, la prima del piano Sud Italia.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Seguiranno Bari e Palermo entro dicembre."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Tutti gli agenti sono dipendenti e formati su ogni prodotto."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "general-meeting-2026",
+    "market": "group",
+    "locale": "en",
+    "publishedOn": "2026-05-27",
+    "cover": "news-agm.png",
+    "title": "General meeting: 11,400 members voted, 94% online",
+    "excerpt": "The 2026 general meeting approved the accounts and elected two new member representatives to the board.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Voting online was offered for the third year and has become the norm."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The two new board members are an agent from Bari and a retired teacher from Lille, both elected from the floor."
+          }
+        ]
+      }
+    ]
+  },
+  {
     "slug": "kfz-basis-pannenhilfe-50km",
     "market": "DE",
     "locale": "de",
@@ -241,20 +484,20 @@
     ]
   },
   {
-    "slug": "muenchen-buero-umzug",
-    "market": "DE",
-    "locale": "de",
-    "publishedOn": "2026-02-11",
-    "cover": "news-office.png",
-    "title": "Die deutsche Zentrale zieht nach München-Sendling",
-    "excerpt": "Ab März arbeiten 310 Mitarbeitende am neuen Standort an der Lindwurmstraße.",
+    "slug": "velo-electrique-habitation",
+    "market": "FR",
+    "locale": "fr",
+    "publishedOn": "2026-04-29",
+    "cover": "news-fr-velo.png",
+    "title": "Vélo électrique : couvert par Habitation Sécurité, partout",
+    "excerpt": "Le vol et la casse d'un vélo électrique sont désormais couverts hors domicile, jusqu'à 2 500 EUR.",
     "body": [
       {
         "type": "paragraph",
         "children": [
           {
             "type": "text",
-            "text": "Die deutsche Zentrale der Meridian Mutual Group zieht Anfang März in neue Räume an der Lindwurmstraße in München-Sendling. Telefonnummern und Postadresse für Mitglieder bleiben unverändert."
+            "text": "Il suffit de déclarer le vélo dans votre espace avec sa facture."
           }
         ]
       },
@@ -263,7 +506,56 @@
         "children": [
           {
             "type": "text",
-            "text": "Der neue Standort bietet Platz für die 60 zusätzlichen Schadensachbearbeiter, die 2026 eingestellt werden."
+            "text": "La franchise est de 50 EUR, identique à celle du contenu."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "app-schadenmeldung-deutsch",
+    "market": "DE",
+    "locale": "de",
+    "publishedOn": "2026-04-21",
+    "cover": "news-de-app.png",
+    "title": "Schadenmeldung per App jetzt auf Deutsch",
+    "excerpt": "Die Meridian-App meldet Schäden, lädt Fotos hoch und zeigt den Status, auf Deutsch und mit deutschen Hotlines.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Die App liest dieselben Inhalte wie die Website, Produktinformationen sind also auf allen Kanälen identisch."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "mobile-app-claims",
+    "market": "group",
+    "locale": "en",
+    "publishedOn": "2026-04-14",
+    "cover": "news-mobile.png",
+    "title": "Claims from the app, in every country",
+    "excerpt": "The Meridian app now lets members start a claim, upload photos and follow the status, in French, German and Italian.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The app reads the same content as the website, so product information and documents are always identical across channels."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Push notifications tell members when their handler has read a document or paid an invoice."
           }
         ]
       }
@@ -299,20 +591,20 @@
     ]
   },
   {
-    "slug": "auto-essenziale-tassi-2026",
-    "market": "IT",
-    "locale": "it",
-    "publishedOn": "2026-09-30",
-    "cover": "news-motor-it.png",
-    "title": "Auto Essenziale: aggiornamento del TAEG per il pagamento mensile",
-    "excerpt": "Il tasso applicato alle rate mensili è stato aggiornato. Il premio annuo non cambia.",
+    "slug": "new-claims-platform",
+    "market": "group",
+    "locale": "en",
+    "publishedOn": "2026-03-16",
+    "cover": "news-claims.png",
+    "title": "One claims platform for three countries",
+    "excerpt": "From today, a claim started in Milan, Munich or Lyon follows the same steps and the same timelines.",
     "body": [
       {
         "type": "paragraph",
         "children": [
           {
             "type": "text",
-            "text": "Dal 1° ottobre il TAEG applicato al pagamento mensile di Auto Essenziale è stato aggiornato. Il premio annuo resta invariato per chi paga in un'unica soluzione."
+            "text": "The group has replaced three national claims systems with one. Members see the same online form, the same reference number format and the same status updates regardless of market."
           }
         ]
       },
@@ -321,28 +613,47 @@
         "children": [
           {
             "type": "text",
-            "text": "Il dettaglio è riportato nella pagina prodotto e nel documento informativo precontrattuale aggiornato."
+            "text": "Agents can now follow a claim end to end from their own screen, which removes the phone calls between branches and head office that used to add two to three days."
           }
         ]
       }
-    ],
-    "demoState": "draft; this is the news item that would announce the rate in scene 5, left in draft on purpose"
+    ]
   },
   {
-    "slug": "agenti-sud-italia",
-    "market": "IT",
-    "locale": "it",
-    "publishedOn": "2026-07-14",
-    "cover": "news-agents-it.png",
-    "title": "Venti nuovi agenti nel Sud Italia entro fine anno",
-    "excerpt": "Napoli, Bari e Palermo le prime città. Tutti dipendenti, formati su tutti i prodotti.",
+    "slug": "zwoelf-neue-berater",
+    "market": "DE",
+    "locale": "de",
+    "publishedOn": "2026-03-10",
+    "cover": "news-de-berater.png",
+    "title": "Zwölf neue Berater in Nordrhein-Westfalen",
+    "excerpt": "Köln, Düsseldorf und Dortmund bekommen bis Jahresende je vier Berater, alle angestellt.",
     "body": [
       {
         "type": "paragraph",
         "children": [
           {
             "type": "text",
-            "text": "Entro dicembre venti nuovi agenti entreranno nella rete italiana, a partire da Napoli, Bari e Palermo. Come nel resto del gruppo sono dipendenti, non franchisee, e possono fare preventivi, vendere e gestire sinistri per ogni prodotto."
+            "text": "Die Ausbildung dauert acht Wochen und umfasst jedes Produkt der Gruppe."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "horaires-agences-samedi",
+    "market": "FR",
+    "locale": "fr",
+    "publishedOn": "2026-03-03",
+    "cover": "news-fr-agences.png",
+    "title": "Toutes les agences ouvertes le samedi matin",
+    "excerpt": "À partir du 7 mars, les 140 agences françaises ouvrent le samedi de 9h à 13h.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "La demande venait des sociétaires actifs qui ne peuvent pas passer en semaine."
           }
         ]
       },
@@ -351,11 +662,186 @@
         "children": [
           {
             "type": "text",
-            "text": "Le selezioni sono aperte sulla pagina Carriere."
+            "text": "Les sinistres peuvent aussi être déclarés en agence le samedi."
           }
         ]
       }
-    ],
-    "demoState": "draft"
+    ]
+  },
+  {
+    "slug": "premium-review-2026",
+    "market": "group",
+    "locale": "en",
+    "publishedOn": "2026-02-24",
+    "cover": "news-rates.png",
+    "title": "2026 premium review: motor down 1%, home flat",
+    "excerpt": "A lower claims year lets the group cut motor premiums slightly and hold home premiums for 2026.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The review applies at renewal. Members see the new figure in their renewal email and on the product page of their market."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Health premiums rise 2.5%, below medical inflation."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "tariffe-2026-italia",
+    "market": "IT",
+    "locale": "it",
+    "publishedOn": "2026-02-17",
+    "cover": "news-it-tariffe.png",
+    "title": "Tariffe 2026 in Italia: auto in calo, casa stabile",
+    "excerpt": "La revisione annuale si applica alla scadenza. Il dettaglio è nella pagina di ogni prodotto.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Auto Essenziale scende dell'1%, Casa Sicura resta stabile, Salute Plus aumenta del 2,5%."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "muenchen-buero-umzug",
+    "market": "DE",
+    "locale": "de",
+    "publishedOn": "2026-02-11",
+    "cover": "news-office.png",
+    "title": "Die deutsche Zentrale zieht nach München-Sendling",
+    "excerpt": "Ab März arbeiten 310 Mitarbeitende am neuen Standort an der Lindwurmstraße.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Die deutsche Zentrale der Meridian Mutual Group zieht Anfang März in neue Räume an der Lindwurmstraße in München-Sendling. Telefonnummern und Postadresse für Mitglieder bleiben unverändert."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Der neue Standort bietet Platz für die 60 zusätzlichen Schadensachbearbeiter, die 2026 eingestellt werden."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "beitragsanpassung-2026",
+    "market": "DE",
+    "locale": "de",
+    "publishedOn": "2026-01-27",
+    "cover": "news-de-beitrag.png",
+    "title": "Beitragsanpassung 2026: Kfz minus 1 %, Wohnen unverändert",
+    "excerpt": "Die jährliche Anpassung gilt zur Verlängerung. Details auf jeder Produktseite.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Kfz Basis sinkt um 1 %, Wohnen Sicher bleibt unverändert, Gesundheit Plus steigt um 2,5 %."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "tarifs-2026-france",
+    "market": "FR",
+    "locale": "fr",
+    "publishedOn": "2026-01-20",
+    "cover": "news-fr-tarifs.png",
+    "title": "Tarifs 2026 en France : auto en baisse, habitation stable",
+    "excerpt": "La révision annuelle s'applique à l'échéance. Le détail par produit est sur chaque page produit.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Auto Essentiel baisse de 1 %, Habitation Sécurité est stable, Santé Plus augmente de 2,5 %."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Les sociétaires reçoivent le nouveau montant par e-mail un mois avant l'échéance."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "app-denuncia-sinistri",
+    "market": "IT",
+    "locale": "it",
+    "publishedOn": "2026-01-13",
+    "cover": "news-it-app.png",
+    "title": "Denuncia sinistri dall'app, in italiano",
+    "excerpt": "L'app Meridian permette di denunciare un sinistro, caricare foto e seguire lo stato, con i numeri italiani.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "L'app legge gli stessi contenuti del sito, quindi le informazioni sui prodotti sono identiche su tutti i canali."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "lyon-hq-renovation",
+    "market": "group",
+    "locale": "en",
+    "publishedOn": "2026-01-12",
+    "cover": "news-office-lyon.png",
+    "title": "Head office renovation complete",
+    "excerpt": "Rue des Tisserands reopens after eighteen months of works: 600 desks, a members' room and the first group-wide claims floor.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The members' room is open to any policyholder passing through Lyon, with an agent on duty."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The building runs on the district heating network and no longer burns gas."
+          }
+        ]
+      }
+    ]
   }
 ]

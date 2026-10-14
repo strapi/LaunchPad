@@ -5,7 +5,9 @@
       "agent-find",
       "pay-monthly",
       "cancel",
-      "data-privacy"
+      "data-privacy",
+      "family-discount",
+      "member-vote"
     ],
     "localizations": {
       "en": {
@@ -656,7 +658,9 @@
     "slug": "claims",
     "faqs": [
       "claim-how",
-      "documents-where"
+      "documents-where",
+      "claim-time",
+      "claim-track"
     ],
     "localizations": {
       "en": {
@@ -1278,6 +1282,574 @@
         "seo": {
           "metaTitle": "Contatti | Meridian Mutual",
           "metaDescription": "Numeri di telefono e agenti per Francia, Germania e Italia."
+        }
+      }
+    }
+  },
+  {
+    "slug": "careers",
+    "faqs": [],
+    "localizations": {
+      "en": {
+        "title": "Careers",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Work where the claim gets paid",
+            "subtitle": "3,800 people in Lyon, Munich, Milan and 420 agencies. Agents, claims handlers, engineers, actuaries.",
+            "cta": {
+              "label": "See open roles",
+              "url": "/careers#roles",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Open roles",
+                "value": "64"
+              },
+              {
+                "label": "Countries",
+                "value": "3"
+              },
+              {
+                "label": "Average tenure",
+                "value": "9 years"
+              },
+              {
+                "label": "Internal promotions in 2025",
+                "value": "41%"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.rich-text",
+            "title": "Teams hiring now",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Agencies: 40 agents across the three countries, employees from day one, trained on every product for eight weeks before meeting a member."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Claims: 60 handlers in Munich and Milan for the group claims platform. Measured on time to settle, not on money saved."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Technology: engineers for the content platform, the claims platform and the agent tools. Lyon, remote-friendly."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "No role that fits?",
+            "text": "Send us a note anyway. We read all of them.",
+            "cta": {
+              "label": "Write to us",
+              "url": "/contact",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Careers | Meridian Mutual",
+          "metaDescription": "Open roles at Meridian Mutual Group in France, Germany and Italy."
+        }
+      },
+      "fr": {
+        "title": "Carrières",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Travaillez là où le sinistre est payé",
+            "subtitle": "3 800 personnes à Lyon, Munich, Milan et dans 420 agences. Agents, gestionnaires sinistres, ingénieurs, actuaires.",
+            "cta": {
+              "label": "Voir les postes",
+              "url": "/careers#roles",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Postes ouverts",
+                "value": "64"
+              },
+              {
+                "label": "Pays",
+                "value": "3"
+              },
+              {
+                "label": "Ancienneté moyenne",
+                "value": "9 ans"
+              },
+              {
+                "label": "Promotions internes en 2025",
+                "value": "41 %"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.rich-text",
+            "title": "Les équipes qui recrutent",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Agences : 40 agents dans les trois pays, salariés dès le premier jour, formés huit semaines sur tous les produits avant de rencontrer un sociétaire."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Sinistres : 60 gestionnaires à Munich et Milan pour la plateforme sinistres du groupe. Évalués sur le délai de règlement, pas sur l'argent économisé."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Technologie : ingénieurs pour la plateforme de contenu, la plateforme sinistres et les outils des agents. Lyon, télétravail possible."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Aucun poste ne correspond ?",
+            "text": "Écrivez-nous quand même. Nous lisons tout.",
+            "cta": {
+              "label": "Nous écrire",
+              "url": "/contact",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Carrières | Meridian Mutual",
+          "metaDescription": "Postes ouverts chez Meridian Mutual Group en France, Allemagne et Italie."
+        }
+      },
+      "de": {
+        "title": "Karriere",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Arbeiten, wo der Schaden bezahlt wird",
+            "subtitle": "3.800 Menschen in Lyon, München, Mailand und 420 Agenturen. Berater, Schadensachbearbeiter, Ingenieure, Aktuare.",
+            "cta": {
+              "label": "Offene Stellen",
+              "url": "/careers#roles",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Offene Stellen",
+                "value": "64"
+              },
+              {
+                "label": "Länder",
+                "value": "3"
+              },
+              {
+                "label": "Durchschnittliche Betriebszugehörigkeit",
+                "value": "9 Jahre"
+              },
+              {
+                "label": "Interne Beförderungen 2025",
+                "value": "41 %"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.rich-text",
+            "title": "Teams, die jetzt einstellen",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Agenturen: 40 Berater in drei Ländern, vom ersten Tag an angestellt, acht Wochen auf jedes Produkt geschult, bevor sie ein Mitglied treffen."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Schaden: 60 Sachbearbeiter in München und Mailand für die Schadenplattform der Gruppe. Gemessen an der Regulierungsdauer, nicht am gesparten Geld."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Technologie: Ingenieure für die Content-Plattform, die Schadenplattform und die Beratertools. Lyon, remote möglich."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Keine passende Stelle?",
+            "text": "Schreiben Sie uns trotzdem. Wir lesen alles.",
+            "cta": {
+              "label": "Schreiben Sie uns",
+              "url": "/contact",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Karriere | Meridian Mutual",
+          "metaDescription": "Offene Stellen bei der Meridian Mutual Group in Frankreich, Deutschland und Italien."
+        }
+      },
+      "it": {
+        "title": "Carriere",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Lavora dove il sinistro viene pagato",
+            "subtitle": "3.800 persone a Lione, Monaco, Milano e in 420 agenzie. Agenti, gestori sinistri, ingegneri, attuari.",
+            "cta": {
+              "label": "Posizioni aperte",
+              "url": "/careers#roles",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Posizioni aperte",
+                "value": "64"
+              },
+              {
+                "label": "Paesi",
+                "value": "3"
+              },
+              {
+                "label": "Anzianità media",
+                "value": "9 anni"
+              },
+              {
+                "label": "Promozioni interne nel 2025",
+                "value": "41%"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.rich-text",
+            "title": "I team che assumono ora",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Agenzie: 40 agenti nei tre paesi, dipendenti dal primo giorno, formati otto settimane su ogni prodotto prima di incontrare un socio."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Sinistri: 60 gestori a Monaco e Milano per la piattaforma sinistri del gruppo. Valutati sui tempi di liquidazione, non sui soldi risparmiati."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Tecnologia: ingegneri per la piattaforma contenuti, la piattaforma sinistri e gli strumenti degli agenti. Lione, lavoro da remoto possibile."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Nessuna posizione adatta?",
+            "text": "Scrivici lo stesso. Leggiamo tutto.",
+            "cta": {
+              "label": "Scrivici",
+              "url": "/contact",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Carriere | Meridian Mutual",
+          "metaDescription": "Posizioni aperte in Meridian Mutual Group in Francia, Germania e Italia."
+        }
+      }
+    }
+  },
+  {
+    "slug": "documents",
+    "faqs": [
+      "documents-where",
+      "complaint",
+      "switch-insurer"
+    ],
+    "localizations": {
+      "en": {
+        "title": "Documents",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Every document, one place",
+            "subtitle": "Pre-contractual information, policy terms, privacy notices and the annual report, per market.",
+            "cta": {
+              "label": "Open your account",
+              "url": "/account",
+              "variant": "outline"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Pre-contractual information documents are on each product page, in the language of your market, with their regulatory reference."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Policy terms are sent by email when you buy and at each renewal, and are always available in your account."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "The annual report and the general meeting documents are published every April."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Questions about documents"
+          }
+        ],
+        "seo": {
+          "metaTitle": "Documents | Meridian Mutual",
+          "metaDescription": "Pre-contractual documents, policy terms and reports."
+        }
+      },
+      "fr": {
+        "title": "Documents",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Tous les documents, un seul endroit",
+            "subtitle": "Documents d'information précontractuels, conditions générales, notices de confidentialité et rapport annuel, par marché.",
+            "cta": {
+              "label": "Accéder à mon espace",
+              "url": "/account",
+              "variant": "outline"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Les documents d'information précontractuels figurent sur chaque page produit, dans la langue de votre marché, avec leur référence réglementaire."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Les conditions générales sont envoyées par e-mail à la souscription et à chaque échéance, et restent disponibles dans votre espace."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Le rapport annuel et les documents de l'assemblée générale sont publiés chaque mois d'avril."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Questions sur les documents"
+          }
+        ],
+        "seo": {
+          "metaTitle": "Documents | Meridian Mutual",
+          "metaDescription": "Documents précontractuels, conditions générales et rapports."
+        }
+      },
+      "de": {
+        "title": "Dokumente",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Jedes Dokument an einem Ort",
+            "subtitle": "Vorvertragliche Informationen, Versicherungsbedingungen, Datenschutzhinweise und der Jahresbericht, je Markt.",
+            "cta": {
+              "label": "Zum Konto",
+              "url": "/account",
+              "variant": "outline"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Die vorvertraglichen Informationsblätter stehen auf jeder Produktseite, in der Sprache Ihres Marktes, mit ihrer aufsichtsrechtlichen Referenz."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Die Versicherungsbedingungen werden beim Abschluss und bei jeder Verlängerung per E-Mail gesendet und sind immer in Ihrem Konto verfügbar."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Der Jahresbericht und die Unterlagen zur Hauptversammlung erscheinen jedes Jahr im April."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Fragen zu Dokumenten"
+          }
+        ],
+        "seo": {
+          "metaTitle": "Dokumente | Meridian Mutual",
+          "metaDescription": "Vorvertragliche Dokumente, Versicherungsbedingungen und Berichte."
+        }
+      },
+      "it": {
+        "title": "Documenti",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Tutti i documenti, in un solo posto",
+            "subtitle": "Documenti informativi precontrattuali, condizioni di polizza, informative privacy e bilancio annuale, per mercato.",
+            "cta": {
+              "label": "Vai all'area personale",
+              "url": "/account",
+              "variant": "outline"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "I documenti informativi precontrattuali sono in ogni pagina prodotto, nella lingua del tuo mercato, con il loro riferimento normativo."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Le condizioni di polizza vengono inviate via e-mail all'acquisto e a ogni rinnovo, e sono sempre disponibili nella tua area personale."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Il bilancio annuale e i documenti dell'assemblea generale vengono pubblicati ogni aprile."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Domande sui documenti"
+          }
+        ],
+        "seo": {
+          "metaTitle": "Documenti | Meridian Mutual",
+          "metaDescription": "Documenti precontrattuali, condizioni di polizza e bilanci."
         }
       }
     }

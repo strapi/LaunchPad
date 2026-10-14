@@ -253,5 +253,209 @@
         "title": "Piano Risparmio (IT): Documento informativo precontrattuale"
       }
     }
+  },
+  {
+    "key": "travel-go-fr",
+    "product": "travel-go",
+    "market": "FR",
+    "file": "doc-travel-go-fr.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-FR-TRV-2026-v3",
+    "localizations": {
+      "en": {
+        "title": "Travel Go (FR): pre-contractual information document"
+      },
+      "fr": {
+        "title": "Voyage Go (FR): Document d'information précontractuel"
+      }
+    }
+  },
+  {
+    "key": "travel-go-de",
+    "product": "travel-go",
+    "market": "DE",
+    "file": "doc-travel-go-de.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-DE-TRV-2026-v2",
+    "localizations": {
+      "en": {
+        "title": "Travel Go (DE): pre-contractual information document"
+      },
+      "de": {
+        "title": "Reise Go (DE): Vorvertragliches Informationsblatt"
+      }
+    }
+  },
+  {
+    "key": "travel-go-it",
+    "product": "travel-go",
+    "market": "IT",
+    "file": "doc-travel-go-it.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-IT-TRV-2026-v4",
+    "localizations": {
+      "en": {
+        "title": "Travel Go (IT): pre-contractual information document"
+      },
+      "it": {
+        "title": "Viaggio Go (IT): Documento informativo precontrattuale"
+      }
+    }
+  },
+  {
+    "key": "pet-care-fr",
+    "product": "pet-care",
+    "market": "FR",
+    "file": "doc-pet-care-fr.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-FR-PET-2026-v3",
+    "localizations": {
+      "en": {
+        "title": "Pet Care (FR): pre-contractual information document"
+      },
+      "fr": {
+        "title": "Animaux Care (FR): Document d'information précontractuel"
+      }
+    }
+  },
+  {
+    "key": "pet-care-de",
+    "product": "pet-care",
+    "market": "DE",
+    "file": "doc-pet-care-de.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-DE-PET-2026-v2",
+    "localizations": {
+      "en": {
+        "title": "Pet Care (DE): pre-contractual information document"
+      },
+      "de": {
+        "title": "Tier Care (DE): Vorvertragliches Informationsblatt"
+      }
+    }
+  },
+  {
+    "key": "pet-care-it",
+    "product": "pet-care",
+    "market": "IT",
+    "file": "doc-pet-care-it.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-IT-PET-2026-v4",
+    "localizations": {
+      "en": {
+        "title": "Pet Care (IT): pre-contractual information document"
+      },
+      "it": {
+        "title": "Animali Care (IT): Documento informativo precontrattuale"
+      }
+    }
+  },
+  {
+    "key": "home-plus-fr",
+    "product": "home-plus",
+    "market": "FR",
+    "file": "doc-home-plus-fr.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-FR-HMP-2026-v3",
+    "localizations": {
+      "en": {
+        "title": "Home Plus (FR): pre-contractual information document"
+      },
+      "fr": {
+        "title": "Habitation Plus (FR): Document d'information précontractuel"
+      }
+    }
+  },
+  {
+    "key": "home-plus-de",
+    "product": "home-plus",
+    "market": "DE",
+    "file": "doc-home-plus-de.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-DE-HMP-2026-v2",
+    "localizations": {
+      "en": {
+        "title": "Home Plus (DE): pre-contractual information document"
+      },
+      "de": {
+        "title": "Wohnen Plus (DE): Vorvertragliches Informationsblatt"
+      }
+    }
+  },
+  {
+    "key": "home-plus-it",
+    "product": "home-plus",
+    "market": "IT",
+    "file": "doc-home-plus-it.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-IT-HMP-2026-v4",
+    "localizations": {
+      "en": {
+        "title": "Home Plus (IT): pre-contractual information document"
+      },
+      "it": {
+        "title": "Casa Plus (IT): Documento informativo precontrattuale"
+      }
+    }
+  },
+  {
+    "key": "business-shield-fr",
+    "product": "business-shield",
+    "market": "FR",
+    "file": "doc-business-shield-fr.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-FR-BUS-2026-v3",
+    "localizations": {
+      "en": {
+        "title": "Business Shield (FR): pre-contractual information document"
+      },
+      "fr": {
+        "title": "Business Shield (FR): Document d'information précontractuel"
+      }
+    }
+  },
+  {
+    "key": "business-shield-de",
+    "product": "business-shield",
+    "market": "DE",
+    "file": "doc-business-shield-de.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-DE-BUS-2026-v2",
+    "localizations": {
+      "en": {
+        "title": "Business Shield (DE): pre-contractual information document"
+      },
+      "de": {
+        "title": "Business Shield (DE): Vorvertragliches Informationsblatt"
+      }
+    }
+  },
+  {
+    "key": "business-shield-it",
+    "product": "business-shield",
+    "market": "IT",
+    "file": "doc-business-shield-it.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-IT-BUS-2026-v4",
+    "localizations": {
+      "en": {
+        "title": "Business Shield (IT): pre-contractual information document"
+      },
+      "it": {
+        "title": "Business Shield (IT): Documento informativo precontrattuale"
+      }
+    }
   }
 ]

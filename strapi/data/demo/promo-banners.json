@@ -52,5 +52,59 @@
         "ctaUrl": "/contact?topic=winter"
       }
     }
+  },
+  {
+    "name": "Motor Flex 2027 teaser",
+    "isDefault": false,
+    "demoState": "draft; optional second entry for the Motor Flex launch release",
+    "localizations": {
+      "en": {
+        "message": "Motor Flex 2027 is coming. Pay for the kilometres you actually drive.",
+        "ctaLabel": "Learn more",
+        "ctaUrl": "/products/motor-flex-2027"
+      },
+      "fr": {
+        "message": "Auto Flex 2027 arrive. Payez les kilomètres que vous parcourez vraiment.",
+        "ctaLabel": "En savoir plus",
+        "ctaUrl": "/products/motor-flex-2027"
+      },
+      "de": {
+        "message": "Kfz Flex 2027 kommt. Zahlen Sie für die Kilometer, die Sie wirklich fahren.",
+        "ctaLabel": "Mehr erfahren",
+        "ctaUrl": "/products/motor-flex-2027"
+      },
+      "it": {
+        "message": "Arriva Auto Flex 2027. Paghi i chilometri che fai davvero.",
+        "ctaLabel": "Scopri di più",
+        "ctaUrl": "/products/motor-flex-2027"
+      }
+    }
+  },
+  {
+    "name": "Summer travel reminder",
+    "isDefault": false,
+    "demoState": "draft; past campaign kept as an example of an expired banner",
+    "localizations": {
+      "en": {
+        "message": "Travelling this summer? Cover starts the moment you pay.",
+        "ctaLabel": "Travel Go",
+        "ctaUrl": "/products/travel-go"
+      },
+      "fr": {
+        "message": "Vous voyagez cet été ? La garantie démarre dès le paiement.",
+        "ctaLabel": "Voyage Go",
+        "ctaUrl": "/products/travel-go"
+      },
+      "de": {
+        "message": "Reisen Sie diesen Sommer? Der Schutz beginnt mit der Zahlung.",
+        "ctaLabel": "Reise Go",
+        "ctaUrl": "/products/travel-go"
+      },
+      "it": {
+        "message": "Viaggi quest'estate? La copertura parte al pagamento.",
+        "ctaLabel": "Viaggio Go",
+        "ctaUrl": "/products/travel-go"
+      }
+    }
   }
 ]

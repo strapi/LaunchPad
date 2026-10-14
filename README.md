@@ -4,7 +4,7 @@ A Strapi 5 sales demo built around one fictional customer: **Meridian Mutual Gro
 
 Everything is seeded by one command. Nothing is added by hand in the admin.
 
-- `strapi/`: Strapi 5 backend (TypeScript, SQLite), content model, seed script and demo dataset.
+- `strapi/`: Strapi 5.58 backend (TypeScript, SQLite), content model with content-type folders, seed script and demo dataset.
 - `next/`: Next.js 16 corporate website with Live Preview, four locales and the scheduled promo banner.
 - `DEMO.md`: the demo script, scene by scene, with what to click and what to say.
 
@@ -31,7 +31,7 @@ Without a licence the demo still runs, but the seed skips Review workflows, Rele
 yarn seed
 ```
 
-Stop the dev server first (`yarn seed` boots its own Strapi on port 1340). The seed wipes the database and the uploads folder, then creates, in order: four locales, 44 media files, all content in four languages, public API permissions, five admin roles and six users, the "Regulated content" review workflow, the three releases, and the attributed activity that the scenes rely on (the Italian rate change with its history, the compliance rejection, logins for every user). About 40 seconds.
+Stop the dev server first (`yarn seed` boots its own Strapi on port 1340). The seed wipes the database and the uploads folder, then creates, in order: four locales, 108 media files in 11 Media Library folders, all content in four languages (10 products, 6 pages, 20 FAQs, 30 news items, 8 press releases, 27 regulated documents, 4 banners), public API permissions, five admin roles and six users, the "Regulated content" review workflow, the three releases, and two weeks of attributed activity (edits by every country team published by compliance, HQ edits on pages and news, the Italian rate change with six versions in history, the compliance rejection, logins for every user). About 90 seconds.
 
 Run it again whenever a demo left the data in a mess. It is the reset button.
 
@@ -57,12 +57,18 @@ All with the password `Meridian2026!` (set `DEMO_PASSWORD` in `strapi/.env` befo
 | de.editor@meridian-demo.test | Country editor DE | |
 | compliance@meridian-demo.test | Compliance reviewer | Compliance team, scenes 3, 4, 5 |
 
+## What is new in Strapi 5.58 that the demo uses
+
+- Content-type folders: the Content Manager and Content-Type Builder group the types into "Products & regulated documents", "Website", "Newsroom" and "Site settings" (`strapi/src/content-structure/groups.json`).
+- The new Media Library: folder tree always visible, drag and drop, bulk move, infinite scroll. The seed fills 11 folders.
+- Audit logs now also record review workflow actions, release actions, locale changes and token management.
+
 ## What the seed leaves ready for the scenes
 
 - `Motor Flex 2027`: English only, draft, stage Draft, outside any release. Scene 1 adds it to the "Motor Flex launch" release; scene 2 creates the Italian version.
-- `Motor Essential` (Italian): live rate 6.9%, with a previous version at 4.9% in Content history and the change in the Audit log, both authored by the Italy editor. Scene 5 restores 4.9.
+- `Motor Essential` (Italian): live rate 6.9%, six versions in Content history (tagline edit, 4.9%, then 6.9%, each published by compliance) and the changes in the Audit log, authored by the Italy editor. Scene 5 restores 4.9.
 - `Home Secure` (Italian): a newer draft sitting in "Changes requested" with a review note from compliance. Shortcut for scene 3.
-- Releases: "Motor Flex launch" (contains the press release, product added live), "Winter promo start" and "Winter promo end" (publish and unpublish the "Winter cover check" banner). Dates are relative to the seed date so they are always in the future.
+- Releases: "Motor Flex launch" (contains the press release and the teaser banner, product added live), "Winter promo start" and "Winter promo end" (publish and unpublish the "Winter cover check" banner). Dates are relative to the seed date so they are always in the future.
 - Two news items and one press release left in draft on purpose.
 
 ## Changing the content

@@ -50,11 +50,11 @@ function resetStorage() {
 // ---------------------------------------------------------------------------- helpers
 const MIME = { '.png': 'image/png', '.jpg': 'image/jpeg', '.pdf': 'application/pdf' };
 
-async function uploadFile(strapi, filename, alt) {
+async function uploadFile(strapi, filename, alt, folder) {
   const filepath = path.join(MEDIA, filename);
   const stat = fs.statSync(filepath);
   const [file] = await strapi.plugin('upload').service('upload').upload({
-    data: { fileInfo: { name: filename, alternativeText: alt || filename, caption: '' } },
+    data: { fileInfo: { name: filename, alternativeText: alt || filename.replace(/[-_]/g, ' ').replace(/\.\w+$/, ''), caption: '', folder } },
     files: { filepath, originalFilename: filename, mimetype: MIME[path.extname(filename)] || 'application/octet-stream', size: stat.size },
   });
   return file;
@@ -98,11 +98,35 @@ async function seedLocales(strapi) {
   log('locales ready:', LOCALES.join(', '));
 }
 
+// Media library folders. Files are routed by name prefix.
+const FOLDERS = [
+  ['Products', null], ['Regulated documents', null], ['FR', 'Regulated documents'], ['DE', 'Regulated documents'], ['IT', 'Regulated documents'],
+  ['Newsroom', null], ['News', 'Newsroom'], ['Press', 'Newsroom'], ['Brand', null], ['People', null], ['Offices', null],
+];
+function folderFor(filename) {
+  if (filename.startsWith('product-')) return 'Products';
+  if (filename.startsWith('doc-')) return filename.endsWith('-fr.pdf') ? 'FR' : filename.endsWith('-de.pdf') ? 'DE' : 'IT';
+  if (filename.startsWith('news-')) return 'News';
+  if (filename.startsWith('press-')) return 'Press';
+  if (filename.startsWith('logo-') || filename.startsWith('brand-')) return 'Brand';
+  if (filename.startsWith('photo-team-')) return 'People';
+  if (filename.startsWith('photo-office-')) return 'Offices';
+  return null;
+}
+
 async function seedMedia(strapi) {
+  const folderService = strapi.plugin('upload').service('folder');
+  const folders = {};
+  for (const [name, parent] of FOLDERS) {
+    folders[name] = await folderService.create({ name, parent: parent ? folders[parent].id : null });
+  }
   const media = {};
   const files = fs.readdirSync(MEDIA).filter((f) => !f.startsWith('.'));
-  for (const f of files) media[f] = await uploadFile(strapi, f);
-  log(`media uploaded: ${files.length} files`);
+  for (const f of files) {
+    const folder = folderFor(f);
+    media[f] = await uploadFile(strapi, f, undefined, folder ? folders[folder].id : undefined);
+  }
+  log(`media uploaded: ${files.length} files into ${FOLDERS.length} folders`);
   return media;
 }
 
@@ -363,14 +387,58 @@ async function seedActivity(strapi, refs, features, stages, users) {
   const sessions = {};
   for (const email of Object.keys(users)) sessions[email] = await api.login(email);
 
-  // Scene 5 setup: Italy editor changes the Motor Essential rate 4.9 -> 6.9 and publishes it
-  const motor = refs.products['motor-essential'].documentId;
   const it = sessions['it.editor@meridian-demo.test'];
-  await it.call('PUT', cm(product, motor, 'it'), { localRate: 4.9, rateWording: 'TAEG 4,9% per pagamento mensile. Premio annuo da 325 EUR.' });
-  await it.call('PUT', cm(product, motor, 'it'), { localRate: 6.9, rateWording: 'TAEG 6,9% per pagamento mensile. Premio annuo da 325 EUR.' });
+  const fr = sessions['fr.editor@meridian-demo.test'];
+  const de = sessions['de.editor@meridian-demo.test'];
+  const hq = sessions['hq.editor@meridian-demo.test'];
   const compliance = sessions['compliance@meridian-demo.test'];
-  await compliance.call('POST', `/content-manager/collection-types/${product}/${motor}/actions/publish?locale=it`, {});
-  log('scene 5 history created: motor-essential (it) rate 4.9 -> 6.9, published');
+  const publish = (uid, documentId, locale) => `/content-manager/collection-types/${uid}/${documentId}/actions/publish${locale ? `?locale=${locale}` : ''}`;
+
+  // Two weeks of ordinary editing across the teams, so Content history and the Audit log look lived in.
+  // Each country editor touches a few products in its own locale; compliance publishes. HQ edits pages and news.
+  const touches = [
+    [fr, 'home-secure', 'fr', { tagline: 'Bâtiment et contenu, pour le logement où vous vivez vraiment. Dégâts des eaux inclus.' }],
+    [fr, 'health-plus', 'fr', { tagline: 'Une complémentaire santé qui complète votre régime obligatoire, sans délai pour les accidents.' }],
+    [fr, 'savings-plan', 'fr', { localRate: 2.5, rateWording: 'Taux annuel garanti de 2,5 % brut pour 2026, révisé chaque janvier. Capital garanti à tout moment.' }],
+    [de, 'motor-essential', 'de', { tagline: 'Haftpflichtschutz, der Sie legal und mobil hält. Pannenhilfe bis 50 km.' }],
+    [de, 'life-horizon', 'de', { tagline: 'Risikolebensversicherung für die Menschen, die auf Sie zählen. Ohne Gesundheitsprüfung für die meisten.' }],
+    [de, 'travel-go', 'de', { tagline: 'Krankheit, Storno und Gepäck, weltweit, für eine Reise oder das ganze Jahr.' }],
+    [it, 'health-plus', 'it', { tagline: 'Una copertura sanitaria integrativa che completa il servizio nazionale. Infortuni coperti dal primo giorno.' }],
+    [it, 'pet-care', 'it', { tagline: 'Le spese veterinarie di cani e gatti, senza sorprese. Linea veterinaria 24 ore.' }],
+    [it, 'savings-plan', 'it', { tagline: 'Un piano a tasso garantito per i soldi che vuoi tenere tranquilli. Da 25 EUR al mese.' }],
+  ];
+  for (const [session, slug, locale, data] of touches) {
+    const id = refs.products[slug].documentId;
+    await session.call('PUT', cm(product, id, locale), data);
+    await compliance.call('POST', publish(product, id, locale), {});
+  }
+  const page = 'api::page.page';
+  const home = refs.pages['home'].documentId;
+  const homeEn = await hq.call('GET', `${cm(page, home, 'en')}`);
+  const homeBlocks = homeEn?.data?.blocks;
+  if (Array.isArray(homeBlocks) && homeBlocks[0]?.__component === 'blocks.hero') {
+    const b = JSON.parse(JSON.stringify(homeBlocks));
+    b[0].subtitle = 'Motor, home, health, life and savings for 2.1 million people in France, Germany and Italy. Plain terms, real agents, claims paid in nine days on average.';
+    await hq.call('PUT', cm(page, home, 'en'), { blocks: b });
+    await hq.call('POST', publish(page, home, 'en'), {});
+  }
+  const newsUid = 'api::news-item.news-item';
+  const n1 = refs.news['group-results-h1-2026'];
+  if (n1) {
+    await hq.call('PUT', cm(newsUid, n1.documentId, 'en'), { excerpt: 'Membership grew 3.4% and the average claim is now settled in nine days, from twelve a year ago. Solvency at 212%.' });
+    await hq.call('POST', publish(newsUid, n1.documentId, 'en'), {});
+  }
+  log('two weeks of ordinary editing recorded: 9 product edits by country teams, 1 page and 1 news edit by HQ, all published by compliance or HQ');
+
+  // Scene 5 setup: Italy editor changes the Motor Essential rate step by step, ending at 6.9, compliance publishes each time.
+  const motor = refs.products['motor-essential'].documentId;
+  await it.call('PUT', cm(product, motor, 'it'), { tagline: 'La copertura RC che ti tiene in regola e in strada, con assistenza entro 50 km.' });
+  await compliance.call('POST', publish(product, motor, 'it'), {});
+  await it.call('PUT', cm(product, motor, 'it'), { localRate: 4.9, rateWording: 'TAEG 4,9% per pagamento mensile. Premio annuo da 325 EUR.' });
+  await compliance.call('POST', publish(product, motor, 'it'), {});
+  await it.call('PUT', cm(product, motor, 'it'), { localRate: 6.9, rateWording: 'TAEG 6,9% per pagamento mensile. Premio annuo da 325 EUR.' });
+  await compliance.call('POST', publish(product, motor, 'it'), {});
+  log('scene 5 history created: motor-essential (it) rate 4.9 -> 6.9, six versions in history, published');
 
   // Scene 3 shortcut: Home Secure (it) sent to review by Italy, sent back by compliance with a note
   if (features.workflows && stages) {
@@ -403,6 +471,8 @@ async function seedActivity(strapi, refs, features, stages, users) {
       await addAction(winterEnd.id, winter, 'api::promo-banner.promo-banner', l, 'unpublish');
     }
     await addAction(launch.id, refs.press['motor-flex-2027-announcement'].documentId, 'api::press-release.press-release', null, 'publish');
+    const teaser = refs.banners['Motor Flex 2027 teaser'];
+    if (teaser) for (const l of LOCALES) await addAction(launch.id, teaser.documentId, 'api::promo-banner.promo-banner', l, 'publish');
     log('releases created: Motor Flex launch (press release inside, product added live in scene 1), Winter promo start and end');
   }
 }

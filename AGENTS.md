@@ -6,7 +6,7 @@ Guidance for LLM agents working in this repository.
 
 This branch (`enterprise-demo`) is the Strapi Enterprise sales demo: one fictional insurance group, Meridian Mutual Group, a corporate website in four languages, and a seed that builds the whole demo state with no manual step.
 
-- `strapi/`: Strapi 5 backend, content types in `src/api`, components in `src/components`, the dataset in `data/demo`, the seed in `scripts/seed.js`. SQLite.
+- `strapi/`: Strapi 5.58 backend, content types in `src/api`, components in `src/components`, content-type folders in `src/content-structure/groups.json`, the dataset in `data/demo`, the seed in `scripts/seed.js`. SQLite.
 - `next/`: Next.js 16 App Router frontend, React 19, Tailwind 3, locales `en`, `fr`, `de`, `it`, Live Preview wired.
 - `DEMO.md`: the demo script. `README.md`: setup and users.
 - Root: setup/dev/format scripts using Yarn 4.5.0. Each directory keeps its own lockfile; this is not a Yarn workspace.

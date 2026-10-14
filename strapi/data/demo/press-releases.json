@@ -1,5 +1,41 @@
 [
   {
+    "slug": "motor-flex-2027-announcement",
+    "publishedOn": "2026-10-20",
+    "cover": "press-motor-flex.png",
+    "title": "Meridian Mutual Group to launch mileage-based motor cover on 3 November",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Lyon, 20 October 2026. Meridian Mutual Group will launch Motor Flex 2027 in France, Germany and Italy on 3 November. The comprehensive policy adjusts the premium every quarter to the mileage declared by the member."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The product responds to a shift in driving habits: 41% of the group's motor members now drive under 8,000 km a year. Motor Flex 2027 is expected to reduce their premium by 15 to 25% compared with a standard comprehensive policy."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Contact: press@meridian-demo.test"
+          }
+        ]
+      }
+    ],
+    "demoState": "draft, scheduled in release 'Motor Flex launch, 3 November' if the AE wants a second content type in the release"
+  },
+  {
     "slug": "half-year-results-2026",
     "publishedOn": "2026-09-02",
     "cover": "press-results.png",
@@ -44,17 +80,17 @@
     ]
   },
   {
-    "slug": "motor-flex-2027-announcement",
-    "publishedOn": "2026-10-20",
-    "cover": "press-motor-flex.png",
-    "title": "Meridian Mutual Group to launch mileage-based motor cover on 3 November",
+    "slug": "italy-south-expansion",
+    "publishedOn": "2026-06-16",
+    "cover": "press-italy.png",
+    "title": "Meridian Mutual Group opens twenty agencies in southern Italy",
     "body": [
       {
         "type": "paragraph",
         "children": [
           {
             "type": "text",
-            "text": "Lyon, 20 October 2026. Meridian Mutual Group will launch Motor Flex 2027 in France, Germany and Italy on 3 November. The comprehensive policy adjusts the premium every quarter to the mileage declared by the member."
+            "text": "Lyon, 16 June 2026. The group will open twenty agencies in Naples, Bari and Palermo by December 2026, its first expansion in southern Italy since entering the market in 2006."
           }
         ]
       },
@@ -63,7 +99,7 @@
         "children": [
           {
             "type": "text",
-            "text": "The product responds to a shift in driving habits: 41% of the group's motor members now drive under 8,000 km a year. Motor Flex 2027 is expected to reduce their premium by 15 to 25% compared with a standard comprehensive policy."
+            "text": "All agents are employees, trained on the full product range."
           }
         ]
       },
@@ -76,8 +112,42 @@
           }
         ]
       }
-    ],
-    "demoState": "draft, scheduled in release 'Motor Flex launch, 3 November' if the AE wants a second content type in the release"
+    ]
+  },
+  {
+    "slug": "board-member-representatives",
+    "publishedOn": "2026-05-28",
+    "cover": "press-board.png",
+    "title": "Two member representatives elected to the board",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Lyon, 28 May 2026. The general meeting elected Rosa Caputo, an agent in Bari, and Henri Delmas, a retired teacher from Lille, as member representatives on the board for a four-year term."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Member representatives hold four of the twelve board seats."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Contact: press@meridian-demo.test"
+          }
+        ]
+      }
+    ]
   },
   {
     "slug": "new-ceo-italy",
@@ -100,6 +170,76 @@
           {
             "type": "text",
             "text": "Chiara Benedetti joined the group in 2012 and most recently led the Italian claims organisation, where she oversaw the migration to the group claims platform."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Contact: press@meridian-demo.test"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "content-platform-selection",
+    "publishedOn": "2026-03-24",
+    "cover": "press-platform.png",
+    "title": "Meridian Mutual Group selects a single content platform for its three markets",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Lyon, 24 March 2026. Meridian Mutual Group will migrate the websites of its French, German and Italian operations to a single content platform by August 2026."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The platform will let headquarters publish product information once and each country adapt it under a shared compliance approval, replacing three separate systems."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Contact: press@meridian-demo.test"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "annual-results-2025",
+    "publishedOn": "2026-03-03",
+    "cover": "press-annual.png",
+    "title": "Meridian Mutual Group reports full-year 2025 results",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Lyon, 3 March 2026. Gross written premiums reached EUR 3.6 billion in 2025 (+3.1%). The combined ratio improved to 94.2%. Membership stood at 2.03 million at year end."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "As a mutual, the group pays no dividend. EUR 120 million of the surplus is allocated to the new climate reserve."
           }
         ]
       },

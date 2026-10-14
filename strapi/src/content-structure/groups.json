@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "sections": {
+    "collectionTypes": {
+      "groups": [
+        {
+          "id": "products-and-documents",
+          "name": "Products & regulated documents",
+          "parent": null,
+          "children": [
+            { "type": "contentType", "uid": "api::product.product" },
+            { "type": "contentType", "uid": "api::regulated-document.regulated-document" }
+          ]
+        },
+        {
+          "id": "website",
+          "name": "Website",
+          "parent": null,
+          "children": [
+            { "type": "contentType", "uid": "api::page.page" },
+            { "type": "contentType", "uid": "api::faq.faq" },
+            { "type": "contentType", "uid": "api::promo-banner.promo-banner" }
+          ]
+        },
+        {
+          "id": "newsroom",
+          "name": "Newsroom",
+          "parent": null,
+          "children": [
+            { "type": "contentType", "uid": "api::news-item.news-item" },
+            { "type": "contentType", "uid": "api::press-release.press-release" }
+          ]
+        }
+      ]
+    },
+    "singleTypes": {
+      "groups": [
+        {
+          "id": "site-settings",
+          "name": "Site settings",
+          "parent": null,
+          "children": [
+            { "type": "contentType", "uid": "api::global.global" },
+            { "type": "contentType", "uid": "api::header.header" },
+            { "type": "contentType", "uid": "api::footer.footer" }
+          ]
+        }
+      ]
+    }
+  }
+}
