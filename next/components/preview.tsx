@@ -1,40 +1,27 @@
 'use client';
 
-import { API_URL } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
-export const Preview = () => {
+import { API_URL } from '@/lib/config';
+
+/** Listens to the Strapi admin while embedded in Live Preview and refreshes on save. */
+export function Preview() {
   const router = useRouter();
-
   useEffect(() => {
-    const handleMessage = async (message: MessageEvent<any>) => {
+    const onMessage = (message: MessageEvent) => {
       const { origin, data } = message;
-
-      if (origin !== API_URL) {
-        return;
-      }
-
-      if (data.type === 'strapiUpdate') {
-        router.refresh();
-      } else if (data.type === 'strapiScript') {
-        const script = window.document.createElement('script');
+      if (origin !== API_URL) return;
+      if (data?.type === 'strapiUpdate') router.refresh();
+      else if (data?.type === 'strapiScript' && data.payload?.script) {
+        const script = document.createElement('script');
         script.textContent = data.payload.script;
-        window.document.head.appendChild(script);
+        document.head.appendChild(script);
       }
     };
-
-    // Add the event listener
-    window.addEventListener('message', handleMessage);
-
-    // Let Strapi know we're ready to receive the script
+    window.addEventListener('message', onMessage);
     window.parent?.postMessage({ type: 'previewReady' }, '*');
-
-    // Remove the event listener on unmount
-    return () => {
-      window.removeEventListener('message', handleMessage);
-    };
+    return () => window.removeEventListener('message', onMessage);
   }, [router]);
-
   return null;
-};
+}

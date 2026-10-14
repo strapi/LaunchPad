@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_blocks_rich_texts",
+  "info": {
+    "displayName": "Rich text",
+    "icon": "paragraph"
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "blocks",
+      "required": true
+    }
+  },
+  "options": {}
+}

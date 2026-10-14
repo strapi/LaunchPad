@@ -33,9 +33,6 @@ const define = (
 
 export const FRONTENDS: Frontend[] = [
   define('next', 'Next.js', 3000, 'NEXT_PUBLIC_API_URL'),
-  define('astro', 'Astro', 4321, 'STRAPI_URL'),
-  define('nuxt', 'Nuxt 4', 3001, 'STRAPI_URL'),
-  define('tanstack', 'TanStack Start', 3002, 'VITE_STRAPI_URL'),
 ];
 
 /**

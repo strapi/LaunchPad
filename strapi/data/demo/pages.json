@@ -1,0 +1,1285 @@
+[
+  {
+    "slug": "home",
+    "faqs": [
+      "agent-find",
+      "pay-monthly",
+      "cancel",
+      "data-privacy"
+    ],
+    "localizations": {
+      "en": {
+        "title": "Home",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Insurance that explains itself",
+            "subtitle": "Motor, home, health, life and savings for 2.1 million people in France, Germany and Italy. Plain terms, real agents, claims that get handled.",
+            "cta": {
+              "label": "See our products",
+              "url": "/products",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Customers",
+                "value": "2.1M"
+              },
+              {
+                "label": "Agents",
+                "value": "420"
+              },
+              {
+                "label": "Claims settled in under 10 days",
+                "value": "84%"
+              },
+              {
+                "label": "Founded",
+                "value": "1931"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "We are a mutual. There are no shareholders to pay, so what we earn goes back into lower premiums, faster claims and the agents who know your street."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Every product on this site has one page, one price explanation and one set of documents per country. If something is not clear, call us and we will fix the page."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Questions people ask before they buy"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Not sure which cover you need?",
+            "text": "A ten-minute call with an agent is free and does not commit you to anything.",
+            "cta": {
+              "label": "Find an agent",
+              "url": "/contact",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Meridian Mutual Group | Insurance that explains itself",
+          "metaDescription": "Motor, home, health, life and savings insurance in France, Germany and Italy."
+        }
+      },
+      "fr": {
+        "title": "Accueil",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "L'assurance qui s'explique",
+            "subtitle": "Auto, habitation, santé, vie et épargne pour 2,1 millions de personnes en France, en Allemagne et en Italie. Des conditions claires, de vrais agents, des sinistres traités.",
+            "cta": {
+              "label": "Voir nos produits",
+              "url": "/products",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Clients",
+                "value": "2,1 M"
+              },
+              {
+                "label": "Agents",
+                "value": "420"
+              },
+              {
+                "label": "Sinistres réglés en moins de 10 jours",
+                "value": "84 %"
+              },
+              {
+                "label": "Fondée en",
+                "value": "1931"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Nous sommes une mutuelle. Pas d'actionnaires à rémunérer : ce que nous gagnons revient dans des cotisations plus basses, des sinistres plus rapides et des agents qui connaissent votre rue."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Chaque produit de ce site a une page, une explication du prix et un jeu de documents par pays. Si quelque chose n'est pas clair, appelez-nous et nous corrigerons la page."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Les questions que l'on nous pose avant de souscrire"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Vous ne savez pas quelle couverture choisir ?",
+            "text": "Dix minutes avec un agent, gratuites et sans engagement.",
+            "cta": {
+              "label": "Trouver un agent",
+              "url": "/contact",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Meridian Mutual Group | L'assurance qui s'explique",
+          "metaDescription": "Assurance auto, habitation, santé, vie et épargne en France, Allemagne et Italie."
+        }
+      },
+      "de": {
+        "title": "Startseite",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Versicherung, die sich selbst erklärt",
+            "subtitle": "Kfz, Wohnen, Gesundheit, Leben und Sparen für 2,1 Millionen Menschen in Frankreich, Deutschland und Italien. Klare Bedingungen, echte Berater, Schäden, die bearbeitet werden.",
+            "cta": {
+              "label": "Unsere Produkte",
+              "url": "/products",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Kunden",
+                "value": "2,1 Mio."
+              },
+              {
+                "label": "Berater",
+                "value": "420"
+              },
+              {
+                "label": "Schäden in unter 10 Tagen reguliert",
+                "value": "84 %"
+              },
+              {
+                "label": "Gegründet",
+                "value": "1931"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Wir sind ein Versicherungsverein auf Gegenseitigkeit. Es gibt keine Aktionäre, also fließt unser Ertrag in niedrigere Beiträge, schnellere Schadenbearbeitung und Berater, die Ihre Straße kennen."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Jedes Produkt auf dieser Seite hat eine Seite, eine Preiserklärung und einen Satz Dokumente pro Land. Wenn etwas unklar ist, rufen Sie uns an und wir korrigieren die Seite."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Fragen, die vor dem Abschluss gestellt werden"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Nicht sicher, welchen Schutz Sie brauchen?",
+            "text": "Zehn Minuten mit einem Berater, kostenlos und unverbindlich.",
+            "cta": {
+              "label": "Berater finden",
+              "url": "/contact",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Meridian Mutual Group | Versicherung, die sich selbst erklärt",
+          "metaDescription": "Kfz-, Wohn-, Gesundheits-, Lebens- und Sparversicherung in Frankreich, Deutschland und Italien."
+        }
+      },
+      "it": {
+        "title": "Home",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "L'assicurazione che si spiega da sola",
+            "subtitle": "Auto, casa, salute, vita e risparmio per 2,1 milioni di persone in Francia, Germania e Italia. Condizioni chiare, agenti veri, sinistri che vengono gestiti.",
+            "cta": {
+              "label": "Vedi i prodotti",
+              "url": "/products",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Clienti",
+                "value": "2,1 M"
+              },
+              {
+                "label": "Agenti",
+                "value": "420"
+              },
+              {
+                "label": "Sinistri liquidati in meno di 10 giorni",
+                "value": "84%"
+              },
+              {
+                "label": "Fondata nel",
+                "value": "1931"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Siamo una mutua. Non ci sono azionisti da pagare, quindi quello che guadagniamo torna in premi più bassi, sinistri più rapidi e agenti che conoscono la tua via."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Ogni prodotto di questo sito ha una pagina, una spiegazione del prezzo e una serie di documenti per paese. Se qualcosa non è chiaro, chiamaci e correggeremo la pagina."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Le domande che ci fanno prima di acquistare"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Non sai quale copertura ti serve?",
+            "text": "Dieci minuti con un agente, gratis e senza impegno.",
+            "cta": {
+              "label": "Trova un agente",
+              "url": "/contact",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Meridian Mutual Group | L'assicurazione che si spiega da sola",
+          "metaDescription": "Assicurazione auto, casa, salute, vita e risparmio in Francia, Germania e Italia."
+        }
+      }
+    }
+  },
+  {
+    "slug": "about",
+    "faqs": [],
+    "localizations": {
+      "en": {
+        "title": "About us",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "A mutual since 1931",
+            "subtitle": "Founded by Lyon textile workers who could not get insured. Still owned by the people we insure.",
+            "cta": {
+              "label": "Our history",
+              "url": "/about#history",
+              "variant": "outline"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Meridian Mutual Group insures 2.1 million people across France, Germany and Italy. We entered Germany in 1998 and Italy in 2006, both by partnering with local mutuals rather than buying them."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Being a mutual changes decisions. We do not chase growth that would push premiums up for existing members, and our claims teams are measured on time to settle, not on money saved."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Our 420 agents are employees, not franchisees. They can quote, sell and handle claims for every product, in person or on the phone."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Members",
+                "value": "2.1M"
+              },
+              {
+                "label": "Countries",
+                "value": "3"
+              },
+              {
+                "label": "Employees",
+                "value": "3,800"
+              },
+              {
+                "label": "Solvency ratio",
+                "value": "212%"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Work with us",
+            "text": "We hire agents, claims handlers and engineers in all three countries.",
+            "cta": {
+              "label": "See open roles",
+              "url": "/careers",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "About Meridian Mutual Group",
+          "metaDescription": "A mutual insurer since 1931, present in France, Germany and Italy."
+        }
+      },
+      "fr": {
+        "title": "À propos",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Une mutuelle depuis 1931",
+            "subtitle": "Fondée par des ouvriers du textile lyonnais qui ne trouvaient pas d'assureur. Toujours détenue par les personnes que nous assurons.",
+            "cta": {
+              "label": "Notre histoire",
+              "url": "/about#history",
+              "variant": "outline"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Meridian Mutual Group assure 2,1 millions de personnes en France, en Allemagne et en Italie. Nous nous sommes implantés en Allemagne en 1998 et en Italie en 2006, à chaque fois en nous associant à des mutuelles locales plutôt qu'en les rachetant."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Être une mutuelle change les décisions. Nous ne courons pas après une croissance qui ferait monter les cotisations des membres existants, et nos équipes sinistres sont évaluées sur le délai de règlement, pas sur l'argent économisé."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Nos 420 agents sont salariés, pas franchisés. Ils peuvent établir un devis, vendre et gérer les sinistres pour tous les produits, en agence ou par téléphone."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Sociétaires",
+                "value": "2,1 M"
+              },
+              {
+                "label": "Pays",
+                "value": "3"
+              },
+              {
+                "label": "Salariés",
+                "value": "3 800"
+              },
+              {
+                "label": "Ratio de solvabilité",
+                "value": "212 %"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Travailler avec nous",
+            "text": "Nous recrutons des agents, des gestionnaires sinistres et des ingénieurs dans les trois pays.",
+            "cta": {
+              "label": "Voir les postes",
+              "url": "/careers",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "À propos de Meridian Mutual Group",
+          "metaDescription": "Une mutuelle d'assurance depuis 1931, présente en France, en Allemagne et en Italie."
+        }
+      },
+      "de": {
+        "title": "Über uns",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Ein Verein auf Gegenseitigkeit seit 1931",
+            "subtitle": "Gegründet von Lyoner Textilarbeitern, die keine Versicherung bekamen. Noch immer im Besitz der Menschen, die wir versichern.",
+            "cta": {
+              "label": "Unsere Geschichte",
+              "url": "/about#history",
+              "variant": "outline"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Die Meridian Mutual Group versichert 2,1 Millionen Menschen in Frankreich, Deutschland und Italien. Nach Deutschland kamen wir 1998, nach Italien 2006, jeweils durch Partnerschaften mit lokalen Vereinen statt durch Übernahmen."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Ein Verein auf Gegenseitigkeit zu sein verändert Entscheidungen. Wir jagen keinem Wachstum nach, das die Beiträge bestehender Mitglieder erhöhen würde, und unsere Schadenteams werden an der Regulierungsdauer gemessen, nicht am eingesparten Geld."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Unsere 420 Berater sind Angestellte, keine Franchisenehmer. Sie können für jedes Produkt Angebote erstellen, verkaufen und Schäden bearbeiten, persönlich oder am Telefon."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Mitglieder",
+                "value": "2,1 Mio."
+              },
+              {
+                "label": "Länder",
+                "value": "3"
+              },
+              {
+                "label": "Mitarbeitende",
+                "value": "3.800"
+              },
+              {
+                "label": "Solvenzquote",
+                "value": "212 %"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Arbeiten Sie mit uns",
+            "text": "Wir stellen Berater, Schadensachbearbeiter und Ingenieure in allen drei Ländern ein.",
+            "cta": {
+              "label": "Offene Stellen",
+              "url": "/careers",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Über die Meridian Mutual Group",
+          "metaDescription": "Versicherungsverein auf Gegenseitigkeit seit 1931, in Frankreich, Deutschland und Italien."
+        }
+      },
+      "it": {
+        "title": "Chi siamo",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Una mutua dal 1931",
+            "subtitle": "Fondata da operai tessili di Lione che non riuscivano ad assicurarsi. Ancora oggi di proprietà delle persone che assicuriamo.",
+            "cta": {
+              "label": "La nostra storia",
+              "url": "/about#history",
+              "variant": "outline"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Meridian Mutual Group assicura 2,1 milioni di persone in Francia, Germania e Italia. Siamo entrati in Germania nel 1998 e in Italia nel 2006, in entrambi i casi collaborando con mutue locali invece di acquistarle."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Essere una mutua cambia le decisioni. Non inseguiamo una crescita che farebbe salire i premi dei soci esistenti, e i nostri team sinistri sono valutati sui tempi di liquidazione, non sui soldi risparmiati."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "I nostri 420 agenti sono dipendenti, non franchisee. Possono fare preventivi, vendere e gestire sinistri per ogni prodotto, di persona o al telefono."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Soci",
+                "value": "2,1 M"
+              },
+              {
+                "label": "Paesi",
+                "value": "3"
+              },
+              {
+                "label": "Dipendenti",
+                "value": "3.800"
+              },
+              {
+                "label": "Indice di solvibilità",
+                "value": "212%"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Lavora con noi",
+            "text": "Assumiamo agenti, gestori sinistri e ingegneri in tutti e tre i paesi.",
+            "cta": {
+              "label": "Posizioni aperte",
+              "url": "/careers",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Chi è Meridian Mutual Group",
+          "metaDescription": "Una mutua assicurativa dal 1931, presente in Francia, Germania e Italia."
+        }
+      }
+    }
+  },
+  {
+    "slug": "claims",
+    "faqs": [
+      "claim-how",
+      "documents-where"
+    ],
+    "localizations": {
+      "en": {
+        "title": "Make a claim",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Something happened. Here is what to do.",
+            "subtitle": "Call the number on your policy or start online. You get a reference number immediately and a named handler within one working day.",
+            "cta": {
+              "label": "Start a claim online",
+              "url": "/claims/start",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Motor: if anyone is hurt, call emergency services first. Then take photos, exchange details, and tell us within 5 days."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Home: make the property safe, keep damaged items until we have seen them, and tell us within 5 days. For theft, report to the police first and give us the report number."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Health: send invoices from your account. Most are reimbursed within 5 working days."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Life: the beneficiary calls us with the policy number. We send the list of documents the same day."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Claims settled in under 10 days",
+                "value": "84%"
+              },
+              {
+                "label": "Average time to first contact",
+                "value": "4h"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Prefer to talk?",
+            "text": "Claims lines are open 7 days a week, 7am to 10pm.",
+            "cta": {
+              "label": "See claims numbers",
+              "url": "/contact#claims",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Make a claim | Meridian Mutual",
+          "metaDescription": "How to make a motor, home, health or life insurance claim."
+        }
+      },
+      "fr": {
+        "title": "Déclarer un sinistre",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Il s'est passé quelque chose. Voici quoi faire.",
+            "subtitle": "Appelez le numéro de votre contrat ou déclarez en ligne. Numéro de dossier immédiat, gestionnaire dédié sous un jour ouvré.",
+            "cta": {
+              "label": "Déclarer en ligne",
+              "url": "/claims/start",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Auto : s'il y a des blessés, appelez d'abord les secours. Ensuite, prenez des photos, échangez vos coordonnées et prévenez-nous sous 5 jours."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Habitation : sécurisez les lieux, conservez les biens endommagés jusqu'à notre passage et prévenez-nous sous 5 jours. En cas de vol, déposez plainte d'abord et communiquez-nous le numéro de dépôt."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Santé : envoyez vos factures depuis votre espace. La plupart sont remboursées sous 5 jours ouvrés."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Vie : le bénéficiaire nous appelle avec le numéro de contrat. Nous envoyons la liste des documents le jour même."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Sinistres réglés en moins de 10 jours",
+                "value": "84 %"
+              },
+              {
+                "label": "Délai moyen de premier contact",
+                "value": "4 h"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Vous préférez parler ?",
+            "text": "Les lignes sinistres sont ouvertes 7 jours sur 7, de 7h à 22h.",
+            "cta": {
+              "label": "Voir les numéros",
+              "url": "/contact#claims",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Déclarer un sinistre | Meridian Mutual",
+          "metaDescription": "Comment déclarer un sinistre auto, habitation, santé ou vie."
+        }
+      },
+      "de": {
+        "title": "Schaden melden",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Etwas ist passiert. So geht es weiter.",
+            "subtitle": "Rufen Sie die Nummer aus Ihrer Police an oder melden Sie online. Sofort eine Vorgangsnummer, innerhalb eines Werktags ein fester Ansprechpartner.",
+            "cta": {
+              "label": "Online melden",
+              "url": "/claims/start",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Kfz: Wenn jemand verletzt ist, zuerst den Notruf wählen. Dann Fotos machen, Daten austauschen und uns innerhalb von 5 Tagen informieren."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Wohnen: Das Gebäude sichern, beschädigte Gegenstände aufbewahren, bis wir sie gesehen haben, und uns innerhalb von 5 Tagen informieren. Bei Diebstahl zuerst Anzeige erstatten und uns die Anzeigennummer nennen."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Gesundheit: Rechnungen über Ihr Konto einreichen. Die meisten werden innerhalb von 5 Werktagen erstattet."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Leben: Die begünstigte Person ruft uns mit der Policennummer an. Wir senden die Dokumentenliste am selben Tag."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Schäden in unter 10 Tagen reguliert",
+                "value": "84 %"
+              },
+              {
+                "label": "Durchschnittliche Zeit bis zum ersten Kontakt",
+                "value": "4 Std."
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Lieber sprechen?",
+            "text": "Die Schadenhotlines sind 7 Tage die Woche von 7 bis 22 Uhr erreichbar.",
+            "cta": {
+              "label": "Nummern ansehen",
+              "url": "/contact#claims",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Schaden melden | Meridian Mutual",
+          "metaDescription": "So melden Sie einen Kfz-, Wohn-, Gesundheits- oder Lebensversicherungsschaden."
+        }
+      },
+      "it": {
+        "title": "Denuncia un sinistro",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "È successo qualcosa. Ecco cosa fare.",
+            "subtitle": "Chiama il numero in polizza o avvia la denuncia online. Numero di pratica immediato, gestore dedicato entro un giorno lavorativo.",
+            "cta": {
+              "label": "Denuncia online",
+              "url": "/claims/start",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Auto: se ci sono feriti, chiama prima i soccorsi. Poi fai foto, scambia i dati e avvisaci entro 5 giorni."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Casa: metti in sicurezza l'immobile, conserva gli oggetti danneggiati finché non li abbiamo visti e avvisaci entro 5 giorni. In caso di furto, sporgi prima denuncia e comunicaci il numero."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Salute: invia le fatture dalla tua area personale. La maggior parte viene rimborsata entro 5 giorni lavorativi."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Vita: il beneficiario ci chiama con il numero di polizza. Inviamo l'elenco dei documenti lo stesso giorno."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.stats",
+            "items": [
+              {
+                "label": "Sinistri liquidati in meno di 10 giorni",
+                "value": "84%"
+              },
+              {
+                "label": "Tempo medio al primo contatto",
+                "value": "4h"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Preferisci parlare?",
+            "text": "Le linee sinistri sono aperte 7 giorni su 7, dalle 7 alle 22.",
+            "cta": {
+              "label": "Vedi i numeri",
+              "url": "/contact#claims",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Denuncia un sinistro | Meridian Mutual",
+          "metaDescription": "Come denunciare un sinistro auto, casa, salute o vita."
+        }
+      }
+    }
+  },
+  {
+    "slug": "contact",
+    "faqs": [
+      "agent-find",
+      "data-privacy"
+    ],
+    "localizations": {
+      "en": {
+        "title": "Contact",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Talk to a person",
+            "subtitle": "420 agents, three countries, one number per market. No menus, no bots.",
+            "cta": {
+              "label": "Find an agent near you",
+              "url": "/contact#agents",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "France: 0800 100 1931, Monday to Saturday 8am to 8pm. Claims: 0800 100 1932, 7 days a week."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Germany: 0800 200 1931, Monday to Saturday 8am to 8pm. Claims: 0800 200 1932, 7 days a week."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Italy: 800 300 1931, Monday to Saturday 8am to 8pm. Claims: 800 300 1932, 7 days a week."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Head office: 14 rue des Tisserands, 69002 Lyon, France."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Already a member?",
+            "text": "Log in to see your documents, pay, or start a claim.",
+            "cta": {
+              "label": "Log in",
+              "url": "/account",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Contact | Meridian Mutual",
+          "metaDescription": "Phone numbers and agents for France, Germany and Italy."
+        }
+      },
+      "fr": {
+        "title": "Contact",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Parlez à une vraie personne",
+            "subtitle": "420 agents, trois pays, un numéro par marché. Pas de menu, pas de robot.",
+            "cta": {
+              "label": "Trouver un agent près de chez vous",
+              "url": "/contact#agents",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "France : 0800 100 1931, du lundi au samedi de 8h à 20h. Sinistres : 0800 100 1932, 7 jours sur 7."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Allemagne : 0800 200 1931, du lundi au samedi de 8h à 20h. Sinistres : 0800 200 1932, 7 jours sur 7."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Italie : 800 300 1931, du lundi au samedi de 8h à 20h. Sinistres : 800 300 1932, 7 jours sur 7."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Siège : 14 rue des Tisserands, 69002 Lyon, France."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Déjà sociétaire ?",
+            "text": "Connectez-vous pour consulter vos documents, payer ou déclarer un sinistre.",
+            "cta": {
+              "label": "Se connecter",
+              "url": "/account",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Contact | Meridian Mutual",
+          "metaDescription": "Numéros et agents pour la France, l'Allemagne et l'Italie."
+        }
+      },
+      "de": {
+        "title": "Kontakt",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Sprechen Sie mit einem Menschen",
+            "subtitle": "420 Berater, drei Länder, eine Nummer pro Markt. Keine Menüs, keine Bots.",
+            "cta": {
+              "label": "Berater in Ihrer Nähe finden",
+              "url": "/contact#agents",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Frankreich: 0800 100 1931, Montag bis Samstag 8 bis 20 Uhr. Schaden: 0800 100 1932, 7 Tage die Woche."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Deutschland: 0800 200 1931, Montag bis Samstag 8 bis 20 Uhr. Schaden: 0800 200 1932, 7 Tage die Woche."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Italien: 800 300 1931, Montag bis Samstag 8 bis 20 Uhr. Schaden: 800 300 1932, 7 Tage die Woche."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Hauptsitz: 14 rue des Tisserands, 69002 Lyon, Frankreich."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Bereits Mitglied?",
+            "text": "Melden Sie sich an, um Dokumente einzusehen, zu zahlen oder einen Schaden zu melden.",
+            "cta": {
+              "label": "Anmelden",
+              "url": "/account",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Kontakt | Meridian Mutual",
+          "metaDescription": "Telefonnummern und Berater für Frankreich, Deutschland und Italien."
+        }
+      },
+      "it": {
+        "title": "Contatti",
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Parla con una persona",
+            "subtitle": "420 agenti, tre paesi, un numero per mercato. Niente menu, niente bot.",
+            "cta": {
+              "label": "Trova un agente vicino a te",
+              "url": "/contact#agents",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.rich-text",
+            "body": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Francia: 0800 100 1931, dal lunedì al sabato dalle 8 alle 20. Sinistri: 0800 100 1932, 7 giorni su 7."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Germania: 0800 200 1931, dal lunedì al sabato dalle 8 alle 20. Sinistri: 0800 200 1932, 7 giorni su 7."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Italia: 800 300 1931, dal lunedì al sabato dalle 8 alle 20. Sinistri: 800 300 1932, 7 giorni su 7."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Sede: 14 rue des Tisserands, 69002 Lione, Francia."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Sei già socio?",
+            "text": "Accedi per vedere i documenti, pagare o denunciare un sinistro.",
+            "cta": {
+              "label": "Accedi",
+              "url": "/account",
+              "variant": "secondary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Contatti | Meridian Mutual",
+          "metaDescription": "Numeri di telefono e agenti per Francia, Germania e Italia."
+        }
+      }
+    }
+  }
+]

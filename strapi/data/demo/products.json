@@ -1,0 +1,1833 @@
+[
+  {
+    "slug": "motor-essential",
+    "category": "motor",
+    "heroImage": "product-motor-essential.png",
+    "documents": [
+      "motor-essential"
+    ],
+    "faqs": [
+      "claim-how",
+      "cancel",
+      "documents-where"
+    ],
+    "localizations": {
+      "en": {
+        "name": "Motor Essential",
+        "tagline": "Third-party cover that keeps you legal and on the road.",
+        "localRate": 5.4,
+        "rateWording": "Representative APR 5.4% on monthly instalments. Annual premium from EUR 312.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Motor Essential is underwritten by Meridian Mutual Group. Cover is subject to the policy terms and the pre-contractual information document for your market. This page is a demonstration and not an offer."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Motor Essential",
+            "subtitle": "The legal minimum, done properly. Third-party liability, roadside assistance and a claims line that answers.",
+            "cta": {
+              "label": "Get a quote",
+              "url": "/quote/motor-essential",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "What is covered",
+            "rows": [
+              {
+                "name": "Third-party liability",
+                "included": true,
+                "note": "Unlimited for bodily injury"
+              },
+              {
+                "name": "Roadside assistance",
+                "included": true,
+                "note": "Within 50 km of home"
+              },
+              {
+                "name": "Legal protection",
+                "included": true,
+                "note": "Up to EUR 15,000"
+              },
+              {
+                "name": "Own damage",
+                "included": false,
+                "note": "Available in Motor Flex"
+              },
+              {
+                "name": "Replacement vehicle",
+                "included": false,
+                "note": "Available in Motor Flex"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "Read these before you buy. They explain what is and is not covered in your market."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Common questions"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Ready in five minutes",
+            "text": "Answer six questions and get your price. No commitment.",
+            "cta": {
+              "label": "Start your quote",
+              "url": "/quote/motor-essential",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Motor Essential | Meridian Mutual",
+          "metaDescription": "Third-party motor insurance with roadside assistance and legal protection."
+        }
+      },
+      "fr": {
+        "name": "Auto Essentiel",
+        "tagline": "La couverture au tiers qui vous garde en règle et sur la route.",
+        "localRate": 5.2,
+        "rateWording": "TAEG représentatif de 5,2 % pour un paiement mensuel. Prime annuelle à partir de 299 EUR.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Auto Essentiel est assuré par Meridian Mutual Group. La garantie est soumise aux conditions générales et au document d'information précontractuel de votre marché. Cette page est une démonstration et ne constitue pas une offre."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Auto Essentiel",
+            "subtitle": "Le minimum légal, bien fait. Responsabilité civile, assistance routière et une ligne sinistres qui répond.",
+            "cta": {
+              "label": "Obtenir un devis",
+              "url": "/quote/motor-essential",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Ce qui est couvert",
+            "rows": [
+              {
+                "name": "Responsabilité civile",
+                "included": true,
+                "note": "Illimitée pour les dommages corporels"
+              },
+              {
+                "name": "Assistance routière",
+                "included": true,
+                "note": "Dans un rayon de 50 km du domicile"
+              },
+              {
+                "name": "Protection juridique",
+                "included": true,
+                "note": "Jusqu'à 15 000 EUR"
+              },
+              {
+                "name": "Dommages au véhicule",
+                "included": false,
+                "note": "Disponible avec Auto Flex"
+              },
+              {
+                "name": "Véhicule de remplacement",
+                "included": false,
+                "note": "Disponible avec Auto Flex"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "À lire avant de souscrire. Ils expliquent ce qui est couvert ou non dans votre marché."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Questions fréquentes"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Prêt en cinq minutes",
+            "text": "Répondez à six questions et obtenez votre tarif. Sans engagement.",
+            "cta": {
+              "label": "Commencer mon devis",
+              "url": "/quote/motor-essential",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Auto Essentiel | Meridian Mutual",
+          "metaDescription": "Assurance auto au tiers avec assistance routière et protection juridique."
+        }
+      },
+      "de": {
+        "name": "Kfz Basis",
+        "tagline": "Haftpflichtschutz, der Sie legal und mobil hält.",
+        "localRate": 4.8,
+        "rateWording": "Repräsentativer effektiver Jahreszins 4,8 % bei monatlicher Zahlung. Jahresbeitrag ab 289 EUR.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Kfz Basis wird von der Meridian Mutual Group versichert. Der Schutz unterliegt den Versicherungsbedingungen und dem vorvertraglichen Informationsblatt Ihres Marktes. Diese Seite ist eine Demonstration und kein Angebot."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Kfz Basis",
+            "subtitle": "Das gesetzliche Minimum, richtig gemacht. Haftpflicht, Pannenhilfe und eine Schadenhotline, die abnimmt.",
+            "cta": {
+              "label": "Angebot anfordern",
+              "url": "/quote/motor-essential",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Was versichert ist",
+            "rows": [
+              {
+                "name": "Haftpflicht",
+                "included": true,
+                "note": "Unbegrenzt bei Personenschäden"
+              },
+              {
+                "name": "Pannenhilfe",
+                "included": true,
+                "note": "Im Umkreis von 50 km vom Wohnort"
+              },
+              {
+                "name": "Rechtsschutz",
+                "included": true,
+                "note": "Bis 15.000 EUR"
+              },
+              {
+                "name": "Eigenschaden",
+                "included": false,
+                "note": "Verfügbar mit Kfz Flex"
+              },
+              {
+                "name": "Ersatzfahrzeug",
+                "included": false,
+                "note": "Verfügbar mit Kfz Flex"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Dokumente",
+            "intro": "Bitte vor dem Abschluss lesen. Sie erklären, was in Ihrem Markt versichert ist und was nicht."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Häufige Fragen"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "In fünf Minuten fertig",
+            "text": "Sechs Fragen beantworten und Ihren Preis erhalten. Unverbindlich.",
+            "cta": {
+              "label": "Angebot starten",
+              "url": "/quote/motor-essential",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Kfz Basis | Meridian Mutual",
+          "metaDescription": "Kfz-Haftpflichtversicherung mit Pannenhilfe und Rechtsschutz."
+        }
+      },
+      "it": {
+        "name": "Auto Essenziale",
+        "tagline": "La copertura RC che ti tiene in regola e in strada.",
+        "localRate": 6.9,
+        "rateWording": "TAEG 6,9% per pagamento mensile. Premio annuo da 325 EUR.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Auto Essenziale è assicurata da Meridian Mutual Group. La copertura è soggetta alle condizioni di polizza e al documento informativo precontrattuale del tuo mercato. Questa pagina è una dimostrazione e non costituisce un'offerta."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Auto Essenziale",
+            "subtitle": "Il minimo di legge, fatto bene. Responsabilità civile, assistenza stradale e una linea sinistri che risponde.",
+            "cta": {
+              "label": "Richiedi un preventivo",
+              "url": "/quote/motor-essential",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Cosa è coperto",
+            "rows": [
+              {
+                "name": "Responsabilità civile",
+                "included": true,
+                "note": "Illimitata per danni alle persone"
+              },
+              {
+                "name": "Assistenza stradale",
+                "included": true,
+                "note": "Entro 50 km da casa"
+              },
+              {
+                "name": "Tutela legale",
+                "included": true,
+                "note": "Fino a 15.000 EUR"
+              },
+              {
+                "name": "Danni al veicolo",
+                "included": false,
+                "note": "Disponibile con Auto Flex"
+              },
+              {
+                "name": "Veicolo sostitutivo",
+                "included": false,
+                "note": "Disponibile con Auto Flex"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documenti",
+            "intro": "Da leggere prima di acquistare. Spiegano cosa è coperto e cosa no nel tuo mercato."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Domande frequenti"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Pronto in cinque minuti",
+            "text": "Rispondi a sei domande e ottieni il tuo prezzo. Senza impegno.",
+            "cta": {
+              "label": "Inizia il preventivo",
+              "url": "/quote/motor-essential",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Auto Essenziale | Meridian Mutual",
+          "metaDescription": "Assicurazione auto RC con assistenza stradale e tutela legale."
+        }
+      }
+    }
+  },
+  {
+    "slug": "home-secure",
+    "category": "home",
+    "heroImage": "product-home-secure.png",
+    "documents": [
+      "home-secure"
+    ],
+    "faqs": [
+      "claim-how",
+      "cancel",
+      "home-contents"
+    ],
+    "localizations": {
+      "en": {
+        "name": "Home Secure",
+        "tagline": "Building and contents cover for the place you actually live in.",
+        "localRate": 3.9,
+        "rateWording": "Representative APR 3.9% on monthly instalments. Annual premium from EUR 186.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Home Secure is underwritten by Meridian Mutual Group. Cover is subject to the policy terms and the pre-contractual information document for your market. This page is a demonstration and not an offer."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Home Secure",
+            "subtitle": "Fire, water, theft and the things you forgot you owned. One policy for the building and what is inside it.",
+            "cta": {
+              "label": "Get a quote",
+              "url": "/quote/home-secure",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "What is covered",
+            "rows": [
+              {
+                "name": "Fire and smoke",
+                "included": true,
+                "note": "Rebuild cost"
+              },
+              {
+                "name": "Water damage",
+                "included": true,
+                "note": "Including burst pipes"
+              },
+              {
+                "name": "Theft and vandalism",
+                "included": true,
+                "note": "Contents up to EUR 60,000"
+              },
+              {
+                "name": "Accidental damage",
+                "included": false,
+                "note": "Optional add-on"
+              },
+              {
+                "name": "Garden and outbuildings",
+                "included": true,
+                "note": "Up to EUR 5,000"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "Read these before you buy. They explain what is and is not covered in your market."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Common questions"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Know your price today",
+            "text": "Tell us about your home and get a quote in minutes.",
+            "cta": {
+              "label": "Start your quote",
+              "url": "/quote/home-secure",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Home Secure | Meridian Mutual",
+          "metaDescription": "Building and contents insurance with fire, water and theft cover."
+        }
+      },
+      "fr": {
+        "name": "Habitation Sécurité",
+        "tagline": "Bâtiment et contenu, pour le logement où vous vivez vraiment.",
+        "localRate": 3.7,
+        "rateWording": "TAEG représentatif de 3,7 % pour un paiement mensuel. Prime annuelle à partir de 179 EUR.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Habitation Sécurité est assuré par Meridian Mutual Group. La garantie est soumise aux conditions générales et au document d'information précontractuel de votre marché. Cette page est une démonstration et ne constitue pas une offre."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Habitation Sécurité",
+            "subtitle": "Incendie, dégâts des eaux, vol et tout ce que vous aviez oublié posséder. Une seule police pour le bâtiment et son contenu.",
+            "cta": {
+              "label": "Obtenir un devis",
+              "url": "/quote/home-secure",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Ce qui est couvert",
+            "rows": [
+              {
+                "name": "Incendie et fumée",
+                "included": true,
+                "note": "Coût de reconstruction"
+              },
+              {
+                "name": "Dégâts des eaux",
+                "included": true,
+                "note": "Y compris rupture de canalisation"
+              },
+              {
+                "name": "Vol et vandalisme",
+                "included": true,
+                "note": "Contenu jusqu'à 60 000 EUR"
+              },
+              {
+                "name": "Dommages accidentels",
+                "included": false,
+                "note": "Option"
+              },
+              {
+                "name": "Jardin et dépendances",
+                "included": true,
+                "note": "Jusqu'à 5 000 EUR"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "À lire avant de souscrire. Ils expliquent ce qui est couvert ou non dans votre marché."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Questions fréquentes"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Votre tarif aujourd'hui",
+            "text": "Décrivez votre logement et obtenez un devis en quelques minutes.",
+            "cta": {
+              "label": "Commencer mon devis",
+              "url": "/quote/home-secure",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Habitation Sécurité | Meridian Mutual",
+          "metaDescription": "Assurance habitation bâtiment et contenu : incendie, dégâts des eaux, vol."
+        }
+      },
+      "de": {
+        "name": "Wohnen Sicher",
+        "tagline": "Gebäude und Hausrat, für das Zuhause, in dem Sie wirklich leben.",
+        "localRate": 3.5,
+        "rateWording": "Repräsentativer effektiver Jahreszins 3,5 % bei monatlicher Zahlung. Jahresbeitrag ab 172 EUR.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Wohnen Sicher wird von der Meridian Mutual Group versichert. Der Schutz unterliegt den Versicherungsbedingungen und dem vorvertraglichen Informationsblatt Ihres Marktes. Diese Seite ist eine Demonstration und kein Angebot."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Wohnen Sicher",
+            "subtitle": "Feuer, Wasser, Einbruch und die Dinge, von denen Sie vergessen hatten, dass Sie sie besitzen. Eine Police für Gebäude und Inhalt.",
+            "cta": {
+              "label": "Angebot anfordern",
+              "url": "/quote/home-secure",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Was versichert ist",
+            "rows": [
+              {
+                "name": "Feuer und Rauch",
+                "included": true,
+                "note": "Wiederaufbaukosten"
+              },
+              {
+                "name": "Leitungswasser",
+                "included": true,
+                "note": "Inklusive Rohrbruch"
+              },
+              {
+                "name": "Einbruch und Vandalismus",
+                "included": true,
+                "note": "Hausrat bis 60.000 EUR"
+              },
+              {
+                "name": "Unfallschäden",
+                "included": false,
+                "note": "Optionaler Zusatz"
+              },
+              {
+                "name": "Garten und Nebengebäude",
+                "included": true,
+                "note": "Bis 5.000 EUR"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Dokumente",
+            "intro": "Bitte vor dem Abschluss lesen. Sie erklären, was in Ihrem Markt versichert ist und was nicht."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Häufige Fragen"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Ihr Preis noch heute",
+            "text": "Beschreiben Sie Ihr Zuhause und erhalten Sie in Minuten ein Angebot.",
+            "cta": {
+              "label": "Angebot starten",
+              "url": "/quote/home-secure",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Wohnen Sicher | Meridian Mutual",
+          "metaDescription": "Wohngebäude- und Hausratversicherung mit Feuer-, Wasser- und Einbruchschutz."
+        }
+      },
+      "it": {
+        "name": "Casa Sicura",
+        "tagline": "Fabbricato e contenuto, per la casa in cui vivi davvero.",
+        "localRate": 4.1,
+        "rateWording": "TAEG 4,1% per pagamento mensile. Premio annuo da 192 EUR.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Casa Sicura è assicurata da Meridian Mutual Group. La copertura è soggetta alle condizioni di polizza e al documento informativo precontrattuale del tuo mercato. Questa pagina è una dimostrazione e non costituisce un'offerta."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Casa Sicura",
+            "subtitle": "Incendio, acqua, furto e tutto quello che avevi dimenticato di possedere. Una sola polizza per il fabbricato e il contenuto.",
+            "cta": {
+              "label": "Richiedi un preventivo",
+              "url": "/quote/home-secure",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Cosa è coperto",
+            "rows": [
+              {
+                "name": "Incendio e fumo",
+                "included": true,
+                "note": "Costo di ricostruzione"
+              },
+              {
+                "name": "Danni da acqua",
+                "included": true,
+                "note": "Inclusa rottura tubature"
+              },
+              {
+                "name": "Furto e vandalismo",
+                "included": true,
+                "note": "Contenuto fino a 60.000 EUR"
+              },
+              {
+                "name": "Danni accidentali",
+                "included": false,
+                "note": "Opzione aggiuntiva"
+              },
+              {
+                "name": "Giardino e pertinenze",
+                "included": true,
+                "note": "Fino a 5.000 EUR"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documenti",
+            "intro": "Da leggere prima di acquistare. Spiegano cosa è coperto e cosa no nel tuo mercato."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Domande frequenti"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Scopri il tuo prezzo oggi",
+            "text": "Raccontaci la tua casa e ottieni un preventivo in pochi minuti.",
+            "cta": {
+              "label": "Inizia il preventivo",
+              "url": "/quote/home-secure",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Casa Sicura | Meridian Mutual",
+          "metaDescription": "Assicurazione casa fabbricato e contenuto: incendio, acqua, furto."
+        }
+      }
+    }
+  },
+  {
+    "slug": "health-plus",
+    "category": "health",
+    "heroImage": "product-health-plus.png",
+    "documents": [
+      "health-plus"
+    ],
+    "faqs": [
+      "claim-how",
+      "cancel",
+      "health-waiting"
+    ],
+    "localizations": {
+      "en": {
+        "name": "Health Plus",
+        "tagline": "Private health cover that complements your national system.",
+        "localRate": 0.0,
+        "rateWording": "Monthly premium from EUR 48 for a single adult under 40. No APR applies: premiums are paid monthly with no credit.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Health Plus is underwritten by Meridian Mutual Group. Cover is subject to the policy terms, medical underwriting and the pre-contractual information document for your market. This page is a demonstration and not an offer."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Health Plus",
+            "subtitle": "Shorter waits, your choice of specialist, and the costs your national system does not pick up.",
+            "cta": {
+              "label": "See plans",
+              "url": "/quote/health-plus",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "What is covered",
+            "rows": [
+              {
+                "name": "Specialist consultations",
+                "included": true,
+                "note": "Up to 12 per year"
+              },
+              {
+                "name": "Hospital stays",
+                "included": true,
+                "note": "Private room where available"
+              },
+              {
+                "name": "Dental",
+                "included": true,
+                "note": "Up to EUR 800 per year"
+              },
+              {
+                "name": "Optical",
+                "included": true,
+                "note": "Up to EUR 250 per year"
+              },
+              {
+                "name": "Pre-existing conditions",
+                "included": false,
+                "note": "Subject to underwriting"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "Read these before you buy. They explain waiting periods and exclusions in your market."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Common questions"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Compare the three plans",
+            "text": "Basic, Plus and Family. Pick the one that fits, switch later if your life changes.",
+            "cta": {
+              "label": "Compare plans",
+              "url": "/quote/health-plus",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Health Plus | Meridian Mutual",
+          "metaDescription": "Private health insurance complementing your national health system."
+        }
+      },
+      "fr": {
+        "name": "Santé Plus",
+        "tagline": "Une complémentaire santé qui complète votre régime obligatoire.",
+        "localRate": 0.0,
+        "rateWording": "Cotisation mensuelle à partir de 48 EUR pour un adulte seul de moins de 40 ans. Aucun TAEG : les cotisations sont mensuelles, sans crédit.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Santé Plus est assuré par Meridian Mutual Group. La garantie est soumise aux conditions générales, à la sélection médicale et au document d'information précontractuel de votre marché. Cette page est une démonstration et ne constitue pas une offre."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Santé Plus",
+            "subtitle": "Des délais plus courts, le spécialiste de votre choix et les frais que votre régime obligatoire ne prend pas en charge.",
+            "cta": {
+              "label": "Voir les formules",
+              "url": "/quote/health-plus",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Ce qui est couvert",
+            "rows": [
+              {
+                "name": "Consultations de spécialistes",
+                "included": true,
+                "note": "Jusqu'à 12 par an"
+              },
+              {
+                "name": "Hospitalisation",
+                "included": true,
+                "note": "Chambre individuelle selon disponibilité"
+              },
+              {
+                "name": "Dentaire",
+                "included": true,
+                "note": "Jusqu'à 800 EUR par an"
+              },
+              {
+                "name": "Optique",
+                "included": true,
+                "note": "Jusqu'à 250 EUR par an"
+              },
+              {
+                "name": "Affections préexistantes",
+                "included": false,
+                "note": "Selon sélection médicale"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "À lire avant de souscrire. Ils expliquent les délais de carence et les exclusions dans votre marché."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Questions fréquentes"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Comparez les trois formules",
+            "text": "Essentielle, Plus et Famille. Choisissez celle qui vous convient, changez plus tard si votre vie change.",
+            "cta": {
+              "label": "Comparer les formules",
+              "url": "/quote/health-plus",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Santé Plus | Meridian Mutual",
+          "metaDescription": "Complémentaire santé en complément du régime obligatoire."
+        }
+      },
+      "de": {
+        "name": "Gesundheit Plus",
+        "tagline": "Private Zusatzversicherung, die Ihr gesetzliches System ergänzt.",
+        "localRate": 0.0,
+        "rateWording": "Monatsbeitrag ab 48 EUR für einen Erwachsenen unter 40. Kein effektiver Jahreszins: Beiträge werden monatlich ohne Kredit gezahlt.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Gesundheit Plus wird von der Meridian Mutual Group versichert. Der Schutz unterliegt den Versicherungsbedingungen, der Gesundheitsprüfung und dem vorvertraglichen Informationsblatt Ihres Marktes. Diese Seite ist eine Demonstration und kein Angebot."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Gesundheit Plus",
+            "subtitle": "Kürzere Wartezeiten, freie Facharztwahl und die Kosten, die Ihr gesetzliches System nicht übernimmt.",
+            "cta": {
+              "label": "Tarife ansehen",
+              "url": "/quote/health-plus",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Was versichert ist",
+            "rows": [
+              {
+                "name": "Facharztbesuche",
+                "included": true,
+                "note": "Bis zu 12 pro Jahr"
+              },
+              {
+                "name": "Krankenhausaufenthalte",
+                "included": true,
+                "note": "Einzelzimmer, wo verfügbar"
+              },
+              {
+                "name": "Zahn",
+                "included": true,
+                "note": "Bis 800 EUR pro Jahr"
+              },
+              {
+                "name": "Sehhilfen",
+                "included": true,
+                "note": "Bis 250 EUR pro Jahr"
+              },
+              {
+                "name": "Vorerkrankungen",
+                "included": false,
+                "note": "Nach Gesundheitsprüfung"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Dokumente",
+            "intro": "Bitte vor dem Abschluss lesen. Sie erklären Wartezeiten und Ausschlüsse in Ihrem Markt."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Häufige Fragen"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Drei Tarife im Vergleich",
+            "text": "Basis, Plus und Familie. Wählen Sie den passenden, wechseln Sie später, wenn sich Ihr Leben ändert.",
+            "cta": {
+              "label": "Tarife vergleichen",
+              "url": "/quote/health-plus",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Gesundheit Plus | Meridian Mutual",
+          "metaDescription": "Private Krankenzusatzversicherung als Ergänzung zum gesetzlichen System."
+        }
+      },
+      "it": {
+        "name": "Salute Plus",
+        "tagline": "Una copertura sanitaria integrativa che completa il servizio nazionale.",
+        "localRate": 0.0,
+        "rateWording": "Premio mensile da 48 EUR per un adulto singolo sotto i 40 anni. Nessun TAEG: i premi sono mensili, senza finanziamento.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Salute Plus è assicurata da Meridian Mutual Group. La copertura è soggetta alle condizioni di polizza, alla valutazione sanitaria e al documento informativo precontrattuale del tuo mercato. Questa pagina è una dimostrazione e non costituisce un'offerta."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Salute Plus",
+            "subtitle": "Attese più brevi, lo specialista che scegli tu e le spese che il servizio nazionale non copre.",
+            "cta": {
+              "label": "Vedi i piani",
+              "url": "/quote/health-plus",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Cosa è coperto",
+            "rows": [
+              {
+                "name": "Visite specialistiche",
+                "included": true,
+                "note": "Fino a 12 all'anno"
+              },
+              {
+                "name": "Ricoveri",
+                "included": true,
+                "note": "Stanza singola dove disponibile"
+              },
+              {
+                "name": "Dentista",
+                "included": true,
+                "note": "Fino a 800 EUR all'anno"
+              },
+              {
+                "name": "Ottica",
+                "included": true,
+                "note": "Fino a 250 EUR all'anno"
+              },
+              {
+                "name": "Patologie pregresse",
+                "included": false,
+                "note": "Soggette a valutazione"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documenti",
+            "intro": "Da leggere prima di acquistare. Spiegano i periodi di carenza e le esclusioni nel tuo mercato."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Domande frequenti"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Confronta i tre piani",
+            "text": "Base, Plus e Famiglia. Scegli quello giusto, cambia più avanti se la tua vita cambia.",
+            "cta": {
+              "label": "Confronta i piani",
+              "url": "/quote/health-plus",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Salute Plus | Meridian Mutual",
+          "metaDescription": "Assicurazione sanitaria integrativa a completamento del servizio nazionale."
+        }
+      }
+    }
+  },
+  {
+    "slug": "life-horizon",
+    "category": "life",
+    "heroImage": "product-life-horizon.png",
+    "documents": [
+      "life-horizon"
+    ],
+    "faqs": [
+      "cancel",
+      "life-beneficiary",
+      "documents-where"
+    ],
+    "localizations": {
+      "en": {
+        "name": "Life Horizon",
+        "tagline": "Term life cover that pays the people who depend on you.",
+        "localRate": 0.0,
+        "rateWording": "Monthly premium from EUR 14 for EUR 100,000 of cover, non-smoker aged 35, 20-year term. No APR applies.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Life Horizon is underwritten by Meridian Mutual Group. Cover is subject to the policy terms, medical underwriting and the pre-contractual information document for your market. This page is a demonstration and not an offer."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Life Horizon",
+            "subtitle": "A fixed sum to your family if you die during the term. Simple to understand, simple to claim.",
+            "cta": {
+              "label": "Get a quote",
+              "url": "/quote/life-horizon",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "What is covered",
+            "rows": [
+              {
+                "name": "Death during the term",
+                "included": true,
+                "note": "Fixed lump sum"
+              },
+              {
+                "name": "Terminal illness",
+                "included": true,
+                "note": "Early payment of the sum"
+              },
+              {
+                "name": "Accidental death",
+                "included": true,
+                "note": "Sum doubled"
+              },
+              {
+                "name": "Critical illness",
+                "included": false,
+                "note": "Optional add-on"
+              },
+              {
+                "name": "Premium waiver",
+                "included": true,
+                "note": "If unable to work for 6+ months"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "Read these before you buy. They explain exclusions and how beneficiaries are paid in your market."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Common questions"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Ten minutes, no medical exam for most",
+            "text": "Answer the health questions online. Most people get an instant decision.",
+            "cta": {
+              "label": "Start your quote",
+              "url": "/quote/life-horizon",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Life Horizon | Meridian Mutual",
+          "metaDescription": "Term life insurance with a fixed lump sum for your family."
+        }
+      },
+      "fr": {
+        "name": "Vie Horizon",
+        "tagline": "Une assurance décès temporaire qui protège ceux qui comptent sur vous.",
+        "localRate": 0.0,
+        "rateWording": "Cotisation mensuelle à partir de 14 EUR pour 100 000 EUR de capital, non-fumeur de 35 ans, durée 20 ans. Aucun TAEG.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Vie Horizon est assuré par Meridian Mutual Group. La garantie est soumise aux conditions générales, à la sélection médicale et au document d'information précontractuel de votre marché. Cette page est une démonstration et ne constitue pas une offre."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Vie Horizon",
+            "subtitle": "Un capital fixe versé à votre famille en cas de décès pendant la durée du contrat. Simple à comprendre, simple à déclarer.",
+            "cta": {
+              "label": "Obtenir un devis",
+              "url": "/quote/life-horizon",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Ce qui est couvert",
+            "rows": [
+              {
+                "name": "Décès pendant la durée",
+                "included": true,
+                "note": "Capital fixe"
+              },
+              {
+                "name": "Maladie en phase terminale",
+                "included": true,
+                "note": "Versement anticipé du capital"
+              },
+              {
+                "name": "Décès accidentel",
+                "included": true,
+                "note": "Capital doublé"
+              },
+              {
+                "name": "Maladies graves",
+                "included": false,
+                "note": "Option"
+              },
+              {
+                "name": "Exonération des cotisations",
+                "included": true,
+                "note": "En cas d'incapacité de plus de 6 mois"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "À lire avant de souscrire. Ils expliquent les exclusions et le versement aux bénéficiaires dans votre marché."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Questions fréquentes"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Dix minutes, sans examen médical pour la plupart",
+            "text": "Répondez aux questions de santé en ligne. La plupart obtiennent une réponse immédiate.",
+            "cta": {
+              "label": "Commencer mon devis",
+              "url": "/quote/life-horizon",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Vie Horizon | Meridian Mutual",
+          "metaDescription": "Assurance décès temporaire avec capital fixe pour votre famille."
+        }
+      },
+      "de": {
+        "name": "Leben Horizont",
+        "tagline": "Risikolebensversicherung für die Menschen, die auf Sie zählen.",
+        "localRate": 0.0,
+        "rateWording": "Monatsbeitrag ab 14 EUR für 100.000 EUR Versicherungssumme, Nichtraucher 35 Jahre, Laufzeit 20 Jahre. Kein effektiver Jahreszins.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Leben Horizont wird von der Meridian Mutual Group versichert. Der Schutz unterliegt den Versicherungsbedingungen, der Gesundheitsprüfung und dem vorvertraglichen Informationsblatt Ihres Marktes. Diese Seite ist eine Demonstration und kein Angebot."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Leben Horizont",
+            "subtitle": "Eine feste Summe für Ihre Familie, falls Sie während der Laufzeit sterben. Einfach zu verstehen, einfach zu melden.",
+            "cta": {
+              "label": "Angebot anfordern",
+              "url": "/quote/life-horizon",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Was versichert ist",
+            "rows": [
+              {
+                "name": "Tod während der Laufzeit",
+                "included": true,
+                "note": "Feste Einmalzahlung"
+              },
+              {
+                "name": "Unheilbare Krankheit",
+                "included": true,
+                "note": "Vorzeitige Auszahlung"
+              },
+              {
+                "name": "Unfalltod",
+                "included": true,
+                "note": "Doppelte Summe"
+              },
+              {
+                "name": "Schwere Krankheiten",
+                "included": false,
+                "note": "Optionaler Zusatz"
+              },
+              {
+                "name": "Beitragsbefreiung",
+                "included": true,
+                "note": "Bei Arbeitsunfähigkeit über 6 Monate"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Dokumente",
+            "intro": "Bitte vor dem Abschluss lesen. Sie erklären Ausschlüsse und die Auszahlung an Begünstigte in Ihrem Markt."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Häufige Fragen"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Zehn Minuten, meist ohne ärztliche Untersuchung",
+            "text": "Gesundheitsfragen online beantworten. Die meisten erhalten sofort eine Entscheidung.",
+            "cta": {
+              "label": "Angebot starten",
+              "url": "/quote/life-horizon",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Leben Horizont | Meridian Mutual",
+          "metaDescription": "Risikolebensversicherung mit fester Einmalzahlung für Ihre Familie."
+        }
+      },
+      "it": {
+        "name": "Vita Orizzonte",
+        "tagline": "Una polizza vita temporanea per chi dipende da te.",
+        "localRate": 0.0,
+        "rateWording": "Premio mensile da 14 EUR per 100.000 EUR di capitale, non fumatore di 35 anni, durata 20 anni. Nessun TAEG.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Vita Orizzonte è assicurata da Meridian Mutual Group. La copertura è soggetta alle condizioni di polizza, alla valutazione sanitaria e al documento informativo precontrattuale del tuo mercato. Questa pagina è una dimostrazione e non costituisce un'offerta."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Vita Orizzonte",
+            "subtitle": "Un capitale fisso alla tua famiglia se muori durante la durata. Semplice da capire, semplice da liquidare.",
+            "cta": {
+              "label": "Richiedi un preventivo",
+              "url": "/quote/life-horizon",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Cosa è coperto",
+            "rows": [
+              {
+                "name": "Decesso durante la durata",
+                "included": true,
+                "note": "Capitale fisso"
+              },
+              {
+                "name": "Malattia terminale",
+                "included": true,
+                "note": "Anticipo del capitale"
+              },
+              {
+                "name": "Decesso per infortunio",
+                "included": true,
+                "note": "Capitale raddoppiato"
+              },
+              {
+                "name": "Malattie gravi",
+                "included": false,
+                "note": "Opzione aggiuntiva"
+              },
+              {
+                "name": "Esonero dal premio",
+                "included": true,
+                "note": "Se inabile al lavoro per oltre 6 mesi"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documenti",
+            "intro": "Da leggere prima di acquistare. Spiegano le esclusioni e il pagamento ai beneficiari nel tuo mercato."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Domande frequenti"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Dieci minuti, senza visita medica per la maggior parte",
+            "text": "Rispondi online alle domande sulla salute. Quasi tutti ricevono una risposta immediata.",
+            "cta": {
+              "label": "Inizia il preventivo",
+              "url": "/quote/life-horizon",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Vita Orizzonte | Meridian Mutual",
+          "metaDescription": "Polizza vita temporanea con capitale fisso per la tua famiglia."
+        }
+      }
+    }
+  },
+  {
+    "slug": "savings-plan",
+    "category": "savings",
+    "heroImage": "product-savings-plan.png",
+    "documents": [
+      "savings-plan"
+    ],
+    "faqs": [
+      "savings-access",
+      "cancel",
+      "documents-where"
+    ],
+    "localizations": {
+      "en": {
+        "name": "Savings Plan",
+        "tagline": "A guaranteed-rate plan for money you want to keep boring.",
+        "localRate": 2.6,
+        "rateWording": "Guaranteed annual rate 2.6% gross for 2026, reviewed each January. Capital guaranteed at all times. Past rates are not a promise of future rates.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Savings Plan is a life-insurance based savings contract issued by Meridian Mutual Group. Tax treatment depends on your market and personal situation. This page is a demonstration and not an offer."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Savings Plan",
+            "subtitle": "Put money aside monthly, know the rate in advance, take it out when you need it.",
+            "cta": {
+              "label": "Open a plan",
+              "url": "/quote/savings-plan",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "How it works",
+            "rows": [
+              {
+                "name": "Guaranteed rate",
+                "included": true,
+                "note": "Set each January"
+              },
+              {
+                "name": "Capital guarantee",
+                "included": true,
+                "note": "At all times"
+              },
+              {
+                "name": "Monthly deposits",
+                "included": true,
+                "note": "From EUR 25"
+              },
+              {
+                "name": "Withdrawals",
+                "included": true,
+                "note": "Free after year 3"
+              },
+              {
+                "name": "Market-linked funds",
+                "included": false,
+                "note": "Available in Savings Plan Invest"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "Read these before you open a plan. They explain fees, tax and withdrawal rules in your market."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Common questions"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Start with EUR 25 a month",
+            "text": "Open a plan online in ten minutes. Change or pause deposits any time.",
+            "cta": {
+              "label": "Open a plan",
+              "url": "/quote/savings-plan",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Savings Plan | Meridian Mutual",
+          "metaDescription": "Guaranteed-rate savings plan with capital guarantee and monthly deposits."
+        }
+      },
+      "fr": {
+        "name": "Plan Épargne",
+        "tagline": "Un placement à taux garanti pour l'argent que vous voulez garder tranquille.",
+        "localRate": 2.5,
+        "rateWording": "Taux annuel garanti de 2,5 % brut pour 2026, révisé chaque janvier. Capital garanti à tout moment. Les taux passés ne préjugent pas des taux futurs.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Plan Épargne est un contrat d'épargne en assurance vie émis par Meridian Mutual Group. La fiscalité dépend de votre marché et de votre situation personnelle. Cette page est une démonstration et ne constitue pas une offre."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Plan Épargne",
+            "subtitle": "Mettez de côté chaque mois, connaissez le taux à l'avance, retirez quand vous en avez besoin.",
+            "cta": {
+              "label": "Ouvrir un plan",
+              "url": "/quote/savings-plan",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Comment ça marche",
+            "rows": [
+              {
+                "name": "Taux garanti",
+                "included": true,
+                "note": "Fixé chaque janvier"
+              },
+              {
+                "name": "Garantie du capital",
+                "included": true,
+                "note": "À tout moment"
+              },
+              {
+                "name": "Versements mensuels",
+                "included": true,
+                "note": "À partir de 25 EUR"
+              },
+              {
+                "name": "Retraits",
+                "included": true,
+                "note": "Gratuits après 3 ans"
+              },
+              {
+                "name": "Supports en unités de compte",
+                "included": false,
+                "note": "Disponibles avec Plan Épargne Invest"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "À lire avant d'ouvrir un plan. Ils expliquent les frais, la fiscalité et les règles de retrait dans votre marché."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Questions fréquentes"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Commencez avec 25 EUR par mois",
+            "text": "Ouvrez un plan en ligne en dix minutes. Modifiez ou suspendez les versements à tout moment.",
+            "cta": {
+              "label": "Ouvrir un plan",
+              "url": "/quote/savings-plan",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Plan Épargne | Meridian Mutual",
+          "metaDescription": "Plan d'épargne à taux garanti avec garantie du capital et versements mensuels."
+        }
+      },
+      "de": {
+        "name": "Sparplan",
+        "tagline": "Ein Plan mit garantiertem Zins für Geld, das langweilig bleiben soll.",
+        "localRate": 2.4,
+        "rateWording": "Garantierter Jahreszins 2,4 % brutto für 2026, jeden Januar überprüft. Kapital jederzeit garantiert. Vergangene Zinsen sind kein Versprechen für die Zukunft.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Der Sparplan ist ein lebensversicherungsbasierter Sparvertrag der Meridian Mutual Group. Die steuerliche Behandlung hängt von Ihrem Markt und Ihrer persönlichen Situation ab. Diese Seite ist eine Demonstration und kein Angebot."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Sparplan",
+            "subtitle": "Monatlich zurücklegen, den Zins im Voraus kennen, abheben, wenn Sie es brauchen.",
+            "cta": {
+              "label": "Plan eröffnen",
+              "url": "/quote/savings-plan",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "So funktioniert es",
+            "rows": [
+              {
+                "name": "Garantierter Zins",
+                "included": true,
+                "note": "Jeden Januar festgelegt"
+              },
+              {
+                "name": "Kapitalgarantie",
+                "included": true,
+                "note": "Jederzeit"
+              },
+              {
+                "name": "Monatliche Einzahlungen",
+                "included": true,
+                "note": "Ab 25 EUR"
+              },
+              {
+                "name": "Abhebungen",
+                "included": true,
+                "note": "Kostenlos ab dem 3. Jahr"
+              },
+              {
+                "name": "Fondsgebundene Anlage",
+                "included": false,
+                "note": "Verfügbar mit Sparplan Invest"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Dokumente",
+            "intro": "Bitte vor der Eröffnung lesen. Sie erklären Gebühren, Steuern und Abhebungsregeln in Ihrem Markt."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Häufige Fragen"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Mit 25 EUR im Monat starten",
+            "text": "Plan in zehn Minuten online eröffnen. Einzahlungen jederzeit ändern oder pausieren.",
+            "cta": {
+              "label": "Plan eröffnen",
+              "url": "/quote/savings-plan",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Sparplan | Meridian Mutual",
+          "metaDescription": "Sparplan mit garantiertem Zins, Kapitalgarantie und monatlichen Einzahlungen."
+        }
+      },
+      "it": {
+        "name": "Piano Risparmio",
+        "tagline": "Un piano a tasso garantito per i soldi che vuoi tenere tranquilli.",
+        "localRate": 2.8,
+        "rateWording": "Tasso annuo garantito 2,8% lordo per il 2026, rivisto ogni gennaio. Capitale garantito in ogni momento. I rendimenti passati non sono indicativi di quelli futuri.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Piano Risparmio è un contratto di risparmio a base assicurativa emesso da Meridian Mutual Group. Il trattamento fiscale dipende dal tuo mercato e dalla tua situazione personale. Questa pagina è una dimostrazione e non costituisce un'offerta."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Piano Risparmio",
+            "subtitle": "Metti da parte ogni mese, conosci il tasso in anticipo, preleva quando serve.",
+            "cta": {
+              "label": "Apri un piano",
+              "url": "/quote/savings-plan",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "Come funziona",
+            "rows": [
+              {
+                "name": "Tasso garantito",
+                "included": true,
+                "note": "Fissato ogni gennaio"
+              },
+              {
+                "name": "Garanzia del capitale",
+                "included": true,
+                "note": "In ogni momento"
+              },
+              {
+                "name": "Versamenti mensili",
+                "included": true,
+                "note": "Da 25 EUR"
+              },
+              {
+                "name": "Prelievi",
+                "included": true,
+                "note": "Gratuiti dopo il 3° anno"
+              },
+              {
+                "name": "Fondi collegati al mercato",
+                "included": false,
+                "note": "Disponibili con Piano Risparmio Invest"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documenti",
+            "intro": "Da leggere prima di aprire un piano. Spiegano costi, fiscalità e regole di prelievo nel tuo mercato."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Domande frequenti"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Inizia con 25 EUR al mese",
+            "text": "Apri un piano online in dieci minuti. Modifica o sospendi i versamenti quando vuoi.",
+            "cta": {
+              "label": "Apri un piano",
+              "url": "/quote/savings-plan",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Piano Risparmio | Meridian Mutual",
+          "metaDescription": "Piano di risparmio a tasso garantito con garanzia del capitale e versamenti mensili."
+        }
+      }
+    }
+  },
+  {
+    "slug": "motor-flex-2027",
+    "category": "motor",
+    "heroImage": "product-motor-flex.png",
+    "documents": [],
+    "faqs": [
+      "claim-how",
+      "cancel"
+    ],
+    "localizations": {
+      "en": {
+        "name": "Motor Flex 2027",
+        "tagline": "Comprehensive cover that adapts to how much you actually drive.",
+        "localRate": 6.2,
+        "rateWording": "Representative APR 6.2% on monthly instalments. Annual premium from EUR 468, adjusted quarterly to your declared mileage.",
+        "legalDisclaimer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Motor Flex 2027 is underwritten by Meridian Mutual Group. Cover is subject to the policy terms and the pre-contractual information document for your market. This page is a demonstration and not an offer."
+              }
+            ]
+          }
+        ],
+        "blocks": [
+          {
+            "__component": "blocks.hero",
+            "title": "Motor Flex 2027",
+            "subtitle": "Comprehensive cover with a premium that follows your mileage. Drive less, pay less, every quarter.",
+            "cta": {
+              "label": "Get a quote",
+              "url": "/quote/motor-flex-2027",
+              "variant": "primary"
+            }
+          },
+          {
+            "__component": "blocks.coverage-table",
+            "title": "What is covered",
+            "rows": [
+              {
+                "name": "Third-party liability",
+                "included": true,
+                "note": "Unlimited for bodily injury"
+              },
+              {
+                "name": "Own damage",
+                "included": true,
+                "note": "Market value, EUR 300 excess"
+              },
+              {
+                "name": "Theft and fire",
+                "included": true,
+                "note": "Market value"
+              },
+              {
+                "name": "Replacement vehicle",
+                "included": true,
+                "note": "Up to 15 days"
+              },
+              {
+                "name": "Mileage-based premium",
+                "included": true,
+                "note": "Reviewed quarterly"
+              }
+            ]
+          },
+          {
+            "__component": "blocks.document-list",
+            "title": "Documents",
+            "intro": "Read these before you buy. They explain how the mileage adjustment works in your market."
+          },
+          {
+            "__component": "blocks.faq-list",
+            "title": "Common questions"
+          },
+          {
+            "__component": "blocks.cta-band",
+            "title": "Launching 3 November",
+            "text": "Get a quote now and lock the launch rate.",
+            "cta": {
+              "label": "Get a quote",
+              "url": "/quote/motor-flex-2027",
+              "variant": "primary"
+            }
+          }
+        ],
+        "seo": {
+          "metaTitle": "Motor Flex 2027 | Meridian Mutual",
+          "metaDescription": "Comprehensive motor insurance with a mileage-based premium."
+        }
+      }
+    },
+    "demoState": "draft, en only, stage Draft, not in a release. Scene 1 adds it to the release; scene 2 creates the it locale."
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_blocks_document_lists",
+  "info": {
+    "displayName": "Document list",
+    "icon": "file"
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "intro": {
+      "type": "text"
+    }
+  },
+  "options": {}
+}

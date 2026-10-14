@@ -4,8 +4,8 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "Products",
-    "description": ""
+    "displayName": "Product",
+    "description": "Insurance products. Review workflow and Releases apply here."
   },
   "options": {
     "draftAndPublish": true
@@ -18,22 +18,7 @@
   "attributes": {
     "name": {
       "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "price": {
-      "type": "integer",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "description": {
-      "type": "string",
+      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -44,63 +29,102 @@
       "type": "uid",
       "targetField": "name"
     },
-    "images": {
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "motor",
+        "home",
+        "health",
+        "life",
+        "savings"
+      ],
+      "required": true
+    },
+    "tagline": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "localRate": {
+      "type": "decimal",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "rateWording": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "legalDisclaimer": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "reviewNote": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "heroImage": {
       "type": "media",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "multiple": true,
-      "required": false,
+      "multiple": false,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos"
+        "images"
       ]
     },
-    "perks": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "shared.perks",
-      "repeatable": true
-    },
-    "plans": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::plan.plan",
-      "mappedBy": "product"
-    },
-    "categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::category.category",
-      "mappedBy": "product"
-    },
-    "dynamic_zone": {
+    "blocks": {
       "type": "dynamiczone",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "components": [
-        "dynamic-zone.related-products",
-        "dynamic-zone.cta"
-      ]
-    },
-    "featured": {
-      "type": "boolean",
+        "blocks.hero",
+        "blocks.coverage-table",
+        "blocks.document-list",
+        "blocks.faq-list",
+        "blocks.rich-text",
+        "blocks.stats",
+        "blocks.cta-band"
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "default": false
+      }
+    },
+    "documents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::regulated-document.regulated-document",
+      "mappedBy": "product"
+    },
+    "faqs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::faq.faq",
+      "inversedBy": "products"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

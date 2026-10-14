@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_shared_coverage_rows",
+  "info": {
+    "displayName": "Coverage row",
+    "icon": "check"
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "included": {
+      "type": "boolean",
+      "default": true
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "options": {}
+}

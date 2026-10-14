@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {
     "i18n": {
@@ -18,6 +18,7 @@
   "attributes": {
     "question": {
       "type": "string",
+      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -25,12 +26,38 @@
       }
     },
     "answer": {
-      "type": "text",
+      "type": "blocks",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       }
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "general",
+        "claims",
+        "policy",
+        "motor",
+        "home",
+        "health",
+        "life",
+        "savings"
+      ],
+      "default": "general"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "faqs"
+    },
+    "pages": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::page.page",
+      "mappedBy": "faqs"
     }
   }
 }

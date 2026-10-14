@@ -1,65 +1,30 @@
-import { Metadata } from 'next';
-import { ViewTransitions } from 'next-view-transitions';
-import { Inter } from 'next/font/google';
 import { draftMode } from 'next/headers';
-import type { PropsWithChildren } from 'react';
-import React from 'react';
+import { notFound } from 'next/navigation';
 
-import { Banner } from '@/components/banner';
-import { DraftModeBanner } from '@/components/draft-mode-banner';
-import { Footer } from '@/components/footer';
-import { Navbar } from '@/components/navbar';
-import { AIToast } from '@/components/toast';
-import { CartProvider } from '@/context/cart-context';
-import { generateMetadataObject } from '@/lib/shared/metadata';
-import { fetchSingleType } from '@/lib/strapi';
-import { cn } from '@/lib/utils';
-import type { LocaleParamsProps } from '@/types/types';
+import { DraftBanner } from '@/components/draft-banner';
+import { Preview } from '@/components/preview';
+import { SiteFooter } from '@/components/site-footer';
+import { SiteHeader } from '@/components/site-header';
+import { i18n, type Locale } from '@/i18n.config';
+import { getFooter, getGlobal, getHeader, getPromoBanner } from '@/lib/content';
+import { dict } from '@/lib/i18n';
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '500', '600', '700', '800', '900'],
-});
+export const dynamic = 'force-dynamic';
 
-// Default Global SEO for pages without them
-export async function generateMetadata({
-  params,
-}: PropsWithChildren<LocaleParamsProps>): Promise<Metadata> {
+export default async function LocaleLayout({ children, params }: LayoutProps<'/[locale]'>) {
   const { locale } = await params;
-  const pageData = await fetchSingleType('global', { locale });
-
-  const seo = pageData.seo;
-  const metadata = generateMetadataObject(seo);
-  return metadata;
-}
-
-export default async function LocaleLayout({
-  children,
-  params,
-}: PropsWithChildren<LocaleParamsProps>) {
-  const { isEnabled: isDraftMode } = await draftMode();
-  const { locale } = await params;
-  const pageData = await fetchSingleType('global', { locale });
-  const isDemo = process.env.NEXT_IS_DEMO === 'true';
-
+  if (!(i18n.locales as readonly string[]).includes(locale)) notFound();
+  const l = locale as Locale;
+  const [global, header, footer, banner] = await Promise.all([getGlobal(l), getHeader(l), getFooter(l), getPromoBanner(l)]);
+  const { isEnabled } = await draftMode();
+  const t = dict(l);
   return (
-    <ViewTransitions>
-      <CartProvider>
-        <div
-          className={cn(
-            inter.className,
-            'bg-charcoal antialiased h-full w-full'
-          )}
-        >
-          {isDemo && <Banner />}
-          <Navbar data={pageData.navbar} locale={locale} hasBanner={isDemo} />
-          {children}
-          <Footer data={pageData.footer} locale={locale} />
-          <AIToast />
-          {isDraftMode && <DraftModeBanner />}
-        </div>
-      </CartProvider>
-    </ViewTransitions>
+    <div lang={l} className="flex min-h-screen flex-col">
+      <Preview />
+      <SiteHeader locale={l} global={global} header={header} banner={banner} />
+      <main className="flex-1">{children}</main>
+      <SiteFooter locale={l} global={global} footer={footer} />
+      {isEnabled && <DraftBanner label={t.draft} exit={t.exitDraft} />}
+    </div>
   );
 }

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_blocks_coverage_tables",
+  "info": {
+    "displayName": "Coverage table",
+    "icon": "grid"
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "rows": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.coverage-row"
+    }
+  },
+  "options": {}
+}

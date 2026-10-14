@@ -4,7 +4,7 @@
   "info": {
     "singularName": "page",
     "pluralName": "pages",
-    "displayName": "Pages",
+    "displayName": "Page",
     "description": ""
   },
   "options": {
@@ -16,45 +16,51 @@
     }
   },
   "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "blocks.hero",
+        "blocks.coverage-table",
+        "blocks.document-list",
+        "blocks.faq-list",
+        "blocks.rich-text",
+        "blocks.stats",
+        "blocks.cta-band"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "faqs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::faq.faq",
+      "inversedBy": "pages"
+    },
     "seo": {
       "type": "component",
       "repeatable": false,
+      "component": "shared.seo",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "component": "shared.seo"
-    },
-    "slug": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "uid",
-      "default": "slug",
-      "required": true
-    },
-    "dynamic_zone": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "dynamiczone",
-      "components": [
-        "dynamic-zone.hero",
-        "dynamic-zone.features",
-        "dynamic-zone.testimonials",
-        "dynamic-zone.how-it-works",
-        "dynamic-zone.brands",
-        "dynamic-zone.pricing",
-        "dynamic-zone.launches",
-        "dynamic-zone.cta",
-        "dynamic-zone.form-next-to-section",
-        "dynamic-zone.faq"
-      ]
+      }
     }
   }
 }

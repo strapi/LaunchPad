@@ -1,0 +1,152 @@
+[
+  {
+    "slug": "half-year-results-2026",
+    "publishedOn": "2026-09-02",
+    "cover": "press-results.png",
+    "title": "Meridian Mutual Group reports half-year 2026 results",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Lyon, 2 September 2026. Meridian Mutual Group today reported results for the first half of 2026. Membership reached 2.1 million (+3.4%), gross written premiums EUR 1.84 billion (+2.9%), and the solvency ratio 212%."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Average claims settlement time fell to nine days from twelve. The group invested EUR 38 million in its claims platform and hired 60 claims handlers."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "As a mutual, the group pays no dividend. The surplus is allocated to reserves and to the 2027 premium review, which will be announced in November."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Contact: press@meridian-demo.test"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "motor-flex-2027-announcement",
+    "publishedOn": "2026-10-20",
+    "cover": "press-motor-flex.png",
+    "title": "Meridian Mutual Group to launch mileage-based motor cover on 3 November",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Lyon, 20 October 2026. Meridian Mutual Group will launch Motor Flex 2027 in France, Germany and Italy on 3 November. The comprehensive policy adjusts the premium every quarter to the mileage declared by the member."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The product responds to a shift in driving habits: 41% of the group's motor members now drive under 8,000 km a year. Motor Flex 2027 is expected to reduce their premium by 15 to 25% compared with a standard comprehensive policy."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Contact: press@meridian-demo.test"
+          }
+        ]
+      }
+    ],
+    "demoState": "draft, scheduled in release 'Motor Flex launch, 3 November' if the AE wants a second content type in the release"
+  },
+  {
+    "slug": "new-ceo-italy",
+    "publishedOn": "2026-05-19",
+    "cover": "press-ceo.png",
+    "title": "Meridian Mutual Group appoints Chiara Benedetti as Country Manager for Italy",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Lyon, 19 May 2026. Meridian Mutual Group has appointed Chiara Benedetti as Country Manager for Italy, effective 1 June. She succeeds Marco Ferraro, who retires after 14 years in the role."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Chiara Benedetti joined the group in 2012 and most recently led the Italian claims organisation, where she oversaw the migration to the group claims platform."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Contact: press@meridian-demo.test"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "climate-reserve-2026",
+    "publishedOn": "2026-01-27",
+    "cover": "press-climate.png",
+    "title": "Meridian Mutual Group sets aside EUR 120 million climate reserve",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Lyon, 27 January 2026. The board of Meridian Mutual Group has approved a dedicated reserve of EUR 120 million to absorb the cost of major climate events without passing it on to members in the following year."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The reserve will be drawn on when weather-related claims in a single year exceed 130% of the ten-year average."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Contact: press@meridian-demo.test"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,361 @@
+[
+  {
+    "slug": "group-results-h1-2026",
+    "market": "group",
+    "locale": "en",
+    "publishedOn": "2026-09-02",
+    "cover": "news-results.png",
+    "title": "Half-year results: 2.1 million members, claims time down to 9 days",
+    "excerpt": "Membership grew 3.4% and the average claim is now settled in nine days, from twelve a year ago.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Meridian Mutual Group closed the first half of 2026 with 2.1 million members across France, Germany and Italy, up 3.4% on the same period last year."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The average time to settle a claim fell to nine days. The group attributes the improvement to the new claims platform rolled out in all three markets in March, and to 60 additional claims handlers hired in Italy and Germany."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The solvency ratio stands at 212%. No dividend is paid, as a mutual; the surplus goes to the reserve and to the 2027 premium review."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "new-claims-platform",
+    "market": "group",
+    "locale": "en",
+    "publishedOn": "2026-03-16",
+    "cover": "news-claims.png",
+    "title": "One claims platform for three countries",
+    "excerpt": "From today, a claim started in Milan, Munich or Lyon follows the same steps and the same timelines.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The group has replaced three national claims systems with one. Members see the same online form, the same reference number format and the same status updates regardless of market."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Agents can now follow a claim end to end from their own screen, which removes the phone calls between branches and head office that used to add two to three days."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "agents-recruitment-2026",
+    "market": "group",
+    "locale": "en",
+    "publishedOn": "2026-06-10",
+    "cover": "news-agents.png",
+    "title": "Forty new agents in 2026, all employees",
+    "excerpt": "The group keeps its model: agents on payroll, trained for every product, measured on member satisfaction.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Forty agents will join the network this year, twenty in Italy, twelve in Germany and eight in France. All are employees, not franchisees, and all are trained to quote, sell and handle claims for the full range."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "The group has no plan to move to a franchise model. Member satisfaction with agents is at 91%, and the group considers the employee model the reason."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "nouvelle-agence-nantes",
+    "market": "FR",
+    "locale": "fr",
+    "publishedOn": "2026-09-22",
+    "cover": "news-agency.png",
+    "title": "Nouvelle agence à Nantes, quartier Chantenay",
+    "excerpt": "Six agents, ouverture du lundi au samedi, et un espace dédié aux déclarations de sinistre.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "La nouvelle agence de Nantes Chantenay ouvre ses portes le 29 septembre. Six agents y accueillent les sociétaires du lundi au samedi, de 9h à 19h."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "L'agence dispose d'un espace sinistres où un gestionnaire reçoit sur rendez-vous, une première dans le réseau. Si l'expérience est concluante, le dispositif sera étendu aux agences de Lyon et Bordeaux en 2027."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "baisse-cotisation-habitation-2027",
+    "market": "FR",
+    "locale": "fr",
+    "publishedOn": "2026-10-06",
+    "cover": "news-home-fr.png",
+    "title": "Habitation Sécurité : cotisation en baisse de 2 % en 2027",
+    "excerpt": "La sinistralité 2025 a été inférieure aux prévisions. La différence revient aux sociétaires.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Le conseil d'administration a validé une baisse de 2 % de la cotisation Habitation Sécurité pour les contrats renouvelés à partir du 1er janvier 2027."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "La décision s'appuie sur une sinistralité 2025 inférieure de 6 % aux prévisions, principalement grâce à une année sans épisode climatique majeur. En tant que mutuelle, le groupe restitue la différence plutôt que de la conserver."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "assistance-vacances-ete",
+    "market": "FR",
+    "locale": "fr",
+    "publishedOn": "2026-06-24",
+    "cover": "news-summer.png",
+    "title": "Assistance routière : ce qui change pour l'été",
+    "excerpt": "Rayon étendu à toute l'Union européenne du 1er juillet au 31 août pour tous les contrats auto.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Du 1er juillet au 31 août, l'assistance routière incluse dans Auto Essentiel et Auto Flex couvre l'ensemble de l'Union européenne, sans surcoût."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Il suffit d'appeler le numéro habituel. Le véhicule est rapatrié si la réparation sur place dépasse cinq jours."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "neue-schadenhotline-zeiten",
+    "market": "DE",
+    "locale": "de",
+    "publishedOn": "2026-08-18",
+    "cover": "news-hotline.png",
+    "title": "Schadenhotline jetzt bis 22 Uhr erreichbar",
+    "excerpt": "Die deutsche Schadenhotline verlängert ihre Zeiten an allen sieben Tagen der Woche.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Seit dem 17. August ist die Schadenhotline 0800 200 1932 täglich von 7 bis 22 Uhr besetzt, auch am Wochenende."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Die Verlängerung reagiert auf eine Auswertung, nach der 18 % der Erstmeldungen bisher am Abend oder am Wochenende auf den Anrufbeantworter liefen."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "kfz-basis-pannenhilfe-50km",
+    "market": "DE",
+    "locale": "de",
+    "publishedOn": "2026-05-05",
+    "cover": "news-roadside.png",
+    "title": "Kfz Basis: Pannenhilfe jetzt auch im Umkreis von 50 km",
+    "excerpt": "Die bisherige 25-km-Grenze entfällt für alle bestehenden und neuen Verträge.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Die Pannenhilfe in Kfz Basis gilt ab sofort im Umkreis von 50 Kilometern vom Wohnort, statt bisher 25. Bestehende Verträge profitieren automatisch, ohne Beitragserhöhung."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Die Änderung gleicht Kfz Basis an die Regelung in Frankreich und Italien an."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "muenchen-buero-umzug",
+    "market": "DE",
+    "locale": "de",
+    "publishedOn": "2026-02-11",
+    "cover": "news-office.png",
+    "title": "Die deutsche Zentrale zieht nach München-Sendling",
+    "excerpt": "Ab März arbeiten 310 Mitarbeitende am neuen Standort an der Lindwurmstraße.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Die deutsche Zentrale der Meridian Mutual Group zieht Anfang März in neue Räume an der Lindwurmstraße in München-Sendling. Telefonnummern und Postadresse für Mitglieder bleiben unverändert."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Der neue Standort bietet Platz für die 60 zusätzlichen Schadensachbearbeiter, die 2026 eingestellt werden."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "sinistri-piattaforma-italia",
+    "market": "IT",
+    "locale": "it",
+    "publishedOn": "2026-04-08",
+    "cover": "news-claims-it.png",
+    "title": "Nuova piattaforma sinistri: cosa cambia per i soci italiani",
+    "excerpt": "Stesso modulo, stesso numero di pratica e stessi tempi degli altri paesi del gruppo.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Dal 7 aprile i sinistri in Italia passano sulla piattaforma unica del gruppo. Il modulo online, il formato del numero di pratica e gli aggiornamenti di stato sono gli stessi di Francia e Germania."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "I soci con una pratica aperta prima del 7 aprile non devono fare nulla: la pratica è stata migrata con lo stesso gestore."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "auto-essenziale-tassi-2026",
+    "market": "IT",
+    "locale": "it",
+    "publishedOn": "2026-09-30",
+    "cover": "news-motor-it.png",
+    "title": "Auto Essenziale: aggiornamento del TAEG per il pagamento mensile",
+    "excerpt": "Il tasso applicato alle rate mensili è stato aggiornato. Il premio annuo non cambia.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Dal 1° ottobre il TAEG applicato al pagamento mensile di Auto Essenziale è stato aggiornato. Il premio annuo resta invariato per chi paga in un'unica soluzione."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Il dettaglio è riportato nella pagina prodotto e nel documento informativo precontrattuale aggiornato."
+          }
+        ]
+      }
+    ],
+    "demoState": "draft; this is the news item that would announce the rate in scene 5, left in draft on purpose"
+  },
+  {
+    "slug": "agenti-sud-italia",
+    "market": "IT",
+    "locale": "it",
+    "publishedOn": "2026-07-14",
+    "cover": "news-agents-it.png",
+    "title": "Venti nuovi agenti nel Sud Italia entro fine anno",
+    "excerpt": "Napoli, Bari e Palermo le prime città. Tutti dipendenti, formati su tutti i prodotti.",
+    "body": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Entro dicembre venti nuovi agenti entreranno nella rete italiana, a partire da Napoli, Bari e Palermo. Come nel resto del gruppo sono dipendenti, non franchisee, e possono fare preventivi, vendere e gestire sinistri per ogni prodotto."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Le selezioni sono aperte sulla pagina Carriere."
+          }
+        ]
+      }
+    ],
+    "demoState": "draft"
+  }
+]

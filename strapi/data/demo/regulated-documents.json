@@ -1,0 +1,257 @@
+[
+  {
+    "key": "motor-essential-fr",
+    "product": "motor-essential",
+    "market": "FR",
+    "file": "doc-motor-essential-fr.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-FR-MOT-2026-v3",
+    "localizations": {
+      "en": {
+        "title": "Motor Essential (FR): pre-contractual information document"
+      },
+      "fr": {
+        "title": "Auto Essentiel (FR): Document d'information précontractuel"
+      }
+    }
+  },
+  {
+    "key": "motor-essential-de",
+    "product": "motor-essential",
+    "market": "DE",
+    "file": "doc-motor-essential-de.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-DE-MOT-2026-v2",
+    "localizations": {
+      "en": {
+        "title": "Motor Essential (DE): pre-contractual information document"
+      },
+      "de": {
+        "title": "Kfz Basis (DE): Vorvertragliches Informationsblatt"
+      }
+    }
+  },
+  {
+    "key": "motor-essential-it",
+    "product": "motor-essential",
+    "market": "IT",
+    "file": "doc-motor-essential-it.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-IT-MOT-2026-v4",
+    "localizations": {
+      "en": {
+        "title": "Motor Essential (IT): pre-contractual information document"
+      },
+      "it": {
+        "title": "Auto Essenziale (IT): Documento informativo precontrattuale"
+      }
+    }
+  },
+  {
+    "key": "home-secure-fr",
+    "product": "home-secure",
+    "market": "FR",
+    "file": "doc-home-secure-fr.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-FR-HOM-2026-v3",
+    "localizations": {
+      "en": {
+        "title": "Home Secure (FR): pre-contractual information document"
+      },
+      "fr": {
+        "title": "Habitation Sécurité (FR): Document d'information précontractuel"
+      }
+    }
+  },
+  {
+    "key": "home-secure-de",
+    "product": "home-secure",
+    "market": "DE",
+    "file": "doc-home-secure-de.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-DE-HOM-2026-v2",
+    "localizations": {
+      "en": {
+        "title": "Home Secure (DE): pre-contractual information document"
+      },
+      "de": {
+        "title": "Wohnen Sicher (DE): Vorvertragliches Informationsblatt"
+      }
+    }
+  },
+  {
+    "key": "home-secure-it",
+    "product": "home-secure",
+    "market": "IT",
+    "file": "doc-home-secure-it.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-IT-HOM-2026-v4",
+    "localizations": {
+      "en": {
+        "title": "Home Secure (IT): pre-contractual information document"
+      },
+      "it": {
+        "title": "Casa Sicura (IT): Documento informativo precontrattuale"
+      }
+    }
+  },
+  {
+    "key": "health-plus-fr",
+    "product": "health-plus",
+    "market": "FR",
+    "file": "doc-health-plus-fr.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-FR-HEA-2026-v3",
+    "localizations": {
+      "en": {
+        "title": "Health Plus (FR): pre-contractual information document"
+      },
+      "fr": {
+        "title": "Santé Plus (FR): Document d'information précontractuel"
+      }
+    }
+  },
+  {
+    "key": "health-plus-de",
+    "product": "health-plus",
+    "market": "DE",
+    "file": "doc-health-plus-de.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-DE-HEA-2026-v2",
+    "localizations": {
+      "en": {
+        "title": "Health Plus (DE): pre-contractual information document"
+      },
+      "de": {
+        "title": "Gesundheit Plus (DE): Vorvertragliches Informationsblatt"
+      }
+    }
+  },
+  {
+    "key": "health-plus-it",
+    "product": "health-plus",
+    "market": "IT",
+    "file": "doc-health-plus-it.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-IT-HEA-2026-v4",
+    "localizations": {
+      "en": {
+        "title": "Health Plus (IT): pre-contractual information document"
+      },
+      "it": {
+        "title": "Salute Plus (IT): Documento informativo precontrattuale"
+      }
+    }
+  },
+  {
+    "key": "life-horizon-fr",
+    "product": "life-horizon",
+    "market": "FR",
+    "file": "doc-life-horizon-fr.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-FR-LIF-2026-v3",
+    "localizations": {
+      "en": {
+        "title": "Life Horizon (FR): pre-contractual information document"
+      },
+      "fr": {
+        "title": "Vie Horizon (FR): Document d'information précontractuel"
+      }
+    }
+  },
+  {
+    "key": "life-horizon-de",
+    "product": "life-horizon",
+    "market": "DE",
+    "file": "doc-life-horizon-de.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-DE-LIF-2026-v2",
+    "localizations": {
+      "en": {
+        "title": "Life Horizon (DE): pre-contractual information document"
+      },
+      "de": {
+        "title": "Leben Horizont (DE): Vorvertragliches Informationsblatt"
+      }
+    }
+  },
+  {
+    "key": "life-horizon-it",
+    "product": "life-horizon",
+    "market": "IT",
+    "file": "doc-life-horizon-it.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-IT-LIF-2026-v4",
+    "localizations": {
+      "en": {
+        "title": "Life Horizon (IT): pre-contractual information document"
+      },
+      "it": {
+        "title": "Vita Orizzonte (IT): Documento informativo precontrattuale"
+      }
+    }
+  },
+  {
+    "key": "savings-plan-fr",
+    "product": "savings-plan",
+    "market": "FR",
+    "file": "doc-savings-plan-fr.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-FR-SAV-2026-v3",
+    "localizations": {
+      "en": {
+        "title": "Savings Plan (FR): pre-contractual information document"
+      },
+      "fr": {
+        "title": "Plan Épargne (FR): Document d'information précontractuel"
+      }
+    }
+  },
+  {
+    "key": "savings-plan-de",
+    "product": "savings-plan",
+    "market": "DE",
+    "file": "doc-savings-plan-de.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-DE-SAV-2026-v2",
+    "localizations": {
+      "en": {
+        "title": "Savings Plan (DE): pre-contractual information document"
+      },
+      "de": {
+        "title": "Sparplan (DE): Vorvertragliches Informationsblatt"
+      }
+    }
+  },
+  {
+    "key": "savings-plan-it",
+    "product": "savings-plan",
+    "market": "IT",
+    "file": "doc-savings-plan-it.pdf",
+    "validFrom": "2026-01-01",
+    "validTo": "2026-12-31",
+    "regulatoryReference": "MMG-IT-SAV-2026-v4",
+    "localizations": {
+      "en": {
+        "title": "Savings Plan (IT): pre-contractual information document"
+      },
+      "it": {
+        "title": "Piano Risparmio (IT): Documento informativo precontrattuale"
+      }
+    }
+  }
+]

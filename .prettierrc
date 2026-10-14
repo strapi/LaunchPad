@@ -14,7 +14,6 @@
   "importOrderGroupNamespaceSpecifiers": true,
   "importOrderSideEffects": false,
   "plugins": [
-    "@trivago/prettier-plugin-sort-imports",
-    "prettier-plugin-astro"
+    "@trivago/prettier-plugin-sort-imports"
   ]
 }

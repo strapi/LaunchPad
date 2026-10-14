@@ -1,139 +1,76 @@
-# LaunchPad - Official Strapi Demo
+# LaunchPad: Enterprise demo (Meridian Mutual Group)
 
-![LaunchPad](./LaunchPad.jpg)
+A Strapi 5 sales demo built around one fictional customer: **Meridian Mutual Group**, an insurance group with a headquarters team, three country teams (France, Germany, Italy), a compliance team and a platform team, publishing a corporate website in four languages.
 
-Welcome aboard **LaunchPad**, the official Strapi demo application, where we launch your content into the stratosphere at the speed of _"we-can't-even-measure-it!"_.
-This repository contains the following:
+Everything is seeded by one command. Nothing is added by hand in the admin.
 
-- A Strapi project with content-types and data already onboard
-- A Next.js client that's primed and ready to fetch the content from Strapi faster than you can say "blast off!"
+- `strapi/`: Strapi 5 backend (TypeScript, SQLite), content model, seed script and demo dataset.
+- `next/`: Next.js 16 corporate website with Live Preview, four locales and the scheduled promo banner.
+- `DEMO.md`: the demo script, scene by scene, with what to click and what to say.
 
-## 🌌 Get started
+## Setup (once)
 
-Strap yourself in! You can get started with this project on your local machine by following the instructions below, or you can [request a private instance on our website](https://strapi.io/demo)
-
-### Prerequisites
-
-- **Node.js** v18 or higher
-- **Yarn** as your package manager (this project uses Yarn internally for its scripts)
-
-> **Don't have Yarn installed?** You can enable it via Node.js Corepack:
->
-> ```sh
-> corepack enable
-> ```
->
-> Or install it globally via npm:
->
-> ```sh
-> npm install -g yarn
-> ```
-
-## 1. Clone and Install
-
-To infinity and beyond! Clone the repo and install root dependencies:
+Prerequisites: Node 20 or 22, Yarn 4 (`corepack enable`), an Enterprise or trial licence key.
 
 ```sh
-git clone https://github.com/strapi/launchpad.git
-cd launchpad
 yarn install
+yarn setup            # installs strapi/ and next/, creates the .env files, shares PREVIEW_SECRET
 ```
 
-## 2. Setup
+Put your licence in `strapi/.env`:
 
-Run the setup script to install dependencies in both projects (Strapi and Next.js) and copy the environment files:
-
-```sh
-yarn setup
+```
+STRAPI_LICENSE=your-licence-key
 ```
 
-## 3. Seed the Data
+Without a licence the demo still runs, but the seed skips Review workflows, Releases, Audit logs and Content history and tells you so. Scenes 1, 3 and 5 then need the recordings.
 
-Populate your Strapi instance with demo content:
+## Seed the demo (and reset it any time)
 
 ```sh
 yarn seed
 ```
 
-## 4. Start the Development Servers
+Stop the dev server first (`yarn seed` boots its own Strapi on port 1340). The seed wipes the database and the uploads folder, then creates, in order: four locales, 44 media files, all content in four languages, public API permissions, five admin roles and six users, the "Regulated content" review workflow, the three releases, and the attributed activity that the scenes rely on (the Italian rate change with its history, the compliance rejection, logins for every user). About 40 seconds.
 
-LaunchPad ships four frontends against one Strapi backend. Each command
-starts Strapi first, waits for it to be ready, then starts that frontend:
+Run it again whenever a demo left the data in a mess. It is the reset button.
 
-```sh
-yarn dev             # Strapi + Next.js   (default)
-yarn dev:astro       # Strapi + Astro
-yarn dev:nuxt        # Strapi + Nuxt
-yarn dev:tanstack    # Strapi + TanStack Start
-```
-
-| Frontend       | URL                         |
-| -------------- | --------------------------- |
-| Next.js        | http://localhost:3000       |
-| Nuxt           | http://localhost:3001       |
-| TanStack Start | http://localhost:3002       |
-| Astro          | http://localhost:4321       |
-| Strapi admin   | http://localhost:1337/admin |
-
-Visit http://localhost:1337/admin to create your first Strapi user, then
-open whichever frontend you started. You're now a spacefaring content master!
-
-### Preview mode
-
-The Strapi admin's Preview button opens one frontend at a time, because
-Strapi's preview handler returns a single URL. Choose which:
+## Run
 
 ```sh
-yarn use nuxt        # Preview button now opens Nuxt
-yarn use             # show the current target
+yarn dev              # Strapi on :1337, Next.js on :3000
 ```
 
-`yarn dev:<framework>` sets this for you. Strapi reads the value at
-startup, so switching while it is running requires a restart — `yarn use`
-warns you when that is the case.
+- Admin: http://localhost:1337/admin
+- Website: http://localhost:3000 (redirects to your browser language; `/it`, `/fr`, `/de`, `/en` work directly)
 
-### Checking your environment
+## Demo users
 
-```sh
-yarn check:env
-```
+All with the password `Meridian2026!` (set `DEMO_PASSWORD` in `strapi/.env` before seeding to change it; change it anyway before showing this outside Strapi).
 
-Verifies that `PREVIEW_SECRET` matches between `strapi/.env` and every
-frontend. A mismatch is the usual cause of preview coming back 401.
+| Email | Role | Use in the demo |
+|---|---|---|
+| admin@meridian-demo.test | Super Admin | Platform team, scene 6 |
+| hq.editor@meridian-demo.test | HQ editor | Headquarters team, scenes 0 and 1 |
+| it.editor@meridian-demo.test | Country editor IT | Italian country team, scenes 2, 3, 4 |
+| fr.editor@meridian-demo.test | Country editor FR | |
+| de.editor@meridian-demo.test | Country editor DE | |
+| compliance@meridian-demo.test | Compliance reviewer | Compliance team, scenes 3, 4, 5 |
 
-## Features Overview ✨
+## What the seed leaves ready for the scenes
 
-### User
+- `Motor Flex 2027`: English only, draft, stage Draft, outside any release. Scene 1 adds it to the "Motor Flex launch" release; scene 2 creates the Italian version.
+- `Motor Essential` (Italian): live rate 6.9%, with a previous version at 4.9% in Content history and the change in the Audit log, both authored by the Italy editor. Scene 5 restores 4.9.
+- `Home Secure` (Italian): a newer draft sitting in "Changes requested" with a review note from compliance. Shortcut for scene 3.
+- Releases: "Motor Flex launch" (contains the press release, product added live), "Winter promo start" and "Winter promo end" (publish and unpublish the "Winter cover check" banner). Dates are relative to the seed date so they are always in the future.
+- Two news items and one press release left in draft on purpose.
 
-<br />
+## Changing the content
 
-- **An intuitive, minimal editor** The editor allows you to pull in dynamic blocks of content. It’s 100% open-source, and it’s fully extensible.<br />
-- **Media Library** Upload images, video or any files and crop and optimize their sizes, without quality loss.<br />
-- **Flexible content management** Build any type of category, section, format or flow to adapt to your needs. <br />
-- **Sort and Filter** Built-in sorting and filtering: you can manage thousands of entries without effort.<br />
-- **User-friendly interface** The most user-friendly open-source interface on the market.<br />
-- **SEO optimized** Easily manage your SEO metadata with a repeatable field and use our Media Library to add captions, notes, and custom filenames to optimize the SEO of media assets.<br /><br />
+The dataset lives in `strapi/data/demo/*.json` (one file per content type, all four languages) and `strapi/data/demo/media/`. Edit, then `yarn seed`. The content model lives in `strapi/src/api/*` and `strapi/src/components/*`; after a schema change, run `cd strapi && yarn strapi ts:generate-types` and reseed.
 
-### Global
+## Honesty notes
 
-<br />
-
-- [Customizable API](https://strapi.io/features/customizable-api): Automatically build out the schema, models, controllers for your API from the editor. Get REST or GraphQL API out of the box without writing a single line of code.<br />
-- [Media Library](https://strapi.io/features/media-library): The media library allows you to store your images, videos and files in your Strapi admin panel with many ways to visualize and manage them.<br />
-- [Role-Based Access Control (RBAC)](https://strapi.io/features/custom-roles-and-permissions): Role-Based Access Control is a feature available in the Administration Panel settings that let your team members have access rights only to the information they need.<br />
-- [Internationalization (i18n)](https://strapi.io/features/internationalization): Internationalization (i18n) lets you create many content versions, also called locales, in different languages and for different countries.<br />
-- [Audit Logs](https://strapi.io/blog/reasons-and-best-practices-for-using-audit-logs-in-your-application): The Audit Logs section provides a searchable and filterable display of all activities performed by users of the Strapi application<br />
-- [Data transfer](https://strapi.io/blog/importing-exporting-and-transferring-data-with-the-strapi-cli): Streams your data from one Strapi instance to another Strapi instance.<br />
-- [Review Worfklows](https://docs.strapi.io/user-docs/settings/review-workflows): Create and manage any desired review stages for your content, enabling your team to collaborate in the content creation flow from draft to publication. <br />
-
-## Resources
-
-[Docs](https://docs.strapi.io) • [Discord](https://discord.strapi.io) • [YouTube](https://www.youtube.com/c/Strapi/featured) • [Strapi Design System](https://design-system.strapi.io/) • [Marketplace](https://market.strapi.io/) • [Cloud Free Trial](https://cloud.strapi.io)
-
-## Customization
-
-- The Strapi application contains a custom population middlewares in every api route.
-
-- The Strapi application contains a postinstall script that will regenerate an uuid for the project in order to get some anonymous usage information concerning this demo. You can disable it by removing the uuid inside the `./strapi/packages.json` file.
-
-- The Strapi application contains a patch for the @strapi/admin package. It is only necessary for the hosted demos since we automatically create the Super Admin users for them when they request this demo on our website.
+- Everything is fictional and placeholder. The regulatory wording and the PDFs are invented and say so. Never present them as real IVASS, ACPR or BaFin text.
+- French, German and Italian copy has not had a native review yet.
+- Routes linked from the navigation but outside the demo's scope (`/quote`, `/account`, `/careers`, `/documents`) show a placeholder page rather than a 404.

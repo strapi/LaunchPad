@@ -16,37 +16,26 @@
     }
   },
   "attributes": {
-    "seo": {
-      "type": "component",
+    "siteName": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "legalFooter": {
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "component": "shared.seo",
-      "repeatable": false
+      }
     },
-    "navbar": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "global.navbar",
-      "repeatable": false
-    },
-    "footer": {
-      "type": "component",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "global.footer",
-      "repeatable": false
-    },
-    "admin_title": {
+    "contactPhone": {
       "type": "string",
       "pluginOptions": {
         "i18n": {
@@ -54,29 +43,10 @@
         }
       }
     },
-    "add_to_cart": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "your_cart": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
-    "buy_now": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+    "defaultPromoBanner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::promo-banner.promo-banner"
     }
   }
 }

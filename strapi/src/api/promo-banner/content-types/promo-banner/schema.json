@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "promo_banners",
+  "info": {
+    "singularName": "promo-banner",
+    "pluralName": "promo-banners",
+    "displayName": "Promo banner",
+    "description": "Own collection type so Releases can publish and unpublish banners on a schedule."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "ctaLabel": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "ctaUrl": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "isDefault": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

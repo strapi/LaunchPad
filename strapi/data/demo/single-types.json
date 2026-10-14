@@ -1,0 +1,414 @@
+{
+  "global": {
+    "siteName": "Meridian Mutual Group",
+    "defaultPromoBanner": "Default: find an agent",
+    "logo": "logo-meridian.png",
+    "localizations": {
+      "en": {
+        "legalFooter": "Meridian Mutual Group, mutual insurance company, 14 rue des Tisserands, 69002 Lyon, France. Supervised by the competent authority in each market. This website is a demonstration.",
+        "contactPhone": "0800 100 1931"
+      },
+      "fr": {
+        "legalFooter": "Meridian Mutual Group, société d'assurance mutuelle, 14 rue des Tisserands, 69002 Lyon, France. Contrôlée par l'autorité compétente de chaque marché. Ce site est une démonstration.",
+        "contactPhone": "0800 100 1931"
+      },
+      "de": {
+        "legalFooter": "Meridian Mutual Group, Versicherungsverein auf Gegenseitigkeit, 14 rue des Tisserands, 69002 Lyon, Frankreich. Beaufsichtigt von der zuständigen Behörde in jedem Markt. Diese Website ist eine Demonstration.",
+        "contactPhone": "0800 200 1931"
+      },
+      "it": {
+        "legalFooter": "Meridian Mutual Group, società di mutua assicurazione, 14 rue des Tisserands, 69002 Lione, Francia. Vigilata dall'autorità competente in ciascun mercato. Questo sito è una dimostrazione.",
+        "contactPhone": "800 300 1931"
+      }
+    }
+  },
+  "header": {
+    "logo": "logo-meridian.png",
+    "localizations": {
+      "en": {
+        "links": [
+          {
+            "label": "Products",
+            "url": "/products"
+          },
+          {
+            "label": "Claims",
+            "url": "/claims"
+          },
+          {
+            "label": "News",
+            "url": "/news"
+          },
+          {
+            "label": "About",
+            "url": "/about"
+          },
+          {
+            "label": "Contact",
+            "url": "/contact"
+          }
+        ],
+        "ctaLabel": "Get a quote",
+        "ctaUrl": "/quote"
+      },
+      "fr": {
+        "links": [
+          {
+            "label": "Produits",
+            "url": "/products"
+          },
+          {
+            "label": "Sinistres",
+            "url": "/claims"
+          },
+          {
+            "label": "Actualités",
+            "url": "/news"
+          },
+          {
+            "label": "À propos",
+            "url": "/about"
+          },
+          {
+            "label": "Contact",
+            "url": "/contact"
+          }
+        ],
+        "ctaLabel": "Obtenir un devis",
+        "ctaUrl": "/quote"
+      },
+      "de": {
+        "links": [
+          {
+            "label": "Produkte",
+            "url": "/products"
+          },
+          {
+            "label": "Schaden",
+            "url": "/claims"
+          },
+          {
+            "label": "Aktuelles",
+            "url": "/news"
+          },
+          {
+            "label": "Über uns",
+            "url": "/about"
+          },
+          {
+            "label": "Kontakt",
+            "url": "/contact"
+          }
+        ],
+        "ctaLabel": "Angebot anfordern",
+        "ctaUrl": "/quote"
+      },
+      "it": {
+        "links": [
+          {
+            "label": "Prodotti",
+            "url": "/products"
+          },
+          {
+            "label": "Sinistri",
+            "url": "/claims"
+          },
+          {
+            "label": "Notizie",
+            "url": "/news"
+          },
+          {
+            "label": "Chi siamo",
+            "url": "/about"
+          },
+          {
+            "label": "Contatti",
+            "url": "/contact"
+          }
+        ],
+        "ctaLabel": "Richiedi un preventivo",
+        "ctaUrl": "/quote"
+      }
+    }
+  },
+  "footer": {
+    "localizations": {
+      "en": {
+        "groups": [
+          {
+            "title": "Products",
+            "links": [
+              {
+                "label": "Motor",
+                "url": "/products/motor-essential"
+              },
+              {
+                "label": "Home",
+                "url": "/products/home-secure"
+              },
+              {
+                "label": "Health",
+                "url": "/products/health-plus"
+              },
+              {
+                "label": "Life",
+                "url": "/products/life-horizon"
+              },
+              {
+                "label": "Savings",
+                "url": "/products/savings-plan"
+              }
+            ]
+          },
+          {
+            "title": "Help",
+            "links": [
+              {
+                "label": "Make a claim",
+                "url": "/claims"
+              },
+              {
+                "label": "Documents",
+                "url": "/documents"
+              },
+              {
+                "label": "Contact",
+                "url": "/contact"
+              }
+            ]
+          },
+          {
+            "title": "Group",
+            "links": [
+              {
+                "label": "About",
+                "url": "/about"
+              },
+              {
+                "label": "Press",
+                "url": "/press"
+              },
+              {
+                "label": "Careers",
+                "url": "/careers"
+              }
+            ]
+          }
+        ],
+        "legalLines": [
+          "Privacy notice",
+          "Cookies",
+          "Terms of use",
+          "Complaints"
+        ]
+      },
+      "fr": {
+        "groups": [
+          {
+            "title": "Produits",
+            "links": [
+              {
+                "label": "Auto",
+                "url": "/products/motor-essential"
+              },
+              {
+                "label": "Habitation",
+                "url": "/products/home-secure"
+              },
+              {
+                "label": "Santé",
+                "url": "/products/health-plus"
+              },
+              {
+                "label": "Vie",
+                "url": "/products/life-horizon"
+              },
+              {
+                "label": "Épargne",
+                "url": "/products/savings-plan"
+              }
+            ]
+          },
+          {
+            "title": "Aide",
+            "links": [
+              {
+                "label": "Déclarer un sinistre",
+                "url": "/claims"
+              },
+              {
+                "label": "Documents",
+                "url": "/documents"
+              },
+              {
+                "label": "Contact",
+                "url": "/contact"
+              }
+            ]
+          },
+          {
+            "title": "Groupe",
+            "links": [
+              {
+                "label": "À propos",
+                "url": "/about"
+              },
+              {
+                "label": "Presse",
+                "url": "/press"
+              },
+              {
+                "label": "Carrières",
+                "url": "/careers"
+              }
+            ]
+          }
+        ],
+        "legalLines": [
+          "Confidentialité",
+          "Cookies",
+          "Conditions d'utilisation",
+          "Réclamations"
+        ]
+      },
+      "de": {
+        "groups": [
+          {
+            "title": "Produkte",
+            "links": [
+              {
+                "label": "Kfz",
+                "url": "/products/motor-essential"
+              },
+              {
+                "label": "Wohnen",
+                "url": "/products/home-secure"
+              },
+              {
+                "label": "Gesundheit",
+                "url": "/products/health-plus"
+              },
+              {
+                "label": "Leben",
+                "url": "/products/life-horizon"
+              },
+              {
+                "label": "Sparen",
+                "url": "/products/savings-plan"
+              }
+            ]
+          },
+          {
+            "title": "Hilfe",
+            "links": [
+              {
+                "label": "Schaden melden",
+                "url": "/claims"
+              },
+              {
+                "label": "Dokumente",
+                "url": "/documents"
+              },
+              {
+                "label": "Kontakt",
+                "url": "/contact"
+              }
+            ]
+          },
+          {
+            "title": "Gruppe",
+            "links": [
+              {
+                "label": "Über uns",
+                "url": "/about"
+              },
+              {
+                "label": "Presse",
+                "url": "/press"
+              },
+              {
+                "label": "Karriere",
+                "url": "/careers"
+              }
+            ]
+          }
+        ],
+        "legalLines": [
+          "Datenschutz",
+          "Cookies",
+          "Nutzungsbedingungen",
+          "Beschwerden"
+        ]
+      },
+      "it": {
+        "groups": [
+          {
+            "title": "Prodotti",
+            "links": [
+              {
+                "label": "Auto",
+                "url": "/products/motor-essential"
+              },
+              {
+                "label": "Casa",
+                "url": "/products/home-secure"
+              },
+              {
+                "label": "Salute",
+                "url": "/products/health-plus"
+              },
+              {
+                "label": "Vita",
+                "url": "/products/life-horizon"
+              },
+              {
+                "label": "Risparmio",
+                "url": "/products/savings-plan"
+              }
+            ]
+          },
+          {
+            "title": "Aiuto",
+            "links": [
+              {
+                "label": "Denuncia un sinistro",
+                "url": "/claims"
+              },
+              {
+                "label": "Documenti",
+                "url": "/documents"
+              },
+              {
+                "label": "Contatti",
+                "url": "/contact"
+              }
+            ]
+          },
+          {
+            "title": "Gruppo",
+            "links": [
+              {
+                "label": "Chi siamo",
+                "url": "/about"
+              },
+              {
+                "label": "Stampa",
+                "url": "/press"
+              },
+              {
+                "label": "Carriere",
+                "url": "/careers"
+              }
+            ]
+          }
+        ],
+        "legalLines": [
+          "Privacy",
+          "Cookie",
+          "Condizioni d'uso",
+          "Reclami"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "regulated_documents",
+  "info": {
+    "singularName": "regulated-document",
+    "pluralName": "regulated-documents",
+    "displayName": "Regulated document",
+    "description": "Pre-contractual documents per market, one entry per market in the market language. Review workflow applies here."
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "market": {
+      "type": "enumeration",
+      "enum": [
+        "group",
+        "FR",
+        "DE",
+        "IT"
+      ],
+      "required": true
+    },
+    "file": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "validFrom": {
+      "type": "date"
+    },
+    "validTo": {
+      "type": "date"
+    },
+    "regulatoryReference": {
+      "type": "string"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "documents"
+    }
+  }
+}

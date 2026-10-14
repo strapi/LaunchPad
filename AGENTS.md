@@ -4,13 +4,11 @@ Guidance for LLM agents working in this repository.
 
 ## Repo Overview
 
-LaunchPad is the official Strapi demo app.
+This branch (`enterprise-demo`) is the Strapi Enterprise sales demo: one fictional insurance group, Meridian Mutual Group, a corporate website in four languages, and a seed that builds the whole demo state with no manual step.
 
-- `strapi/`: Strapi 5 backend, content types, components, seeded demo data, SQLite default database. Shared by every frontend.
-- `next/`: Next.js App Router frontend, React 19, Tailwind, localized `en` and `fr` routes. The default frontend.
-- `astro/`: Astro frontend, same content and routes.
-- `nuxt/`: Nuxt 4 frontend, same content and routes.
-- `tanstack/`: TanStack Start frontend, same content and routes.
+- `strapi/`: Strapi 5 backend, content types in `src/api`, components in `src/components`, the dataset in `data/demo`, the seed in `scripts/seed.js`. SQLite.
+- `next/`: Next.js 16 App Router frontend, React 19, Tailwind 3, locales `en`, `fr`, `de`, `it`, Live Preview wired.
+- `DEMO.md`: the demo script. `README.md`: setup and users.
 - Root: setup/dev/format scripts using Yarn 4.5.0. Each directory keeps its own lockfile; this is not a Yarn workspace.
 
 ## First Read
@@ -29,10 +27,9 @@ Run commands from the correct directory.
 
 - Root setup: `yarn setup` (installs Strapi and every checked-out frontend)
 - Root dev: `yarn dev` (Strapi + Next)
-- Other frontends: `yarn dev:astro`, `yarn dev:nuxt`, `yarn dev:tanstack`
 - Switch the admin Preview target: `yarn use <framework>`
 - Check environment consistency: `yarn check:env`
-- Seed Strapi: `yarn seed`
+- Seed Strapi: `yarn seed` (wipes and rebuilds everything, stop the dev server first)
 - Format check: `yarn check:format`
 - Format fix: `yarn fix:format`
 - Strapi dev: `cd strapi && yarn develop`
@@ -46,23 +43,21 @@ Run once after cloning, from the repo root:
 ```sh
 yarn install          # install root deps first
 yarn setup            # installs strapi/ and every frontend, creates .env files
-yarn seed             # imports demo data into SQLite (191 entities, 115 assets)
+yarn seed             # builds the whole demo state from strapi/data/demo (content, media, roles, users, workflow, releases, history)
 ```
 
 `yarn setup` installs each directory in turn, creates any missing `.env` from its `.env.example`, and propagates `PREVIEW_SECRET` from `strapi/.env` to every frontend. It is safe to re-run: existing `.env` files are left alone and an already-configured preview secret is preserved.
 
-Only frontends actually checked out are set up. The registry in `scripts/frontends.mts` declares all four; `presentFrontends()` filters to what is on disk.
-
-`yarn seed` is destructive — it wipes existing data before importing. Re-run it to reset to the demo baseline.
+`yarn seed` is destructive: it wipes the database and uploads before rebuilding. Re-run it to reset to the demo baseline. Keep `strapi/scripts/seed.js` in sync with any schema change.
 
 After setup, verify both apps are healthy:
 
 ```sh
 cd strapi && yarn build
-cd next && yarn build      # and astro/, nuxt/, tanstack/ as needed
+cd next && yarn build
 ```
 
-First `yarn develop` in `strapi/` will prompt to create a Super Admin at `http://localhost:1337/admin`; the seed does not include admin credentials.
+The seed creates the admin users (see README.md); no first-admin prompt.
 
 ## Environment
 

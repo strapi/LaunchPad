@@ -1,24 +1,10 @@
-@import './prism.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+body { @apply bg-white text-ink antialiased; }
+.prose-demo p { @apply leading-relaxed; }
+.prose-demo h2 { @apply mt-6 text-2xl font-bold text-navy; }
+.prose-demo h3 { @apply mt-4 text-xl font-semibold text-navy; }
+.prose-demo ul { @apply list-disc pl-6; }
+.prose-demo a { @apply text-teal underline; }

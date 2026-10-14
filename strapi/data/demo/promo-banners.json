@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Default: find an agent",
+    "isDefault": true,
+    "demoState": "published, linked from Global",
+    "localizations": {
+      "en": {
+        "message": "Talk to a person. 420 agents across three countries.",
+        "ctaLabel": "Find an agent",
+        "ctaUrl": "/contact"
+      },
+      "fr": {
+        "message": "Parlez à une vraie personne. 420 agents dans trois pays.",
+        "ctaLabel": "Trouver un agent",
+        "ctaUrl": "/contact"
+      },
+      "de": {
+        "message": "Sprechen Sie mit einem Menschen. 420 Berater in drei Ländern.",
+        "ctaLabel": "Berater finden",
+        "ctaUrl": "/contact"
+      },
+      "it": {
+        "message": "Parla con una persona. 420 agenti in tre paesi.",
+        "ctaLabel": "Trova un agente",
+        "ctaUrl": "/contact"
+      }
+    }
+  },
+  {
+    "name": "Winter cover check",
+    "isDefault": false,
+    "demoState": "draft; Publish in release 'Winter promo start, 1 December', Unpublish in release 'Winter promo end, 15 January'",
+    "localizations": {
+      "en": {
+        "message": "Winter is coming. Free cover check for home and motor until 15 January.",
+        "ctaLabel": "Book a check",
+        "ctaUrl": "/contact?topic=winter"
+      },
+      "fr": {
+        "message": "L'hiver arrive. Bilan de garanties gratuit auto et habitation jusqu'au 15 janvier.",
+        "ctaLabel": "Prendre rendez-vous",
+        "ctaUrl": "/contact?topic=winter"
+      },
+      "de": {
+        "message": "Der Winter kommt. Kostenloser Versicherungscheck für Haus und Auto bis 15. Januar.",
+        "ctaLabel": "Termin buchen",
+        "ctaUrl": "/contact?topic=winter"
+      },
+      "it": {
+        "message": "Arriva l'inverno. Check gratuito delle coperture casa e auto fino al 15 gennaio.",
+        "ctaLabel": "Prenota il check",
+        "ctaUrl": "/contact?topic=winter"
+      }
+    }
+  }
+]

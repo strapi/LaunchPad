@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_blocks_faq_lists",
+  "info": {
+    "displayName": "FAQ list",
+    "icon": "question"
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "options": {}
+}

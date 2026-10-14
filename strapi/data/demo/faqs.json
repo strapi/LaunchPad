@@ -1,0 +1,622 @@
+[
+  {
+    "key": "claim-how",
+    "category": "claims",
+    "localizations": {
+      "en": {
+        "question": "How do I make a claim?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Call the claims line on your policy document or start the claim online from your account. You will get a reference number immediately and a named handler within one working day."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Comment déclarer un sinistre ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Appelez la ligne sinistres indiquée sur votre contrat ou déclarez en ligne depuis votre espace. Vous recevez un numéro de dossier immédiatement et un gestionnaire dédié sous un jour ouvré."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Wie melde ich einen Schaden?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Rufen Sie die Schadenhotline aus Ihrer Police an oder melden Sie den Schaden online in Ihrem Konto. Sie erhalten sofort eine Vorgangsnummer und innerhalb eines Werktags einen festen Ansprechpartner."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Come denuncio un sinistro?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Chiama la linea sinistri indicata in polizza o avvia la denuncia online dalla tua area personale. Ricevi subito un numero di pratica e un gestore dedicato entro un giorno lavorativo."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "cancel",
+    "category": "policy",
+    "localizations": {
+      "en": {
+        "question": "Can I cancel my policy?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Yes. You have 14 days to cancel for a full refund after you buy. After that, you can cancel at renewal, or earlier in the cases set out in your market's terms."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Puis-je résilier mon contrat ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Oui. Vous disposez de 14 jours après la souscription pour renoncer avec remboursement intégral. Ensuite, vous pouvez résilier à l'échéance, ou plus tôt dans les cas prévus par les conditions de votre marché."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Kann ich meine Police kündigen?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Ja. Nach dem Abschluss haben Sie 14 Tage Widerrufsrecht mit voller Erstattung. Danach können Sie zur Verlängerung kündigen, oder früher in den Fällen, die die Bedingungen Ihres Marktes vorsehen."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Posso disdire la polizza?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Sì. Hai 14 giorni dall'acquisto per il recesso con rimborso integrale. Dopo, puoi disdire alla scadenza, o prima nei casi previsti dalle condizioni del tuo mercato."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "documents-where",
+    "category": "policy",
+    "localizations": {
+      "en": {
+        "question": "Where do I find my policy documents?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "In your online account under Documents. We also email them when you buy and at each renewal."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Où trouver mes documents contractuels ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Dans votre espace en ligne, rubrique Documents. Nous les envoyons aussi par e-mail à la souscription et à chaque échéance."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Wo finde ich meine Vertragsunterlagen?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "In Ihrem Online-Konto unter Dokumente. Wir senden sie außerdem per E-Mail beim Abschluss und bei jeder Verlängerung."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Dove trovo i documenti di polizza?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Nella tua area personale, sezione Documenti. Li inviamo anche via e-mail all'acquisto e a ogni rinnovo."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "home-contents",
+    "category": "home",
+    "localizations": {
+      "en": {
+        "question": "What counts as contents?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Anything you would take with you if you moved: furniture, electronics, clothes, bikes. Fixed items like kitchens and bathrooms are part of the building."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Qu'est-ce que le contenu ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Tout ce que vous emporteriez en déménageant : meubles, électronique, vêtements, vélos. Les éléments fixes comme la cuisine ou la salle de bain font partie du bâtiment."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Was zählt als Hausrat?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Alles, was Sie bei einem Umzug mitnehmen würden: Möbel, Elektronik, Kleidung, Fahrräder. Fest eingebaute Dinge wie Küche und Bad gehören zum Gebäude."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Cosa rientra nel contenuto?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Tutto ciò che porteresti con te in un trasloco: mobili, elettronica, vestiti, biciclette. Gli elementi fissi come cucina e bagno fanno parte del fabbricato."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "health-waiting",
+    "category": "health",
+    "localizations": {
+      "en": {
+        "question": "Is there a waiting period?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Yes, 3 months for most treatments and 10 months for maternity. Accidents are covered from day one."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Y a-t-il un délai de carence ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Oui, 3 mois pour la plupart des soins et 10 mois pour la maternité. Les accidents sont couverts dès le premier jour."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Gibt es eine Wartezeit?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Ja, 3 Monate für die meisten Behandlungen und 10 Monate für Mutterschaft. Unfälle sind ab dem ersten Tag versichert."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "C'è un periodo di carenza?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Sì, 3 mesi per la maggior parte delle prestazioni e 10 mesi per la maternità. Gli infortuni sono coperti dal primo giorno."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "life-beneficiary",
+    "category": "life",
+    "localizations": {
+      "en": {
+        "question": "Who receives the money?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "The beneficiaries you name on the policy. You can change them at any time from your account."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Qui reçoit le capital ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Les bénéficiaires que vous désignez au contrat. Vous pouvez les modifier à tout moment depuis votre espace."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Wer erhält das Geld?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Die Begünstigten, die Sie in der Police benennen. Sie können sie jederzeit in Ihrem Konto ändern."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Chi riceve il capitale?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "I beneficiari che indichi in polizza. Puoi modificarli in qualsiasi momento dalla tua area personale."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "savings-access",
+    "category": "savings",
+    "localizations": {
+      "en": {
+        "question": "Can I withdraw my money?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Yes. Withdrawals are free after year three. Before that, a fee of 1% applies in most markets."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Puis-je retirer mon argent ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Oui. Les retraits sont gratuits après trois ans. Avant, des frais de 1 % s'appliquent dans la plupart des marchés."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Kann ich mein Geld abheben?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Ja. Abhebungen sind ab dem dritten Jahr kostenlos. Davor fällt in den meisten Märkten eine Gebühr von 1 % an."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Posso prelevare i miei soldi?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Sì. I prelievi sono gratuiti dopo il terzo anno. Prima, nella maggior parte dei mercati si applica una commissione dell'1%."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "agent-find",
+    "category": "general",
+    "localizations": {
+      "en": {
+        "question": "How do I find an agent near me?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Use the agent finder on the Contact page. Every agent can quote, sell and handle claims for all our products."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Comment trouver un agent près de chez moi ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Utilisez la recherche d'agent sur la page Contact. Chaque agent peut établir un devis, vendre et gérer les sinistres pour tous nos produits."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Wie finde ich einen Berater in meiner Nähe?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Nutzen Sie die Beratersuche auf der Kontaktseite. Jeder Berater kann für alle unsere Produkte Angebote erstellen, verkaufen und Schäden bearbeiten."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Come trovo un agente vicino a me?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Usa il cerca agente nella pagina Contatti. Ogni agente può fare preventivi, vendere e gestire sinistri per tutti i nostri prodotti."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "pay-monthly",
+    "category": "general",
+    "localizations": {
+      "en": {
+        "question": "Can I pay monthly?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Yes, for every product. Motor and home policies paid monthly carry the APR shown on the product page."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Puis-je payer mensuellement ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Oui, pour tous les produits. Les contrats auto et habitation payés mensuellement comportent le TAEG indiqué sur la page produit."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Kann ich monatlich zahlen?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Ja, bei jedem Produkt. Kfz- und Wohnpolicen mit monatlicher Zahlung tragen den auf der Produktseite angegebenen effektiven Jahreszins."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Posso pagare mensilmente?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Sì, per tutti i prodotti. Le polizze auto e casa pagate mensilmente hanno il TAEG indicato nella pagina prodotto."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "key": "data-privacy",
+    "category": "general",
+    "localizations": {
+      "en": {
+        "question": "What do you do with my data?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "We use it to quote, insure and handle claims, and nothing else without asking. Full details in the privacy notice for your market."
+              }
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "question": "Que faites-vous de mes données ?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Nous les utilisons pour le devis, l'assurance et la gestion des sinistres, et rien d'autre sans votre accord. Détails dans la notice de confidentialité de votre marché."
+              }
+            ]
+          }
+        ]
+      },
+      "de": {
+        "question": "Was passiert mit meinen Daten?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Wir nutzen sie für Angebot, Versicherung und Schadenbearbeitung, und ohne Ihre Zustimmung für nichts anderes. Details in der Datenschutzerklärung Ihres Marktes."
+              }
+            ]
+          }
+        ]
+      },
+      "it": {
+        "question": "Cosa fate con i miei dati?",
+        "answer": [
+          {
+            "type": "paragraph",
+            "children": [
+              {
+                "type": "text",
+                "text": "Li usiamo per preventivo, assicurazione e gestione sinistri, e per nient'altro senza chiedertelo. Dettagli nell'informativa privacy del tuo mercato."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+]

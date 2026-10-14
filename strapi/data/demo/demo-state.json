@@ -1,0 +1,108 @@
+{
+  "snapshotDate": "2026-10-14",
+  "reviewWorkflow": {
+    "name": "Regulated content",
+    "contentTypes": [
+      "api::product.product",
+      "api::regulated-document.regulated-document"
+    ],
+    "stages": [
+      "Draft",
+      "Compliance review",
+      "Changes requested",
+      "Approved"
+    ],
+    "requiredStageForPublishing": "Approved"
+  },
+  "releases": [
+    {
+      "name": "Motor Flex launch, 3 November",
+      "scheduledAt": "2026-11-03T09:00:00+01:00",
+      "timezone": "Europe/Paris",
+      "actions": [],
+      "note": "Scene 1 adds motor-flex-2027 (en) with action Publish during the demo. Optionally pre-add press release motor-flex-2027-announcement."
+    },
+    {
+      "name": "Winter promo start, 1 December",
+      "scheduledAt": "2026-12-01T07:00:00+01:00",
+      "timezone": "Europe/Paris",
+      "actions": [
+        {
+          "entry": "promo-banner: Winter cover check",
+          "type": "publish"
+        }
+      ]
+    },
+    {
+      "name": "Winter promo end, 15 January",
+      "scheduledAt": "2027-01-15T07:00:00+01:00",
+      "timezone": "Europe/Paris",
+      "actions": [
+        {
+          "entry": "promo-banner: Winter cover check",
+          "type": "unpublish"
+        }
+      ]
+    }
+  ],
+  "entryStates": {
+    "motor-essential": {
+      "allLocales": "published, stage Approved",
+      "contentHistoryIt": "version N-1 localRate 4.9 (saved 2026-09-28 by it.editor), version N localRate 6.9 (saved 2026-10-02 by it.editor). Live page shows 6.9. Scene 5 restores N-1."
+    },
+    "home-secure": {
+      "allLocales": "published",
+      "itDraft": "a newer it draft sits in stage Changes requested with compliance comment 'Premium wording must state the annual amount before the monthly one'. Optional shortcut for scene 3."
+    },
+    "health-plus": "published, stage Approved, all locales",
+    "life-horizon": "published, stage Approved, all locales",
+    "savings-plan": "published, stage Approved, all locales",
+    "motor-flex-2027": "draft, en only, stage Draft, not in any release"
+  },
+  "users": [
+    {
+      "email": "hq.editor@meridian-demo.test",
+      "firstname": "HQ",
+      "lastname": "Editor",
+      "role": "HQ editor"
+    },
+    {
+      "email": "it.editor@meridian-demo.test",
+      "firstname": "Italy",
+      "lastname": "Editor",
+      "role": "Country editor IT"
+    },
+    {
+      "email": "fr.editor@meridian-demo.test",
+      "firstname": "France",
+      "lastname": "Editor",
+      "role": "Country editor FR"
+    },
+    {
+      "email": "de.editor@meridian-demo.test",
+      "firstname": "Germany",
+      "lastname": "Editor",
+      "role": "Country editor DE"
+    },
+    {
+      "email": "compliance@meridian-demo.test",
+      "firstname": "Compliance",
+      "lastname": "Reviewer",
+      "role": "Compliance reviewer"
+    },
+    {
+      "email": "admin@meridian-demo.test",
+      "firstname": "Platform",
+      "lastname": "Admin",
+      "role": "Super Admin"
+    }
+  ],
+  "auditLogMinimum": [
+    "login for each of the six users",
+    "it.editor updates motor-essential it localRate 4.9 to 6.9",
+    "it.editor moves home-secure it to Compliance review",
+    "compliance moves home-secure it to Changes requested with comment",
+    "hq.editor creates the three releases",
+    "admin creates the four roles and six users"
+  ]
+}

@@ -2,20 +2,19 @@ const getPreviewPathname = (uid, { locale, document }): string | null => {
   const { slug } = document;
 
   switch (uid) {
-    case 'api::page.page': {
-      if (slug === 'homepage') {
-        return '/';
-      }
-      return `/${slug}`;
-    }
+    case 'api::page.page':
+      return slug === 'home' ? '/' : `/${slug}`;
     case 'api::product.product':
       return `/products/${slug}`;
-    case 'api::product-page.product-page':
-      return '/products';
-    case 'api::article.article':
-      return `/blog/${slug}`;
-    case 'api::blog-page.blog-page':
-      return '/blog';
+    case 'api::news-item.news-item':
+      return `/news/${slug}`;
+    case 'api::press-release.press-release':
+      return `/press/${slug}`;
+    case 'api::global.global':
+    case 'api::header.header':
+    case 'api::footer.footer':
+    case 'api::promo-banner.promo-banner':
+      return '/';
     default:
       return null;
   }
@@ -27,15 +26,7 @@ export default ({ env }) => {
   // Every LaunchPad frontend on its dev port, so preview works whichever one
   // is running. CLIENT_URL still selects which one the admin's Preview button
   // opens, because Strapi's preview handler must return a single URL.
-  const allowedOrigins = Array.from(
-    new Set([
-      clientUrl,
-      'http://localhost:3000', // next
-      'http://localhost:3001', // nuxt
-      'http://localhost:3002', // tanstack
-      'http://localhost:4321', // astro
-    ]),
-  );
+  const allowedOrigins = Array.from(new Set([clientUrl, 'http://localhost:3000']));
   const previewSecret = env('PREVIEW_SECRET');
 
   return {
