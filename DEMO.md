@@ -4,20 +4,9 @@ The demo script. Status of every scene after `yarn seed` with a licence applied:
 
 Users and passwords are in `README.md`. Reset between demos with `yarn seed`.
 
-## Before the demo: ten-minute check
+## Before the call
 
-Do this once after every `yarn seed`, in this order. If any line fails, stop and fix before the call.
-
-1. `yarn dev` is running. http://localhost:3000 redirects to your language and shows the home page with the quick-quote card, the numbers strip, six product cards, the "How a claim works" steps and three news items. The top banner reads "Talk to a person. 420 agents in three countries" (that is the default banner from Global; the winter one is scheduled, not live).
-2. http://localhost:3000/it/products/motor-essential shows "Auto Essenziale" with **6.9%** in the price card, one Italian document (MMG-IT-MOT-2026-V4) and three FAQs. Switch to /fr: the document changes to the French one. That is the market filter working. http://localhost:3000/it/products/home-secure shows the amber "Nuovi clienti: due mesi gratis il primo anno" line in the price card: that is the conditional field.
-3. Admin as `compliance@meridian-demo.test`: Content Manager > Products, locale Italian, "Casa Sicura" shows status Modified, stage **Changes requested**, assignee Italy Editor, and a Review note. If the stage column is missing, the licence did not enable Review workflows: check `[seed] WARNING` lines in the seed output.
-4. Same user: Settings > Audit logs shows logins and product updates by France, Germany, Italy Editor and Compliance Reviewer in the last few minutes (the seed replays two weeks of activity at seed time, so the timestamps are "now").
-5. As `hq.editor@meridian-demo.test`: Releases shows "Motor Flex launch" (2 entries, scheduled in 19 days), "Winter promo start" (4 entries) and "Winter promo end" (4 entries).
-6. As `it.editor@meridian-demo.test`: open any product. Name, tagline, local rate, rate wording and image are editable; "Legal disclaimer", the page blocks and "Review note" are greyed out; the locale switcher offers only Italiano and there is no Publish button.
-7. As `hq.editor`: open "Motor Flex 2027" in English. Status Draft, stage Draft, no release indicator, no Italian version. The product is absent from http://localhost:3000/en/products.
-8. On any product, the Preview button opens the website inside the admin with the draft content. If it says "Invalid token", `PREVIEW_SECRET` differs between `strapi/.env` and `next/.env`.
-9. As `compliance`: Products > "Auto Essenziale" (Italian) > clock icon: at least six versions, with 4.9 in an older one and 6.9 in the latest.
-10. Two browsers, or one normal window and one private window: one logged in as `it.editor`, one as `compliance`. Scenes 3 and 4 are a hand-off between teams; switching windows is the demo, logging out and in is dead air.
+`yarn dev` is running and http://localhost:3000 loads. Two browser windows (one normal, one private): one logged in as `it.editor@meridian-demo.test`, one as `compliance@meridian-demo.test`; scenes 3 and 4 are a hand-off between them. The Products list shows the "Review stage" column: if it does not, the licence features are off, check the `[seed] WARNING` lines. If a previous demo left the data in a mess, `yarn seed`.
 
 ## Where things are
 
