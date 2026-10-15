@@ -4,12 +4,36 @@ The demo script. Status of every scene after `yarn seed` with a licence applied:
 
 Users and passwords are in `README.md`. Reset between demos with `yarn seed`.
 
-Where things are in the admin:
+## Before the demo: ten-minute check
+
+Do this once after every `yarn seed`, in this order. If any line fails, stop and fix before the call.
+
+1. `yarn dev` is running. http://localhost:3000 redirects to your language and shows the home page with the quick-quote card, the numbers strip, six product cards, the "How a claim works" steps and three news items. The top banner reads "Talk to a person. 420 agents in three countries" (that is the default banner from Global; the winter one is scheduled, not live).
+2. http://localhost:3000/it/products/motor-essential shows "Auto Essenziale" with **6.9%** in the price card, one Italian document (MMG-IT-MOT-2026-V4) and three FAQs. Switch to /fr: the document changes to the French one. That is the market filter working.
+3. Admin as `compliance@meridian-demo.test`: Content Manager > Products, locale Italian, "Casa Sicura" shows status Modified, stage **Changes requested**, assignee Italy Editor, and a Review note. If the stage column is missing, the licence did not enable Review workflows: check `[seed] WARNING` lines in the seed output.
+4. Same user: Settings > Audit logs shows logins and product updates by France, Germany, Italy Editor and Compliance Reviewer in the last few minutes (the seed replays two weeks of activity at seed time, so the timestamps are "now").
+5. As `hq.editor@meridian-demo.test`: Releases shows "Motor Flex launch" (2 entries, scheduled in 19 days), "Winter promo start" (4 entries) and "Winter promo end" (4 entries).
+6. As `it.editor@meridian-demo.test`: open any product. Name, tagline, local rate, rate wording and image are editable; "Legal disclaimer", the page blocks and "Review note" are greyed out; the locale switcher offers only Italiano and there is no Publish button.
+7. As `hq.editor`: open "Motor Flex 2027" in English. Status Draft, stage Draft, no release indicator, no Italian version. The product is absent from http://localhost:3000/en/products.
+8. On any product, the Preview button opens the website inside the admin with the draft content. If it says "Invalid token", `PREVIEW_SECRET` differs between `strapi/.env` and `next/.env`.
+9. As `compliance`: Products > "Auto Essenziale" (Italian) > clock icon: at least six versions, with 4.9 in an older one and 6.9 in the latest.
+10. Two browsers, or one normal window and one private window: one logged in as `it.editor`, one as `compliance`. Scenes 3 and 4 are a hand-off between teams; switching windows is the demo, logging out and in is dead air.
+
+## Where things are
+
+In the admin:
 - Review workflow: Settings > Review workflows > "Regulated content" (Product and Regulated document, required stage Approved). The stage and assignee are in the right-hand panel of an entry. The reason for a rejection goes in the **Review note** field of the product (only compliance can edit it).
 - Releases: left menu > Releases. Three are waiting: "Motor Flex launch", "Winter promo start", "Winter promo end".
 - Audit logs: Settings > Audit logs (compliance reviewer and super admin can read them).
 - Content history: on an entry, the clock icon in the right-hand panel.
-- Live Preview: on an entry, the Preview button opens the website in draft mode inside the admin. Desktop and mobile toggle at the top.
+- Live Preview: on an entry, the Preview button opens the website in draft mode inside the admin. Desktop and mobile toggle at the top, and a draft/published switch.
+- Locked fields for country teams: Legal disclaimer, the page blocks and Review note on Product; Regulatory reference on Regulated document. Everything else on the product is theirs.
+
+On the website (what the prospect sees on the right):
+- Home: hero and quick-quote card (categories come from the products in Strapi), numbers strip (Stats block on the Home page), product grid, "we are a mutual" section (Rich text block with image), "How a claim works" (Steps block), FAQ (relations on the Home page), latest news, closing CTA band.
+- Product page: the price card on the right is the regulated part. Rate and rate wording are the country team's fields; the legal disclaimer underneath is the locked one. Documents are filtered by market: the Italian site shows the Italian PDF only.
+- Top banner: comes from Promo banners. The one you see is the default linked from Global; "Winter cover check" is a draft scheduled by two releases.
+- Nav links to /quote, /account and /careers land on a placeholder card that says the funnel is a separate application. Say so before a prospect clicks it.
 
 ## 3a. The pitch: outcomes first, then what makes them possible
 
@@ -72,10 +96,10 @@ Every scene uses the same layout: **Start**, **Actions** (numbered), **The momen
 **Start:** Products list, filtered on locale English.
 
 **Actions**
-1. Open "Motor Flex 2027", already in draft. Scroll it: hero, coverage table, documents, FAQ. Each is a component in a dynamic zone. Drag one block above another to show the page-builder feel. Say the components were built once by developers and are reused across pages.
+1. Open "Motor Flex 2027", already in draft. Scroll it: hero, coverage table, documents, FAQ, CTA band. Each is a component in the "Blocks" dynamic zone. Drag the coverage table above the hero and back, to show the page-builder feel. Say the components were built once by developers and are reused across pages. Open "Auto Essenziale" on the site in a tab beforehand so you can point at the same blocks rendered.
 2. Show the locale switcher top right: English in draft, FR, DE, IT empty.
-3. Open Releases. Open "Motor Flex launch". Add the product page with action Publish. Show the scheduled date and the timezone picker.
-4. Back on the entry, show the "to be released in" indicator. Open the public site in another tab: the product is not there yet.
+3. On the entry, in the right-hand panel, "Add to release": pick "Motor Flex launch", action Publish, locale English. Then open Releases > "Motor Flex launch": the press release, the teaser banner and now the product page, with the scheduled date and the timezone (Europe/Paris).
+4. Back on the entry, show the release indicator in the panel. Open http://localhost:3000/en/products in another tab: nine products, no Motor Flex.
 
 **The moment:** one release, every locale and market inside it, one date, invisible until then.
 
@@ -104,10 +128,10 @@ Every scene uses the same layout: **Start**, **Actions** (numbered), **The momen
 **Start:** Content Manager, same structure as before.
 
 **Actions**
-1. Show that the locale selector offers only Italian, and pages for other markets are not editable.
-2. Open "Motor Flex 2027", create the Italian locale from the English one, translate the title and change the local rate field.
-3. Try to edit the shared template block (for example the hero layout): read-only for this role.
-4. Save as draft.
+1. Content Manager > Products: the locale selector offers only Italiano and the list is the Italian versions. "Motor Flex 2027" appears with no Italian content yet.
+2. Open it, switch the locale to Italiano and choose "Fill in from another locale" > English: structure and blocks come across. Translate the name to "Auto Flex 2027", the tagline, and set the local rate to 6.4.
+3. Scroll to "Legal disclaimer" and to the blocks: greyed out, read-only for this role. Name, tagline, rate and rate wording are open.
+4. Save. Point at the missing Publish button: this role prepares, it does not release.
 
 **The moment:** the same page, but this user can only touch Italy, and only the fields Italy is allowed to touch.
 
@@ -135,10 +159,11 @@ Every scene uses the same layout: **Start**, **Actions** (numbered), **The momen
 **Start:** the Italian draft from scene 2.
 
 **Actions**
-1. In the review workflow panel, move the entry from "Draft" to "Compliance review" and assign it to the compliance team.
-2. Log in as compliance reviewer. Open "Assigned to me" on the dashboard. Open the entry.
-3. Point at the rate wording. Move the stage back to "Changes requested" and write the reason in the "Review note" field: "Rate must show the APR wording per IVASS rules".
-4. Back as country editor, try to publish: blocked, because the required stage for publishing is "Approved".
+1. Still as the Italian editor, in the right-hand panel: Review stage from "Draft" to "Compliance review", assignee Compliance Reviewer. Save.
+2. Switch to the compliance window. Home: the "Assigned to me" widget lists the entry. Open it.
+3. Point at the rate wording ("TAEG" missing). Write the reason in "Review note": "Il tasso deve riportare la dicitura TAEG secondo le regole IVASS", move the stage to "Changes requested", assignee Italy Editor. Save.
+4. Before leaving the compliance window, click Publish on this entry anyway: Strapi refuses, because the workflow requires the "Approved" stage before publishing. (Compliance is the only role with publish rights on products, so the refusal is shown from this window; the country editor has no Publish button at all.)
+5. Shortcut if time is short: skip 1 to 3 and open "Casa Sicura" in Italian instead; the seed left it in "Changes requested", assigned to Italy Editor, with a review note already written. Do step 4 on it.
 
 **The moment:** the publish button is blocked by the workflow, not by a person remembering to check email.
 
@@ -166,10 +191,10 @@ Every scene uses the same layout: **Start**, **Actions** (numbered), **The momen
 **Start:** the rejected draft.
 
 **Actions**
-1. Fix the rate wording. Move the stage to "Compliance review" again.
-2. As compliance, move it to "Approved".
-3. Open Preview: the exact page as it will render, with a desktop and mobile toggle, showing the draft content. Edit the title from the side panel and watch the preview update.
-4. Switch the preview between draft and published to show the difference.
+1. Italian window: fix the rate wording ("TAEG 6,4% ..."), stage back to "Compliance review", assignee Compliance Reviewer. Save.
+2. Compliance window: stage "Approved". Save. Now Publish is allowed; do not click it yet.
+3. Click Preview: the real product page, draft content, inside the admin, with the price card on the right showing the new rate. Desktop and mobile toggle at the top. Change the tagline in the form, save, and the preview refreshes.
+4. Switch the preview between draft and published: for Motor Flex the published side is empty (never published), for Casa Sicura it shows the live page against the draft. Then publish.
 
 **The moment:** the "is this what will actually be published?" check takes seconds and needs no developer or staging deploy.
 
@@ -197,10 +222,10 @@ Every scene uses the same layout: **Start**, **Actions** (numbered), **The momen
 **Start:** story: a wrong rate has been noticed on the live Italian page.
 
 **Actions**
-1. Open Audit logs. Filter by content type Product and by the last 7 days. Show who changed the rate, when, from which role.
-2. Open the entry. Open Content history. Show the list of versions with author and date. Open the version from before the change and compare.
-3. Restore that version with one click.
-4. Show the restored entry back in draft, ready for the workflow again.
+1. Settings > Audit logs. Filter user "Italy Editor", action "Update entry": the edits on "Auto Essenziale" with date and time, and the "Publish entry" lines by Compliance Reviewer right after. Open one line: the payload shows the field that changed.
+2. Content Manager > Products (Italian) > "Auto Essenziale" > clock icon: six versions. The latest says 6.9, two versions earlier says 4.9, each with author and date.
+3. Open the 4.9 version and click Restore.
+4. The entry is back as a draft with 4.9, status Modified, ready for the workflow again. The live site still shows 6.9 until it is approved and published.
 
 **The moment:** an audit question answered in one screen, and a rollback with no developer.
 
@@ -228,9 +253,9 @@ Every scene uses the same layout: **Start**, **Actions** (numbered), **The momen
 **Start:** Settings.
 
 **Actions**
-1. Roles: show the four demo roles. Open Country editor: create, read, update, delete and publish per content type, and the field-level checkboxes.
-2. SSO settings: the provider configured, the default role for auto-registered users, and the local login kept for super admins only (if the identity provider is down, you are not locked out).
-3. API tokens: a read-only token scoped to Products and News, for the mobile app.
+1. Settings > Roles: Super Admin, HQ editor, Country editor FR, DE, IT, Compliance reviewer. Open "Country editor IT": create, read, update per content type, no publish, and inside Product the unchecked boxes on Legal disclaimer, Blocks and Review note.
+2. Settings > Single Sign-On: the default role for auto-registered users and the "local authentication for super admins only" switch. No provider is configured in the demo; say which ones are supported rather than clicking through. (SSO is a talking point unless the licence includes it; the seed prints a WARNING if not.)
+3. Settings > API Tokens: create one live, read-only, custom scope Product find and findOne, name it "Mobile app". Thirty seconds, and it shows the point better than a pre-made one.
 4. Content-type builder: open the Product schema. It is a JSON file in the repo, reviewed in pull requests like any code, and read-only in production.
 5. One sentence on hosting: self-hosted on their cloud with as many lower environments as they want, or Strapi Cloud.
 
@@ -257,6 +282,8 @@ Every scene uses the same layout: **Start**, **Actions** (numbered), **The momen
 
 ### Closing
 *2 minutes.*
+
+Reset after the call: `yarn seed` puts everything back, including Motor Flex out of the release and Casa Sicura back in "Changes requested".
 
 1. Recap the six handoffs, one sentence each.
 2. Say: "The demo project is public on GitHub. Your engineers can clone it, add the trial licence we will send, and run every scene themselves in an afternoon."
