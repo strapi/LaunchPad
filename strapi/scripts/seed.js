@@ -436,7 +436,7 @@ async function seedActivity(strapi, refs, features, stages, users) {
   }
   log('two weeks of ordinary editing recorded: 9 product edits by country teams, 1 page and 1 news edit by HQ, all published by compliance or HQ');
 
-  // Scene 5 setup: Italy editor changes the Motor Essential rate step by step, ending at 6.9, compliance publishes each time.
+  // Rate history: Italy editor changes the Motor Essential rate step by step, ending at 6.9, compliance publishes each time.
   const motor = refs.products['motor-essential'].documentId;
   await it.call('PUT', cm(product, motor, 'it'), { tagline: 'La copertura RC che ti tiene in regola e in strada, con assistenza entro 50 km.' });
   await compliance.call('POST', publish(product, motor, 'it'), {});
@@ -444,10 +444,10 @@ async function seedActivity(strapi, refs, features, stages, users) {
   await compliance.call('POST', publish(product, motor, 'it'), {});
   await it.call('PUT', cm(product, motor, 'it'), { localRate: 6.9, rateWording: 'TAEG 6,9% per pagamento mensile. Premio annuo da 325 EUR.' });
   await compliance.call('POST', publish(product, motor, 'it'), {});
-  log('scene 5 history created: motor-essential (it) rate 4.9 -> 6.9, six versions in history, published');
+  log('rate history created: motor-essential (it) rate 4.9 -> 6.9, six versions in history, published');
 
   const failures = [];
-  // Scene 3 shortcut: Home Secure (it) sent to review by Italy, sent back by compliance with a note
+  // Review state: Home Secure (it) sent to review by Italy, sent back by compliance with a note
   if (features.workflows && stages) try {
     const home = refs.products['home-secure'].documentId;
     const stagePath = (documentId, locale) => `/review-workflows/content-manager/collection-types/${product}/${documentId}/stage?locale=${locale}`;
@@ -458,8 +458,8 @@ async function seedActivity(strapi, refs, features, stages, users) {
     await compliance.call('PUT', cm(product, home, 'it'), { reviewNote: 'Premium wording must state the annual amount before the monthly one. Garden cover is an optional add-on, not included: fix the tagline.' });
     await compliance.call('PUT', stagePath(home, 'it'), { data: { id: stages['Changes requested'].id } });
     await compliance.call('PUT', assigneePath(home, 'it'), { data: { id: users['it.editor@meridian-demo.test'].id } });
-    log('scene 3 shortcut created: home-secure (it) in Changes requested with a review note');
-  } catch (e) { failures.push(`scene 3 shortcut: ${e.message}`); }
+    log('review state created: home-secure (it) in Changes requested with a review note');
+  } catch (e) { failures.push(`review state: ${e.message}`); }
 
   // Releases, created by the HQ editor so they carry an author
   if (features.releases) try {
@@ -480,7 +480,7 @@ async function seedActivity(strapi, refs, features, stages, users) {
     await addAction(launch.id, refs.press['motor-flex-2027-announcement'].documentId, 'api::press-release.press-release', null, 'publish');
     const teaser = refs.banners['Motor Flex 2027 teaser'];
     if (teaser) for (const l of LOCALES) await addAction(launch.id, teaser.documentId, 'api::promo-banner.promo-banner', l, 'publish');
-    log('releases created: Motor Flex launch (press release and teaser banner inside, product added live in scene 1), Winter promo start and end');
+    log('releases created: Motor Flex launch (press release and teaser banner inside), Winter promo start and end');
   } catch (e) { failures.push(`releases: ${e.message}`); }
   return failures;
 }

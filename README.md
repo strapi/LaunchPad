@@ -6,7 +6,6 @@ Everything is seeded by one command. Nothing is added by hand in the admin.
 
 - `strapi/`: Strapi 5.58 backend (TypeScript, SQLite), content model with content-type folders, seed script and demo dataset.
 - `next/`: Next.js 16 corporate website (quick-quote hero, product pages with price card and documents per market, claims steps, newsroom) with Live Preview, four locales and the scheduled promo banner. Fonts are bundled (Inter, open licence), so it runs offline.
-- `DEMO.md`: the demo script, scene by scene, with what to click and what to say.
 
 ## Setup (once)
 
@@ -23,7 +22,7 @@ Put your licence in `strapi/.env`:
 STRAPI_LICENSE=your-licence-key
 ```
 
-Without a licence the demo still runs, but the seed skips Review workflows, Releases, Audit logs and Content history and tells you so. Scenes 1, 3 and 5 then need the recordings.
+Without a licence the demo still runs, but the seed skips Review workflows, Releases, Audit logs and Content history and tells you so.
 
 ## Seed the demo (and reset it any time)
 
@@ -48,14 +47,14 @@ yarn dev              # Strapi on :1337, Next.js on :3000
 
 All with the password `Meridian2026!` (set `DEMO_PASSWORD` in `strapi/.env` before seeding to change it; change it anyway before showing this outside Strapi).
 
-| Email | Role | Use in the demo |
+| Email | Role | Team |
 |---|---|---|
-| admin@meridian-demo.test | Super Admin | Platform team, scene 6 |
-| hq.editor@meridian-demo.test | HQ editor | Headquarters team, scenes 0 and 1 |
-| it.editor@meridian-demo.test | Country editor IT | Italian country team, scenes 2, 3, 4 |
-| fr.editor@meridian-demo.test | Country editor FR | |
-| de.editor@meridian-demo.test | Country editor DE | |
-| compliance@meridian-demo.test | Compliance reviewer | Compliance team, scenes 3, 4, 5 |
+| admin@meridian-demo.test | Super Admin | IT & platform |
+| hq.editor@meridian-demo.test | HQ editor | Headquarters content team |
+| it.editor@meridian-demo.test | Country editor IT | Italy country team |
+| fr.editor@meridian-demo.test | Country editor FR | France country team |
+| de.editor@meridian-demo.test | Country editor DE | Germany country team |
+| compliance@meridian-demo.test | Compliance reviewer | Compliance & legal |
 
 ## What is new in Strapi 5.58 that the demo uses
 
@@ -63,12 +62,12 @@ All with the password `Meridian2026!` (set `DEMO_PASSWORD` in `strapi/.env` befo
 - The new Media Library: folder tree always visible, drag and drop, bulk move, infinite scroll. The seed fills 11 folders.
 - Audit logs now also record review workflow actions, release actions, locale changes and token management.
 
-## What the seed leaves ready for the scenes
+## State the seed leaves behind
 
-- `Motor Flex 2027`: English only, draft, stage Draft, outside any release. Scene 1 adds it to the "Motor Flex launch" release; scene 2 creates the Italian version.
-- `Motor Essential` (Italian): live rate 6.9%, six versions in Content history (tagline edit, 4.9%, then 6.9%, each published by compliance) and the changes in the Audit log, authored by the Italy editor. Scene 5 restores 4.9.
-- `Home Secure` (Italian): a newer draft sitting in "Changes requested" with a review note from compliance. Shortcut for scene 3. Has the intro offer switched on in all four languages (conditional field, scene 2).
-- Releases: "Motor Flex launch" (contains the press release and the teaser banner, product added live), "Winter promo start" and "Winter promo end" (publish and unpublish the "Winter cover check" banner). Dates are relative to the seed date so they are always in the future.
+- `Motor Flex 2027`: English only, draft, stage Draft, outside any release, no other locale.
+- `Motor Essential` (Italian): live rate 6.9%, six versions in Content history (tagline edit, 4.9%, then 6.9%, each published by compliance) and the changes in the Audit log, authored by the Italy editor.
+- `Home Secure` (Italian): a newer draft sitting in "Changes requested" with a review note from compliance. Has the intro offer switched on in all four languages (conditional field).
+- Releases: "Motor Flex launch" (contains the press release and the teaser banner), "Winter promo start" and "Winter promo end" (publish and unpublish the "Winter cover check" banner). Dates are relative to the seed date so they are always in the future.
 - Two news items and one press release left in draft on purpose.
 
 ## Changing the content
