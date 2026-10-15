@@ -392,6 +392,19 @@ async function seedActivity(strapi, refs, features, stages, users) {
   // Logins for every user: audit log gets admin.auth.success for each
   const sessions = {};
   for (const email of Object.keys(users)) sessions[email] = await api.login(email);
+  const failures = [];
+
+  // SSO options (gated): auto-register with the lowest useful role, local login for super admins only.
+  if (features.sso) {
+    try {
+      const admin = sessions['admin@meridian-demo.test'];
+      const roles = await strapi.service('admin::role').find();
+      const byName = Object.fromEntries(roles.map((r) => [r.name, r]));
+      const locked = roles.filter((r) => r.code !== 'strapi-super-admin').map((r) => r.id);
+      await admin.call('PUT', '/admin/providers/options', { autoRegister: true, defaultRole: byName['HQ editor'].id, ssoLockedRoles: locked });
+      log(`SSO options set: auto-register as HQ editor, local login locked for ${locked.length} roles (super admins keep it)${process.env.GOOGLE_CLIENT_ID ? ', Google provider active' : ', no provider configured (set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in .env)'}`);
+    } catch (e) { failures.push(`SSO options: ${e.message}`); }
+  }
 
   const it = sessions['it.editor@meridian-demo.test'];
   const fr = sessions['fr.editor@meridian-demo.test'];
@@ -446,7 +459,6 @@ async function seedActivity(strapi, refs, features, stages, users) {
   await compliance.call('POST', publish(product, motor, 'it'), {});
   log('rate history created: motor-essential (it) rate 4.9 -> 6.9, six versions in history, published');
 
-  const failures = [];
   // Review state: Home Secure (it) sent to review by Italy, sent back by compliance with a note
   if (features.workflows && stages) try {
     const home = refs.products['home-secure'].documentId;

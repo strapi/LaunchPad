@@ -20,6 +20,40 @@ const getPreviewPathname = (uid, { locale, document }): string | null => {
   }
 };
 
+// SSO (Enterprise). Google is wired in only when the OAuth client credentials
+// are in .env, so the demo runs without them. Redirect URI to register in the
+// Google Cloud console: http://localhost:1337/admin/connect/google
+const ssoProviders = (env) => {
+  const clientID = env('GOOGLE_CLIENT_ID');
+  const clientSecret = env('GOOGLE_CLIENT_SECRET');
+  if (!clientID || !clientSecret) return [];
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { Strategy: GoogleStrategy } = require('passport-google-oauth2');
+  return [
+    {
+      uid: 'google',
+      displayName: 'Google',
+      icon: 'https://cdn2.iconfinder.com/data/icons/social-icons-33/128/Google-128.png',
+      createStrategy: (strapi) =>
+        new GoogleStrategy(
+          {
+            clientID,
+            clientSecret,
+            scope: ['email', 'profile'],
+            callbackURL: strapi.admin.services.passport.getStrategyCallbackURL('google'),
+          },
+          (request, accessToken, refreshToken, profile, done) => {
+            done(null, {
+              email: profile.email,
+              firstname: profile.given_name,
+              lastname: profile.family_name,
+            });
+          },
+        ),
+    },
+  ];
+};
+
 export default ({ env }) => {
   const clientUrl = env('CLIENT_URL', 'http://localhost:3000');
 
@@ -32,6 +66,7 @@ export default ({ env }) => {
   return {
     auth: {
       secret: env('ADMIN_JWT_SECRET'),
+      providers: ssoProviders(env),
     },
     apiToken: {
       salt: env('API_TOKEN_SALT'),

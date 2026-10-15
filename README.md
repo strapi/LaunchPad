@@ -24,6 +24,17 @@ STRAPI_LICENSE=your-licence-key
 
 Without a licence the demo still runs, but the seed skips Review workflows, Releases, Audit logs and Content history and tells you so.
 
+### SSO with Google (optional, Enterprise)
+
+In the Google Cloud console of the account you want to use, create an OAuth client (Web application) with the authorised redirect URI `http://localhost:1337/admin/connect/google`, then put the credentials in `strapi/.env`:
+
+```
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
+```
+
+Restart Strapi: the admin login page shows "Sign in with Google". The seed sets the SSO options when the licence allows it: auto-registration on, default role HQ editor, local login locked for every role except Super Admin. A Google user who signs in for the first time lands as HQ editor; change the role afterwards in Settings > Users if you want them elsewhere. Without the credentials the demo runs with local login only.
+
 ## Seed the demo (and reset it any time)
 
 ```sh
