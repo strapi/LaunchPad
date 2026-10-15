@@ -330,16 +330,22 @@ async function seedWorkflow(strapi, roles) {
   const compliance = roles['Compliance reviewer'].id;
   const hq = roles['HQ editor'].id;
   const perm = (ids) => ids.map((role) => ({ role, action: transition }));
+  const everyone = [...countryRoles, hq, compliance];
   const workflow = await strapi.plugin('review-workflows').service('workflows').create({
     data: {
       name: 'Regulated content',
       contentTypes: ['api::product.product', 'api::regulated-document.regulated-document'],
       stageRequiredToPublishName: 'Approved',
+      // fromPermissions = roles allowed to move an entry OUT of a stage; toPermissions = roles allowed
+      // to move an entry INTO it. Strapi checks both. The controls that matter for the demo:
+      // only compliance can move an entry out of "Compliance review", and only compliance can put
+      // an entry into "Changes requested" or "Approved". Editors send drafts, rejected and already
+      // approved entries back into review.
       stages: [
-        { name: 'Draft', color: '#4945FF', fromPermissions: perm([...countryRoles, hq, compliance]) },
-        { name: 'Compliance review', color: '#D9822F', fromPermissions: perm([compliance]) },
-        { name: 'Changes requested', color: '#D02B20', fromPermissions: perm([...countryRoles, hq]) },
-        { name: 'Approved', color: '#328048', fromPermissions: perm([compliance]) },
+        { name: 'Draft', color: '#4945FF', fromPermissions: perm(everyone), toPermissions: perm(everyone) },
+        { name: 'Compliance review', color: '#D9822F', fromPermissions: perm([compliance]), toPermissions: perm(everyone) },
+        { name: 'Changes requested', color: '#D02B20', fromPermissions: perm(everyone), toPermissions: perm([compliance]) },
+        { name: 'Approved', color: '#328048', fromPermissions: perm(everyone), toPermissions: perm([compliance]) },
       ],
     },
   });
@@ -440,8 +446,9 @@ async function seedActivity(strapi, refs, features, stages, users) {
   await compliance.call('POST', publish(product, motor, 'it'), {});
   log('scene 5 history created: motor-essential (it) rate 4.9 -> 6.9, six versions in history, published');
 
+  const failures = [];
   // Scene 3 shortcut: Home Secure (it) sent to review by Italy, sent back by compliance with a note
-  if (features.workflows && stages) {
+  if (features.workflows && stages) try {
     const home = refs.products['home-secure'].documentId;
     const stagePath = (documentId, locale) => `/review-workflows/content-manager/collection-types/${product}/${documentId}/stage?locale=${locale}`;
     const assigneePath = (documentId, locale) => `/review-workflows/content-manager/collection-types/${product}/${documentId}/assignee?locale=${locale}`;
@@ -452,10 +459,10 @@ async function seedActivity(strapi, refs, features, stages, users) {
     await compliance.call('PUT', stagePath(home, 'it'), { data: { id: stages['Changes requested'].id } });
     await compliance.call('PUT', assigneePath(home, 'it'), { data: { id: users['it.editor@meridian-demo.test'].id } });
     log('scene 3 shortcut created: home-secure (it) in Changes requested with a review note');
-  }
+  } catch (e) { failures.push(`scene 3 shortcut: ${e.message}`); }
 
   // Releases, created by the HQ editor so they carry an author
-  if (features.releases) {
+  if (features.releases) try {
     const hq = sessions['hq.editor@meridian-demo.test'];
     const inDays = (n, hour) => { const d = new Date(); d.setUTCDate(d.getUTCDate() + n); d.setUTCHours(hour, 0, 0, 0); return d.toISOString(); };
     const release = async (name, scheduledAt) => (await hq.call('POST', '/content-releases', { name, scheduledAt, timezone: 'Europe/Paris' })).data;
@@ -473,8 +480,9 @@ async function seedActivity(strapi, refs, features, stages, users) {
     await addAction(launch.id, refs.press['motor-flex-2027-announcement'].documentId, 'api::press-release.press-release', null, 'publish');
     const teaser = refs.banners['Motor Flex 2027 teaser'];
     if (teaser) for (const l of LOCALES) await addAction(launch.id, teaser.documentId, 'api::promo-banner.promo-banner', l, 'publish');
-    log('releases created: Motor Flex launch (press release inside, product added live in scene 1), Winter promo start and end');
-  }
+    log('releases created: Motor Flex launch (press release and teaser banner inside, product added live in scene 1), Winter promo start and end');
+  } catch (e) { failures.push(`releases: ${e.message}`); }
+  return failures;
 }
 
 // ---------------------------------------------------------------------------- main
@@ -504,9 +512,10 @@ async function main() {
     await seedPublicPermissions(strapi);
     const { roles, users } = await seedAdmin(strapi, features);
     const stages = features.workflows ? await seedWorkflow(strapi, roles) : null;
-    await seedActivity(strapi, refs, features, stages, users);
+    const failures = await seedActivity(strapi, refs, features, stages, users);
+    for (const f of failures) warn(`${f}. The rest of the demo state is in place; send this message to whoever maintains the seed.`);
 
-    log('done. Admin: http://localhost:1337/admin');
+    log(failures.length ? `done with ${failures.length} warning(s). Admin: http://localhost:1337/admin` : 'done. Admin: http://localhost:1337/admin');
     log(`log in as admin@meridian-demo.test / ${PASSWORD} (or any demo user, same password)`);
   } finally {
     await app.destroy();
