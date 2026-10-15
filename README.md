@@ -67,7 +67,7 @@ All with the password `Meridian2026!` (set `DEMO_PASSWORD` in `strapi/.env` befo
 
 - `Motor Flex 2027`: English only, draft, stage Draft, outside any release. Scene 1 adds it to the "Motor Flex launch" release; scene 2 creates the Italian version.
 - `Motor Essential` (Italian): live rate 6.9%, six versions in Content history (tagline edit, 4.9%, then 6.9%, each published by compliance) and the changes in the Audit log, authored by the Italy editor. Scene 5 restores 4.9.
-- `Home Secure` (Italian): a newer draft sitting in "Changes requested" with a review note from compliance. Shortcut for scene 3.
+- `Home Secure` (Italian): a newer draft sitting in "Changes requested" with a review note from compliance. Shortcut for scene 3. Has the intro offer switched on in all four languages (conditional field, scene 2).
 - Releases: "Motor Flex launch" (contains the press release and the teaser banner, product added live), "Winter promo start" and "Winter promo end" (publish and unpublish the "Winter cover check" banner). Dates are relative to the seed date so they are always in the future.
 - Two news items and one press release left in draft on purpose.
 

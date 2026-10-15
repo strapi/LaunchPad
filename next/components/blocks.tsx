@@ -65,7 +65,7 @@ function PageHero({ block, ctx }: { block: any; ctx: Ctx }) {
         <div className="max-w-2xl">
           <h1 className="font-display text-4xl font-bold leading-[1.08] tracking-[-0.02em] md:text-5xl">{block.title}</h1>
           {block.subtitle && <p className="mt-5 text-lg leading-relaxed text-white/80">{block.subtitle}</p>}
-          {block.cta?.label && <div className="mt-8"><Cta cta={block.cta} locale={ctx.locale} /></div>}
+          {block.cta?.label && <div className="mt-8"><Cta cta={block.cta} locale={ctx.locale} onDark /></div>}
         </div>
       </div>
     </section>
@@ -265,7 +265,7 @@ function CtaBand({ block, ctx }: { block: any; ctx: Ctx }) {
             <h2 className="font-display text-3xl font-bold tracking-tight md:text-4xl">{block.title}</h2>
             {block.text && <p className="mt-3 text-lg text-white/80">{block.text}</p>}
           </div>
-          <Cta cta={block.cta ? { ...block.cta, variant: 'light' } : null} locale={ctx.locale} />
+          <Cta cta={block.cta ? { ...block.cta, variant: block.cta.variant === 'outline' ? 'outline' : 'light' } : null} locale={ctx.locale} onDark />
         </div>
       </div>
     </section>
@@ -288,6 +288,7 @@ export function ProductCard({ p, locale, featured = false }: { p: any; locale: L
       </div>
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-display text-xl font-bold text-navy">{p.name}</h3>
+        {p.hasIntroOffer && p.introOfferText && <span className="mt-2 inline-flex w-fit rounded-full bg-amber/30 px-2.5 py-0.5 text-xs font-semibold text-navy">{p.introOfferText}</span>}
         <p className="mt-2 flex-1 text-[15px] leading-relaxed text-ink-600">{p.tagline}</p>
         <div className="mt-4 flex items-center justify-between">
           {hasRate ? <span className="text-sm text-ink-600">{t.rate} <span className="font-display text-lg font-bold text-navy">{p.localRate}%</span></span> : <span />}

@@ -832,7 +832,20 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'api::regulated-document.regulated-document'
     >;
     faqs: Schema.Attribute.Relation<'manyToMany', 'api::faq.faq'>;
+    hasIntroOffer: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
     heroImage: Schema.Attribute.Media<'images'>;
+    introOfferText: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     legalDisclaimer: Schema.Attribute.Blocks &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

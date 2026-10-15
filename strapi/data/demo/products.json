@@ -93,7 +93,8 @@
         "seo": {
           "metaTitle": "Motor Essential | Meridian Mutual",
           "metaDescription": "Third-party motor insurance with roadside assistance and legal protection."
-        }
+        },
+        "hasIntroOffer": false
       },
       "fr": {
         "name": "Auto Essentiel",
@@ -176,7 +177,8 @@
         "seo": {
           "metaTitle": "Auto Essentiel | Meridian Mutual",
           "metaDescription": "Assurance auto au tiers avec assistance routière et protection juridique."
-        }
+        },
+        "hasIntroOffer": false
       },
       "de": {
         "name": "Kfz Basis",
@@ -259,7 +261,8 @@
         "seo": {
           "metaTitle": "Kfz Basis | Meridian Mutual",
           "metaDescription": "Kfz-Haftpflichtversicherung mit Pannenhilfe und Rechtsschutz."
-        }
+        },
+        "hasIntroOffer": false
       },
       "it": {
         "name": "Auto Essenziale",
@@ -342,7 +345,8 @@
         "seo": {
           "metaTitle": "Auto Essenziale | Meridian Mutual",
           "metaDescription": "Assicurazione auto RC con assistenza stradale e tutela legale."
-        }
+        },
+        "hasIntroOffer": false
       }
     }
   },
@@ -440,7 +444,9 @@
         "seo": {
           "metaTitle": "Home Secure | Meridian Mutual",
           "metaDescription": "Building and contents insurance with fire, water and theft cover."
-        }
+        },
+        "hasIntroOffer": true,
+        "introOfferText": "New customers: two months free in the first year."
       },
       "fr": {
         "name": "Habitation Sécurité",
@@ -523,7 +529,9 @@
         "seo": {
           "metaTitle": "Habitation Sécurité | Meridian Mutual",
           "metaDescription": "Assurance habitation bâtiment et contenu : incendie, dégâts des eaux, vol."
-        }
+        },
+        "hasIntroOffer": true,
+        "introOfferText": "Nouveaux clients : deux mois offerts la première année."
       },
       "de": {
         "name": "Wohnen Sicher",
@@ -606,7 +614,9 @@
         "seo": {
           "metaTitle": "Wohnen Sicher | Meridian Mutual",
           "metaDescription": "Wohngebäude- und Hausratversicherung mit Feuer-, Wasser- und Einbruchschutz."
-        }
+        },
+        "hasIntroOffer": true,
+        "introOfferText": "Neukunden: zwei Monate gratis im ersten Jahr."
       },
       "it": {
         "name": "Casa Sicura",
@@ -689,7 +699,9 @@
         "seo": {
           "metaTitle": "Casa Sicura | Meridian Mutual",
           "metaDescription": "Assicurazione casa fabbricato e contenuto: incendio, acqua, furto."
-        }
+        },
+        "hasIntroOffer": true,
+        "introOfferText": "Nuovi clienti: due mesi gratis il primo anno."
       }
     }
   },
@@ -787,7 +799,8 @@
         "seo": {
           "metaTitle": "Health Plus | Meridian Mutual",
           "metaDescription": "Private health insurance complementing your national health system."
-        }
+        },
+        "hasIntroOffer": false
       },
       "fr": {
         "name": "Santé Plus",
@@ -870,7 +883,8 @@
         "seo": {
           "metaTitle": "Santé Plus | Meridian Mutual",
           "metaDescription": "Complémentaire santé en complément du régime obligatoire."
-        }
+        },
+        "hasIntroOffer": false
       },
       "de": {
         "name": "Gesundheit Plus",
@@ -953,7 +967,8 @@
         "seo": {
           "metaTitle": "Gesundheit Plus | Meridian Mutual",
           "metaDescription": "Private Krankenzusatzversicherung als Ergänzung zum gesetzlichen System."
-        }
+        },
+        "hasIntroOffer": false
       },
       "it": {
         "name": "Salute Plus",
@@ -1036,7 +1051,8 @@
         "seo": {
           "metaTitle": "Salute Plus | Meridian Mutual",
           "metaDescription": "Assicurazione sanitaria integrativa a completamento del servizio nazionale."
-        }
+        },
+        "hasIntroOffer": false
       }
     }
   },
@@ -1134,7 +1150,8 @@
         "seo": {
           "metaTitle": "Life Horizon | Meridian Mutual",
           "metaDescription": "Term life insurance with a fixed lump sum for your family."
-        }
+        },
+        "hasIntroOffer": false
       },
       "fr": {
         "name": "Vie Horizon",
@@ -1217,7 +1234,8 @@
         "seo": {
           "metaTitle": "Vie Horizon | Meridian Mutual",
           "metaDescription": "Assurance décès temporaire avec capital fixe pour votre famille."
-        }
+        },
+        "hasIntroOffer": false
       },
       "de": {
         "name": "Leben Horizont",
@@ -1300,7 +1318,8 @@
         "seo": {
           "metaTitle": "Leben Horizont | Meridian Mutual",
           "metaDescription": "Risikolebensversicherung mit fester Einmalzahlung für Ihre Familie."
-        }
+        },
+        "hasIntroOffer": false
       },
       "it": {
         "name": "Vita Orizzonte",
@@ -1383,7 +1402,8 @@
         "seo": {
           "metaTitle": "Vita Orizzonte | Meridian Mutual",
           "metaDescription": "Polizza vita temporanea con capitale fisso per la tua famiglia."
-        }
+        },
+        "hasIntroOffer": false
       }
     }
   },
@@ -1481,7 +1501,8 @@
         "seo": {
           "metaTitle": "Savings Plan | Meridian Mutual",
           "metaDescription": "Guaranteed-rate savings plan with capital guarantee and monthly deposits."
-        }
+        },
+        "hasIntroOffer": false
       },
       "fr": {
         "name": "Plan Épargne",
@@ -1564,7 +1585,8 @@
         "seo": {
           "metaTitle": "Plan Épargne | Meridian Mutual",
           "metaDescription": "Plan d'épargne à taux garanti avec garantie du capital et versements mensuels."
-        }
+        },
+        "hasIntroOffer": false
       },
       "de": {
         "name": "Sparplan",
@@ -1647,7 +1669,8 @@
         "seo": {
           "metaTitle": "Sparplan | Meridian Mutual",
           "metaDescription": "Sparplan mit garantiertem Zins, Kapitalgarantie und monatlichen Einzahlungen."
-        }
+        },
+        "hasIntroOffer": false
       },
       "it": {
         "name": "Piano Risparmio",
@@ -1730,7 +1753,8 @@
         "seo": {
           "metaTitle": "Piano Risparmio | Meridian Mutual",
           "metaDescription": "Piano di risparmio a tasso garantito con garanzia del capitale e versamenti mensili."
-        }
+        },
+        "hasIntroOffer": false
       }
     }
   },
@@ -1828,7 +1852,8 @@
         "seo": {
           "metaTitle": "Travel Go | Meridian Mutual",
           "metaDescription": "Travel insurance with medical, cancellation and luggage cover."
-        }
+        },
+        "hasIntroOffer": false
       },
       "fr": {
         "name": "Voyage Go",
@@ -1911,7 +1936,8 @@
         "seo": {
           "metaTitle": "Voyage Go | Meridian Mutual",
           "metaDescription": "Assurance voyage avec frais médicaux, annulation et bagages."
-        }
+        },
+        "hasIntroOffer": false
       },
       "de": {
         "name": "Reise Go",
@@ -1994,7 +2020,8 @@
         "seo": {
           "metaTitle": "Reise Go | Meridian Mutual",
           "metaDescription": "Reiseversicherung mit Krankheits-, Storno- und Gepäckschutz."
-        }
+        },
+        "hasIntroOffer": false
       },
       "it": {
         "name": "Viaggio Go",
@@ -2077,7 +2104,8 @@
         "seo": {
           "metaTitle": "Viaggio Go | Meridian Mutual",
           "metaDescription": "Assicurazione viaggio con spese mediche, annullamento e bagaglio."
-        }
+        },
+        "hasIntroOffer": false
       }
     }
   },
@@ -2175,7 +2203,8 @@
         "seo": {
           "metaTitle": "Pet Care | Meridian Mutual",
           "metaDescription": "Pet insurance for dogs and cats covering accidents, illness and surgery."
-        }
+        },
+        "hasIntroOffer": false
       },
       "fr": {
         "name": "Animaux Care",
@@ -2258,7 +2287,8 @@
         "seo": {
           "metaTitle": "Animaux Care | Meridian Mutual",
           "metaDescription": "Assurance chiens et chats : accidents, maladie et chirurgie."
-        }
+        },
+        "hasIntroOffer": false
       },
       "de": {
         "name": "Tier Care",
@@ -2341,7 +2371,8 @@
         "seo": {
           "metaTitle": "Tier Care | Meridian Mutual",
           "metaDescription": "Tierversicherung für Hunde und Katzen: Unfall, Krankheit, Operationen."
-        }
+        },
+        "hasIntroOffer": false
       },
       "it": {
         "name": "Animali Care",
@@ -2424,7 +2455,8 @@
         "seo": {
           "metaTitle": "Animali Care | Meridian Mutual",
           "metaDescription": "Assicurazione per cani e gatti: infortuni, malattia e chirurgia."
-        }
+        },
+        "hasIntroOffer": false
       }
     }
   },
@@ -2522,7 +2554,8 @@
         "seo": {
           "metaTitle": "Home Plus | Meridian Mutual",
           "metaDescription": "Home insurance with accidental damage and home emergency cover."
-        }
+        },
+        "hasIntroOffer": false
       },
       "fr": {
         "name": "Habitation Plus",
@@ -2605,7 +2638,8 @@
         "seo": {
           "metaTitle": "Habitation Plus | Meridian Mutual",
           "metaDescription": "Assurance habitation avec dommages accidentels et urgence habitation."
-        }
+        },
+        "hasIntroOffer": false
       },
       "de": {
         "name": "Wohnen Plus",
@@ -2688,7 +2722,8 @@
         "seo": {
           "metaTitle": "Wohnen Plus | Meridian Mutual",
           "metaDescription": "Wohnversicherung mit Unfallschäden und Notfallhilfe."
-        }
+        },
+        "hasIntroOffer": false
       },
       "it": {
         "name": "Casa Plus",
@@ -2771,7 +2806,8 @@
         "seo": {
           "metaTitle": "Casa Plus | Meridian Mutual",
           "metaDescription": "Assicurazione casa con danni accidentali ed emergenza casa."
-        }
+        },
+        "hasIntroOffer": false
       }
     }
   },
@@ -2869,7 +2905,8 @@
         "seo": {
           "metaTitle": "Business Shield | Meridian Mutual",
           "metaDescription": "Business liability and equipment insurance for small firms."
-        }
+        },
+        "hasIntroOffer": false
       },
       "fr": {
         "name": "Business Shield",
@@ -2952,7 +2989,8 @@
         "seo": {
           "metaTitle": "Business Shield | Meridian Mutual",
           "metaDescription": "Assurance responsabilité et matériel pour petites entreprises."
-        }
+        },
+        "hasIntroOffer": false
       },
       "de": {
         "name": "Business Shield",
@@ -3035,7 +3073,8 @@
         "seo": {
           "metaTitle": "Business Shield | Meridian Mutual",
           "metaDescription": "Betriebshaftpflicht- und Ausrüstungsversicherung für kleine Firmen."
-        }
+        },
+        "hasIntroOffer": false
       },
       "it": {
         "name": "Business Shield",
@@ -3118,7 +3157,8 @@
         "seo": {
           "metaTitle": "Business Shield | Meridian Mutual",
           "metaDescription": "Assicurazione responsabilità e attrezzature per piccole imprese."
-        }
+        },
+        "hasIntroOffer": false
       }
     }
   },
@@ -3213,7 +3253,9 @@
         "seo": {
           "metaTitle": "Motor Flex 2027 | Meridian Mutual",
           "metaDescription": "Comprehensive motor insurance with a mileage-based premium."
-        }
+        },
+        "hasIntroOffer": true,
+        "introOfferText": "Launch offer: first year at 5.9%, then the representative rate."
       }
     },
     "demoState": "draft, en only, stage Draft, not in a release. Scene 1 adds it to the release; scene 2 creates the it locale."

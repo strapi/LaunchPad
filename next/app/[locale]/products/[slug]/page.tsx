@@ -48,7 +48,7 @@ export default async function Product({ params }: PageProps<'/[locale]/products/
             <h1 className="mt-4 font-display text-4xl font-bold leading-[1.05] tracking-[-0.02em] md:text-5xl lg:text-6xl">{hero?.title || p.name}</h1>
             {(hero?.subtitle || p.tagline) && <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/80 md:text-xl">{hero?.subtitle || p.tagline}</p>}
             <div className="mt-8 flex flex-wrap gap-3">
-              <Cta cta={hero?.cta} locale={l} />
+              <Cta cta={hero?.cta} locale={l} onDark />
               <a href="#coverage" className="btn border border-white/30 text-white hover:bg-white/10">{t.whatIsCovered}</a>
             </div>
           </div>
@@ -62,6 +62,11 @@ export default async function Product({ params }: PageProps<'/[locale]/products/
                 </div>
               )}
               {p.rateWording && <p className="mt-3 text-[15px] leading-relaxed text-ink-600">{p.rateWording}</p>}
+              {p.hasIntroOffer && p.introOfferText && (
+                <div className="mt-4 flex items-start gap-2 rounded-xl bg-amber/25 px-3 py-2 text-sm font-medium text-navy">
+                  <span className="mt-0.5 inline-block h-2 w-2 shrink-0 rounded-full bg-amber" /> {p.introOfferText}
+                </div>
+              )}
               {docs.length > 0 && (
                 <div className="mt-5 border-t border-line pt-5">
                   <div className="text-xs font-semibold uppercase tracking-wider text-ink-400">{t.documents}</div>

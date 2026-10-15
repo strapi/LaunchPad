@@ -64,6 +64,33 @@
         }
       }
     },
+    "hasIntroOffer": {
+      "type": "boolean",
+      "default": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "introOfferText": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "hasIntroOffer"
+            },
+            true
+          ]
+        }
+      }
+    },
     "legalDisclaimer": {
       "type": "blocks",
       "pluginOptions": {
