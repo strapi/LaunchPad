@@ -11,6 +11,13 @@
     "body": {
       "type": "blocks",
       "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   },
   "options": {}

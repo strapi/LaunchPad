@@ -5,7 +5,7 @@ A Strapi 5 sales demo built around one fictional customer: **Meridian Mutual Gro
 Everything is seeded by one command. Nothing is added by hand in the admin.
 
 - `strapi/`: Strapi 5.58 backend (TypeScript, SQLite), content model with content-type folders, seed script and demo dataset.
-- `next/`: Next.js 16 corporate website with Live Preview, four locales and the scheduled promo banner.
+- `next/`: Next.js 16 corporate website (quick-quote hero, product pages with price card and documents per market, claims steps, newsroom) with Live Preview, four locales and the scheduled promo banner. Fonts are bundled (Inter, open licence), so it runs offline.
 - `DEMO.md`: the demo script, scene by scene, with what to click and what to say.
 
 ## Setup (once)
@@ -74,6 +74,10 @@ All with the password `Meridian2026!` (set `DEMO_PASSWORD` in `strapi/.env` befo
 ## Changing the content
 
 The dataset lives in `strapi/data/demo/*.json` (one file per content type, all four languages) and `strapi/data/demo/media/`. Edit, then `yarn seed`. The content model lives in `strapi/src/api/*` and `strapi/src/components/*`; after a schema change, run `cd strapi && yarn strapi ts:generate-types` and reseed.
+
+## Images
+
+All images are generated placeholders in the brand palette (soft gradients, one line icon per product). To make the demo look like a real insurer, drop real photos into `strapi/data/demo/media/` under the same file names (`product-*.jpg` 16:9, `photo-team-*.jpg` and `photo-office-*.jpg` 3:2, `news-*.jpg` and `press-*.jpg` 16:9) and run `yarn seed` again. Nothing else changes.
 
 ## Honesty notes
 

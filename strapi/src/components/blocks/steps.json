@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_steps",
+  "info": {
+    "displayName": "Steps",
+    "icon": "bulletList"
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "intro": {
+      "type": "text"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.step"
+    }
+  },
+  "options": {}
+}

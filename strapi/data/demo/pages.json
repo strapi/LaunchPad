@@ -65,6 +65,26 @@
                   }
                 ]
               }
+            ],
+            "image": "photo-office-1.jpg"
+          },
+          {
+            "__component": "blocks.steps",
+            "title": "How a claim works",
+            "intro": "Three steps, one contact person, no forms sent by post.",
+            "items": [
+              {
+                "title": "Tell us what happened",
+                "text": "Online, in the app or by phone, 24 hours a day. You get a claim number straight away."
+              },
+              {
+                "title": "We check and call you back",
+                "text": "An adjuster calls within one working day and tells you exactly what we need."
+              },
+              {
+                "title": "You get paid",
+                "text": "84% of claims are settled in under ten days, straight to your account."
+              }
             ]
           },
           {
@@ -141,6 +161,26 @@
                     "text": "Chaque produit de ce site a une page, une explication du prix et un jeu de documents par pays. Si quelque chose n'est pas clair, appelez-nous et nous corrigerons la page."
                   }
                 ]
+              }
+            ],
+            "image": "photo-office-1.jpg"
+          },
+          {
+            "__component": "blocks.steps",
+            "title": "Comment se passe un sinistre",
+            "intro": "Trois étapes, un seul interlocuteur, aucun formulaire par courrier.",
+            "items": [
+              {
+                "title": "Dites-nous ce qui s'est passé",
+                "text": "En ligne, dans l'application ou par téléphone, 24h/24. Vous recevez un numéro de dossier immédiatement."
+              },
+              {
+                "title": "Nous vérifions et vous rappelons",
+                "text": "Un gestionnaire vous appelle sous un jour ouvré et vous indique exactement ce qu'il nous faut."
+              },
+              {
+                "title": "Vous êtes indemnisé",
+                "text": "84 % des sinistres sont réglés en moins de dix jours, directement sur votre compte."
               }
             ]
           },
@@ -219,6 +259,26 @@
                   }
                 ]
               }
+            ],
+            "image": "photo-office-1.jpg"
+          },
+          {
+            "__component": "blocks.steps",
+            "title": "So läuft ein Schadenfall",
+            "intro": "Drei Schritte, eine Ansprechperson, keine Formulare per Post.",
+            "items": [
+              {
+                "title": "Sagen Sie uns, was passiert ist",
+                "text": "Online, in der App oder telefonisch, rund um die Uhr. Sie erhalten sofort eine Schadennummer."
+              },
+              {
+                "title": "Wir prüfen und rufen zurück",
+                "text": "Ein Sachbearbeiter meldet sich innerhalb eines Werktags und sagt Ihnen genau, was wir brauchen."
+              },
+              {
+                "title": "Sie bekommen Ihr Geld",
+                "text": "84 % der Schäden sind in unter zehn Tagen reguliert, direkt auf Ihr Konto."
+              }
             ]
           },
           {
@@ -296,6 +356,26 @@
                   }
                 ]
               }
+            ],
+            "image": "photo-office-1.jpg"
+          },
+          {
+            "__component": "blocks.steps",
+            "title": "Come funziona un sinistro",
+            "intro": "Tre passaggi, un solo referente, nessun modulo per posta.",
+            "items": [
+              {
+                "title": "Raccontaci cosa è successo",
+                "text": "Online, in app o per telefono, 24 ore su 24. Ricevi subito un numero di pratica."
+              },
+              {
+                "title": "Verifichiamo e ti richiamiamo",
+                "text": "Un liquidatore ti chiama entro un giorno lavorativo e ti dice esattamente cosa ci serve."
+              },
+              {
+                "title": "Ricevi il rimborso",
+                "text": "L'84% dei sinistri è liquidato in meno di dieci giorni, direttamente sul tuo conto."
+              }
             ]
           },
           {
@@ -367,7 +447,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "image": "photo-team-3.jpg"
           },
           {
             "__component": "blocks.stats",
@@ -449,7 +530,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "image": "photo-team-3.jpg"
           },
           {
             "__component": "blocks.stats",
@@ -531,7 +613,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "image": "photo-team-3.jpg"
           },
           {
             "__component": "blocks.stats",
@@ -613,7 +696,8 @@
                   }
                 ]
               }
-            ]
+            ],
+            "image": "photo-team-3.jpg"
           },
           {
             "__component": "blocks.stats",
@@ -718,6 +802,25 @@
             ]
           },
           {
+            "__component": "blocks.steps",
+            "title": "How a claim works",
+            "intro": "Three steps, one contact person, no forms sent by post.",
+            "items": [
+              {
+                "title": "Tell us what happened",
+                "text": "Online, in the app or by phone, 24 hours a day. You get a claim number straight away."
+              },
+              {
+                "title": "We check and call you back",
+                "text": "An adjuster calls within one working day and tells you exactly what we need."
+              },
+              {
+                "title": "You get paid",
+                "text": "84% of claims are settled in under ten days, straight to your account."
+              }
+            ]
+          },
+          {
             "__component": "blocks.stats",
             "items": [
               {
@@ -797,6 +900,25 @@
                     "text": "Vie : le bénéficiaire nous appelle avec le numéro de contrat. Nous envoyons la liste des documents le jour même."
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.steps",
+            "title": "Comment se passe un sinistre",
+            "intro": "Trois étapes, un seul interlocuteur, aucun formulaire par courrier.",
+            "items": [
+              {
+                "title": "Dites-nous ce qui s'est passé",
+                "text": "En ligne, dans l'application ou par téléphone, 24h/24. Vous recevez un numéro de dossier immédiatement."
+              },
+              {
+                "title": "Nous vérifions et vous rappelons",
+                "text": "Un gestionnaire vous appelle sous un jour ouvré et vous indique exactement ce qu'il nous faut."
+              },
+              {
+                "title": "Vous êtes indemnisé",
+                "text": "84 % des sinistres sont réglés en moins de dix jours, directement sur votre compte."
               }
             ]
           },
@@ -884,6 +1006,25 @@
             ]
           },
           {
+            "__component": "blocks.steps",
+            "title": "So läuft ein Schadenfall",
+            "intro": "Drei Schritte, eine Ansprechperson, keine Formulare per Post.",
+            "items": [
+              {
+                "title": "Sagen Sie uns, was passiert ist",
+                "text": "Online, in der App oder telefonisch, rund um die Uhr. Sie erhalten sofort eine Schadennummer."
+              },
+              {
+                "title": "Wir prüfen und rufen zurück",
+                "text": "Ein Sachbearbeiter meldet sich innerhalb eines Werktags und sagt Ihnen genau, was wir brauchen."
+              },
+              {
+                "title": "Sie bekommen Ihr Geld",
+                "text": "84 % der Schäden sind in unter zehn Tagen reguliert, direkt auf Ihr Konto."
+              }
+            ]
+          },
+          {
             "__component": "blocks.stats",
             "items": [
               {
@@ -963,6 +1104,25 @@
                     "text": "Vita: il beneficiario ci chiama con il numero di polizza. Inviamo l'elenco dei documenti lo stesso giorno."
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "__component": "blocks.steps",
+            "title": "Come funziona un sinistro",
+            "intro": "Tre passaggi, un solo referente, nessun modulo per posta.",
+            "items": [
+              {
+                "title": "Raccontaci cosa è successo",
+                "text": "Online, in app o per telefono, 24 ore su 24. Ricevi subito un numero di pratica."
+              },
+              {
+                "title": "Verifichiamo e ti richiamiamo",
+                "text": "Un liquidatore ti chiama entro un giorno lavorativo e ti dice esattamente cosa ci serve."
+              },
+              {
+                "title": "Ricevi il rimborso",
+                "text": "L'84% dei sinistri è liquidato in meno di dieci giorni, direttamente sul tuo conto."
               }
             ]
           },

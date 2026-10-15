@@ -70,6 +70,7 @@ export interface BlocksRichText extends Struct.ComponentSchema {
   };
   attributes: {
     body: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'>;
     title: Schema.Attribute.String;
   };
 }
@@ -82,6 +83,19 @@ export interface BlocksStats extends Struct.ComponentSchema {
   };
   attributes: {
     items: Schema.Attribute.Component<'shared.stat', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface BlocksSteps extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_steps';
+  info: {
+    displayName: 'Steps';
+    icon: 'bulletList';
+  };
+  attributes: {
+    intro: Schema.Attribute.Text;
+    items: Schema.Attribute.Component<'shared.step', true>;
     title: Schema.Attribute.String;
   };
 }
@@ -166,6 +180,18 @@ export interface SharedStat extends Struct.ComponentSchema {
   };
 }
 
+export interface SharedStep extends Struct.ComponentSchema {
+  collectionName: 'components_shared_steps';
+  info: {
+    displayName: 'Step';
+    icon: 'check';
+  };
+  attributes: {
+    text: Schema.Attribute.Text;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export namespace Public {
     export interface ComponentSchemas {
@@ -176,12 +202,14 @@ declare module '@strapi/strapi' {
       'blocks.hero': BlocksHero;
       'blocks.rich-text': BlocksRichText;
       'blocks.stats': BlocksStats;
+      'blocks.steps': BlocksSteps;
       'shared.coverage-row': SharedCoverageRow;
       'shared.cta': SharedCta;
       'shared.link-group': SharedLinkGroup;
       'shared.nav-link': SharedNavLink;
       'shared.seo': SharedSeo;
       'shared.stat': SharedStat;
+      'shared.step': SharedStep;
     }
   }
 }

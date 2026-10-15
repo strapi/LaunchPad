@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { Blocks } from '@/components/blocks';
+import { Icon } from '@/components/icons';
 import type { Locale } from '@/i18n.config';
 import { getPage } from '@/lib/content';
 import { dict } from '@/lib/i18n';
@@ -11,14 +12,18 @@ export default async function Page({ params }: PageProps<'/[locale]/[slug]'>) {
   const page = await getPage(l, slug);
   const t = dict(l);
   if (!page) {
-    // Routes like /quote, /account or /careers exist in the navigation but are out of the demo's scope.
+    // Routes like /quote, /account or /careers exist in the navigation but are outside the demo's scope.
     return (
-      <section className="mx-auto max-w-3xl px-4 py-24 text-center">
-        <h1 className="text-2xl font-bold text-navy">/{slug}</h1>
-        <p className="mt-3 text-ink/60">{t.demo}</p>
-        <Link href={`/${l}`} className="mt-6 inline-block text-sm text-teal underline">← {t.back}</Link>
+      <section className="wrap py-24">
+        <div className="card mx-auto max-w-xl p-10 text-center">
+          <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-sand text-navy"><Icon.pin /></span>
+          <h1 className="h-display mt-5 text-2xl">{t.outOfScope}</h1>
+          <p className="mt-3 text-ink-600">{t.outOfScopeHint}</p>
+          <code className="mt-4 inline-block rounded bg-sand px-2 py-1 text-xs text-ink-600">/{slug}</code>
+          <div className="mt-8"><Link href={`/${l}`} className="btn-navy">{t.backHome} <Icon.arrow width={16} height={16} /></Link></div>
+        </div>
       </section>
     );
   }
-  return <Blocks blocks={page.blocks} ctx={{ locale: l, faqs: page.faqs }} />;
+  return <Blocks blocks={page.blocks} ctx={{ locale: l, faqs: page.faqs, variant: 'page' }} />;
 }

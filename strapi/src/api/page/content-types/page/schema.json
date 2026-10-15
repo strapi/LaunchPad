@@ -38,7 +38,8 @@
         "blocks.faq-list",
         "blocks.rich-text",
         "blocks.stats",
-        "blocks.cta-band"
+        "blocks.cta-band",
+        "blocks.steps"
       ],
       "pluginOptions": {
         "i18n": {

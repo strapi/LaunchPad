@@ -2,7 +2,7 @@
   {
     "slug": "motor-essential",
     "category": "motor",
-    "heroImage": "product-motor-essential.png",
+    "heroImage": "product-motor-essential.jpg",
     "documents": [
       "motor-essential"
     ],
@@ -349,7 +349,7 @@
   {
     "slug": "home-secure",
     "category": "home",
-    "heroImage": "product-home-secure.png",
+    "heroImage": "product-home-secure.jpg",
     "documents": [
       "home-secure"
     ],
@@ -696,7 +696,7 @@
   {
     "slug": "health-plus",
     "category": "health",
-    "heroImage": "product-health-plus.png",
+    "heroImage": "product-health-plus.jpg",
     "documents": [
       "health-plus"
     ],
@@ -1043,7 +1043,7 @@
   {
     "slug": "life-horizon",
     "category": "life",
-    "heroImage": "product-life-horizon.png",
+    "heroImage": "product-life-horizon.jpg",
     "documents": [
       "life-horizon"
     ],
@@ -1390,7 +1390,7 @@
   {
     "slug": "savings-plan",
     "category": "savings",
-    "heroImage": "product-savings-plan.png",
+    "heroImage": "product-savings-plan.jpg",
     "documents": [
       "savings-plan"
     ],
@@ -1737,7 +1737,7 @@
   {
     "slug": "travel-go",
     "category": "home",
-    "heroImage": "product-travel-go.png",
+    "heroImage": "product-travel-go.jpg",
     "documents": [
       "travel-go"
     ],
@@ -2084,7 +2084,7 @@
   {
     "slug": "pet-care",
     "category": "health",
-    "heroImage": "product-pet-care.png",
+    "heroImage": "product-pet-care.jpg",
     "documents": [
       "pet-care"
     ],
@@ -2431,7 +2431,7 @@
   {
     "slug": "home-plus",
     "category": "home",
-    "heroImage": "product-home-plus.png",
+    "heroImage": "product-home-plus.jpg",
     "documents": [
       "home-plus"
     ],
@@ -2778,7 +2778,7 @@
   {
     "slug": "business-shield",
     "category": "savings",
-    "heroImage": "product-business-shield.png",
+    "heroImage": "product-business-shield.jpg",
     "documents": [
       "business-shield"
     ],
@@ -3125,7 +3125,7 @@
   {
     "slug": "motor-flex-2027",
     "category": "motor",
-    "heroImage": "product-motor-flex.png",
+    "heroImage": "product-motor-flex.jpg",
     "documents": [],
     "faqs": [
       "claim-how",

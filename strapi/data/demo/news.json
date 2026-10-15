@@ -4,7 +4,7 @@
     "market": "FR",
     "locale": "fr",
     "publishedOn": "2026-10-06",
-    "cover": "news-home-fr.png",
+    "cover": "news-home-fr.jpg",
     "title": "Habitation Sécurité : cotisation en baisse de 2 % en 2027",
     "excerpt": "La sinistralité 2025 a été inférieure aux prévisions. La différence revient aux sociétaires.",
     "body": [
@@ -33,7 +33,7 @@
     "market": "IT",
     "locale": "it",
     "publishedOn": "2026-09-30",
-    "cover": "news-motor-it.png",
+    "cover": "news-motor-it.jpg",
     "title": "Auto Essenziale: aggiornamento del TAEG per il pagamento mensile",
     "excerpt": "Il tasso applicato alle rate mensili è stato aggiornato. Il premio annuo non cambia.",
     "body": [
@@ -63,7 +63,7 @@
     "market": "FR",
     "locale": "fr",
     "publishedOn": "2026-09-22",
-    "cover": "news-agency.png",
+    "cover": "news-agency.jpg",
     "title": "Nouvelle agence à Nantes, quartier Chantenay",
     "excerpt": "Six agents, ouverture du lundi au samedi, et un espace dédié aux déclarations de sinistre.",
     "body": [
@@ -92,7 +92,7 @@
     "market": "IT",
     "locale": "it",
     "publishedOn": "2026-09-15",
-    "cover": "news-it-grandine.png",
+    "cover": "news-it-grandine.jpg",
     "title": "Grandine nel Nord Italia: perizie entro cinque giorni",
     "excerpt": "Dopo le grandinate di settembre, 2.300 denunce auto e casa, perizie fissate entro cinque giorni lavorativi.",
     "body": [
@@ -121,7 +121,7 @@
     "market": "group",
     "locale": "en",
     "publishedOn": "2026-09-02",
-    "cover": "news-results.png",
+    "cover": "news-results.jpg",
     "title": "Half-year results: 2.1 million members, claims time down to 9 days",
     "excerpt": "Membership grew 3.4% and the average claim is now settled in nine days, from twelve a year ago.",
     "body": [
@@ -159,7 +159,7 @@
     "market": "group",
     "locale": "en",
     "publishedOn": "2026-08-25",
-    "cover": "news-platform-cms.png",
+    "cover": "news-platform-cms.jpg",
     "title": "One content platform for three markets",
     "excerpt": "The group website now runs on a single content platform: one product page, four languages, one approval flow.",
     "body": [
@@ -197,7 +197,7 @@
     "market": "DE",
     "locale": "de",
     "publishedOn": "2026-08-18",
-    "cover": "news-hotline.png",
+    "cover": "news-hotline.jpg",
     "title": "Schadenhotline jetzt bis 22 Uhr erreichbar",
     "excerpt": "Die deutsche Schadenhotline verlängert ihre Zeiten an allen sieben Tagen der Woche.",
     "body": [
@@ -226,7 +226,7 @@
     "market": "FR",
     "locale": "fr",
     "publishedOn": "2026-08-11",
-    "cover": "news-fr-canicule.png",
+    "cover": "news-fr-canicule.jpg",
     "title": "Canicule : assistance renforcée pour les sociétaires fragiles",
     "excerpt": "Du 1er juillet au 15 septembre, un appel par semaine aux sociétaires de plus de 80 ans vivant seuls.",
     "body": [
@@ -255,7 +255,7 @@
     "market": "group",
     "locale": "en",
     "publishedOn": "2026-07-21",
-    "cover": "news-solvency.png",
+    "cover": "news-solvency.jpg",
     "title": "Solvency ratio at 212% after the climate reserve",
     "excerpt": "Even after setting aside EUR 120 million for climate events, the group keeps one of the strongest balance sheets among European mutuals.",
     "body": [
@@ -284,7 +284,7 @@
     "market": "IT",
     "locale": "it",
     "publishedOn": "2026-07-14",
-    "cover": "news-agents-it.png",
+    "cover": "news-agents-it.jpg",
     "title": "Venti nuovi agenti nel Sud Italia entro fine anno",
     "excerpt": "Napoli, Bari e Palermo le prime città. Tutti dipendenti, formati su tutti i prodotti.",
     "body": [
@@ -314,7 +314,7 @@
     "market": "DE",
     "locale": "de",
     "publishedOn": "2026-07-07",
-    "cover": "news-de-hochwasser.png",
+    "cover": "news-de-hochwasser.jpg",
     "title": "Hochwasser: Soforthilfe binnen 48 Stunden",
     "excerpt": "Nach den Unwettern im Juni wurden 1.900 Schäden gemeldet und 1.700 innerhalb von zwei Tagen mit einer Vorauszahlung bedient.",
     "body": [
@@ -343,7 +343,7 @@
     "market": "FR",
     "locale": "fr",
     "publishedOn": "2026-06-24",
-    "cover": "news-summer.png",
+    "cover": "news-summer.jpg",
     "title": "Assistance routière : ce qui change pour l'été",
     "excerpt": "Rayon étendu à toute l'Union européenne du 1er juillet au 31 août pour tous les contrats auto.",
     "body": [
@@ -372,7 +372,7 @@
     "market": "group",
     "locale": "en",
     "publishedOn": "2026-06-10",
-    "cover": "news-agents.png",
+    "cover": "news-agents.jpg",
     "title": "Forty new agents in 2026, all employees",
     "excerpt": "The group keeps its model: agents on payroll, trained for every product, measured on member satisfaction.",
     "body": [
@@ -401,7 +401,7 @@
     "market": "IT",
     "locale": "it",
     "publishedOn": "2026-06-02",
-    "cover": "news-it-agenzia-napoli.png",
+    "cover": "news-it-agenzia-napoli.jpg",
     "title": "Nuova agenzia a Napoli, via Toledo",
     "excerpt": "Cinque agenti, aperta dal lunedì al sabato, la prima del piano Sud Italia.",
     "body": [
@@ -430,7 +430,7 @@
     "market": "group",
     "locale": "en",
     "publishedOn": "2026-05-27",
-    "cover": "news-agm.png",
+    "cover": "news-agm.jpg",
     "title": "General meeting: 11,400 members voted, 94% online",
     "excerpt": "The 2026 general meeting approved the accounts and elected two new member representatives to the board.",
     "body": [
@@ -459,7 +459,7 @@
     "market": "DE",
     "locale": "de",
     "publishedOn": "2026-05-05",
-    "cover": "news-roadside.png",
+    "cover": "news-roadside.jpg",
     "title": "Kfz Basis: Pannenhilfe jetzt auch im Umkreis von 50 km",
     "excerpt": "Die bisherige 25-km-Grenze entfällt für alle bestehenden und neuen Verträge.",
     "body": [
@@ -488,7 +488,7 @@
     "market": "FR",
     "locale": "fr",
     "publishedOn": "2026-04-29",
-    "cover": "news-fr-velo.png",
+    "cover": "news-fr-velo.jpg",
     "title": "Vélo électrique : couvert par Habitation Sécurité, partout",
     "excerpt": "Le vol et la casse d'un vélo électrique sont désormais couverts hors domicile, jusqu'à 2 500 EUR.",
     "body": [
@@ -517,7 +517,7 @@
     "market": "DE",
     "locale": "de",
     "publishedOn": "2026-04-21",
-    "cover": "news-de-app.png",
+    "cover": "news-de-app.jpg",
     "title": "Schadenmeldung per App jetzt auf Deutsch",
     "excerpt": "Die Meridian-App meldet Schäden, lädt Fotos hoch und zeigt den Status, auf Deutsch und mit deutschen Hotlines.",
     "body": [
@@ -537,7 +537,7 @@
     "market": "group",
     "locale": "en",
     "publishedOn": "2026-04-14",
-    "cover": "news-mobile.png",
+    "cover": "news-mobile.jpg",
     "title": "Claims from the app, in every country",
     "excerpt": "The Meridian app now lets members start a claim, upload photos and follow the status, in French, German and Italian.",
     "body": [
@@ -566,7 +566,7 @@
     "market": "IT",
     "locale": "it",
     "publishedOn": "2026-04-08",
-    "cover": "news-claims-it.png",
+    "cover": "news-claims-it.jpg",
     "title": "Nuova piattaforma sinistri: cosa cambia per i soci italiani",
     "excerpt": "Stesso modulo, stesso numero di pratica e stessi tempi degli altri paesi del gruppo.",
     "body": [
@@ -595,7 +595,7 @@
     "market": "group",
     "locale": "en",
     "publishedOn": "2026-03-16",
-    "cover": "news-claims.png",
+    "cover": "news-claims.jpg",
     "title": "One claims platform for three countries",
     "excerpt": "From today, a claim started in Milan, Munich or Lyon follows the same steps and the same timelines.",
     "body": [
@@ -624,7 +624,7 @@
     "market": "DE",
     "locale": "de",
     "publishedOn": "2026-03-10",
-    "cover": "news-de-berater.png",
+    "cover": "news-de-berater.jpg",
     "title": "Zwölf neue Berater in Nordrhein-Westfalen",
     "excerpt": "Köln, Düsseldorf und Dortmund bekommen bis Jahresende je vier Berater, alle angestellt.",
     "body": [
@@ -644,7 +644,7 @@
     "market": "FR",
     "locale": "fr",
     "publishedOn": "2026-03-03",
-    "cover": "news-fr-agences.png",
+    "cover": "news-fr-agences.jpg",
     "title": "Toutes les agences ouvertes le samedi matin",
     "excerpt": "À partir du 7 mars, les 140 agences françaises ouvrent le samedi de 9h à 13h.",
     "body": [
@@ -673,7 +673,7 @@
     "market": "group",
     "locale": "en",
     "publishedOn": "2026-02-24",
-    "cover": "news-rates.png",
+    "cover": "news-rates.jpg",
     "title": "2026 premium review: motor down 1%, home flat",
     "excerpt": "A lower claims year lets the group cut motor premiums slightly and hold home premiums for 2026.",
     "body": [
@@ -702,7 +702,7 @@
     "market": "IT",
     "locale": "it",
     "publishedOn": "2026-02-17",
-    "cover": "news-it-tariffe.png",
+    "cover": "news-it-tariffe.jpg",
     "title": "Tariffe 2026 in Italia: auto in calo, casa stabile",
     "excerpt": "La revisione annuale si applica alla scadenza. Il dettaglio è nella pagina di ogni prodotto.",
     "body": [
@@ -722,7 +722,7 @@
     "market": "DE",
     "locale": "de",
     "publishedOn": "2026-02-11",
-    "cover": "news-office.png",
+    "cover": "news-office.jpg",
     "title": "Die deutsche Zentrale zieht nach München-Sendling",
     "excerpt": "Ab März arbeiten 310 Mitarbeitende am neuen Standort an der Lindwurmstraße.",
     "body": [
@@ -751,7 +751,7 @@
     "market": "DE",
     "locale": "de",
     "publishedOn": "2026-01-27",
-    "cover": "news-de-beitrag.png",
+    "cover": "news-de-beitrag.jpg",
     "title": "Beitragsanpassung 2026: Kfz minus 1 %, Wohnen unverändert",
     "excerpt": "Die jährliche Anpassung gilt zur Verlängerung. Details auf jeder Produktseite.",
     "body": [
@@ -771,7 +771,7 @@
     "market": "FR",
     "locale": "fr",
     "publishedOn": "2026-01-20",
-    "cover": "news-fr-tarifs.png",
+    "cover": "news-fr-tarifs.jpg",
     "title": "Tarifs 2026 en France : auto en baisse, habitation stable",
     "excerpt": "La révision annuelle s'applique à l'échéance. Le détail par produit est sur chaque page produit.",
     "body": [
@@ -800,7 +800,7 @@
     "market": "IT",
     "locale": "it",
     "publishedOn": "2026-01-13",
-    "cover": "news-it-app.png",
+    "cover": "news-it-app.jpg",
     "title": "Denuncia sinistri dall'app, in italiano",
     "excerpt": "L'app Meridian permette di denunciare un sinistro, caricare foto e seguire lo stato, con i numeri italiani.",
     "body": [
@@ -820,7 +820,7 @@
     "market": "group",
     "locale": "en",
     "publishedOn": "2026-01-12",
-    "cover": "news-office-lyon.png",
+    "cover": "news-office-lyon.jpg",
     "title": "Head office renovation complete",
     "excerpt": "Rue des Tisserands reopens after eighteen months of works: 600 desks, a members' room and the first group-wide claims floor.",
     "body": [

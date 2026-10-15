@@ -2,9 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-body { @apply bg-white text-ink antialiased; }
-.prose-demo p { @apply leading-relaxed; }
-.prose-demo h2 { @apply mt-6 text-2xl font-bold text-navy; }
-.prose-demo h3 { @apply mt-4 text-xl font-semibold text-navy; }
-.prose-demo ul { @apply list-disc pl-6; }
-.prose-demo a { @apply text-teal underline; }
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-white text-ink antialiased; }
+  ::selection { @apply bg-teal-100 text-navy; }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-wrap px-5 md:px-8; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.14em] text-teal; }
+  .h-display { @apply font-display font-bold tracking-[-0.02em] text-navy; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-teal/40; }
+  .btn-primary { @apply btn bg-teal text-white hover:bg-teal-600; }
+  .btn-navy { @apply btn bg-navy text-white hover:bg-navy-700; }
+  .btn-light { @apply btn bg-white text-navy hover:bg-sand; }
+  .btn-outline { @apply btn border border-navy/20 text-navy hover:border-navy hover:bg-navy/5; }
+  .btn-ghost { @apply btn text-navy hover:bg-navy/5; }
+  .card { @apply rounded-2xl border border-line bg-white shadow-card; }
+  .prose-demo p { @apply leading-relaxed; }
+  .prose-demo p + p { @apply mt-4; }
+  .prose-demo h2 { @apply h-display mt-8 text-2xl; }
+  .prose-demo h3 { @apply h-display mt-6 text-xl; }
+  .prose-demo ul { @apply mt-3 list-disc space-y-1 pl-6; }
+  .prose-demo ol { @apply mt-3 list-decimal space-y-1 pl-6; }
+  .prose-demo a { @apply font-medium text-teal underline decoration-teal/40 underline-offset-2 hover:decoration-teal; }
+  .prose-demo blockquote { @apply my-6 border-l-4 border-teal/40 pl-4 text-ink-600; }
+  .prose-demo strong { @apply font-semibold text-navy; }
+}
+
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .chev { transform: rotate(180deg); }

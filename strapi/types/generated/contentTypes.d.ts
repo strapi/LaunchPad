@@ -718,6 +718,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'blocks.rich-text',
         'blocks.stats',
         'blocks.cta-band',
+        'blocks.steps',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_shared_steps",
+  "info": {
+    "displayName": "Step",
+    "icon": "check"
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "text": {
+      "type": "text"
+    }
+  },
+  "options": {}
+}
