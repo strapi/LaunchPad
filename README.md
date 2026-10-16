@@ -57,12 +57,11 @@ yarn dev              # Strapi on :1337, Next.js on :3000
 ## Tests
 
 ```sh
-yarn test:dataset     # offline: the JSON dataset is complete and consistent (counts, locales, media files, relations)
-yarn test:stack       # against the running stack after yarn seed and yarn dev: API, roles and permissions, website, Live Preview
-yarn test             # both
+yarn test             # starts Strapi and the website if they are not running, checks everything, stops them
+yarn test:dataset     # offline only: the JSON dataset is complete and consistent
 ```
 
-Plain `node --test`, no extra dependencies. The stack tests read `DEMO_PASSWORD` from `strapi/.env` and `PREVIEW_SECRET` from `next/.env`; `STRAPI_URL` and `SITE_URL` override the defaults. Checks that depend on an Enterprise feature (review workflow state, releases, content history, audit logs) are skipped with a reason when the licence does not include it, so the run is green on Community too. Run them after every `yarn seed`, after a Strapi upgrade, and after changing the dataset or the content model.
+Plain `node --test`, no extra dependencies. Run `yarn seed` once before the first `yarn test`. The checks cover the dataset (counts, locales, media files, relations), the public API, roles and permissions, the website pages, Live Preview, and the Enterprise state (review workflow, releases, content history, audit logs); the Enterprise checks are skipped with a reason when the licence does not include the feature, so the run is green on Community too. If `yarn dev` is already running, the tests use it. `TEST_VERBOSE=1 yarn test` shows the server logs; `STRAPI_URL` and `SITE_URL` point the checks at another stack. Run after every `yarn seed`, after a Strapi upgrade, and after changing the dataset or the content model.
 
 ## Demo users
 
