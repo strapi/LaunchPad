@@ -54,6 +54,16 @@ yarn dev              # Strapi on :1337, Next.js on :3000
 - Admin: http://localhost:1337/admin
 - Website: http://localhost:3000 (redirects to your browser language; `/it`, `/fr`, `/de`, `/en` work directly)
 
+## Tests
+
+```sh
+yarn test:dataset     # offline: the JSON dataset is complete and consistent (counts, locales, media files, relations)
+yarn test:stack       # against the running stack after yarn seed and yarn dev: API, roles and permissions, website, Live Preview
+yarn test             # both
+```
+
+Plain `node --test`, no extra dependencies. The stack tests read `DEMO_PASSWORD` from `strapi/.env` and `PREVIEW_SECRET` from `next/.env`; `STRAPI_URL` and `SITE_URL` override the defaults. Checks that depend on an Enterprise feature (review workflow state, releases, content history, audit logs) are skipped with a reason when the licence does not include it, so the run is green on Community too. Run them after every `yarn seed`, after a Strapi upgrade, and after changing the dataset or the content model.
+
 ## Demo users
 
 All with the password `Meridian2026!` (set `DEMO_PASSWORD` in `strapi/.env` before seeding to change it; change it anyway before showing this outside Strapi).

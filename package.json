@@ -16,7 +16,10 @@
     "check:format": "prettier . --check --cache",
     "fix:format": "prettier . --write --cache",
     "fix": "yarn fix:format",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "test": "node --test 'tests/*.test.mjs'",
+    "test:dataset": "node --test tests/dataset.test.mjs",
+    "test:stack": "node --test tests/stack.test.mjs"
   },
   "dependencies": {
     "@types/node": "^22.5.2",

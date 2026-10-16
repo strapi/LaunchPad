@@ -68,6 +68,9 @@ export default ({ env }) => {
       secret: env('ADMIN_JWT_SECRET'),
       providers: ssoProviders(env),
     },
+    // Strapi allows 5 logins per user every 5 minutes. A demo switches users far more often
+    // than that (and the seed and the tests log everyone in), so the window is widened here.
+    rateLimit: { interval: { min: 5 }, max: 100 },
     apiToken: {
       salt: env('API_TOKEN_SALT'),
     },
