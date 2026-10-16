@@ -501,6 +501,10 @@ async function seedActivity(strapi, refs, features, stages, users) {
 async function main() {
   process.env.NODE_ENV = process.env.NODE_ENV || 'development';
   resetStorage();
+  // The seed boots its own Strapi on a side port, so it does not collide with a running dev
+  // server, and without the browser tab Strapi opens on the first start of an empty database.
+  process.env.PORT = process.env.SEED_PORT || '1340';
+  process.env.ADMIN_AUTO_OPEN = 'false';
   const { createStrapi, compileStrapi } = require('@strapi/strapi');
   const appContext = await compileStrapi();
   const app = await createStrapi(appContext).start();

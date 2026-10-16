@@ -71,6 +71,9 @@ export default ({ env }) => {
     // Strapi allows 5 logins per user every 5 minutes. A demo switches users far more often
     // than that (and the seed and the tests log everyone in), so the window is widened here.
     rateLimit: { interval: { min: 5 }, max: 100 },
+    // Strapi opens a browser tab on the first start of an empty database. The seed wipes the
+    // database on every run, so it sets ADMIN_AUTO_OPEN=false to keep that tab from popping up.
+    autoOpen: env.bool('ADMIN_AUTO_OPEN', true),
     apiToken: {
       salt: env('API_TOKEN_SALT'),
     },
