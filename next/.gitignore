@@ -38,4 +38,4 @@ next-env.d.ts
 
 # env vars
 .env 
-.contentlayer
+.contentlayerAGENTS.md
