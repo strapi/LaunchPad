@@ -42,5 +42,8 @@
     "node": ">=18.0.0 <=22.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "resolutions": {
+    "@strapi/content-manager@npm:5.58.0": "patch:@strapi/content-manager@npm%3A5.58.0#~/.yarn/patches/@strapi-content-manager-npm-5.58.0-268ea3baaf.patch"
+  }
 }
