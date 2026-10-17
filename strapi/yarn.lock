@@ -4142,6 +4142,63 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@strapi/content-manager@patch:@strapi/content-manager@npm%3A5.58.0#~/.yarn/patches/@strapi-content-manager-npm-5.58.0-268ea3baaf.patch":
+  version: 5.58.0
+  resolution: "@strapi/content-manager@patch:@strapi/content-manager@npm%3A5.58.0#~/.yarn/patches/@strapi-content-manager-npm-5.58.0-268ea3baaf.patch::version=5.58.0&hash=663d57"
+  dependencies:
+    "@casl/ability": "npm:6.7.5"
+    "@dnd-kit/core": "npm:6.3.1"
+    "@dnd-kit/sortable": "npm:10.0.0"
+    "@dnd-kit/utilities": "npm:3.2.2"
+    "@radix-ui/react-toolbar": "npm:1.1.19"
+    "@reduxjs/toolkit": "npm:1.9.7"
+    "@sindresorhus/slugify": "npm:1.1.0"
+    "@strapi/design-system": "npm:2.2.4"
+    "@strapi/icons": "npm:2.2.4"
+    "@strapi/types": "npm:5.58.0"
+    "@strapi/utils": "npm:5.58.0"
+    codemirror5: "npm:codemirror@^5.65.11"
+    date-fns: "npm:2.30.0"
+    dompurify: "npm:3.4.16"
+    fractional-indexing: "npm:3.2.0"
+    highlight.js: "npm:^10.4.1"
+    immer: "npm:9.0.21"
+    koa: "npm:2.16.4"
+    lodash: "npm:4.18.1"
+    markdown-it: "npm:14.3.0"
+    markdown-it-abbr: "npm:^1.0.4"
+    markdown-it-container: "npm:^3.0.0"
+    markdown-it-deflist: "npm:^2.1.0"
+    markdown-it-emoji: "npm:^2.0.0"
+    markdown-it-footnote: "npm:^3.0.3"
+    markdown-it-ins: "npm:^3.0.1"
+    markdown-it-mark: "npm:^3.0.1"
+    markdown-it-sub: "npm:^1.0.0"
+    markdown-it-sup: "npm:1.0.0"
+    prismjs: "npm:1.30.0"
+    qs: "npm:6.16.0"
+    react-dnd: "npm:16.0.1"
+    react-dnd-html5-backend: "npm:16.0.1"
+    react-helmet: "npm:^6.1.0"
+    react-intl: "npm:6.6.2"
+    react-query: "npm:3.39.3"
+    react-redux: "npm:8.1.3"
+    react-window: "npm:1.8.10"
+    slate: "npm:0.94.1"
+    slate-history: "npm:0.93.0"
+    slate-react: "npm:0.98.4"
+    yup: "npm:0.32.9"
+    zod: "npm:4.4.3"
+  peerDependencies:
+    "@strapi/admin": ^5.0.0
+    react: ^18.0.0
+    react-dom: ^18.0.0
+    react-router-dom: ^6.30.3
+    styled-components: ^6.0.0
+  checksum: 10c0/4bf6a2951593b764d60d7775ef618c9ab1089e4e9695b45becd79d45317923476479d40c1fa1549503b07e4fa42cdbd9e8da493298ce41fff02894ab1ee2edec
+  languageName: node
+  linkType: hard
+
 "@strapi/content-releases@npm:5.58.0":
   version: 5.58.0
   resolution: "@strapi/content-releases@npm:5.58.0"
