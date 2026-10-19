@@ -268,6 +268,8 @@ const SETTINGS = {
   releases: [{ action: 'plugin::content-releases.read' }, { action: 'plugin::content-releases.create' }, { action: 'plugin::content-releases.update' }, { action: 'plugin::content-releases.delete' }, { action: 'plugin::content-releases.create-action' }, { action: 'plugin::content-releases.delete-action' }, { action: 'plugin::content-releases.publish' }],
   auditRead: [{ action: 'admin::audit-logs.read' }],
   workflowsRead: [{ action: 'admin::review-workflows.read' }],
+  // The review-workflows assignee route requires admin::users.read (it lists who can be assigned).
+  usersRead: [{ action: 'admin::users.read' }],
 };
 
 async function seedAdmin(strapi, features) {
@@ -293,18 +295,18 @@ async function seedAdmin(strapi, features) {
   await create('HQ editor', 'Headquarters content team: owns templates, group content and launches. Can publish non-regulated content.', [
     ...cmPermissions(strapi, ALL_CT, { actions: ['create', 'read', 'update', 'delete'], locales: LOCALES }),
     ...cmPermissions(strapi, ['api::page.page', 'api::news-item.news-item', 'api::press-release.press-release', 'api::promo-banner.promo-banner', 'api::faq.faq', 'api::global.global', 'api::header.header', 'api::footer.footer'], { actions: ['publish'], locales: LOCALES }),
-    ...SETTINGS.upload, ...SETTINGS.releases,
+    ...SETTINGS.upload, ...SETTINGS.releases, ...SETTINGS.usersRead,
   ]);
   for (const [code, label] of [['fr', 'FR'], ['de', 'DE'], ['it', 'IT']]) {
     await create(`Country editor ${label}`, `${label} country team: edits its own locale only. Legal wording and page structure are read-only. Cannot publish.`, [
       ...cmPermissions(strapi, COUNTRY_CT, { actions: ['create', 'read', 'update'], locales: [code], locked: LOCKED }),
-      ...SETTINGS.upload,
+      ...SETTINGS.upload, ...SETTINGS.usersRead,
     ]);
   }
   await create('Compliance reviewer', 'Compliance and legal: reviews regulated content, approves or sends back, publishes products and documents.', [
     ...cmPermissions(strapi, ['api::product.product', 'api::regulated-document.regulated-document'], { actions: ['read', 'update', 'publish'], locales: LOCALES }),
     ...cmPermissions(strapi, ['api::page.page', 'api::news-item.news-item', 'api::press-release.press-release', 'api::promo-banner.promo-banner', 'api::faq.faq'], { actions: ['read'], locales: LOCALES }),
-    ...SETTINGS.upload, ...SETTINGS.auditRead, ...SETTINGS.workflowsRead,
+    ...SETTINGS.upload, ...SETTINGS.auditRead, ...SETTINGS.workflowsRead, ...SETTINGS.usersRead,
   ]);
 
   const users = [
@@ -465,8 +467,10 @@ async function seedActivity(strapi, refs, features, stages, users) {
     const stagePath = (documentId, locale) => `/review-workflows/content-manager/collection-types/${product}/${documentId}/stage?locale=${locale}`;
     const assigneePath = (documentId, locale) => `/review-workflows/content-manager/collection-types/${product}/${documentId}/assignee?locale=${locale}`;
     await it.call('PUT', cm(product, home, 'it'), { tagline: 'Fabbricato e contenuto, per la casa in cui vivi davvero. Ora con copertura giardino inclusa.' });
-    await it.call('PUT', stagePath(home, 'it'), { data: { id: stages['Compliance review'].id } });
+    // Assign before moving: changing the assignee needs transition rights on the current stage,
+    // and only compliance may move an entry out of "Compliance review".
     await it.call('PUT', assigneePath(home, 'it'), { data: { id: users['compliance@meridian-demo.test'].id } });
+    await it.call('PUT', stagePath(home, 'it'), { data: { id: stages['Compliance review'].id } });
     await compliance.call('PUT', cm(product, home, 'it'), { reviewNote: 'Premium wording must state the annual amount before the monthly one. Garden cover is an optional add-on, not included: fix the tagline.' });
     await compliance.call('PUT', stagePath(home, 'it'), { data: { id: stages['Changes requested'].id } });
     await compliance.call('PUT', assigneePath(home, 'it'), { data: { id: users['it.editor@meridian-demo.test'].id } });

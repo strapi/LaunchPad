@@ -5,11 +5,12 @@ import assert from 'node:assert/strict';
 
 import { LOCALES, PASSWORD, SITE, STRAPI, api, env, features, login, reachable } from './helpers.mjs';
 
-let ee;
+// Resolved at load, not in before(): the `skip` options below are read when each test is registered.
+// If Strapi is down this stays undefined and before() reports why.
+const ee = await features().catch(() => undefined);
 before(async () => {
   assert.ok(await reachable(`${STRAPI}/_health`), `Strapi is not reachable on ${STRAPI}. Run yarn dev.`);
   assert.ok(await reachable(`${SITE}/en`), `The website is not reachable on ${SITE}. Run yarn dev.`);
-  ee = await features();
 });
 
 // ------------------------------------------------------------------ public API
