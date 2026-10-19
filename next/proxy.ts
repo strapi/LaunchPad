@@ -5,15 +5,20 @@ import type { NextRequest } from 'next/server';
 
 import { i18n } from '@/i18n.config';
 
-function getLocale(request: NextRequest): string | undefined {
+function getLocale(request: NextRequest): string {
   const negotiatorHeaders: Record<string, string> = {};
   request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
 
   const locales: Readonly<string[]> = i18n.locales;
   const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
 
-  const locale = matchLocale(languages, locales, i18n.defaultLocale);
-  return locale;
+  // Negotiator returns ['*'] when Accept-Language is missing, and matchLocale
+  // throws on that or on any malformed tag.
+  try {
+    return matchLocale(languages, locales, i18n.defaultLocale);
+  } catch {
+    return i18n.defaultLocale;
+  }
 }
 
 export function proxy(request: NextRequest) {
