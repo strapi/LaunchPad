@@ -1,8 +1,8 @@
 diff --git a/dist/server/preview/controllers/previewScript.js b/dist/server/preview/controllers/previewScript.js
-index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ceff4a5c97 100644
+index 80ce1506dc88c38e70f4be6872a904ef5898a04c..b72268a8cc080de5e62220d14d847da0c7e03546 100644
 --- a/dist/server/preview/controllers/previewScript.js
 +++ b/dist/server/preview/controllers/previewScript.js
-@@ -67,6 +67,61 @@ function previewScript(config) {
+@@ -67,6 +67,103 @@ function previewScript(config) {
  
    const DISABLE_STEGA_DECODING = win.STRAPI_DISABLE_STEGA_DECODING ?? false;
    const SOURCE_ATTRIBUTE = 'data-strapi-source';
@@ -17,12 +17,46 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
 +  const decodedElements = new Set();
 +
 +  /**
++   * Writing data-strapi-source fired an attribute mutation that kept highlights in sync.
++   * Sources kept in memory fire nothing, so changes are queued here and handed, once per
++   * microtask like mutation records, to the highlight observer (see setupObservers).
++   * @type {Set<Element>}
++   */
++  const pendingSourceChanges = new Set();
++  /** @type {((element: Element) => void) | null} */
++  let sourceChangeHandler = null;
++
++  /** @param {Element} element */
++  const notifySourceChange = (element) => {
++    if (pendingSourceChanges.size === 0) {
++      queueMicrotask(() => {
++        const elements = Array.from(pendingSourceChanges);
++        pendingSourceChanges.clear();
++        if (sourceChangeHandler) elements.forEach(sourceChangeHandler);
++      });
++    }
++    pendingSourceChanges.add(element);
++  };
++
++  /**
 +   * @param {Element} element
 +   * @param {string} source
 +   */
 +  const writeSource = (element, source) => {
++    if (decodedSources.get(element) === source) return;
 +    decodedSources.set(element, source);
 +    decodedElements.add(element);
++    notifySourceChange(element);
++  };
++
++  /**
++   * Drops a decoded source without notifying, for elements that already left the page.
++   * @param {Element} element
++   * @returns {boolean} whether there was a decoded source to drop
++   */
++  const forgetDecodedSource = (element) => {
++    decodedElements.delete(element);
++    return decodedSources.delete(element);
 +  };
 +
 +  /**
@@ -37,10 +71,18 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
 +  /** @param {Element} element */
 +  const hasSource = (element) => readSource(element) !== null;
 +
-+  /** @param {Element} element */
++  /**
++   * Only called once the user is editing media, long after hydration, so removing an
++   * attribute the frontend rendered itself is as safe here as it always was.
++   * @param {Element} element
++   */
 +  const clearSource = (element) => {
-+    decodedSources.delete(element);
-+    decodedElements.delete(element);
++    const hadDecodedSource = forgetDecodedSource(element);
++    if (element.hasAttribute(SOURCE_ATTRIBUTE)) {
++      element.removeAttribute(SOURCE_ATTRIBUTE);
++    } else if (hadDecodedSource) {
++      notifySourceChange(element);
++    }
 +  };
 +
 +  /** @returns {Element[]} every element carrying a source, from either origin */
@@ -50,7 +92,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
 +    document.querySelectorAll(`[${SOURCE_ATTRIBUTE}]`).forEach((element) => result.push(element));
 +    decodedElements.forEach((element) => {
 +      if (!element.isConnected) {
-+        clearSource(element);
++        forgetDecodedSource(element);
 +        return;
 +      }
 +      if (!element.hasAttribute(SOURCE_ATTRIBUTE)) result.push(element);
@@ -64,7 +106,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
    const OVERLAY_ID = 'strapi-preview-overlay';
  
    /* -----------------------------------------------------------------------------------------------
-@@ -85,7 +140,9 @@ function previewScript(config) {
+@@ -85,7 +182,9 @@ function previewScript(config) {
     * @param {string} path
     */
    const getElementsByPath = (path) => {
@@ -75,7 +117,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
    };
  
    /**
-@@ -391,10 +448,21 @@ function previewScript(config) {
+@@ -391,10 +490,21 @@ function previewScript(config) {
        return;
      }
  
@@ -97,7 +139,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
        // Handle img and video tags - check src and alt attributes for stega encoding.
        // The src path handles media fields; the alt path handles blocks image blocks
        // (the url is intentionally not encoded to avoid corrupting the src attribute).
-@@ -412,7 +480,7 @@ function previewScript(config) {
+@@ -412,7 +522,7 @@ function previewScript(config) {
                  // Remove .url to get the media field path
                  const mediaPath = originalPath.replace(/\.url$/, '');
                  const newSource = sourceValue.replace(`path=${originalPath}`, `path=${mediaPath}`);
@@ -106,7 +148,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
                }
              }
              // Clean the src attribute so the resource can load
-@@ -426,13 +494,13 @@ function previewScript(config) {
+@@ -426,13 +536,13 @@ function previewScript(config) {
          // Blocks image markers are encoded into the alt attribute (not the src).
          // If the alt carries a marker that is not yet superseded by a src-derived one,
          // apply it and clean the visible alt text.
@@ -122,7 +164,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
                }
                const cleanedAlt = stegaClean(alt);
                if (cleanedAlt !== alt) {
-@@ -456,17 +524,12 @@ function previewScript(config) {
+@@ -456,17 +566,12 @@ function previewScript(config) {
            // TODO: check if we can call split instead of decode+clean
            const result = stegaDecode(directTextContent);
            if (result && 'strapiSource' in result) {
@@ -146,7 +188,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
            }
          } catch (error) {}
        }
-@@ -775,7 +838,7 @@ function previewScript(config) {
+@@ -775,7 +880,7 @@ function previewScript(config) {
       */
      const syncContainerObservation = (groupKey, group) => {
        const firstEl = group.elements.values().next().value;
@@ -155,7 +197,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
        const isBlocksField = !!sourceAttr && new URLSearchParams(sourceAttr).has('fieldPath');
        if (!isBlocksField) return;
  
-@@ -842,7 +905,7 @@ function previewScript(config) {
+@@ -842,7 +947,7 @@ function previewScript(config) {
        // empty blocks and container padding are always included — a fixed pixel
        // buffer on the span union is too brittle when content grows or shrinks.
        const firstEl = group.elements.values().next().value;
@@ -164,7 +206,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
        const isBlocksField =
          !!firstSourceAttr && new URLSearchParams(firstSourceAttr).has('fieldPath');
  
-@@ -1065,7 +1128,7 @@ function previewScript(config) {
+@@ -1065,7 +1170,7 @@ function previewScript(config) {
  
          const { element: anchor, exact } = pickElementAtPoint(group, event.clientX, event.clientY);
          if (!anchor) return;
@@ -173,7 +215,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
          if (!sourceAttribute) return;
          const path = getFocusPath(sourceAttribute, anchor);
          // For blocks fields, use the specific clicked element's rect so the
-@@ -1214,7 +1277,7 @@ function previewScript(config) {
+@@ -1214,7 +1319,7 @@ function previewScript(config) {
        if (elementToGroupKey.has(element)) {
          return;
        }
@@ -182,7 +224,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
        if (!sourceAttr) return;
        const groupKey = deriveGroupKey(sourceAttr);
  
-@@ -1334,7 +1397,7 @@ function previewScript(config) {
+@@ -1334,7 +1439,7 @@ function previewScript(config) {
      };
  
      // Process all existing elements with source attributes
@@ -191,7 +233,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
      Array.from(initialElements).forEach((element) => {
        if (element instanceof HTMLElement) {
          createHighlightForElement(element);
-@@ -1355,7 +1418,7 @@ function previewScript(config) {
+@@ -1355,7 +1460,7 @@ function previewScript(config) {
          }
        }
        // Register any elements that appeared during editing
@@ -200,16 +242,42 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
          if (element instanceof HTMLElement) {
            createHighlightForElement(element); // no-op for already-tracked elements
          }
-@@ -1476,7 +1539,7 @@ function previewScript(config) {
+@@ -1471,18 +1576,26 @@ function previewScript(config) {
+     highlightManager.elements.forEach(observeElementForResize);
+     resizeObserver.observe(document.documentElement);
+ 
++    /**
++     * @param {Element} element
++     */
++    const syncSourceChange = (element) => {
++      const target = /** @type {HTMLElement} */ (element);
++      if (hasSource(target)) {
++        highlightManager.removeHighlightForElement(target);
++        highlightManager.createHighlightForElement(target);
++        observeElementForResize(target);
++      } else {
++        highlightManager.removeHighlightForElement(target);
++      }
++    };
++    sourceChangeHandler = syncSourceChange;
++
+     // Create highlight observer to watch for new elements with source attributes
+     const highlightObserver = new MutationObserver((mutations) => {
        mutations.forEach((mutation) => {
          if (mutation.type === 'attributes' && mutation.attributeName === SOURCE_ATTRIBUTE) {
-           const target = /** @type {HTMLElement} */ (mutation.target);
+-          const target = /** @type {HTMLElement} */ (mutation.target);
 -          if (target.hasAttribute(SOURCE_ATTRIBUTE)) {
-+          if (hasSource(target)) {
-             highlightManager.removeHighlightForElement(target);
-             highlightManager.createHighlightForElement(target);
-             observeElementForResize(target);
-@@ -1490,12 +1553,12 @@ function previewScript(config) {
+-            highlightManager.removeHighlightForElement(target);
+-            highlightManager.createHighlightForElement(target);
+-            observeElementForResize(target);
+-          } else {
+-            highlightManager.removeHighlightForElement(target);
+-          }
++          syncSourceChange(/** @type {Element} */ (mutation.target));
+         }
+ 
+         if (mutation.type === 'childList') {
+@@ -1490,12 +1603,12 @@ function previewScript(config) {
              if (node.nodeType === Node.ELEMENT_NODE) {
                const element = /** @type {Element} */ (node);
                // Check if the added element has source attribute
@@ -224,7 +292,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
                Array.from(elementsWithSource).forEach((childElement) => {
                  if (childElement instanceof HTMLElement) {
                    highlightManager.createHighlightForElement(childElement);
-@@ -1509,7 +1572,7 @@ function previewScript(config) {
+@@ -1509,7 +1622,7 @@ function previewScript(config) {
              if (node.nodeType === Node.ELEMENT_NODE) {
                const element = /** @type {Element} */ (node);
                highlightManager.removeHighlightForElement(element);
@@ -233,7 +301,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
                  highlightManager.removeHighlightForElement(childElement);
                });
  
-@@ -1565,8 +1628,8 @@ function previewScript(config) {
+@@ -1565,8 +1678,8 @@ function previewScript(config) {
        const removeInjection = () => {
          if (!injection) return;
          // Move the source attribute back to the original so highlights track it again
@@ -244,7 +312,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
          untrackInjection(injection);
          injection.remove();
        };
-@@ -1581,7 +1644,7 @@ function previewScript(config) {
+@@ -1581,7 +1694,7 @@ function previewScript(config) {
          // it after.
          removeInjection();
  
@@ -253,7 +321,7 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
          if (!sourceAttr) {
            original.style.display = 'none';
            return;
-@@ -1596,7 +1659,7 @@ function previewScript(config) {
+@@ -1596,7 +1709,7 @@ function previewScript(config) {
          // Move the source attr onto a placeholder div so the highlight
          // system keeps tracking the spot and the user can click to re-add
          // media.
@@ -262,8 +330,16 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
          const placeholder = createMediaPlaceholder(sourceAttr, rect);
          original.parentNode?.insertBefore(placeholder, original.nextSibling);
          trackInjection(original, placeholder);
-@@ -1690,7 +1753,7 @@ function previewScript(config) {
+@@ -1688,9 +1801,15 @@ function previewScript(config) {
+       }
+       newInjection.style.display = '';
  
++      // The attribute copy above only carries a source the frontend rendered itself
++      const originalSource = readSource(original);
++      if (originalSource && !newInjection.hasAttribute(SOURCE_ATTRIBUTE)) {
++        writeSource(newInjection, originalSource);
++      }
++
        // Hide the host-framework-managed original and let highlights track our injection
        original.style.display = 'none';
 -      original.removeAttribute(SOURCE_ATTRIBUTE);
@@ -271,7 +347,26 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
        original.parentNode?.insertBefore(newInjection, original.nextSibling);
        trackInjection(original, newInjection);
      };
-@@ -1810,10 +1873,10 @@ function previewScript(config) {
+@@ -1766,6 +1885,8 @@ function previewScript(config) {
+               parent = parent.parentElement;
+             }
+ 
++            // cloneNode copies attributes, so it only carries a source the frontend rendered itself
++            const lastSource = readSource(lastEl);
+             /** @type {HTMLElement} */
+             let insertAfter = template;
+             for (let i = mediaEls.length; i < value.length; i++) {
+@@ -1777,6 +1898,9 @@ function previewScript(config) {
+               }
+               cloneMedia.setAttribute(CLONE_ATTRIBUTE, '');
+               cloneMedia.removeAttribute('id');
++              if (lastSource && !cloneMedia.hasAttribute(SOURCE_ATTRIBUTE)) {
++                writeSource(cloneMedia, lastSource);
++              }
+               if (wrapperClone !== cloneMedia) {
+                 wrapperClone.setAttribute(CLONE_WRAPPER_ATTRIBUTE, '');
+               }
+@@ -1810,10 +1934,10 @@ function previewScript(config) {
          // Handle nested media asset fields (caption, alt, etc.)
          // These are identified by model=plugin::upload.file in the source attribute
          if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
@@ -284,3 +379,11 @@ index 80ce1506dc88c38e70f4be6872a904ef5898a04c..f28fa0f77e10be7e043a492616e2f8ce
              if (!sourceAttr) return;
  
              // Parse the source attribute as URL search params
+@@ -1930,6 +2054,7 @@ function previewScript(config) {
+     highlightManager
+   ) => {
+     win.__strapi_previewCleanup = () => {
++      sourceChangeHandler = null;
+       observers.resizeObserver.disconnect();
+       observers.highlightObserver.disconnect();
+       observers.stegaObserver?.disconnect();
