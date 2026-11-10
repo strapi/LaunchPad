@@ -1,10 +1,12 @@
-const fs = require('fs');
-const path = require('path');
-const { v4: uuidv4 } = require('uuid');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { v4 as uuidv4 } from 'uuid';
 
 // This script will update the UUID of the demo project in order to get some random analytics on
 // this demo usage.
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const packageJsonPath = path.join(__dirname, '../package.json');
 
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));

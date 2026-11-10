@@ -1,7 +1,8 @@
 {
   "name": "strapi",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "type": "module",
   "description": "A Strapi application",
   "scripts": {
     "develop": "strapi develop",
@@ -11,7 +12,7 @@
     "strapi": "strapi",
     "deploy": "strapi deploy",
     "seed": "strapi import -f ./data/export_20250116105447.tar.gz",
-    "postinstall": "node ./scripts/updateUuid.js"
+    "postinstall": "node ./scripts/updateUuid.js && node ./scripts/patch-cjs-deps-esm.js && node ./scripts/patch-strapi-esm.js"
   },
   "devDependencies": {
     "@types/node": "^20",
