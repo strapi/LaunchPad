@@ -20,10 +20,10 @@
     "typescript": "^5"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.60.0",
+    "@strapi/plugin-cloud": "5.63.0",
     "@strapi/plugin-seo": "^2.0.9",
-    "@strapi/plugin-users-permissions": "5.60.0",
-    "@strapi/strapi": "5.60.0",
+    "@strapi/plugin-users-permissions": "5.63.0",
+    "@strapi/strapi": "5.63.0",
     "better-sqlite3": "11.7.0",
     "pluralize": "^8.0.0",
     "react": "^18.0.0",
@@ -42,8 +42,5 @@
     "node": ">=22.19.0 <=26.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT",
-  "resolutions": {
-    "@strapi/content-manager@npm:5.60.0": "patch:@strapi/content-manager@npm%3A5.60.0#~/.yarn/patches/@strapi-content-manager-npm-5.60.0-45d4b1d95a.patch"
-  }
+  "license": "MIT"
 }
